@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 07 Dec 2018 10:43:45 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/channel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Flutter 原生通信 (四) - iOS 通知 Flutter</title>
-      <link>https://kikt.top/post/flutter/channel/flutter-channel4/</link>
+      <link>https://kikt.top/posts/flutter/channel/flutter-channel4/</link>
       <pubDate>Fri, 07 Dec 2018 10:43:45 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/channel/flutter-channel4/</guid>
+      <guid>https://kikt.top/posts/flutter/channel/flutter-channel4/</guid>
       <description>
         
           
@@ -30,10 +30,10 @@ oc 先来查看 OC 篇
     
     <item>
       <title>Flutter 原生通信 (三) - Flutter 调用 iOS</title>
-      <link>https://kikt.top/post/flutter/channel/flutter-channel3/</link>
+      <link>https://kikt.top/posts/flutter/channel/flutter-channel3/</link>
       <pubDate>Fri, 07 Dec 2018 10:43:43 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/channel/flutter-channel3/</guid>
+      <guid>https://kikt.top/posts/flutter/channel/flutter-channel3/</guid>
       <description>
         
           
@@ -53,10 +53,10 @@ dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/ser
     
     <item>
       <title>Flutter 原生通信 (二) - Android通知Flutter</title>
-      <link>https://kikt.top/post/flutter/channel/flutter-channel2/</link>
+      <link>https://kikt.top/posts/flutter/channel/flutter-channel2/</link>
       <pubDate>Fri, 07 Dec 2018 10:02:15 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/channel/flutter-channel2/</guid>
+      <guid>https://kikt.top/posts/flutter/channel/flutter-channel2/</guid>
       <description>
         
           
@@ -76,10 +76,10 @@ java 先看看 java 端代码
     
     <item>
       <title>Flutter 原生通信 (一) - flutter调用Android</title>
-      <link>https://kikt.top/post/flutter/channel/flutter-channel1/</link>
+      <link>https://kikt.top/posts/flutter/channel/flutter-channel1/</link>
       <pubDate>Thu, 06 Dec 2018 17:16:34 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/channel/flutter-channel1/</guid>
+      <guid>https://kikt.top/posts/flutter/channel/flutter-channel1/</guid>
       <description>
         
           

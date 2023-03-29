@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 14 Aug 2020 20:45:00 +0800</lastBuildDate><atom:link href="https://kikt.top/categories/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>编译 go 源码为 android 动态库(so)</title>
-      <link>https://kikt.top/post/go/compile-for-android/</link>
+      <link>https://kikt.top/posts/go/compile-for-android/</link>
       <pubDate>Fri, 14 Aug 2020 20:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/go/compile-for-android/</guid>
+      <guid>https://kikt.top/posts/go/compile-for-android/</guid>
       <description>
         
           
@@ -28,10 +28,10 @@
     
     <item>
       <title>Flutter 插件开发之引入aar到安卓部分 并使用本地maven</title>
-      <link>https://kikt.top/post/flutter/plugin/flutter-sdk-import-aar/</link>
+      <link>https://kikt.top/posts/flutter/plugin/flutter-sdk-import-aar/</link>
       <pubDate>Mon, 30 Mar 2020 14:14:39 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/plugin/flutter-sdk-import-aar/</guid>
+      <guid>https://kikt.top/posts/flutter/plugin/flutter-sdk-import-aar/</guid>
       <description>
         
           
@@ -51,10 +51,10 @@
     
     <item>
       <title>Flutter 1.12后 上传aar至maven私服</title>
-      <link>https://kikt.top/post/flutter/exists/upload-aar-to-maven/</link>
+      <link>https://kikt.top/posts/flutter/exists/upload-aar-to-maven/</link>
       <pubDate>Tue, 04 Feb 2020 18:23:24 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/exists/upload-aar-to-maven/</guid>
+      <guid>https://kikt.top/posts/flutter/exists/upload-aar-to-maven/</guid>
       <description>
         
           
@@ -71,10 +71,10 @@
     
     <item>
       <title>Android 记录在macOS上使用 NDK20 编译ffmpeg4.2.2的过程</title>
-      <link>https://kikt.top/post/android/ffmpeg/compile-with-ndk20/</link>
+      <link>https://kikt.top/posts/android/ffmpeg/compile-with-ndk20/</link>
       <pubDate>Tue, 07 Jan 2020 11:50:07 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/ffmpeg/compile-with-ndk20/</guid>
+      <guid>https://kikt.top/posts/android/ffmpeg/compile-with-ndk20/</guid>
       <description>
         
           
@@ -93,10 +93,10 @@
     
     <item>
       <title>把flutter项目作为aar添加到已有的Android工程上</title>
-      <link>https://kikt.top/post/flutter/exists/android-as-aar-to-maven/</link>
+      <link>https://kikt.top/posts/flutter/exists/android-as-aar-to-maven/</link>
       <pubDate>Fri, 14 Jun 2019 09:06:24 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/exists/android-as-aar-to-maven/</guid>
+      <guid>https://kikt.top/posts/flutter/exists/android-as-aar-to-maven/</guid>
       <description>
         
           
@@ -113,10 +113,10 @@
     
     <item>
       <title>Android Q 隐私篇(5) - 相机/网络</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-5/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-5/</link>
       <pubDate>Fri, 24 May 2019 15:00:09 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-5/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-5/</guid>
       <description>
         
           
@@ -142,20 +142,20 @@ ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权�
     
     <item>
       <title>Android Q 隐私篇(4) - 唯一标识符, 剪切板数据</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-4/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-4/</link>
       <pubDate>Fri, 24 May 2019 11:49:11 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-4/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-4/</guid>
       <description>
         
           
             第四篇,
-目录                        唯一识别码的前世 在开发中, 总有人会提出各种设备&amp;quot;唯一标识符&amp;quot;的概念,以便于定位用户的唯一性, 或对于用户行为进行分析
+唯一识别码的前世 在开发中, 总有人会提出各种设备&amp;quot;唯一标识符&amp;quot;的概念,以便于定位用户的唯一性, 或对于用户行为进行分析
 很遗憾, 通过多年的探索, 目前没有任何一种特别准确, 一定能保证唯一的方案
 包括但不仅限于以下方案
 设备序列号 IMEI imsi mac 地址(wifi 模块)
 如以下代码:
-1package top.kikit.uniqueidprivacy 23import android.Manifest 4import android.annotation.SuppressLint 5import android.content.Context 6import android.os.Bundle 7import android.telephony.TelephonyManager 8import android.util.Log 9import androidx.appcompat.app.AppCompatActivity 10import com.tbruyelle.rxpermissions2.RxPermissions 1112class MainActivity : AppCompatActivity() { 13private val TAG = &amp;#34;MainActivity&amp;#34;; 1415private val rxPermissions = RxPermissions(this) 1617@SuppressLint(&amp;#34;CheckResult&amp;#34;) 18override fun onCreate(savedInstanceState: Bundle?
+1package top.kikit.uniqueidprivacy 23import android.Manifest 4import android.annotation.SuppressLint 5import android.content.Context 6import android.os.Bundle 7import android.telephony.TelephonyManager 8import android.util.Log 9import androidx.appcompat.app.AppCompatActivity 10import com.tbruyelle.rxpermissions2.RxPermissions 1112class MainActivity : AppCompatActivity() { 13private val TAG = &amp;#34;MainActivity&amp;#34;; 1415private val rxPermissions = RxPermissions(this) 1617@SuppressLint(&amp;#34;CheckResult&amp;#34;) 18override fun onCreate(savedInstanceState: Bundle?) { 19super.onCreate(savedInstanceState) 20setContentView(R.layout.activity_main) 212223val mTelephonyMgr = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager 2425rxPermissions.request(Manifest.permission.READ_PHONE_STATE) 26.subscribe { 27if (it) { 28val subscriberId = mTelephonyMgr.
           
           
         
@@ -164,10 +164,10 @@ ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权�
     
     <item>
       <title>Android Q 隐私篇(3) - 限制后台活动</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-3/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-3/</link>
       <pubDate>Tue, 21 May 2019 09:49:25 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-3/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-3/</guid>
       <description>
         
           
@@ -189,21 +189,22 @@ ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权�
     
     <item>
       <title>Android Q 隐私篇(2) - 后台定位权限</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-2/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-2/</link>
       <pubDate>Tue, 21 May 2019 09:14:28 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-2/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-2/</guid>
       <description>
         
           
-            本篇是系列第二篇, 主要分析下 android Q 下的后台定位权限 官方链接: , 有能力的朋友可以自己阅读,并不难
-目录                  定位权限 在从前的 android 中,定位权限不分前后台,只有两个
+            本篇是系列第二篇, 主要分析下 android Q 下的后台定位权限 , 有能力的朋友可以自己阅读,并不难
+定位权限 在从前的 android 中,定位权限不分前后台,只有两个
 1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_COARSE_LOCATION&amp;#34;/&amp;gt; 2&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_FINE_LOCATION&amp;#34;/&amp;gt; 分别代表大致位置和精确位置, 一般来说在使用时定位权限都是一起要或者都不要的, 而且这两个作为同一个组,一般都是一起申请,一次授权
 一般来说大部分人都是使用高德/百度地图作为定位 sdk 使用, 很显然这两个货申请一般也是都一起申请的
 androidQ 的权限 androidQ 中会添加一个新的权限
 1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_BACKGROUND_LOCATION&amp;#34; /&amp;gt; 这个就是对应的后台权限, 和以前的分类方式不同,以前是精确度,这个是前后台
 按照官方说明:
- targetVersion: androidQ 或以上  如果 targetVersion 是 androidQ+, 则这个权限不会自动添加, 使用者需要自己添加,有就是有,没有就没有   如果 targetVersion 是 api 28(android 9.0)以下  如果你有以前版本的定位权限,则系统会在安装时帮你添加后台的权限(升级 androidOS 版本时不明) 在动态权限申请时,如果你申请的权限有以前的定位权限之一, 则会自动帮你在申请的权限里加上这个后台的    请求后台权限 上来是一段废话.
+ targetVersion: androidQ 或以上  如果 targetVersion 是 androidQ+, 则这个权限不会自动添加, 使用者需要自己添加,有就是有,没有就没有   如果 targetVersion 是 api 28(android 9.0)以下  如果你有以前版本的定位权限,则系统会在安装时帮你添加后台的权限(升级 androidOS 版本时不明) 在动态权限申请时,如果你申请的权限有以前的定位权限之一, 则会自动帮你在申请的权限里加上这个后台的    请求后台权限 上来是一段废话... 简单解释, 你需要后台权限吗?
+ 不需要 需要  这个不是我们自己能定的, 以国内来看, 接 sdk (推送,定位,分享.
           
           
         
@@ -212,10 +213,10 @@ androidQ 的权限 androidQ 中会添加一个新的权限
     
     <item>
       <title>Android Q 隐私篇(1) - 外部储存</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-1/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-1/</link>
       <pubDate>Mon, 20 May 2019 09:43:48 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-1/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-1/</guid>
       <description>
         
           
@@ -227,11 +228,15 @@ androidQ 的权限 androidQ 中会添加一个新的权限
 在适配新的系统前就和从前一样,暂时不升级 targetVersion,把 targetVersion 设置为 28 以下就不会影响旧程序了,就如同以前运行时权限真的是坑到爆炸,但是暂时不适配也是可以的
 但是未来无论如何都需要适配新系统,所以先来看看
 本篇只说储存的方式和权限问题,其他暂时略过不表
-目录                          检查迁移情况  有一个表格提供了如何检查和迁移的方案
+检查迁移情况  有一个表格提供了如何检查和迁移的方案
  开发环境 说一下开发环境
 MacOS
 Android Studio 3.4.0
 android 9.0 设备一台
+androidQ 虚拟机一台(官方的 Emulator)
+更新 sdk 更新 sdk, 下载 androidQ 相关的 sdk/sdktools/模拟器
+androidQ build.gradle 当前想尝试 androidQ 的话, 编译版本和目标版本号需要按如下方式设置, 今后的话可能是 29/30 之类的数字
+1targetSdkVersion = &amp;#39;Q&amp;#39; 2compileSdkVersion = &amp;#39;android-Q&amp;#39; 外部储存 androidQ 下读写文件 权限和以前一样
           
           
         
@@ -240,21 +245,26 @@ android 9.0 设备一台
     
     <item>
       <title>CameraX的使用</title>
-      <link>https://kikt.top/post/android/camera/camerax-usage/</link>
+      <link>https://kikt.top/posts/android/camera/camerax-usage/</link>
       <pubDate>Tue, 14 May 2019 13:44:59 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/camera/camerax-usage/</guid>
+      <guid>https://kikt.top/posts/android/camera/camerax-usage/</guid>
       <description>
         
           
             我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程
 在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍
- 目录                         介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
+ 介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
 最低支持的 API 等级是 API 21(5.0)
 开发环境 我当前的开发环境是
 MacOS 10.13.6
 Android Studio 3.4 小米 8 MIUI 10.3 稳定版 10.3.2.0(android 9.0)
 最低支持 官方说明为 AndroidStudio 3.3 API 21+的设备
+编码准备 新建项目 修改这两项
+ 最低 21, 使用 androidX
+添加依赖 在 app 级别的 build.gradle 中添加如下依赖
+这个版本当前还是 alpha 版本,后续可能会升级为正式版, 可以查看
+1dependencies { 2def camerax_version = &amp;#34;1.0.0-alpha01&amp;#34; 3implementation &amp;#34;androidx.
           
           
         
@@ -263,10 +273,10 @@ Android Studio 3.4 小米 8 MIUI 10.3 稳定版 10.3.2.0(android 9.0)
     
     <item>
       <title>Migrating to AndroidX</title>
-      <link>https://kikt.top/post/flutter/migrate-android-x/</link>
+      <link>https://kikt.top/posts/flutter/migrate-android-x/</link>
       <pubDate>Wed, 06 Mar 2019 10:26:03 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/migrate-android-x/</guid>
+      <guid>https://kikt.top/posts/flutter/migrate-android-x/</guid>
       <description>
         
           
@@ -290,10 +300,10 @@ gradle-wrapper.properties 文件
     
     <item>
       <title>在原 Android 工程的基础上构建一个flutter工程</title>
-      <link>https://kikt.top/post/flutter/exists/android/</link>
+      <link>https://kikt.top/posts/flutter/exists/android/</link>
       <pubDate>Tue, 22 Jan 2019 07:50:31 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/exists/android/</guid>
+      <guid>https://kikt.top/posts/flutter/exists/android/</guid>
       <description>
         
           
@@ -314,10 +324,10 @@ gradle-wrapper.properties 文件
     
     <item>
       <title>android 引入ffmpeg</title>
-      <link>https://kikt.top/post/android/android-include-ffmpeg/</link>
+      <link>https://kikt.top/posts/android/android-include-ffmpeg/</link>
       <pubDate>Mon, 14 Jan 2019 17:14:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-include-ffmpeg/</guid>
+      <guid>https://kikt.top/posts/android/android-include-ffmpeg/</guid>
       <description>
         
           
@@ -337,10 +347,10 @@ gradle-wrapper.properties 文件
     
     <item>
       <title>ndk编译ffmpeg</title>
-      <link>https://kikt.top/post/android/android-ffmpeg-compile-so/</link>
+      <link>https://kikt.top/posts/android/android-ffmpeg-compile-so/</link>
       <pubDate>Mon, 14 Jan 2019 14:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-ffmpeg-compile-so/</guid>
+      <guid>https://kikt.top/posts/android/android-ffmpeg-compile-so/</guid>
       <description>
         
           
@@ -363,10 +373,10 @@ gradle-wrapper.properties 文件
     
     <item>
       <title>android 依赖冲突</title>
-      <link>https://kikt.top/post/android/android-repo-confire/</link>
+      <link>https://kikt.top/posts/android/android-repo-confire/</link>
       <pubDate>Sun, 04 Mar 2018 17:14:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-repo-confire/</guid>
+      <guid>https://kikt.top/posts/android/android-repo-confire/</guid>
       <description>
         
           
@@ -384,10 +394,10 @@ gradle-wrapper.properties 文件
     
     <item>
       <title>android 经典蓝牙编程 SPP</title>
-      <link>https://kikt.top/post/android/android-spp-bluetooth/</link>
+      <link>https://kikt.top/posts/android/android-spp-bluetooth/</link>
       <pubDate>Sat, 08 Jul 2017 09:35:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-spp-bluetooth/</guid>
+      <guid>https://kikt.top/posts/android/android-spp-bluetooth/</guid>
       <description>
         
           
@@ -407,10 +417,10 @@ gradle-wrapper.properties 文件
     
     <item>
       <title>Android6.0百度地图导入UnsatisfiedLinkError的问题</title>
-      <link>https://kikt.top/post/android/baidu-map-error/</link>
+      <link>https://kikt.top/posts/android/baidu-map-error/</link>
       <pubDate>Tue, 07 Mar 2017 12:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/baidu-map-error/</guid>
+      <guid>https://kikt.top/posts/android/baidu-map-error/</guid>
       <description>
         
           
@@ -428,10 +438,10 @@ gradle-wrapper.properties 文件
     
     <item>
       <title>AIDL 安卓进程间通信/跨应用通信</title>
-      <link>https://kikt.top/post/android/android-aidl/</link>
+      <link>https://kikt.top/posts/android/android-aidl/</link>
       <pubDate>Tue, 06 Dec 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-aidl/</guid>
+      <guid>https://kikt.top/posts/android/android-aidl/</guid>
       <description>
         
           
@@ -453,10 +463,10 @@ aidl 语法 这里请去看我写在前面，里面比较详细，或者自行 b
     
     <item>
       <title>Android Studio 简单的JunitTest</title>
-      <link>https://kikt.top/post/android/android-junit/</link>
+      <link>https://kikt.top/posts/android/android-junit/</link>
       <pubDate>Sat, 22 Oct 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-junit/</guid>
+      <guid>https://kikt.top/posts/android/android-junit/</guid>
       <description>
         
           
@@ -473,10 +483,10 @@ MainActivity 代码如下
     
     <item>
       <title>Android Studio 2.2 ndk开发环境 gradle配置</title>
-      <link>https://kikt.top/post/android/android-studio-2-2-ndk-and-gradle-config/</link>
+      <link>https://kikt.top/posts/android/android-studio-2-2-ndk-and-gradle-config/</link>
       <pubDate>Fri, 21 Oct 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-studio-2-2-ndk-and-gradle-config/</guid>
+      <guid>https://kikt.top/posts/android/android-studio-2-2-ndk-and-gradle-config/</guid>
       <description>
         
           
@@ -496,10 +506,10 @@ gradle project 级别的和传统没有差别 看 module 级的
     
     <item>
       <title>Butterknife8.4.0的一些问题</title>
-      <link>https://kikt.top/post/android/butterknife8-1/</link>
+      <link>https://kikt.top/posts/android/butterknife8-1/</link>
       <pubDate>Sun, 18 Sep 2016 19:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/butterknife8-1/</guid>
+      <guid>https://kikt.top/posts/android/butterknife8-1/</guid>
       <description>
         
           
@@ -518,10 +528,10 @@ ButterKnife.bind(this) 这里可以是 View，Activity 等等
     
     <item>
       <title>Android剪切板的简单解析</title>
-      <link>https://kikt.top/post/android/android-clipboard-manager/</link>
+      <link>https://kikt.top/posts/android/android-clipboard-manager/</link>
       <pubDate>Sun, 18 Sep 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-clipboard-manager/</guid>
+      <guid>https://kikt.top/posts/android/android-clipboard-manager/</guid>
       <description>
         
           
@@ -546,10 +556,10 @@ CharSequence text = cm.getText();可以获取到剪切板内的内容 使用cm.s
     
     <item>
       <title>Retroift简单二次封装</title>
-      <link>https://kikt.top/post/android/retroift-simple-packaging/</link>
+      <link>https://kikt.top/posts/android/retroift-simple-packaging/</link>
       <pubDate>Thu, 01 Sep 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/retroift-simple-packaging/</guid>
+      <guid>https://kikt.top/posts/android/retroift-simple-packaging/</guid>
       <description>
         
           
@@ -563,10 +573,10 @@ CharSequence text = cm.getText();可以获取到剪切板内的内容 使用cm.s
     
     <item>
       <title>Retroift初探</title>
-      <link>https://kikt.top/post/android/retroift-first-develop/</link>
+      <link>https://kikt.top/posts/android/retroift-first-develop/</link>
       <pubDate>Wed, 31 Aug 2016 18:25:45 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/retroift-first-develop/</guid>
+      <guid>https://kikt.top/posts/android/retroift-first-develop/</guid>
       <description>
         
           

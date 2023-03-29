@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 07 Jan 2020 11:50:07 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/ffmpeg/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android 记录在macOS上使用 NDK20 编译ffmpeg4.2.2的过程</title>
-      <link>https://kikt.top/post/android/ffmpeg/compile-with-ndk20/</link>
+      <link>https://kikt.top/posts/android/ffmpeg/compile-with-ndk20/</link>
       <pubDate>Tue, 07 Jan 2020 11:50:07 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/ffmpeg/compile-with-ndk20/</guid>
+      <guid>https://kikt.top/posts/android/ffmpeg/compile-with-ndk20/</guid>
       <description>
         
           
@@ -31,10 +31,10 @@
     
     <item>
       <title>android 引入ffmpeg</title>
-      <link>https://kikt.top/post/android/android-include-ffmpeg/</link>
+      <link>https://kikt.top/posts/android/android-include-ffmpeg/</link>
       <pubDate>Mon, 14 Jan 2019 17:14:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-include-ffmpeg/</guid>
+      <guid>https://kikt.top/posts/android/android-include-ffmpeg/</guid>
       <description>
         
           
@@ -54,10 +54,10 @@
     
     <item>
       <title>ndk编译ffmpeg</title>
-      <link>https://kikt.top/post/android/android-ffmpeg-compile-so/</link>
+      <link>https://kikt.top/posts/android/android-ffmpeg-compile-so/</link>
       <pubDate>Mon, 14 Jan 2019 14:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-ffmpeg-compile-so/</guid>
+      <guid>https://kikt.top/posts/android/android-ffmpeg-compile-so/</guid>
       <description>
         
           

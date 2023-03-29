@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 20 Jan 2023 20:45:00 +0800</lastBuildDate><atom:link href="https://kikt.top/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gradle 编写Plugin</title>
-      <link>https://kikt.top/post/gradle/03/%E7%BC%96%E5%86%99-plugin/</link>
+      <link>https://kikt.top/posts/gradle/03/%E7%BC%96%E5%86%99-plugin/</link>
       <pubDate>Fri, 20 Jan 2023 20:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/gradle/03/%E7%BC%96%E5%86%99-plugin/</guid>
+      <guid>https://kikt.top/posts/gradle/03/%E7%BC%96%E5%86%99-plugin/</guid>
       <description>
         
           
@@ -30,10 +30,10 @@
     
     <item>
       <title>Gradle buildSrc</title>
-      <link>https://kikt.top/post/gradle/01/basic/03-buildsrc/</link>
+      <link>https://kikt.top/posts/gradle/01/basic/03-buildsrc/</link>
       <pubDate>Wed, 18 Jan 2023 20:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/gradle/01/basic/03-buildsrc/</guid>
+      <guid>https://kikt.top/posts/gradle/01/basic/03-buildsrc/</guid>
       <description>
         
           
@@ -47,10 +47,10 @@
     
     <item>
       <title>Gradle Wrapper</title>
-      <link>https://kikt.top/post/gradle/01/03-gradle_wrapper/</link>
+      <link>https://kikt.top/posts/gradle/01/03-gradle_wrapper/</link>
       <pubDate>Mon, 16 Jan 2023 15:20:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/gradle/01/03-gradle_wrapper/</guid>
+      <guid>https://kikt.top/posts/gradle/01/03-gradle_wrapper/</guid>
       <description>
         
           
@@ -69,10 +69,10 @@
     
     <item>
       <title>Gradle 的约定式概念</title>
-      <link>https://kikt.top/post/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/</link>
+      <link>https://kikt.top/posts/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/</link>
       <pubDate>Mon, 16 Jan 2023 10:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/</guid>
+      <guid>https://kikt.top/posts/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/</guid>
       <description>
         
           
@@ -88,10 +88,10 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
     
     <item>
       <title>Gradle Plugin</title>
-      <link>https://kikt.top/post/gradle/03-plugin/</link>
+      <link>https://kikt.top/posts/gradle/03-plugin/</link>
       <pubDate>Sun, 15 Jan 2023 20:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/gradle/03-plugin/</guid>
+      <guid>https://kikt.top/posts/gradle/03-plugin/</guid>
       <description>
         
           
@@ -108,10 +108,10 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
     
     <item>
       <title>Gradle Task的创建和使用</title>
-      <link>https://kikt.top/post/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
+      <link>https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Sun, 15 Jan 2023 20:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
       <description>
         
           
@@ -125,10 +125,10 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
     
     <item>
       <title>Gradle 基础</title>
-      <link>https://kikt.top/post/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/</link>
+      <link>https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Sun, 15 Jan 2023 20:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/</guid>
       <description>
         
           
@@ -142,10 +142,10 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
     
     <item>
       <title>Gradle 命令行工具的使用</title>
-      <link>https://kikt.top/post/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <link>https://kikt.top/posts/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Sun, 15 Jan 2023 10:33:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://kikt.top/posts/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
       <description>
         
           
@@ -166,10 +166,10 @@ Task 名称的简写 这个很有意思，支持驼峰式的简写，比如你�
     
     <item>
       <title>Gradle 开始</title>
-      <link>https://kikt.top/post/gradle/00-gradle-%E5%BC%80%E5%A4%B4/</link>
+      <link>https://kikt.top/posts/gradle/00-gradle-%E5%BC%80%E5%A4%B4/</link>
       <pubDate>Sat, 14 Jan 2023 20:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/gradle/00-gradle-%E5%BC%80%E5%A4%B4/</guid>
+      <guid>https://kikt.top/posts/gradle/00-gradle-%E5%BC%80%E5%A4%B4/</guid>
       <description>
         
           
@@ -184,10 +184,10 @@ Task 名称的简写 这个很有意思，支持驼峰式的简写，比如你�
     
     <item>
       <title>Groovy 语法</title>
-      <link>https://kikt.top/post/gradle/01/api/groovy-%E8%AF%AD%E6%B3%95/</link>
+      <link>https://kikt.top/posts/gradle/01/api/groovy-%E8%AF%AD%E6%B3%95/</link>
       <pubDate>Fri, 13 Jan 2023 13:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/gradle/01/api/groovy-%E8%AF%AD%E6%B3%95/</guid>
+      <guid>https://kikt.top/posts/gradle/01/api/groovy-%E8%AF%AD%E6%B3%95/</guid>
       <description>
         
           
@@ -207,10 +207,10 @@ Task 名称的简写 这个很有意思，支持驼峰式的简写，比如你�
     
     <item>
       <title>Gradle API</title>
-      <link>https://kikt.top/post/gradle/01/api/gradle-api/</link>
+      <link>https://kikt.top/posts/gradle/01/api/gradle-api/</link>
       <pubDate>Thu, 12 Jan 2023 20:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/gradle/01/api/gradle-api/</guid>
+      <guid>https://kikt.top/posts/gradle/01/api/gradle-api/</guid>
       <description>
         
           
@@ -223,10 +223,10 @@ Task 名称的简写 这个很有意思，支持驼峰式的简写，比如你�
     
     <item>
       <title>目录 for content/post/gradle</title>
-      <link>https://kikt.top/post/gradle/menu/</link>
+      <link>https://kikt.top/posts/gradle/menu/</link>
       <pubDate>Tue, 10 Jan 2023 20:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/gradle/menu/</guid>
+      <guid>https://kikt.top/posts/gradle/menu/</guid>
       <description>
         
           
@@ -239,10 +239,10 @@ Task 名称的简写 这个很有意思，支持驼峰式的简写，比如你�
     
     <item>
       <title>Kotlin Compose 05 鼠标事件</title>
-      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-05-mouse-event/</link>
+      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-05-mouse-event/</link>
       <pubDate>Mon, 24 Oct 2022 12:00:35 +0800</pubDate>
       
-      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-05-mouse-event/</guid>
+      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-05-mouse-event/</guid>
       <description>
         
           
@@ -255,10 +255,10 @@ Task 名称的简写 这个很有意思，支持驼峰式的简写，比如你�
     
     <item>
       <title>Kotlin Compose 04 控件 Image</title>
-      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-04-image/</link>
+      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-04-image/</link>
       <pubDate>Thu, 20 Oct 2022 11:18:07 +0800</pubDate>
       
-      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-04-image/</guid>
+      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-04-image/</guid>
       <description>
         
           
@@ -275,10 +275,10 @@ Task 名称的简写 这个很有意思，支持驼峰式的简写，比如你�
     
     <item>
       <title>Kotlin Compose Kotlin Compose 03 Window</title>
-      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-03-window/</link>
+      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-03-window/</link>
       <pubDate>Tue, 18 Oct 2022 15:11:25 +0800</pubDate>
       
-      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-03-window/</guid>
+      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-03-window/</guid>
       <description>
         
           
@@ -301,10 +301,10 @@ graph TD APP[Appliction]--W1[Window] W1--V1[Widget] W1--V2[Widget] W1--V3[Widget
     
     <item>
       <title>Kotlin Compose Kotlin Compose 02 Create Project</title>
-      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-02-create-project/</link>
+      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-02-create-project/</link>
       <pubDate>Sun, 16 Oct 2022 08:29:17 +0800</pubDate>
       
-      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-02-create-project/</guid>
+      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-02-create-project/</guid>
       <description>
         
           
@@ -320,10 +320,10 @@ settings.kts 1// Copyright 2000-2022 JetBrains s.r.o. and contributors. Use of t
     
     <item>
       <title>Kotlin Compose Kotlin Compose 01 Start</title>
-      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-01-start/</link>
+      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-01-start/</link>
       <pubDate>Sat, 15 Oct 2022 10:00:05 +0800</pubDate>
       
-      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-01-start/</guid>
+      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-01-start/</guid>
       <description>
         
           
@@ -339,10 +339,10 @@ settings.kts 1// Copyright 2000-2022 JetBrains s.r.o. and contributors. Use of t
     
     <item>
       <title>使用javassist,修改jar包方法实现</title>
-      <link>https://kikt.top/post/java/crack/crack1/</link>
+      <link>https://kikt.top/posts/java/crack/crack1/</link>
       <pubDate>Sat, 03 Oct 2020 20:13:47 +0800</pubDate>
       
-      <guid>https://kikt.top/post/java/crack/crack1/</guid>
+      <guid>https://kikt.top/posts/java/crack/crack1/</guid>
       <description>
         
           
@@ -362,10 +362,10 @@ settings.kts 1// Copyright 2000-2022 JetBrains s.r.o. and contributors. Use of t
     
     <item>
       <title>Github action 的开发到发布</title>
-      <link>https://kikt.top/post/github/actions/create/</link>
+      <link>https://kikt.top/posts/github/actions/create/</link>
       <pubDate>Mon, 07 Sep 2020 16:49:35 +0800</pubDate>
       
-      <guid>https://kikt.top/post/github/actions/create/</guid>
+      <guid>https://kikt.top/posts/github/actions/create/</guid>
       <description>
         
           
@@ -387,10 +387,10 @@ settings.kts 1// Copyright 2000-2022 JetBrains s.r.o. and contributors. Use of t
     
     <item>
       <title>flutter Jenkins&#43;fastlane 自动化打测试包, 并上传蒲公英</title>
-      <link>https://kikt.top/post/flutter/jenkins&#43;fastlane/</link>
+      <link>https://kikt.top/posts/flutter/jenkins&#43;fastlane/</link>
       <pubDate>Wed, 19 Aug 2020 09:10:29 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/jenkins&#43;fastlane/</guid>
+      <guid>https://kikt.top/posts/flutter/jenkins&#43;fastlane/</guid>
       <description>
         
           
@@ -409,10 +409,10 @@ settings.kts 1// Copyright 2000-2022 JetBrains s.r.o. and contributors. Use of t
     
     <item>
       <title>编译 go 源码为 android 动态库(so)</title>
-      <link>https://kikt.top/post/go/compile-for-android/</link>
+      <link>https://kikt.top/posts/go/compile-for-android/</link>
       <pubDate>Fri, 14 Aug 2020 20:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/go/compile-for-android/</guid>
+      <guid>https://kikt.top/posts/go/compile-for-android/</guid>
       <description>
         
           
@@ -428,10 +428,10 @@ settings.kts 1// Copyright 2000-2022 JetBrains s.r.o. and contributors. Use of t
     
     <item>
       <title>Flutter FocusNode 焦点那点事-(二)</title>
-      <link>https://kikt.top/post/flutter/focusnode-2/</link>
+      <link>https://kikt.top/posts/flutter/focusnode-2/</link>
       <pubDate>Wed, 22 Jul 2020 09:29:11 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/focusnode-2/</guid>
+      <guid>https://kikt.top/posts/flutter/focusnode-2/</guid>
       <description>
         
           
@@ -453,10 +453,10 @@ Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主�
     
     <item>
       <title>Flutter FocusNode 焦点那点事-(一)</title>
-      <link>https://kikt.top/post/flutter/focusnode-1/</link>
+      <link>https://kikt.top/posts/flutter/focusnode-1/</link>
       <pubDate>Tue, 21 Jul 2020 11:22:10 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/focusnode-1/</guid>
+      <guid>https://kikt.top/posts/flutter/focusnode-1/</guid>
       <description>
         
           
@@ -472,10 +472,10 @@ Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主�
     
     <item>
       <title>用 Caddy 解决 web 开发中本地跨域的问题</title>
-      <link>https://kikt.top/post/server/caddy/cros_for_local_dev/</link>
+      <link>https://kikt.top/posts/server/caddy/cros_for_local_dev/</link>
       <pubDate>Sat, 06 Jun 2020 14:01:14 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/caddy/cros_for_local_dev/</guid>
+      <guid>https://kikt.top/posts/server/caddy/cros_for_local_dev/</guid>
       <description>
         
           
@@ -497,10 +497,10 @@ Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主�
     
     <item>
       <title>Navigator Helper2</title>
-      <link>https://kikt.top/post/flutter/route/navigator-helper2/</link>
+      <link>https://kikt.top/posts/flutter/route/navigator-helper2/</link>
       <pubDate>Thu, 30 Apr 2020 17:23:14 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/route/navigator-helper2/</guid>
+      <guid>https://kikt.top/posts/flutter/route/navigator-helper2/</guid>
       <description>
         
           
@@ -521,10 +521,10 @@ GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 
     
     <item>
       <title>flutter 怎么实现app整体灰度</title>
-      <link>https://kikt.top/post/flutter/grey-app/</link>
+      <link>https://kikt.top/posts/flutter/grey-app/</link>
       <pubDate>Sat, 04 Apr 2020 09:01:56 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/grey-app/</guid>
+      <guid>https://kikt.top/posts/flutter/grey-app/</guid>
       <description>
         
           
@@ -540,10 +540,10 @@ GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 
     
     <item>
       <title>Flutter 插件开发之引入aar到安卓部分 并使用本地maven</title>
-      <link>https://kikt.top/post/flutter/plugin/flutter-sdk-import-aar/</link>
+      <link>https://kikt.top/posts/flutter/plugin/flutter-sdk-import-aar/</link>
       <pubDate>Mon, 30 Mar 2020 14:14:39 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/plugin/flutter-sdk-import-aar/</guid>
+      <guid>https://kikt.top/posts/flutter/plugin/flutter-sdk-import-aar/</guid>
       <description>
         
           
@@ -563,10 +563,10 @@ GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 
     
     <item>
       <title>hello</title>
-      <link>https://kikt.top/post/hello/</link>
+      <link>https://kikt.top/posts/hello/</link>
       <pubDate>Sun, 29 Mar 2020 14:41:48 +0800</pubDate>
       
-      <guid>https://kikt.top/post/hello/</guid>
+      <guid>https://kikt.top/posts/hello/</guid>
       <description>
         
           
@@ -580,10 +580,10 @@ GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 
     
     <item>
       <title>使用 jsdelivr 加速 cocoapod 库</title>
-      <link>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</link>
+      <link>https://kikt.top/posts/ios/pod-use-jsdelivr-cdn-to/</link>
       <pubDate>Wed, 18 Mar 2020 13:17:37 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</guid>
+      <guid>https://kikt.top/posts/ios/pod-use-jsdelivr-cdn-to/</guid>
       <description>
         
           
@@ -605,10 +605,10 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
     
     <item>
       <title>flutter中的过场动画 PageTransitionsTheme</title>
-      <link>https://kikt.top/post/flutter/route-anim/</link>
+      <link>https://kikt.top/posts/flutter/route-anim/</link>
       <pubDate>Mon, 24 Feb 2020 17:55:49 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/route-anim/</guid>
+      <guid>https://kikt.top/posts/flutter/route-anim/</guid>
       <description>
         
           
@@ -630,10 +630,10 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
     
     <item>
       <title>Flutter 1.12后 上传aar至maven私服</title>
-      <link>https://kikt.top/post/flutter/exists/upload-aar-to-maven/</link>
+      <link>https://kikt.top/posts/flutter/exists/upload-aar-to-maven/</link>
       <pubDate>Tue, 04 Feb 2020 18:23:24 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/exists/upload-aar-to-maven/</guid>
+      <guid>https://kikt.top/posts/flutter/exists/upload-aar-to-maven/</guid>
       <description>
         
           
@@ -650,10 +650,10 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
     
     <item>
       <title>上传图片到Azure</title>
-      <link>https://kikt.top/post/other/upload-image-to-azure/</link>
+      <link>https://kikt.top/posts/other/upload-image-to-azure/</link>
       <pubDate>Fri, 31 Jan 2020 14:08:04 +0800</pubDate>
       
-      <guid>https://kikt.top/post/other/upload-image-to-azure/</guid>
+      <guid>https://kikt.top/posts/other/upload-image-to-azure/</guid>
       <description>
         
           
@@ -676,10 +676,10 @@ Api 分析 azure 有 Rest api 可以完成上传的步骤, 然而这个 api 需�
     
     <item>
       <title>Android 记录在macOS上使用 NDK20 编译ffmpeg4.2.2的过程</title>
-      <link>https://kikt.top/post/android/ffmpeg/compile-with-ndk20/</link>
+      <link>https://kikt.top/posts/android/ffmpeg/compile-with-ndk20/</link>
       <pubDate>Tue, 07 Jan 2020 11:50:07 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/ffmpeg/compile-with-ndk20/</guid>
+      <guid>https://kikt.top/posts/android/ffmpeg/compile-with-ndk20/</guid>
       <description>
         
           
@@ -698,10 +698,10 @@ Api 分析 azure 有 Rest api 可以完成上传的步骤, 然而这个 api 需�
     
     <item>
       <title>2019 总结</title>
-      <link>https://kikt.top/post/blog/end-of-2019/</link>
+      <link>https://kikt.top/posts/blog/end-of-2019/</link>
       <pubDate>Sat, 04 Jan 2020 15:43:37 +0800</pubDate>
       
-      <guid>https://kikt.top/post/blog/end-of-2019/</guid>
+      <guid>https://kikt.top/posts/blog/end-of-2019/</guid>
       <description>
         
           
@@ -727,10 +727,10 @@ Q3 重构了 photo_manager 底层
     
     <item>
       <title>dart 2.6(一) 生成可执行二进制</title>
-      <link>https://kikt.top/post/dart/2-6-exec/</link>
+      <link>https://kikt.top/posts/dart/2-6-exec/</link>
       <pubDate>Mon, 18 Nov 2019 16:09:31 +0800</pubDate>
       
-      <guid>https://kikt.top/post/dart/2-6-exec/</guid>
+      <guid>https://kikt.top/posts/dart/2-6-exec/</guid>
       <description>
         
           
@@ -751,10 +751,10 @@ Q3 重构了 photo_manager 底层
     
     <item>
       <title>在 Mac 上编译 OpenCV4 &#43; Idea 使用Java调用</title>
-      <link>https://kikt.top/post/java/mac/compile-opencv4/</link>
+      <link>https://kikt.top/posts/java/mac/compile-opencv4/</link>
       <pubDate>Tue, 12 Nov 2019 10:17:47 +0800</pubDate>
       
-      <guid>https://kikt.top/post/java/mac/compile-opencv4/</guid>
+      <guid>https://kikt.top/posts/java/mac/compile-opencv4/</guid>
       <description>
         
           
@@ -771,10 +771,10 @@ Q3 重构了 photo_manager 底层
     
     <item>
       <title>在 flutter 上使用 c 代码 - (二) 无源码的项目</title>
-      <link>https://kikt.top/post/flutter/ffi/2-first-party/</link>
+      <link>https://kikt.top/posts/flutter/ffi/2-first-party/</link>
       <pubDate>Mon, 04 Nov 2019 17:15:11 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/ffi/2-first-party/</guid>
+      <guid>https://kikt.top/posts/flutter/ffi/2-first-party/</guid>
       <description>
         
           
@@ -792,10 +792,10 @@ some.cpp
     
     <item>
       <title>在 flutter 上使用 c 代码 - (一) 有源码的项目</title>
-      <link>https://kikt.top/post/flutter/ffi/1-first-party/</link>
+      <link>https://kikt.top/posts/flutter/ffi/1-first-party/</link>
       <pubDate>Mon, 04 Nov 2019 11:35:42 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/ffi/1-first-party/</guid>
+      <guid>https://kikt.top/posts/flutter/ffi/1-first-party/</guid>
       <description>
         
           
@@ -813,10 +813,10 @@ some.cpp
     
     <item>
       <title>dart 大文件读取</title>
-      <link>https://kikt.top/post/dart/file/read/</link>
+      <link>https://kikt.top/posts/dart/file/read/</link>
       <pubDate>Fri, 20 Sep 2019 15:15:51 +0800</pubDate>
       
-      <guid>https://kikt.top/post/dart/file/read/</guid>
+      <guid>https://kikt.top/posts/dart/file/read/</guid>
       <description>
         
           
@@ -835,10 +835,10 @@ stream 回调信息是 List&amp;lt;int&amp;gt;,单次最大读取 65536 个字�
     
     <item>
       <title>Live Template groovy脚本的使用</title>
-      <link>https://kikt.top/post/jetbrains/template/live-template/</link>
+      <link>https://kikt.top/posts/jetbrains/template/live-template/</link>
       <pubDate>Tue, 30 Jul 2019 21:43:25 +0800</pubDate>
       
-      <guid>https://kikt.top/post/jetbrains/template/live-template/</guid>
+      <guid>https://kikt.top/posts/jetbrains/template/live-template/</guid>
       <description>
         
           
@@ -857,10 +857,10 @@ stream 回调信息是 List&amp;lt;int&amp;gt;,单次最大读取 65536 个字�
     
     <item>
       <title>flutter Form 表单组件的初步解析</title>
-      <link>https://kikt.top/post/flutter/form/form1/</link>
+      <link>https://kikt.top/posts/flutter/form/form1/</link>
       <pubDate>Mon, 22 Jul 2019 15:16:45 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/form/form1/</guid>
+      <guid>https://kikt.top/posts/flutter/form/form1/</guid>
       <description>
         
           
@@ -879,10 +879,10 @@ flutter 中你可以自己&amp;quot;绑定&amp;quot;用户的输入数据和 sta
     
     <item>
       <title>Go Flutter Desktop (二) go 二进制程序打包为 mac app(dmg)</title>
-      <link>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-2/</link>
+      <link>https://kikt.top/posts/flutter/desktop/go-desktop-engine/flutter-go-desktop-2/</link>
       <pubDate>Mon, 08 Jul 2019 14:16:54 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-2/</guid>
+      <guid>https://kikt.top/posts/flutter/desktop/go-desktop-engine/flutter-go-desktop-2/</guid>
       <description>
         
           
@@ -902,10 +902,10 @@ flutter 中你可以自己&amp;quot;绑定&amp;quot;用户的输入数据和 sta
     
     <item>
       <title>Go Flutter Desktop (一) 初探</title>
-      <link>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-1/</link>
+      <link>https://kikt.top/posts/flutter/desktop/go-desktop-engine/flutter-go-desktop-1/</link>
       <pubDate>Thu, 04 Jul 2019 16:07:17 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-1/</guid>
+      <guid>https://kikt.top/posts/flutter/desktop/go-desktop-engine/flutter-go-desktop-1/</guid>
       <description>
         
           
@@ -922,10 +922,10 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
     
     <item>
       <title>把flutter作为framework添加到已存在的iOS中</title>
-      <link>https://kikt.top/post/flutter/exists/add-flutter-to-ios/</link>
+      <link>https://kikt.top/posts/flutter/exists/add-flutter-to-ios/</link>
       <pubDate>Sun, 16 Jun 2019 11:17:43 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/exists/add-flutter-to-ios/</guid>
+      <guid>https://kikt.top/posts/flutter/exists/add-flutter-to-ios/</guid>
       <description>
         
           
@@ -941,10 +941,10 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
     
     <item>
       <title>把flutter项目作为aar添加到已有的Android工程上</title>
-      <link>https://kikt.top/post/flutter/exists/android-as-aar-to-maven/</link>
+      <link>https://kikt.top/posts/flutter/exists/android-as-aar-to-maven/</link>
       <pubDate>Fri, 14 Jun 2019 09:06:24 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/exists/android-as-aar-to-maven/</guid>
+      <guid>https://kikt.top/posts/flutter/exists/android-as-aar-to-maven/</guid>
       <description>
         
           
@@ -961,10 +961,10 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
     
     <item>
       <title>Flutter Desktop Mac版(二) 插件初探</title>
-      <link>https://kikt.top/post/flutter/desktop/flutter-desktop-2/</link>
+      <link>https://kikt.top/posts/flutter/desktop/flutter-desktop-2/</link>
       <pubDate>Wed, 12 Jun 2019 16:47:14 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/desktop/flutter-desktop-2/</guid>
+      <guid>https://kikt.top/posts/flutter/desktop/flutter-desktop-2/</guid>
       <description>
         
           
@@ -985,10 +985,10 @@ $ git clone https://github.com/google/flutter-desktop-embedding.git flutter-desk
     
     <item>
       <title>Flutter Desktop Mac版(一) 初探</title>
-      <link>https://kikt.top/post/flutter/desktop/flutter-desktop-1/</link>
+      <link>https://kikt.top/posts/flutter/desktop/flutter-desktop-1/</link>
       <pubDate>Mon, 10 Jun 2019 14:40:17 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/desktop/flutter-desktop-1/</guid>
+      <guid>https://kikt.top/posts/flutter/desktop/flutter-desktop-1/</guid>
       <description>
         
           
@@ -1009,10 +1009,10 @@ git clone 我根据文档创建了一个 sh 脚本,专门用于输出我如果�
     
     <item>
       <title>flutter 在OC工程中添加swift库报错的问题</title>
-      <link>https://kikt.top/post/flutter/oc/add-swift-plugin/</link>
+      <link>https://kikt.top/posts/flutter/oc/add-swift-plugin/</link>
       <pubDate>Fri, 31 May 2019 14:43:33 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/oc/add-swift-plugin/</guid>
+      <guid>https://kikt.top/posts/flutter/oc/add-swift-plugin/</guid>
       <description>
         
           
@@ -1027,10 +1027,10 @@ git clone 我根据文档创建了一个 sh 脚本,专门用于输出我如果�
     
     <item>
       <title>Android Q 隐私篇(5) - 相机/网络</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-5/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-5/</link>
       <pubDate>Fri, 24 May 2019 15:00:09 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-5/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-5/</guid>
       <description>
         
           
@@ -1056,20 +1056,20 @@ ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权�
     
     <item>
       <title>Android Q 隐私篇(4) - 唯一标识符, 剪切板数据</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-4/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-4/</link>
       <pubDate>Fri, 24 May 2019 11:49:11 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-4/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-4/</guid>
       <description>
         
           
             第四篇,
-目录                        唯一识别码的前世 在开发中, 总有人会提出各种设备&amp;quot;唯一标识符&amp;quot;的概念,以便于定位用户的唯一性, 或对于用户行为进行分析
+唯一识别码的前世 在开发中, 总有人会提出各种设备&amp;quot;唯一标识符&amp;quot;的概念,以便于定位用户的唯一性, 或对于用户行为进行分析
 很遗憾, 通过多年的探索, 目前没有任何一种特别准确, 一定能保证唯一的方案
 包括但不仅限于以下方案
 设备序列号 IMEI imsi mac 地址(wifi 模块)
 如以下代码:
-1package top.kikit.uniqueidprivacy 23import android.Manifest 4import android.annotation.SuppressLint 5import android.content.Context 6import android.os.Bundle 7import android.telephony.TelephonyManager 8import android.util.Log 9import androidx.appcompat.app.AppCompatActivity 10import com.tbruyelle.rxpermissions2.RxPermissions 1112class MainActivity : AppCompatActivity() { 13private val TAG = &amp;#34;MainActivity&amp;#34;; 1415private val rxPermissions = RxPermissions(this) 1617@SuppressLint(&amp;#34;CheckResult&amp;#34;) 18override fun onCreate(savedInstanceState: Bundle?
+1package top.kikit.uniqueidprivacy 23import android.Manifest 4import android.annotation.SuppressLint 5import android.content.Context 6import android.os.Bundle 7import android.telephony.TelephonyManager 8import android.util.Log 9import androidx.appcompat.app.AppCompatActivity 10import com.tbruyelle.rxpermissions2.RxPermissions 1112class MainActivity : AppCompatActivity() { 13private val TAG = &amp;#34;MainActivity&amp;#34;; 1415private val rxPermissions = RxPermissions(this) 1617@SuppressLint(&amp;#34;CheckResult&amp;#34;) 18override fun onCreate(savedInstanceState: Bundle?) { 19super.onCreate(savedInstanceState) 20setContentView(R.layout.activity_main) 212223val mTelephonyMgr = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager 2425rxPermissions.request(Manifest.permission.READ_PHONE_STATE) 26.subscribe { 27if (it) { 28val subscriberId = mTelephonyMgr.
           
           
         
@@ -1078,10 +1078,10 @@ ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权�
     
     <item>
       <title>Android Q 隐私篇(3) - 限制后台活动</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-3/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-3/</link>
       <pubDate>Tue, 21 May 2019 09:49:25 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-3/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-3/</guid>
       <description>
         
           
@@ -1103,21 +1103,22 @@ ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权�
     
     <item>
       <title>Android Q 隐私篇(2) - 后台定位权限</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-2/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-2/</link>
       <pubDate>Tue, 21 May 2019 09:14:28 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-2/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-2/</guid>
       <description>
         
           
-            本篇是系列第二篇, 主要分析下 android Q 下的后台定位权限 官方链接: , 有能力的朋友可以自己阅读,并不难
-目录                  定位权限 在从前的 android 中,定位权限不分前后台,只有两个
+            本篇是系列第二篇, 主要分析下 android Q 下的后台定位权限 , 有能力的朋友可以自己阅读,并不难
+定位权限 在从前的 android 中,定位权限不分前后台,只有两个
 1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_COARSE_LOCATION&amp;#34;/&amp;gt; 2&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_FINE_LOCATION&amp;#34;/&amp;gt; 分别代表大致位置和精确位置, 一般来说在使用时定位权限都是一起要或者都不要的, 而且这两个作为同一个组,一般都是一起申请,一次授权
 一般来说大部分人都是使用高德/百度地图作为定位 sdk 使用, 很显然这两个货申请一般也是都一起申请的
 androidQ 的权限 androidQ 中会添加一个新的权限
 1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_BACKGROUND_LOCATION&amp;#34; /&amp;gt; 这个就是对应的后台权限, 和以前的分类方式不同,以前是精确度,这个是前后台
 按照官方说明:
- targetVersion: androidQ 或以上  如果 targetVersion 是 androidQ+, 则这个权限不会自动添加, 使用者需要自己添加,有就是有,没有就没有   如果 targetVersion 是 api 28(android 9.0)以下  如果你有以前版本的定位权限,则系统会在安装时帮你添加后台的权限(升级 androidOS 版本时不明) 在动态权限申请时,如果你申请的权限有以前的定位权限之一, 则会自动帮你在申请的权限里加上这个后台的    请求后台权限 上来是一段废话.
+ targetVersion: androidQ 或以上  如果 targetVersion 是 androidQ+, 则这个权限不会自动添加, 使用者需要自己添加,有就是有,没有就没有   如果 targetVersion 是 api 28(android 9.0)以下  如果你有以前版本的定位权限,则系统会在安装时帮你添加后台的权限(升级 androidOS 版本时不明) 在动态权限申请时,如果你申请的权限有以前的定位权限之一, 则会自动帮你在申请的权限里加上这个后台的    请求后台权限 上来是一段废话... 简单解释, 你需要后台权限吗?
+ 不需要 需要  这个不是我们自己能定的, 以国内来看, 接 sdk (推送,定位,分享.
           
           
         
@@ -1126,10 +1127,10 @@ androidQ 的权限 androidQ 中会添加一个新的权限
     
     <item>
       <title>Android Q 隐私篇(1) - 外部储存</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-1/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-1/</link>
       <pubDate>Mon, 20 May 2019 09:43:48 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-1/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-1/</guid>
       <description>
         
           
@@ -1141,11 +1142,15 @@ androidQ 的权限 androidQ 中会添加一个新的权限
 在适配新的系统前就和从前一样,暂时不升级 targetVersion,把 targetVersion 设置为 28 以下就不会影响旧程序了,就如同以前运行时权限真的是坑到爆炸,但是暂时不适配也是可以的
 但是未来无论如何都需要适配新系统,所以先来看看
 本篇只说储存的方式和权限问题,其他暂时略过不表
-目录                          检查迁移情况  有一个表格提供了如何检查和迁移的方案
+检查迁移情况  有一个表格提供了如何检查和迁移的方案
  开发环境 说一下开发环境
 MacOS
 Android Studio 3.4.0
 android 9.0 设备一台
+androidQ 虚拟机一台(官方的 Emulator)
+更新 sdk 更新 sdk, 下载 androidQ 相关的 sdk/sdktools/模拟器
+androidQ build.gradle 当前想尝试 androidQ 的话, 编译版本和目标版本号需要按如下方式设置, 今后的话可能是 29/30 之类的数字
+1targetSdkVersion = &amp;#39;Q&amp;#39; 2compileSdkVersion = &amp;#39;android-Q&amp;#39; 外部储存 androidQ 下读写文件 权限和以前一样
           
           
         
@@ -1154,21 +1159,26 @@ android 9.0 设备一台
     
     <item>
       <title>CameraX的使用</title>
-      <link>https://kikt.top/post/android/camera/camerax-usage/</link>
+      <link>https://kikt.top/posts/android/camera/camerax-usage/</link>
       <pubDate>Tue, 14 May 2019 13:44:59 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/camera/camerax-usage/</guid>
+      <guid>https://kikt.top/posts/android/camera/camerax-usage/</guid>
       <description>
         
           
             我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程
 在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍
- 目录                         介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
+ 介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
 最低支持的 API 等级是 API 21(5.0)
 开发环境 我当前的开发环境是
 MacOS 10.13.6
 Android Studio 3.4 小米 8 MIUI 10.3 稳定版 10.3.2.0(android 9.0)
 最低支持 官方说明为 AndroidStudio 3.3 API 21+的设备
+编码准备 新建项目 修改这两项
+ 最低 21, 使用 androidX
+添加依赖 在 app 级别的 build.gradle 中添加如下依赖
+这个版本当前还是 alpha 版本,后续可能会升级为正式版, 可以查看
+1dependencies { 2def camerax_version = &amp;#34;1.0.0-alpha01&amp;#34; 3implementation &amp;#34;androidx.
           
           
         
@@ -1177,10 +1187,10 @@ Android Studio 3.4 小米 8 MIUI 10.3 稳定版 10.3.2.0(android 9.0)
     
     <item>
       <title>Flutter Web 评测第二篇</title>
-      <link>https://kikt.top/post/flutter/flutter-web/flutter-web2/</link>
+      <link>https://kikt.top/posts/flutter/flutter-web/flutter-web2/</link>
       <pubDate>Mon, 13 May 2019 14:15:07 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-web/flutter-web2/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-web/flutter-web2/</guid>
       <description>
         
           
@@ -1200,10 +1210,10 @@ dio 不能用 dio包用不了,因为 dio 包是依托于 dart:io 包中的 HttpC
     
     <item>
       <title>dart 2.3的新东西</title>
-      <link>https://kikt.top/post/flutter/dart/2-3-new/</link>
+      <link>https://kikt.top/posts/flutter/dart/2-3-new/</link>
       <pubDate>Thu, 09 May 2019 16:04:45 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/dart/2-3-new/</guid>
+      <guid>https://kikt.top/posts/flutter/dart/2-3-new/</guid>
       <description>
         
           
@@ -1224,10 +1234,10 @@ dio 不能用 dio包用不了,因为 dio 包是依托于 dart:io 包中的 HttpC
     
     <item>
       <title>Flutter Web 评测第一篇</title>
-      <link>https://kikt.top/post/flutter/flutter-web/flutter-web1/</link>
+      <link>https://kikt.top/posts/flutter/flutter-web/flutter-web1/</link>
       <pubDate>Wed, 08 May 2019 10:15:07 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-web/flutter-web1/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-web/flutter-web1/</guid>
       <description>
         
           
@@ -1244,10 +1254,10 @@ dio 不能用 dio包用不了,因为 dio 包是依托于 dart:io 包中的 HttpC
     
     <item>
       <title>flutter toast插件 OKToast的介绍</title>
-      <link>https://kikt.top/post/flutter/toast/oktoast/</link>
+      <link>https://kikt.top/posts/flutter/toast/oktoast/</link>
       <pubDate>Thu, 18 Apr 2019 09:12:48 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/toast/oktoast/</guid>
+      <guid>https://kikt.top/posts/flutter/toast/oktoast/</guid>
       <description>
         
           
@@ -1267,10 +1277,10 @@ dio 不能用 dio包用不了,因为 dio 包是依托于 dart:io 包中的 HttpC
     
     <item>
       <title>Flutter 版本更新内容查看</title>
-      <link>https://kikt.top/post/flutter/compare/version-compare/</link>
+      <link>https://kikt.top/posts/flutter/compare/version-compare/</link>
       <pubDate>Wed, 10 Apr 2019 13:47:25 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/compare/version-compare/</guid>
+      <guid>https://kikt.top/posts/flutter/compare/version-compare/</guid>
       <description>
         
           
@@ -1299,10 +1309,10 @@ rss 订阅 github 的 release 支持 rss 订阅
     
     <item>
       <title>Flutter flutter.gradle分析</title>
-      <link>https://kikt.top/post/flutter/android/flutter.gradle/</link>
+      <link>https://kikt.top/posts/flutter/android/flutter.gradle/</link>
       <pubDate>Mon, 01 Apr 2019 11:43:50 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/android/flutter.gradle/</guid>
+      <guid>https://kikt.top/posts/flutter/android/flutter.gradle/</guid>
       <description>
         
           
@@ -1320,10 +1330,10 @@ gradle 使用的是 groovy 的语法,是一个 jvm 语言,在语法层级上兼�
     
     <item>
       <title>Flutter dialog (2) - showGeneralDialog的使用</title>
-      <link>https://kikt.top/post/flutter/dialog/dialog-2/</link>
+      <link>https://kikt.top/posts/flutter/dialog/dialog-2/</link>
       <pubDate>Fri, 29 Mar 2019 10:50:38 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/dialog/dialog-2/</guid>
+      <guid>https://kikt.top/posts/flutter/dialog/dialog-2/</guid>
       <description>
         
           
@@ -1344,10 +1354,10 @@ gradle 使用的是 groovy 的语法,是一个 jvm 语言,在语法层级上兼�
     
     <item>
       <title>Flutter dialog (1) - showDialog的讲解</title>
-      <link>https://kikt.top/post/flutter/dialog/dialog-1/</link>
+      <link>https://kikt.top/posts/flutter/dialog/dialog-1/</link>
       <pubDate>Wed, 27 Mar 2019 10:50:38 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/dialog/dialog-1/</guid>
+      <guid>https://kikt.top/posts/flutter/dialog/dialog-1/</guid>
       <description>
         
           
@@ -1368,10 +1378,10 @@ builder 需要返回一个 Widget,这个 Widget 会被作为 dialog 展示在页
     
     <item>
       <title>flutter取消动态字体大小</title>
-      <link>https://kikt.top/post/flutter/layout/dynamic-text/</link>
+      <link>https://kikt.top/posts/flutter/layout/dynamic-text/</link>
       <pubDate>Tue, 12 Mar 2019 15:18:07 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/layout/dynamic-text/</guid>
+      <guid>https://kikt.top/posts/flutter/layout/dynamic-text/</guid>
       <description>
         
           
@@ -1393,10 +1403,10 @@ flutter 中修改 iOS 中叫动态字体大小,对应辅助功能中的字体大
     
     <item>
       <title>Migrating to AndroidX</title>
-      <link>https://kikt.top/post/flutter/migrate-android-x/</link>
+      <link>https://kikt.top/posts/flutter/migrate-android-x/</link>
       <pubDate>Wed, 06 Mar 2019 10:26:03 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/migrate-android-x/</guid>
+      <guid>https://kikt.top/posts/flutter/migrate-android-x/</guid>
       <description>
         
           
@@ -1420,10 +1430,10 @@ gradle-wrapper.properties 文件
     
     <item>
       <title>flutter log4d 日志包的使用</title>
-      <link>https://kikt.top/post/flutter/log/log4d-1/</link>
+      <link>https://kikt.top/posts/flutter/log/log4d-1/</link>
       <pubDate>Mon, 04 Mar 2019 08:48:51 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/log/log4d-1/</guid>
+      <guid>https://kikt.top/posts/flutter/log/log4d-1/</guid>
       <description>
         
           
@@ -1453,10 +1463,10 @@ pub global activate log4d
     
     <item>
       <title>Pub Global 创建命令行应用程序</title>
-      <link>https://kikt.top/post/flutter/dart/bin/pub-global/</link>
+      <link>https://kikt.top/posts/flutter/dart/bin/pub-global/</link>
       <pubDate>Mon, 25 Feb 2019 13:53:52 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/dart/bin/pub-global/</guid>
+      <guid>https://kikt.top/posts/flutter/dart/bin/pub-global/</guid>
       <description>
         
           
@@ -1479,10 +1489,10 @@ $ pub global activate stagehand
     
     <item>
       <title>flutter 新状态管理方案 Provide 使用</title>
-      <link>https://kikt.top/post/flutter/state/provide-1/</link>
+      <link>https://kikt.top/posts/flutter/state/provide-1/</link>
       <pubDate>Thu, 21 Feb 2019 10:43:36 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/state/provide-1/</guid>
+      <guid>https://kikt.top/posts/flutter/state/provide-1/</guid>
       <description>
         
           
@@ -1507,10 +1517,10 @@ $ pub global activate stagehand
     
     <item>
       <title>Flutter ios 插件开发 appcode 加快索引速度</title>
-      <link>https://kikt.top/post/flutter/channel/flutter-ios-spec-edit/</link>
+      <link>https://kikt.top/posts/flutter/channel/flutter-ios-spec-edit/</link>
       <pubDate>Tue, 19 Feb 2019 15:41:23 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/channel/flutter-ios-spec-edit/</guid>
+      <guid>https://kikt.top/posts/flutter/channel/flutter-ios-spec-edit/</guid>
       <description>
         
           
@@ -1537,10 +1547,10 @@ $ pub global activate stagehand
     
     <item>
       <title>dart中的生成器函数</title>
-      <link>https://kikt.top/post/flutter/dart/generators/</link>
+      <link>https://kikt.top/posts/flutter/dart/generators/</link>
       <pubDate>Sun, 03 Feb 2019 17:19:23 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/dart/generators/</guid>
+      <guid>https://kikt.top/posts/flutter/dart/generators/</guid>
       <description>
         
           
@@ -1564,10 +1574,10 @@ sync* 在 dart 中可以使用这个便利的生成一个迭代器
     
     <item>
       <title>创建 dart flutter 的 doc文档并部署</title>
-      <link>https://kikt.top/post/flutter/doc/create/</link>
+      <link>https://kikt.top/posts/flutter/doc/create/</link>
       <pubDate>Thu, 31 Jan 2019 08:50:34 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/doc/create/</guid>
+      <guid>https://kikt.top/posts/flutter/doc/create/</guid>
       <description>
         
           
@@ -1593,10 +1603,10 @@ gitee 部署完成后是这样的 准备工作  一个终端工具 dart sdk 一�
     
     <item>
       <title>flutter pub 发布失败</title>
-      <link>https://kikt.top/post/flutter/package/publish-fail/</link>
+      <link>https://kikt.top/posts/flutter/package/publish-fail/</link>
       <pubDate>Tue, 29 Jan 2019 15:44:30 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/package/publish-fail/</guid>
+      <guid>https://kikt.top/posts/flutter/package/publish-fail/</guid>
       <description>
         
           
@@ -1624,10 +1634,10 @@ google 账号是确定权限用的,不能你说你是主人你就是主人了吧
     
     <item>
       <title>使用python爬取一个省市城市列表</title>
-      <link>https://kikt.top/post/python/get_city_datas/</link>
+      <link>https://kikt.top/posts/python/get_city_datas/</link>
       <pubDate>Fri, 25 Jan 2019 13:46:47 +0800</pubDate>
       
-      <guid>https://kikt.top/post/python/get_city_datas/</guid>
+      <guid>https://kikt.top/posts/python/get_city_datas/</guid>
       <description>
         
           
@@ -1655,10 +1665,10 @@ request_html+基本库
     
     <item>
       <title>在Profile下分析android内存占用</title>
-      <link>https://kikt.top/post/flutter/android/profile-1/</link>
+      <link>https://kikt.top/posts/flutter/android/profile-1/</link>
       <pubDate>Tue, 22 Jan 2019 10:24:16 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/android/profile-1/</guid>
+      <guid>https://kikt.top/posts/flutter/android/profile-1/</guid>
       <description>
         
           
@@ -1678,10 +1688,10 @@ request_html+基本库
     
     <item>
       <title>在原 Android 工程的基础上构建一个flutter工程</title>
-      <link>https://kikt.top/post/flutter/exists/android/</link>
+      <link>https://kikt.top/posts/flutter/exists/android/</link>
       <pubDate>Tue, 22 Jan 2019 07:50:31 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/exists/android/</guid>
+      <guid>https://kikt.top/posts/flutter/exists/android/</guid>
       <description>
         
           
@@ -1702,10 +1712,10 @@ request_html+基本库
     
     <item>
       <title>android 引入ffmpeg</title>
-      <link>https://kikt.top/post/android/android-include-ffmpeg/</link>
+      <link>https://kikt.top/posts/android/android-include-ffmpeg/</link>
       <pubDate>Mon, 14 Jan 2019 17:14:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-include-ffmpeg/</guid>
+      <guid>https://kikt.top/posts/android/android-include-ffmpeg/</guid>
       <description>
         
           
@@ -1725,10 +1735,10 @@ request_html+基本库
     
     <item>
       <title>ndk编译ffmpeg</title>
-      <link>https://kikt.top/post/android/android-ffmpeg-compile-so/</link>
+      <link>https://kikt.top/posts/android/android-ffmpeg-compile-so/</link>
       <pubDate>Mon, 14 Jan 2019 14:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-ffmpeg-compile-so/</guid>
+      <guid>https://kikt.top/posts/android/android-ffmpeg-compile-so/</guid>
       <description>
         
           
@@ -1751,10 +1761,10 @@ request_html+基本库
     
     <item>
       <title>flutter cupertino 复制粘贴弹窗报错的问题</title>
-      <link>https://kikt.top/post/flutter/framework/cupertino-paste-tooltip/</link>
+      <link>https://kikt.top/posts/flutter/framework/cupertino-paste-tooltip/</link>
       <pubDate>Tue, 08 Jan 2019 17:34:10 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/framework/cupertino-paste-tooltip/</guid>
+      <guid>https://kikt.top/posts/flutter/framework/cupertino-paste-tooltip/</guid>
       <description>
         
           
@@ -1770,10 +1780,10 @@ request_html+基本库
     
     <item>
       <title>Finish FlutterActivity 源码解析</title>
-      <link>https://kikt.top/post/flutter/android/finish-activity/</link>
+      <link>https://kikt.top/posts/flutter/android/finish-activity/</link>
       <pubDate>Tue, 08 Jan 2019 16:07:06 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/android/finish-activity/</guid>
+      <guid>https://kikt.top/posts/flutter/android/finish-activity/</guid>
       <description>
         
           
@@ -1799,10 +1809,10 @@ flutter engine 简单介绍 这里简单介绍一下 flutter engine,
     
     <item>
       <title>Flutter bottomSheet的使用</title>
-      <link>https://kikt.top/post/flutter/flutter-bootom-sheet/</link>
+      <link>https://kikt.top/posts/flutter/flutter-bootom-sheet/</link>
       <pubDate>Mon, 07 Jan 2019 15:07:28 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-bootom-sheet/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-bootom-sheet/</guid>
       <description>
         
           
@@ -1822,10 +1832,10 @@ Scaffold 的 bottomSheet 属性 这个就是前言中的那种东西的简单实
     
     <item>
       <title>Caddy 初探</title>
-      <link>https://kikt.top/post/server/caddy/caddy-first/</link>
+      <link>https://kikt.top/posts/server/caddy/caddy-first/</link>
       <pubDate>Sat, 05 Jan 2019 11:13:08 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/caddy/caddy-first/</guid>
+      <guid>https://kikt.top/posts/server/caddy/caddy-first/</guid>
       <description>
         
           
@@ -1853,10 +1863,10 @@ Scaffold 的 bottomSheet 属性 这个就是前言中的那种东西的简单实
     
     <item>
       <title>github 一些小技巧</title>
-      <link>https://kikt.top/post/github/work-manager/</link>
+      <link>https://kikt.top/posts/github/work-manager/</link>
       <pubDate>Wed, 12 Dec 2018 15:21:47 +0800</pubDate>
       
-      <guid>https://kikt.top/post/github/work-manager/</guid>
+      <guid>https://kikt.top/posts/github/work-manager/</guid>
       <description>
         
           
@@ -1887,10 +1897,10 @@ issue 篇 常规的创建之类的就不说了,说一些你日常中看不到的
     
     <item>
       <title>flutter http框架简介(1)</title>
-      <link>https://kikt.top/post/flutter/http/flutter-http1/</link>
+      <link>https://kikt.top/posts/flutter/http/flutter-http1/</link>
       <pubDate>Mon, 10 Dec 2018 13:44:44 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/http/flutter-http1/</guid>
+      <guid>https://kikt.top/posts/flutter/http/flutter-http1/</guid>
       <description>
         
           
@@ -1908,10 +1918,10 @@ issue 篇 常规的创建之类的就不说了,说一些你日常中看不到的
     
     <item>
       <title>Flutter 1.0.0 打包apk后运行错误</title>
-      <link>https://kikt.top/post/flutter/flutter-arm64-crash/</link>
+      <link>https://kikt.top/posts/flutter/flutter-arm64-crash/</link>
       <pubDate>Fri, 07 Dec 2018 17:04:04 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-arm64-crash/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-arm64-crash/</guid>
       <description>
         
           
@@ -1931,10 +1941,10 @@ issue 篇 常规的创建之类的就不说了,说一些你日常中看不到的
     
     <item>
       <title>Flutter 原生通信 (四) - iOS 通知 Flutter</title>
-      <link>https://kikt.top/post/flutter/channel/flutter-channel4/</link>
+      <link>https://kikt.top/posts/flutter/channel/flutter-channel4/</link>
       <pubDate>Fri, 07 Dec 2018 10:43:45 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/channel/flutter-channel4/</guid>
+      <guid>https://kikt.top/posts/flutter/channel/flutter-channel4/</guid>
       <description>
         
           
@@ -1952,10 +1962,10 @@ oc 先来查看 OC 篇
     
     <item>
       <title>Flutter 原生通信 (三) - Flutter 调用 iOS</title>
-      <link>https://kikt.top/post/flutter/channel/flutter-channel3/</link>
+      <link>https://kikt.top/posts/flutter/channel/flutter-channel3/</link>
       <pubDate>Fri, 07 Dec 2018 10:43:43 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/channel/flutter-channel3/</guid>
+      <guid>https://kikt.top/posts/flutter/channel/flutter-channel3/</guid>
       <description>
         
           
@@ -1975,10 +1985,10 @@ dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/ser
     
     <item>
       <title>Flutter 原生通信 (二) - Android通知Flutter</title>
-      <link>https://kikt.top/post/flutter/channel/flutter-channel2/</link>
+      <link>https://kikt.top/posts/flutter/channel/flutter-channel2/</link>
       <pubDate>Fri, 07 Dec 2018 10:02:15 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/channel/flutter-channel2/</guid>
+      <guid>https://kikt.top/posts/flutter/channel/flutter-channel2/</guid>
       <description>
         
           
@@ -1998,10 +2008,10 @@ java 先看看 java 端代码
     
     <item>
       <title>Flutter 原生通信 (一) - flutter调用Android</title>
-      <link>https://kikt.top/post/flutter/channel/flutter-channel1/</link>
+      <link>https://kikt.top/posts/flutter/channel/flutter-channel1/</link>
       <pubDate>Thu, 06 Dec 2018 17:16:34 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/channel/flutter-channel1/</guid>
+      <guid>https://kikt.top/posts/flutter/channel/flutter-channel1/</guid>
       <description>
         
           
@@ -2029,10 +2039,10 @@ android 端 1package com.example.battlepower; 23import io.flutter.plugin.common.
     
     <item>
       <title>Flutter 本人开发的一些开源库</title>
-      <link>https://kikt.top/post/flutter/flutter-self-library/</link>
+      <link>https://kikt.top/posts/flutter/flutter-self-library/</link>
       <pubDate>Wed, 05 Dec 2018 11:50:03 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-self-library/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-self-library/</guid>
       <description>
         
           
@@ -2055,10 +2065,10 @@ android 端 1package com.example.battlepower; 23import io.flutter.plugin.common.
     
     <item>
       <title>Docker 部署二进制</title>
-      <link>https://kikt.top/post/docker/docker-delop-bin-file/</link>
+      <link>https://kikt.top/posts/docker/docker-delop-bin-file/</link>
       <pubDate>Fri, 16 Nov 2018 13:39:04 +0800</pubDate>
       
-      <guid>https://kikt.top/post/docker/docker-delop-bin-file/</guid>
+      <guid>https://kikt.top/posts/docker/docker-delop-bin-file/</guid>
       <description>
         
           
@@ -2075,15 +2085,15 @@ main.go 1package main 23import &amp;#34;github.com/gin-gonic/gin&amp;#34; 45func
     
     <item>
       <title>Docker-Compose 结合nginx实现跨容器转发</title>
-      <link>https://kikt.top/post/docker/docker-compose-and-nginx-forward/</link>
+      <link>https://kikt.top/posts/docker/docker-compose-and-nginx-forward/</link>
       <pubDate>Thu, 15 Nov 2018 15:28:11 +0800</pubDate>
       
-      <guid>https://kikt.top/post/docker/docker-compose-and-nginx-forward/</guid>
+      <guid>https://kikt.top/posts/docker/docker-compose-and-nginx-forward/</guid>
       <description>
         
           
             开发环境 mac zsh docker-compose
-1~ docker-compose --version 2docker-compose version 1.22.0, build f46880f 目录结构  docker-compose.yml 1version:&amp;#34;3&amp;#34;2services:3web:# 服务的名称4image:nginx5volumes:# 文件夹映射6- /Users/cai/Documents/www:/usr/share/nginx/html:ro# 宿主:docker:只读 ,www目录7- ./config/web.conf:/etc/nginx/nginx.conf:ro# nginx配置文件8ports:# 端口转发 宿主:docker9- &amp;#34;8080:80&amp;#34;10- &amp;#34;8081:81&amp;#34;11# environment:12# - NGINX_HOST=foobar.com13# - NGINX_PORT=8014# command: /bin/bash -c &amp;#34;envsubst &amp;lt; /etc/nginx/conf.d/mysite.template &amp;gt; /etc/nginx/conf.d/default.conf &amp;amp;&amp;amp; exec nginx -g &amp;#39;daemon off;&amp;#39;&amp;#34;15networks:## 定义网络16nn:## 加入的网络的名称17ipv4_address:192.168.5.101## ipv4的ip地址1819web8082:20image:nginx21volumes:22- /Users/cai/Documents/www/8082:/usr/share/nginx/html:ro23ports:24- &amp;#34;8082:80&amp;#34;2526networks:27nn:28ipv4_address:192.168.5.1022930web8083:31image:nginx32volumes:33- /Users/cai/Documents/www/8083:/usr/share/nginx/html:ro34ports:35- &amp;#34;8083:80&amp;#34;3637networks:38nn:39ipv4_address:192.168.5.1034041networks:##定义网络组42nn:## 网络组名称43driver:bridge## 网络的模式44ipam:## 配置网络45driver:default46config:47- subnet:192.168.5.0/24## ip地址网络 这里宿主机一般会是该网段的 192.168.5.1,所以不要设置自网段为1配置服务 配置网络
+1$ docker-compose --version 2docker-compose version 1.22.0, build f46880f 目录结构  docker-compose.yml 1version:&amp;#34;3&amp;#34;2services:3web:# 服务的名称4image:nginx5volumes:# 文件夹映射6- /Users/cai/Documents/www:/usr/share/nginx/html:ro# 宿主:docker:只读 ,www目录7- ./config/web.conf:/etc/nginx/nginx.conf:ro# nginx配置文件8ports:# 端口转发 宿主:docker9- &amp;#34;8080:80&amp;#34;10- &amp;#34;8081:81&amp;#34;11# environment:12# - NGINX_HOST=foobar.com13# - NGINX_PORT=8014# command: /bin/bash -c &amp;#34;envsubst &amp;lt; /etc/nginx/conf.d/mysite.template &amp;gt; /etc/nginx/conf.d/default.conf &amp;amp;&amp;amp; exec nginx -g &amp;#39;daemon off;&amp;#39;&amp;#34;15networks:## 定义网络16nn:## 加入的网络的名称17ipv4_address:192.168.5.101## ipv4的ip地址1819web8082:20image:nginx21volumes:22- /Users/cai/Documents/www/8082:/usr/share/nginx/html:ro23ports:24- &amp;#34;8082:80&amp;#34;2526networks:27nn:28ipv4_address:192.168.5.1022930web8083:31image:nginx32volumes:33- /Users/cai/Documents/www/8083:/usr/share/nginx/html:ro34ports:35- &amp;#34;8083:80&amp;#34;3637networks:38nn:39ipv4_address:192.168.5.1034041networks:##定义网络组42nn:## 网络组名称43driver:bridge## 网络的模式44ipam:## 配置网络45driver:default46config:47- subnet:192.168.5.0/24## ip地址网络 这里宿主机一般会是该网段的 192.168.5.1,所以不要设置自网段为1配置服务 配置网络
 将服务加入同一个网络组,这样 docker 就可以在同一个网络组里了,由于 docker 的特性,每个容器会认为自己和另一个容器是局域网的关系
 我这里做的是 nginx 转发
 nginx.conf 1user nginx; 2worker_processes 1; 34error_log /var/log/nginx/error.
@@ -2095,10 +2105,10 @@ nginx.conf 1user nginx; 2worker_processes 1; 34error_log /var/log/nginx/error.
     
     <item>
       <title>flutter - 点击事件(二) - 给图片增加点击UI效果</title>
-      <link>https://kikt.top/post/flutter/flutter-click-event-2/</link>
+      <link>https://kikt.top/posts/flutter/flutter-click-event-2/</link>
       <pubDate>Wed, 14 Nov 2018 14:24:26 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-click-event-2/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-click-event-2/</guid>
       <description>
         
           
@@ -2114,10 +2124,10 @@ nginx.conf 1user nginx; 2worker_processes 1; 34error_log /var/log/nginx/error.
     
     <item>
       <title>flutter - 点击事件(一) - 自定义一个方便的点击控件</title>
-      <link>https://kikt.top/post/flutter/flutter-click-event-1/</link>
+      <link>https://kikt.top/posts/flutter/flutter-click-event-1/</link>
       <pubDate>Wed, 14 Nov 2018 13:29:26 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-click-event-1/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-click-event-1/</guid>
       <description>
         
           
@@ -2133,10 +2143,10 @@ nginx.conf 1user nginx; 2worker_processes 1; 34error_log /var/log/nginx/error.
     
     <item>
       <title>【转】Golang 在 Mac、Linux、Windows 下如何交叉编译</title>
-      <link>https://kikt.top/post/go/cross-compilation/</link>
+      <link>https://kikt.top/posts/go/cross-compilation/</link>
       <pubDate>Tue, 13 Nov 2018 19:54:33 +0800</pubDate>
       
-      <guid>https://kikt.top/post/go/cross-compilation/</guid>
+      <guid>https://kikt.top/posts/go/cross-compilation/</guid>
       <description>
         
           
@@ -2153,10 +2163,10 @@ Mac 下编译 Linux 和 Windows 64 位可执行程序
     
     <item>
       <title>【简单翻译】flutter的设计哲学（ inside flutter）</title>
-      <link>https://kikt.top/post/flutter/inside-flutter/</link>
+      <link>https://kikt.top/posts/flutter/inside-flutter/</link>
       <pubDate>Sun, 11 Nov 2018 12:24:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/inside-flutter/</guid>
+      <guid>https://kikt.top/posts/flutter/inside-flutter/</guid>
       <description>
         
           
@@ -2187,10 +2197,10 @@ Flutter 有这个通用协议的几个专业。最常见的专业是 RenderBox�
     
     <item>
       <title>flutter android So库对齐</title>
-      <link>https://kikt.top/post/flutter/so-about-1/</link>
+      <link>https://kikt.top/posts/flutter/so-about-1/</link>
       <pubDate>Sat, 27 Oct 2018 12:18:08 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/so-about-1/</guid>
+      <guid>https://kikt.top/posts/flutter/so-about-1/</guid>
       <description>
         
           
@@ -2211,10 +2221,10 @@ so 对齐 简单来说,就是要有就必须都有,如果一个没有,那就一�
     
     <item>
       <title>Flutter 如何自定义一个loadmore 加载更多</title>
-      <link>https://kikt.top/post/flutter/flutter-custom-loadmore/</link>
+      <link>https://kikt.top/posts/flutter/flutter-custom-loadmore/</link>
       <pubDate>Thu, 06 Sep 2018 12:16:31 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-custom-loadmore/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-custom-loadmore/</guid>
       <description>
         
           
@@ -2240,10 +2250,10 @@ LoadMoreTextBuilder 是一个根据状态构建文字的方案,默认实现了 �
     
     <item>
       <title>Flutter 一个简单的Route Helper/Navigator Helper</title>
-      <link>https://kikt.top/post/flutter/flutter-simple-route-helper/</link>
+      <link>https://kikt.top/posts/flutter/flutter-simple-route-helper/</link>
       <pubDate>Wed, 05 Sep 2018 12:13:39 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-simple-route-helper/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-simple-route-helper/</guid>
       <description>
         
           
@@ -2263,10 +2273,10 @@ Route 就是路由,顾名思义,负责你页面间的跳转
     
     <item>
       <title>Flutter 依赖冲突解决</title>
-      <link>https://kikt.top/post/flutter/flutter-depo-conflict/</link>
+      <link>https://kikt.top/posts/flutter/flutter-depo-conflict/</link>
       <pubDate>Thu, 23 Aug 2018 12:12:19 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-depo-conflict/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-depo-conflict/</guid>
       <description>
         
           
@@ -2293,10 +2303,10 @@ git 依赖的引用方式可以参考 ,
     
     <item>
       <title>Dart Flutter中的代码规范</title>
-      <link>https://kikt.top/post/flutter/dart-flutter-code-style/</link>
+      <link>https://kikt.top/posts/flutter/dart-flutter-code-style/</link>
       <pubDate>Wed, 22 Aug 2018 12:19:22 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/dart-flutter-code-style/</guid>
+      <guid>https://kikt.top/posts/flutter/dart-flutter-code-style/</guid>
       <description>
         
           
@@ -2315,10 +2325,10 @@ git 依赖的引用方式可以参考 ,
     
     <item>
       <title>flutter json解析相关 for json_serializable</title>
-      <link>https://kikt.top/post/flutter/flutter-json/</link>
+      <link>https://kikt.top/posts/flutter/flutter-json/</link>
       <pubDate>Thu, 09 Aug 2018 12:10:24 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-json/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-json/</guid>
       <description>
         
           
@@ -2343,10 +2353,10 @@ json_serializable 版本是 1.1.0
     
     <item>
       <title>Mac Flutter 开发环境配置 从0到1 流程</title>
-      <link>https://kikt.top/post/flutter/mac-flutter-env-0-to-1/</link>
+      <link>https://kikt.top/posts/flutter/mac-flutter-env-0-to-1/</link>
       <pubDate>Sat, 04 Aug 2018 12:08:18 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/mac-flutter-env-0-to-1/</guid>
+      <guid>https://kikt.top/posts/flutter/mac-flutter-env-0-to-1/</guid>
       <description>
         
           
@@ -2366,10 +2376,10 @@ cli 我这里使用，一个免费的开源的命令行工具 默认的命令行
     
     <item>
       <title>Flutter基础faq</title>
-      <link>https://kikt.top/post/flutter/flutter-base-faq/</link>
+      <link>https://kikt.top/posts/flutter/flutter-base-faq/</link>
       <pubDate>Thu, 02 Aug 2018 11:29:34 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-base-faq/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-base-faq/</guid>
       <description>
         
           
@@ -2385,10 +2395,10 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
     
     <item>
       <title>github Clone速度慢的解决方案之一</title>
-      <link>https://kikt.top/post/other/github-clone-slow/</link>
+      <link>https://kikt.top/posts/other/github-clone-slow/</link>
       <pubDate>Fri, 20 Jul 2018 11:36:31 +0800</pubDate>
       
-      <guid>https://kikt.top/post/other/github-clone-slow/</guid>
+      <guid>https://kikt.top/posts/other/github-clone-slow/</guid>
       <description>
         
           
@@ -2412,10 +2422,10 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
     
     <item>
       <title>Flutter 项目新手向结构简析</title>
-      <link>https://kikt.top/post/flutter/flutter-newer-readme/</link>
+      <link>https://kikt.top/posts/flutter/flutter-newer-readme/</link>
       <pubDate>Fri, 13 Jul 2018 11:03:12 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-newer-readme/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-newer-readme/</guid>
       <description>
         
           
@@ -2431,10 +2441,10 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
     
     <item>
       <title>Flutter开篇介绍</title>
-      <link>https://kikt.top/post/flutter/flutter-first-blog/</link>
+      <link>https://kikt.top/posts/flutter/flutter-first-blog/</link>
       <pubDate>Fri, 06 Jul 2018 09:13:17 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-first-blog/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-first-blog/</guid>
       <description>
         
           
@@ -2453,10 +2463,10 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
     
     <item>
       <title>swift navigation title 标题颜色代码设置</title>
-      <link>https://kikt.top/post/ios/swift/swift-navigation-title-color-style/</link>
+      <link>https://kikt.top/posts/ios/swift/swift-navigation-title-color-style/</link>
       <pubDate>Tue, 13 Mar 2018 11:57:15 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/swift/swift-navigation-title-color-style/</guid>
+      <guid>https://kikt.top/posts/ios/swift/swift-navigation-title-color-style/</guid>
       <description>
         
           
@@ -2471,10 +2481,10 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
     
     <item>
       <title>Swift Ios11 修改navigationbar间距</title>
-      <link>https://kikt.top/post/ios/swift/swift-ios11-change-the-navigationbar-spacing/</link>
+      <link>https://kikt.top/posts/ios/swift/swift-ios11-change-the-navigationbar-spacing/</link>
       <pubDate>Fri, 09 Mar 2018 11:55:10 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/swift/swift-ios11-change-the-navigationbar-spacing/</guid>
+      <guid>https://kikt.top/posts/ios/swift/swift-ios11-change-the-navigationbar-spacing/</guid>
       <description>
         
           
@@ -2493,10 +2503,10 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
     
     <item>
       <title>android 依赖冲突</title>
-      <link>https://kikt.top/post/android/android-repo-confire/</link>
+      <link>https://kikt.top/posts/android/android-repo-confire/</link>
       <pubDate>Sun, 04 Mar 2018 17:14:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-repo-confire/</guid>
+      <guid>https://kikt.top/posts/android/android-repo-confire/</guid>
       <description>
         
           
@@ -2514,10 +2524,10 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
     
     <item>
       <title>Swift连接BLE蓝牙打印机</title>
-      <link>https://kikt.top/post/ios/swift/swift-connect-ble-printer/</link>
+      <link>https://kikt.top/posts/ios/swift/swift-connect-ble-printer/</link>
       <pubDate>Wed, 13 Sep 2017 11:52:48 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/swift/swift-connect-ble-printer/</guid>
+      <guid>https://kikt.top/posts/ios/swift/swift-connect-ble-printer/</guid>
       <description>
         
           
@@ -2538,10 +2548,10 @@ BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜
     
     <item>
       <title>spring boot 渲染md格式模板</title>
-      <link>https://kikt.top/post/server/java/spring-boot/template/</link>
+      <link>https://kikt.top/posts/server/java/spring-boot/template/</link>
       <pubDate>Sun, 27 Aug 2017 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/java/spring-boot/template/</guid>
+      <guid>https://kikt.top/posts/server/java/spring-boot/template/</guid>
       <description>
         
           
@@ -2556,10 +2566,10 @@ BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜
     
     <item>
       <title>spring boot 扫码登录 后端实现</title>
-      <link>https://kikt.top/post/server/java/spring-boot/scan-login/</link>
+      <link>https://kikt.top/posts/server/java/spring-boot/scan-login/</link>
       <pubDate>Fri, 25 Aug 2017 11:42:26 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/java/spring-boot/scan-login/</guid>
+      <guid>https://kikt.top/posts/server/java/spring-boot/scan-login/</guid>
       <description>
         
           
@@ -2574,10 +2584,10 @@ pom.xml
     
     <item>
       <title>spring boot jdbctemplate mysql emoji 编码错误的问题</title>
-      <link>https://kikt.top/post/server/java/spring-boot/encoding-error/</link>
+      <link>https://kikt.top/posts/server/java/spring-boot/encoding-error/</link>
       <pubDate>Wed, 23 Aug 2017 11:42:26 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/java/spring-boot/encoding-error/</guid>
+      <guid>https://kikt.top/posts/server/java/spring-boot/encoding-error/</guid>
       <description>
         
           
@@ -2598,10 +2608,10 @@ emoji 报错 后来上传的内容中有 emoji 表情,报错信息UncategorizedS
     
     <item>
       <title>Swift3之将类作为参数</title>
-      <link>https://kikt.top/post/ios/swift/swift3-class-as-param/</link>
+      <link>https://kikt.top/posts/ios/swift/swift3-class-as-param/</link>
       <pubDate>Fri, 04 Aug 2017 11:48:59 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/swift/swift3-class-as-param/</guid>
+      <guid>https://kikt.top/posts/ios/swift/swift3-class-as-param/</guid>
       <description>
         
           
@@ -2619,10 +2629,10 @@ emoji 报错 后来上传的内容中有 emoji 表情,报错信息UncategorizedS
     
     <item>
       <title>RN/Weex的个人看法</title>
-      <link>https://kikt.top/post/other/rn-weex-my-idea/</link>
+      <link>https://kikt.top/posts/other/rn-weex-my-idea/</link>
       <pubDate>Thu, 13 Jul 2017 16:01:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/other/rn-weex-my-idea/</guid>
+      <guid>https://kikt.top/posts/other/rn-weex-my-idea/</guid>
       <description>
         
           
@@ -2648,10 +2658,10 @@ react native 首先是react native,简称 RN facebook 的开源项目,语法和�
     
     <item>
       <title>Ios版toast</title>
-      <link>https://kikt.top/post/ios/ios-toast/</link>
+      <link>https://kikt.top/posts/ios/ios-toast/</link>
       <pubDate>Sat, 08 Jul 2017 09:39:26 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/ios-toast/</guid>
+      <guid>https://kikt.top/posts/ios/ios-toast/</guid>
       <description>
         
           
@@ -2669,10 +2679,10 @@ swift 3.1 语法
     
     <item>
       <title>android 经典蓝牙编程 SPP</title>
-      <link>https://kikt.top/post/android/android-spp-bluetooth/</link>
+      <link>https://kikt.top/posts/android/android-spp-bluetooth/</link>
       <pubDate>Sat, 08 Jul 2017 09:35:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-spp-bluetooth/</guid>
+      <guid>https://kikt.top/posts/android/android-spp-bluetooth/</guid>
       <description>
         
           
@@ -2692,10 +2702,10 @@ swift 3.1 语法
     
     <item>
       <title>Android6.0百度地图导入UnsatisfiedLinkError的问题</title>
-      <link>https://kikt.top/post/android/baidu-map-error/</link>
+      <link>https://kikt.top/posts/android/baidu-map-error/</link>
       <pubDate>Tue, 07 Mar 2017 12:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/baidu-map-error/</guid>
+      <guid>https://kikt.top/posts/android/baidu-map-error/</guid>
       <description>
         
           
@@ -2713,10 +2723,10 @@ swift 3.1 语法
     
     <item>
       <title>Poi解析对比excel表格</title>
-      <link>https://kikt.top/post/server/java/poi/</link>
+      <link>https://kikt.top/posts/server/java/poi/</link>
       <pubDate>Mon, 27 Feb 2017 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/java/poi/</guid>
+      <guid>https://kikt.top/posts/server/java/poi/</guid>
       <description>
         
           
@@ -2734,10 +2744,10 @@ pom 文件
     
     <item>
       <title>AIDL 安卓进程间通信/跨应用通信</title>
-      <link>https://kikt.top/post/android/android-aidl/</link>
+      <link>https://kikt.top/posts/android/android-aidl/</link>
       <pubDate>Tue, 06 Dec 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-aidl/</guid>
+      <guid>https://kikt.top/posts/android/android-aidl/</guid>
       <description>
         
           
@@ -2759,10 +2769,10 @@ aidl 语法 这里请去看我写在前面，里面比较详细，或者自行 b
     
     <item>
       <title>Android Studio 简单的JunitTest</title>
-      <link>https://kikt.top/post/android/android-junit/</link>
+      <link>https://kikt.top/posts/android/android-junit/</link>
       <pubDate>Sat, 22 Oct 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-junit/</guid>
+      <guid>https://kikt.top/posts/android/android-junit/</guid>
       <description>
         
           
@@ -2779,10 +2789,10 @@ MainActivity 代码如下
     
     <item>
       <title>Android Studio 2.2 ndk开发环境 gradle配置</title>
-      <link>https://kikt.top/post/android/android-studio-2-2-ndk-and-gradle-config/</link>
+      <link>https://kikt.top/posts/android/android-studio-2-2-ndk-and-gradle-config/</link>
       <pubDate>Fri, 21 Oct 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-studio-2-2-ndk-and-gradle-config/</guid>
+      <guid>https://kikt.top/posts/android/android-studio-2-2-ndk-and-gradle-config/</guid>
       <description>
         
           
@@ -2802,10 +2812,10 @@ gradle project 级别的和传统没有差别 看 module 级的
     
     <item>
       <title>Butterknife8.4.0的一些问题</title>
-      <link>https://kikt.top/post/android/butterknife8-1/</link>
+      <link>https://kikt.top/posts/android/butterknife8-1/</link>
       <pubDate>Sun, 18 Sep 2016 19:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/butterknife8-1/</guid>
+      <guid>https://kikt.top/posts/android/butterknife8-1/</guid>
       <description>
         
           
@@ -2824,10 +2834,10 @@ ButterKnife.bind(this) 这里可以是 View，Activity 等等
     
     <item>
       <title>Android剪切板的简单解析</title>
-      <link>https://kikt.top/post/android/android-clipboard-manager/</link>
+      <link>https://kikt.top/posts/android/android-clipboard-manager/</link>
       <pubDate>Sun, 18 Sep 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-clipboard-manager/</guid>
+      <guid>https://kikt.top/posts/android/android-clipboard-manager/</guid>
       <description>
         
           
@@ -2852,10 +2862,10 @@ CharSequence text = cm.getText();可以获取到剪切板内的内容 使用cm.s
     
     <item>
       <title>Retroift简单二次封装</title>
-      <link>https://kikt.top/post/android/retroift-simple-packaging/</link>
+      <link>https://kikt.top/posts/android/retroift-simple-packaging/</link>
       <pubDate>Thu, 01 Sep 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/retroift-simple-packaging/</guid>
+      <guid>https://kikt.top/posts/android/retroift-simple-packaging/</guid>
       <description>
         
           
@@ -2869,10 +2879,10 @@ CharSequence text = cm.getText();可以获取到剪切板内的内容 使用cm.s
     
     <item>
       <title>Retroift初探</title>
-      <link>https://kikt.top/post/android/retroift-first-develop/</link>
+      <link>https://kikt.top/posts/android/retroift-first-develop/</link>
       <pubDate>Wed, 31 Aug 2016 18:25:45 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/retroift-first-develop/</guid>
+      <guid>https://kikt.top/posts/android/retroift-first-develop/</guid>
       <description>
         
           

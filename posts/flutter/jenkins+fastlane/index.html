@@ -1,0 +1,1829 @@
+
+<!DOCTYPE html>
+<html lang="en" data-figures="" class="page">
+  <head>
+<title>flutter Jenkins&#43;fastlane 自动化打测试包, 并上传蒲公英 | CaiJingLong</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script async src="https://www.googletagmanager.com/gtag/js?id=XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'XXXXXXXXXX');
+</script>
+
+<meta property="og:locale" content="en" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="自动化打包上传是一个释放双手的过程, 本文就简单重复一下打包的过程
+本文包括 iOS 和 android 篇.
+如果有需要, macOS 和 web 也可以加进来, 步骤并不复杂, 但本篇暂时不讲
+开发环境  macOS, 如果你不是 macOS, 那你只能打包安卓部分 Xcode, 因为 Xcode …">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="">
+<meta name="twitter:title" content="flutter Jenkins&#43;fastlane 自动化打测试包, 并上传蒲公英" />
+<meta property="og:url" content="https://kikt.top/posts/flutter/jenkins&#43;fastlane/" />
+<meta property="og:title" content="flutter Jenkins&#43;fastlane 自动化打测试包, 并上传蒲公英" />
+<meta property="og:description" content="自动化打包上传是一个释放双手的过程, 本文就简单重复一下打包的过程
+本文包括 iOS 和 android 篇.
+如果有需要, macOS 和 web 也可以加进来, 步骤并不复杂, 但本篇暂时不讲
+开发环境  macOS, 如果你不是 macOS, 那你只能打包安卓部分 Xcode, 因为 Xcode …" />
+<meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kikt.top/icons/favicon-32x32.png">
+<link rel="manifest" href="https://kikt.top/icons/site.webmanifest">
+
+<link rel="canonical" href="https://kikt.top/posts/flutter/jenkins&#43;fastlane/">
+
+    
+
+    
+    
+    <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
+    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    
+  </head>
+  
+  
+    
+  
+  <body data-code="7" data-lines="false" id="documentTop">
+
+<header class="nav_header">
+  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
+  <div class="nav_close">
+    <div><svg class="icon">
+  <title>open-menu</title>
+  <use xlink:href="#open-menu"></use>
+</svg>
+<svg class="icon">
+  <title>closeme</title>
+  <use xlink:href="#closeme"></use>
+</svg>
+</div>
+  </div>
+</a>
+
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+      
+
+  <div class="nav_parent">
+    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <div class="nav_sub">
+      <span class="nav_child"></span>
+        <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
+    </div>
+  </div>
+  <div class="nav_parent">
+    <a href="https://kikt.top/about/" class="nav_item" title="关于">关于 </a>
+  </div>
+      
+<div class='follow'>
+  <a href="https://github.com/Caijinglong">
+    <svg class="icon">
+  <title>github</title>
+  <use xlink:href="#github"></use>
+</svg>
+
+  </a>
+    
+  <a href="https://kikt.top/index.xml">
+    <svg class="icon">
+  <title>rss</title>
+  <use xlink:href="#rss"></use>
+</svg>
+
+  </a>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+  
+</header>
+    <main>
+
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title">flutter Jenkins&#43;fastlane 自动化打测试包, 并上传蒲公英</h1>
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      2020-08-19 09:10</span>
+    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/jenkins' title="jenkins" class="post_tag button button_translucent">jenkins
+        </a><a href='https://kikt.top/tags/fastlane' title="fastlane" class="post_tag button button_translucent">fastlane
+        </a><a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=flutter%20Jenkins%2bfastlane%20%e8%87%aa%e5%8a%a8%e5%8c%96%e6%89%93%e6%b5%8b%e8%af%95%e5%8c%85%2c%20%e5%b9%b6%e4%b8%8a%e4%bc%a0%e8%92%b2%e5%85%ac%e8%8b%b1&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fjenkins%2bfastlane%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fjenkins%2bfastlane%2f&t=flutter%20Jenkins%2bfastlane%20%e8%87%aa%e5%8a%a8%e5%8c%96%e6%89%93%e6%b5%8b%e8%af%95%e5%8c%85%2c%20%e5%b9%b6%e4%b8%8a%e4%bc%a0%e8%92%b2%e5%85%ac%e8%8b%b1" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://kikt.top/posts/flutter/jenkins&#43;fastlane/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    <div class="post_toc">
+      <h2>文章目录</h2>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#开发环境">开发环境</a>
+      <ul>
+        <li><a href="#jenkins">Jenkins</a></li>
+        <li><a href="#fastlane">FastLane</a></li>
+        <li><a href="#蒲公英账号">蒲公英账号</a></li>
+      </ul>
+    </li>
+    <li><a href="#编写打包脚本">编写打包脚本</a>
+      <ul>
+        <li><a href="#安卓打包脚本">安卓打包脚本</a></li>
+        <li><a href="#ios-打包">iOS 打包</a></li>
+        <li><a href="#小结">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#jenkins-的配置">Jenkins 的配置</a>
+      <ul>
+        <li><a href="#配置仓库权限">配置仓库权限</a></li>
+        <li><a href="#安卓自动化">安卓自动化</a></li>
+        <li><a href="#ios-自动化">iOS 自动化</a></li>
+      </ul>
+    </li>
+    <li><a href="#jenkins-的触发器">Jenkins 的触发器</a></li>
+    <li><a href="#fastlane-的一些配置">Fastlane 的一些配置</a></li>
+    <li><a href="#后记">后记</a>
+      <ul>
+        <li><a href="#本篇设计到的文件相对完整版">本篇设计到的文件相对完整版</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+    <div class="post_body"><p>自动化打包上传是一个释放双手的过程, 本文就简单重复一下打包的过程</p>
+<p>本文包括 iOS 和 android 篇.</p>
+<p>如果有需要, macOS 和 web 也可以加进来, 步骤并不复杂, 但本篇暂时不讲</p>
+<h2 id="开发环境">开发环境</h2>
+<ul>
+<li>macOS, 如果你不是 macOS, 那你只能打包安卓部分</li>
+<li>Xcode, 因为 Xcode 会自动安装包含 git 在内的一些其他环境, 所以理论上有这个就够了</li>
+<li>brew</li>
+<li>android sdk</li>
+<li>flutter sdk</li>
+<li>jenkins</li>
+<li>fastlane</li>
+</ul>
+<p>到 flutter sdk 为止就不讲了, 我相信看这篇文章的人, 起码 flutter 程序已经开发完了, 只是因为修改个文案就要打包的事被搞的不胜其扰, 才决定自动化的</p>
+<p>而开发 flutter 基本上可以理解为包含如下工具/SDK</p>
+<ul>
+<li>ruby</li>
+<li>git</li>
+<li>Xcode</li>
+<li>brew</li>
+<li>Android SDK</li>
+<li>Flutter SDK</li>
+</ul>
+<h3 id="jenkins">Jenkins</h3>
+<p>有几点要写在前面, 这东西建议使用 brew 安装, 当然你要是坚持, 也可以用 jendins 的 war/jar 包自己部署,见仁见智</p>
+<p>但<strong>不要</strong>使用 docker 的方式, 因为 docker 不包含 xcode 的环境, 执行起来比较麻烦</p>
+<ol>
+<li><code>brew install jenkins-lts</code> 安装命令, 执行这个等着就好了, 具体的过程就不说了, 用过 brew 的人都懂</li>
+<li>启动, 这里使用一个小技巧启动<code>nohup jenkins-lts &gt; /tmp/jenkins.log 2&gt;&amp;1 &amp;</code> 用 nohup 的方式启动, 好处有如下两个
+<ol>
+<li>命令行窗口可以关闭, 不重启则不用重新运行, 当然你要是自己建 service 也可以, 看你自己的水平</li>
+<li>可以记录一些日志, 当然我这里觉得不重要, 所以暂时先放在/tmp 文件夹里, 如果需要保留, 则放在别的文件夹里, 因为 /tmp 内的文件重启后会被自动删除</li>
+</ol>
+</li>
+<li>启动,在浏览里打开<code>http://localhost:8080/</code></li>
+</ol>
+<p>这里要注意几点</p>
+<ol>
+<li>初始化运行的时候, 根据提示, 去查看对应的初始化密码, macOS 一般是在启动后在 <code>~/.jenkins/secrets/initialAdminPassword</code>位置, <code>~</code> 代表你的用户目录, 比如我的就是 <code>/Users/Caijinglong</code></li>
+<li>初始化后, 建议安装的插件你就都安装上就行, 不用考虑那么多</li>
+<li>用户名和密码一定要记住, 不然后面很麻烦</li>
+</ol>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597804098.png" alt="image-20200819102817684"  crossorigin/>
+</p>
+</p>
+<p>当一切准备就绪的时候, 可能是这样的, 也可能是这样的</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597804135.png" alt="image-20200819102855120"  crossorigin/>
+</p>
+</p>
+<p>我这里是因为已经加入了一些任务, 初始化的应该是空的.</p>
+<h4 id="安装插件">安装插件</h4>
+<p>系统管理, 插件管理</p>
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597804224.png" alt="image-20200819103024213" style="zoom:33%;" />
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597804246.png" alt="image-20200819103046638" style="zoom: 33%;" />
+<p>这里建议安装的插件有如下几个</p>
+<ol>
+<li> , 发布测试包到蒲公英的插件</li>
+<li> 这个插件是能把多个任务结合到一起的插件, 方便插入子任务, 比如我有 build ios 和 build android 两个任务, 这东西可以指定顺序, 让两个任务顺序执行</li>
+</ol>
+<p>Jenkins 的安装告一段落, 具体的配置到了配置篇再写</p>
+<h3 id="fastlane">FastLane</h3>
+<p></p>
+<p>这东西的安装看你的实际情况, 一般情况下, 使用 brew 安装也是可以的, 然后, 这东西是一个 ruby 写的自动化打包的工具, 也可以用 gem 安装</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ brew install fastlane
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ sudo gem install fastlane
+</span></span></code></pre></div><p>brew 发布的版本不是最新的, 所以, 根据你的情况选择使用哪种方式安装, 提示: sudo 会要求输入密码(系统的登录密码, 输入完回车)</p>
+<h3 id="蒲公英账号">蒲公英账号</h3>
+<p>官网: </p>
+<p>具体的申请步骤就不讲了, 然后, 现在发布 apk 需要实名制, 自己传身份吧</p>
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597805860.png" alt="image-20200819105740584" style="zoom: 25%;" />
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597805891.png" alt="image-20200819105811061"  crossorigin/>
+</p>
+</p>
+<p>这里的信息上传的时候会用到, 先</p>
+<h2 id="编写打包脚本">编写打包脚本</h2>
+<p>在使用 Jenkins 之前需要先在外部环境尝试, 因为 Jenkins 中调试错误比较麻烦</p>
+<p>创建个测试项目先</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ flutter create auto_build_example
+</span></span><span class="line"><span class="ln">2</span><span class="cl">$ code auto_build_example
+</span></span></code></pre></div><p>我这里用 vscode 打开, 大家呢则根据自己的习惯</p>
+<h3 id="安卓打包脚本">安卓打包脚本</h3>
+<p>这个很简单, 其实只需要<code>flutter build apk --release -v --split-per-abi</code> 就可以了, 你则看自己的情况修改参数即可</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="o">[</span>   +3 ms<span class="o">]</span> ✓ Built build/app/outputs/apk/release/app-armeabi-v7a-release.apk <span class="o">(</span>5.1MB<span class="o">)</span>.
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="o">[</span>        <span class="o">]</span> ✓ Built build/app/outputs/apk/release/app-arm64-v8a-release.apk <span class="o">(</span>5.4MB<span class="o">)</span>.
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="o">[</span>        <span class="o">]</span> ✓ Built build/app/outputs/apk/release/app-x86_64-release.apk <span class="o">(</span>5.6MB<span class="o">)</span>.
+</span></span></code></pre></div><p>打包结尾会有具体放置的位置, 我个人建议使用 v7a 的, 也就是<code>build/app/outputs/apk/release/app-armeabi-v7a-release.apk</code>, 因为某些 2018 2019 年的手机甚至都还是 v7a 架构(实测), 所以嘛, 先这样</p>
+<p>我们需要记录的信息就是 打包命令 和 打包产物的位置</p>
+<h3 id="ios-打包">iOS 打包</h3>
+<p>这个就是需要装 fastlane 的原因了, 因为使用命令行打包的命令比较复杂, 而且还有证书相关的问题, 很容易遇到问题.</p>
+<p>但很多问题 fastlane 都帮我们解决过了</p>
+<p><strong>注意</strong>: 本篇的打包是 ad-hoc 的, 而不是 appstore 的, 所以想要使用的人, udid 必须被包含在证书内, 然后, 这个是有名额限制的, 一个自然年内, 只可以有 100 个, 来年是否继续有效, 需要续约, 具体添加的方法可以自行搜索一下(提示, 直接通过 usb 线插在电脑上, 通过 xcode register device 的会被包含在这个名额内)</p>
+<h4 id="初始化-fastlane-配置">初始化 fastlane 配置</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ fastlane init
+</span></span></code></pre></div><p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597814045.png" alt="image-20200819131404802"  crossorigin/>
+</p>
+</p>
+<p>这里有 4 个选项</p>
+<ol>
+<li>自动截图</li>
+<li>自动发布到 beta 的 TestFlight</li>
+<li>自动发布到 AppStore</li>
+<li>手动配置</li>
+</ol>
+<p>因为我们其实目前的目的是打包 ad-hoc 的包, 给测试人员安装, 而不用给每个人都插上手机, 所以我们选 4</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597814570.png" alt="image-20200819132250411"  crossorigin/>
+</p>
+</p>
+<p>稍等片刻后会让连点几下回车, 主要就是把文档之类的地址什么的贴上来, 让有问题的朋友可以快速点进去</p>
+<p>然后就是, 我这的版本不是最新版,提示应该更新之类的</p>
+<h4 id="修改配置文件">修改配置文件</h4>
+<p>ios 目录下会多一个 fastlane 目录</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ tree fastlane
+</span></span><span class="line"><span class="ln">2</span><span class="cl">fastlane
+</span></span><span class="line"><span class="ln">3</span><span class="cl">├── Appfile
+</span></span><span class="line"><span class="ln">4</span><span class="cl">└── Fastfile
+</span></span></code></pre></div><p>Appfile 是 app 的信息</p>
+<p>Fastfile 是配置信息</p>
+<p>我们先修改 Fastfile</p>
+<p>默认的是这样的</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1"># This file contains the fastlane.tools configuration</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"># You can find the documentation at https://docs.fastlane.tools</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"># For a list of all available actions, check out</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1">#     https://docs.fastlane.tools/actions</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"># For a list of all available plugins, check out</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1">#     https://docs.fastlane.tools/plugins/available-plugins</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1"># Uncomment the line if you want fastlane to automatically update itself</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="c1"># update_fastlane</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="n">default_platform</span><span class="p">(</span><span class="ss">:ios</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">
+</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="n">platform</span> <span class="ss">:ios</span> <span class="k">do</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">  <span class="n">desc</span> <span class="s2">&#34;Description of what the lane does&#34;</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">  <span class="n">lane</span> <span class="ss">:custom_lane</span> <span class="k">do</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">    <span class="c1"># add actions here: https://docs.fastlane.tools/actions</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><p>默认的长这样, 是 ruby 语法, 和 cocoapod 的配置文件语法基本相同, do end 可以简单理解为{}, 其中就是具体要执行的代码了</p>
+<p><code>lane :custom_lane do</code> 这行的 custom_lane 就是任务的名字, 里面可以添加 actions, 会按照顺序执行</p>
+<p>我们可以按照提示打开  看看都有啥东西, 比如添加一个 </p>
+<p>然后我把任务名字修改为 ad_hoc</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">default_platform</span><span class="p">(</span><span class="ss">:ios</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">platform</span> <span class="ss">:ios</span> <span class="k">do</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="n">desc</span> <span class="s2">&#34;Description of what the lane does&#34;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="n">lane</span> <span class="ss">:ad_hoc</span> <span class="k">do</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">    <span class="c1"># add actions here: https://docs.fastlane.tools/actions</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">    <span class="n">build_ios_app</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><p>然后执行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ fastlane ad_hoc
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="mi">2020</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">19</span><span class="w"> </span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">19</span><span class="p">.</span><span class="mi">521</span><span class="w"> </span><span class="n">xcodebuild</span><span class="p">[</span><span class="mi">64867</span><span class="p">:</span><span class="mi">9469238</span><span class="p">]</span><span class="w"> </span><span class="n">Unknown</span><span class="w"> </span><span class="n">simulator</span><span class="w"> </span><span class="n">cpu</span><span class="w"> </span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="mi">16777228</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w"></span><span class="err">❌</span><span class="w">  </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="n">Signing</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s2">&#34;Runner&#34;</span><span class="w"> </span><span class="n">requires</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">development</span><span class="w"> </span><span class="n">team</span><span class="p">.</span><span class="w"> </span><span class="k">Select</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">development</span><span class="w"> </span><span class="n">team</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Signing</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Capabilities</span><span class="w"> </span><span class="n">editor</span><span class="p">.</span><span class="w"> </span><span class="p">(</span><span class="k">in</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="s1">&#39;Runner&#39;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="s1">&#39;Runner&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w"></span><span class="o">**</span><span class="w"> </span><span class="n">ARCHIVE</span><span class="w"> </span><span class="n">FAILED</span><span class="w"> </span><span class="o">**</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="k">Exit</span><span class="w"> </span><span class="n">status</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="n">Maybe</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="n">shown</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">caused</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">wrong</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Xcode</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="n">Found</span><span class="w"> </span><span class="n">multiple</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Xcode</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s1">&#39;/Applications/&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="n">Make</span><span class="w"> </span><span class="n">sure</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">right</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">project</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">executed</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="s1">&#39;/Applications/Xcode.app&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">Xcode</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">either</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Specify</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Xcode</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">Fastfile</span><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="err">▸</span><span class="w"> </span><span class="nf">xcversion</span><span class="p">(</span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;8.1&#34;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Selects Xcode 8.1.0
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="c1"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Specify</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">absolute</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">Xcode</span><span class="w"> </span><span class="n">installation</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">Fastfile</span><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="err">▸</span><span class="w"> </span><span class="n">xcode_select</span><span class="w"> </span><span class="s2">&#34;/Applications/Xcode8.app&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Manually</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="k">using</span><span class="w">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="err">▸</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">xcode</span><span class="o">-</span><span class="k">select</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode</span><span class="p">.</span><span class="n">app</span><span class="w">
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="w"></span><span class="o">+-------------+-------------------------+</span><span class="w">
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">           </span><span class="n">Build</span><span class="w"> </span><span class="n">environment</span><span class="w">           </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="w"></span><span class="o">+-------------+-------------------------+</span><span class="w">
+</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">xcode_path</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode</span><span class="p">.</span><span class="n">app</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">gym_version</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">156</span><span class="p">.</span><span class="mi">1</span><span class="w">                 </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">sdk</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="n">iPhoneOS13</span><span class="p">.</span><span class="mi">5</span><span class="p">.</span><span class="n">sdk</span><span class="w">        </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="w"></span><span class="o">+-------------+-------------------------+</span><span class="w">
+</span></span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">33</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="err">▸</span><span class="w"> </span><span class="n">note</span><span class="p">:</span><span class="w"> </span><span class="k">Using</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="n">system</span><span class="w">
+</span></span></span><span class="line"><span class="ln">34</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="err">▸</span><span class="w"> </span><span class="n">note</span><span class="p">:</span><span class="w"> </span><span class="n">Building</span><span class="w"> </span><span class="n">targets</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">parallel</span><span class="w">
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="err">▸</span><span class="w"> </span><span class="n">note</span><span class="p">:</span><span class="w"> </span><span class="n">Planning</span><span class="w"> </span><span class="n">build</span><span class="w">
+</span></span></span><span class="line"><span class="ln">36</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="err">▸</span><span class="w"> </span><span class="n">note</span><span class="p">:</span><span class="w"> </span><span class="n">Constructing</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="n">description</span><span class="w">
+</span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="err">▸</span><span class="w"> </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="n">Signing</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s2">&#34;Runner&#34;</span><span class="w"> </span><span class="n">requires</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">development</span><span class="w"> </span><span class="n">team</span><span class="p">.</span><span class="w"> </span><span class="k">Select</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">development</span><span class="w"> </span><span class="n">team</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Signing</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Capabilities</span><span class="w"> </span><span class="n">editor</span><span class="p">.</span><span class="w"> </span><span class="p">(</span><span class="k">in</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="s1">&#39;Runner&#39;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="s1">&#39;Runner&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">38</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="err">⬆️</span><span class="w">  </span><span class="k">Check</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">few</span><span class="w"> </span><span class="k">lines</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">raw</span><span class="w"> </span><span class="o">`</span><span class="n">xcodebuild</span><span class="o">`</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="n">above</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">potential</span><span class="w"> </span><span class="n">hints</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">how</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">solve</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">error</span><span class="w">
+</span></span></span><span class="line"><span class="ln">40</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="err">📋</span><span class="w">  </span><span class="k">For</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">complete</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">detailed</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="n">log</span><span class="p">,</span><span class="w"> </span><span class="k">check</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">full</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="n">at</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">41</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="err">📋</span><span class="w">  </span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">jinglongcai</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Logs</span><span class="o">/</span><span class="n">gym</span><span class="o">/</span><span class="n">Runner</span><span class="o">-</span><span class="n">Runner</span><span class="p">.</span><span class="n">log</span><span class="w">
+</span></span></span><span class="line"><span class="ln">42</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">43</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="n">Looks</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="n">fastlane</span><span class="w"> </span><span class="n">ran</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">build</span><span class="o">/</span><span class="n">archive</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">project</span><span class="w">
+</span></span></span><span class="line"><span class="ln">44</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="n">It</span><span class="s1">&#39;s hard to tell what&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">causing</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">wrote</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">guides</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">how</span><span class="w">
+</span></span></span><span class="line"><span class="ln">45</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">troubleshoot</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">signing</span><span class="w"> </span><span class="n">issues</span><span class="p">:</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">docs</span><span class="p">.</span><span class="n">fastlane</span><span class="p">.</span><span class="n">tools</span><span class="o">/</span><span class="n">codesigning</span><span class="o">/</span><span class="n">getting</span><span class="o">-</span><span class="n">started</span><span class="o">/</span><span class="w">
+</span></span></span><span class="line"><span class="ln">46</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="k">Before</span><span class="w"> </span><span class="n">submitting</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">issue</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">GitHub</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="w"> </span><span class="n">follow</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">guide</span><span class="w"> </span><span class="n">above</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">make</span><span class="w">
+</span></span></span><span class="line"><span class="ln">47</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="n">sure</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="kt">set</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">correctly</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="ln">48</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="n">fastlane</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="o">`</span><span class="n">xcodebuild</span><span class="o">`</span><span class="w"> </span><span class="n">commands</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">generate</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="k">binary</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="n">the</span><span class="w">
+</span></span></span><span class="line"><span class="ln">49</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">full</span><span class="w"> </span><span class="n">commands</span><span class="w"> </span><span class="n">printed</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">yellow</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">above</span><span class="w"> </span><span class="n">log</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="ln">50</span><span class="cl"><span class="w"></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">21</span><span class="p">]:</span><span class="w"> </span><span class="n">Make</span><span class="w"> </span><span class="n">sure</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">inspect</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="n">above</span><span class="p">,</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">usually</span><span class="w"> </span><span class="n">you</span><span class="s1">&#39;ll find more error information there
+</span></span></span><span class="line"><span class="ln">51</span><span class="cl"><span class="s1">[13:41:21]:
+</span></span></span><span class="line"><span class="ln">52</span><span class="cl"><span class="s1">+------------------+------------+
+</span></span></span><span class="line"><span class="ln">53</span><span class="cl"><span class="s1">|         Lane Context          |
+</span></span></span><span class="line"><span class="ln">54</span><span class="cl"><span class="s1">+------------------+------------+
+</span></span></span><span class="line"><span class="ln">55</span><span class="cl"><span class="s1">| DEFAULT_PLATFORM | ios        |
+</span></span></span><span class="line"><span class="ln">56</span><span class="cl"><span class="s1">| PLATFORM_NAME    | ios        |
+</span></span></span><span class="line"><span class="ln">57</span><span class="cl"><span class="s1">| LANE_NAME        | ios ad_hoc |
+</span></span></span><span class="line"><span class="ln">58</span><span class="cl"><span class="s1">+------------------+------------+
+</span></span></span><span class="line"><span class="ln">59</span><span class="cl"><span class="s1">[13:41:21]: Error building the application - see the log above
+</span></span></span><span class="line"><span class="ln">60</span><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="ln">61</span><span class="cl"><span class="s1">+------+------------------+-------------+
+</span></span></span><span class="line"><span class="ln">62</span><span class="cl"><span class="s1">|           fastlane summary            |
+</span></span></span><span class="line"><span class="ln">63</span><span class="cl"><span class="s1">+------+------------------+-------------+
+</span></span></span><span class="line"><span class="ln">64</span><span class="cl"><span class="s1">| Step | Action           | Time (in s) |
+</span></span></span><span class="line"><span class="ln">65</span><span class="cl"><span class="s1">+------+------------------+-------------+
+</span></span></span><span class="line"><span class="ln">66</span><span class="cl"><span class="s1">| 1    | default_platform | 0           |
+</span></span></span><span class="line"><span class="ln">67</span><span class="cl"><span class="s1">| 💥   | build_ios_app    | 5           |
+</span></span></span><span class="line"><span class="ln">68</span><span class="cl"><span class="s1">+------+------------------+-------------+
+</span></span></span><span class="line"><span class="ln">69</span><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="ln">70</span><span class="cl"><span class="s1">[13:41:21]: fastlane finished with errors
+</span></span></span><span class="line"><span class="ln">71</span><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="ln">72</span><span class="cl"><span class="s1">[!] Error building the application - see the log above
+</span></span></span></code></pre></div><p>好吧, 有一堆的日志, 其中会告诉我们哪个任务出错了, 原因是啥</p>
+<p>我这里检查了一下, 这里是签名问题, 查一下 fastlane 里的解决方案, 告诉我们使用来解决</p>
+<h5 id="配置-match">配置 match</h5>
+<p>match 其实是将一些签名的配置文件储存在某个位置, 然后达到多设备能同步的目的</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ fastlane match init
+</span></span></code></pre></div><img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597816050.png" alt="image-20200819134729836" style="zoom:33%;" />
+<p>fastlane 提供了三种储存方案, 你如果有谷歌云或者 S3, 也可以选择用那两个, 然后根据提示来</p>
+<p>这里我选择 git, 毕竟<strong>贫穷限制了我</strong>, 我去 gitee 创建仓库, 你也可以存在任何你认为合适的 git 仓库</p>
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597816311.png" alt="image-20200819135151406" style="zoom:33%;" />
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597816342.png" alt="image-20200819135222060" style="zoom:33%;" />
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597816389.png" alt="image-20200819135309803"  crossorigin/>
+</p>
+</p>
+<p>这里输入你的苹果账号</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597816442.png" alt="image-20200819135402586"  crossorigin/>
+</p>
+</p>
+<p>我这里因为这个账号对应有 2 个公司开发者, 所以需要选一个. 输入 1 或 2 回车继续, 如果你只有一个, 估计这一步会自动跳过</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597816529.png" alt="image-20200819135529057"  crossorigin/>
+</p>
+</p>
+<p>下一步是输入你的 app 的 bundle id</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597816666.png" alt="image-20200819135746740"  crossorigin/>
+</p>
+</p>
+<p>这一步是提示, 没有找到签名文件, 其实这是因为这一步只会找现成的签名, 如果没有的话则不会自动创建, 我们去 xcode 里创建一个签名</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597816745.png" alt="image-20200819135904913"  crossorigin/>
+</p>
+</p>
+<p>在这里选择一个 Team, 然后等成功后再重新执行上面的 match adhoc</p>
+<p>这里可能会有朋友发现, 还是会报错, 无法 match, 其实这是因为你的帐号在 appstore 上并没有对应的 App 的原因, 两个解决方案</p>
+<ol>
+<li>选择已有的 app bundle id</li>
+<li>创建新的 app</li>
+</ol>
+<p>我这里为了演示, 在公司的帐号上创建一个 app(不发布就行了 😁)</p>
+<p></p>
+<ol>
+<li> 创建新的&quot;套装 ID&quot;</li>
+<li> 新建一个 app</li>
+</ol>
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597822996.png" alt="image-20200819154315829" style="zoom:33%;" />
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597823056.png" alt="image-20200819154416408" style="zoom:33%;" />
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597823067.png" alt="image-20200819154427151" style="zoom:33%;" />
+<p>然后再去执行 match 就可以成功了</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597823335.png" alt="image-20200819154855400"  crossorigin/>
+</p>
+</p>
+<p>然后查看 git 仓库</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597823381.png" alt="image-20200819154941746"  crossorigin/>
+</p>
+</p>
+<p>发现也有东西了, 接着就可以回去配置 match 了</p>
+<p>修改 Fastline</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">platform</span> <span class="ss">:ios</span> <span class="k">do</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">  <span class="n">desc</span> <span class="s2">&#34;Description of what the lane does&#34;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  <span class="n">lane</span> <span class="ss">:ad_hoc</span> <span class="k">do</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="c1"># add actions here: https://docs.fastlane.tools/actions</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="n">match</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">      <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;adhoc&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">      <span class="ss">app_identifier</span><span class="p">:</span> <span class="s2">&#34;top.kikt.autobuildexample&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">      <span class="ss">team_id</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="c1"># 你的team id, 只有一个可以直接删了这行</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="p">)</span> <span class="c1"># 添加这个</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="n">build_ios_app</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">      <span class="ss">scheme</span><span class="p">:</span> <span class="s2">&#34;Release&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">      <span class="ss">export_options</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="nb">method</span><span class="p">:</span> <span class="s2">&#34;ad-hoc&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><p>team_id 注意: 如果你的 apple 帐号, 只对应一个公司, 则不用填这个, 填这个的目的是为了自动化</p>
+<p>接着执行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ fastlane ad_hoc
+</span></span></code></pre></div><p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597825731.png" alt="image-20200819162851287"  crossorigin/>
+</p>
+</p>
+<p>多出来的两个文件, 一个是 ipa 包, 一个是对应的 dsym(用于还原堆栈)</p>
+<p>这个是 ad-hoc, 所以可能不需要两步验证, 但拿出来说一下, 也许后面会用到</p>
+<h4 id="两步验证的问题">两步验证的问题</h4>
+<p>iOS 中打包可能会遇到两步验证的问题, 而且经常要验证, 在自己本地命令行打包的时候还可以交互一下, 但 Jenkins 是不支持交互的, 这个能否解决呢?</p>
+<p>答案是肯定的, 但需要经过如下的步骤</p>
+<ol>
+<li>
+<p> 
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597824255.png" alt="image-20200819160414854"  crossorigin/>
+</p>
+</p>
+</li>
+<li>
+<p>获取 Cookie</p>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ <span class="nb">export</span> <span class="nv">FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD</span><span class="o">=</span>&lt;PWD&gt; <span class="c1"># 上一步的app专用密码</span>
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ fastlane spaceauth -u &lt;apple_id&gt; <span class="c1"># apple id</span>
+</span></span></code></pre></div></li>
+</ol>
+</li>
+<li>
+<p>将 cookie 保存下载, 至于是环境变量还是文件看你自己的情况, 我这里选择的是文件的方式, 然后存到代码仓库中以便于 jenkins 读取, 你存到环境变量里也是可以的</p>
+</li>
+</ol>
+<p>比如如下的 cookie(为了安全性, 我这里删除了一部分字符, 所以你拿过去是用不了的) 请根据你自己的情况来拿到这个</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">---\n- !ruby/object:HTTP::Cookie\n  name: DES5d68a2334f25aa752d511d\n  value: HSARMTKNSRVXWFla+6da0vxQCwQOICU+fwfLb6VaikjljuH6uDxOu6UWoLsJfDGnDolKcfUcKtnU5aQ5nskxgurrnxdOubXWidJF7JzxjbyzxmH6Tq/vD3JrCTSRVX\n  domain: idmsa.apple.com\n  for_domain: true\n  path: &#34;/&#34;\n  secure: true\n  httponly: true\n  expires:\n  max_age: 2592000\n  created_at: 2020-08-11 09:56:46.642442000 +08:00\n  accessed_at: 2020-08-18 13:45:59.234609000 +08:00\n- !ruby/object:HTTP::Cookie\n  name: myacinfo\n  value: DAWTKNV2da5c169c5551bd40dc5d6ffd58c42656bc39c57326c4686e7ba67cf58b38a017214dba13ef41247a84ae2909fa56863ffda004b4fcec4402e48d0a8c6a38a8b1593411a21da63fdf0b95ad37d33567598e684da6390f9b525c51cf6e1ea6e42a021dc1b798703c769d8380a23f8ac2b6890dfdc92a035acb48  domain: apple.com\n  for_domain: true\n  path: &#34;/&#34;\n  secure: true\n  httponly: true\n  expires:\n  max_age:\n  created_at: 2020-08-18 13:46:00.175666000 +08:00\n  accessed_at: 2020-08-18 13:46:00.176071000 +08:00\n- !ruby/object:HTTP::Cookie\n  name: dqsid\n  value: mp0aSI6IlFYS3E3MmI1SmVkVFV5THFcsh58p8zWIpcqviQIYYqJ8oW18qxcM\n  domain: appstoreconnect.apple.com\n  for_domain: false\n  path: &#34;/&#34;\n  secure: true\n  httponly: true\n  expires:\n  max_age: 1800\n  created_at: &amp;1 2020-08-18 13:46:00.842456000 +08:00\n  accessed_at: *1\n
+</span></span></code></pre></div><p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597825544.png" alt="image-20200819162543869"  crossorigin/>
+</p>
+</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597825529.png" alt="image-20200819162529836"  crossorigin/>
+</p>
+</p>
+<p>注意, 这里有两端&quot;乱码&quot;, 复制第一段, 第二段是 fastlane 给的示例而已, 这里提示输入 y,则自动复制到剪切板</p>
+<p>我创建一个文件 cookies.txt, 把这段东西粘贴进去, 这一步是为了 Jenkins 考虑</p>
+<h3 id="小结">小结</h3>
+<p>总体来说, 配置好了以后</p>
+<p>安卓:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ flutter build apk
+</span></span></code></pre></div><p>iOS:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ flutter build ios --release -v
+</span></span><span class="line"><span class="ln">2</span><span class="cl">$ <span class="nb">cd</span> ios
+</span></span><span class="line"><span class="ln">3</span><span class="cl">$ fastlane ad_hoc
+</span></span></code></pre></div><p>打包的命令熟悉完毕后, 就到了 Jenkins 的配置了</p>
+<h2 id="jenkins-的配置">Jenkins 的配置</h2>
+<h3 id="配置仓库权限">配置仓库权限</h3>
+<p>Jenkins 中支持 git 来管理源码, 然后, git 需要凭证来访问, 我这里是 gitee 的, 你可以根据你的情况自己配置</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597827090.png" alt="image-20200819165130173"  crossorigin/>
+</p>
+</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597828483.png" alt="image-20200819171443197"  crossorigin/>
+</p>
+</p>
+<h3 id="安卓自动化">安卓自动化</h3>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597826489.png" alt="image-20200819164129138"  crossorigin/>
+</p>
+</p>
+<p>我先新建一个组叫&quot;自动构建&quot;, 然后点击创建新的任务</p>
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597826567.png" alt="image-20200819164247769" style="zoom:33%;" />
+<p>选择构建一个自由风格的软件项目</p>
+<h4 id="配置源码">配置源码</h4>
+<p>先配置项目的 git 地址</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597828549.png" alt="image-20200819171549309"  crossorigin/>
+</p>
+</p>
+<p>然后选择凭证, 接着确定后, 点下面的保存, 先试试是否能拉到源码</p>
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597829041.png" alt="image-20200819172400991" style="zoom:50%;" />
+<p>这里构建完成后, 可以看到构建过程</p>
+<p>然后点工作空间看看代码</p>
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597829066.png" alt="image-20200819172426826" style="zoom:50%;" />
+<p>现在, 就能看到完整的代码了</p>
+<h4 id="配置打包脚本">配置打包脚本</h4>
+<p>这里还没完, 需要配置打包脚本, 继续点击配置</p>
+<p>拉到后面, 点击构建=&gt;执行 shell</p>
+<p>这里就是自动构建的步骤了.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">flutter build apk --release -v --split-per-abi
+</span></span><span class="line"><span class="ln">2</span><span class="cl">ls build/app/outputs/apk/release/
+</span></span></code></pre></div><p>这里简单打包, 然后查看下, 保存后点击立即构建</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597829371.png" alt="image-20200819172922516"  crossorigin/>
+</p>
+</p>
+<p>这里就是打包过程了</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597829400.png" alt="image-20200819173000100"  crossorigin/>
+</p>
+</p>
+<p>查看一下控制台输出</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597829421.png" alt="image-20200819173021433"  crossorigin/>
+</p>
+</p>
+<p>打包完成了, 顺便执行了 ls 命令查看了一下</p>
+<h4 id="上传">上传</h4>
+<p>上传直接使用插件就可以了,还记得之前安装过 pgyer 的插件吗, 如果你要传 fir 或者自己的服务器, 那就需要你自己探索一下了</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597829695.png" alt="image-20200819173455311"  crossorigin/>
+</p>
+</p>
+<p>使用 v1 还是 v2 看你自己的情况, 都可以, 我这里使用 v2 的, 把 api_key 放过来, 然后使用</p>
+<p>scandir 是你上传的目录 <code>${WORKSPACE}/build/app/outputs/apk/release</code> 工作空间的根目录, 然后下面是文件名</p>
+<p>然后保存, 立即构建</p>
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597829809.png" alt="image-20200819173649791" style="zoom: 33%;" />
+<p>地址: </p>
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597829830.png" alt="image-20200819173710059" style="zoom:33%;" />
+<p>到这一步, 安卓就算是成功了</p>
+<h3 id="ios-自动化">iOS 自动化</h3>
+<p>创建一个叫&quot;iOS 自动化&quot;的任务</p>
+<h4 id="配置源码仓库">配置源码仓库</h4>
+<p>和安卓完全一样, 略过</p>
+<h4 id="打包脚本">打包脚本</h4>
+<p>还是在构建位置,使用 shell 脚本, 但和安卓不同的时, 需要有如下的步骤</p>
+<ol>
+<li>flutter build ios</li>
+<li>两步验证</li>
+<li>fastlane</li>
+</ol>
+<p>1, 3 在外部测试阶段完成了, 也就是说, 唯一需要注意的是两步验证的问题, 仓库里储存有 cookies, 这个东西就是用来干这个的了</p>
+<p>编写脚本</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">flutter build ios --release -v
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nb">cd</span> ios
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nb">export</span> <span class="nv">FASTLANE_SESSION</span><span class="o">=</span><span class="k">$(</span>cat login_cookie<span class="k">)</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">fastlane ad_hoc
+</span></span><span class="line"><span class="ln">5</span><span class="cl">ls Runner.*
+</span></span></code></pre></div><h4 id="上传-1">上传</h4>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597885351.png" alt="image-20200820090230922"  crossorigin/>
+</p>
+</p>
+<p>然后, 我们遇到了一次失败</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597887223.png" alt="image-20200820093343644"  crossorigin/>
+</p>
+</p>
+<p>去查一下原因吧, 进入控制台输出</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597887306.png" alt="image-20200820093506157"  crossorigin/>
+</p>
+</p>
+<p>我们看到, 蒲公英上传失败了.</p>
+<p>嗯, 那我们换一个方式, 不通过 jenkins 的插件了, 而是通过 fastlane 的 pgyer action 直接在 fastlane 里完成这一步, </p>
+<p>先添加</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ fastlane add_plugin pgyer
+</span></span></code></pre></div><p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597887611.png" alt="image-20200820094011798"  crossorigin/>
+</p>
+</p>
+<p>中间需要 y,确定一下</p>
+<p>然后, 修改 fastfile</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">default_platform</span><span class="p">(</span><span class="ss">:ios</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="n">platform</span> <span class="ss">:ios</span> <span class="k">do</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="n">desc</span> <span class="s2">&#34;Description of what the lane does&#34;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  <span class="n">lane</span> <span class="ss">:ad_hoc</span> <span class="k">do</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="c1"># add actions here: https://docs.fastlane.tools/actions</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">  	<span class="o">...</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="n">build_ios_app</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">      <span class="ss">scheme</span><span class="p">:</span> <span class="s2">&#34;Release&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">      <span class="ss">export_options</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="nb">method</span><span class="p">:</span> <span class="s2">&#34;ad-hoc&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="n">pgyer</span><span class="p">(</span><span class="ss">api_key</span><span class="p">:</span> <span class="s2">&#34;75123fxxx10&#34;</span><span class="p">,</span> <span class="ss">user_key</span><span class="p">:</span> <span class="s2">&#34;4853910323xxx22105382&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><p>把 pgyer 的 action 直接加载 build_ios_app 后, 然后设置到 api_key 和 user_key, 在  查询</p>
+<p>接着点击立即构建, 就可以触发了</p>
+<p>上传完毕后是这样</p>
+<img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597887976.png" alt="image-20200820094616533" style="zoom:33%;" />
+<h2 id="jenkins-的触发器">Jenkins 的触发器</h2>
+<p>Jenkins 支持一些触发器</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597885564.png" alt="image-20200820090604447"  crossorigin/>
+</p>
+</p>
+<ol>
+<li>
+<p>远程触发, 设置 token, 然后通过访问 url 的方式, 或是脚本之类的方式触发</p>
+</li>
+<li>
+<p>其他工程构建后触发, 顾名思义, 就是比如我构建完安卓, 触发构建 iOS 的操作, 这样是可以细化构建步骤, 但如果本身没有关联, 强行搞到一起反而不美</p>
+</li>
+<li>
+<p>定时构建, 这个支持比较多的方式, 很类似于 Spring 的定时任务, 具体语法可以查看说明或示例</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597885697.png" alt="image-20200820090817688"  crossorigin/>
+</p>
+</p>
+</li>
+<li>
+<p>github 的钩子</p>
+</li>
+<li>
+<p>轮询 SCM</p>
+</li>
+</ol>
+<h2 id="fastlane-的一些配置">Fastlane 的一些配置</h2>
+<p>fastlane 其实也支持安卓, 不过本篇因为安卓 flutter build apk 已经足够简单, 所以个人考虑不需要使用这个, 如果你的项目是 flutter module 配合 maven 或 aar 的方式置入原生的, 需要更多步骤的情况下, 可以尝试使用 fastlane 来帮你解放双手</p>
+<h2 id="后记">后记</h2>
+<p>本篇主要探索了测试阶段如何解放双手, 使用 jenkins 配合 fastlane 达到自动打包, 上传的过程</p>
+<p>如果需要额外告知某些人员, 可以尝试对接办公系统的 api 来达到自动通知的目的, 钉钉等程序应该都有对应接口</p>
+<h3 id="本篇设计到的文件相对完整版">本篇设计到的文件相对完整版</h3>
+<p>之所以是相对, 是因为有一些敏感信息, 例如 pgyer 的 api key, 苹果的登录 cookie, 签名仓库等等, 并不方便向所有人开放</p>
+<ol>
+<li>
+<p>安卓篇</p>
+<ol>
+<li>
+<p>Jenkins 构建脚本</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">flutter build apk --release
+</span></span></code></pre></div></li>
+<li>
+<p>构建后</p>
+<p>scandir: <code>${WORKSPACE}/build/app/outputs/apk/release</code></p>
+<p>File name: <code>app-armeabi-v7a-release.apk</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p>iOS 篇</p>
+<ol>
+<li>
+<p>Fastfile</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1"># This file contains the fastlane.tools configuration</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"># You can find the documentation at https://docs.fastlane.tools</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"># For a list of all available actions, check out</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1">#     https://docs.fastlane.tools/actions</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"># For a list of all available plugins, check out</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1">#     https://docs.fastlane.tools/plugins/available-plugins</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1"># Uncomment the line if you want fastlane to automatically update itself</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="c1"># update_fastlane</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="n">default_platform</span><span class="p">(</span><span class="ss">:ios</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">
+</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="n">platform</span> <span class="ss">:ios</span> <span class="k">do</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">  <span class="n">desc</span> <span class="s2">&#34;Description of what the lane does&#34;</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">  <span class="n">lane</span> <span class="ss">:ad_hoc</span> <span class="k">do</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">    <span class="c1"># add actions here: https://docs.fastlane.tools/actions</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">    <span class="n">match</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">      <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;adhoc&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">      <span class="ss">app_identifier</span><span class="p">:</span> <span class="s2">&#34;top.kikt.autobuildexample&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">      <span class="ss">team_id</span><span class="p">:</span> <span class="s2">&#34;xxx&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">    <span class="n">build_ios_app</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">      <span class="ss">scheme</span><span class="p">:</span> <span class="s2">&#34;Release&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">      <span class="ss">export_options</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">        <span class="nb">method</span><span class="p">:</span> <span class="s2">&#34;ad-hoc&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">    <span class="n">pgyer</span><span class="p">(</span><span class="ss">api_key</span><span class="p">:</span> <span class="s2">&#34;xxx&#34;</span><span class="p">,</span> <span class="ss">user_key</span><span class="p">:</span> <span class="s2">&#34;xxx&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">34</span><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Matchfile</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">git_url</span><span class="p">(</span><span class="s2">&#34;https://gitee.com/kikt/test_adhoc_sign_store.git&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="n">storage_mode</span><span class="p">(</span><span class="s2">&#34;git&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="n">type</span><span class="p">(</span><span class="s2">&#34;adhoc&#34;</span><span class="p">)</span> <span class="c1"># The default type, can be: appstore, adhoc, enterprise or development</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="n">app_identifier</span><span class="p">(</span><span class="o">[</span><span class="s2">&#34;top.kikt.autobuildexample&#34;</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="n">username</span><span class="p">(</span><span class="s2">&#34;xxx&#34;</span><span class="p">)</span> <span class="c1"># Your Apple Developer Portal username</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"># For all available options run `fastlane match --help`</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1"># Remove the # in the beginning of the line to enable the other options</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1"># The docs are available on https://docs.fastlane.tools/actions/match</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Pluginfile</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1"># Autogenerated by fastlane</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"># Ensure this file is checked in to source control!</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">gem</span> <span class="s1">&#39;fastlane-plugin-pgyer&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>jenkins</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">flutter</span> <span class="n">build</span> <span class="n">ios</span> <span class="o">--</span><span class="n">release</span> <span class="o">-</span><span class="n">v</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">cd</span> <span class="n">ios</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">export</span> <span class="no">FASTLANE_SESSION</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">cat</span> <span class="n">login_cookie</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="n">fastlane</span> <span class="n">ad_hoc</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">ls</span> <span class="no">Runner</span><span class="o">.</span><span class="n">*</span>
+</span></span></code></pre></div></li>
+</ol>
+</li>
+</ol>
+<p>以上</p>
+
+      
+      </ul>
+    </div>
+<div class="post_comments">
+  
+  
+    
+ <script src="https://utteranc.es/client.js"
+         repo="Caijinglong/kikt-blog-comment"
+         issue-term="pathname"
+         theme="github-light"
+         crossorigin="anonymous"
+         async>
+ </script>
+ 
+  
+  
+</div>
+
+
+
+
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    <br>
+    
+  
+  <div class="search">
+    <input type="search" class="search_field form_field" placeholder='Search...' id="find" autocomplete="off" data-scope='posts'>
+    <label for="find" class="search_label"><svg class="icon">
+  <title>search</title>
+  <use xlink:href="#search"></use>
+</svg>
+
+    </label>
+    
+    <div class="search_results results"></div>
+  </div>
+
+        <h2>CaiJingLong</h2>
+      <div class="author_bio">
+        一个移动开发者，致力于全栈
+      </div>
+      <a href='https://kikt.top/about/' class="button mt-1" role="button" title='阅读更多'>阅读更多</a>
+
+    
+    
+    <h2 class="mt-4">精选文章</h2>
+    <ul>
+      <li>
+        <a href="https://kikt.top/posts/kotlin-compose/kotlin-compose-05-mouse-event/" class="nav-link" title="Kotlin Compose 05 鼠标事件">Kotlin Compose 05 鼠标事件</a>
+      </li>
+    </ul>
+    <h2 class="mt-4">最新文章</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="https://kikt.top/posts/gradle/03/%E7%BC%96%E5%86%99-plugin/" class="nav-link" title="Gradle 编写Plugin">Gradle 编写Plugin</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/01/basic/03-buildsrc/" class="nav-link" title="Gradle buildSrc">Gradle buildSrc</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/01/03-gradle_wrapper/" class="nav-link" title="Gradle Wrapper">Gradle Wrapper</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/" class="nav-link" title="Gradle 的约定式概念">Gradle 的约定式概念</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/03-plugin/" class="nav-link" title="Gradle Plugin">Gradle Plugin</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle 命令行工具的使用">Gradle 命令行工具的使用</a>
+      </li>
+    </ul>
+    <div>
+      <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
+      <nav class="tags_nav">
+        <a href='https://kikt.top/categories/flutter/' class="post_tag button button_translucent" title="flutter">
+          FLUTTER
+          <span class="button_tally">60</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/android/' class="post_tag button button_translucent" title="android">
+          ANDROID
+          <span class="button_tally">25</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
+          GRADLE
+          <span class="button_tally">12</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
+          IOS
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/java/' class="post_tag button button_translucent" title="java">
+          JAVA
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/dart/' class="post_tag button button_translucent" title="dart">
+          DART
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/kotlin-compose/' class="post_tag button button_translucent" title="kotlin-compose">
+          KOTLIN-COMPOSE
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/server/' class="post_tag button button_translucent" title="server">
+          SERVER
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/github/' class="post_tag button button_translucent" title="github">
+          GITHUB
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/other/' class="post_tag button button_translucent" title="other">
+          OTHER
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/spring/' class="post_tag button button_translucent" title="spring">
+          SPRING
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/caddy/' class="post_tag button button_translucent" title="caddy">
+          CADDY
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/go/' class="post_tag button button_translucent" title="go">
+          GO
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+        <br>
+        <div class="post_tags_toggle button">所有分类</div>
+        <div class="post_tags">
+          <div class="tags_list">
+            
+            <a href='https://kikt.top/categories/android/' class=" post_tag button button_translucent" data-position=25 title="android">ANDROID<span class="button_tally">25</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/caddy/' class=" post_tag button button_translucent" data-position=1 title="caddy">CADDY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/dart/' class=" post_tag button button_translucent" data-position=5 title="dart">DART<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/docker/' class=" post_tag button button_translucent" data-position=3 title="docker">DOCKER<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/flutter/' class=" post_tag button button_translucent" data-position=60 title="flutter">FLUTTER<span class="button_tally">60</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/github/' class=" post_tag button button_translucent" data-position=3 title="github">GITHUB<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/go/' class=" post_tag button button_translucent" data-position=1 title="go">GO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/golang/' class=" post_tag button button_translucent" data-position=1 title="golang">GOLANG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/ios/' class=" post_tag button button_translucent" data-position=7 title="ios">IOS<span class="button_tally">7</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/java/' class=" post_tag button button_translucent" data-position=6 title="java">JAVA<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/jetbrains/' class=" post_tag button button_translucent" data-position=1 title="jetbrains">JETBRAINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/kotlin-compose/' class=" post_tag button button_translucent" data-position=5 title="kotlin-compose">KOTLIN-COMPOSE<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/other/' class=" post_tag button button_translucent" data-position=3 title="other">OTHER<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/python/' class=" post_tag button button_translucent" data-position=1 title="python">PYTHON<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/server/' class=" post_tag button button_translucent" data-position=5 title="server">SERVER<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/spring/' class=" post_tag button button_translucent" data-position=3 title="spring">SPRING<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/tools/' class=" post_tag button button_translucent" data-position=1 title="tools">TOOLS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/%E6%9D%82%E9%A1%B9/' class=" post_tag button button_translucent" data-position=1 title="杂项">杂项<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/%E6%B6%82%E9%B8%A6/' class=" post_tag button button_translucent" data-position=1 title="涂鸦">涂鸦<span class="button_tally">1</span>
+            </a>
+            
+            <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
+            </div>
+            <span class="tags_hide"><svg class="icon">
+            <use xlink:href="#closeme"></use>
+          </svg></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">标签</h2>
+      <nav class="tags_nav">
+        <a href='https://kikt.top/tags/flutter/' class="post_tag button button_translucent" title="flutter">
+          FLUTTER
+          <span class="button_tally">62</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/android/' class="post_tag button button_translucent" title="android">
+          ANDROID
+          <span class="button_tally">27</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
+          GRADLE
+          <span class="button_tally">14</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
+          IOS
+          <span class="button_tally">9</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/dart/' class="post_tag button button_translucent" title="dart">
+          DART
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/java/' class="post_tag button button_translucent" title="java">
+          JAVA
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/swift/' class="post_tag button button_translucent" title="swift">
+          SWIFT
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/10/' class="post_tag button button_translucent" title="10">
+          10
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/androidq/' class="post_tag button button_translucent" title="androidq">
+          ANDROIDQ
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/github/' class="post_tag button button_translucent" title="github">
+          GITHUB
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/kotlin-compose/' class="post_tag button button_translucent" title="kotlin-compose">
+          KOTLIN-COMPOSE
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/server/' class="post_tag button button_translucent" title="server">
+          SERVER
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/%E9%9A%90%E7%A7%81/' class="post_tag button button_translucent" title="隐私">
+          隐私
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/channel/' class="post_tag button button_translucent" title="channel">
+          CHANNEL
+          <span class="button_tally">4</span>
+        </a>
+        
+        
+        <br>
+        <div class="post_tags_toggle button">所有标签</div>
+        <div class="post_tags">
+          <div class="tags_list">
+            
+            <a href='https://kikt.top/tags/10/' class=" post_tag button button_translucent" data-position=5 title="10">10<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/2.3/' class=" post_tag button button_translucent" data-position=1 title="2.3">2.3<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/aar/' class=" post_tag button button_translucent" data-position=3 title="aar">AAR<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/actions/' class=" post_tag button button_translucent" data-position=1 title="actions">ACTIONS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/aidl/' class=" post_tag button button_translucent" data-position=1 title="aidl">AIDL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/android/' class=" post_tag button button_translucent" data-position=27 title="android">ANDROID<span class="button_tally">27</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/androidq/' class=" post_tag button button_translucent" data-position=5 title="androidq">ANDROIDQ<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/androidx/' class=" post_tag button button_translucent" data-position=1 title="androidx">ANDROIDX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/apk/' class=" post_tag button button_translucent" data-position=1 title="apk">APK<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/app/' class=" post_tag button button_translucent" data-position=1 title="app">APP<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/appcode/' class=" post_tag button button_translucent" data-position=1 title="appcode">APPCODE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/azure/' class=" post_tag button button_translucent" data-position=1 title="azure">AZURE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ble/' class=" post_tag button button_translucent" data-position=1 title="ble">BLE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/bottomsheet/' class=" post_tag button button_translucent" data-position=1 title="bottomsheet">BOTTOMSHEET<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/butterknife/' class=" post_tag button button_translucent" data-position=1 title="butterknife">BUTTERKNIFE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/c/' class=" post_tag button button_translucent" data-position=2 title="c">C<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/caddy/' class=" post_tag button button_translucent" data-position=2 title="caddy">CADDY<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/camera/' class=" post_tag button button_translucent" data-position=1 title="camera">CAMERA<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/camerax/' class=" post_tag button button_translucent" data-position=1 title="camerax">CAMERAX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/channel/' class=" post_tag button button_translucent" data-position=4 title="channel">CHANNEL<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/clipboard/' class=" post_tag button button_translucent" data-position=1 title="clipboard">CLIPBOARD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/cocoapods/' class=" post_tag button button_translucent" data-position=1 title="cocoapods">COCOAPODS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/cupertino/' class=" post_tag button button_translucent" data-position=1 title="cupertino">CUPERTINO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/dart/' class=" post_tag button button_translucent" data-position=6 title="dart">DART<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/desktop/' class=" post_tag button button_translucent" data-position=4 title="desktop">DESKTOP<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/dialog/' class=" post_tag button button_translucent" data-position=2 title="dialog">DIALOG<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/dmg/' class=" post_tag button button_translucent" data-position=1 title="dmg">DMG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/doc/' class=" post_tag button button_translucent" data-position=1 title="doc">DOC<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/docker/' class=" post_tag button button_translucent" data-position=4 title="docker">DOCKER<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/docker-compose/' class=" post_tag button button_translucent" data-position=1 title="docker-compose">DOCKER-COMPOSE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/excel/' class=" post_tag button button_translucent" data-position=1 title="excel">EXCEL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/exists/' class=" post_tag button button_translucent" data-position=2 title="exists">EXISTS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/faq/' class=" post_tag button button_translucent" data-position=1 title="faq">FAQ<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/fastlane/' class=" post_tag button button_translucent" data-position=1 title="fastlane">FASTLANE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ffi/' class=" post_tag button button_translucent" data-position=2 title="ffi">FFI<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ffmpeg/' class=" post_tag button button_translucent" data-position=3 title="ffmpeg">FFMPEG<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/flexmark/' class=" post_tag button button_translucent" data-position=1 title="flexmark">FLEXMARK<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/flutter/' class=" post_tag button button_translucent" data-position=62 title="flutter">FLUTTER<span class="button_tally">62</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/focus/' class=" post_tag button button_translucent" data-position=2 title="focus">FOCUS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/focusnode/' class=" post_tag button button_translucent" data-position=2 title="focusnode">FOCUSNODE<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/form/' class=" post_tag button button_translucent" data-position=1 title="form">FORM<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/framework/' class=" post_tag button button_translucent" data-position=1 title="framework">FRAMEWORK<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/github/' class=" post_tag button button_translucent" data-position=5 title="github">GITHUB<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/go/' class=" post_tag button button_translucent" data-position=3 title="go">GO<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/golang/' class=" post_tag button button_translucent" data-position=1 title="golang">GOLANG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/http/' class=" post_tag button button_translucent" data-position=1 title="http">HTTP<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ide/' class=" post_tag button button_translucent" data-position=1 title="ide">IDE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/idea/' class=" post_tag button button_translucent" data-position=1 title="idea">IDEA<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/index/' class=" post_tag button button_translucent" data-position=1 title="index">INDEX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/inside/' class=" post_tag button button_translucent" data-position=1 title="inside">INSIDE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ios/' class=" post_tag button button_translucent" data-position=9 title="ios">IOS<span class="button_tally">9</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/java/' class=" post_tag button button_translucent" data-position=6 title="java">JAVA<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/javassist/' class=" post_tag button button_translucent" data-position=1 title="javassist">JAVASSIST<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/jenkins/' class=" post_tag button button_translucent" data-position=1 title="jenkins">JENKINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/jetbrains/' class=" post_tag button button_translucent" data-position=1 title="jetbrains">JETBRAINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/jsdelivr/' class=" post_tag button button_translucent" data-position=1 title="jsdelivr">JSDELIVR<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/json/' class=" post_tag button button_translucent" data-position=1 title="json">JSON<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/json_serializable/' class=" post_tag button button_translucent" data-position=1 title="json_serializable">JSON_SERIALIZABLE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/junit/' class=" post_tag button button_translucent" data-position=3 title="junit">JUNIT<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/kotlin-compose/' class=" post_tag button button_translucent" data-position=5 title="kotlin-compose">KOTLIN-COMPOSE<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/library/' class=" post_tag button button_translucent" data-position=1 title="library">LIBRARY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/loadmore/' class=" post_tag button button_translucent" data-position=1 title="loadmore">LOADMORE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/log/' class=" post_tag button button_translucent" data-position=1 title="log">LOG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/mac/' class=" post_tag button button_translucent" data-position=2 title="mac">MAC<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/macos/' class=" post_tag button button_translucent" data-position=1 title="macos">MACOS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/maven/' class=" post_tag button button_translucent" data-position=3 title="maven">MAVEN<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/migrate/' class=" post_tag button button_translucent" data-position=1 title="migrate">MIGRATE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/mysql/' class=" post_tag button button_translucent" data-position=1 title="mysql">MYSQL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/navigationbar/' class=" post_tag button button_translucent" data-position=2 title="navigationbar">NAVIGATIONBAR<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/navigator/' class=" post_tag button button_translucent" data-position=1 title="navigator">NAVIGATOR<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ndk/' class=" post_tag button button_translucent" data-position=3 title="ndk">NDK<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/nginx/' class=" post_tag button button_translucent" data-position=1 title="nginx">NGINX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/oc/' class=" post_tag button button_translucent" data-position=1 title="oc">OC<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/opencv/' class=" post_tag button button_translucent" data-position=1 title="opencv">OPENCV<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/poi/' class=" post_tag button button_translucent" data-position=1 title="poi">POI<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/pub/' class=" post_tag button button_translucent" data-position=3 title="pub">PUB<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/python/' class=" post_tag button button_translucent" data-position=1 title="python">PYTHON<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/retrofit/' class=" post_tag button button_translucent" data-position=2 title="retrofit">RETROFIT<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/route/' class=" post_tag button button_translucent" data-position=3 title="route">ROUTE<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/server/' class=" post_tag button button_translucent" data-position=5 title="server">SERVER<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/so/' class=" post_tag button button_translucent" data-position=2 title="so">SO<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/spp/' class=" post_tag button button_translucent" data-position=1 title="spp">SPP<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/sprintboot/' class=" post_tag button button_translucent" data-position=3 title="sprintboot">SPRINTBOOT<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/swift/' class=" post_tag button button_translucent" data-position=6 title="swift">SWIFT<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/tap/' class=" post_tag button button_translucent" data-position=2 title="tap">TAP<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/thymeleaf/' class=" post_tag button button_translucent" data-position=1 title="thymeleaf">THYMELEAF<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/tips/' class=" post_tag button button_translucent" data-position=1 title="tips">TIPS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/toast/' class=" post_tag button button_translucent" data-position=2 title="toast">TOAST<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/transition/' class=" post_tag button button_translucent" data-position=1 title="transition">TRANSITION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ui/' class=" post_tag button button_translucent" data-position=1 title="ui">UI<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/utf8/' class=" post_tag button button_translucent" data-position=1 title="utf8">UTF8<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/yield/' class=" post_tag button button_translucent" data-position=1 title="yield">YIELD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/' class=" post_tag button button_translucent" data-position=1 title="二进制">二进制<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BA%A4%E5%8F%89/' class=" post_tag button button_translucent" data-position=1 title="交叉">交叉<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/' class=" post_tag button button_translucent" data-position=1 title="交叉编译">交叉编译<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BB%8B%E7%BB%8D/' class=" post_tag button button_translucent" data-position=1 title="介绍">介绍<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/' class=" post_tag button button_translucent" data-position=1 title="代码规范">代码规范<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%86%B2%E7%AA%81/' class=" post_tag button button_translucent" data-position=2 title="冲突">冲突<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%8A%A8%E6%80%81/' class=" post_tag button button_translucent" data-position=1 title="动态">动态<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%8F%91%E5%B8%83/' class=" post_tag button button_translucent" data-position=1 title="发布">发布<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%8F%AF%E6%89%A7%E8%A1%8C/' class=" post_tag button button_translucent" data-position=1 title="可执行">可执行<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%9B%BE%E5%BA%8A/' class=" post_tag button button_translucent" data-position=1 title="图床">图床<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%9F%8E%E5%B8%82/' class=" post_tag button button_translucent" data-position=1 title="城市">城市<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%A4%A7%E6%96%87%E4%BB%B6/' class=" post_tag button button_translucent" data-position=1 title="大文件">大文件<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%B7%A5%E5%85%B7/' class=" post_tag button button_translucent" data-position=1 title="工具">工具<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE/' class=" post_tag button button_translucent" data-position=1 title="已有项目">已有项目<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/' class=" post_tag button button_translucent" data-position=1 title="开发环境">开发环境<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%80%BB%E7%BB%93/' class=" post_tag button button_translucent" data-position=1 title="总结">总结<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%85%A2/' class=" post_tag button button_translucent" data-position=1 title="慢">慢<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%89%93%E5%8C%85/' class=" post_tag button button_translucent" data-position=1 title="打包">打包<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%89%AB%E7%A0%81/' class=" post_tag button button_translucent" data-position=1 title="扫码">扫码<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%8F%92%E4%BB%B6/' class=" post_tag button button_translucent" data-position=1 title="插件">插件<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%96%87%E6%A1%A3/' class=" post_tag button button_translucent" data-position=1 title="文档">文档<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%A8%A1%E6%9D%BF/' class=" post_tag button button_translucent" data-position=1 title="模板">模板<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%B8%B2%E6%9F%93/' class=" post_tag button button_translucent" data-position=1 title="渲染">渲染<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/' class=" post_tag button button_translucent" data-position=1 title="源码解析">源码解析<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%81%B0%E5%BA%A6/' class=" post_tag button button_translucent" data-position=1 title="灰度">灰度<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%82%B9%E5%87%BB/' class=" post_tag button button_translucent" data-position=2 title="点击">点击<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%84%A6%E7%82%B9/' class=" post_tag button button_translucent" data-position=2 title="焦点">焦点<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%88%AC%E8%99%AB/' class=" post_tag button button_translucent" data-position=1 title="爬虫">爬虫<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/' class=" post_tag button button_translucent" data-position=1 title="状态管理">状态管理<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/' class=" post_tag button button_translucent" data-position=1 title="百度地图">百度地图<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%BC%96%E7%A0%81/' class=" post_tag button button_translucent" data-position=1 title="编码">编码<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/' class=" post_tag button button_translucent" data-position=1 title="编程技巧">编程技巧<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%BC%96%E8%AF%91/' class=" post_tag button button_translucent" data-position=1 title="编译">编译<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%BF%BB%E8%AF%91/' class=" post_tag button button_translucent" data-position=1 title="翻译">翻译<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E8%93%9D%E7%89%99/' class=" post_tag button button_translucent" data-position=1 title="蓝牙">蓝牙<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E8%A1%A8%E5%8D%95/' class=" post_tag button button_translucent" data-position=1 title="表单">表单<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E8%B7%AF%E7%94%B1/' class=" post_tag button button_translucent" data-position=1 title="路由">路由<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E8%BF%87%E5%9C%BA%E5%8A%A8%E7%94%BB/' class=" post_tag button button_translucent" data-position=1 title="过场动画">过场动画<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E9%9A%90%E7%A7%81/' class=" post_tag button button_translucent" data-position=5 title="隐私">隐私<span class="button_tally">5</span>
+            </a>
+            
+            <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
+            </div>
+            <span class="tags_hide"><svg class="icon">
+            <use xlink:href="#closeme"></use>
+          </svg></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+</aside>
+
+  
+</div>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/> 
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="to-top">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="xing">
+    <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/>
+  </symbol>
+</svg>
+
+
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://kikt.top/icons/apple-touch-icon.png' class="icon icon_2 transparent" alt="CaiJingLong">
+    <p>Copyright&nbsp;2015-&nbsp;<span class="year"></span>&nbsp;CAIJINGLONG. All Rights Reserved</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <title>to-top</title>
+  <use xlink:href="#to-top"></use>
+</svg>
+
+</a>
+
+  </div>
+</footer>
+
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+
+  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+
+    
+  </body>
+</html>

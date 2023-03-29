@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 04 Nov 2019 17:15:11 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在 flutter 上使用 c 代码 - (二) 无源码的项目</title>
-      <link>https://kikt.top/post/flutter/ffi/2-first-party/</link>
+      <link>https://kikt.top/posts/flutter/ffi/2-first-party/</link>
       <pubDate>Mon, 04 Nov 2019 17:15:11 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/ffi/2-first-party/</guid>
+      <guid>https://kikt.top/posts/flutter/ffi/2-first-party/</guid>
       <description>
         
           
@@ -30,10 +30,10 @@ some.cpp
     
     <item>
       <title>在 flutter 上使用 c 代码 - (一) 有源码的项目</title>
-      <link>https://kikt.top/post/flutter/ffi/1-first-party/</link>
+      <link>https://kikt.top/posts/flutter/ffi/1-first-party/</link>
       <pubDate>Mon, 04 Nov 2019 11:35:42 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/ffi/1-first-party/</guid>
+      <guid>https://kikt.top/posts/flutter/ffi/1-first-party/</guid>
       <description>
         
           

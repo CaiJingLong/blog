@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 03 Oct 2020 20:13:47 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用javassist,修改jar包方法实现</title>
-      <link>https://kikt.top/post/java/crack/crack1/</link>
+      <link>https://kikt.top/posts/java/crack/crack1/</link>
       <pubDate>Sat, 03 Oct 2020 20:13:47 +0800</pubDate>
       
-      <guid>https://kikt.top/post/java/crack/crack1/</guid>
+      <guid>https://kikt.top/posts/java/crack/crack1/</guid>
       <description>
         
           
@@ -32,10 +32,10 @@
     
     <item>
       <title>在 Mac 上编译 OpenCV4 &#43; Idea 使用Java调用</title>
-      <link>https://kikt.top/post/java/mac/compile-opencv4/</link>
+      <link>https://kikt.top/posts/java/mac/compile-opencv4/</link>
       <pubDate>Tue, 12 Nov 2019 10:17:47 +0800</pubDate>
       
-      <guid>https://kikt.top/post/java/mac/compile-opencv4/</guid>
+      <guid>https://kikt.top/posts/java/mac/compile-opencv4/</guid>
       <description>
         
           
@@ -52,10 +52,10 @@
     
     <item>
       <title>spring boot 渲染md格式模板</title>
-      <link>https://kikt.top/post/server/java/spring-boot/template/</link>
+      <link>https://kikt.top/posts/server/java/spring-boot/template/</link>
       <pubDate>Sun, 27 Aug 2017 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/java/spring-boot/template/</guid>
+      <guid>https://kikt.top/posts/server/java/spring-boot/template/</guid>
       <description>
         
           
@@ -70,10 +70,10 @@
     
     <item>
       <title>spring boot 扫码登录 后端实现</title>
-      <link>https://kikt.top/post/server/java/spring-boot/scan-login/</link>
+      <link>https://kikt.top/posts/server/java/spring-boot/scan-login/</link>
       <pubDate>Fri, 25 Aug 2017 11:42:26 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/java/spring-boot/scan-login/</guid>
+      <guid>https://kikt.top/posts/server/java/spring-boot/scan-login/</guid>
       <description>
         
           
@@ -88,10 +88,10 @@ pom.xml
     
     <item>
       <title>spring boot jdbctemplate mysql emoji 编码错误的问题</title>
-      <link>https://kikt.top/post/server/java/spring-boot/encoding-error/</link>
+      <link>https://kikt.top/posts/server/java/spring-boot/encoding-error/</link>
       <pubDate>Wed, 23 Aug 2017 11:42:26 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/java/spring-boot/encoding-error/</guid>
+      <guid>https://kikt.top/posts/server/java/spring-boot/encoding-error/</guid>
       <description>
         
           
@@ -112,10 +112,10 @@ emoji 报错 后来上传的内容中有 emoji 表情,报错信息UncategorizedS
     
     <item>
       <title>Poi解析对比excel表格</title>
-      <link>https://kikt.top/post/server/java/poi/</link>
+      <link>https://kikt.top/posts/server/java/poi/</link>
       <pubDate>Mon, 27 Feb 2017 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/java/poi/</guid>
+      <guid>https://kikt.top/posts/server/java/poi/</guid>
       <description>
         
           

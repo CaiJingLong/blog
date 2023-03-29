@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 06 Dec 2016 10:45:55 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/junit/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AIDL 安卓进程间通信/跨应用通信</title>
-      <link>https://kikt.top/post/android/android-aidl/</link>
+      <link>https://kikt.top/posts/android/android-aidl/</link>
       <pubDate>Tue, 06 Dec 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-aidl/</guid>
+      <guid>https://kikt.top/posts/android/android-aidl/</guid>
       <description>
         
           
@@ -34,10 +34,10 @@ aidl 语法 这里请去看我写在前面，里面比较详细，或者自行 b
     
     <item>
       <title>Android Studio 简单的JunitTest</title>
-      <link>https://kikt.top/post/android/android-junit/</link>
+      <link>https://kikt.top/posts/android/android-junit/</link>
       <pubDate>Sat, 22 Oct 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-junit/</guid>
+      <guid>https://kikt.top/posts/android/android-junit/</guid>
       <description>
         
           
@@ -54,10 +54,10 @@ MainActivity 代码如下
     
     <item>
       <title>Android Studio 2.2 ndk开发环境 gradle配置</title>
-      <link>https://kikt.top/post/android/android-studio-2-2-ndk-and-gradle-config/</link>
+      <link>https://kikt.top/posts/android/android-studio-2-2-ndk-and-gradle-config/</link>
       <pubDate>Fri, 21 Oct 2016 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-studio-2-2-ndk-and-gradle-config/</guid>
+      <guid>https://kikt.top/posts/android/android-studio-2-2-ndk-and-gradle-config/</guid>
       <description>
         
           

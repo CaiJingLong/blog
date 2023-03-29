@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 30 Mar 2020 14:14:39 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/aar/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Flutter 插件开发之引入aar到安卓部分 并使用本地maven</title>
-      <link>https://kikt.top/post/flutter/plugin/flutter-sdk-import-aar/</link>
+      <link>https://kikt.top/posts/flutter/plugin/flutter-sdk-import-aar/</link>
       <pubDate>Mon, 30 Mar 2020 14:14:39 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/plugin/flutter-sdk-import-aar/</guid>
+      <guid>https://kikt.top/posts/flutter/plugin/flutter-sdk-import-aar/</guid>
       <description>
         
           
@@ -32,10 +32,10 @@
     
     <item>
       <title>Flutter 1.12后 上传aar至maven私服</title>
-      <link>https://kikt.top/post/flutter/exists/upload-aar-to-maven/</link>
+      <link>https://kikt.top/posts/flutter/exists/upload-aar-to-maven/</link>
       <pubDate>Tue, 04 Feb 2020 18:23:24 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/exists/upload-aar-to-maven/</guid>
+      <guid>https://kikt.top/posts/flutter/exists/upload-aar-to-maven/</guid>
       <description>
         
           
@@ -52,10 +52,10 @@
     
     <item>
       <title>把flutter项目作为aar添加到已有的Android工程上</title>
-      <link>https://kikt.top/post/flutter/exists/android-as-aar-to-maven/</link>
+      <link>https://kikt.top/posts/flutter/exists/android-as-aar-to-maven/</link>
       <pubDate>Fri, 14 Jun 2019 09:06:24 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/exists/android-as-aar-to-maven/</guid>
+      <guid>https://kikt.top/posts/flutter/exists/android-as-aar-to-maven/</guid>
       <description>
         
           

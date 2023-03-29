@@ -1,0 +1,1295 @@
+
+<!DOCTYPE html>
+<html lang="en" data-figures="" class="page">
+  <head>
+<title>【简单翻译】flutter的设计哲学（ inside flutter） | CaiJingLong</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script async src="https://www.googletagmanager.com/gtag/js?id=XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'XXXXXXXXXX');
+</script>
+
+<meta property="og:locale" content="en" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="简单翻译 英文链接来自于
+对应的版本为 11 月 11 日版本 连接为 后续如有改动,请以最新的英文版本为准,有翻译不准确的地方请参照英文版本自行理解
+ 概述  本文档描述了 Flutter 工具包的内部工作原理，使 Flutter 的 API 成为可能。因为 Flutter 小部件是使用积极的可组合 …">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="">
+<meta name="twitter:title" content="【简单翻译】flutter的设计哲学（ inside flutter）" />
+<meta property="og:url" content="https://kikt.top/posts/flutter/inside-flutter/" />
+<meta property="og:title" content="【简单翻译】flutter的设计哲学（ inside flutter）" />
+<meta property="og:description" content="简单翻译 英文链接来自于
+对应的版本为 11 月 11 日版本 连接为 后续如有改动,请以最新的英文版本为准,有翻译不准确的地方请参照英文版本自行理解
+ 概述  本文档描述了 Flutter 工具包的内部工作原理，使 Flutter 的 API 成为可能。因为 Flutter 小部件是使用积极的可组合 …" />
+<meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kikt.top/icons/favicon-32x32.png">
+<link rel="manifest" href="https://kikt.top/icons/site.webmanifest">
+
+<link rel="canonical" href="https://kikt.top/posts/flutter/inside-flutter/">
+
+    
+
+    
+    
+    <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
+    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    
+  </head>
+  
+  
+    
+  
+  <body data-code="7" data-lines="false" id="documentTop">
+
+<header class="nav_header">
+  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
+  <div class="nav_close">
+    <div><svg class="icon">
+  <title>open-menu</title>
+  <use xlink:href="#open-menu"></use>
+</svg>
+<svg class="icon">
+  <title>closeme</title>
+  <use xlink:href="#closeme"></use>
+</svg>
+</div>
+  </div>
+</a>
+
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+      
+
+  <div class="nav_parent">
+    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <div class="nav_sub">
+      <span class="nav_child"></span>
+        <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
+    </div>
+  </div>
+  <div class="nav_parent">
+    <a href="https://kikt.top/about/" class="nav_item" title="关于">关于 </a>
+  </div>
+      
+<div class='follow'>
+  <a href="https://github.com/Caijinglong">
+    <svg class="icon">
+  <title>github</title>
+  <use xlink:href="#github"></use>
+</svg>
+
+  </a>
+    
+  <a href="https://kikt.top/index.xml">
+    <svg class="icon">
+  <title>rss</title>
+  <use xlink:href="#rss"></use>
+</svg>
+
+  </a>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+  
+</header>
+    <main>
+
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title">【简单翻译】flutter的设计哲学（ inside flutter）</h1>
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      2018-11-11 12:24</span>
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+        </a><a href='https://kikt.top/tags/inside' title="inside" class="post_tag button button_translucent">inside
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=%e3%80%90%e7%ae%80%e5%8d%95%e7%bf%bb%e8%af%91%e3%80%91flutter%e7%9a%84%e8%ae%be%e8%ae%a1%e5%93%b2%e5%ad%a6%ef%bc%88%20inside%20flutter%ef%bc%89&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2finside-flutter%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2finside-flutter%2f&t=%e3%80%90%e7%ae%80%e5%8d%95%e7%bf%bb%e8%af%91%e3%80%91flutter%e7%9a%84%e8%ae%be%e8%ae%a1%e5%93%b2%e5%ad%a6%ef%bc%88%20inside%20flutter%ef%bc%89" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://kikt.top/posts/flutter/inside-flutter/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    <div class="post_toc">
+      <h2>文章目录</h2>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#积极的可组合性aggressive-composability">积极的可组合性（Aggressive composability）</a>
+      <ul>
+        <li><a href="#次线性布局">次线性布局</a></li>
+        <li><a href="#次线性小部件构建">次线性小部件构建</a></li>
+        <li><a href="#线性对比">线性对比</a></li>
+        <li><a href="#树手术tree-surgery">树手术（Tree surgery）</a></li>
+        <li><a href="#恒定因子优化constant-factor-optimizations">恒定因子优化（Constant-factor optimizations）</a></li>
+      </ul>
+    </li>
+    <li><a href="#无限滚动">无限滚动</a>
+      <ul>
+        <li><a href="#视口感知布局">视口感知布局</a></li>
+        <li><a href="#按需构建小部件">按需构建小部件</a></li>
+      </ul>
+    </li>
+    <li><a href="#api-人体工程学api-ergonomics">API 人体工程学（API Ergonomics）</a>
+      <ul>
+        <li><a href="#专门用于匹配开发人员思维模式的-api">专门用于匹配开发人员思维模式的 API</a></li>
+        <li><a href="#明确的论点explicit-arguments">明确的论点（Explicit arguments）</a></li>
+        <li><a href="#摊铺陷阱paving-over-pitfalls">摊铺陷阱（Paving over pitfalls）</a></li>
+        <li><a href="#积极报告错误案例">积极报告错误案例</a></li>
+        <li><a href="#响应式范式reactive-paradigm">响应式范式（Reactive paradigm）</a></li>
+        <li><a href="#插值interpolation-">插值（Interpolation ）</a></li>
+      </ul>
+    </li>
+    <li><a href="#结论conclusion">结论（Conclusion）</a></li>
+  </ul>
+</nav>
+    </div>
+    
+    <div class="post_body"><h1 id="简单翻译">简单翻译</h1>
+<p>英文链接来自于</p>
+<p>对应的版本为 11 月 11 日版本 连接为
+
+</p>
+<p>后续如有改动,请以最新的英文版本为准,有翻译不准确的地方请参照英文版本自行理解</p>
+<hr>
+<h2 id="概述">概述</h2>
+<hr>
+<p>本文档描述了 Flutter 工具包的内部工作原理，使 Flutter 的 API 成为可能。因为 Flutter 小部件是使用积极的可组合性(aggressive composition)构建的，所以使用 Flutter 构建的用户界面具有大量小部件。</p>
+<p>为了支持这种工作量，Flutter 使用次线性算法来布局和构建小部件，这些数据结构使树形手术变得高效，并且具有许多常量因子优化。</p>
+<p>通过一些额外的细节，这种设计还使开发人员可以使用回调来轻松创建无限滚动列表，这些回调可以构建用户可见的小部件。</p>
+<h2 id="积极的可组合性aggressive-composability">积极的可组合性（Aggressive composability）</h2>
+<hr>
+<p>Flutter 最独特的一个方面是其积极的可组合性。</p>
+<p>小部件是通过组合其他小部件构建的，这些小部件本身是由逐步更基本的小部件构建的。例如，Padding 是一个小部件而不是其他小部件的属性。因此，使用 Flutter 构建的用户界面由许多小部件组成。</p>
+<p>小部件构建递归在 RenderObjectWidgets 中触底，这些小部件在底层渲染树中创建节点。渲染树是一种数据结构，用于存储用户界面的几何图形，该几何图形在布局期间计算并在绘制和命中测试期间使用。大多数 Flutter 开发人员不直接创建对象，而是使用小部件操纵渲染树。</p>
+<p>为了在小部件层支持积极的可组合性，Flutter 在小部件和渲染树层使用了许多有效的算法和优化，这些将在以下小节中介绍。</p>
+<h3 id="次线性布局">次线性布局</h3>
+<p>使用大量小部件和渲染对象，良好性能的关键是高效的算法。最重要的是布局的性能，布局是确定渲染对象的几何（例如，大小和位置）的算法。其他一些工具包使用 O（N²）或更差的布局算法（例如，某些约束域中的定点迭代）。 Flutter 的目标是初始布局的线性性能，以及随后更新现有布局的常见情况下的次线性布局性能。通常，布局所花费的时间量应该比渲染对象的数量更慢。</p>
+<p>Flutter 每帧执行一个布局，布局算法一次完成。约束通过父对象向下传递，父对象在每个子对象上调用布局方法。子项递归地执行自己的布局，然后通过返回布局方法将几何返回到树中。重要的是，一旦渲染对象从其布局方法返回，该渲染对象将不再被访问，直到下一帧的布局。这种方法将可能单独的度量和布局传递组合成单个传递，因此，每个渲染对象在布局期间最多访问两次：一次在树下，一次在树上。</p>
+<p>Flutter 有这个通用协议的几个专业。最常见的专业是 RenderBox，它以二维笛卡尔坐标运算。在框布局中，约束是最小和最大宽度以及最小和最大高度。在布局期间，子项通过选择这些边界内的大小来确定其几何。孩子从布局返回后，父母决定孩子在父母坐标系中的位置。请注意，孩子的布局不能取决于孩子的位置，因为孩子的位置直到孩子从布局返回后才确定。因此，父母可以自由地重新定位孩子，而无需重新计算孩子的布局。</p>
+<p>更一般地说，在布局期间，从父节点传递到子节点的唯一信息是约束，并且从子节点流向父节点的唯一信息是几何体。这些不变量可以减少布局期间所需的工作量：</p>
+<ul>
+<li>
+<p>如果孩子没有将自己的布局标记为脏，则孩子可以立即从布局返回，切断步行，只要父母给孩子的约束与孩子在前一个布局中收到的约束相同。</p>
+</li>
+<li>
+<p>每当父级调用子级的布局方法时，父级指示它是否使用从子级返回的大小信息。如果经常发生父级不使用大小信息，那么如果子级选择新大小，则父级不需要重新计算其布局，因为父级保证新大小将符合现有约束。</p>
+</li>
+<li>
+<p>严格约束是指只能通过一个有效几何体来满足的约束。例如，如果最小和最大宽度彼此相等并且最小和最大高度彼此相等，则满足这些约束的唯一尺寸是具有该宽度和高度的尺寸。如果父级提供严格约束，则父级无需在子级重新计算其布局时重新计算其布局，即使父级在其布局中使用子级的大小，因为子级无法在没有父级的新约束的情况下更改大小。</p>
+</li>
+<li>
+<p>渲染对象可以声明它仅使用父级提供的约束来确定其几何。这样的声明通知框架该子渲染对象的父级在子级重新计算其布局时不需要重新计算其布局，即使约束不紧，即使父级的布局取决于子级的大小，因为子级无法更改大小没有来自其父级的新约束。</p>
+</li>
+</ul>
+<p>作为这些优化的结果，当渲染对象树包含脏节点时，在布局期间仅访问那些节点以及它们周围的子树的有限部分。</p>
+<h3 id="次线性小部件构建">次线性小部件构建</h3>
+<p>与布局算法类似，Flutter 的小部件构建算法是次线性的。构建之后，小部件由元素树保存，元素树保留用户界面的逻辑结构。元素树是必要的，因为小部件本身是不可变的，这意味着（除其他外），它们不能记住它们与其他小部件的父或子关系。元素树还包含与有状态窗口小部件关联的状态对象。</p>
+<p>响应于用户输入（或其他刺激），元素可能变脏，例如，如果开发人员在关联的状态对象上调用 setState（）。框架保留一个脏元素列表，并在构建阶段直接跳转到它们，跳过干净的元素。在构建阶段，信息在元素树中单向流动，这意味着在构建阶段期间每个元素最多访问一次。清洁后，元素不会再次变脏，因为通过感应，它的所有祖先元素也都是干净的。</p>
+<p>因为窗口小部件是不可变的，所以如果元素没有将自身标记为脏，则元素可以立即从构建返回，如果父级使用相同的窗口小部件重建元素，则会切断步行。此外，元素只需要比较两个窗口小部件引用的对象标识，以确定新窗口小部件与旧窗口小部件相同。开发人员利用此优化来实现重投影模式，其中窗口小部件包括在其构建中存储为成员变量的预构建子窗口小部件。</p>
+<p>在构建期间，Flutter 还避免使用 InheritedWidgets 遍历父链。如果窗口小部件通常走他们的父链，例如确定当前的主题颜色，则构建阶段将在树的深度变为 O（N 2），由于积极的组合，这可能非常大。为了避免这些父行为，框架通过在每个元素上维护一个 InheritedWidgets 的哈希表来向下推送元素树中的信息。通常，许多元素将引用相同的哈希表，该哈希表仅在引入新的 InheritedWidget 的元素上更改。</p>
+<h3 id="线性对比">线性对比</h3>
+<p>与流行的看法相反，Flutter 不使用树差异算法。相反，框架通过使用 O（N）算法独立地检查每个元素的子列表来决定是否重用元素。子列表协调算法针对以下情况进行了优化：</p>
+<ul>
+<li>旧子列表为空。</li>
+<li>两个列表是相同的。</li>
+<li>在列表中的一个位置插入或删除一个或多个小部件。</li>
+<li>如果每个列表包含具有相同键的窗口小部件，则匹配两个窗口小部件。</li>
+</ul>
+<p>一般方法是通过比较每个小部件的运行时类型和键来匹配两个子列表的开头和结尾，可能在包含所有不匹配子节点的每个列表的中间找到非空范围。然后，框架将旧子列表中的子项放入基于其键的哈希表中。接下来，框架遍历新子列表中的范围，并按键查询哈希表以进行匹配。无法对比的孩子被丢弃并从头开始重建，而匹配的孩子则用他们的新小部件重建。</p>
+<h3 id="树手术tree-surgery">树手术（Tree surgery）</h3>
+<p>重用元素对性能很重要，因为元素拥有两个关键数据：状态小部件的状态和底层的渲染对象。当框架能够重用元素时，保留用户界面的逻辑部分的状态，并且可以重用先前计算的布局信息，通常避免整个子树遍历。事实上，重用元素非常有价值，Flutter 支持非本地树突变，可以保留状态和布局信息。</p>
+<p>开发人员可以通过将 GlobalKey 与其中一个小部件相关联来执行非本地树突变。每个全局密钥在整个应用程序中都是唯一的，并使用特定于线程的哈希表进行注册。在构建阶段，开发人员可以使用全局键将窗口小部件移动到元素树中的任意位置。框架将检查哈希表，并将现有元素从其先前位置重新显示到新位置，而不是在该位置构建新元素，而是保留整个子树。</p>
+<p>重新构造的子树中的渲染对象能够保留其布局信息，因为布局约束是渲染树中从父级传递到子级的唯一信息。新父级被标记为脏，因为其子列表已更改，但如果新父级传递子级具有子级从其旧父级接收的相同布局限制，则子级可以立即从布局返回，从而切断遍历。</p>
+<p>开发人员广泛使用全局键和非本地树突变来实现英雄过渡和导航等效果。</p>
+<h3 id="恒定因子优化constant-factor-optimizations">恒定因子优化（Constant-factor optimizations）</h3>
+<p>除了这些算法优化之外，实现积极的可组合性还依赖于几个重要的恒定因子优化。这些优化在上面讨论的主要算法的叶子中是最重要的。</p>
+<ul>
+<li>子布局模型不可知论者。与大多数使用子列表的工具包不同，Flutter 的渲染树不会提交给特定的子模型。例如，RenderBox 类有一个抽象的 visitChildren（）方法，而不是具体的 firstChild 和 nextSibling 接口。许多子类仅支持单个子项，直接作为成员变量而不是子项列表。例如，RenderPadding 仅支持单个子节点，因此，布局方法更简单，执行时间更短。</li>
+<li>视觉渲染树，逻辑小部件树。在 Flutter 中，渲染树在与设备无关的视觉坐标系中操作，这意味着即使当前读取方向是从右到左，x 坐标中的较小值也始终向左。小部件树通常在逻辑坐标中操作，意味着具有开始和结束值，其视觉解释取决于阅读方向。从逻辑坐标到可视坐标的转换是在小部件树和渲染树之间的切换中完成的。这种方法更有效，因为渲染树中的布局和绘制计算比窗口小部件到渲染树的切换更频繁，并且可以避免重复的坐标转换。</li>
+<li>由专门的渲染对象处理的文本。绝大多数渲染对象都不了解文本的复杂性。相反，文本由专门的渲染对象 RenderParagraph 处理，RenderParagraph 是渲染树中的叶子。开发人员不是使用文本感知渲染对象进行子类化，而是使用合成将文本合并到用户界面中。这种模式意味着 RenderParagraph 可以避免重新计算其文本布局，只要其父级提供相同的布局约束，这是常见的，即使在树手术期间也是如此。</li>
+<li>可观察的对象。颤动使用模型观察和反应范例。显然，反应范式占主导地位，但 Flutter 对一些叶子数据结构使用可观察的模型对象。例如，动画在值发生变化时通知观察者列表。颤动将这些可观察对象从小部件树移交给渲染树，渲染树直接观察它们并且在它们改变时仅使管道的适当阶段无效。例如，对动画的更改可能仅触发绘制阶段，而不是构建和绘制阶段。</li>
+</ul>
+<p>这些优化结合起来并总结了积极构图所产生的大树，对性能产生了重大影响。</p>
+<h2 id="无限滚动">无限滚动</h2>
+<p>无限的滚动列表对于工具包来说是非常困难的。 Flutter 支持基于构建器模式的简单接口的无限滚动列表，其中 ListView 使用回调按需构建窗口小部件，因为它们在滚动期间对用户可见。支持此功能需要视口感知布局和按需构建窗口小部件。</p>
+<h3 id="视口感知布局">视口感知布局</h3>
+<p>像 Flutter 中的大多数东西一样，可滚动的小部件是使用合成构建的。可滚动窗口小部件的外部是一个视口，它是一个“内部较大”的框，这意味着它的子窗口可以超出视口的边界，并可以滚动到视图中。但是，视口不是具有 RenderBox 子元素，而是具有 RenderSliv​​er 子元素，称为<em>Slivers</em>，具有视口感知布局协议。</p>
+<p><em>Slivers</em>布局协议与框布局协议的结构相匹配，因为父级将约束传递给子级并返回接收几何。但是，约束和几何数据在两个协议之间不同 ​​。在<em>Slivers</em>协议中，向孩子们提供有关视口的信息，包括剩余的可见空间量。它们返回的几何数据可实现各种滚动链接效果，包括可折叠标题和视差。</p>
+<p>不同的条纹以不同的方式填充视口中可用的空间。例如，产生儿童线性列表的<em>Slivers</em>按顺序排列每个孩子，直到<em>Slivers</em>用完儿童或用完空间。类似地，产生二维儿童网格的<em>Slivers</em>仅填充其可见的网格部分。因为他们知道可以看到多少空间，所以即使他们有可能产生无限数量的儿童，也可以产生有限数量的儿童。</p>
+<p>可以组合 Slivers 来创建定制的可滚动布局和效果。例如，单个视口可以具有可折叠标题，后跟线性列表，然后是网格。所有三个<em>Slivers</em>都将通过<em>Slivers</em>布局协议进行协作，以仅生成通过视口实际可见的子项，无论这些子项是否属于标题，列表或网格。</p>
+<h3 id="按需构建小部件">按需构建小部件</h3>
+<p>如果 Flutter 有一个严格的构建 - 然后 - 布局 - 然后 - 绘制管道，前面的内容将不足以实现无限滚动列表，因为通过视口可以看到多少空间的信息仅在布局阶段可用。如果没有额外的机器，布局阶段就太晚了，无法构建填充空间所需的小部件。 Flutter 通过交错管道的构建和布局阶段来解决这个问题。在布局阶段的任何时候，<em>只要这些小部件是当前执行布局的渲染对象的后代</em>，框架就可以开始按需构建新的小部件。</p>
+<p>只有在构建和布局算法中对信息传播进行严格控制，才能实现交错构建和布局。具体而言，在构建阶段，信息只能在树下传播。当渲染对象正在执行布局时，布局遍历没有访问该渲染对象下面的子树，这意味着通过在该子树中构建而生成的写入不能使到目前为止已进入布局计算的任何信息无效。类似地，一旦布局从渲染对象返回，在此布局期间将永远不再访问该渲染对象，这意味着后续布局计算生成的任何写入都不会使用于构建渲染对象的子树的信息无效。</p>
+<p>此外，线性协调和树形外观对于在滚动期间有效更新元素以及在元素在视口边缘滚动进出视图时修改渲染树至关重要。</p>
+<h2 id="api-人体工程学api-ergonomics">API 人体工程学（API Ergonomics）</h2>
+<p>快速只有在框架能够有效使用时才有意义。为了引导 Flutter 的 API 设计更具可用性，Flutter 已经在开发人员的广泛用户体验研究中反复测试过。这些研究有时会确认已有的设计决策，有时可以帮助指导功能的优先级，有时会改变 API 设计的方向。例如，Flutter 的 API 记录很多;用户体验研究证实了此类文档的价值，但也强调了专门针对示例代码和说明性图表的需求。</p>
+<p>本节讨论 Flutter API 设计中为帮助可用性而做出的一些决策。</p>
+<h3 id="专门用于匹配开发人员思维模式的-api">专门用于匹配开发人员思维模式的 API</h3>
+<p>Flutter 的 Widget，Element 和 RenderObject 树中节点的基类未定义子模型。这允许每个节点专用于适用于该节点的子模型。</p>
+<p>大多数 Widget 对象都有一个子 Widget，因此只显示一个子参数。一些小部件支持任意数量的子节点，并公开带有列表的子参数。有些小部件根本没有任何子节点，并且没有内存，也没有任何参数。同样，RenderObjects 公开特定于其子模型的 API。 RenderImage 是一个叶子节点，没有子节点的概念。 RenderPadding 只占用一个子节点，因此它具有存储单指针的单个指针。 RenderFlex 占用任意数量的子节点并将其作为链表进行管理。</p>
+<p>在极少数情况下，使用更复杂的子模型。 RenderTable 渲染对象的构造函数接受一个子数组数组，该类公开控制行数和列数的 getter 和 setter，并且有一些特定的方法用 x，y 坐标替换单个子节点，以添加一行，以提供一个新的子数组数组，并用一个数组和一个列数替换整个子列表。在实现中，对象不像大多数渲染对象那样使用链接列表，而是使用可索引数组。</p>
+<p>Chip 小部件和 InputDecoration 对象具有与相关控件上存在的插槽匹配的字段。如果一个通用的子模型将强制语义分层在子列表之上，例如，将第一个子项定义为前缀值，将第二个子项定义为后缀，则专用子模型允许用于替代使用的专用命名属性。</p>
+<p>这种灵活性允许这些树中的每个节点以其最常用的角色进行操作。很少想要在表格中插入一个单元格，导致所有其他单元格环绕;同样，很少想要通过索引而不是通过引用从 flex 行中删除子项。</p>
+<p>RenderParagraph 对象是 ​​ 最极端的情况：它有一个完全不同类型的子 TextSpan。在 RenderParagraph 边界处，RenderObject 树转换为 TextSpan 树。</p>
+<p>专门用于满足开发人员期望的 API 的整体方法不仅适用于儿童模型。</p>
+<p>一些相当琐碎的小部件专门存在，以便开发人员在寻找问题的解决方案时会找到它们。一旦知道如何使用 Expanded 小部件和零大小的 SizedBox 子级，就可以轻松地为行或列添加空格，但发现该模式是不必要的，因为搜索空间会揭示 Spacer 小部件，它直接使用 Expanded 和 SizedBox 达到效果。</p>
+<p>类似地，通过根本不在构建中包括窗口小部件子树，可以容易地隐藏窗口小部件子树。但是，开发人员通常希望有一个小部件来执行此操作，因此存在可见性小部件以将此模式包装在一个简单的可重用小部件中。</p>
+<h3 id="明确的论点explicit-arguments">明确的论点（Explicit arguments）</h3>
+<p>UI 框架往往具有许多属性，因此开发人员很少能够记住每个类的每个构造函数参数的语义含义。由于 Flutter 使用反应范例，因此 Flutter 中的构建方法通常会对构造函数进行多次调用。通过利用 Dart 对命名参数的支持，Flutter 的 API 能够使这些构建方法保持清晰易懂。</p>
+<p>此模式扩展到具有多个参数的任何方法，特别是扩展到任何布尔参数，以便方法调用中隔离的 true 或 false 文字始终是自我记录的。此外，为避免通常由 API 中的双重否定引起的混淆，布尔参数和属性始终以正形式命名（例如，enabled：true 而不是 disabled：false）。</p>
+<h3 id="摊铺陷阱paving-over-pitfalls">摊铺陷阱（Paving over pitfalls）</h3>
+<p>在 Flutter 框架中的许多地方使用的技术是定义 API，使得不存在错误条件。这样可以避免考虑整个错误类别。</p>
+<p>例如，插值函数允许插值的一端或两端为空，而不是将其定义为错误情况：两个空值之间的插值始终为空，并且从空值或空值插值等效于对给定类型插值为零模拟。这意味着不小心将 null 传递给插值函数的开发人员不会遇到错误情况，而是会获得合理的结果。</p>
+<p>一个更微妙的例子是 Flex 布局算法。这种布局的概念是赋予 flex 渲染对象的空间在其子节点之间划分，因此 flex 的大小应该是整个可用空间。在原始设计中，提供无限空间会失败：这意味着 flex 应该是无限大小的，无用的布局配置。相反，调整了 API，以便在为 flex 渲染对象分配无限空间时，渲染对象会调整其大小以适应子节点的所需大小，从而减少可能的错误情况数。</p>
+<p>该方法还用于避免具有允许创建不一致数据的构造函数。例如，PointerDownEvent 构造函数不允许将 PointerEvent 的 down 属性设置为 false（这种情况会自相矛盾）;相反，构造函数没有 down 字段的参数，并始终将其设置为 true。</p>
+<p>通常，该方法是为输入域中的所有值定义有效解释。最简单的例子是 Color 构造函数。而不是取四个整数，一个用于红色，一个用于绿色，一个用于蓝色，一个用于 alpha，每个都可能超出范围，默认构造函数采用单个整数值，并定义每个位的含义（对于例如，底部的八位定义红色分量），因此任何输入值都是有效的颜色值。</p>
+<p>一个更精细的例子是 paintImage（）函数。此函数需要 11 个参数，其中一些具有相当宽的输入域，但它们经过精心设计，大部分彼此正交，因此很少有无效组合。</p>
+<h3 id="积极报告错误案例">积极报告错误案例</h3>
+<p>聆听翻译 并非所有错误条件都可以设计出来。对于那些剩下的，在调试版本中，Flutter 通常会尝试很早地捕获错误并立即报告它们。断言被广泛使用。构造函数参数详细检查完整性。监视生命周期，当检测到不一致时，它们会立即引发异常。</p>
+<p>在某些情况下，这是极端的：例如，在运行单元测试时，无论测试正在做什么，每个积极布局的 RenderBox 子类都会检查其内在的大小调整方法是否满足内部大小调整合同。这有助于捕获可能无法执行的 API 中的错误。</p>
+<p>抛出异常时，它们包含尽可能多的信息。 Flutter 的一些错误消息会主动探测相关的堆栈跟踪，以确定实际错误的最可能位置。其他人走相关树来确定不良数据的来源。最常见的错误包括详细说明，包括在某些情况下用于避免错误的示例代码或指向其他文档的链接。</p>
+<h3 id="响应式范式reactive-paradigm">响应式范式（Reactive paradigm）</h3>
+<p>可变的基于树的 API 受二元访问模式的影响：创建树的原始状态通常使用与后续更新完全不同的操作集。 Flutter 的渲染层使用这种范例，因为它是维护持久树的有效方法，这是高效布局和绘画的关键。然而，这意味着与渲染层的直接交互充其量是尴尬的，并且在最坏的情况下容易出错。</p>
+<p>Flutter 的小部件层引入了一个使用反应范式来操作底层渲染树的组合机制。此 API 通过将树创建和树变异步骤组合到单个树描述（构建）步骤中抽象出树操作，其中，在每次更改系统状态之后，开发人员描述用户界面的新配置。 framework 计算反映这种新配置所必需的一系列树突变。</p>
+<h3 id="插值interpolation-">插值（Interpolation ）</h3>
+<p>由于 Flutter 的框架鼓励开发人员描述与当前应用程序状态匹配的接口配置，因此存在一种在这些配置之间隐式动画的机制。</p>
+<p>例如，假设在状态 S1 中接口由一个圆组成，但在状态 S2 中它由一个正方形组成。如果没有动画机制，状态更改将会有一个不和谐的界面更改。隐式动画允许圆在几帧上平滑平方。</p>
+<p>每个可以隐式动画的特征都有一个有状态小部件，它保存输入当前值的记录，并在输入值改变时开始动画序列，在指定的持续时间内从当前值转换为新值。</p>
+<p>这是使用 lerp（线性插值）函数使用不可变对象实现的。每个状态（在这种情况下为圆形和方形）表示为不可变对象，配置有适当的设置（颜色，笔触宽度等）并知道如何绘制自身。当在动画期间绘制中间步骤时，将开始和结束值传递给适当的 lerp 函数以及表示动画点的值，其中 0.0 表示开始，1.0 表示结束，函数返回表示中间阶段的第三个不可变对象。</p>
+<p>对于圆到边的过渡，lerp 函数将返回一个表示“圆角正方形”的对象，其半径描述为从 t 值导出的分数，使用颜色的 lerp 函数插值的颜色和笔划使用 lerp 函数对双精度进行插值。该对象实现与圆形和正方形相同的界面，然后可以在请求时绘制自己。</p>
+<p>这种技术允许状态机制，状态到配置的映射，动画机制，插值机制，以及与如何绘制每个帧完全相互分离有关的特定逻辑。</p>
+<p>这种方法广泛适用。在 Flutter 中，可以插入基本类型（如颜色和形状），但也可以使用更精细的类型，例如装饰，TextStyle 或主题。这些通常由可以自己插值的组件构成，并且插入更复杂的对象通常就像递归插值描述复杂对象的所有值一样简单。</p>
+<p>某些可插入对象由类层次结构定义。例如，形状由 ShapeBorder 接口表示，并且存在各种形状，包括 BeveledRectangleBorder，BoxBorder，CircleBorder，RoundedRectangleBorder 和 StadiumBorder。单个 lerp 函数不能具有所有可能类型的先验知识，因此接口定义了 lerpFrom 和 lerpTo 方法，静态 lerp 方法遵循这些方法。当被告知从形状 A 插入到形状 B 时，首先询问它是否可以从 A 变形，然后，如果它不能，则向 A 询问它是否可以变为 B.（如果两者都不可能，则该函数返回 A 从 t 小于 0.5 的值，否则返回 B.）</p>
+<p>这允许任意扩展类层次结构，后面的添加能够在先前已知的值和它们自身之间进行插值。</p>
+<p>在某些情况下，插值本身不能由任何可用类描述，并且定义私有类来描述中间阶段。例如，在 CircleBorder 和 RoundedRectangleBorder 之间进行插值时就是这种情况。</p>
+<p>这种机制还有一个额外的优点：它可以处理从中间阶段到新值的插值。例如，在圆形到方形过渡的中途，形状可以再次改变，导致动画需要插入到三角形。只要三角形类可以从圆角方形中间类中获得，就可以无缝地执行转换。</p>
+<h2 id="结论conclusion">结论（Conclusion）</h2>
+<p>Flutter 的口号“一切都是小部件”，围绕着构建用户界面，通过组合小部件来构建，小部件又由逐步更基本的小部件组成。这种积极组合的结果是大量的小部件需要精心设计的算法和数据结构才能有效地处理。通过一些额外的设计，这些数据结构还使开发人员可以轻松创建无限滚动列表，以便在可见时按需构建窗口小部件。</p>
+<hr>
+
+      
+      </ul>
+    </div>
+<div class="post_comments">
+  
+  
+    
+ <script src="https://utteranc.es/client.js"
+         repo="Caijinglong/kikt-blog-comment"
+         issue-term="pathname"
+         theme="github-light"
+         crossorigin="anonymous"
+         async>
+ </script>
+ 
+  
+  
+</div>
+
+
+
+
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    <br>
+    
+  
+  <div class="search">
+    <input type="search" class="search_field form_field" placeholder='Search...' id="find" autocomplete="off" data-scope='posts'>
+    <label for="find" class="search_label"><svg class="icon">
+  <title>search</title>
+  <use xlink:href="#search"></use>
+</svg>
+
+    </label>
+    
+    <div class="search_results results"></div>
+  </div>
+
+        <h2>CaiJingLong</h2>
+      <div class="author_bio">
+        一个移动开发者，致力于全栈
+      </div>
+      <a href='https://kikt.top/about/' class="button mt-1" role="button" title='阅读更多'>阅读更多</a>
+
+    
+    
+    <h2 class="mt-4">精选文章</h2>
+    <ul>
+      <li>
+        <a href="https://kikt.top/posts/kotlin-compose/kotlin-compose-05-mouse-event/" class="nav-link" title="Kotlin Compose 05 鼠标事件">Kotlin Compose 05 鼠标事件</a>
+      </li>
+    </ul>
+    <h2 class="mt-4">最新文章</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="https://kikt.top/posts/gradle/03/%E7%BC%96%E5%86%99-plugin/" class="nav-link" title="Gradle 编写Plugin">Gradle 编写Plugin</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/01/basic/03-buildsrc/" class="nav-link" title="Gradle buildSrc">Gradle buildSrc</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/01/03-gradle_wrapper/" class="nav-link" title="Gradle Wrapper">Gradle Wrapper</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/" class="nav-link" title="Gradle 的约定式概念">Gradle 的约定式概念</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/03-plugin/" class="nav-link" title="Gradle Plugin">Gradle Plugin</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/posts/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle 命令行工具的使用">Gradle 命令行工具的使用</a>
+      </li>
+    </ul>
+    <div>
+      <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
+      <nav class="tags_nav">
+        <a href='https://kikt.top/categories/flutter/' class="post_tag button button_translucent" title="flutter">
+          FLUTTER
+          <span class="button_tally">60</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/android/' class="post_tag button button_translucent" title="android">
+          ANDROID
+          <span class="button_tally">25</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
+          GRADLE
+          <span class="button_tally">12</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
+          IOS
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/java/' class="post_tag button button_translucent" title="java">
+          JAVA
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/dart/' class="post_tag button button_translucent" title="dart">
+          DART
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/kotlin-compose/' class="post_tag button button_translucent" title="kotlin-compose">
+          KOTLIN-COMPOSE
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/server/' class="post_tag button button_translucent" title="server">
+          SERVER
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/github/' class="post_tag button button_translucent" title="github">
+          GITHUB
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/other/' class="post_tag button button_translucent" title="other">
+          OTHER
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/spring/' class="post_tag button button_translucent" title="spring">
+          SPRING
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/caddy/' class="post_tag button button_translucent" title="caddy">
+          CADDY
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/go/' class="post_tag button button_translucent" title="go">
+          GO
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+        <br>
+        <div class="post_tags_toggle button">所有分类</div>
+        <div class="post_tags">
+          <div class="tags_list">
+            
+            <a href='https://kikt.top/categories/android/' class=" post_tag button button_translucent" data-position=25 title="android">ANDROID<span class="button_tally">25</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/caddy/' class=" post_tag button button_translucent" data-position=1 title="caddy">CADDY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/dart/' class=" post_tag button button_translucent" data-position=5 title="dart">DART<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/docker/' class=" post_tag button button_translucent" data-position=3 title="docker">DOCKER<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/flutter/' class=" post_tag button button_translucent" data-position=60 title="flutter">FLUTTER<span class="button_tally">60</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/github/' class=" post_tag button button_translucent" data-position=3 title="github">GITHUB<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/go/' class=" post_tag button button_translucent" data-position=1 title="go">GO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/golang/' class=" post_tag button button_translucent" data-position=1 title="golang">GOLANG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/ios/' class=" post_tag button button_translucent" data-position=7 title="ios">IOS<span class="button_tally">7</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/java/' class=" post_tag button button_translucent" data-position=6 title="java">JAVA<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/jetbrains/' class=" post_tag button button_translucent" data-position=1 title="jetbrains">JETBRAINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/kotlin-compose/' class=" post_tag button button_translucent" data-position=5 title="kotlin-compose">KOTLIN-COMPOSE<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/other/' class=" post_tag button button_translucent" data-position=3 title="other">OTHER<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/python/' class=" post_tag button button_translucent" data-position=1 title="python">PYTHON<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/server/' class=" post_tag button button_translucent" data-position=5 title="server">SERVER<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/spring/' class=" post_tag button button_translucent" data-position=3 title="spring">SPRING<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/tools/' class=" post_tag button button_translucent" data-position=1 title="tools">TOOLS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/%E6%9D%82%E9%A1%B9/' class=" post_tag button button_translucent" data-position=1 title="杂项">杂项<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/%E6%B6%82%E9%B8%A6/' class=" post_tag button button_translucent" data-position=1 title="涂鸦">涂鸦<span class="button_tally">1</span>
+            </a>
+            
+            <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
+            </div>
+            <span class="tags_hide"><svg class="icon">
+            <use xlink:href="#closeme"></use>
+          </svg></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">标签</h2>
+      <nav class="tags_nav">
+        <a href='https://kikt.top/tags/flutter/' class="post_tag button button_translucent" title="flutter">
+          FLUTTER
+          <span class="button_tally">62</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/android/' class="post_tag button button_translucent" title="android">
+          ANDROID
+          <span class="button_tally">27</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
+          GRADLE
+          <span class="button_tally">14</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
+          IOS
+          <span class="button_tally">9</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/dart/' class="post_tag button button_translucent" title="dart">
+          DART
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/java/' class="post_tag button button_translucent" title="java">
+          JAVA
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/swift/' class="post_tag button button_translucent" title="swift">
+          SWIFT
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/10/' class="post_tag button button_translucent" title="10">
+          10
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/androidq/' class="post_tag button button_translucent" title="androidq">
+          ANDROIDQ
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/github/' class="post_tag button button_translucent" title="github">
+          GITHUB
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/kotlin-compose/' class="post_tag button button_translucent" title="kotlin-compose">
+          KOTLIN-COMPOSE
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/server/' class="post_tag button button_translucent" title="server">
+          SERVER
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/%E9%9A%90%E7%A7%81/' class="post_tag button button_translucent" title="隐私">
+          隐私
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/channel/' class="post_tag button button_translucent" title="channel">
+          CHANNEL
+          <span class="button_tally">4</span>
+        </a>
+        
+        
+        <br>
+        <div class="post_tags_toggle button">所有标签</div>
+        <div class="post_tags">
+          <div class="tags_list">
+            
+            <a href='https://kikt.top/tags/10/' class=" post_tag button button_translucent" data-position=5 title="10">10<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/2.3/' class=" post_tag button button_translucent" data-position=1 title="2.3">2.3<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/aar/' class=" post_tag button button_translucent" data-position=3 title="aar">AAR<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/actions/' class=" post_tag button button_translucent" data-position=1 title="actions">ACTIONS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/aidl/' class=" post_tag button button_translucent" data-position=1 title="aidl">AIDL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/android/' class=" post_tag button button_translucent" data-position=27 title="android">ANDROID<span class="button_tally">27</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/androidq/' class=" post_tag button button_translucent" data-position=5 title="androidq">ANDROIDQ<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/androidx/' class=" post_tag button button_translucent" data-position=1 title="androidx">ANDROIDX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/apk/' class=" post_tag button button_translucent" data-position=1 title="apk">APK<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/app/' class=" post_tag button button_translucent" data-position=1 title="app">APP<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/appcode/' class=" post_tag button button_translucent" data-position=1 title="appcode">APPCODE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/azure/' class=" post_tag button button_translucent" data-position=1 title="azure">AZURE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ble/' class=" post_tag button button_translucent" data-position=1 title="ble">BLE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/bottomsheet/' class=" post_tag button button_translucent" data-position=1 title="bottomsheet">BOTTOMSHEET<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/butterknife/' class=" post_tag button button_translucent" data-position=1 title="butterknife">BUTTERKNIFE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/c/' class=" post_tag button button_translucent" data-position=2 title="c">C<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/caddy/' class=" post_tag button button_translucent" data-position=2 title="caddy">CADDY<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/camera/' class=" post_tag button button_translucent" data-position=1 title="camera">CAMERA<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/camerax/' class=" post_tag button button_translucent" data-position=1 title="camerax">CAMERAX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/channel/' class=" post_tag button button_translucent" data-position=4 title="channel">CHANNEL<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/clipboard/' class=" post_tag button button_translucent" data-position=1 title="clipboard">CLIPBOARD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/cocoapods/' class=" post_tag button button_translucent" data-position=1 title="cocoapods">COCOAPODS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/cupertino/' class=" post_tag button button_translucent" data-position=1 title="cupertino">CUPERTINO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/dart/' class=" post_tag button button_translucent" data-position=6 title="dart">DART<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/desktop/' class=" post_tag button button_translucent" data-position=4 title="desktop">DESKTOP<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/dialog/' class=" post_tag button button_translucent" data-position=2 title="dialog">DIALOG<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/dmg/' class=" post_tag button button_translucent" data-position=1 title="dmg">DMG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/doc/' class=" post_tag button button_translucent" data-position=1 title="doc">DOC<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/docker/' class=" post_tag button button_translucent" data-position=4 title="docker">DOCKER<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/docker-compose/' class=" post_tag button button_translucent" data-position=1 title="docker-compose">DOCKER-COMPOSE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/excel/' class=" post_tag button button_translucent" data-position=1 title="excel">EXCEL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/exists/' class=" post_tag button button_translucent" data-position=2 title="exists">EXISTS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/faq/' class=" post_tag button button_translucent" data-position=1 title="faq">FAQ<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/fastlane/' class=" post_tag button button_translucent" data-position=1 title="fastlane">FASTLANE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ffi/' class=" post_tag button button_translucent" data-position=2 title="ffi">FFI<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ffmpeg/' class=" post_tag button button_translucent" data-position=3 title="ffmpeg">FFMPEG<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/flexmark/' class=" post_tag button button_translucent" data-position=1 title="flexmark">FLEXMARK<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/flutter/' class=" post_tag button button_translucent" data-position=62 title="flutter">FLUTTER<span class="button_tally">62</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/focus/' class=" post_tag button button_translucent" data-position=2 title="focus">FOCUS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/focusnode/' class=" post_tag button button_translucent" data-position=2 title="focusnode">FOCUSNODE<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/form/' class=" post_tag button button_translucent" data-position=1 title="form">FORM<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/framework/' class=" post_tag button button_translucent" data-position=1 title="framework">FRAMEWORK<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/github/' class=" post_tag button button_translucent" data-position=5 title="github">GITHUB<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/go/' class=" post_tag button button_translucent" data-position=3 title="go">GO<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/golang/' class=" post_tag button button_translucent" data-position=1 title="golang">GOLANG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/http/' class=" post_tag button button_translucent" data-position=1 title="http">HTTP<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ide/' class=" post_tag button button_translucent" data-position=1 title="ide">IDE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/idea/' class=" post_tag button button_translucent" data-position=1 title="idea">IDEA<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/index/' class=" post_tag button button_translucent" data-position=1 title="index">INDEX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/inside/' class=" post_tag button button_translucent" data-position=1 title="inside">INSIDE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ios/' class=" post_tag button button_translucent" data-position=9 title="ios">IOS<span class="button_tally">9</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/java/' class=" post_tag button button_translucent" data-position=6 title="java">JAVA<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/javassist/' class=" post_tag button button_translucent" data-position=1 title="javassist">JAVASSIST<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/jenkins/' class=" post_tag button button_translucent" data-position=1 title="jenkins">JENKINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/jetbrains/' class=" post_tag button button_translucent" data-position=1 title="jetbrains">JETBRAINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/jsdelivr/' class=" post_tag button button_translucent" data-position=1 title="jsdelivr">JSDELIVR<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/json/' class=" post_tag button button_translucent" data-position=1 title="json">JSON<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/json_serializable/' class=" post_tag button button_translucent" data-position=1 title="json_serializable">JSON_SERIALIZABLE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/junit/' class=" post_tag button button_translucent" data-position=3 title="junit">JUNIT<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/kotlin-compose/' class=" post_tag button button_translucent" data-position=5 title="kotlin-compose">KOTLIN-COMPOSE<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/library/' class=" post_tag button button_translucent" data-position=1 title="library">LIBRARY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/loadmore/' class=" post_tag button button_translucent" data-position=1 title="loadmore">LOADMORE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/log/' class=" post_tag button button_translucent" data-position=1 title="log">LOG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/mac/' class=" post_tag button button_translucent" data-position=2 title="mac">MAC<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/macos/' class=" post_tag button button_translucent" data-position=1 title="macos">MACOS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/maven/' class=" post_tag button button_translucent" data-position=3 title="maven">MAVEN<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/migrate/' class=" post_tag button button_translucent" data-position=1 title="migrate">MIGRATE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/mysql/' class=" post_tag button button_translucent" data-position=1 title="mysql">MYSQL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/navigationbar/' class=" post_tag button button_translucent" data-position=2 title="navigationbar">NAVIGATIONBAR<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/navigator/' class=" post_tag button button_translucent" data-position=1 title="navigator">NAVIGATOR<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ndk/' class=" post_tag button button_translucent" data-position=3 title="ndk">NDK<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/nginx/' class=" post_tag button button_translucent" data-position=1 title="nginx">NGINX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/oc/' class=" post_tag button button_translucent" data-position=1 title="oc">OC<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/opencv/' class=" post_tag button button_translucent" data-position=1 title="opencv">OPENCV<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/poi/' class=" post_tag button button_translucent" data-position=1 title="poi">POI<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/pub/' class=" post_tag button button_translucent" data-position=3 title="pub">PUB<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/python/' class=" post_tag button button_translucent" data-position=1 title="python">PYTHON<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/retrofit/' class=" post_tag button button_translucent" data-position=2 title="retrofit">RETROFIT<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/route/' class=" post_tag button button_translucent" data-position=3 title="route">ROUTE<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/server/' class=" post_tag button button_translucent" data-position=5 title="server">SERVER<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/so/' class=" post_tag button button_translucent" data-position=2 title="so">SO<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/spp/' class=" post_tag button button_translucent" data-position=1 title="spp">SPP<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/sprintboot/' class=" post_tag button button_translucent" data-position=3 title="sprintboot">SPRINTBOOT<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/swift/' class=" post_tag button button_translucent" data-position=6 title="swift">SWIFT<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/tap/' class=" post_tag button button_translucent" data-position=2 title="tap">TAP<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/thymeleaf/' class=" post_tag button button_translucent" data-position=1 title="thymeleaf">THYMELEAF<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/tips/' class=" post_tag button button_translucent" data-position=1 title="tips">TIPS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/toast/' class=" post_tag button button_translucent" data-position=2 title="toast">TOAST<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/transition/' class=" post_tag button button_translucent" data-position=1 title="transition">TRANSITION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ui/' class=" post_tag button button_translucent" data-position=1 title="ui">UI<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/utf8/' class=" post_tag button button_translucent" data-position=1 title="utf8">UTF8<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/yield/' class=" post_tag button button_translucent" data-position=1 title="yield">YIELD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/' class=" post_tag button button_translucent" data-position=1 title="二进制">二进制<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BA%A4%E5%8F%89/' class=" post_tag button button_translucent" data-position=1 title="交叉">交叉<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/' class=" post_tag button button_translucent" data-position=1 title="交叉编译">交叉编译<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BB%8B%E7%BB%8D/' class=" post_tag button button_translucent" data-position=1 title="介绍">介绍<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/' class=" post_tag button button_translucent" data-position=1 title="代码规范">代码规范<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%86%B2%E7%AA%81/' class=" post_tag button button_translucent" data-position=2 title="冲突">冲突<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%8A%A8%E6%80%81/' class=" post_tag button button_translucent" data-position=1 title="动态">动态<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%8F%91%E5%B8%83/' class=" post_tag button button_translucent" data-position=1 title="发布">发布<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%8F%AF%E6%89%A7%E8%A1%8C/' class=" post_tag button button_translucent" data-position=1 title="可执行">可执行<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%9B%BE%E5%BA%8A/' class=" post_tag button button_translucent" data-position=1 title="图床">图床<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%9F%8E%E5%B8%82/' class=" post_tag button button_translucent" data-position=1 title="城市">城市<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%A4%A7%E6%96%87%E4%BB%B6/' class=" post_tag button button_translucent" data-position=1 title="大文件">大文件<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%B7%A5%E5%85%B7/' class=" post_tag button button_translucent" data-position=1 title="工具">工具<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE/' class=" post_tag button button_translucent" data-position=1 title="已有项目">已有项目<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/' class=" post_tag button button_translucent" data-position=1 title="开发环境">开发环境<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%80%BB%E7%BB%93/' class=" post_tag button button_translucent" data-position=1 title="总结">总结<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%85%A2/' class=" post_tag button button_translucent" data-position=1 title="慢">慢<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%89%93%E5%8C%85/' class=" post_tag button button_translucent" data-position=1 title="打包">打包<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%89%AB%E7%A0%81/' class=" post_tag button button_translucent" data-position=1 title="扫码">扫码<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%8F%92%E4%BB%B6/' class=" post_tag button button_translucent" data-position=1 title="插件">插件<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%96%87%E6%A1%A3/' class=" post_tag button button_translucent" data-position=1 title="文档">文档<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%A8%A1%E6%9D%BF/' class=" post_tag button button_translucent" data-position=1 title="模板">模板<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%B8%B2%E6%9F%93/' class=" post_tag button button_translucent" data-position=1 title="渲染">渲染<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/' class=" post_tag button button_translucent" data-position=1 title="源码解析">源码解析<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%81%B0%E5%BA%A6/' class=" post_tag button button_translucent" data-position=1 title="灰度">灰度<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%82%B9%E5%87%BB/' class=" post_tag button button_translucent" data-position=2 title="点击">点击<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%84%A6%E7%82%B9/' class=" post_tag button button_translucent" data-position=2 title="焦点">焦点<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%88%AC%E8%99%AB/' class=" post_tag button button_translucent" data-position=1 title="爬虫">爬虫<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/' class=" post_tag button button_translucent" data-position=1 title="状态管理">状态管理<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/' class=" post_tag button button_translucent" data-position=1 title="百度地图">百度地图<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%BC%96%E7%A0%81/' class=" post_tag button button_translucent" data-position=1 title="编码">编码<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/' class=" post_tag button button_translucent" data-position=1 title="编程技巧">编程技巧<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%BC%96%E8%AF%91/' class=" post_tag button button_translucent" data-position=1 title="编译">编译<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%BF%BB%E8%AF%91/' class=" post_tag button button_translucent" data-position=1 title="翻译">翻译<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E8%93%9D%E7%89%99/' class=" post_tag button button_translucent" data-position=1 title="蓝牙">蓝牙<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E8%A1%A8%E5%8D%95/' class=" post_tag button button_translucent" data-position=1 title="表单">表单<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E8%B7%AF%E7%94%B1/' class=" post_tag button button_translucent" data-position=1 title="路由">路由<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E8%BF%87%E5%9C%BA%E5%8A%A8%E7%94%BB/' class=" post_tag button button_translucent" data-position=1 title="过场动画">过场动画<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E9%9A%90%E7%A7%81/' class=" post_tag button button_translucent" data-position=5 title="隐私">隐私<span class="button_tally">5</span>
+            </a>
+            
+            <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
+            </div>
+            <span class="tags_hide"><svg class="icon">
+            <use xlink:href="#closeme"></use>
+          </svg></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+</aside>
+
+  
+</div>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/> 
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="to-top">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="xing">
+    <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/>
+  </symbol>
+</svg>
+
+
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://kikt.top/icons/apple-touch-icon.png' class="icon icon_2 transparent" alt="CaiJingLong">
+    <p>Copyright&nbsp;2015-&nbsp;<span class="year"></span>&nbsp;CAIJINGLONG. All Rights Reserved</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <title>to-top</title>
+  <use xlink:href="#to-top"></use>
+</svg>
+
+</a>
+
+  </div>
+</footer>
+
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+
+  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+
+    
+  </body>
+</html>

@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 22 Jul 2020 09:29:11 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/focusnode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Flutter FocusNode 焦点那点事-(二)</title>
-      <link>https://kikt.top/post/flutter/focusnode-2/</link>
+      <link>https://kikt.top/posts/flutter/focusnode-2/</link>
       <pubDate>Wed, 22 Jul 2020 09:29:11 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/focusnode-2/</guid>
+      <guid>https://kikt.top/posts/flutter/focusnode-2/</guid>
       <description>
         
           
@@ -34,10 +34,10 @@ Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主�
     
     <item>
       <title>Flutter FocusNode 焦点那点事-(一)</title>
-      <link>https://kikt.top/post/flutter/focusnode-1/</link>
+      <link>https://kikt.top/posts/flutter/focusnode-1/</link>
       <pubDate>Tue, 21 Jul 2020 11:22:10 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/focusnode-1/</guid>
+      <guid>https://kikt.top/posts/flutter/focusnode-1/</guid>
       <description>
         
           

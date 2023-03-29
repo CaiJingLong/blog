@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 30 Apr 2020 17:23:14 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/route/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Navigator Helper2</title>
-      <link>https://kikt.top/post/flutter/route/navigator-helper2/</link>
+      <link>https://kikt.top/posts/flutter/route/navigator-helper2/</link>
       <pubDate>Thu, 30 Apr 2020 17:23:14 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/route/navigator-helper2/</guid>
+      <guid>https://kikt.top/posts/flutter/route/navigator-helper2/</guid>
       <description>
         
           
@@ -33,10 +33,10 @@ GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 
     
     <item>
       <title>flutter中的过场动画 PageTransitionsTheme</title>
-      <link>https://kikt.top/post/flutter/route-anim/</link>
+      <link>https://kikt.top/posts/flutter/route-anim/</link>
       <pubDate>Mon, 24 Feb 2020 17:55:49 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/route-anim/</guid>
+      <guid>https://kikt.top/posts/flutter/route-anim/</guid>
       <description>
         
           
@@ -58,10 +58,10 @@ GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 
     
     <item>
       <title>Flutter 一个简单的Route Helper/Navigator Helper</title>
-      <link>https://kikt.top/post/flutter/flutter-simple-route-helper/</link>
+      <link>https://kikt.top/posts/flutter/flutter-simple-route-helper/</link>
       <pubDate>Wed, 05 Sep 2018 12:13:39 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-simple-route-helper/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-simple-route-helper/</guid>
       <description>
         
           

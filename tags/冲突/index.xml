@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 23 Aug 2018 12:12:19 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E5%86%B2%E7%AA%81/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Flutter 依赖冲突解决</title>
-      <link>https://kikt.top/post/flutter/flutter-depo-conflict/</link>
+      <link>https://kikt.top/posts/flutter/flutter-depo-conflict/</link>
       <pubDate>Thu, 23 Aug 2018 12:12:19 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-depo-conflict/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-depo-conflict/</guid>
       <description>
         
           
@@ -39,10 +39,10 @@ git 依赖的引用方式可以参考 ,
     
     <item>
       <title>android 依赖冲突</title>
-      <link>https://kikt.top/post/android/android-repo-confire/</link>
+      <link>https://kikt.top/posts/android/android-repo-confire/</link>
       <pubDate>Sun, 04 Mar 2018 17:14:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-repo-confire/</guid>
+      <guid>https://kikt.top/posts/android/android-repo-confire/</guid>
       <description>
         
           

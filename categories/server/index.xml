@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 06 Jun 2020 14:01:14 +0800</lastBuildDate><atom:link href="https://kikt.top/categories/server/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>用 Caddy 解决 web 开发中本地跨域的问题</title>
-      <link>https://kikt.top/post/server/caddy/cros_for_local_dev/</link>
+      <link>https://kikt.top/posts/server/caddy/cros_for_local_dev/</link>
       <pubDate>Sat, 06 Jun 2020 14:01:14 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/caddy/cros_for_local_dev/</guid>
+      <guid>https://kikt.top/posts/server/caddy/cros_for_local_dev/</guid>
       <description>
         
           
@@ -34,10 +34,10 @@
     
     <item>
       <title>Caddy 初探</title>
-      <link>https://kikt.top/post/server/caddy/caddy-first/</link>
+      <link>https://kikt.top/posts/server/caddy/caddy-first/</link>
       <pubDate>Sat, 05 Jan 2019 11:13:08 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/caddy/caddy-first/</guid>
+      <guid>https://kikt.top/posts/server/caddy/caddy-first/</guid>
       <description>
         
           
@@ -65,10 +65,10 @@
     
     <item>
       <title>spring boot 渲染md格式模板</title>
-      <link>https://kikt.top/post/server/java/spring-boot/template/</link>
+      <link>https://kikt.top/posts/server/java/spring-boot/template/</link>
       <pubDate>Sun, 27 Aug 2017 10:45:55 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/java/spring-boot/template/</guid>
+      <guid>https://kikt.top/posts/server/java/spring-boot/template/</guid>
       <description>
         
           
@@ -83,10 +83,10 @@
     
     <item>
       <title>spring boot 扫码登录 后端实现</title>
-      <link>https://kikt.top/post/server/java/spring-boot/scan-login/</link>
+      <link>https://kikt.top/posts/server/java/spring-boot/scan-login/</link>
       <pubDate>Fri, 25 Aug 2017 11:42:26 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/java/spring-boot/scan-login/</guid>
+      <guid>https://kikt.top/posts/server/java/spring-boot/scan-login/</guid>
       <description>
         
           
@@ -101,10 +101,10 @@ pom.xml
     
     <item>
       <title>spring boot jdbctemplate mysql emoji 编码错误的问题</title>
-      <link>https://kikt.top/post/server/java/spring-boot/encoding-error/</link>
+      <link>https://kikt.top/posts/server/java/spring-boot/encoding-error/</link>
       <pubDate>Wed, 23 Aug 2017 11:42:26 +0800</pubDate>
       
-      <guid>https://kikt.top/post/server/java/spring-boot/encoding-error/</guid>
+      <guid>https://kikt.top/posts/server/java/spring-boot/encoding-error/</guid>
       <description>
         
           

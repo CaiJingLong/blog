@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 14 Aug 2020 20:45:00 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/so/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>编译 go 源码为 android 动态库(so)</title>
-      <link>https://kikt.top/post/go/compile-for-android/</link>
+      <link>https://kikt.top/posts/go/compile-for-android/</link>
       <pubDate>Fri, 14 Aug 2020 20:45:00 +0800</pubDate>
       
-      <guid>https://kikt.top/post/go/compile-for-android/</guid>
+      <guid>https://kikt.top/posts/go/compile-for-android/</guid>
       <description>
         
           
@@ -28,10 +28,10 @@
     
     <item>
       <title>flutter android So库对齐</title>
-      <link>https://kikt.top/post/flutter/so-about-1/</link>
+      <link>https://kikt.top/posts/flutter/so-about-1/</link>
       <pubDate>Sat, 27 Oct 2018 12:18:08 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/so-about-1/</guid>
+      <guid>https://kikt.top/posts/flutter/so-about-1/</guid>
       <description>
         
           

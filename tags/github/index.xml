@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 18 Mar 2020 13:17:37 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 jsdelivr 加速 cocoapod 库</title>
-      <link>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</link>
+      <link>https://kikt.top/posts/ios/pod-use-jsdelivr-cdn-to/</link>
       <pubDate>Wed, 18 Mar 2020 13:17:37 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</guid>
+      <guid>https://kikt.top/posts/ios/pod-use-jsdelivr-cdn-to/</guid>
       <description>
         
           
@@ -34,10 +34,10 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
     
     <item>
       <title>Flutter 版本更新内容查看</title>
-      <link>https://kikt.top/post/flutter/compare/version-compare/</link>
+      <link>https://kikt.top/posts/flutter/compare/version-compare/</link>
       <pubDate>Wed, 10 Apr 2019 13:47:25 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/compare/version-compare/</guid>
+      <guid>https://kikt.top/posts/flutter/compare/version-compare/</guid>
       <description>
         
           
@@ -66,10 +66,10 @@ rss 订阅 github 的 release 支持 rss 订阅
     
     <item>
       <title>github 一些小技巧</title>
-      <link>https://kikt.top/post/github/work-manager/</link>
+      <link>https://kikt.top/posts/github/work-manager/</link>
       <pubDate>Wed, 12 Dec 2018 15:21:47 +0800</pubDate>
       
-      <guid>https://kikt.top/post/github/work-manager/</guid>
+      <guid>https://kikt.top/posts/github/work-manager/</guid>
       <description>
         
           
@@ -100,10 +100,10 @@ issue 篇 常规的创建之类的就不说了,说一些你日常中看不到的
     
     <item>
       <title>Flutter 本人开发的一些开源库</title>
-      <link>https://kikt.top/post/flutter/flutter-self-library/</link>
+      <link>https://kikt.top/posts/flutter/flutter-self-library/</link>
       <pubDate>Wed, 05 Dec 2018 11:50:03 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/flutter-self-library/</guid>
+      <guid>https://kikt.top/posts/flutter/flutter-self-library/</guid>
       <description>
         
           
@@ -126,10 +126,10 @@ issue 篇 常规的创建之类的就不说了,说一些你日常中看不到的
     
     <item>
       <title>github Clone速度慢的解决方案之一</title>
-      <link>https://kikt.top/post/other/github-clone-slow/</link>
+      <link>https://kikt.top/posts/other/github-clone-slow/</link>
       <pubDate>Fri, 20 Jul 2018 11:36:31 +0800</pubDate>
       
-      <guid>https://kikt.top/post/other/github-clone-slow/</guid>
+      <guid>https://kikt.top/posts/other/github-clone-slow/</guid>
       <description>
         
           

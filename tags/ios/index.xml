@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 18 Mar 2020 13:17:37 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 jsdelivr 加速 cocoapod 库</title>
-      <link>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</link>
+      <link>https://kikt.top/posts/ios/pod-use-jsdelivr-cdn-to/</link>
       <pubDate>Wed, 18 Mar 2020 13:17:37 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</guid>
+      <guid>https://kikt.top/posts/ios/pod-use-jsdelivr-cdn-to/</guid>
       <description>
         
           
@@ -34,10 +34,10 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
     
     <item>
       <title>把flutter作为framework添加到已存在的iOS中</title>
-      <link>https://kikt.top/post/flutter/exists/add-flutter-to-ios/</link>
+      <link>https://kikt.top/posts/flutter/exists/add-flutter-to-ios/</link>
       <pubDate>Sun, 16 Jun 2019 11:17:43 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/exists/add-flutter-to-ios/</guid>
+      <guid>https://kikt.top/posts/flutter/exists/add-flutter-to-ios/</guid>
       <description>
         
           
@@ -53,10 +53,10 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
     
     <item>
       <title>Flutter 原生通信 (四) - iOS 通知 Flutter</title>
-      <link>https://kikt.top/post/flutter/channel/flutter-channel4/</link>
+      <link>https://kikt.top/posts/flutter/channel/flutter-channel4/</link>
       <pubDate>Fri, 07 Dec 2018 10:43:45 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/channel/flutter-channel4/</guid>
+      <guid>https://kikt.top/posts/flutter/channel/flutter-channel4/</guid>
       <description>
         
           
@@ -74,10 +74,10 @@ oc 先来查看 OC 篇
     
     <item>
       <title>Flutter 原生通信 (三) - Flutter 调用 iOS</title>
-      <link>https://kikt.top/post/flutter/channel/flutter-channel3/</link>
+      <link>https://kikt.top/posts/flutter/channel/flutter-channel3/</link>
       <pubDate>Fri, 07 Dec 2018 10:43:43 +0800</pubDate>
       
-      <guid>https://kikt.top/post/flutter/channel/flutter-channel3/</guid>
+      <guid>https://kikt.top/posts/flutter/channel/flutter-channel3/</guid>
       <description>
         
           
@@ -97,10 +97,10 @@ dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/ser
     
     <item>
       <title>swift navigation title 标题颜色代码设置</title>
-      <link>https://kikt.top/post/ios/swift/swift-navigation-title-color-style/</link>
+      <link>https://kikt.top/posts/ios/swift/swift-navigation-title-color-style/</link>
       <pubDate>Tue, 13 Mar 2018 11:57:15 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/swift/swift-navigation-title-color-style/</guid>
+      <guid>https://kikt.top/posts/ios/swift/swift-navigation-title-color-style/</guid>
       <description>
         
           
@@ -115,10 +115,10 @@ dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/ser
     
     <item>
       <title>Swift Ios11 修改navigationbar间距</title>
-      <link>https://kikt.top/post/ios/swift/swift-ios11-change-the-navigationbar-spacing/</link>
+      <link>https://kikt.top/posts/ios/swift/swift-ios11-change-the-navigationbar-spacing/</link>
       <pubDate>Fri, 09 Mar 2018 11:55:10 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/swift/swift-ios11-change-the-navigationbar-spacing/</guid>
+      <guid>https://kikt.top/posts/ios/swift/swift-ios11-change-the-navigationbar-spacing/</guid>
       <description>
         
           
@@ -137,10 +137,10 @@ dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/ser
     
     <item>
       <title>Swift连接BLE蓝牙打印机</title>
-      <link>https://kikt.top/post/ios/swift/swift-connect-ble-printer/</link>
+      <link>https://kikt.top/posts/ios/swift/swift-connect-ble-printer/</link>
       <pubDate>Wed, 13 Sep 2017 11:52:48 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/swift/swift-connect-ble-printer/</guid>
+      <guid>https://kikt.top/posts/ios/swift/swift-connect-ble-printer/</guid>
       <description>
         
           
@@ -161,10 +161,10 @@ BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜
     
     <item>
       <title>Swift3之将类作为参数</title>
-      <link>https://kikt.top/post/ios/swift/swift3-class-as-param/</link>
+      <link>https://kikt.top/posts/ios/swift/swift3-class-as-param/</link>
       <pubDate>Fri, 04 Aug 2017 11:48:59 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/swift/swift3-class-as-param/</guid>
+      <guid>https://kikt.top/posts/ios/swift/swift3-class-as-param/</guid>
       <description>
         
           
@@ -182,10 +182,10 @@ BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜
     
     <item>
       <title>Ios版toast</title>
-      <link>https://kikt.top/post/ios/ios-toast/</link>
+      <link>https://kikt.top/posts/ios/ios-toast/</link>
       <pubDate>Sat, 08 Jul 2017 09:39:26 +0800</pubDate>
       
-      <guid>https://kikt.top/post/ios/ios-toast/</guid>
+      <guid>https://kikt.top/posts/ios/ios-toast/</guid>
       <description>
         
           

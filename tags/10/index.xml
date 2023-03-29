@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 24 May 2019 15:00:09 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/10/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android Q 隐私篇(5) - 相机/网络</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-5/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-5/</link>
       <pubDate>Fri, 24 May 2019 15:00:09 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-5/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-5/</guid>
       <description>
         
           
@@ -38,20 +38,20 @@ ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权�
     
     <item>
       <title>Android Q 隐私篇(4) - 唯一标识符, 剪切板数据</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-4/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-4/</link>
       <pubDate>Fri, 24 May 2019 11:49:11 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-4/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-4/</guid>
       <description>
         
           
             第四篇,
-目录                        唯一识别码的前世 在开发中, 总有人会提出各种设备&amp;quot;唯一标识符&amp;quot;的概念,以便于定位用户的唯一性, 或对于用户行为进行分析
+唯一识别码的前世 在开发中, 总有人会提出各种设备&amp;quot;唯一标识符&amp;quot;的概念,以便于定位用户的唯一性, 或对于用户行为进行分析
 很遗憾, 通过多年的探索, 目前没有任何一种特别准确, 一定能保证唯一的方案
 包括但不仅限于以下方案
 设备序列号 IMEI imsi mac 地址(wifi 模块)
 如以下代码:
-1package top.kikit.uniqueidprivacy 23import android.Manifest 4import android.annotation.SuppressLint 5import android.content.Context 6import android.os.Bundle 7import android.telephony.TelephonyManager 8import android.util.Log 9import androidx.appcompat.app.AppCompatActivity 10import com.tbruyelle.rxpermissions2.RxPermissions 1112class MainActivity : AppCompatActivity() { 13private val TAG = &amp;#34;MainActivity&amp;#34;; 1415private val rxPermissions = RxPermissions(this) 1617@SuppressLint(&amp;#34;CheckResult&amp;#34;) 18override fun onCreate(savedInstanceState: Bundle?
+1package top.kikit.uniqueidprivacy 23import android.Manifest 4import android.annotation.SuppressLint 5import android.content.Context 6import android.os.Bundle 7import android.telephony.TelephonyManager 8import android.util.Log 9import androidx.appcompat.app.AppCompatActivity 10import com.tbruyelle.rxpermissions2.RxPermissions 1112class MainActivity : AppCompatActivity() { 13private val TAG = &amp;#34;MainActivity&amp;#34;; 1415private val rxPermissions = RxPermissions(this) 1617@SuppressLint(&amp;#34;CheckResult&amp;#34;) 18override fun onCreate(savedInstanceState: Bundle?) { 19super.onCreate(savedInstanceState) 20setContentView(R.layout.activity_main) 212223val mTelephonyMgr = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager 2425rxPermissions.request(Manifest.permission.READ_PHONE_STATE) 26.subscribe { 27if (it) { 28val subscriberId = mTelephonyMgr.
           
           
         
@@ -60,10 +60,10 @@ ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权�
     
     <item>
       <title>Android Q 隐私篇(3) - 限制后台活动</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-3/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-3/</link>
       <pubDate>Tue, 21 May 2019 09:49:25 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-3/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-3/</guid>
       <description>
         
           
@@ -85,21 +85,22 @@ ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权�
     
     <item>
       <title>Android Q 隐私篇(2) - 后台定位权限</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-2/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-2/</link>
       <pubDate>Tue, 21 May 2019 09:14:28 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-2/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-2/</guid>
       <description>
         
           
-            本篇是系列第二篇, 主要分析下 android Q 下的后台定位权限 官方链接: , 有能力的朋友可以自己阅读,并不难
-目录                  定位权限 在从前的 android 中,定位权限不分前后台,只有两个
+            本篇是系列第二篇, 主要分析下 android Q 下的后台定位权限 , 有能力的朋友可以自己阅读,并不难
+定位权限 在从前的 android 中,定位权限不分前后台,只有两个
 1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_COARSE_LOCATION&amp;#34;/&amp;gt; 2&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_FINE_LOCATION&amp;#34;/&amp;gt; 分别代表大致位置和精确位置, 一般来说在使用时定位权限都是一起要或者都不要的, 而且这两个作为同一个组,一般都是一起申请,一次授权
 一般来说大部分人都是使用高德/百度地图作为定位 sdk 使用, 很显然这两个货申请一般也是都一起申请的
 androidQ 的权限 androidQ 中会添加一个新的权限
 1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_BACKGROUND_LOCATION&amp;#34; /&amp;gt; 这个就是对应的后台权限, 和以前的分类方式不同,以前是精确度,这个是前后台
 按照官方说明:
- targetVersion: androidQ 或以上  如果 targetVersion 是 androidQ+, 则这个权限不会自动添加, 使用者需要自己添加,有就是有,没有就没有   如果 targetVersion 是 api 28(android 9.0)以下  如果你有以前版本的定位权限,则系统会在安装时帮你添加后台的权限(升级 androidOS 版本时不明) 在动态权限申请时,如果你申请的权限有以前的定位权限之一, 则会自动帮你在申请的权限里加上这个后台的    请求后台权限 上来是一段废话.
+ targetVersion: androidQ 或以上  如果 targetVersion 是 androidQ+, 则这个权限不会自动添加, 使用者需要自己添加,有就是有,没有就没有   如果 targetVersion 是 api 28(android 9.0)以下  如果你有以前版本的定位权限,则系统会在安装时帮你添加后台的权限(升级 androidOS 版本时不明) 在动态权限申请时,如果你申请的权限有以前的定位权限之一, 则会自动帮你在申请的权限里加上这个后台的    请求后台权限 上来是一段废话... 简单解释, 你需要后台权限吗?
+ 不需要 需要  这个不是我们自己能定的, 以国内来看, 接 sdk (推送,定位,分享.
           
           
         
@@ -108,10 +109,10 @@ androidQ 的权限 androidQ 中会添加一个新的权限
     
     <item>
       <title>Android Q 隐私篇(1) - 外部储存</title>
-      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-1/</link>
+      <link>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-1/</link>
       <pubDate>Mon, 20 May 2019 09:43:48 +0800</pubDate>
       
-      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-1/</guid>
+      <guid>https://kikt.top/posts/android/android-q/privacy/android-q-privacy-1/</guid>
       <description>
         
           
@@ -123,11 +124,15 @@ androidQ 的权限 androidQ 中会添加一个新的权限
 在适配新的系统前就和从前一样,暂时不升级 targetVersion,把 targetVersion 设置为 28 以下就不会影响旧程序了,就如同以前运行时权限真的是坑到爆炸,但是暂时不适配也是可以的
 但是未来无论如何都需要适配新系统,所以先来看看
 本篇只说储存的方式和权限问题,其他暂时略过不表
-目录                          检查迁移情况  有一个表格提供了如何检查和迁移的方案
+检查迁移情况  有一个表格提供了如何检查和迁移的方案
  开发环境 说一下开发环境
 MacOS
 Android Studio 3.4.0
 android 9.0 设备一台
+androidQ 虚拟机一台(官方的 Emulator)
+更新 sdk 更新 sdk, 下载 androidQ 相关的 sdk/sdktools/模拟器
+androidQ build.gradle 当前想尝试 androidQ 的话, 编译版本和目标版本号需要按如下方式设置, 今后的话可能是 29/30 之类的数字
+1targetSdkVersion = &amp;#39;Q&amp;#39; 2compileSdkVersion = &amp;#39;android-Q&amp;#39; 外部储存 androidQ 下读写文件 权限和以前一样
           
           
         
