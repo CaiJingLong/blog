@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kotlin-Compose on CaiJingLong</title>
+    <link>https://kikt.top/tags/kotlin-compose/</link>
+    <description>Recent content in Kotlin-Compose on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 24 Oct 2022 12:00:35 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/kotlin-compose/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin Compose 05 鼠标事件</title>
+      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-05-mouse-event/</link>
+      <pubDate>Mon, 24 Oct 2022 12:00:35 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-05-mouse-event/</guid>
+      <description>
+        
+          
+            文章摘要
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Kotlin Compose 04 控件 Image</title>
+      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-04-image/</link>
+      <pubDate>Thu, 20 Oct 2022 11:18:07 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-04-image/</guid>
+      <description>
+        
+          
+            文档地址
+简单说明 首先，代码部分，我会以 LazyColumn 作为 App 的根容器，这个容器可以简单理解为 ScrollView 和 ListView 的混合体，后面会详细说
+然后每一个子元素会被包裹在一个 item {}闭包内，但每一个都包的话，很不oop，所以，我会略微封装一下，变成下面这样，这样我就可以直接在 MyColumn闭包内写每一个item了
+1@Composable 2fun App() { 3var text by remember { mutableStateOf(&amp;#34;Hello, World!&amp;#34;) } 4val platformName = getPlatformName() 56MyColumn { 7Button(onClick = { 8text = &amp;#34;Hello, $platformName&amp;#34; 9}) { 10Text(text) 11} 12} 1314} 1516@Composable 17fun MyColumn(content: @Composable LazyItemScope.() -&amp;gt; Unit) { 18LazyColumn { 19item { 20content() 21} 22} 23} 加载资源图片 compose 的图片是依托于 androidx.compose.foundation.Image控件来显示的 一个入门级的示例
+1package top.kikt.common.image 23import androidx.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Kotlin Compose Kotlin Compose 03 Window</title>
+      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-03-window/</link>
+      <pubDate>Tue, 18 Oct 2022 15:11:25 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-03-window/</guid>
+      <description>
+        
+          
+            在 Compose 中，有几个基本的概念
+概念 Application Application 是一个 Compose 的应用，它通常是一个顶层的 Composable 函数，它的参数是一个 @Composable 的函数，这个函数就是我们的应用的主体。
+Tray Tray 是一个托盘（状态栏的图标），它通常是一个顶层的 Composable 函数，它的参数是一个 @Composable 的函数，这个函数就是我们的托盘的主体。
+Window Window 是一个窗口，对应了 windows/macOS/Linux 的窗口，它通常是一个顶层的 Composable 函数， 它的参数是一个 @Composable 的函数，这个函数就是我们的窗口的主体。
+Widget Widget 是一个组件，也可以包含多个 Widget，包括 Text，Button，Image 等，都是 Widget，通常是一个 @Composable 函数。
+架构 学会管理 Window 在 Kotlin Compose 中是非常重要的。
+Compose 的结构如下，单Appliction，多 Window，多 Widget
+每个窗口都有独立的Menu
+Tray则由Application管理
+graph TD APP[Appliction]--W1[Window] W1--V1[Widget] W1--V2[Widget] W1--V3[Widget] APP--Tray[Tray] APP--W2[Window] W2--V11[Widget] W2--V12[Widget] W2--V13[Widget]  代码的组织 WindowManager 首先，需要配置一个顶层状态来使窗口和窗口状态可以对应上
+1package top.kikt.examples.window 23import androidx.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Kotlin Compose Kotlin Compose 02 Create Project</title>
+      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-02-create-project/</link>
+      <pubDate>Sun, 16 Oct 2022 08:29:17 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-02-create-project/</guid>
+      <description>
+        
+          
+            开发环境  macOS Idea 2022.2.1 jdk 17  开发环境这里，compose 打包时要求jdk版本大于15，而 java 的 lts 版本是8，11，17，我个人建议直接用17而不是15，开发时运行反而可以使用11，不过我个人觉得直接用17就好了
+创建项目 新建项目，选择 Compose Mutilplatform类型 这里左边可以单独选择支持的类型，右边是多类型（桌面端+安卓） 然后，等待依赖更新完成，我创建的是多类型的项目
+看看配置文件  项目的配置文件是 kts 文件，这是 Gradle 项目 groovy 以外的另一种一级语言，使用 kotlin 语法，相比 groovy 来说，语法更加的“严谨”
+settings.kts 1// Copyright 2000-2022 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. 2pluginManagement { // 这个闭包是用于配置项目中用到的 plugin 的一些配置，以便做到不同的 module 使用相同的配置 3 repositories { // 配置仓库 4 google() // 因为引入了安卓项目， google 仓库就是必须了的 5 gradlePluginPortal() // 这个是 gradle 的插件目录，一般很少用到 6 mavenCentral() 7maven(&amp;#34;https://maven.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Kotlin Compose Kotlin Compose 01 Start</title>
+      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-01-start/</link>
+      <pubDate>Sat, 15 Oct 2022 10:00:05 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-01-start/</guid>
+      <description>
+        
+          
+            Kotlin compose 是啥玩意 用 kotlin 开发桌面应用的东西，Jetbrains 出品
+优势 Kotlin compose 在我看来，是一个很“巧妙”的东西，虽然这东西是 Jetbrains 开发的，但是使用了 Google 安卓的 Jetpack compose 的 api，这就造成了如下的优势
+ 可以在满足一定条件的前提下，将业务逻辑由安卓端快速迁移到桌面端，共用部分代码，求同存异 利用 jvm 体系强大的三方库来快速开发 帮助不熟悉桌面开发的小伙伴使用更加“移动端”的思想来看待桌面端  文档 基于 2022-10-18 的情况，有很多的文档
+       
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

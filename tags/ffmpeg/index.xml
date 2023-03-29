@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ffmpeg on CaiJingLong</title>
+    <link>https://kikt.top/tags/ffmpeg/</link>
+    <description>Recent content in ffmpeg on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 07 Jan 2020 11:50:07 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/ffmpeg/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android 记录在macOS上使用 NDK20 编译ffmpeg4.2.2的过程</title>
+      <link>https://kikt.top/post/android/ffmpeg/compile-with-ndk20/</link>
+      <pubDate>Tue, 07 Jan 2020 11:50:07 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/ffmpeg/compile-with-ndk20/</guid>
+      <description>
+        
+          
+            前言 ijkplayer 的 ffmpeg 是旧版本的, ndk 也是旧的, 程序员爱折腾, 所以想用最新的 ndk 编译最新的 ffmpeg, 当前就是 ndk20+ffmpeg4.2.2 了
+第一步自然是搜索有没有现成的, 运气不错, 找到了大佬的示例
+本篇参考了 的内容, 但因为我是 macOS, 所以进行了一些修改 包括有的东西设置后发现没生效, 在实际打包的时候会报类似下面的这种错误
+1ld: warning: building for macOS, but linking in object file (libswresample/libswresample.a(resample.o)) built for free standing 所以我根据实际的报错内容进行了修改
+编译脚本 这里只需要修改你的 NDK 为你本地的 NDK 目录即可
+最新的代码在这里: gist.github.com 需要自备梯子
+1#!/bin/bash 2 3NDK=/Volumes/Evo512/sdk/android-ndk-r20 4TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/darwin-x86_64 5API=21 67function build_android 8{ 9echo &amp;#34;Compiling FFmpeg for $CPU&amp;#34; 10./configure \ 11 --prefix=$PREFIX \ 12 --libdir=$LIB_DIR \ 13 --enable-shared \ 14 --disable-static \ 15 --enable-jni \ 16 --disable-doc \ 17 --disable-symver \ 18 --disable-programs \ 19 --target-os=android \ 20 --arch=$ARCH \ 21 --cpu=$CPU \ 22 --cc=$CC \ 23 --cxx=$CXX \ 24 --enable-cross-compile \ 25 --sysroot=$SYSROOT \ 26 --extra-cflags=&amp;#34;-Os -fpic $OPTIMIZE_CFLAGS&amp;#34; \ 27 --extra-ldflags=&amp;#34;$ADDI_LDFLAGS&amp;#34; \ 28 --disable-asm \ 29 $COMMON_FF_CFG_FLAGS 30make clean 31make -j8 32make install 33echo &amp;#34;The Compilation of FFmpeg for $CPUis completed&amp;#34; 34} 3536# # armv8-a 37# source &amp;#34;config-env.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>android 引入ffmpeg</title>
+      <link>https://kikt.top/post/android/android-include-ffmpeg/</link>
+      <pubDate>Mon, 14 Jan 2019 17:14:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-include-ffmpeg/</guid>
+      <description>
+        
+          
+            上篇介绍了如何 在 mac 系统下打包 ffmpeg 的 so
+这篇介绍如何引入 so 到项目中
+开发环境:
+1macos 2android studio 3.2.1 3ndk: 15.2.4203891 新建一个工程 新建工程时,勾选 c++支持
+ 将文件复制到项目内 需要复制的文件
+.h 头文件 so文件    在 cpp 中新建一个文件夹include/ffmpeg 把 include 中的文件夹复制到 ffmpeg 下
+在 main 下新建文件夹jniLibs,把 so 文件复制到其中 修改 CMakeList 完整的CMakeList.txt 如下
+1# For more information about using CMake with Android Studio, read the 2# documentation: https://d.android.com/studio/projects/add-native-code.html 3 4# Sets the minimum version of CMake required to build the native library.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>ndk编译ffmpeg</title>
+      <link>https://kikt.top/post/android/android-ffmpeg-compile-so/</link>
+      <pubDate>Mon, 14 Jan 2019 14:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-ffmpeg-compile-so/</guid>
+      <description>
+        
+          
+            最近在努力学习音视频相关东西,以备未来不时之需
+在音视频处理领域有一个绕不过去的著名项目就是FFmpeg,这个项目基于 GPL 开源协议,
+最新版本目前我在 mac 上无法编译,会报错
+使用的总体环境如下:
+1Macos: 10.13.6 (17G65) 2ffmpeg: 3.3.6 3ndk: 15.2.4203891 引用外部源码(尝试失败) 初次尝试的时候,希望可以通过 CMakeLists 中配置头文件和库的方式,直接引用,发现可能需要拷贝所有源代码到项目中,但这样需要 copy 的东西很多,对于真实的项目来说也许可行,但 demo 项目就太复杂了,而且不方便今后的使用
+交叉编译 so 这里有一个坑,就是 ndk 版本不能太低,因为之前使用过 ijkplayer,那个项目要求 11d 还是 11e 的 ndk 版本,我这次想直接用这个 ndk 版本,过程中会报很多错误,具体原因没有深究
+然后使用我 android sdk 中带的 ndk 版本果断成功
+这个是我的 ndk 版本,截至当前最新版本应该是 18.X
+版本号在 ndk 中查看 propertis 文件可以看见
+另一个叫法是 android-ndk-r15c
+1Pkg.Desc = Android NDK 2Pkg.Revision = 15.2.4203891 ffmpeg 版本:我开始是下载的最新版本 4.1 版 ,结果编译不通过,在 udp.c 中报错了,通过网络搜索到一个原因,ffmpeg 通过下载了一个 ffmpeg-3.3.6 解决
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

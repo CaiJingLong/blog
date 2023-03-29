@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>扫码 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E6%89%AB%E7%A0%81/</link>
+    <description>Recent content in 扫码 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 25 Aug 2017 11:42:26 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E6%89%AB%E7%A0%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>spring boot 扫码登录 后端实现</title>
+      <link>https://kikt.top/post/server/java/spring-boot/scan-login/</link>
+      <pubDate>Fri, 25 Aug 2017 11:42:26 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/java/spring-boot/scan-login/</guid>
+      <description>
+        
+          
+            前言 在业内，扫码登陆不是什么新技术了，我这里主要是想自己实现一下这个功能，用的是简单实现，提供的只是思路 具体可以参考网上的其他文章 开发环境 mac+idea+paw+chrome+mysql 开发语言:java+kotlin mac:我的开发系统 idea:开发工具 paw:http调试工具  插一句 开发语言使用kotlin是有原因,kotlin是构建在jvm上的,而且有很多很方便的语法糖,敲代码速度很快  启动项目 首先配置一个 spring boot 的项目,这里使用 maven 构建的方案,因为我这里使用 gradle 构建总是会出现各种奇怪的问题
+pom.xml
+1&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; 2&amp;lt;project xmlns=&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34; xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34; 3xsi:schemaLocation=&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&amp;gt; 4&amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt; 56&amp;lt;groupId&amp;gt;com.kikt&amp;lt;/groupId&amp;gt; 7&amp;lt;artifactId&amp;gt;myapp&amp;lt;/artifactId&amp;gt; 8&amp;lt;version&amp;gt;0.0.1-SNAPSHOT&amp;lt;/version&amp;gt; 9&amp;lt;!--&amp;lt;packaging&amp;gt;war&amp;lt;/packaging&amp;gt;--&amp;gt; 10&amp;lt;packaging&amp;gt;war&amp;lt;/packaging&amp;gt; 1112&amp;lt;name&amp;gt;myapp&amp;lt;/name&amp;gt; 13&amp;lt;description&amp;gt;MyApp&amp;lt;/description&amp;gt; 1415&amp;lt;parent&amp;gt; 16&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; 17&amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; 18&amp;lt;version&amp;gt;1.5.4.RELEASE&amp;lt;/version&amp;gt; 19&amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt; 20&amp;lt;/parent&amp;gt; 2122&amp;lt;properties&amp;gt; 23&amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt; 24&amp;lt;project.reporting.outputEncoding&amp;gt;UTF-8&amp;lt;/project.reporting.outputEncoding&amp;gt; 25&amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt; 26&amp;lt;kotlin.version&amp;gt;1.1.3-2&amp;lt;/kotlin.version&amp;gt; 27&amp;lt;/properties&amp;gt; 2829&amp;lt;dependencies&amp;gt; 30&amp;lt;!--&amp;lt;dependency&amp;gt;--&amp;gt; 31&amp;lt;!--&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;--&amp;gt; 32&amp;lt;!--&amp;lt;artifactId&amp;gt;spring-boot-starter-data-jpa&amp;lt;/artifactId&amp;gt;--&amp;gt; 33&amp;lt;!--&amp;lt;/dependency&amp;gt;--&amp;gt; 34&amp;lt;dependency&amp;gt; 35&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; 36&amp;lt;artifactId&amp;gt;spring-boot-starter-data-rest&amp;lt;/artifactId&amp;gt; 37&amp;lt;/dependency&amp;gt; 38&amp;lt;dependency&amp;gt; 39&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; 40&amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; 41&amp;lt;/dependency&amp;gt; 4243&amp;lt;dependency&amp;gt; 44&amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt; 45&amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt; 46&amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt; 47&amp;lt;/dependency&amp;gt; 4849&amp;lt;dependency&amp;gt; 50&amp;lt;groupId&amp;gt;com.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

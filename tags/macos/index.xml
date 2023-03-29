@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>macos on CaiJingLong</title>
+    <link>https://kikt.top/tags/macos/</link>
+    <description>Recent content in macos on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Wed, 12 Jun 2019 16:47:14 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flutter Desktop Mac版(二) 插件初探</title>
+      <link>https://kikt.top/post/flutter/desktop/flutter-desktop-2/</link>
+      <pubDate>Wed, 12 Jun 2019 16:47:14 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/desktop/flutter-desktop-2/</guid>
+      <description>
+        
+          
+            上篇粗略的查看了一下 desktop 的基本使用, 本篇探索一下插件的使用
+环境变量的配置请查看上篇,本篇不再赘述
+更新 继上一篇文章过去了几天, 这个桌面引擎有了一点点的更改: 现在完全用 swift 了,不用 oc 了,无论是 example 还是 plugin 模板都是如此
+所以, 为了省事,我重新 clone 了一个仓库, 然后准备用 swift 来创建插件
+$ git clone https://github.com/google/flutter-desktop-embedding.git flutter-desktop-embedding-2
+然后分别打开工程和插件 $ code flutter-desktop-embedding-2/example/ and $ code flutter-desktop-embedding-2/plugins/example_plugin
+这个 example_plugin 是给的模板, 最好是复制一份出来
+复制插件目录 1cd flutter-desktop-embedding-2/plugins 2cp -r example_plugin math_desktop 3code math_desktop 查看一下目录结构
+1tree math_desktop 23math_desktop 4├── LICENSE 5├── lib 6│ └── example_plugin.dart 7├── linux 8│ ├── Makefile 9│ ├── example_plugin.cc 10│ └── example_plugin.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

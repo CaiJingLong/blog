@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>状态管理 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/</link>
+    <description>Recent content in 状态管理 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 21 Feb 2019 10:43:36 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>flutter 新状态管理方案 Provide 使用</title>
+      <link>https://kikt.top/post/flutter/state/provide-1/</link>
+      <pubDate>Thu, 21 Feb 2019 10:43:36 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/state/provide-1/</guid>
+      <description>
+        
+          
+            开这篇文章是因为看到这个库被托管在google的仓库下,而且说明是被设计出来替代ScopedModel的,而且更加灵活
+支持Builder模式和StreamBuilder模式,全局,局部都可以
+内部应该是结合InheritedWidget Notification体系实现的
+传统的bloc需要在每一个Repository中创建StreamController和Stream,甚至有的文章中,一个监听的修改需要修改5处,维护起来比较麻烦
+相比较而言Provide维护起来会稍微省事一些
+
+添加依赖 查看
+1dependencies:2provide:^1.0.1# 这里的版本查看官方1flutter packages get 1import &amp;#39;package:provide/provide.dart&amp;#39;; 使用方法 这里以简单的Counter为例 也就是在flutter的hello world工程的基础上来修改
+1. 定义一个Model 这个model需要继承ChangeNotifier
+12class Counter with ChangeNotifier { 3int _value; 45int get value =&amp;gt; _value; 67Counter(this._value); 89void inc() { 10_value++; 11notifyListeners(); //父类的方法,发出通知 12 } 13} 2. 定义一个全局的Provide 这里虽然定义在全局,但事实上也可以定义在页面级
+1void main() { 2var providers = Providers()..provide(Provider.function((ctx) =&amp;gt; Counter(0))); 34runApp( 5ProviderNode( 6child: MyApp(), 7providers: providers, 8), 9); 10} ProviderNode表示的是提供者
+3. 界面/监听 修改_MyHomePageState
+添加一个方法,用于获取Counter实例
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

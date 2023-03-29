@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jenkins on CaiJingLong</title>
+    <link>https://kikt.top/tags/jenkins/</link>
+    <description>Recent content in jenkins on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Wed, 19 Aug 2020 09:10:29 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>flutter Jenkins&#43;fastlane 自动化打测试包, 并上传蒲公英</title>
+      <link>https://kikt.top/post/flutter/jenkins&#43;fastlane/</link>
+      <pubDate>Wed, 19 Aug 2020 09:10:29 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/jenkins&#43;fastlane/</guid>
+      <description>
+        
+          
+            自动化打包上传是一个释放双手的过程, 本文就简单重复一下打包的过程
+本文包括 iOS 和 android 篇.
+如果有需要, macOS 和 web 也可以加进来, 步骤并不复杂, 但本篇暂时不讲
+开发环境  macOS, 如果你不是 macOS, 那你只能打包安卓部分 Xcode, 因为 Xcode 会自动安装包含 git 在内的一些其他环境, 所以理论上有这个就够了 brew android sdk flutter sdk jenkins fastlane  到 flutter sdk 为止就不讲了, 我相信看这篇文章的人, 起码 flutter 程序已经开发完了, 只是因为修改个文案就要打包的事被搞的不胜其扰, 才决定自动化的
+而开发 flutter 基本上可以理解为包含如下工具/SDK
+ ruby git Xcode brew Android SDK Flutter SDK  Jenkins 有几点要写在前面, 这东西建议使用 brew 安装, 当然你要是坚持, 也可以用 jendins 的 war/jar 包自己部署,见仁见智
+但不要使用 docker 的方式, 因为 docker 不包含 xcode 的环境, 执行起来比较麻烦
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

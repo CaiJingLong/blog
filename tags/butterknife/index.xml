@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>butterknife on CaiJingLong</title>
+    <link>https://kikt.top/tags/butterknife/</link>
+    <description>Recent content in butterknife on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 18 Sep 2016 19:45:55 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/butterknife/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Butterknife8.4.0的一些问题</title>
+      <link>https://kikt.top/post/android/butterknife8-1/</link>
+      <pubDate>Sun, 18 Sep 2016 19:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/butterknife8-1/</guid>
+      <description>
+        
+          
+            写在前面：  在 github 上 butterknife 的 star 有 11000+ 为啥有这么多人用这个插件 两点： 1、自动化 2、有人更新和维护
+GRADLE 根目录的 build.gradle 也就是 project 级
+1buildscript { 2repositories { 3mavenCentral() 4} 5dependencies { 6classpath &amp;#39;com.neenbedankt.gradle.plugins:android-apt:1.8&amp;#39; 7} 8} module 级别
+1apply plugin: &amp;#39;android-apt&amp;#39; 23android { 4... 5} 67dependencies { 8compile &amp;#39;com.jakewharton:butterknife:8.4.0&amp;#39; 9apt &amp;#39;com.jakewharton:butterknife-compiler:8.4.0&amp;#39; 10} 基本的注入我想大部分人都知道
+ButterKnife.bind(this) 这里可以是 View，Activity 等等
+还支持 Android annotations 的几个注解
+1@Optional //可选 2@Nullable //可能为空 在 8.4.0 中最大的改动可能就是使用 R2 代替 R 文件 我觉得这个可能是为了自动生成 R 文件经常出现问题的解决方案 应该是和 Android Studio 中的 instant run 有冲突
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

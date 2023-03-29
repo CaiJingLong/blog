@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>thymeleaf on CaiJingLong</title>
+    <link>https://kikt.top/tags/thymeleaf/</link>
+    <description>Recent content in thymeleaf on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 27 Aug 2017 10:45:55 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/thymeleaf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>spring boot 渲染md格式模板</title>
+      <link>https://kikt.top/post/server/java/spring-boot/template/</link>
+      <pubDate>Sun, 27 Aug 2017 10:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/java/spring-boot/template/</guid>
+      <description>
+        
+          
+            写在前面 主要技术点:使用 thymeleaf+flexmark 渲染模板渲染 markdown 文件 ,highlight 渲染代码高亮 thymeleaf 模板负责渲染页面 flexmark 是 java 语言编写,负责将数据库中的 markdown 语法文本转为 html 文本 highlight 负责渲染 code 部分的代码,是一款 js+css 库
+步骤 首先定义一个 controller 和 requstmapping
+1package com.kikt.web.ctl.blog; 23import com.kikt.service.markdown.MarkdownService; 4import com.sun.org.apache.xpath.internal.operations.Mod; 5import org.springframework.beans.factory.annotation.Autowired; 6import org.springframework.stereotype.Controller; 7import org.springframework.ui.Model; 8import org.springframework.web.bind.annotation.RequestMapping; 9import org.springframework.web.bind.annotation.RequestMethod; 10import org.springframework.web.bind.annotation.RequestParam; 11import org.springframework.web.bind.annotation.RequestPart; 1213/** 14* Created by cai on 2017/8/25. 15*/ 16@Controller 17@RequestMapping(&amp;#34;/md&amp;#34;) 18public class MarkdownCtl { 1920@Autowired 21private MarkdownService service; 2223@RequestMapping(value = &amp;#34;/parse&amp;#34;, method = RequestMethod.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

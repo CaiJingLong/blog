@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aidl on CaiJingLong</title>
+    <link>https://kikt.top/tags/aidl/</link>
+    <description>Recent content in aidl on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 06 Dec 2016 10:45:55 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/aidl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AIDL 安卓进程间通信/跨应用通信</title>
+      <link>https://kikt.top/post/android/android-aidl/</link>
+      <pubDate>Tue, 06 Dec 2016 10:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-aidl/</guid>
+      <description>
+        
+          
+            前言 最近出去面试找工作，被人问到 AIDL，我就回答这个东西我用过，也大概理解，Android 的进程间通信语言嘛
+人家不置可否，那我能咋着呢，毕竟没深入研究过，也没办法，咱只能回来奋发图强了
+写在前面 我以前就看过的一个博客，里面原理代码什么都有，写的水平肯定比我高
+ 
+ 首先字面解释 A=Android IDL=Interface definition language 意译就是 android 接口定义语言，马丹，完全看不明白 算了，就是 Android 官方给我们定义出来跨进程，甚至跨应用通信用的
+开发平台 Android Studio 2.2+Android 手机一部
+新建工程 这个就不说了，跳过 就是新建工程后再建一个 module 也是 android app，功能后面再说
+aidl 语法 这里请去看我写在前面，里面比较详细，或者自行 baidu/google，我也了解的不多
+代码示例 最关键的地方到了 其实就是新建一个 aidl 文件
+1// IMyAidlInterface.aidl 2package com.kikt.aidl; 34// Declare any non-default types here with import statements 5 6interface IMyAidlInterface { 78void test(int sum,int sum2); 9} 接着 make project，生成下 java 代码 找到生成的代码看下 我靠 好复杂，还是渣格式，这里格式化一下：
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

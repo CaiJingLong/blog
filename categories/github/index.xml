@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>github on CaiJingLong</title>
+    <link>https://kikt.top/categories/github/</link>
+    <description>Recent content in github on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 07 Sep 2020 16:49:35 +0800</lastBuildDate><atom:link href="https://kikt.top/categories/github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Github action 的开发到发布</title>
+      <link>https://kikt.top/post/github/actions/create/</link>
+      <pubDate>Mon, 07 Sep 2020 16:49:35 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/github/actions/create/</guid>
+      <description>
+        
+          
+            Github action 这东西是好东西, 但我看了一下, 很多朋友都是停留在用的阶段, 其实偶尔也要换换口味, 自己开发一个 action, 而不是仅仅是用
+简介 github actions 是 github 推出的一个工作流的工具, 目的是为了帮助我们在某些情况下主动触发仓库的动作, 从而完成 单元测试/CI/CD, 甚至包括 release,发布包管理工具等等
+官方关于 actions 有关的一些仓库都在这里: , github 的主语言是 js, 当然也肯定也支持 ts
+另外如果对于速度需求并不高的朋友, 也可以使用 docker, 但因为 docker 安装的过程会根据镜像大小有一定的耗时, 所以不一定适用于所有朋友
+如果，你对于本文章不是很感兴趣，可以参考
+新建 因为我对于 js 比较不喜欢, 所以使用 ts(虽然也不是很感冒, 但是会好一点)
+进入这个, 然后使用 按钮, 完成初始化的过程.
+这里我们创建一个仓库, 这个仓库的目的是自动给 issue 打上 label
+初始化后的仓库 简单介绍一下这个仓库, 有一些文件和注意事项
+ action.yml 是 action 本身的配置文件(别的项目实际就是读取这个东西来确定入口在哪里), 包括参数的配置都是这东西 一个标准的 npm 项目, 指定了入口 src 内是主要的 ts 代码 ts 代码需要被编译为 js 才能使用 dist 内就是编译产物, git 的版本控制需要包含 dist 下的所有文件, 不然运行的时候会是老代码 项目本身自带 action, 主要是 CI 这个项目的  入门 开发环境  vscode, 我这里是使用 vscode 进行编辑, 你请根据自己的情况 npm(node), 我是使用 nvm 管理的  如果你的 node 大于 12.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>github 一些小技巧</title>
+      <link>https://kikt.top/post/github/work-manager/</link>
+      <pubDate>Wed, 12 Dec 2018 15:21:47 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/github/work-manager/</guid>
+      <description>
+        
+          
+            最近沉迷 flutter,偶尔换换口味,看看 github
+很多知名的开源项目落户于 github,那么为什么呢,人云亦云吗?
+不一定, github 的工作流很强大.能够帮助我们更加清晰工作流程
+ 
+ 首先官方链接在此,英文好的直接去看
+ 另外还有一个帮助你学习 github 的小机器人
+ 
+ 这个小机器人能帮你系统的了解一些 github 的工作流和 github 的一些基本功能
+比如 github 仓库的元数据修改,关键字修改,github pages 的发布
+工作流包括 issues 中的
+PR 整体过程中 分派工作/审核/修改意见/冲突处理/merge 代码的流程,强烈建议 github 用的不好的人先去梳理一下
+issue 篇 常规的创建之类的就不说了,说一些你日常中看不到的东西,或者说看见了,但是不知道怎么玩出来的
+不会包含所有的东西,但是会有一些很神奇的效果
+通过代码创建一个 issue 比如我在某行代码发现了一个错误, 那么我可以直接在 github 中选中这个代码,然后开启一个 issue
+  点击行号
+  open new issue
+     通过这几个步骤,我们能看到,我们创建了一个指向改行的错误,这样开发者就能很简单的定位到该行,并且可以直观的在 issue 中看到该行代码,方便开发者定位
+
+创建一个永久可见的代码连接   提交后就可以看到了
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>github Clone速度慢的解决方案之一</title>
+      <link>https://kikt.top/post/other/github-clone-slow/</link>
+      <pubDate>Fri, 20 Jul 2018 11:36:31 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/other/github-clone-slow/</guid>
+      <description>
+        
+          
+            github 是每个程序员应该都会用到的平台,无奈对于国内貌似没有 CDN,速度极慢..
+我在网上搜了各种修改 host 的方案,无奈并不好用,也许用国外的 VPS 中转可以解决,当然那是要收费的,还需要一些技术门槛
+今天来一个傻瓜式的帮助方案 用 gitee 中转项目
+开始 注册账号 注册账号,已经有的话可以直接登录,更简单的方案,直接用 github 账号登录  新建项目 二选一 新开一个窗口,把你需要的 github 项目地址复制过来,我这里以 flutter/engine 为例 然后回到新建项目的页面
+点这里 然后照图上操作 最后点创建
+接着就等项目好了
+这里需要耐心等待,但无论如何 很大的项目应该比你自己从那下载要快很多,毕竟有时候你从 github 每秒只有几十或者 100 200K  项目好了后  我们看到,项目都好了
+这里复制项目地址
+ 然后命令行中 我们看到 4M 每秒的速度, 这在大项目中就帮了大忙了
+如果是 200M 的项目,你 200k 一秒 需要下 1000 秒,也就是 20 分钟
+而我这里 clone 只要 50 秒 前面的工作一共操作也就是 2 分钟 等待时间也就是 3~5 分钟
+并且哪怕需要在 github 提 PR 或者 fork github 项目也没关系 修改 remote 的 url 即可,毕竟 git 是去中心化的仓库
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

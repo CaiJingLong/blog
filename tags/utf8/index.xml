@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>utf8 on CaiJingLong</title>
+    <link>https://kikt.top/tags/utf8/</link>
+    <description>Recent content in utf8 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Wed, 23 Aug 2017 11:42:26 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/utf8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>spring boot jdbctemplate mysql emoji 编码错误的问题</title>
+      <link>https://kikt.top/post/server/java/spring-boot/encoding-error/</link>
+      <pubDate>Wed, 23 Aug 2017 11:42:26 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/java/spring-boot/encoding-error/</guid>
+      <description>
+        
+          
+            前言 为啥标题这么长呢? 因为确实关联到了这些问题 最近买了个阿里云的打折主机,打算主机布个简易的服务器,顺便熟悉下 springboot 的一些知识, 数据库打算直接用简单 jdbctemplate 但是不巧 在提交上传的时候有中文,引起了乱码问题
+乱码问题 根据我多年的经验,乱码都是编码问题,baidu 了下
+修改 springboot.properties
+1spring.datasource.url = jdbc:mysql://127.0.0.1:3306/app?autoReconnect=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8 果然得到了解决
+emoji 报错 后来上传的内容中有 emoji 表情,报错信息UncategorizedSQLException 原因是 utf8 不支持长度为 4 的编码
+数据库 1createtableblog_content2(3`_id`intnotnullauto_incrementcomment&amp;#39;id 主键&amp;#39;4primarykey,5titlevarchar(50)default&amp;#39;没有标题&amp;#39;notnullcomment&amp;#39;标题&amp;#39;,6contentvarchar(1000)null,7tagvarchar(30)nullcomment&amp;#39;标签&amp;#39;,8insert_timetimestampdefaultCURRENT_TIMESTAMPnotnull,9update_timetimestampdefaultCURRENT_TIMESTAMPnotnullcomment&amp;#39;更新时间&amp;#39;,10author_uidintnotnull11)12comment&amp;#39;博客内容&amp;#39;13ENGINE=InnoDBDEFAULTcharsetutf8mb4collateutf8mb4_unicode_ci;14;1INSERTINTOblog_content(content,tag,author_uid)VALUES(&amp;#39;内容👌&amp;#39;,&amp;#39;1,2&amp;#39;,1);解决过程 数据库相关 根据网上的说法,修改数据库,修改表,修改表字段为 utf8mb4
+ ALTER DATABASE app CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci; ALTER TABLE blog_content CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; ALTER TABLE blog_content CHANGE content_emoji content_emoji VARCHAR(1000);
+ 再运行依然报错..
+这个时候我就不得不考虑问题出在程序内还是 mysql 内了 使用 mysql 的数据库连接,直接在 sql 中插入一条带 emoji 的数据,直接报错 那么就不是程序的问题了,数据库的问题 使用 SHOW VARIABLES WHERE Variable_name LIKE &#39;character_set_%&#39; OR Variable_name LIKE &#39;collation%&#39;;
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>form on CaiJingLong</title>
+    <link>https://kikt.top/tags/form/</link>
+    <description>Recent content in form on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 22 Jul 2019 15:16:45 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/form/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>flutter Form 表单组件的初步解析</title>
+      <link>https://kikt.top/post/flutter/form/form1/</link>
+      <pubDate>Mon, 22 Jul 2019 15:16:45 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/form/form1/</guid>
+      <description>
+        
+          
+            在一个正常的应用程序中, 表单是用户交互的很重要的一部分
+flutter 中你可以自己&amp;quot;绑定&amp;quot;用户的输入数据和 state 中的字段
+当然, 还有另一个选择, Flutter 内置了 Form 组件给我们使用, 这个组件是 flutter 框架提供出来帮助我们操作表单的一个组件, 应该是官方较为推荐的方案
+不过 Form 的相关中文文章不太多, 基本都是介绍一下 TextFormField 的使用, 更多的 api 云里雾里的, 可能有些朋友不太好理解
+我粗略的解析下源码和自定义, 帮助看过的朋友理解下 Form 体系
+                            Form 体系的简单使用 自动校验 官方提供给了我们一些组件来结合 Form 使用, 最常见的就是 TextFormField
+1import &amp;#39;package:flutter/material.dart&amp;#39;; 23class SimpleUseComponent extends StatefulWidget { 4@override 5_SimpleUseComponentState createState() =&amp;gt; _SimpleUseComponentState(); 6} 78class _SimpleUseComponentState extends State&amp;lt;SimpleUseComponent&amp;gt; { 9@override 10Widget build(BuildContext context) { 11return Form( 12onChanged: () { 13print(&amp;#34;form change&amp;#34;); 14}, 15child: Column( 16children: &amp;lt;Widget&amp;gt;[ 17TextFormField( 18initialValue: &amp;#34;你好&amp;#34;, 19validator: (value) { 20if (value.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

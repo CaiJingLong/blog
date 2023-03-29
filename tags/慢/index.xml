@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>慢 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E6%85%A2/</link>
+    <description>Recent content in 慢 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 20 Jul 2018 11:36:31 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E6%85%A2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>github Clone速度慢的解决方案之一</title>
+      <link>https://kikt.top/post/other/github-clone-slow/</link>
+      <pubDate>Fri, 20 Jul 2018 11:36:31 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/other/github-clone-slow/</guid>
+      <description>
+        
+          
+            github 是每个程序员应该都会用到的平台,无奈对于国内貌似没有 CDN,速度极慢..
+我在网上搜了各种修改 host 的方案,无奈并不好用,也许用国外的 VPS 中转可以解决,当然那是要收费的,还需要一些技术门槛
+今天来一个傻瓜式的帮助方案 用 gitee 中转项目
+开始 注册账号 注册账号,已经有的话可以直接登录,更简单的方案,直接用 github 账号登录  新建项目 二选一 新开一个窗口,把你需要的 github 项目地址复制过来,我这里以 flutter/engine 为例 然后回到新建项目的页面
+点这里 然后照图上操作 最后点创建
+接着就等项目好了
+这里需要耐心等待,但无论如何 很大的项目应该比你自己从那下载要快很多,毕竟有时候你从 github 每秒只有几十或者 100 200K  项目好了后  我们看到,项目都好了
+这里复制项目地址
+ 然后命令行中 我们看到 4M 每秒的速度, 这在大项目中就帮了大忙了
+如果是 200M 的项目,你 200k 一秒 需要下 1000 秒,也就是 20 分钟
+而我这里 clone 只要 50 秒 前面的工作一共操作也就是 2 分钟 等待时间也就是 3~5 分钟
+并且哪怕需要在 github 提 PR 或者 fork github 项目也没关系 修改 remote 的 url 即可,毕竟 git 是去中心化的仓库
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

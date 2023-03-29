@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>apk on CaiJingLong</title>
+    <link>https://kikt.top/tags/apk/</link>
+    <description>Recent content in apk on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 07 Dec 2018 17:04:04 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/apk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flutter 1.0.0 打包apk后运行错误</title>
+      <link>https://kikt.top/post/flutter/flutter-arm64-crash/</link>
+      <pubDate>Fri, 07 Dec 2018 17:04:04 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-arm64-crash/</guid>
+      <description>
+        
+          
+            java.lang.UnsatisfiedLinkError: dalvik.system.PathClassLoader[DexPathList[[zip file &amp;quot;/system/framework/android.test.runner.jar&amp;quot;, ...... base.apk!/lib/arm64-v8a, /system/lib64, /system/vendor/lib64]]] couldn&#39;t find &amp;quot;libflutter.so&amp;quot;
+这种问题可以看到其中有 arm64 的字样. 也有 libflutter.so
+在以前运行打包命令后 可以正常运行的项目,可能在更新 flutter 1.0.0 后不能正常运行
+1flutter build apk 这种情况通常是因为 so 文件没有打包到 apk 中造成的 拖动 apk 到 android Studio 中可以看到其中包含的库文件
+我前面有一篇的文章可以解释原理
+但是 flutter 升级后 可以查看flutter.gradle文件
+ 图片中的代码说明了当目标是 arm64 的时候, 会自动将 64 的 so 打包到 flutter 内, 这里的问题就造成了以前你在自己的 gradle 设置的打包选项和这个同时生效,也就是 v7 v8 的 so 都不进 apk 里了..
+一个小说明 在说解决方案前,有一点需要说明的是 armeabi -&amp;gt; v7 -&amp;gt;v8,这个是 arm cpu 架构的进化过程,而后来的 cpu 是兼容前代的 so 库,
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

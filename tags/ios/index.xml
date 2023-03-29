@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iOS on CaiJingLong</title>
+    <link>https://kikt.top/tags/ios/</link>
+    <description>Recent content in iOS on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Wed, 18 Mar 2020 13:17:37 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 jsdelivr 加速 cocoapod 库</title>
+      <link>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</link>
+      <pubDate>Wed, 18 Mar 2020 13:17:37 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</guid>
+      <description>
+        
+          
+            iOS 开发时, cocoapods(后简称 pod) 是很常用的工具
+我们偶尔也会自己开发 pod 库并上传到 pod 上
+pod 的源码支持多种来源, 本地 path git http 等
+一般来说, 如果是纯开源库, 我们直接把源码上传到 github , 然后使用 git 依赖即可
+但是这有一个问题, github 的速度在中国大陆并不快, 我们有没有办法加速它呢?
+这时候经过搜索, jsdelivr 出现在了搜索引擎里, 号称国内外都可用的 cdn, 我用 wget 测试了一下, 国内外都可以保证 10M+/s 的速度
+jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
+但是, 上面也说了, 支持&amp;quot;任何&amp;quot;在 github 上的仓库, 很好, 我就喜欢这样的东西
+版本号的坑 文档上说支持所有 ref 作为版本号, 然而不是, 我这里测试只支持 tag/release
+包体大小限制 我的目的是为了给 flutter_ijkplayer 的 iOS 仓库找一个下载地址, ijkplayer 的 iOS 部分很大, 我打包完有 150M, 用了 xz 压缩方案让包变成了 35M
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>把flutter作为framework添加到已存在的iOS中</title>
+      <link>https://kikt.top/post/flutter/exists/add-flutter-to-ios/</link>
+      <pubDate>Sun, 16 Jun 2019 11:17:43 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/exists/add-flutter-to-ios/</guid>
+      <description>
+        
+          
+            之前写了一篇关于如何将 flutter 直接打包成 android aar 的文章, 本篇写一写如何将 flutter 打包成 framework 以便于直接让没有 flutter 环境的 iOS 开发者使用, 因为国内很多项目都有这样的要求
+本篇并不会做完全的工程集成化, 只是做一下如何将 flutter 的 framework 打出来, 并且置入到 iOS 原生工程中, 因为各项目一定户会有自己的特殊性, 不可能完全一样
+本篇打包脚本部分参考了 的内容,但是又有一些针对 flutter 版本的变化和 flutter type 不同的情况进行的修改, 不观看连接中的内容并不会影响观看
+                                     开发环境 MacOS
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 原生通信 (四) - iOS 通知 Flutter</title>
+      <link>https://kikt.top/post/flutter/channel/flutter-channel4/</link>
+      <pubDate>Fri, 07 Dec 2018 10:43:45 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/channel/flutter-channel4/</guid>
+      <description>
+        
+          
+            原生通信系列
+
+
+ 本篇主要介绍如何在 iOS 中发布广播,然后在 dart 端进行订阅
+oc 先来查看 OC 篇
+1#import &amp;#34;BattlePowerPlugin.h&amp;#34; 2#import &amp;lt;Foundation/NSTimer.h&amp;gt; 3 4@implementation BattlePowerPlugin 56+ (void)registerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar { 7// ... 8 9[self registerPostTimerWithRegistrar:registrar]; 10} 1112+(void) registerPostTimerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar{ 13FlutterBasicMessageChannel *channel = [FlutterBasicMessageChannel messageChannelWithName:@&amp;#34;run_time&amp;#34; binaryMessenger:[registrar messenger]]; 1415long start = [self getNow]; 1617[NSTimer scheduledTimerWithTimeInterval:5 repeats:true block:^(NSTimer * _Nonnull timer) { 18long run = [self getNow] - start; 19[channel sendMessage:[NSNumber numberWithLong:run]]; 2021if (run &amp;gt; 100){ 22[timer invalidate]; 23} 24}]; 25} 2627+(long)getNow{ 28NSDate *date = [NSDate date]; 29long timeStamp = [date timeIntervalSince1970]; 30return timeStamp; 31} 3233//.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 原生通信 (三) - Flutter 调用 iOS</title>
+      <link>https://kikt.top/post/flutter/channel/flutter-channel3/</link>
+      <pubDate>Fri, 07 Dec 2018 10:43:43 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/channel/flutter-channel3/</guid>
+      <description>
+        
+          
+            原生通信系列
+
+
+ 本篇要介绍的是 flutter 调用 iOS 篇
+如果你没有看过我的前 2 篇,建议看一下. dart 端会承接上一篇的结果
+dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/services.dart&amp;#39;; 45class BattlePower { 6static const MethodChannel _channel = const MethodChannel(&amp;#39;battle_power&amp;#39;); 78static Future&amp;lt;String&amp;gt; get platformVersion async { 9final String version = await _channel.invokeMethod(&amp;#39;getPlatformVersion&amp;#39;); 10return version; 11} 1213static Future&amp;lt;int&amp;gt; requestNativeAdd(int x, int y) async { 14int result = await _channel.invokeMethod(&amp;#39;add&amp;#39;, {&amp;#34;x&amp;#34;: x, &amp;#34;y&amp;#34;: y}); 15return result; 16} 1718//.... 19} 这里和第一篇一样
+不详细介绍了
+ 这里是以 oc 为例的,不建议用 swift 开发插件,尤其是开源插件
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>swift navigation title 标题颜色代码设置</title>
+      <link>https://kikt.top/post/ios/swift/swift-navigation-title-color-style/</link>
+      <pubDate>Tue, 13 Mar 2018 11:57:15 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/swift/swift-navigation-title-color-style/</guid>
+      <description>
+        
+          
+            简单记录,为后续方便查找,仅有代码片段
+可以放在ViewController的基类中
+1if let bar = self.navigationController?.navigationBar { 2bar.backgroundColor = .themeColor 3bar.tintColor = .white 4var attrs = bar.titleTextAttributes 5if attrs == nil { 6attrs = [NSAttributedStringKey:Any]() 7} 8attrs?[NSAttributedStringKey.foregroundColor] = UIColor.white 9bar.titleTextAttributes = attrs 10} 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Swift Ios11 修改navigationbar间距</title>
+      <link>https://kikt.top/post/ios/swift/swift-ios11-change-the-navigationbar-spacing/</link>
+      <pubDate>Fri, 09 Mar 2018 11:55:10 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/swift/swift-ios11-change-the-navigationbar-spacing/</guid>
+      <description>
+        
+          
+            写在前面 在 ios11 中,navigationbar 的 leftItem 都会多出来一个奇怪的白边,这个白边很不容易修改,从前的设置方法失效了
+之前看到有篇文章是修改 layoutMargins 的方案来做的 这个方案设置虽然简单,但是有一个问题,就是当你 push,pop 以后,位置就变了,也就是说,layoutMargins 就失效了,而且需要遍历,采用 ContentView 的字符串
+另外有一个方案是采用自定义 NavigationBar 的方案来做的 也算是简单暴力
+我这里采用另一个方案来做,而且比较简单,也就是自定义 view 的方案的来做
+思路 UIBarButtonItem.init(customView: view)这种方式如果直接将 Button 放进去,那么你设置的 frame 的位置是无效的
+那么我这里采用另一个取巧的方案去做 众所周知,ios 中的控件摆放是可以超出父控件距离的,也就是说,我使用一个 UIView 包裹真正用于显示的 View,然后将子 View 的 x 设置偏移也就可以解决了
+实现 12import UIKit 34extension UIViewController{ 5func setNavigatorLeftItem(customView:UIView) { 6var view:UIView 7if #available(iOS 11, *){ 8let padding:CGFloat = 20 9let frame = customView.frame 10view = UIView(frame: CGRect(x: 0, y: 0, width: frame.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Swift连接BLE蓝牙打印机</title>
+      <link>https://kikt.top/post/ios/swift/swift-connect-ble-printer/</link>
+      <pubDate>Wed, 13 Sep 2017 11:52:48 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/swift/swift-connect-ble-printer/</guid>
+      <description>
+        
+          
+            swift 蓝牙连接 项目简介 最近公司要用到便携式蓝牙打印机进行打印
+打印机使用的 ECS/POS 指令集
+ios 使用的 BLE 方案,安卓则是因为设备的原因只能选择普通蓝牙的连接方案
+BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜索下
+有个 mac 的蓝牙开发工具 LightBlue,很好用,mac app store 自己下就好了,这个很方便你理解 BLE 的蓝牙相关 device(central/peripheral)-&amp;gt;services-&amp;gt;characteristics
+ 这里可以看到,有一个 mobike,有兴趣的同学可以研究下 mobike 的蓝牙连接 ☺ 说笑一下,人家肯定有安全性校验的
+语言选型 最近在学习 ios 开发,因为我是 android 出身,学习 ios 开发的时候 swift3 已经出现很久了,所以我这里使用的 swift 进行开发
+坑 1 最初我使用了厂家提供的 ios sdk 进行开发,其中封装了很多常用的方法,让我自己以为很简单就能完成,但是事实上是我太天真了,首先厂家提供的是.a 的库,只有一个.h 文件暴露在外,我的项目是纯 swift 项目,这就不可避免的使用到了 swift 到 oc 的桥接
+坑 2 满以为桥接完了调 SDK 方法就行,谁知道调用的时候根本就没反应,没办法,只能摸石头过河进行开发了,最初使用的是 oc 的 corebluetooth 方案,因为实在是没找到 swift 的相关说法,baidu 没搜到,没办法,oc 毕竟也算是入门了,直接开干了
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Swift3之将类作为参数</title>
+      <link>https://kikt.top/post/ios/swift/swift3-class-as-param/</link>
+      <pubDate>Fri, 04 Aug 2017 11:48:59 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/swift/swift3-class-as-param/</guid>
+      <description>
+        
+          
+            何谓将类名作为参数 举个栗子 看这么一个需求:
+ 一个 tableview,其中的 cell 是 nib 写的
+ 步骤:
+ 定义 1 个 cell 和对应的 xib 在 ViewController 中定义一个 Xib 加载对应文件,注册 xib  这个时候有一些步骤就是需要定义一个 xib 的文件名,cell 的 identitier,但是这两个东西都是字符串,如果一个字母敲错了或者后续业务逻辑/功能有更改,那么当你要修改 cell 对应的类名时,你就不得不一起修改文件名,字符串的名字,所有引用的名称..等等步骤
+这个时候就要想了,如果将这个 Cell 实现一个 protocol,protocol 中有 xibName,identifier,同时每个类去实现,然后 tableview 注册方法中只传类名不就可以了吗,这样以后如果有修改都只在 Cell 的类内部去写,就不容易出错了
+实现步骤 定义一个 Protocol 1protocol NibCell { 23static func nibName() -&amp;gt; String 45static func identifier() -&amp;gt; String 67} 定义一个 Cell 1import UIKit 23class OrderDetailCell: UITableViewCell,NibCell { 45static func nibName() -&amp;gt; String { 6return &amp;#34;OrderDetailCell&amp;#34; 7} 89static func identifier() -&amp;gt; String { 10return &amp;#34;OrderDetailCell&amp;#34; 11} 1213override func awakeFromNib() { 14super.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Ios版toast</title>
+      <link>https://kikt.top/post/ios/ios-toast/</link>
+      <pubDate>Sat, 08 Jul 2017 09:39:26 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/ios-toast/</guid>
+      <description>
+        
+          
+            ios-toast-swift 
+swift 3.1 语法
+如果想支持其他的语法请自己修改 这里主要是模仿android端的提示方案  截图 背景灰色是因为我把 Demo 中的 ViewController 的 view 的 backgroundColor 修改为了 gray 不是会覆盖全屏的颜色
+这里有个小 bug 圆角么有包含全,后续改正
+食用方法  clone 项目 将 source 下的方法 copy 到源码内,如果有文件重名请自己改名 toast(&amp;quot;提示语句&amp;quot;) toast(&amp;quot;提示内容&amp;quot;,3) //内容 时长  源码分析 都是伪代码  代码分布 ToastView:自定义view相关的代码,基本没啥东西,就是加载了xib文件 Toast:帮助类,其中定义了如何附着到window中,位置,根据文字计算文字大小,渐隐动画等相关内容  提示 这里对于项目没有太多的侵入性 总体原理大概就是创建一个 view,将 view 附着到前台 window 中 这里有一点,这里的 toast 会覆盖掉软键盘
+如果想要修改 view 的样式,可以自己修改 ToastView.xib/ToastView.swift 内容很简单,就在ToastView中 可以自定义内容,更加丰富多彩,也可以基于扩展 content 是一个UILabel,用于显示内容  想要修改提示位置 Toast.swift 的 57~60行  想要修改大小 Toast.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

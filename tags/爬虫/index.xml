@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>爬虫 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E7%88%AC%E8%99%AB/</link>
+    <description>Recent content in 爬虫 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 25 Jan 2019 13:46:47 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用python爬取一个省市城市列表</title>
+      <link>https://kikt.top/post/python/get_city_datas/</link>
+      <pubDate>Fri, 25 Jan 2019 13:46:47 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/python/get_city_datas/</guid>
+      <description>
+        
+          
+            前言 最近打算使用 ,但是目前没有数据来源,就想着搜搜有没有 json 的数据,结果搜了一下只有各种数据库的
+然后搜了下有个网站说有很完整的数据的还是收费的
+作为一个穷人程序员,如果是公司用,我付费买一个也无所谓,但是本身是想私人使用,甚至开源出去,付费就没必要了
+这时候我想着,既然如此,我就爬一份数据,自己造一个吧
+说到爬虫,我们就想起了明年..两开花 python
+开发环境 使用的语言是 python3
+request_html+基本库
+爬取网页 
+查看网页 一级页面 使用 chrome dev 工具查看元素
+ 呃. table 体系,最近几年算是比较少见了
+分析了一下,整个页面只有备案号和省份名称是 a 标签,这下过滤一下备案号,剩下的不就是我们要的数据了吗
+二级页面 点开北京,数据比较少,只有市辖区 内蒙的就比较多一点了
+ 纯数字的是编码,其他的是名称,也是过滤掉 IPC 备案的就好
+三级页面 和二级页面基本一致
+ 撸码 city_get.py
+1import json 2from requests_html import HTMLSession 3import requests_html 45session = HTMLSession() 678class Entity: 9name: str 10link: str 11no: str 12baseUrl = &amp;#34;http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2017/&amp;#34; 1314def __str__(self) -&amp;gt; str: 15return &amp;#34;name:%s,link=%s&amp;#34; % (self.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

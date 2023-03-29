@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clipboard on CaiJingLong</title>
+    <link>https://kikt.top/tags/clipboard/</link>
+    <description>Recent content in Clipboard on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 18 Sep 2016 10:45:55 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/clipboard/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android剪切板的简单解析</title>
+      <link>https://kikt.top/post/android/android-clipboard-manager/</link>
+      <pubDate>Sun, 18 Sep 2016 10:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-clipboard-manager/</guid>
+      <description>
+        
+          
+            其实 android 的剪切板使用不算复杂 而且一般的应用需求不会太复杂，只要简单的应用即可
+一般都是点击事件时将某段文字复制到剪切板中
+Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象的方法是
+1Context.getSystemService(Context.CLIPBOARD_SERVICE); 2cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 在 API11 后 使用的是
+1android.content.ClipboardManager API11 前 使用的是
+1android.text.ClipboardManager 前者的方法声明是
+1public class ClipboardManager extends android.text.ClipboardManager 也就是说即使在 API11 后也可以使用旧的方法来获取和修改剪切板内的内容
+CharSequence text = cm.getText();可以获取到剪切板内的内容 使用cm.setText(&amp;quot;复制到剪切板&amp;quot;);可以将内容复制到剪切板内
+如果你的应用 minSDK 在 11 以上，可以直接用新的方法，毕竟老的已经过时了
+使用如下的代码
+1cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 2ClipData clipData = ClipData.newPlainText(&amp;#34;title&amp;#34;, &amp;#34;content23&amp;#34;); 3cm.setPrimaryClip(clipData); 可以简单的达到效果
+这个有一个对象ClipData
+1package com.dn.clipbroaddemo; 23import android.content.ClipData; 4import android.content.ClipDescription; 5import android.content.ClipboardManager; 6import android.os.Bundle; 7import android.support.v7.app.AppCompatActivity; 8import android.util.Log; 910public class MainActivity extends AppCompatActivity { 1112private ClipboardManager cm; 1314@Override 15protected void onCreate(Bundle savedInstanceState) { 16super.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

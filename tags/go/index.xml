@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on CaiJingLong</title>
+    <link>https://kikt.top/tags/go/</link>
+    <description>Recent content in go on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 14 Aug 2020 20:45:00 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>编译 go 源码为 android 动态库(so)</title>
+      <link>https://kikt.top/post/go/compile-for-android/</link>
+      <pubDate>Fri, 14 Aug 2020 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/go/compile-for-android/</guid>
+      <description>
+        
+          
+            golang跨平台, 性能强, 周边也算丰富
+一直有一个想法, 把这东西写的代码编译成各个平台的库, 未来在 flutter 里用
+开发环境和工具  MacOS(其他的暂时不考虑) Go  Go 1.14.6, 版本太低可能不能编译成 android 的 Goland , 咱现在是正版用户, 用开源项目申请的All products License , 你也可以根据自己的情况选择别的 IDE 或使用文本编辑器(vscode 也不错)   Android  Android Studio Cmake Android SDK Android NDK    Go 部分 go 源码 add_library.go
+1package main 23import &amp;#34;C&amp;#34; 45//export add 6func add(x, y int) int { 7return x + y 8} 910//export remove_int 11func remove_int(x, y int) int { 12return x - y 13} 1415func main() { 16} 这里有几点要注意
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Go Flutter Desktop (二) go 二进制程序打包为 mac app(dmg)</title>
+      <link>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-2/</link>
+      <pubDate>Mon, 08 Jul 2019 14:16:54 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-2/</guid>
+      <description>
+        
+          
+            前篇对于 go-flutter 引擎进行了初步的探索, 打包终产物是一个二进制文件配合一些资源文件
+本篇研究如何将终产物变成一个 app, 进一步变成 dmg, 就和你网上下载的工具一样
+本篇默认你拥有全套的工具, git xcode flutter go hover
+                      打包出 go 终产物 这里以大佬的 为例
+1cd /tmp 2git clone https://github.com/fluttercandies/JsonToDart.git 3cd JsonToDart/Flutter/desktop 打包
+1hover build 这里可能很快也可能很慢, 根据你的工程大小和网络速度而言, 网络速度是因为要下载 flutter 依赖和 go-flutter 引擎相关的东西, 工程大小影响编译速度
+然后可以看到当前的目录结构
+1tree -L 2 desktop/build/outputs/darwin 2desktop/build/outputs/darwin 3├── FlutterEmbedder.framework 4│ ├── FlutterEmbedder -&amp;gt; Versions/Current/FlutterEmbedder 5│ ├── Headers -&amp;gt; Versions/Current/Headers 6│ ├── Modules -&amp;gt; Versions/Current/Modules 7│ ├── Resources -&amp;gt; Versions/Current/Resources 8│ └── Versions 9├── assets 10│ └── icon.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Go Flutter Desktop (一) 初探</title>
+      <link>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-1/</link>
+      <pubDate>Thu, 04 Jul 2019 16:07:17 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-1/</guid>
+      <description>
+        
+          
+            Flutter 在去年的时候就有一个第三方的桌面引擎, 是用 golang 开发的
+Github 地址是:https://github.com/go-flutter-desktop/go-flutter
+目前在 mac,linux,windows 均可用, 作为一个 mac 用户, 除了 retina 下字显得有点小, 感觉没有单独适配外, 总体感觉是优于官方的 desktop 引擎的
+另外我是真实的 golang 脑残粉, 我觉得 golang 这东西真的太好了, 用 golang, 准不会错
+                                              开发环境 需要的开发环境, 因为我是 MacOS, 我以 macOS 为例,其他的请参考对应的系统
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>caddy on CaiJingLong</title>
+    <link>https://kikt.top/categories/caddy/</link>
+    <description>Recent content in caddy on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Sat, 05 Jan 2019 11:13:08 +0800</lastBuildDate><atom:link href="https://kikt.top/categories/caddy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Caddy 初探</title>
+      <link>https://kikt.top/post/server/caddy/caddy-first/</link>
+      <pubDate>Sat, 05 Jan 2019 11:13:08 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/caddy/caddy-first/</guid>
+      <description>
+        
+          
+            caddy 是使用 go 语言开发的一个 server 服务器
+相对于 nginx 来说,这个部署更简单,配置起来也很简单,很适合搭私人站点使用,而且相比于 nginx 来说,这个只有单文件,很适合小白使用
+而且,这东西最大的优点是,可以通过简单的配置来支持 https,而无需操心证书,另外还支持 http2 协议
+这里有一份,请注意查收
+入手 以 mac os 为例 我只需要 brew install caddy 然后, 运行 caddy,这样就完成了最简单的部署过程...
+当然这是因为有默认配置的关系,整个项目是单文件的,就只有一个 caddy 文件
+其他系统的参考
+运行结果如下 默认是 2015 端口,可能是代表这个项目是 2015 年创建/发布的?
+然后打开 就可以看到你的网页了,当然这里因为有默认的原因,你看到的也许是 404,或是其他的什么
+自定义配置 caddy 支持命令行的一些简单配置和配置文件的复杂配置
+命令行 使用caddy -h 可以看到最新最全的命令行参数列表 这里说命令行运行简单命令的意思并不是支持不全,而是有一些复杂的情况,如果用命令行来做调错比较麻烦
+比如 -agree 同意 CA 的协议
+-ca XXX 获取指定 host 的 ca 证书
+一般情况下比较有用的就是
+-conf string 使用配置文件
+-email string ca 的 email
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

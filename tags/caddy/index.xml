@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>caddy on CaiJingLong</title>
+    <link>https://kikt.top/tags/caddy/</link>
+    <description>Recent content in caddy on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Sat, 06 Jun 2020 14:01:14 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/caddy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用 Caddy 解决 web 开发中本地跨域的问题</title>
+      <link>https://kikt.top/post/server/caddy/cros_for_local_dev/</link>
+      <pubDate>Sat, 06 Jun 2020 14:01:14 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/caddy/cros_for_local_dev/</guid>
+      <description>
+        
+          
+            最近在尝试 flutter web, 会遇到一个问题, app 没问题, 然而同样的代码在 web 里就不好使了, 主要就是跨域的问题
+搜了一下各种方案都是 nginx 的, 但是我抄过来发现不好使..
+所以自己摸索一下解决方案
+这个方案只适合于本地开发调试, 真实部署时只有两种方案
+ 让服务器 api 允许跨域 部署到和服务器同一个域名,同一个端口下  另: 目前个人还是觉得 flutter web 不适合商用, 比较适合的场景是, 没有 android/ios 插件的项目中做远端展示使用,比如内部就不用分发 apk/ipa 了, 那两个东西打包太慢了, 这时候直接用 flutter web 就比较靠谱了
+下载 Caddy 官网: 找最新版本下载
+因为这货是 GO 语言开发的, 所以只有单文件就可以部署了
+我是 mac os, 我用的是 brew 安装的, brew install caddy
+安装好了以后查看一下版本, 一定要是 2.0+ 版本的
+1$ caddy version 2v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8= 注意: 因为这东西 2.0 版本有大更改, 配置文件和 1.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Caddy 初探</title>
+      <link>https://kikt.top/post/server/caddy/caddy-first/</link>
+      <pubDate>Sat, 05 Jan 2019 11:13:08 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/caddy/caddy-first/</guid>
+      <description>
+        
+          
+            caddy 是使用 go 语言开发的一个 server 服务器
+相对于 nginx 来说,这个部署更简单,配置起来也很简单,很适合搭私人站点使用,而且相比于 nginx 来说,这个只有单文件,很适合小白使用
+而且,这东西最大的优点是,可以通过简单的配置来支持 https,而无需操心证书,另外还支持 http2 协议
+这里有一份,请注意查收
+入手 以 mac os 为例 我只需要 brew install caddy 然后, 运行 caddy,这样就完成了最简单的部署过程...
+当然这是因为有默认配置的关系,整个项目是单文件的,就只有一个 caddy 文件
+其他系统的参考
+运行结果如下 默认是 2015 端口,可能是代表这个项目是 2015 年创建/发布的?
+然后打开 就可以看到你的网页了,当然这里因为有默认的原因,你看到的也许是 404,或是其他的什么
+自定义配置 caddy 支持命令行的一些简单配置和配置文件的复杂配置
+命令行 使用caddy -h 可以看到最新最全的命令行参数列表 这里说命令行运行简单命令的意思并不是支持不全,而是有一些复杂的情况,如果用命令行来做调错比较麻烦
+比如 -agree 同意 CA 的协议
+-ca XXX 获取指定 host 的 ca 证书
+一般情况下比较有用的就是
+-conf string 使用配置文件
+-email string ca 的 email
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

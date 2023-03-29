@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>动态 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E5%8A%A8%E6%80%81/</link>
+    <description>Recent content in 动态 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 12 Mar 2019 15:18:07 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E5%8A%A8%E6%80%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>flutter取消动态字体大小</title>
+      <link>https://kikt.top/post/flutter/layout/dynamic-text/</link>
+      <pubDate>Tue, 12 Mar 2019 15:18:07 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/layout/dynamic-text/</guid>
+      <description>
+        
+          
+            如果接触过原生开发的朋友可能知道
+最初几年官方推荐使用 sp 作为字体大小的单位，但是事实上经过长时间实践的情况下，大家都开始逐渐使用 dp 作为单位
+这样使用者调整系统字体大小，app 中的文字大小就不会受到影响，出现错误等情况
+flutter 中修改 iOS 中叫动态字体大小,对应辅助功能中的字体大小
+ android 中叫字体大小
+ 当你开发完成，又遇到用户修改系统字体大小导致某些地方错位，甚至按钮被挤出屏幕看不见了就是个问题了
+而 flutter 中没有单位的概念，我们应该如何实现这个功能呢
+在 flutter 中，是由 MediaQuery 来实现对应功能的
+1var data = MediaQuery.of(context); 2data.textScaleFactor; //这个就是对应的动态字体大小，我们只需要『修改』这个值就可以了 修改自然是不可能的，这东西都是 final 的，我们要做的就是 flutter 中的通用做法
+1class NoScaleTextWidget extends StatelessWidget { 2final Widget child; 34const NoScaleTextWidget({ 5Key key, 6@required this.child, 7}) : super(key: key); 89@override 10Widget build(BuildContext context) { 11return MaxScaleTextWidget( 12max: 1.0, 13child: child, 14); 15} 16} 1718class MaxScaleTextWidget extends StatelessWidget { 19final double max; 20final Widget child; 2122const MaxScaleTextWidget({ 23Key key, 24this.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

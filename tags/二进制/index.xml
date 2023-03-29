@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>二进制 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/</link>
+    <description>Recent content in 二进制 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 16 Nov 2018 13:39:04 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker 部署二进制</title>
+      <link>https://kikt.top/post/docker/docker-delop-bin-file/</link>
+      <pubDate>Fri, 16 Nov 2018 13:39:04 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/docker/docker-delop-bin-file/</guid>
+      <description>
+        
+          
+            在搜索引擎中,搜索了一下如何部署一个 go 的程序, 发现都是基于 golang 的镜像部署 go 源码的方案
+而基于 golang 源码部署 docker image 的大小有 700MB, 有时候并不需要这么大,我们生成二进制文件后 只需要基于 centos 来制作 image 就可以了, 当然如果对于 go 源码有持续部署的需求,那还是只能使用 golang 镜像
+ 目录结构  完整的目录结构就这么简单, main 是二进制运行文件
+main.go 1package main 23import &amp;#34;github.com/gin-gonic/gin&amp;#34; 45func main() { 6g := gin.Default() 78g.LoadHTMLGlob(&amp;#34;static/*&amp;#34;) 910g.GET(&amp;#34;/index&amp;#34;, func(c *gin.Context) { 11c.HTML(200, &amp;#34;index.html&amp;#34;, gin.H{ 12&amp;#34;title&amp;#34;: &amp;#34;标题&amp;#34;, 13}) 14}) 1516g.Run(&amp;#34;:80&amp;#34;) 17} 打包 go 二进制运行文件 这里因为我是 mac 系统,所以我需要交叉编译,具体的交叉编译可以查看我的
+1cd main 23CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

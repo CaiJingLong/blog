@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>so on CaiJingLong</title>
+    <link>https://kikt.top/tags/so/</link>
+    <description>Recent content in so on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 14 Aug 2020 20:45:00 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/so/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>编译 go 源码为 android 动态库(so)</title>
+      <link>https://kikt.top/post/go/compile-for-android/</link>
+      <pubDate>Fri, 14 Aug 2020 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/go/compile-for-android/</guid>
+      <description>
+        
+          
+            golang跨平台, 性能强, 周边也算丰富
+一直有一个想法, 把这东西写的代码编译成各个平台的库, 未来在 flutter 里用
+开发环境和工具  MacOS(其他的暂时不考虑) Go  Go 1.14.6, 版本太低可能不能编译成 android 的 Goland , 咱现在是正版用户, 用开源项目申请的All products License , 你也可以根据自己的情况选择别的 IDE 或使用文本编辑器(vscode 也不错)   Android  Android Studio Cmake Android SDK Android NDK    Go 部分 go 源码 add_library.go
+1package main 23import &amp;#34;C&amp;#34; 45//export add 6func add(x, y int) int { 7return x + y 8} 910//export remove_int 11func remove_int(x, y int) int { 12return x - y 13} 1415func main() { 16} 这里有几点要注意
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter android So库对齐</title>
+      <link>https://kikt.top/post/flutter/so-about-1/</link>
+      <pubDate>Sat, 27 Oct 2018 12:18:08 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/so-about-1/</guid>
+      <description>
+        
+          
+            so 库说明 so 库在 android 中,是使用 c/c++代码编译出来的库文件,可以使用 ndk 调用,就是你在 android 代码中见到的 native 方法,具体的实现就在 so 库中
+关于 so 库兼容性问题 andorid 中或多或少都会引用到第三方库,而很多第三方库中都有 so 的存在,不论是复制到项目中(如百度地图),或是 gradle 依赖(如个推) 其中都涉及到了 so 库的相关问题,如果你选择的库是有所有 cpu 类型可选还好,如果不是,那么就需要自定义设置了
+举个栗子 你的 app 依赖两个库,分别是 lib1,lib2
+1lib1: arm64-v8a,armeabi-v7a 2lib2: armeabi-v7a 那么当你运行在 v7 的手机上时,因为你的项目含有 v7 的 so 库,所以没有问题,可以跑起来
+如果,你运行在 v8 手机上,那么你的项目就会 boom,崩了, 为啥呢? 这就涉及到 so 对齐了
+so 对齐 简单来说,就是要有就必须都有,如果一个没有,那就一个都不要
+比如上面的例子,如果你是自己复制到项目下的,你需要删掉 arm64-v8a 的文件夹
+如果是个推那种使用 gradle 依赖的方案,那么你需要修改 gradle 文件,这个是我的个推的配置 gradle
+1// 个推的ndk配置 2apply plugin: &amp;#39;com.android.application&amp;#39; 34android { 5defaultConfig { 6ndk { 7abiFilters &amp;#34;armeabi-v7a&amp;#34; 8// abiFilters &amp;#34;armeabi-v7a&amp;#34;,&amp;#34;arm64-v8a&amp;#34; 9 } 10} 11buildTypes { 12debug { 13ndk { 14abiFilters &amp;#34;armeabi-v7a&amp;#34;, &amp;#34;x86&amp;#34; 15// abiFilters &amp;#34;armeabi-v7a&amp;#34;, &amp;#34;x86&amp;#34;/*, &amp;#34;arm64-v8a&amp;#34;*/ 16 } 17} 18release{ 19ndk{ 20abiFilters &amp;#34;armeabi-v7a&amp;#34; 21} 22} 23} 24} 2526repositories { 27maven { url &amp;#34;http://mvn.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

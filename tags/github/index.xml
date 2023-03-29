@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>github on CaiJingLong</title>
+    <link>https://kikt.top/tags/github/</link>
+    <description>Recent content in github on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Wed, 18 Mar 2020 13:17:37 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 jsdelivr 加速 cocoapod 库</title>
+      <link>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</link>
+      <pubDate>Wed, 18 Mar 2020 13:17:37 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</guid>
+      <description>
+        
+          
+            iOS 开发时, cocoapods(后简称 pod) 是很常用的工具
+我们偶尔也会自己开发 pod 库并上传到 pod 上
+pod 的源码支持多种来源, 本地 path git http 等
+一般来说, 如果是纯开源库, 我们直接把源码上传到 github , 然后使用 git 依赖即可
+但是这有一个问题, github 的速度在中国大陆并不快, 我们有没有办法加速它呢?
+这时候经过搜索, jsdelivr 出现在了搜索引擎里, 号称国内外都可用的 cdn, 我用 wget 测试了一下, 国内外都可以保证 10M+/s 的速度
+jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
+但是, 上面也说了, 支持&amp;quot;任何&amp;quot;在 github 上的仓库, 很好, 我就喜欢这样的东西
+版本号的坑 文档上说支持所有 ref 作为版本号, 然而不是, 我这里测试只支持 tag/release
+包体大小限制 我的目的是为了给 flutter_ijkplayer 的 iOS 仓库找一个下载地址, ijkplayer 的 iOS 部分很大, 我打包完有 150M, 用了 xz 压缩方案让包变成了 35M
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 版本更新内容查看</title>
+      <link>https://kikt.top/post/flutter/compare/version-compare/</link>
+      <pubDate>Wed, 10 Apr 2019 13:47:25 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/compare/version-compare/</guid>
+      <description>
+        
+          
+            分支 与很多项目不同, flutter 使用 master 作为开发分支而不是发布分支
+flutter 有几个主要的 branch:
+master: 主分支,开发分支
+dev: 发布第二快的分支, 每次的版本更新会优先发布到这个频道来, 主要给 flutter 尝鲜开发者使用
+beta: 测试分支, 这个分支更新相对缓慢
+stable: 可以在生产环境使用的, 相对问题最少,发布次数最少
+对比 flutter 更新速度很快,几乎每天都有 commit, 间隔几天就会有一个新版本释出
+flutter 以 v 开头,数字部分使用标准的三段版本号 vx.x.x
+那么如果我目前是 v1.4.10 但是我想看看新版本相对我使用中的版本都更新了什么东西怎么办?
+现在 dev 分支最新版是 v1.4.14,那么我可以通过
+可以通过 类似下面的连接把版本号替换为你需要对比的即可,前小后大,然后在浏览器中打开即可
+ 这其中有 53 次提交,后面有对应的提交记录日志,这个顺序是由早到晚
+源码的话,则点击 Files Changes,就可以看到修改内容
+点击下路蓝框的位置可以切换视图模式,列表还是详情 然后左边绿色是添加的内容,红色是删除的内容,白色是不变的内容,蓝色是折叠起来的不变内容
+rss 订阅 github 的 release 支持 rss 订阅
+
+我使用了这个 来订阅 flutter sdk 的更新
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>github 一些小技巧</title>
+      <link>https://kikt.top/post/github/work-manager/</link>
+      <pubDate>Wed, 12 Dec 2018 15:21:47 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/github/work-manager/</guid>
+      <description>
+        
+          
+            最近沉迷 flutter,偶尔换换口味,看看 github
+很多知名的开源项目落户于 github,那么为什么呢,人云亦云吗?
+不一定, github 的工作流很强大.能够帮助我们更加清晰工作流程
+ 
+ 首先官方链接在此,英文好的直接去看
+ 另外还有一个帮助你学习 github 的小机器人
+ 
+ 这个小机器人能帮你系统的了解一些 github 的工作流和 github 的一些基本功能
+比如 github 仓库的元数据修改,关键字修改,github pages 的发布
+工作流包括 issues 中的
+PR 整体过程中 分派工作/审核/修改意见/冲突处理/merge 代码的流程,强烈建议 github 用的不好的人先去梳理一下
+issue 篇 常规的创建之类的就不说了,说一些你日常中看不到的东西,或者说看见了,但是不知道怎么玩出来的
+不会包含所有的东西,但是会有一些很神奇的效果
+通过代码创建一个 issue 比如我在某行代码发现了一个错误, 那么我可以直接在 github 中选中这个代码,然后开启一个 issue
+  点击行号
+  open new issue
+     通过这几个步骤,我们能看到,我们创建了一个指向改行的错误,这样开发者就能很简单的定位到该行,并且可以直观的在 issue 中看到该行代码,方便开发者定位
+
+创建一个永久可见的代码连接   提交后就可以看到了
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 本人开发的一些开源库</title>
+      <link>https://kikt.top/post/flutter/flutter-self-library/</link>
+      <pubDate>Wed, 05 Dec 2018 11:50:03 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-self-library/</guid>
+      <description>
+        
+          
+            pub 库
+项目名: 项目地址: 简介: 图片压缩
+ 项目名: 项目地址: 项目简介: 仿 android toast 纯 flutter 实现
+ 项目名: 项目地址: 项目简介: 读取系统相册 纯 api 版 支持(ios/android)
+ 项目名: 项目地址: 项目简介: 相册图片选择器 基于 photo_manager
+ 项目名: 项目地址: 项目简介: ListView 的加载更多
+ 项目名: 项目地址: 项目简介: 配合 pageview 的简单圆点指示器
+ 项目名: 项目地址: 项目简介: 城市选择器
+ 项目名: 项目地址: 项目简介: 一个长按弹出菜单的小部件
+ 项目名: 项目地址: 项目简介: 日志插件,用于帮助将 flutter 上的日志记录至开发机
+ 如果用过的朋友觉得好用,请在遇到别人想用的时候帮忙感谢宣传
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>github Clone速度慢的解决方案之一</title>
+      <link>https://kikt.top/post/other/github-clone-slow/</link>
+      <pubDate>Fri, 20 Jul 2018 11:36:31 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/other/github-clone-slow/</guid>
+      <description>
+        
+          
+            github 是每个程序员应该都会用到的平台,无奈对于国内貌似没有 CDN,速度极慢..
+我在网上搜了各种修改 host 的方案,无奈并不好用,也许用国外的 VPS 中转可以解决,当然那是要收费的,还需要一些技术门槛
+今天来一个傻瓜式的帮助方案 用 gitee 中转项目
+开始 注册账号 注册账号,已经有的话可以直接登录,更简单的方案,直接用 github 账号登录  新建项目 二选一 新开一个窗口,把你需要的 github 项目地址复制过来,我这里以 flutter/engine 为例 然后回到新建项目的页面
+点这里 然后照图上操作 最后点创建
+接着就等项目好了
+这里需要耐心等待,但无论如何 很大的项目应该比你自己从那下载要快很多,毕竟有时候你从 github 每秒只有几十或者 100 200K  项目好了后  我们看到,项目都好了
+这里复制项目地址
+ 然后命令行中 我们看到 4M 每秒的速度, 这在大项目中就帮了大忙了
+如果是 200M 的项目,你 200k 一秒 需要下 1000 秒,也就是 20 分钟
+而我这里 clone 只要 50 秒 前面的工作一共操作也就是 2 分钟 等待时间也就是 3~5 分钟
+并且哪怕需要在 github 提 PR 或者 fork github 项目也没关系 修改 remote 的 url 即可,毕竟 git 是去中心化的仓库
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

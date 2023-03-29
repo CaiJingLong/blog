@@ -1,0 +1,1587 @@
+
+<!DOCTYPE html>
+<html lang="en" data-figures="" class="page">
+  <head>
+<title>CameraX的使用 | CaiJingLong</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script async src="https://www.googletagmanager.com/gtag/js?id=XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'XXXXXXXXXX');
+</script>
+
+<meta property="og:locale" content="en" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程
+在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍
+ 目录                         介绍 CameraX …">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="">
+<meta name="twitter:title" content="CameraX的使用" />
+<meta property="og:url" content="https://kikt.top/post/android/camera/camerax-usage/" />
+<meta property="og:title" content="CameraX的使用" />
+<meta property="og:description" content="我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程
+在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍
+ 目录                         介绍 CameraX …" />
+<meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kikt.top/icons/favicon-32x32.png">
+<link rel="manifest" href="https://kikt.top/icons/site.webmanifest">
+
+<link rel="canonical" href="https://kikt.top/post/android/camera/camerax-usage/">
+
+    
+
+    
+    
+    <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
+    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    
+  </head>
+  
+  
+    
+  
+  <body data-code="7" data-lines="false" id="documentTop">
+
+<header class="nav_header">
+  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
+  <div class="nav_close">
+    <div><svg class="icon">
+  <title>open-menu</title>
+  <use xlink:href="#open-menu"></use>
+</svg>
+<svg class="icon">
+  <title>closeme</title>
+  <use xlink:href="#closeme"></use>
+</svg>
+</div>
+  </div>
+</a>
+
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+      
+
+  <div class="nav_parent">
+    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <div class="nav_sub">
+      <span class="nav_child"></span>
+        <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
+    </div>
+  </div>
+  <div class="nav_parent">
+    <a href="https://kikt.top/about/" class="nav_item" title="关于">关于 </a>
+  </div>
+      
+<div class='follow'>
+  <a href="https://github.com/Caijinglong">
+    <svg class="icon">
+  <title>github</title>
+  <use xlink:href="#github"></use>
+</svg>
+
+  </a>
+    
+  <a href="https://kikt.top/index.xml">
+    <svg class="icon">
+  <title>rss</title>
+  <use xlink:href="#rss"></use>
+</svg>
+
+  </a>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+  
+</header>
+    <main>
+
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title">CameraX的使用</h1>
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      2019-05-14 13:44</span>
+    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
+        </a><a href='https://kikt.top/tags/camera' title="camera" class="post_tag button button_translucent">camera
+        </a><a href='https://kikt.top/tags/camerax' title="cameraX" class="post_tag button button_translucent">cameraX
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=CameraX%e7%9a%84%e4%bd%bf%e7%94%a8&url=https%3a%2f%2fkikt.top%2fpost%2fandroid%2fcamera%2fcamerax-usage%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fpost%2fandroid%2fcamera%2fcamerax-usage%2f&t=CameraX%e7%9a%84%e4%bd%bf%e7%94%a8" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://kikt.top/post/android/camera/camerax-usage/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    <div class="post_toc">
+      <h2>文章目录</h2>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#介绍">介绍</a></li>
+    <li><a href="#开发环境">开发环境</a></li>
+    <li><a href="#编码准备">编码准备</a>
+      <ul>
+        <li><a href="#新建项目">新建项目</a></li>
+        <li><a href="#添加依赖">添加依赖</a></li>
+        <li><a href="#尝试运行项目">尝试运行项目</a></li>
+      </ul>
+    </li>
+    <li><a href="#编码">编码</a>
+      <ul>
+        <li><a href="#修改-xml-文件">修改 xml 文件</a></li>
+        <li><a href="#申请权限">申请权限</a></li>
+        <li><a href="#实现照相的功能">实现照相的功能</a></li>
+        <li><a href="#拍照">拍照</a></li>
+        <li><a href="#分析器">分析器</a></li>
+        <li><a href="#编码结束">编码结束</a></li>
+      </ul>
+    </li>
+    <li><a href="#进阶探索">进阶探索</a></li>
+    <li><a href="#后记">后记</a></li>
+  </ul>
+</nav>
+    </div>
+    
+    <div class="post_body"><p>我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程</p>
+<p>在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍</p>
+<p>
+</p>
+<h2 id="目录">目录</h2>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</li>
+<li>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</li>
+<li></li>
+<li></li>
+</ul>
+<h2 id="介绍">介绍</h2>
+<p>CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机</p>
+<p>最低支持的 API 等级是 API 21(5.0)</p>
+<h2 id="开发环境">开发环境</h2>
+<p>我当前的开发环境是</p>
+<p>MacOS 10.13.6<br>
+Android Studio 3.4
+小米 8 MIUI 10.3 稳定版 10.3.2.0(android 9.0)</p>
+<p>最低支持
+官方说明为 AndroidStudio 3.3
+API 21+的设备</p>
+<h2 id="编码准备">编码准备</h2>
+<h3 id="新建项目">新建项目</h3>
+<p>修改这两项</p>
+<p>
+<p class="md__image">
+  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190514135542.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190514135542.png"  crossorigin/>
+</p>
+</p>
+<p>最低 21, 使用 androidX</p>
+<h3 id="添加依赖">添加依赖</h3>
+<p>在 app 级别的 build.gradle 中添加如下依赖</p>
+<p>这个版本当前还是 alpha 版本,后续可能会升级为正式版, 可以查看</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">dependencies</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="kt">def</span> <span class="n">camerax_version</span> <span class="o">=</span> <span class="s2">&#34;1.0.0-alpha01&#34;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="n">implementation</span> <span class="s2">&#34;androidx.camera:camera-core:${camerax_version}&#34;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="n">implementation</span> <span class="s2">&#34;androidx.camera:camera-camera2:${camerax_version}&#34;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="尝试运行项目">尝试运行项目</h3>
+<p>运行项目,我这里可以成功跑起来,说明依赖添加是成功的</p>
+<p>
+<p class="md__image">
+  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2Fdevice-2019-05-14-141300.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="device-2019-05-14-141300.png"  crossorigin/>
+</p>
+</p>
+<h2 id="编码">编码</h2>
+<h3 id="修改-xml-文件">修改 xml 文件</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="nt">&lt;androidx.constraintlayout.widget.ConstraintLayout</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">        <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">        <span class="na">xmlns:tools=</span><span class="s">&#34;http://schemas.android.com/tools&#34;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">        <span class="na">xmlns:app=</span><span class="s">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="na">tools:context=</span><span class="s">&#34;.MainActivity&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="nt">&lt;TextureView</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/view_finder&#34;</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;640px&#34;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;640px&#34;</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">            <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">&#34;parent&#34;</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">            <span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">&#34;parent&#34;</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">            <span class="na">app:layout_constraintStart_toStartOf=</span><span class="s">&#34;parent&#34;</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">            <span class="na">app:layout_constraintEnd_toEndOf=</span><span class="s">&#34;parent&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">
+</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="nt">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
+</span></span></code></pre></div><p>使用<code>TextureView</code>作为显示的 View</p>
+<h3 id="申请权限">申请权限</h3>
+<p>添加到 manifest</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="ln">1</span><span class="cl"><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.CAMERA&#34;</span> <span class="nt">/&gt;</span>
+</span></span></code></pre></div><p>申请动态访问权限,这一步可以借助第三方插件,也可以自己写</p>
+<p>截至目前为止,代码如下</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">package</span> <span class="nn">top.kikt.camerax.usage</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="k">import</span> <span class="nn">android.Manifest</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="k">import</span> <span class="nn">android.content.pm.PackageManager</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="k">import</span> <span class="nn">android.os.Bundle</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="k">import</span> <span class="nn">android.view.TextureView</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="k">import</span> <span class="nn">android.widget.Toast</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="k">import</span> <span class="nn">androidx.appcompat.app.AppCompatActivity</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="k">import</span> <span class="nn">androidx.core.app.ActivityCompat</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="k">import</span> <span class="nn">androidx.core.content.ContextCompat</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="k">import</span> <span class="nn">kotlinx.android.synthetic.main.activity_main.*</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="k">private</span> <span class="k">const</span> <span class="k">val</span> <span class="py">REQUEST</span><span class="n">_CODE_PERMISSIONS</span> <span class="p">=</span> <span class="m">10</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="k">private</span> <span class="k">val</span> <span class="py">REQUIRED</span><span class="n">_PERMISSIONS</span> <span class="p">=</span> <span class="n">arrayOf</span><span class="p">(</span><span class="n">Manifest</span><span class="p">.</span><span class="n">permission</span><span class="p">.</span><span class="n">CAMERA</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="k">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">(),</span> <span class="n">LifecycleOwner</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">
+</span></span><span class="line"><span class="ln">18</span><span class="cl">    <span class="k">private</span> <span class="k">lateinit</span> <span class="k">var</span> <span class="py">viewFinder</span><span class="p">:</span> <span class="n">TextureView</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">
+</span></span><span class="line"><span class="ln">20</span><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">        <span class="n">viewFinder</span> <span class="p">=</span> <span class="n">view_finder</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">
+</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="c1">// Request camera permissions
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">allPermissionsGranted</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">            <span class="n">viewFinder</span><span class="p">.</span><span class="n">post</span> <span class="p">{</span> <span class="n">startCamera</span><span class="p">()</span> <span class="p">}</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">            <span class="n">ActivityCompat</span><span class="p">.</span><span class="n">requestPermissions</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">                <span class="k">this</span><span class="p">,</span> <span class="n">REQUIRED_PERMISSIONS</span><span class="p">,</span> <span class="n">REQUEST_CODE_PERMISSIONS</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">
+</span></span><span class="line"><span class="ln">34</span><span class="cl">        <span class="c1">// Every time the provided texture view changes, recompute layout
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="c1"></span>        <span class="n">viewFinder</span><span class="p">.</span><span class="n">addOnLayoutChangeListener</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="ln">36</span><span class="cl">            <span class="n">updateTransform</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">37</span><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="ln">38</span><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="ln">39</span><span class="cl">
+</span></span><span class="line"><span class="ln">40</span><span class="cl">
+</span></span><span class="line"><span class="ln">41</span><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">startCamera</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">42</span><span class="cl">
+</span></span><span class="line"><span class="ln">43</span><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl">
+</span></span><span class="line"><span class="ln">45</span><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">updateTransform</span><span class="p">()</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="ln">46</span><span class="cl">
+</span></span><span class="line"><span class="ln">47</span><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="ln">48</span><span class="cl"><span class="cm">     * Process result from permission request dialog box, has the request
+</span></span></span><span class="line"><span class="ln">49</span><span class="cl"><span class="cm">     * been granted? If yes, start Camera. Otherwise display a toast
+</span></span></span><span class="line"><span class="ln">50</span><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="ln">51</span><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onRequestPermissionsResult</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">52</span><span class="cl">        <span class="n">requestCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">permissions</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;,</span> <span class="n">grantResults</span><span class="p">:</span> <span class="n">IntArray</span>
+</span></span><span class="line"><span class="ln">53</span><span class="cl">    <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">54</span><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">requestCode</span> <span class="o">==</span> <span class="n">REQUEST_CODE_PERMISSIONS</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">55</span><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">allPermissionsGranted</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">56</span><span class="cl">                <span class="n">viewFinder</span><span class="p">.</span><span class="n">post</span> <span class="p">{</span> <span class="n">startCamera</span><span class="p">()</span> <span class="p">}</span>
+</span></span><span class="line"><span class="ln">57</span><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">58</span><span class="cl">                <span class="n">Toast</span><span class="p">.</span><span class="n">makeText</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">59</span><span class="cl">                    <span class="k">this</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">60</span><span class="cl">                    <span class="s2">&#34;Permissions not granted by the user.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">61</span><span class="cl">                    <span class="n">Toast</span><span class="p">.</span><span class="n">LENGTH_SHORT</span>
+</span></span><span class="line"><span class="ln">62</span><span class="cl">                <span class="p">).</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">63</span><span class="cl">                <span class="n">finish</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">64</span><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="ln">65</span><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="ln">66</span><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="ln">67</span><span class="cl">
+</span></span><span class="line"><span class="ln">68</span><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="ln">69</span><span class="cl"><span class="cm">     * Check if all permission specified in the manifest have been granted
+</span></span></span><span class="line"><span class="ln">70</span><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="ln">71</span><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">allPermissionsGranted</span><span class="p">():</span> <span class="n">Boolean</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">72</span><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="n">permission</span> <span class="k">in</span> <span class="n">REQUIRED_PERMISSIONS</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">73</span><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">ContextCompat</span><span class="p">.</span><span class="n">checkSelfPermission</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">74</span><span class="cl">                    <span class="k">this</span><span class="p">,</span> <span class="n">permission</span>
+</span></span><span class="line"><span class="ln">75</span><span class="cl">                <span class="p">)</span> <span class="o">!=</span> <span class="n">PackageManager</span><span class="p">.</span><span class="n">PERMISSION_GRANTED</span>
+</span></span><span class="line"><span class="ln">76</span><span class="cl">            <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">77</span><span class="cl">                <span class="k">return</span> <span class="k">false</span>
+</span></span><span class="line"><span class="ln">78</span><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="ln">79</span><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="ln">80</span><span class="cl">        <span class="k">return</span> <span class="k">true</span>
+</span></span><span class="line"><span class="ln">81</span><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="ln">82</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="实现照相的功能">实现照相的功能</h3>
+<p>实现 startCamera 的逻辑</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln"> 1</span><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">startCamera</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">        <span class="c1">// Create configuration object for the viewfinder use case
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">previewConfig</span> <span class="p">=</span> <span class="n">PreviewConfig</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">            <span class="n">setTargetAspectRatio</span><span class="p">(</span><span class="n">Rational</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">            <span class="n">setTargetResolution</span><span class="p">(</span><span class="n">Size</span><span class="p">(</span><span class="m">640</span><span class="p">,</span> <span class="m">640</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="p">}.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="c1">// Build the viewfinder use case
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">preview</span> <span class="p">=</span> <span class="n">Preview</span><span class="p">(</span><span class="n">previewConfig</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">
+</span></span><span class="line"><span class="ln">12</span><span class="cl">        <span class="c1">// Every time the viewfinder is updated, recompute layout
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1"></span>        <span class="n">preview</span><span class="p">.</span><span class="n">setOnPreviewOutputUpdateListener</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">
+</span></span><span class="line"><span class="ln">15</span><span class="cl">            <span class="c1">// To update the SurfaceTexture, we have to remove it and re-add it
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="c1"></span>            <span class="k">val</span> <span class="py">parent</span> <span class="p">=</span> <span class="n">viewFinder</span><span class="p">.</span><span class="n">parent</span> <span class="k">as</span> <span class="n">ViewGroup</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">            <span class="n">parent</span><span class="p">.</span><span class="n">removeView</span><span class="p">(</span><span class="n">viewFinder</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">            <span class="n">parent</span><span class="p">.</span><span class="n">addView</span><span class="p">(</span><span class="n">viewFinder</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">
+</span></span><span class="line"><span class="ln">20</span><span class="cl">            <span class="n">viewFinder</span><span class="p">.</span><span class="n">surfaceTexture</span> <span class="p">=</span> <span class="k">it</span><span class="p">.</span><span class="n">surfaceTexture</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">            <span class="n">updateTransform</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">
+</span></span><span class="line"><span class="ln">24</span><span class="cl">        <span class="c1">// Bind use cases to lifecycle
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="c1"></span>        <span class="c1">// If Android Studio complains about &#34;this&#34; being not a LifecycleOwner
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="c1"></span>        <span class="c1">// try rebuilding the project or updating the appcompat dependency to
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="c1"></span>        <span class="c1">// version 1.1.0 or higher.
+</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="c1"></span>        <span class="n">CameraX</span><span class="p">.</span><span class="n">bindToLifecycle</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">preview</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">
+</span></span><span class="line"><span class="ln">31</span><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">updateTransform</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">        <span class="k">val</span> <span class="py">matrix</span> <span class="p">=</span> <span class="n">Matrix</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">
+</span></span><span class="line"><span class="ln">34</span><span class="cl">        <span class="c1">// 计算中心
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">centerX</span> <span class="p">=</span> <span class="n">viewFinder</span><span class="p">.</span><span class="n">width</span> <span class="p">/</span> <span class="m">2f</span>
+</span></span><span class="line"><span class="ln">36</span><span class="cl">        <span class="k">val</span> <span class="py">centerY</span> <span class="p">=</span> <span class="n">viewFinder</span><span class="p">.</span><span class="n">height</span> <span class="p">/</span> <span class="m">2f</span>
+</span></span><span class="line"><span class="ln">37</span><span class="cl">
+</span></span><span class="line"><span class="ln">38</span><span class="cl">        <span class="c1">// 纠正屏幕方向的错误
+</span></span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">rotationDegrees</span> <span class="p">=</span> <span class="k">when</span> <span class="p">(</span><span class="n">viewFinder</span><span class="p">.</span><span class="n">display</span><span class="p">.</span><span class="n">rotation</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">40</span><span class="cl">            <span class="n">Surface</span><span class="p">.</span><span class="n">ROTATION_0</span> <span class="o">-&gt;</span> <span class="m">0</span>
+</span></span><span class="line"><span class="ln">41</span><span class="cl">            <span class="n">Surface</span><span class="p">.</span><span class="n">ROTATION_90</span> <span class="o">-&gt;</span> <span class="m">90</span>
+</span></span><span class="line"><span class="ln">42</span><span class="cl">            <span class="n">Surface</span><span class="p">.</span><span class="n">ROTATION_180</span> <span class="o">-&gt;</span> <span class="m">180</span>
+</span></span><span class="line"><span class="ln">43</span><span class="cl">            <span class="n">Surface</span><span class="p">.</span><span class="n">ROTATION_270</span> <span class="o">-&gt;</span> <span class="m">270</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl">            <span class="k">else</span> <span class="o">-&gt;</span> <span class="k">return</span>
+</span></span><span class="line"><span class="ln">45</span><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="ln">46</span><span class="cl">        <span class="n">matrix</span><span class="p">.</span><span class="n">postRotate</span><span class="p">(-</span><span class="n">rotationDegrees</span><span class="p">.</span><span class="n">toFloat</span><span class="p">(),</span> <span class="n">centerX</span><span class="p">,</span> <span class="n">centerY</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">47</span><span class="cl">
+</span></span><span class="line"><span class="ln">48</span><span class="cl">        <span class="c1">// 把纠正错误后的矩阵传给viewFinder
+</span></span></span><span class="line"><span class="ln">49</span><span class="cl"><span class="c1"></span>        <span class="n">viewFinder</span><span class="p">.</span><span class="n">setTransform</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">50</span><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><p>可能遇到的错误:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">java.lang.NoSuchMethodError: No super method getLifecycle<span class="o">()</span>Landroidx/lifecycle/Lifecycle<span class="p">;</span> in class Landroidx/core/app/ComponentActivity<span class="p">;</span> or its super classes <span class="o">(</span>declaration of <span class="s1">&#39;androidx.core.app.ComponentActivity&#39;</span> appears in ........
+</span></span></code></pre></div><p>在上找到了一个解释</p>
+<p>简单来说, 修改一下依赖</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">//    implementation &#39;androidx.appcompat:appcompat:1.0.2&#39;
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span>    <span class="n">implementation</span> <span class="s1">&#39;androidx.appcompat:appcompat:1.1.0-alpha05&#39;</span>
+</span></span></code></pre></div><p>因为 1.0.2 版本中还没有实现 LifecycleOwner 的接口, 然后就可以删掉 Activity 声明上的 LifecycleOwner 了</p>
+<p>1.1.0-alpha05 版本的继承关系图如下:</p>
+<img src="http://yuml.me/diagram/nofunky/class/[FragmentActivity]^-[AppCompatActivity],[ComponentActivity]^-[FragmentActivity],[androidx.core.app.ComponentActivity]^-[ComponentActivity],[LifecycleOwner]^-.-[androidx.core.app.ComponentActivity]" />
+<p>然后目前的预览是这样的:</p>
+<p>
+<p class="md__image">
+  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F31698213-5C2F-4B1C-BD70-2C51628ABF6A.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="31698213-5C2F-4B1C-BD70-2C51628ABF6A.png"  crossorigin/>
+</p>
+</p>
+<p>预览这一步就完成了,相对于以前的 api 来说, 真实的编码量很小</p>
+<h3 id="拍照">拍照</h3>
+<p>接着就是获取当前的画面了</p>
+<p>先添加一个按钮</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="ln">1</span><span class="cl"><span class="nt">&lt;ImageButton</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/capture_button&#34;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;72dp&#34;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;72dp&#34;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">        <span class="na">android:layout_margin=</span><span class="s">&#34;24dp&#34;</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">        <span class="na">app:srcCompat=</span><span class="s">&#34;@android:drawable/ic_menu_camera&#34;</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">        <span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">&#34;parent&#34;</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl">        <span class="na">app:layout_constraintEnd_toEndOf=</span><span class="s">&#34;parent&#34;</span>
+</span></span><span class="line"><span class="ln">9</span><span class="cl">        <span class="na">app:layout_constraintStart_toStartOf=</span><span class="s">&#34;parent&#34;</span> <span class="nt">/&gt;</span>
+</span></span></code></pre></div><p>修改 startCamera 方法</p>
+<p>添加一段代码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln"> 1</span><span class="cl">     <span class="c1">// 添加拍照的代码, 这里和预览的相同
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">imageCaptureConfig</span> <span class="p">=</span> <span class="n">ImageCaptureConfig</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">            <span class="p">.</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">                <span class="n">setTargetAspectRatio</span><span class="p">(</span><span class="n">Rational</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">                <span class="c1">// setTargetResolution(Size(640, 640)) // 设置这个,但实际获取则会根据这个有所不同,根据注释说明, 会是与目标更接近的一个分辨率, 但是可能会因为设备的不同而造成可能崩溃的问题, 不确定就不设置
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1"></span>                <span class="n">setCaptureMode</span><span class="p">(</span><span class="n">ImageCapture</span><span class="p">.</span><span class="n">CaptureMode</span><span class="p">.</span><span class="n">MIN_LATENCY</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">            <span class="p">}.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="k">val</span> <span class="py">imageCapture</span> <span class="p">=</span> <span class="n">ImageCapture</span><span class="p">(</span><span class="n">imageCaptureConfig</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="c1">// 设置一个点击事件
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1"></span>        <span class="n">capture_button</span><span class="p">.</span><span class="n">setOnClickListener</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">            <span class="k">val</span> <span class="py">file</span> <span class="p">=</span> <span class="n">File</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">                <span class="n">externalMediaDirs</span><span class="p">.</span><span class="n">first</span><span class="p">(),</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">                <span class="s2">&#34;</span><span class="si">${System.currentTimeMillis()}</span><span class="s2">.jpg&#34;</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">
+</span></span><span class="line"><span class="ln">17</span><span class="cl">            <span class="c1">// 捕捉图片
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="c1"></span>            <span class="n">imageCapture</span><span class="p">.</span><span class="n">takePicture</span><span class="p">(</span><span class="k">file</span><span class="p">,</span> <span class="k">object</span> <span class="err">: </span><span class="nc">ImageCapture</span><span class="p">.</span><span class="n">OnImageSavedListener</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">                <span class="k">override</span> <span class="k">fun</span> <span class="nf">onError</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">                    <span class="n">error</span><span class="p">:</span> <span class="n">ImageCapture</span><span class="p">.</span><span class="n">UseCaseError</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">                    <span class="n">message</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">exc</span><span class="p">:</span> <span class="n">Throwable</span><span class="p">?</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">                <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">                    <span class="k">val</span> <span class="py">msg</span> <span class="p">=</span> <span class="s2">&#34;Photo capture failed: </span><span class="si">$message</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">                    <span class="n">Toast</span><span class="p">.</span><span class="n">makeText</span><span class="p">(</span><span class="n">baseContext</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">Toast</span><span class="p">.</span><span class="n">LENGTH_SHORT</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">                    <span class="n">Log</span><span class="p">.</span><span class="n">e</span><span class="p">(</span><span class="s2">&#34;CameraXApp&#34;</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">                    <span class="n">exc</span><span class="o">?.</span><span class="n">printStackTrace</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">
+</span></span><span class="line"><span class="ln">29</span><span class="cl">                <span class="k">override</span> <span class="k">fun</span> <span class="nf">onImageSaved</span><span class="p">(</span><span class="k">file</span><span class="p">:</span> <span class="n">File</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">                    <span class="k">val</span> <span class="py">msg</span> <span class="p">=</span> <span class="s2">&#34;Photo capture succeeded: </span><span class="si">${file.absolutePath}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl">                    <span class="n">Toast</span><span class="p">.</span><span class="n">makeText</span><span class="p">(</span><span class="n">baseContext</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">Toast</span><span class="p">.</span><span class="n">LENGTH_SHORT</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">                    <span class="n">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;CameraXApp&#34;</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="ln">34</span><span class="cl">            <span class="p">})</span>
+</span></span><span class="line"><span class="ln">35</span><span class="cl">        <span class="p">}</span>
+</span></span></code></pre></div><p>别忘了修改这里</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">CameraX</span><span class="p">.</span><span class="n">bindToLifecycle</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">preview</span><span class="p">,</span> <span class="n">imageCapture</span><span class="p">)</span>
+</span></span></code></pre></div><p>然后点击拍照按钮</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">2019-05-14 15:20:50.839 13521-13521/top.kikt.camerax.usage D/CameraXApp: Photo capture succeeded: /storage/emulated/0/Android/media/top.kikt.camerax.usage/1557818450473.jpg
+</span></span></code></pre></div><p>可以看到我们成功的拍了一张照片</p>
+<p>使用 adb 命令导出这个图片, 没有配置的话建议你去配置一下</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">adb pull /storage/emulated/0/Android/media/top.kikt.camerax.usage/1557818450473.jpg
+</span></span><span class="line"><span class="ln">2</span><span class="cl">open 1557818450473.jpg
+</span></span></code></pre></div><p>
+<p class="md__image">
+  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190514152242.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190514152242.png"  crossorigin/>
+</p>
+</p>
+<h3 id="分析器">分析器</h3>
+<p>新建一个分析器类,需要继承 <code>ImageAnalysis.Analyzer</code></p>
+<p>备注: 这个代码来自于官方示例(开篇那个连接)</p>
+<p>目的是记录平均亮度</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln"> 1</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="k">import</span> <span class="nn">android.util.Log</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="k">import</span> <span class="nn">androidx.camera.core.ImageAnalysis</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="k">import</span> <span class="nn">androidx.camera.core.ImageProxy</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="k">import</span> <span class="nn">java.nio.ByteBuffer</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="k">import</span> <span class="nn">java.util.concurrent.TimeUnit</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1">/// create 2019-05-14 by cai
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">LuminosityAnalyzer</span> <span class="p">:</span> <span class="n">ImageAnalysis</span><span class="p">.</span><span class="n">Analyzer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="k">private</span> <span class="k">var</span> <span class="py">lastAnalyzedTimestamp</span> <span class="p">=</span> <span class="m">0L</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="cm">     * Helper extension function used to extract a byte array from an
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="cm">     * image plane buffer
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">ByteBuffer</span><span class="p">.</span><span class="n">toByteArray</span><span class="p">():</span> <span class="n">ByteArray</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">        <span class="n">rewind</span><span class="p">()</span>    <span class="c1">// Rewind the buffer to zero
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">data</span> <span class="p">=</span> <span class="n">ByteArray</span><span class="p">(</span><span class="n">remaining</span><span class="p">())</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">        <span class="k">get</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>   <span class="c1">// Copy the buffer into a byte array
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">data</span> <span class="c1">// Return the byte array
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">
+</span></span><span class="line"><span class="ln">23</span><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">analyze</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageProxy</span><span class="p">,</span> <span class="n">rotationDegrees</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">        <span class="k">val</span> <span class="py">currentTimestamp</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">currentTimeMillis</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="c1">// Calculate the average luma no more often than every second
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">currentTimestamp</span> <span class="p">-</span> <span class="n">lastAnalyzedTimestamp</span> <span class="o">&gt;=</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">            <span class="n">TimeUnit</span><span class="p">.</span><span class="n">SECONDS</span><span class="p">.</span><span class="n">toMillis</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">        <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">            <span class="c1">// Since format in ImageAnalysis is YUV, image.planes[0]
+</span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="c1"></span>            <span class="c1">// contains the Y (luminance) plane
+</span></span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="c1"></span>            <span class="k">val</span> <span class="py">buffer</span> <span class="p">=</span> <span class="n">image</span><span class="p">.</span><span class="n">planes</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">buffer</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">            <span class="c1">// Extract image data from callback object
+</span></span></span><span class="line"><span class="ln">33</span><span class="cl"><span class="c1"></span>            <span class="k">val</span> <span class="py">data</span> <span class="p">=</span> <span class="n">buffer</span><span class="p">.</span><span class="n">toByteArray</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">34</span><span class="cl">            <span class="c1">// Convert the data into an array of pixel values
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="c1"></span>            <span class="k">val</span> <span class="py">pixels</span> <span class="p">=</span> <span class="k">data</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="k">it</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span> <span class="n">and</span> <span class="m">0xFF</span> <span class="p">}</span>
+</span></span><span class="line"><span class="ln">36</span><span class="cl">            <span class="c1">// Compute average luminance for the image
+</span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="c1"></span>            <span class="k">val</span> <span class="py">luma</span> <span class="p">=</span> <span class="n">pixels</span><span class="p">.</span><span class="n">average</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">38</span><span class="cl">            <span class="c1">// Log the new luma value
+</span></span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="c1"></span>            <span class="n">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;CameraXApp&#34;</span><span class="p">,</span> <span class="s2">&#34;Average luminosity: </span><span class="si">$luma</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">40</span><span class="cl">            <span class="c1">// Update timestamp of last analyzed frame
+</span></span></span><span class="line"><span class="ln">41</span><span class="cl"><span class="c1"></span>            <span class="n">lastAnalyzedTimestamp</span> <span class="p">=</span> <span class="n">currentTimestamp</span>
+</span></span><span class="line"><span class="ln">42</span><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="ln">43</span><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>还是回到<code>startCamera</code>方法</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln"> 1</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="c1">/// 统计配置
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="py">analyzerConfig</span> <span class="p">=</span> <span class="n">ImageAnalysisConfig</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">        <span class="c1">// Use a worker thread for image analysis to prevent glitches
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">analyzerThread</span> <span class="p">=</span> <span class="n">HandlerThread</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">            <span class="s2">&#34;LuminosityAnalysis&#34;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="p">).</span><span class="n">apply</span> <span class="p">{</span> <span class="n">start</span><span class="p">()</span> <span class="p">}</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="n">setCallbackHandler</span><span class="p">(</span><span class="n">Handler</span><span class="p">(</span><span class="n">analyzerThread</span><span class="p">.</span><span class="n">looper</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="c1">// In our analysis, we care more about the latest image than
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span>        <span class="c1">// analyzing *every* image
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1"></span>        <span class="n">setImageReaderMode</span><span class="p">(</span><span class="n">ImageAnalysis</span><span class="p">.</span><span class="n">ImageReaderMode</span><span class="p">.</span><span class="n">ACQUIRE_LATEST_IMAGE</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="p">}.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="c1">// 设置
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="py">analyzerUseCase</span> <span class="p">=</span> <span class="n">ImageAnalysis</span><span class="p">(</span><span class="n">analyzerConfig</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">        <span class="n">analyzer</span> <span class="p">=</span> <span class="n">LuminosityAnalyzer</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><p>别忘了绑定生命周期</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln">1</span><span class="cl">    <span class="c1">// 绑定生命周期和CameraX , 这里第二步修改的时候别忘了把imageCapture 也一起绑定上
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span>    <span class="c1">// 同理,第三步的时候需要绑上分析器
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"></span>    <span class="n">CameraX</span><span class="p">.</span><span class="n">bindToLifecycle</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">preview</span><span class="p">,</span> <span class="n">imageCapture</span><span class="p">,</span> <span class="n">analyzerUseCase</span><span class="p">)</span>
+</span></span></code></pre></div><p>接着重新运行代码,随着预览的图像不同会呈现一个平均亮度</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">2019-05-14 15:37:32.883 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 136.85490234375
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">2019-05-14 15:37:33.889 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 118.26471354166667
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">2019-05-14 15:37:34.883 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 137.15953450520834
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">2019-05-14 15:37:35.934 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 136.98435221354165
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">2019-05-14 15:37:36.929 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 137.244296875
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">2019-05-14 15:37:37.964 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 136.60428059895833
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">2019-05-14 15:37:38.984 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 136.93064127604165
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">2019-05-14 15:37:39.967 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 125.22169921875
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">2019-05-14 15:37:41.001 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 115.343046875
+</span></span><span class="line"><span class="ln">10</span><span class="cl">2019-05-14 15:37:42.045 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 107.64242838541666
+</span></span><span class="line"><span class="ln">11</span><span class="cl">2019-05-14 15:37:43.061 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 76.732939453125
+</span></span><span class="line"><span class="ln">12</span><span class="cl">2019-05-14 15:37:44.082 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 112.82620442708334
+</span></span><span class="line"><span class="ln">13</span><span class="cl">2019-05-14 15:37:45.105 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 116.12317057291666
+</span></span><span class="line"><span class="ln">14</span><span class="cl">2019-05-14 15:37:46.086 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 115.94841796875
+</span></span><span class="line"><span class="ln">15</span><span class="cl">2019-05-14 15:37:47.142 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 117.0526171875
+</span></span><span class="line"><span class="ln">16</span><span class="cl">2019-05-14 15:37:48.165 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 114.96781901041666
+</span></span></code></pre></div><h3 id="编码结束">编码结束</h3>
+<p>到这一步为止, 编码的过程就结束了</p>
+<h2 id="进阶探索">进阶探索</h2>
+<p>通常来说,相机现在会结合很多其他的用途</p>
+<ol>
+<li>摄像</li>
+<li>直播视频上传(视频通话)</li>
+<li>图像识别</li>
+<li>增强现实</li>
+<li>其他...</li>
+</ol>
+<p>别看我说的很热闹,但是让我结合这几个方向来写的话,篇幅不允许是一点, 而且这些东西每一行都是能写一整个系列文章的...(我才不会说是我不会做呢, 哼 😒)</p>
+<p>还记得 <code>ImageAnalysis.Analyzer</code> 这个类吗, 这个类的<code>analyze</code>方法会回调一些信息</p>
+<p>
+<p class="md__image">
+  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190514154722.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190514154722.png"  crossorigin/>
+</p>
+</p>
+<p>简单来说, 会回调一些 image 的信息和角度</p>
+<p>ImageProxy 中包含很多的信息</p>
+<p>常用的有:</p>
+<p><code>getFormat</code>: 视频格式 ,具体查看
+
+<p class="md__image">
+  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190514162133.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190514162133.png"  crossorigin/>
+</p>
+</p>
+<p>一般来说都应该是<code>YUV_420_888</code></p>
+<p>getWidth: 宽度</p>
+<p>getHeight: 高度</p>
+<p>getTimeStamp: 据说是纳秒单位, 和设备的时间基有关, 我是没看懂什么意思 😁</p>
+<p>getPlanes: 视频数据, 类型是<code>PlaneProxy[]</code> kotlin 对应:<code>Array&lt;PlaneProxy&gt;</code>, 这东西的 size 是根据 getFormat 的格式决定的</p>
+<p>关于 YUV_420_888 这部分可以查看 和 </p>
+<p>然后通过解析数据封装成需要的格式就可以了</p>
+<h2 id="后记">后记</h2>
+<p>简单来说, CameraX 的 api 比 Camera2 和 Camera 看起来都要好很多</p>
+<p>项目地址: </p>
+<p>以上</p>
+
+      
+      </ul>
+    </div>
+<div class="post_comments">
+  
+  
+  
+</div>
+
+
+
+
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    <br>
+    
+  
+  <div class="search">
+    <input type="search" class="search_field form_field" placeholder='Search...' id="find" autocomplete="off" data-scope='post'>
+    <label for="find" class="search_label"><svg class="icon">
+  <title>search</title>
+  <use xlink:href="#search"></use>
+</svg>
+
+    </label>
+    
+    <div class="search_results results"></div>
+  </div>
+
+        <h2>CaiJingLong</h2>
+      <div class="author_bio">
+        一个移动开发者，致力于全栈
+      </div>
+      <a href='https://kikt.top/about/' class="button mt-1" role="button" title='阅读更多'>阅读更多</a>
+
+    
+    
+    <h2 class="mt-4">精选文章</h2>
+    <ul>
+      <li>
+        <a href="https://kikt.top/post/kotlin-compose/kotlin-compose-05-mouse-event/" class="nav-link" title="Kotlin Compose 05 鼠标事件">Kotlin Compose 05 鼠标事件</a>
+      </li>
+    </ul>
+    <h2 class="mt-4">最新文章</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="https://kikt.top/post/gradle/03/%E7%BC%96%E5%86%99-plugin/" class="nav-link" title="Gradle 编写Plugin">Gradle 编写Plugin</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/post/gradle/01/basic/03-buildsrc/" class="nav-link" title="Gradle buildSrc">Gradle buildSrc</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/post/gradle/01/03-gradle_wrapper/" class="nav-link" title="Gradle Wrapper">Gradle Wrapper</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/post/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/" class="nav-link" title="Gradle 的约定式概念">Gradle 的约定式概念</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/post/gradle/03-plugin/" class="nav-link" title="Gradle Plugin">Gradle Plugin</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/post/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/post/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
+      </li>
+      <li>
+        <a href="https://kikt.top/post/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle 命令行工具的使用">Gradle 命令行工具的使用</a>
+      </li>
+    </ul>
+    <div>
+      <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
+      <nav class="tags_nav">
+        <a href='https://kikt.top/categories/flutter/' class="post_tag button button_translucent" title="flutter">
+          FLUTTER
+          <span class="button_tally">60</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/android/' class="post_tag button button_translucent" title="android">
+          ANDROID
+          <span class="button_tally">25</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
+          GRADLE
+          <span class="button_tally">12</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
+          IOS
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/java/' class="post_tag button button_translucent" title="java">
+          JAVA
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/dart/' class="post_tag button button_translucent" title="dart">
+          DART
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/kotlin-compose/' class="post_tag button button_translucent" title="kotlin-compose">
+          KOTLIN-COMPOSE
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/server/' class="post_tag button button_translucent" title="server">
+          SERVER
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/github/' class="post_tag button button_translucent" title="github">
+          GITHUB
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/other/' class="post_tag button button_translucent" title="other">
+          OTHER
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/spring/' class="post_tag button button_translucent" title="spring">
+          SPRING
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/caddy/' class="post_tag button button_translucent" title="caddy">
+          CADDY
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://kikt.top/categories/go/' class="post_tag button button_translucent" title="go">
+          GO
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+        <br>
+        <div class="post_tags_toggle button">所有分类</div>
+        <div class="post_tags">
+          <div class="tags_list">
+            
+            <a href='https://kikt.top/categories/android/' class=" post_tag button button_translucent" data-position=25 title="android">ANDROID<span class="button_tally">25</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/caddy/' class=" post_tag button button_translucent" data-position=1 title="caddy">CADDY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/dart/' class=" post_tag button button_translucent" data-position=5 title="dart">DART<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/docker/' class=" post_tag button button_translucent" data-position=3 title="docker">DOCKER<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/flutter/' class=" post_tag button button_translucent" data-position=60 title="flutter">FLUTTER<span class="button_tally">60</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/github/' class=" post_tag button button_translucent" data-position=3 title="github">GITHUB<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/go/' class=" post_tag button button_translucent" data-position=1 title="go">GO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/golang/' class=" post_tag button button_translucent" data-position=1 title="golang">GOLANG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/ios/' class=" post_tag button button_translucent" data-position=7 title="ios">IOS<span class="button_tally">7</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/java/' class=" post_tag button button_translucent" data-position=6 title="java">JAVA<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/jetbrains/' class=" post_tag button button_translucent" data-position=1 title="jetbrains">JETBRAINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/kotlin-compose/' class=" post_tag button button_translucent" data-position=5 title="kotlin-compose">KOTLIN-COMPOSE<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/other/' class=" post_tag button button_translucent" data-position=3 title="other">OTHER<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/python/' class=" post_tag button button_translucent" data-position=1 title="python">PYTHON<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/server/' class=" post_tag button button_translucent" data-position=5 title="server">SERVER<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/spring/' class=" post_tag button button_translucent" data-position=3 title="spring">SPRING<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/tools/' class=" post_tag button button_translucent" data-position=1 title="tools">TOOLS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/%E6%9D%82%E9%A1%B9/' class=" post_tag button button_translucent" data-position=1 title="杂项">杂项<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/%E6%B6%82%E9%B8%A6/' class=" post_tag button button_translucent" data-position=1 title="涂鸦">涂鸦<span class="button_tally">1</span>
+            </a>
+            
+            <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
+            </div>
+            <span class="tags_hide"><svg class="icon">
+            <use xlink:href="#closeme"></use>
+          </svg></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">标签</h2>
+      <nav class="tags_nav">
+        <a href='https://kikt.top/tags/flutter/' class="post_tag button button_translucent" title="flutter">
+          FLUTTER
+          <span class="button_tally">62</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/android/' class="post_tag button button_translucent" title="android">
+          ANDROID
+          <span class="button_tally">27</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
+          GRADLE
+          <span class="button_tally">14</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
+          IOS
+          <span class="button_tally">9</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/dart/' class="post_tag button button_translucent" title="dart">
+          DART
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/java/' class="post_tag button button_translucent" title="java">
+          JAVA
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/swift/' class="post_tag button button_translucent" title="swift">
+          SWIFT
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/10/' class="post_tag button button_translucent" title="10">
+          10
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/androidq/' class="post_tag button button_translucent" title="androidq">
+          ANDROIDQ
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/github/' class="post_tag button button_translucent" title="github">
+          GITHUB
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/kotlin-compose/' class="post_tag button button_translucent" title="kotlin-compose">
+          KOTLIN-COMPOSE
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/server/' class="post_tag button button_translucent" title="server">
+          SERVER
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/%E9%9A%90%E7%A7%81/' class="post_tag button button_translucent" title="隐私">
+          隐私
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://kikt.top/tags/channel/' class="post_tag button button_translucent" title="channel">
+          CHANNEL
+          <span class="button_tally">4</span>
+        </a>
+        
+        
+        <br>
+        <div class="post_tags_toggle button">所有标签</div>
+        <div class="post_tags">
+          <div class="tags_list">
+            
+            <a href='https://kikt.top/tags/10/' class=" post_tag button button_translucent" data-position=5 title="10">10<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/2.3/' class=" post_tag button button_translucent" data-position=1 title="2.3">2.3<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/aar/' class=" post_tag button button_translucent" data-position=3 title="aar">AAR<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/actions/' class=" post_tag button button_translucent" data-position=1 title="actions">ACTIONS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/aidl/' class=" post_tag button button_translucent" data-position=1 title="aidl">AIDL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/android/' class=" post_tag button button_translucent" data-position=27 title="android">ANDROID<span class="button_tally">27</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/androidq/' class=" post_tag button button_translucent" data-position=5 title="androidq">ANDROIDQ<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/androidx/' class=" post_tag button button_translucent" data-position=1 title="androidx">ANDROIDX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/apk/' class=" post_tag button button_translucent" data-position=1 title="apk">APK<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/app/' class=" post_tag button button_translucent" data-position=1 title="app">APP<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/appcode/' class=" post_tag button button_translucent" data-position=1 title="appcode">APPCODE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/azure/' class=" post_tag button button_translucent" data-position=1 title="azure">AZURE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ble/' class=" post_tag button button_translucent" data-position=1 title="ble">BLE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/bottomsheet/' class=" post_tag button button_translucent" data-position=1 title="bottomsheet">BOTTOMSHEET<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/butterknife/' class=" post_tag button button_translucent" data-position=1 title="butterknife">BUTTERKNIFE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/c/' class=" post_tag button button_translucent" data-position=2 title="c">C<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/caddy/' class=" post_tag button button_translucent" data-position=2 title="caddy">CADDY<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/camera/' class=" post_tag button button_translucent" data-position=1 title="camera">CAMERA<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/camerax/' class=" post_tag button button_translucent" data-position=1 title="camerax">CAMERAX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/channel/' class=" post_tag button button_translucent" data-position=4 title="channel">CHANNEL<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/clipboard/' class=" post_tag button button_translucent" data-position=1 title="clipboard">CLIPBOARD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/cocoapods/' class=" post_tag button button_translucent" data-position=1 title="cocoapods">COCOAPODS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/cupertino/' class=" post_tag button button_translucent" data-position=1 title="cupertino">CUPERTINO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/dart/' class=" post_tag button button_translucent" data-position=6 title="dart">DART<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/desktop/' class=" post_tag button button_translucent" data-position=4 title="desktop">DESKTOP<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/dialog/' class=" post_tag button button_translucent" data-position=2 title="dialog">DIALOG<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/dmg/' class=" post_tag button button_translucent" data-position=1 title="dmg">DMG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/doc/' class=" post_tag button button_translucent" data-position=1 title="doc">DOC<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/docker/' class=" post_tag button button_translucent" data-position=4 title="docker">DOCKER<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/docker-compose/' class=" post_tag button button_translucent" data-position=1 title="docker-compose">DOCKER-COMPOSE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/excel/' class=" post_tag button button_translucent" data-position=1 title="excel">EXCEL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/exists/' class=" post_tag button button_translucent" data-position=2 title="exists">EXISTS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/faq/' class=" post_tag button button_translucent" data-position=1 title="faq">FAQ<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/fastlane/' class=" post_tag button button_translucent" data-position=1 title="fastlane">FASTLANE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ffi/' class=" post_tag button button_translucent" data-position=2 title="ffi">FFI<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ffmpeg/' class=" post_tag button button_translucent" data-position=3 title="ffmpeg">FFMPEG<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/flexmark/' class=" post_tag button button_translucent" data-position=1 title="flexmark">FLEXMARK<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/flutter/' class=" post_tag button button_translucent" data-position=62 title="flutter">FLUTTER<span class="button_tally">62</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/focus/' class=" post_tag button button_translucent" data-position=2 title="focus">FOCUS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/focusnode/' class=" post_tag button button_translucent" data-position=2 title="focusnode">FOCUSNODE<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/form/' class=" post_tag button button_translucent" data-position=1 title="form">FORM<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/framework/' class=" post_tag button button_translucent" data-position=1 title="framework">FRAMEWORK<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/github/' class=" post_tag button button_translucent" data-position=5 title="github">GITHUB<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/go/' class=" post_tag button button_translucent" data-position=3 title="go">GO<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/golang/' class=" post_tag button button_translucent" data-position=1 title="golang">GOLANG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/http/' class=" post_tag button button_translucent" data-position=1 title="http">HTTP<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ide/' class=" post_tag button button_translucent" data-position=1 title="ide">IDE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/idea/' class=" post_tag button button_translucent" data-position=1 title="idea">IDEA<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/index/' class=" post_tag button button_translucent" data-position=1 title="index">INDEX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/inside/' class=" post_tag button button_translucent" data-position=1 title="inside">INSIDE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ios/' class=" post_tag button button_translucent" data-position=9 title="ios">IOS<span class="button_tally">9</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/java/' class=" post_tag button button_translucent" data-position=6 title="java">JAVA<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/javassist/' class=" post_tag button button_translucent" data-position=1 title="javassist">JAVASSIST<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/jenkins/' class=" post_tag button button_translucent" data-position=1 title="jenkins">JENKINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/jetbrains/' class=" post_tag button button_translucent" data-position=1 title="jetbrains">JETBRAINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/jsdelivr/' class=" post_tag button button_translucent" data-position=1 title="jsdelivr">JSDELIVR<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/json/' class=" post_tag button button_translucent" data-position=1 title="json">JSON<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/json_serializable/' class=" post_tag button button_translucent" data-position=1 title="json_serializable">JSON_SERIALIZABLE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/junit/' class=" post_tag button button_translucent" data-position=3 title="junit">JUNIT<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/kotlin-compose/' class=" post_tag button button_translucent" data-position=5 title="kotlin-compose">KOTLIN-COMPOSE<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/library/' class=" post_tag button button_translucent" data-position=1 title="library">LIBRARY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/loadmore/' class=" post_tag button button_translucent" data-position=1 title="loadmore">LOADMORE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/log/' class=" post_tag button button_translucent" data-position=1 title="log">LOG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/mac/' class=" post_tag button button_translucent" data-position=2 title="mac">MAC<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/macos/' class=" post_tag button button_translucent" data-position=1 title="macos">MACOS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/maven/' class=" post_tag button button_translucent" data-position=3 title="maven">MAVEN<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/migrate/' class=" post_tag button button_translucent" data-position=1 title="migrate">MIGRATE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/mysql/' class=" post_tag button button_translucent" data-position=1 title="mysql">MYSQL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/navigationbar/' class=" post_tag button button_translucent" data-position=2 title="navigationbar">NAVIGATIONBAR<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/navigator/' class=" post_tag button button_translucent" data-position=1 title="navigator">NAVIGATOR<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ndk/' class=" post_tag button button_translucent" data-position=3 title="ndk">NDK<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/nginx/' class=" post_tag button button_translucent" data-position=1 title="nginx">NGINX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/oc/' class=" post_tag button button_translucent" data-position=1 title="oc">OC<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/opencv/' class=" post_tag button button_translucent" data-position=1 title="opencv">OPENCV<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/poi/' class=" post_tag button button_translucent" data-position=1 title="poi">POI<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/pub/' class=" post_tag button button_translucent" data-position=3 title="pub">PUB<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/python/' class=" post_tag button button_translucent" data-position=1 title="python">PYTHON<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/retrofit/' class=" post_tag button button_translucent" data-position=2 title="retrofit">RETROFIT<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/route/' class=" post_tag button button_translucent" data-position=3 title="route">ROUTE<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/server/' class=" post_tag button button_translucent" data-position=5 title="server">SERVER<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/so/' class=" post_tag button button_translucent" data-position=2 title="so">SO<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/spp/' class=" post_tag button button_translucent" data-position=1 title="spp">SPP<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/sprintboot/' class=" post_tag button button_translucent" data-position=3 title="sprintboot">SPRINTBOOT<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/swift/' class=" post_tag button button_translucent" data-position=6 title="swift">SWIFT<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/tap/' class=" post_tag button button_translucent" data-position=2 title="tap">TAP<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/thymeleaf/' class=" post_tag button button_translucent" data-position=1 title="thymeleaf">THYMELEAF<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/tips/' class=" post_tag button button_translucent" data-position=1 title="tips">TIPS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/toast/' class=" post_tag button button_translucent" data-position=2 title="toast">TOAST<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/transition/' class=" post_tag button button_translucent" data-position=1 title="transition">TRANSITION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/ui/' class=" post_tag button button_translucent" data-position=1 title="ui">UI<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/utf8/' class=" post_tag button button_translucent" data-position=1 title="utf8">UTF8<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/yield/' class=" post_tag button button_translucent" data-position=1 title="yield">YIELD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/' class=" post_tag button button_translucent" data-position=1 title="二进制">二进制<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BA%A4%E5%8F%89/' class=" post_tag button button_translucent" data-position=1 title="交叉">交叉<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/' class=" post_tag button button_translucent" data-position=1 title="交叉编译">交叉编译<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BB%8B%E7%BB%8D/' class=" post_tag button button_translucent" data-position=1 title="介绍">介绍<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/' class=" post_tag button button_translucent" data-position=1 title="代码规范">代码规范<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%86%B2%E7%AA%81/' class=" post_tag button button_translucent" data-position=2 title="冲突">冲突<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%8A%A8%E6%80%81/' class=" post_tag button button_translucent" data-position=1 title="动态">动态<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%8F%91%E5%B8%83/' class=" post_tag button button_translucent" data-position=1 title="发布">发布<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%8F%AF%E6%89%A7%E8%A1%8C/' class=" post_tag button button_translucent" data-position=1 title="可执行">可执行<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%9B%BE%E5%BA%8A/' class=" post_tag button button_translucent" data-position=1 title="图床">图床<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%9F%8E%E5%B8%82/' class=" post_tag button button_translucent" data-position=1 title="城市">城市<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%A4%A7%E6%96%87%E4%BB%B6/' class=" post_tag button button_translucent" data-position=1 title="大文件">大文件<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%B7%A5%E5%85%B7/' class=" post_tag button button_translucent" data-position=1 title="工具">工具<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE/' class=" post_tag button button_translucent" data-position=1 title="已有项目">已有项目<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/' class=" post_tag button button_translucent" data-position=1 title="开发环境">开发环境<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%80%BB%E7%BB%93/' class=" post_tag button button_translucent" data-position=1 title="总结">总结<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%85%A2/' class=" post_tag button button_translucent" data-position=1 title="慢">慢<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%89%93%E5%8C%85/' class=" post_tag button button_translucent" data-position=1 title="打包">打包<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%89%AB%E7%A0%81/' class=" post_tag button button_translucent" data-position=1 title="扫码">扫码<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%8F%92%E4%BB%B6/' class=" post_tag button button_translucent" data-position=1 title="插件">插件<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%96%87%E6%A1%A3/' class=" post_tag button button_translucent" data-position=1 title="文档">文档<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%A8%A1%E6%9D%BF/' class=" post_tag button button_translucent" data-position=1 title="模板">模板<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%B8%B2%E6%9F%93/' class=" post_tag button button_translucent" data-position=1 title="渲染">渲染<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/' class=" post_tag button button_translucent" data-position=1 title="源码解析">源码解析<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%81%B0%E5%BA%A6/' class=" post_tag button button_translucent" data-position=1 title="灰度">灰度<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%82%B9%E5%87%BB/' class=" post_tag button button_translucent" data-position=2 title="点击">点击<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%84%A6%E7%82%B9/' class=" post_tag button button_translucent" data-position=2 title="焦点">焦点<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%88%AC%E8%99%AB/' class=" post_tag button button_translucent" data-position=1 title="爬虫">爬虫<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/' class=" post_tag button button_translucent" data-position=1 title="状态管理">状态管理<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/' class=" post_tag button button_translucent" data-position=1 title="百度地图">百度地图<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%BC%96%E7%A0%81/' class=" post_tag button button_translucent" data-position=1 title="编码">编码<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/' class=" post_tag button button_translucent" data-position=1 title="编程技巧">编程技巧<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%BC%96%E8%AF%91/' class=" post_tag button button_translucent" data-position=1 title="编译">编译<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%BF%BB%E8%AF%91/' class=" post_tag button button_translucent" data-position=1 title="翻译">翻译<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E8%93%9D%E7%89%99/' class=" post_tag button button_translucent" data-position=1 title="蓝牙">蓝牙<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E8%A1%A8%E5%8D%95/' class=" post_tag button button_translucent" data-position=1 title="表单">表单<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E8%B7%AF%E7%94%B1/' class=" post_tag button button_translucent" data-position=1 title="路由">路由<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E8%BF%87%E5%9C%BA%E5%8A%A8%E7%94%BB/' class=" post_tag button button_translucent" data-position=1 title="过场动画">过场动画<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E9%9A%90%E7%A7%81/' class=" post_tag button button_translucent" data-position=5 title="隐私">隐私<span class="button_tally">5</span>
+            </a>
+            
+            <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
+            </div>
+            <span class="tags_hide"><svg class="icon">
+            <use xlink:href="#closeme"></use>
+          </svg></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+</aside>
+
+  
+</div>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/> 
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="to-top">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="xing">
+    <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/>
+  </symbol>
+</svg>
+
+
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://kikt.top/icons/apple-touch-icon.png' class="icon icon_2 transparent" alt="CaiJingLong">
+    <p>Copyright&nbsp;2015-&nbsp;<span class="year"></span>&nbsp;CAIJINGLONG. All Rights Reserved</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <title>to-top</title>
+  <use xlink:href="#to-top"></use>
+</svg>
+
+</a>
+
+  </div>
+</footer>
+
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+
+  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+
+    
+  </body>
+</html>

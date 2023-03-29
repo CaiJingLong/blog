@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>大文件 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E5%A4%A7%E6%96%87%E4%BB%B6/</link>
+    <description>Recent content in 大文件 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 20 Sep 2019 15:15:51 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E5%A4%A7%E6%96%87%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dart 大文件读取</title>
+      <link>https://kikt.top/post/dart/file/read/</link>
+      <pubDate>Fri, 20 Sep 2019 15:15:51 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/dart/file/read/</guid>
+      <description>
+        
+          
+            好久没水文章了, 强行水一篇
+dart 中不可避免会出现文件读取的情况, 甚至是很大的文件, 比如 200M 的文件
+如果一次性读入内存,虽然也行得通, 但是如果在 flutter 中开启个 200M 大小的字节数组, 一不小心可能就 crash 了, 这时候就需要使用大文件读取的方案
+             异步读取 核心方法:
+1file.openRead(); 这个方法可以指定开始和结束的坐标, 并开启一个 stream
+stream 回调信息是 List&amp;lt;int&amp;gt;,单次最大读取 65536 个字节
+示例 1class FileUtils { 2File file; 34FileUtils(this.file); 56// 读取文件的某个范围返回 7 Future&amp;lt;List&amp;lt;int&amp;gt;&amp;gt; getRange(int start, int end) async { 8if (file == null || !file.existsSync()) { 9throw FileNotExistsError(); 10} 11if (start &amp;lt; 0) { 12throw RangeError.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

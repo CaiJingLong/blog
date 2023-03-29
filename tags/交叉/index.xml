@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>交叉 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E4%BA%A4%E5%8F%89/</link>
+    <description>Recent content in 交叉 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 13 Nov 2018 19:54:33 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E4%BA%A4%E5%8F%89/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【转】Golang 在 Mac、Linux、Windows 下如何交叉编译</title>
+      <link>https://kikt.top/post/go/cross-compilation/</link>
+      <pubDate>Tue, 13 Nov 2018 19:54:33 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/go/cross-compilation/</guid>
+      <description>
+        
+          
+            转自 Golang 支持交叉编译，在一个平台上生成另一个平台的可执行程序，最近使用了一下，非常好用，这里备忘一下。
+Mac 下编译 Linux 和 Windows 64 位可执行程序
+1CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go 2CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build main.go Linux 下编译 Mac 和 Windows 64 位可执行程序
+1CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build main.go 2CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build main.go Windows 下编译 Mac 和 Linux 64 位可执行程序
+1SET CGO_ENABLED=0 2SET GOOS=darwin 3SET GOARCH=amd64 4go build main.go 56SET CGO_ENABLED=0 7SET GOOS=linux 8SET GOARCH=amd64 9go build main.go GOOS：目标平台的操作系统（darwin、freebsd、linux、windows） GOARCH：目标平台的体系架构（386、amd64、arm） 交叉编译不支持 CGO 所以要禁用它
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

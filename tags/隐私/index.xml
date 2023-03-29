@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>隐私 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E9%9A%90%E7%A7%81/</link>
+    <description>Recent content in 隐私 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 24 May 2019 15:00:09 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E9%9A%90%E7%A7%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Q 隐私篇(5) - 相机/网络</title>
+      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-5/</link>
+      <pubDate>Fri, 24 May 2019 15:00:09 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-5/</guid>
+      <description>
+        
+          
+            如下几个改动:
+相机 这个修改会影响所有的安装在 androidQ 上的应用, 不论你的 targetVersion 是多少
+从前,即使没有 Camera 的权限, 也可以访问相机设备的元数据, 现在不行了
+wifi 应用不能动 wifi 开关了, 现在只有通过设置来更改
+wifi 配置 现在必须有设备管理器的权限才能修改 wifi 配置
+ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权限, 则 wifi,蓝牙会有一堆不能访问的 api
+
+或者看下面
+  Telephony
+  
+ getCellLocation() getAllCellInfo() requestNetworkScan() requestCellInfoUpdate() getAvailableNetworks() getServiceStateForSubscriber getServiceState()    
+ requestNetworkScan()    
+ onResults()    
+ onCellLocationChanged() onCellInfoChanged() onServiceStateChanged()      Wi-Fi
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android Q 隐私篇(4) - 唯一标识符, 剪切板数据</title>
+      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-4/</link>
+      <pubDate>Fri, 24 May 2019 11:49:11 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-4/</guid>
+      <description>
+        
+          
+            第四篇,
+目录                        唯一识别码的前世 在开发中, 总有人会提出各种设备&amp;quot;唯一标识符&amp;quot;的概念,以便于定位用户的唯一性, 或对于用户行为进行分析
+很遗憾, 通过多年的探索, 目前没有任何一种特别准确, 一定能保证唯一的方案
+包括但不仅限于以下方案
+设备序列号 IMEI imsi mac 地址(wifi 模块)
+如以下代码:
+1package top.kikit.uniqueidprivacy 23import android.Manifest 4import android.annotation.SuppressLint 5import android.content.Context 6import android.os.Bundle 7import android.telephony.TelephonyManager 8import android.util.Log 9import androidx.appcompat.app.AppCompatActivity 10import com.tbruyelle.rxpermissions2.RxPermissions 1112class MainActivity : AppCompatActivity() { 13private val TAG = &amp;#34;MainActivity&amp;#34;; 1415private val rxPermissions = RxPermissions(this) 1617@SuppressLint(&amp;#34;CheckResult&amp;#34;) 18override fun onCreate(savedInstanceState: Bundle?
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android Q 隐私篇(3) - 限制后台活动</title>
+      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-3/</link>
+      <pubDate>Tue, 21 May 2019 09:49:25 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-3/</guid>
+      <description>
+        
+          
+            官方链接: 后台开启界面 这个限制主要限制的是: 当你的应用没有 Activity 在前台时, 后台应用无法主动开启界面
+流氓应用是可以这么干的, 只是大部分应用还算有节操, 没有这么做而已
+我自己遇到的除了我写的 Demo 以外,只有微信发生过这样的情况,还有一些其他应用是代码疏漏造成的
+作用范围 只要你的 app 运行在 androidQ 的设备上, 就不行,哪怕你的 targetVersion 是 28 也一样
+微信 微信也仅仅是在你登录以前登录过的电脑端时, 在你点击电脑端的确认后,才会在手机端弹出手动确认的弹框, 这一步原则上来讲也是客户自己的行为, 所以没有太大问题, 当然以后理论上就做不到了
+代码疏漏 一些应用的启动页, 比如设定了一个 Handler 的倒计时, 在 3 秒后关闭启动页,然后开启主页面
+然后,用户在启动页点了 home 键/back 键,过 3 秒后主页面依然出来了
+很遗憾,以后不行了 😁
+迁移需要修改的代码 无
+一个简单的示例代码 1class MainActivity : AppCompatActivity() { 23override fun onCreate(savedInstanceState: Bundle?) { 4super.onCreate(savedInstanceState) 5setContentView(R.layout.activity_main) 67Handler().postDelayed({ 8startActivity(Intent(this, this.javaClass)) 9finish() 10}, 3000) 11} 12} 这就完成了一个&amp;quot;流氓&amp;quot;式启动
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android Q 隐私篇(2) - 后台定位权限</title>
+      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-2/</link>
+      <pubDate>Tue, 21 May 2019 09:14:28 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-2/</guid>
+      <description>
+        
+          
+            本篇是系列第二篇, 主要分析下 android Q 下的后台定位权限 官方链接: , 有能力的朋友可以自己阅读,并不难
+目录                  定位权限 在从前的 android 中,定位权限不分前后台,只有两个
+1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_COARSE_LOCATION&amp;#34;/&amp;gt; 2&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_FINE_LOCATION&amp;#34;/&amp;gt; 分别代表大致位置和精确位置, 一般来说在使用时定位权限都是一起要或者都不要的, 而且这两个作为同一个组,一般都是一起申请,一次授权
+一般来说大部分人都是使用高德/百度地图作为定位 sdk 使用, 很显然这两个货申请一般也是都一起申请的
+androidQ 的权限 androidQ 中会添加一个新的权限
+1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_BACKGROUND_LOCATION&amp;#34; /&amp;gt; 这个就是对应的后台权限, 和以前的分类方式不同,以前是精确度,这个是前后台
+按照官方说明:
+ targetVersion: androidQ 或以上  如果 targetVersion 是 androidQ+, 则这个权限不会自动添加, 使用者需要自己添加,有就是有,没有就没有   如果 targetVersion 是 api 28(android 9.0)以下  如果你有以前版本的定位权限,则系统会在安装时帮你添加后台的权限(升级 androidOS 版本时不明) 在动态权限申请时,如果你申请的权限有以前的定位权限之一, 则会自动帮你在申请的权限里加上这个后台的    请求后台权限 上来是一段废话.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android Q 隐私篇(1) - 外部储存</title>
+      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-1/</link>
+      <pubDate>Mon, 20 May 2019 09:43:48 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-1/</guid>
+      <description>
+        
+          
+            一年一度的 googleIO 开完以后,不出意外的 Android10.0 系统(AndroidQ)出来了
+隐私配置又㕛叒叕更新了..
+连接地址: 这个地址可能在来年就变成 android 11 的了, 所以仅保证在2019 年 05 月 20 日以及之后的一段时间内有效
+主要包含以下五大项目
+ 对于大部分应用来说,储存方式的更新会有所影响, 其他的可能都是 SDK 要做的事情,和普通开发者关系不大
+在适配新的系统前就和从前一样,暂时不升级 targetVersion,把 targetVersion 设置为 28 以下就不会影响旧程序了,就如同以前运行时权限真的是坑到爆炸,但是暂时不适配也是可以的
+但是未来无论如何都需要适配新系统,所以先来看看
+本篇只说储存的方式和权限问题,其他暂时略过不表
+目录                          检查迁移情况  有一个表格提供了如何检查和迁移的方案
+ 开发环境 说一下开发环境
+MacOS
+Android Studio 3.4.0
+android 9.0 设备一台
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

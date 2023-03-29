@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>exists on CaiJingLong</title>
+    <link>https://kikt.top/tags/exists/</link>
+    <description>Recent content in exists on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 16 Jun 2019 11:17:43 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/exists/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>把flutter作为framework添加到已存在的iOS中</title>
+      <link>https://kikt.top/post/flutter/exists/add-flutter-to-ios/</link>
+      <pubDate>Sun, 16 Jun 2019 11:17:43 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/exists/add-flutter-to-ios/</guid>
+      <description>
+        
+          
+            之前写了一篇关于如何将 flutter 直接打包成 android aar 的文章, 本篇写一写如何将 flutter 打包成 framework 以便于直接让没有 flutter 环境的 iOS 开发者使用, 因为国内很多项目都有这样的要求
+本篇并不会做完全的工程集成化, 只是做一下如何将 flutter 的 framework 打出来, 并且置入到 iOS 原生工程中, 因为各项目一定户会有自己的特殊性, 不可能完全一样
+本篇打包脚本部分参考了 的内容,但是又有一些针对 flutter 版本的变化和 flutter type 不同的情况进行的修改, 不观看连接中的内容并不会影响观看
+                                     开发环境 MacOS
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>在原 Android 工程的基础上构建一个flutter工程</title>
+      <link>https://kikt.top/post/flutter/exists/android/</link>
+      <pubDate>Tue, 22 Jan 2019 07:50:31 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/exists/android/</guid>
+      <description>
+        
+          
+            在 flutter 开发的过程中不可能所有项目都是从零构建
+换句话说不是所有项目都是 flutter 为主工程,然后 android/ios 的工程为副工程
+大概率会遇到需要将 flutter 作为组件加入到原生项目中, 这种例子典型的就是阿里闲鱼,当然闲鱼团队的实力不是普通的小公司可以比的
+所幸的是,flutter 团队提供了一个 用于帮助我们完成这个过程
+创建一个 Android 工程 使用 Android Studio 创建一个新工程来模拟这个过程,会看这里的普遍都应该是 android 程序员出身,Hello World 工程是肯定会的,不会的话还是回炉加强一下吧
+如果你已经有现有工程,肯定是有 VCS 管理的,放心大胆的走出第一步,大不了就删除当前分支嘛,然后你可以跳过这一步,直接看 flutter 的过程
+ 创建 Flutter 这一步仅作为 官方 Android 部分的参考
+我目前使用的是 1.0.0 的发布版
+1Flutter 1.0.0 • channel dev • https://github.com/flutter/flutter.git 2Framework • revision 5391447fae (11 days ago) • 2018-11-29 19:41:26 -0800 3Engine • revision 7375a0f414 4Tools • Dart 2.1.0 (build 2.1.0-dev.9.4 f9ebf21297) wiki 后续可能会被修改,请查看最新的文档去解决
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

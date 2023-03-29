@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>flutter web on CaiJingLong</title>
+    <link>https://kikt.top/tags/flutter-web/</link>
+    <description>Recent content in flutter web on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 13 May 2019 14:15:07 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/flutter-web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flutter Web 评测第二篇</title>
+      <link>https://kikt.top/post/flutter/flutter-web/flutter-web2/</link>
+      <pubDate>Mon, 13 May 2019 14:15:07 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-web/flutter-web2/</guid>
+      <description>
+        
+          
+            本篇只是的补充
+介绍一些当前的 flutter_web 版和 flutter 的移动版的差别
+            dart:io 包无法使用造成的影响 dart:io是一个在 flutter 中常用的包,但是在 web 版中是使用不了的
+dio 不能用 dio包用不了,因为 dio 包是依托于 dart:io 包中的 HttpClient 进行的封装
+并且因为国内很多初学者朋友人云亦云的选择了 dio 作为 http 的请求框架,所以今后如果有打算想要做 flutter_web 版的朋友可能现在就要考虑一下 dio 的使用问题了
+当然 dio 包今后也可以迁移底层访问库为,再进行二次封装形成 dio_with_http 那就是另一个故事了
+另外 web 中的 http 请求可以使用 使用库的访问如下:
+1import &amp;#39;package:http/http.dart&amp;#39; as http; 2Widget fromHttp() { 3return FutureBuilder&amp;lt;http.Response&amp;gt;( 4future: http.get(&amp;#34;https://api.github.com/&amp;#34;), 5builder: (BuildContext context, snapshot) { 6if (!
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter Web 评测第一篇</title>
+      <link>https://kikt.top/post/flutter/flutter-web/flutter-web1/</link>
+      <pubDate>Wed, 08 May 2019 10:15:07 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-web/flutter-web1/</guid>
+      <description>
+        
+          
+            最近 2019 的 google io 大会开始了,之前的&amp;quot;蜂鸟&amp;quot;引擎也在 flutter 官网中出现了, 不过这次改了个名字叫 具体的使用步骤参考项目 readme 中的方式来使用
+                             构建项目 建议: 配置dart,pub,~/.pub-cache/bin到环境变量
+配置 webdev
+1git clone https://github.com/flutter/flutter_web.git 2cd flutter_web/examples/hello_world/ 3flutter packages upgrade 4flutter packages pub global activate webdev 运行项目 简单运行 运行
+1webdev serve  提示我们,在本地 8080 端口, 在浏览器打开 http://localhost:8080
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

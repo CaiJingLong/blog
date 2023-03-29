@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>toast on CaiJingLong</title>
+    <link>https://kikt.top/tags/toast/</link>
+    <description>Recent content in toast on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 18 Apr 2019 09:12:48 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/toast/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>flutter toast插件 OKToast的介绍</title>
+      <link>https://kikt.top/post/flutter/toast/oktoast/</link>
+      <pubDate>Thu, 18 Apr 2019 09:12:48 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/toast/oktoast/</guid>
+      <description>
+        
+          
+            OKToast 是一款 在 flutter 上 使用的 toast 插件
+使用简单, 可定制性强, 纯 flutter, 调用不用 context
+                             安装 查看文档: 在 pubspec 引入
+1dependencies:2oktoast:^2.2.0# 这一步请查询pub的最新版本获取包: $ flutter packages get
+引入: import &#39;package:oktoast/oktoast.dart&#39;;
+使用 在代码中定义 OKToast 组件 包裹你的 MaterialApp,不是包裹你的 Scaffold
+包裹你的 MaterialApp,不是包裹你的 Scaffold
+包裹你的 MaterialApp,不是包裹你的 Scaffold
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Ios版toast</title>
+      <link>https://kikt.top/post/ios/ios-toast/</link>
+      <pubDate>Sat, 08 Jul 2017 09:39:26 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/ios-toast/</guid>
+      <description>
+        
+          
+            ios-toast-swift 
+swift 3.1 语法
+如果想支持其他的语法请自己修改 这里主要是模仿android端的提示方案  截图 背景灰色是因为我把 Demo 中的 ViewController 的 view 的 backgroundColor 修改为了 gray 不是会覆盖全屏的颜色
+这里有个小 bug 圆角么有包含全,后续改正
+食用方法  clone 项目 将 source 下的方法 copy 到源码内,如果有文件重名请自己改名 toast(&amp;quot;提示语句&amp;quot;) toast(&amp;quot;提示内容&amp;quot;,3) //内容 时长  源码分析 都是伪代码  代码分布 ToastView:自定义view相关的代码,基本没啥东西,就是加载了xib文件 Toast:帮助类,其中定义了如何附着到window中,位置,根据文字计算文字大小,渐隐动画等相关内容  提示 这里对于项目没有太多的侵入性 总体原理大概就是创建一个 view,将 view 附着到前台 window 中 这里有一点,这里的 toast 会覆盖掉软键盘
+如果想要修改 view 的样式,可以自己修改 ToastView.xib/ToastView.swift 内容很简单,就在ToastView中 可以自定义内容,更加丰富多彩,也可以基于扩展 content 是一个UILabel,用于显示内容  想要修改提示位置 Toast.swift 的 57~60行  想要修改大小 Toast.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

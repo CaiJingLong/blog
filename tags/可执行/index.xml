@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>可执行 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E5%8F%AF%E6%89%A7%E8%A1%8C/</link>
+    <description>Recent content in 可执行 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 18 Nov 2019 16:09:31 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E5%8F%AF%E6%89%A7%E8%A1%8C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dart 2.6(一) 生成可执行二进制</title>
+      <link>https://kikt.top/post/dart/2-6-exec/</link>
+      <pubDate>Mon, 18 Nov 2019 16:09:31 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/dart/2-6-exec/</guid>
+      <description>
+        
+          
+            什么叫可执行二进制 以前虽然看似也可以生成二进制执行文件, 类似 pub/flutter 命令, 但是那实际也是调用 dart 命令来完成的, 也就是说, 你必须具备 dart 环境才可以
+比如以前的 c,后来的 go, 都可以编译成一个可执行文件, 比如./hello-world就可以运行, 然后在控制台输出结果
+而在 dart 2.6 版本中, 这个东西变成了现实
+如何做 1main(List&amp;lt;String&amp;gt; arguments) { 2print(&amp;#34;hello dart!&amp;#34;); 3} 使用$ dart2native bin/main.dart来完成编译过程, 然后会生成一个main.exe, 虽然看着是 exe, 但这个东西是一个当前系统下的可执行二进制文件
+1./bin/main.exe 2hello dart! 嗯, 这东西目前还不支持交叉编译, 也就是 mac 只能生成 mac 的, windows 只能生成 windows 的, 但是应该有很多人请愿, 未来一定会有相关的支持
+目前可以使用 github actions, 或者 docker 之类的东西来跨平台编译
+好处 单文件的部署方便, 未来写工具也会很方便
+劣势 不支持交叉编译
+文件较大, 一个简单的 helloworld 就有 6.7mb 之大, 相对应的, c 可能只有几 k, go 默认情况下也不到 1m,经过优化也能接近 c 的大小
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

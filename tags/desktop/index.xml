@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>desktop on CaiJingLong</title>
+    <link>https://kikt.top/tags/desktop/</link>
+    <description>Recent content in desktop on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 08 Jul 2019 14:16:54 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/desktop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go Flutter Desktop (二) go 二进制程序打包为 mac app(dmg)</title>
+      <link>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-2/</link>
+      <pubDate>Mon, 08 Jul 2019 14:16:54 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-2/</guid>
+      <description>
+        
+          
+            前篇对于 go-flutter 引擎进行了初步的探索, 打包终产物是一个二进制文件配合一些资源文件
+本篇研究如何将终产物变成一个 app, 进一步变成 dmg, 就和你网上下载的工具一样
+本篇默认你拥有全套的工具, git xcode flutter go hover
+                      打包出 go 终产物 这里以大佬的 为例
+1cd /tmp 2git clone https://github.com/fluttercandies/JsonToDart.git 3cd JsonToDart/Flutter/desktop 打包
+1hover build 这里可能很快也可能很慢, 根据你的工程大小和网络速度而言, 网络速度是因为要下载 flutter 依赖和 go-flutter 引擎相关的东西, 工程大小影响编译速度
+然后可以看到当前的目录结构
+1tree -L 2 desktop/build/outputs/darwin 2desktop/build/outputs/darwin 3├── FlutterEmbedder.framework 4│ ├── FlutterEmbedder -&amp;gt; Versions/Current/FlutterEmbedder 5│ ├── Headers -&amp;gt; Versions/Current/Headers 6│ ├── Modules -&amp;gt; Versions/Current/Modules 7│ ├── Resources -&amp;gt; Versions/Current/Resources 8│ └── Versions 9├── assets 10│ └── icon.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Go Flutter Desktop (一) 初探</title>
+      <link>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-1/</link>
+      <pubDate>Thu, 04 Jul 2019 16:07:17 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-1/</guid>
+      <description>
+        
+          
+            Flutter 在去年的时候就有一个第三方的桌面引擎, 是用 golang 开发的
+Github 地址是:https://github.com/go-flutter-desktop/go-flutter
+目前在 mac,linux,windows 均可用, 作为一个 mac 用户, 除了 retina 下字显得有点小, 感觉没有单独适配外, 总体感觉是优于官方的 desktop 引擎的
+另外我是真实的 golang 脑残粉, 我觉得 golang 这东西真的太好了, 用 golang, 准不会错
+                                              开发环境 需要的开发环境, 因为我是 MacOS, 我以 macOS 为例,其他的请参考对应的系统
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter Desktop Mac版(二) 插件初探</title>
+      <link>https://kikt.top/post/flutter/desktop/flutter-desktop-2/</link>
+      <pubDate>Wed, 12 Jun 2019 16:47:14 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/desktop/flutter-desktop-2/</guid>
+      <description>
+        
+          
+            上篇粗略的查看了一下 desktop 的基本使用, 本篇探索一下插件的使用
+环境变量的配置请查看上篇,本篇不再赘述
+更新 继上一篇文章过去了几天, 这个桌面引擎有了一点点的更改: 现在完全用 swift 了,不用 oc 了,无论是 example 还是 plugin 模板都是如此
+所以, 为了省事,我重新 clone 了一个仓库, 然后准备用 swift 来创建插件
+$ git clone https://github.com/google/flutter-desktop-embedding.git flutter-desktop-embedding-2
+然后分别打开工程和插件 $ code flutter-desktop-embedding-2/example/ and $ code flutter-desktop-embedding-2/plugins/example_plugin
+这个 example_plugin 是给的模板, 最好是复制一份出来
+复制插件目录 1cd flutter-desktop-embedding-2/plugins 2cp -r example_plugin math_desktop 3code math_desktop 查看一下目录结构
+1tree math_desktop 23math_desktop 4├── LICENSE 5├── lib 6│ └── example_plugin.dart 7├── linux 8│ ├── Makefile 9│ ├── example_plugin.cc 10│ └── example_plugin.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter Desktop Mac版(一) 初探</title>
+      <link>https://kikt.top/post/flutter/desktop/flutter-desktop-1/</link>
+      <pubDate>Mon, 10 Jun 2019 14:40:17 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/desktop/flutter-desktop-1/</guid>
+      <description>
+        
+          
+            随着时间的逐渐推移, Flutter 开始了扩张之路
+flutter 已经不满足于移动端了,桌面端也有着自己的野心
+但无论如何,目前 flutter desktop 还仅仅处于 demo 玩一玩的阶段, 如果谁敢生产项目来一套, 我佩服你是个勇士
+ 官方说明 
+目前完成度最高的是 macOS 的版本,可用度很高, 而且由于同样使用 cocoapod,所以相对来说官方制作 engine 难度应该是最低的
+创建项目 现在建议使用官方本身提供的脚手架, 自己创建的话比较麻烦
+ 这个库目前托管在 google 下,还没有转给 flutter,也就是说暂时还不能称之为 flutter sdk 的一部分
+git clone 我根据文档创建了一个 sh 脚本,专门用于输出我如果想尝鲜 desktop 版需要的东西, 也就是环境变量了
+1export FLUTTER_ROOT=$PWD/flutter 2echo &amp;#34;使用前复制如下命令\n&amp;#34; 34echo &amp;#34;export FLUTTER_ROOT=$FLUTTER_ROOT&amp;#34; 5echo &amp;#34;export FLUTTER_HOME=$FLUTTER_ROOT&amp;#34; 6echo &amp;#34;export PATH=$FLUTTER_ROOT/bin:$PATH&amp;#34; 7echo &amp;#34;export ENABLE_FLUTTER_DESKTOP=true&amp;#34; 89echo &amp;#34;\n以上&amp;#34;  这里我单独的 clone 了一份 sdk, 跑在了 flutter 的 master 分支上
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

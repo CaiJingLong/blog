@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>navigationbar on CaiJingLong</title>
+    <link>https://kikt.top/tags/navigationbar/</link>
+    <description>Recent content in navigationbar on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 13 Mar 2018 11:57:15 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/navigationbar/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>swift navigation title 标题颜色代码设置</title>
+      <link>https://kikt.top/post/ios/swift/swift-navigation-title-color-style/</link>
+      <pubDate>Tue, 13 Mar 2018 11:57:15 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/swift/swift-navigation-title-color-style/</guid>
+      <description>
+        
+          
+            简单记录,为后续方便查找,仅有代码片段
+可以放在ViewController的基类中
+1if let bar = self.navigationController?.navigationBar { 2bar.backgroundColor = .themeColor 3bar.tintColor = .white 4var attrs = bar.titleTextAttributes 5if attrs == nil { 6attrs = [NSAttributedStringKey:Any]() 7} 8attrs?[NSAttributedStringKey.foregroundColor] = UIColor.white 9bar.titleTextAttributes = attrs 10} 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Swift Ios11 修改navigationbar间距</title>
+      <link>https://kikt.top/post/ios/swift/swift-ios11-change-the-navigationbar-spacing/</link>
+      <pubDate>Fri, 09 Mar 2018 11:55:10 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/swift/swift-ios11-change-the-navigationbar-spacing/</guid>
+      <description>
+        
+          
+            写在前面 在 ios11 中,navigationbar 的 leftItem 都会多出来一个奇怪的白边,这个白边很不容易修改,从前的设置方法失效了
+之前看到有篇文章是修改 layoutMargins 的方案来做的 这个方案设置虽然简单,但是有一个问题,就是当你 push,pop 以后,位置就变了,也就是说,layoutMargins 就失效了,而且需要遍历,采用 ContentView 的字符串
+另外有一个方案是采用自定义 NavigationBar 的方案来做的 也算是简单暴力
+我这里采用另一个方案来做,而且比较简单,也就是自定义 view 的方案的来做
+思路 UIBarButtonItem.init(customView: view)这种方式如果直接将 Button 放进去,那么你设置的 frame 的位置是无效的
+那么我这里采用另一个取巧的方案去做 众所周知,ios 中的控件摆放是可以超出父控件距离的,也就是说,我使用一个 UIView 包裹真正用于显示的 View,然后将子 View 的 x 设置偏移也就可以解决了
+实现 12import UIKit 34extension UIViewController{ 5func setNavigatorLeftItem(customView:UIView) { 6var view:UIView 7if #available(iOS 11, *){ 8let padding:CGFloat = 20 9let frame = customView.frame 10view = UIView(frame: CGRect(x: 0, y: 0, width: frame.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

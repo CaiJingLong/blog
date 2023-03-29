@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gradle on CaiJingLong</title>
+    <link>https://kikt.top/tags/gradle/</link>
+    <description>Recent content in gradle on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 20 Jan 2023 20:45:00 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gradle 编写Plugin</title>
+      <link>https://kikt.top/post/gradle/03/%E7%BC%96%E5%86%99-plugin/</link>
+      <pubDate>Fri, 20 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/03/%E7%BC%96%E5%86%99-plugin/</guid>
+      <description>
+        
+          
+            首先，是官方文档 Gradle的插件支持任意的JVM语言来编写，当前最常见的是Java或Kotlin
+插件的类型 通常来说，插件的编写有3个位置
+ 直接在项目里写脚本，比如kts或者groovy的，好处是简单清晰，但这样的插件问题是无法运行在别的项目，并且不太适合复杂逻辑 在目录里写，好处是可以使用多个文件，并且相对工程化一些，缺点同上 单独的工程，对，插件本身也可以是一个gradle项目，通常一个Gradle plugin会包含多个Task。当然，实际引用时只需要一个jar包即可，无论你项目的类型，并且，可以公开发布到mavenCentral或自己的私服，方便引用，一般来说强烈推荐这种方式  项目脚本的方式 创建一个项目 gradle init --type=basic，然后一路回车默认下来即可 首先，编写一个Plugin，并且引入插件
+1import org.gradle.api.* 23class ScriptPlugin implements Plugin&amp;lt;Project&amp;gt;{ 4@Override 5public void apply(Project project) { 6println(&amp;#34;Apply the script plugin&amp;#34;) 7} 8} 910apply plugin: ScriptPlugin // 引入插件 这个插件只会做一个事，输出一行文本 然后，因为这个文件目前还在其他的文件里，我们将这个文件引入项目
+1apply from: &amp;#39;./s.groovy&amp;#39; 在引入前后分别执行 gradle tasks可以得到不同的日志 这里，可以看到这行日志，是执行在 configure project阶段 通常来说，引入插件不是目的，目的是在于添加task，并在后续中使用，我们修改一下插件的源码
+1import org.gradle.api.* 23class ScriptPlugin implements Plugin&amp;lt;Project&amp;gt;{ 4@Override 5public void apply(Project project) { 6println(&amp;#34;Apply the script plugin&amp;#34;) 7// 形参project是当前项目的引用，可以通过task方法添加任务 8 project.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle buildSrc</title>
+      <link>https://kikt.top/post/gradle/01/basic/03-buildsrc/</link>
+      <pubDate>Wed, 18 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01/basic/03-buildsrc/</guid>
+      <description>
+        
+          
+            使用方法 这个东西的使用方法很简单，在项目下创建一个buildSrc文件夹，然后刷新gradle项目即可 Gradle会自动将这个文件夹识别为一个Gradle项目，并支持在项目的build.gradle中引用
+我在项目中创建如下的一个文件夹 buildSrc 1plugins { 2id &amp;#39;java&amp;#39; 3} 1package top.kikt; 23import org.gradle.api.Plugin; 4import org.gradle.api.Project; 56public class MyPlugin implements Plugin&amp;lt;Project&amp;gt; { 78@Override 9public void apply(Project project) { 10System.out.println(&amp;#34;Apply MyPlugin from project: &amp;#34; + project.getName()); 11} 12} 1import top.kikt.MyPlugin 23plugins { 4id &amp;#39;java&amp;#39; 5} 67group &amp;#39;org.example&amp;#39; 8version &amp;#39;1.0-SNAPSHOT&amp;#39; 910repositories { 11mavenCentral() 12} 1314dependencies { 15testImplementation &amp;#39;org.junit.jupiter:junit-jupiter-api:5.8.1&amp;#39; 16testRuntimeOnly &amp;#39;org.junit.jupiter:junit-jupiter-engine:5.8.1&amp;#39; 17} 1819test { 20useJUnitPlatform() 21} 2223apply plugin: MyPlugin 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle Wrapper</title>
+      <link>https://kikt.top/post/gradle/01/03-gradle_wrapper/</link>
+      <pubDate>Mon, 16 Jan 2023 15:20:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01/03-gradle_wrapper/</guid>
+      <description>
+        
+          
+            Gradle 推荐使用 Wrapper 的方式来构建工程 Wrapper 根据我的理解，是帮助不同的所有开发同一个项目的人使用相同的 Gradle 版本，从而避免Gradle版本差异带来的问题，而“副作用”就是不同的项目使用相同的 Gradle Wrapper 版本不需要重新下载。
+给项目添加 wrapper 一般来说，如果使用的是 IDE（例如Jetbrains IDEA)或 创建的项目都会包含Wrapper，不需要自行添加。 但如果你的项目是命令创建的，或因为其他原因不包含 wrapper 目录，则需要自行添加 通过如下的代码给项目添加 wrapper，一般来说这取决于你的 gradle 版本，使用 gradle -v 或 gradle --version来查看版本
+1gradle wrapper 使用后，会根据你当前的Gradle版本创建wrapper
+关于版本控制 在版本控制工具上提交项目代码的时候，一定要把wrapper文件夹包含在内。 通常来说，一个带有wrapper的项目根目录会包含 gradlew 和 gradle.bat 文件，前者是给 linux/macOS 使用的，后者是 windows，使用方式是
+1./gradlew xxxx # mac/linux 2gradle.bat xxxx # windows 如果你 clone 的 gradle 项目代码不包含 wrapper 目录，那这个项目的管理者可能不太懂 gradle，很多时候你能跑起他的项目是需要靠运气的，因为不同版本的gradle差异还是存在的。
+版本号 一个典型的包含wrapper的项目结构如下 其中gradle-wrapper.properties文件内会指定了gradle的版本号等信息，一般建议使用对应的all版本，并且，如无特殊情况，新项目建议永远使用当前的最新版
+1distributionBase=GRADLE_USER_HOME 2distributionPath=wrapper/dists 3distributionUrl=https\://services.gradle.org/distributions/gradle-7.4-bin.zip 4zipStoreBase=GRADLE_USER_HOME 5zipStorePath=wrapper/dists 1distributionUrl=https\://services.gradle.org/distributions/gradle-7.4-bin.zip 2distributionUrl=https\://services.gradle.org/distributions/gradle-7.5.1-all.zip 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle 的约定式概念</title>
+      <link>https://kikt.top/post/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Mon, 16 Jan 2023 10:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/</guid>
+      <description>
+        
+          
+            Gradle 中存在很多约定式的东西，也就是理论上不支持配置，或者哪怕可以配置，也不建议修改的东西
+build.gradle Gradle 构建系统的入口，一般一个gradle项目应该首先看这里，这里会指定项目的几乎所有配置 对于Java项目来说，包含但不仅限于指定项目是java app还是java library，依赖的三方库，源文件包含什么，打包时应该包含的文件，签名方式，上传maven的配置等等
+settings.gradle 如果是子项目，可能不包含这个文件，但主项目一般都应该包含这个文件，一般情况下，这个文件指定了项目名称和整个工程包含的项目
+buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需要用到的源码，计划中，我会单独开一篇文章来聊聊怎么使用和有什么用。 Gradle buildSrc 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle Plugin</title>
+      <link>https://kikt.top/post/gradle/03-plugin/</link>
+      <pubDate>Sun, 15 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/03-plugin/</guid>
+      <description>
+        
+          
+            在 Gradle 中使用 Plugin 大概有如下两种方式
+ 使用 Gradle 第一方提供的内置插件，或第三方的插件 自己编写的，放在 buildSrc 的  在本篇中插件和 Plugin 为同义 本篇只写如何使用Plugin，关于编写Plugin单独开一篇来写 内置插件 有2种常见的引入模式
+1plugins { 2id &amp;#39;java&amp;#39; 3} 45apply plugin: &amp;#39;java&amp;#39; 6apply plugin: JavaPlugin // 注意这里没有引号，这个 JavaPlugin 是一个 Groovy 对象 这几种是相同的作用 需要注意的一点是，如果是使用 plugins 闭包来引入插件，则要注意顺序，否则会报如下的错，而apply plugin则没有这样的要求
+1only buildscript {}, pluginManagement {} and other plugins {} script blocks are allowed before plugins {} blocks, 2no other statements are allowed 按 Gradle 定义，只有buildscript``pluginManagement两种闭包可以放在这个前面，另外就是其他的 plugins 闭包可以在前面
+三方插件 1plugins { 2id &amp;#39;com.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle Task的创建和使用</title>
+      <link>https://kikt.top/post/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 15 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
+      <description>
+        
+          
+            创建栈 1tasks.register(&amp;#34;Hello&amp;#34;) { 2doLast { 3println(&amp;#34;Run the method do last&amp;#34;) 4} 5} 使用 gradle -q Hello会得到输出 任务的生命周期 12tasks.register(&amp;#34;World&amp;#34;) { 3println(&amp;#34;Config the world task&amp;#34;) 4dependsOn(&amp;#34;Hello&amp;#34;) 5doFirst { 6println(&amp;#34;World first&amp;#34;) 7} 8doLast { 9println(&amp;#34;World do last&amp;#34;) 10} 11} 1213tasks.register(&amp;#34;Hello&amp;#34;) { 14println(&amp;#34;Config the hello task&amp;#34;) 15doLast { 16println(&amp;#34;Hello do last&amp;#34;) 17} 18doFirst { 19println(&amp;#34;Hello do first&amp;#34;) 20} 21} 2223tasks.register(&amp;#34;Other&amp;#34;) { 24println(&amp;#34;Config the other task&amp;#34;) 25}  通过register来注册task，然后通过doLast和doFirst来确定顺序，通过dependsOn来指定是否要依赖其他的Task。有一个叫Other的任务因为没有被依赖，所以干脆就没有被调用，而本身的闭包内的内容是直接调用的，并没有遵循 Task 的依赖顺序，所以闭包内不能做其他任务做过的事。如果需要依赖其他的内容，还是需要在 doLast/doFirst里来做。
+除了任务本身的Task外，项目也可以做全局的task创建的监听，具体的参考。
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle 基础</title>
+      <link>https://kikt.top/post/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Sun, 15 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/</guid>
+      <description>
+        
+          
+            在我看来，Gradle 中有几项很基础的概念必须提前说明
+概念   Gradle 的约定式概念   
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle 命令行工具的使用</title>
+      <link>https://kikt.top/post/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 15 Jan 2023 10:33:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>
+        
+          
+            Gradle 本身包含一个命令行工具，正常情况下，Gradle的使用离不开命令行工具 一个正常的Gradle项目应该包含 gradle/wrapper 文件夹，这里会指明你项目使用的Gradle版本，以保证所有项目参与者在不同的系统都使用相同的Gradle版本
+最典型的使用 Gradle中最基本的概念之一，任务（Task），你需要执行哪个任务，就使用gradle [taskName]即可，典型的比如java项目包含的jar，安卓项目包含的assembleRelease，可以使用gradle tasks来查看当前项目包含的所有任务和对应的功能 参数的设置方式，可以在task前也可以在后，有两种参数，一种是有值的，一种是无值的(可以理解为true/false) 有值: --console=plain 无值: --build-cache --no-build-cache，就是在前面加--no-表示false 长参数，短参数的问题，简单来说，短参数有且只有一个字母，长参数就是完整单词，比如：--help``-h，是一个意思
+调用 Task gradle :jar 和 gradle jar 是一个意思 但是当你有子项目的时候，比如你的子项目叫sub1，而根项目和子项目有jartask，那如果想要单独调用子项目的jar task，需要使用 gradle :sub1:jar或gradle sub1:jar
+运行多个 task 当想要调用多个项目时，可以直接把task连续输入，使用空格分割即可，例如 gradle build jar就是同时调用两个task 同时运行多个项目时，gradle 的官方文档说明有如下2点
+ 尽量快，比如提供并行编译等等 安全，比如 gradle clean build就是先清除再构建，而不会边清除边构建  不执行某特定的 task  按照官网介绍，dist 任务依赖test和compile，同时compile也依赖test，可以使用gradle dist --exclude-task test来跳过test任务，同时也会忽略掉compileTest这种任务
+强制执行所有任务 gradle的任务有缓存机制（)，有的任务在某些时间内只会执行一次，可以强制指定这种任务每次都运行 gradle test --rerun-tasks
+失败，但继续 gradle test --continue Gradle在任何任务发生错误时，会停止所有的任务，通过上面的命令可以在发生错误时完成所有不相干的命令（只要没有依赖关系）。
+Task 名称的简写 这个很有意思，支持驼峰式的简写，比如你有一个任务叫myCompileSource，当然，也支持my-compile-src这种类型的简写 你只需要gradle mCS就可以调用myCompileSource任务
+约定式的任务 build check run clean 所有插件都应该包含的任务
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle 开始</title>
+      <link>https://kikt.top/post/gradle/00-gradle-%E5%BC%80%E5%A4%B4/</link>
+      <pubDate>Sat, 14 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/00-gradle-%E5%BC%80%E5%A4%B4/</guid>
+      <description>
+        
+          
+            官方的文档链接，针对的是 7.5.1 版本 本文章对应的所有代码托管在 中
+关于文档 项目可能会混杂 groovy、kotlin、java 的代码 groovy 是因为这是 gradle 默认使用的语言，.gradle 文件都是使用的 groovy 的语法 kotlin则是因为gradle将kt也作为一级语言来使用，扩展名大部分是kts java则是因为偶尔会有buildSrc文件夹内会使用，包括groovy中也会有java语法，因为几乎是完全兼容
+为什么需要 Gradle Gradle 在我的理解就是把复杂的过程简单化的过程，可以使用 Gradle 来构建自己的项目，如果有一个很复杂的项目或者项目是java、kotlin、android这样被gradle支持的类型，也应该使用gradle来完成它。
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Groovy 语法</title>
+      <link>https://kikt.top/post/gradle/01/api/groovy-%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Fri, 13 Jan 2023 13:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01/api/groovy-%E8%AF%AD%E6%B3%95/</guid>
+      <description>
+        
+          
+            本文不是从零教 groovy，而是一些基础的 groovy 语法，够用就行 另外，目前Gradle原生支持kts，简单来说就是用kt的语法来配置Gradle，新入门的话足够用 后续的文章会加大kts的使用比例，来替代 groovy
+基础类型 更多的是使用别人提供的插件，我们在使用的时候主要就是配置而已 gradle 脚本中包含了三种使用方式
+ 闭包 方法 .的调用  其中我们最常见的其实是闭包，其次是方法，最后才是.的调用
+方法 常见的apply其实就是调用 PluginAware.apply方法，from:则属于groovy的语法糖, from是方法的参数，冒号后跟的是参数
+1apply from: &amp;#39;xxx.groovy&amp;#39; // 这里的 apply 是一个自带的方法，使用的参数 2 3// 如果是 Java语法，则是如下写法： 4HashMap&amp;lt;String, ?&amp;gt; applies = new HashMap&amp;lt;String, ?&amp;gt;(); 5applies.put(&amp;#34;plugin&amp;#34;, MyPlugin) 6apply(applies) 然后 java中的方法调用方法是 println(&amp;quot;xxx&amp;quot;);groovy 中可以使用 println &amp;quot;&amp;quot;; 所以，常见的设置maven仓库的方式 maven { url &#39;&#39; }其实是先调用了 方法，然后在闭包中调用 setUrl 方法，参考
+闭包 groovy 的闭包很有意思 大量的闭包的签名是这样的
+1MavenArtifactRepository maven(Action&amp;lt;? super MavenArtifactRepository&amp;gt; action) 然后结合语法糖，形成了如下这种闭包
+1maven { 2url &amp;#39;xxxx&amp;#39; 3} 其实，这里的maven调用的是方法maven，同时，如果有需要，还可以使用变量来接收返回结果，并修改结果
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle API</title>
+      <link>https://kikt.top/post/gradle/01/api/gradle-api/</link>
+      <pubDate>Thu, 12 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01/api/gradle-api/</guid>
+      <description>
+        
+          
+            Project 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>目录 for content/post/gradle</title>
+      <link>https://kikt.top/post/gradle/menu/</link>
+      <pubDate>Tue, 10 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/menu/</guid>
+      <description>
+        
+          
+              Gradle 开始   Gradle 命令行工具的使用   Gradle 基础   Gradle 的约定式概念   Gradle Task的创建和使用   Gradle Wrapper   Gradle Plugin   Gradle buildSrc   Gradle API   Groovy 语法   Gradle 编写Plugin   
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>把flutter项目作为aar添加到已有的Android工程上</title>
+      <link>https://kikt.top/post/flutter/exists/android-as-aar-to-maven/</link>
+      <pubDate>Fri, 14 Jun 2019 09:06:24 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/exists/android-as-aar-to-maven/</guid>
+      <description>
+        
+          
+            对于已有工程想要尝鲜 Flutter, 很多公司给出了最佳实践方案, android 中是使用 aar 加入项目中, 这样原生开发对于 flutter 环境就没有要求了, 只要 flutter 打包后上传 maven 即可, 但是这部分的过程坑很多, 后面我会再补充这种方案
+我也摸索了一个实践方案, 将所有项目的 aar 由 flutter 方打包 aar 后将 aar 置入某一个固定位置 ,并置入一个 git 库管理, 然后 android 原生方直接 pull 后引入项目即可
+高能预警: 本篇会结合 flutter, android, aar, gradle, maven, docker 的知识来完成所有的步骤
+并不是每一个都会详细说明, 如果有不明白的可以在 的本文下面留言, 我会更新文章或给予解答, 其他渠道的可能不会有时间看
+                                                               开发环境 本人设备环境 MacOS 10.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter flutter.gradle分析</title>
+      <link>https://kikt.top/post/flutter/android/flutter.gradle/</link>
+      <pubDate>Mon, 01 Apr 2019 11:43:50 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/android/flutter.gradle/</guid>
+      <description>
+        
+          
+            所有的分析基于当前的 1.4.7 版本,flutter sdk 的版本更新可能会修改这个文件
+1Flutter 1.4.7 • channel dev • https://github.com/flutter/flutter.git 2Framework • revision 1bfa2f2311 (3 days ago) • 2019-03-29 10:05:18 -0700 3Engine • revision c4d14a0071 4Tools • Dart 2.2.1 (build 2.2.1-dev.2.0 None) 这个文件是 sdk 中的 android 部分的配置文件文件,简单分析一下流程,以便于魔改或在项目中可以配置项目
+gradle 使用的是 groovy 的语法,是一个 jvm 语言,在语法层级上兼容 Java 语法
+换句话说 System.out.println(&amp;quot;hello world&amp;quot;); 这样的方法是可用的
+分析 flutter 项目 项目 android/app/build.gradle 文件中都有定义
+1def localProperties = new Properties() 2def localPropertiesFile = rootProject.file(&amp;#39;local.properties&amp;#39;) 3if (localPropertiesFile.exists()) { 4localPropertiesFile.withReader(&amp;#39;UTF-8&amp;#39;) { reader -&amp;gt; 5localProperties.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

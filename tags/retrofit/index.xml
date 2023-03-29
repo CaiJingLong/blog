@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>retrofit on CaiJingLong</title>
+    <link>https://kikt.top/tags/retrofit/</link>
+    <description>Recent content in retrofit on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 01 Sep 2016 10:45:55 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/retrofit/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Retroift简单二次封装</title>
+      <link>https://kikt.top/post/android/retroift-simple-packaging/</link>
+      <pubDate>Thu, 01 Sep 2016 10:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/retroift-simple-packaging/</guid>
+      <description>
+        
+          
+            retrofit 的简单二次封装 基于上次的后，可以对 retrofit 简单的二次封装
+1public interface HttpURL { 2String baseUrl = &amp;#34;http://127.0.0.1:32001/&amp;#34;; 3} 1public class RequestUtils { 23private static OkHttpClient client; 4private static Retrofit retrofit; 56private RequestUtils() { 7} 89static { 10client = new OkHttpClient() 11.newBuilder() 12.connectTimeout(8, TimeUnit.SECONDS) 13.readTimeout(8, TimeUnit.SECONDS) 14.writeTimeout(8, TimeUnit.SECONDS) 15.addInterceptor(new HttpInterceptor()) 16.build(); 1718retrofit = new Retrofit.Builder() 19.baseUrl(HttpURL.baseUrl) 20.client(client) 21.addConverterFactory(StringConverterFactory.create()) 22.build(); 23} 2425public static String post(String url, String body) throws IOException { 26RequestServer requestServer = retrofit.create(RequestServer.class); 27String[] path = url.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Retroift初探</title>
+      <link>https://kikt.top/post/android/retroift-first-develop/</link>
+      <pubDate>Wed, 31 Aug 2016 18:25:45 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/retroift-first-develop/</guid>
+      <description>
+        
+          
+            retrofit 初探 引用 maven 1&amp;lt;dependency&amp;gt; 2&amp;lt;groupId&amp;gt;com.squareup.retrofit2&amp;lt;/groupId&amp;gt; 3&amp;lt;artifactId&amp;gt;retrofit&amp;lt;/artifactId&amp;gt; 4&amp;lt;version&amp;gt;2.1.0&amp;lt;/version&amp;gt; 5&amp;lt;/dependency&amp;gt; gradle 1api &amp;#39;com.squareup.retrofit2:retrofit:2.1.0&amp;#39; github  个人意见 其实，最适合使用 retrofit 的是 rest 请求类的交互，如果具体的请求参数是以 url 区分业务逻辑，请求参数通过 json 进行的，那其实 retrofit 不太适用
+俗话说，demo 是最好的学习 先来看看怎么定义业务逻辑
+1public interface GitHubService { 2@GET(&amp;#34;users/{user}/repos&amp;#34;) 3Call&amp;lt;List&amp;lt;Repo&amp;gt;&amp;gt; listRepos(@Path(&amp;#34;user&amp;#34;) String user); 4} 这里的{user}是一个会在实际使用时会被动态改变的，会根据 String user 中的变量而改变
+1public class RetrofitDemo { 2private static OkHttpClient client; 34static { 5client = new OkHttpClient.Builder() 6.addInterceptor(new HttpInterceptor()) 7.build(); 8} 910public static void main(String[] args) throws IOException { 11Retrofit retrofit = new Retrofit.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

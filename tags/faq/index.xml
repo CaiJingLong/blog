@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>faq on CaiJingLong</title>
+    <link>https://kikt.top/tags/faq/</link>
+    <description>Recent content in faq on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 02 Aug 2018 11:29:34 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/faq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flutter基础faq</title>
+      <link>https://kikt.top/post/flutter/flutter-base-faq/</link>
+      <pubDate>Thu, 02 Aug 2018 11:29:34 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-base-faq/</guid>
+      <description>
+        
+          
+            写在前面 这篇文章的目的是给纯 flutter 萌新回答一些基础问题,ctrl+f/cmd+f 搜索关键字 控件名 本篇会持续更新 最后更新时间 2018-08-02
+布局篇 flutter 中 控件各司其职,基础控件中基本只包含自己的功能 显示内容的负责显示内容,如 Text 负责文字,Image 负责图片 容器的负责容器,Row,Column,ListView 等 尺寸位置的负责自己,Padding,Container,SizedBox 等 触摸手势触摸相关:GestureDetector
+flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如你不应该有一个class TextButton extend Text/RaisedButton这样的方案出现 而应该是
+12class TextButton extends StatelessWidget { 3final Function onPressed; 4final String text; 5final Color color; 6final double fontSize; 7final EdgeInsets padding; 89const TextButton({ 10Key key, 11this.onPressed, 12this.text = &amp;#34;&amp;#34;, 13this.color = Colors.black87, 14this.fontSize = 14.0, 15this.padding = EdgeInsets.zero, 16}) : super(key: key); 1718@override 19Widget build(BuildContext context) { 20return new Material( 21color: Colors.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>poi on CaiJingLong</title>
+    <link>https://kikt.top/tags/poi/</link>
+    <description>Recent content in poi on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 27 Feb 2017 10:45:55 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/poi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Poi解析对比excel表格</title>
+      <link>https://kikt.top/post/server/java/poi/</link>
+      <pubDate>Mon, 27 Feb 2017 10:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/java/poi/</guid>
+      <description>
+        
+          
+            前言 这次不是 Android 的技术分享，是 java 的，当然把 poi 的代码放到 Android 中也可以用，毕竟同源嘛
+为啥会有这个文章呢，因为我老婆是会计嘛，她有时候会让我帮忙对账，两个 excel 文件，顺序也不同，需要我来对比出哪里有问题，也就是数不太对应，我想了一下，如果好几百个甚至几千个数字来对账，那我岂不是眼睛都花了，这样我哪里还有时间去happy愉快的撸代码了？ 作为一个程序员，我们要解放自己的眼睛，去做一些有意义的事情！
+开发环境 Intellij Idea+maven
+pom 文件
+1&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; 2&amp;lt;project xmlns=&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34; 3xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34; 4xsi:schemaLocation=&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&amp;gt; 5&amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt; 67&amp;lt;groupId&amp;gt;com.kikt&amp;lt;/groupId&amp;gt; 8&amp;lt;artifactId&amp;gt;ExcelDemo&amp;lt;/artifactId&amp;gt; 9&amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt; 10&amp;lt;build&amp;gt; 11&amp;lt;plugins&amp;gt; 12&amp;lt;plugin&amp;gt; 13&amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt; 14&amp;lt;artifactId&amp;gt;maven-compiler-plugin&amp;lt;/artifactId&amp;gt; 15&amp;lt;configuration&amp;gt; 16&amp;lt;source&amp;gt;1.7&amp;lt;/source&amp;gt; 17&amp;lt;target&amp;gt;1.7&amp;lt;/target&amp;gt; 18&amp;lt;/configuration&amp;gt; 19&amp;lt;/plugin&amp;gt; 20&amp;lt;/plugins&amp;gt; 21&amp;lt;/build&amp;gt; 2223&amp;lt;dependencies&amp;gt; 24&amp;lt;!-- https://mvnrepository.com/artifact/org.apache.poi/poi --&amp;gt; 25&amp;lt;dependency&amp;gt; 26&amp;lt;groupId&amp;gt;org.apache.poi&amp;lt;/groupId&amp;gt; 27&amp;lt;artifactId&amp;gt;poi&amp;lt;/artifactId&amp;gt; 28&amp;lt;version&amp;gt;3.15-beta2&amp;lt;/version&amp;gt; 29&amp;lt;/dependency&amp;gt; 30&amp;lt;!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml --&amp;gt; 31&amp;lt;dependency&amp;gt; 32&amp;lt;groupId&amp;gt;org.apache.poi&amp;lt;/groupId&amp;gt; 33&amp;lt;artifactId&amp;gt;poi-ooxml&amp;lt;/artifactId&amp;gt; 34&amp;lt;version&amp;gt;3.15-beta2&amp;lt;/version&amp;gt; 35&amp;lt;/dependency&amp;gt; 36&amp;lt;/dependencies&amp;gt; 3738&amp;lt;/project&amp;gt; 引入了 poi 的解析库的两个文件
+结构 首先是 poi 对于 excel 的结构分析 WorkBook-&amp;gt;Sheet-&amp;gt;Row-&amp;gt;Cell 放在 wps/excel 中看，WorkBook 对应的是工作簿，Sheet 是表，Row 顾名思义是行，Cell 是单元格
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

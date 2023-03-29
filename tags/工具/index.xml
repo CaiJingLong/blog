@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工具 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 工具 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 30 Jul 2019 21:43:25 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Live Template groovy脚本的使用</title>
+      <link>https://kikt.top/post/jetbrains/template/live-template/</link>
+      <pubDate>Tue, 30 Jul 2019 21:43:25 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/jetbrains/template/live-template/</guid>
+      <description>
+        
+          
+            Jetbrains 全家桶,包括 android studio, 支持一个东西叫 Live Template
+这个东西可以预先储存一个模板, 帮助我们快速开发, 这个功能很多朋友应该都知道,也在用
+本篇使用dart作为主要示例语言, dart 语言语法比较简单, 有 java/js 等常用语言基础的都应该能看懂
+                    简单使用 虽然想要重点介绍 groovyScript 的脚本使用, 但是也应该简单介绍下 Live Template
+比如我可以存一个 stful, 然后会自动生成一段代码, 当然这个模板是 flutter 开发自带的
+ 进阶 自己搞一个小模板 这个模板就生成一个我们自己的类库调用, 比如我自己封装了一个 http 访问
+1final response = await HttpHelper.fetchString(url); 以这段代码为例, 我们一个小 app 可能有 100 个接口, 这时候 LiveTemplate 就派上用场了
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

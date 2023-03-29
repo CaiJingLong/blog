@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jsdelivr on CaiJingLong</title>
+    <link>https://kikt.top/tags/jsdelivr/</link>
+    <description>Recent content in jsdelivr on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Wed, 18 Mar 2020 13:17:37 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/jsdelivr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 jsdelivr 加速 cocoapod 库</title>
+      <link>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</link>
+      <pubDate>Wed, 18 Mar 2020 13:17:37 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</guid>
+      <description>
+        
+          
+            iOS 开发时, cocoapods(后简称 pod) 是很常用的工具
+我们偶尔也会自己开发 pod 库并上传到 pod 上
+pod 的源码支持多种来源, 本地 path git http 等
+一般来说, 如果是纯开源库, 我们直接把源码上传到 github , 然后使用 git 依赖即可
+但是这有一个问题, github 的速度在中国大陆并不快, 我们有没有办法加速它呢?
+这时候经过搜索, jsdelivr 出现在了搜索引擎里, 号称国内外都可用的 cdn, 我用 wget 测试了一下, 国内外都可以保证 10M+/s 的速度
+jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
+但是, 上面也说了, 支持&amp;quot;任何&amp;quot;在 github 上的仓库, 很好, 我就喜欢这样的东西
+版本号的坑 文档上说支持所有 ref 作为版本号, 然而不是, 我这里测试只支持 tag/release
+包体大小限制 我的目的是为了给 flutter_ijkplayer 的 iOS 仓库找一个下载地址, ijkplayer 的 iOS 部分很大, 我打包完有 150M, 用了 xz 压缩方案让包变成了 35M
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

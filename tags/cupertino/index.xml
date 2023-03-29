@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cupertino on CaiJingLong</title>
+    <link>https://kikt.top/tags/cupertino/</link>
+    <description>Recent content in cupertino on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 08 Jan 2019 17:34:10 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/cupertino/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>flutter cupertino 复制粘贴弹窗报错的问题</title>
+      <link>https://kikt.top/post/flutter/framework/cupertino-paste-tooltip/</link>
+      <pubDate>Tue, 08 Jan 2019 17:34:10 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/framework/cupertino-paste-tooltip/</guid>
+      <description>
+        
+          
+            1NosuchMethodError: The getter &amp;#39;pasterButtonLabel&amp;#39; was called on null. 2Receiver: null 3Tried calling: pasteButtonLabel 在最近 app store 提交审核时被拒了,然后得到了一个这样的截图
+ 在 flutter 中可能会会出现各种问题,因为之前遇到过这个问题,但是那是我另一个应用,这个忘了设置了
+我快速搞了一下,重新提交了审核
+解决方式 1import &amp;#39;package:flutter/cupertino.dart&amp;#39;; 2import &amp;#39;package:flutter/foundation.dart&amp;#39;; 3import &amp;#39;package:flutter/material.dart&amp;#39;; 4import &amp;#39;package:flutter_localizations/flutter_localizations.dart&amp;#39;; 56class ChineseCupertinoLocalizations implements CupertinoLocalizations { 7final materialDelegate = GlobalMaterialLocalizations.delegate; 8final widgetsDelegate = GlobalWidgetsLocalizations.delegate; 9final local = const Locale(&amp;#39;zh&amp;#39;); 1011MaterialLocalizations ml; 1213Future init() async { 14ml = await materialDelegate.load(local); 15print(ml.pasteButtonLabel); 16} 1718@override 19String get alertDialogLabel =&amp;gt; ml.alertDialogLabel; 2021@override 22String get anteMeridiemAbbreviation =&amp;gt; ml.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

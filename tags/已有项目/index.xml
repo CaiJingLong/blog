@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>已有项目 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE/</link>
+    <description>Recent content in 已有项目 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 14 Jun 2019 09:06:24 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>把flutter项目作为aar添加到已有的Android工程上</title>
+      <link>https://kikt.top/post/flutter/exists/android-as-aar-to-maven/</link>
+      <pubDate>Fri, 14 Jun 2019 09:06:24 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/exists/android-as-aar-to-maven/</guid>
+      <description>
+        
+          
+            对于已有工程想要尝鲜 Flutter, 很多公司给出了最佳实践方案, android 中是使用 aar 加入项目中, 这样原生开发对于 flutter 环境就没有要求了, 只要 flutter 打包后上传 maven 即可, 但是这部分的过程坑很多, 后面我会再补充这种方案
+我也摸索了一个实践方案, 将所有项目的 aar 由 flutter 方打包 aar 后将 aar 置入某一个固定位置 ,并置入一个 git 库管理, 然后 android 原生方直接 pull 后引入项目即可
+高能预警: 本篇会结合 flutter, android, aar, gradle, maven, docker 的知识来完成所有的步骤
+并不是每一个都会详细说明, 如果有不明白的可以在 的本文下面留言, 我会更新文章或给予解答, 其他渠道的可能不会有时间看
+                                                               开发环境 本人设备环境 MacOS 10.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

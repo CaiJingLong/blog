@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on CaiJingLong</title>
+    <link>https://kikt.top/categories/go/</link>
+    <description>Recent content in go on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 14 Aug 2020 20:45:00 +0800</lastBuildDate><atom:link href="https://kikt.top/categories/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>编译 go 源码为 android 动态库(so)</title>
+      <link>https://kikt.top/post/go/compile-for-android/</link>
+      <pubDate>Fri, 14 Aug 2020 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/go/compile-for-android/</guid>
+      <description>
+        
+          
+            golang跨平台, 性能强, 周边也算丰富
+一直有一个想法, 把这东西写的代码编译成各个平台的库, 未来在 flutter 里用
+开发环境和工具  MacOS(其他的暂时不考虑) Go  Go 1.14.6, 版本太低可能不能编译成 android 的 Goland , 咱现在是正版用户, 用开源项目申请的All products License , 你也可以根据自己的情况选择别的 IDE 或使用文本编辑器(vscode 也不错)   Android  Android Studio Cmake Android SDK Android NDK    Go 部分 go 源码 add_library.go
+1package main 23import &amp;#34;C&amp;#34; 45//export add 6func add(x, y int) int { 7return x + y 8} 910//export remove_int 11func remove_int(x, y int) int { 12return x - y 13} 1415func main() { 16} 这里有几点要注意
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

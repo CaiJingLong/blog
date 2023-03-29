@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>源码解析 on CaiJingLong</title>
+    <link>https://kikt.top/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</link>
+    <description>Recent content in 源码解析 on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 08 Jan 2019 16:07:06 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Finish FlutterActivity 源码解析</title>
+      <link>https://kikt.top/post/flutter/android/finish-activity/</link>
+      <pubDate>Tue, 08 Jan 2019 16:07:06 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/android/finish-activity/</guid>
+      <description>
+        
+          
+            开篇声明:本篇文章不算是新手向的东西,你需要对于 flutter 和 android 本身有一定的了解
+文章原因 为啥要写这个文章呢
+最近有 qq 群的同学询问如何在关闭界面后在 service 中执行 dart 代码
+我当时的理解就是 flutter 是依附于 activity 存在的,但是这部分并没有任何实际支撑
+所以我抱着好奇的想法去跟了一下 engine 部分的源码
+flutter engine 简单介绍 这里简单介绍一下 flutter engine,
+在 android 系统上 flutter 是使用 FlutterView 实现的,
+对应的 java 层级的源码都在这里
+一般一个纯 flutter 项目中是这样的, 有一个 FlutterApplication 一个 FlutterActivity 一个 FlutterView,而我们 flutter 所有的界面都是在 FlutterView 上画的
+解析开始 以下基于你对于 android 原生开发有所涉猎,而不是完全不了的基础上展开
+我们都知道,当 finish Activity 后页面会回调onDestroy方法
+ 这个方法中会回调一个eventDelegate.onDestroy,我们查看以下这个东西具体是调用到哪里
+  能看到具体的调用是这样的
+  如果 Application 是 FlutterApplication 会直接将当前 Activity 置空
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>channel on CaiJingLong</title>
+    <link>https://kikt.top/tags/channel/</link>
+    <description>Recent content in channel on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 07 Dec 2018 10:43:45 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/channel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flutter 原生通信 (四) - iOS 通知 Flutter</title>
+      <link>https://kikt.top/post/flutter/channel/flutter-channel4/</link>
+      <pubDate>Fri, 07 Dec 2018 10:43:45 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/channel/flutter-channel4/</guid>
+      <description>
+        
+          
+            原生通信系列
+
+
+ 本篇主要介绍如何在 iOS 中发布广播,然后在 dart 端进行订阅
+oc 先来查看 OC 篇
+1#import &amp;#34;BattlePowerPlugin.h&amp;#34; 2#import &amp;lt;Foundation/NSTimer.h&amp;gt; 3 4@implementation BattlePowerPlugin 56+ (void)registerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar { 7// ... 8 9[self registerPostTimerWithRegistrar:registrar]; 10} 1112+(void) registerPostTimerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar{ 13FlutterBasicMessageChannel *channel = [FlutterBasicMessageChannel messageChannelWithName:@&amp;#34;run_time&amp;#34; binaryMessenger:[registrar messenger]]; 1415long start = [self getNow]; 1617[NSTimer scheduledTimerWithTimeInterval:5 repeats:true block:^(NSTimer * _Nonnull timer) { 18long run = [self getNow] - start; 19[channel sendMessage:[NSNumber numberWithLong:run]]; 2021if (run &amp;gt; 100){ 22[timer invalidate]; 23} 24}]; 25} 2627+(long)getNow{ 28NSDate *date = [NSDate date]; 29long timeStamp = [date timeIntervalSince1970]; 30return timeStamp; 31} 3233//.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 原生通信 (三) - Flutter 调用 iOS</title>
+      <link>https://kikt.top/post/flutter/channel/flutter-channel3/</link>
+      <pubDate>Fri, 07 Dec 2018 10:43:43 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/channel/flutter-channel3/</guid>
+      <description>
+        
+          
+            原生通信系列
+
+
+ 本篇要介绍的是 flutter 调用 iOS 篇
+如果你没有看过我的前 2 篇,建议看一下. dart 端会承接上一篇的结果
+dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/services.dart&amp;#39;; 45class BattlePower { 6static const MethodChannel _channel = const MethodChannel(&amp;#39;battle_power&amp;#39;); 78static Future&amp;lt;String&amp;gt; get platformVersion async { 9final String version = await _channel.invokeMethod(&amp;#39;getPlatformVersion&amp;#39;); 10return version; 11} 1213static Future&amp;lt;int&amp;gt; requestNativeAdd(int x, int y) async { 14int result = await _channel.invokeMethod(&amp;#39;add&amp;#39;, {&amp;#34;x&amp;#34;: x, &amp;#34;y&amp;#34;: y}); 15return result; 16} 1718//.... 19} 这里和第一篇一样
+不详细介绍了
+ 这里是以 oc 为例的,不建议用 swift 开发插件,尤其是开源插件
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 原生通信 (二) - Android通知Flutter</title>
+      <link>https://kikt.top/post/flutter/channel/flutter-channel2/</link>
+      <pubDate>Fri, 07 Dec 2018 10:02:15 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/channel/flutter-channel2/</guid>
+      <description>
+        
+          
+            原生通信系列
+
+
+ 第二篇介绍的是原生通知 dart
+开篇就是灵魂流程图,自己体会吧 😆 不同于第一篇, 本篇是由 java 端作为发布端, dart 作为订阅端
+具体的创建过程请参考第一篇
+java 先看看 java 端代码
+1package com.example.battlepower; 23import java.util.Timer; 4import java.util.TimerTask; 56import io.flutter.plugin.common.BasicMessageChannel; 7import io.flutter.plugin.common.MethodCall; 8import io.flutter.plugin.common.MethodChannel; 9import io.flutter.plugin.common.MethodChannel.MethodCallHandler; 10import io.flutter.plugin.common.MethodChannel.Result; 11import io.flutter.plugin.common.PluginRegistry.Registrar; 12import io.flutter.plugin.common.StandardMessageCodec; 1314/** 15* BattlePowerPlugin 16*/ 17public class BattlePowerPlugin implements MethodCallHandler { 1819private static BasicMessageChannel&amp;lt;Object&amp;gt; runTimeSender; 2021private static Timer timer; 2223private static long startTime; 2425/** 26* Plugin registration. 27*/ 28public static void registerWith(Registrar registrar) { 29final MethodChannel channel = new MethodChannel(registrar.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 原生通信 (一) - flutter调用Android</title>
+      <link>https://kikt.top/post/flutter/channel/flutter-channel1/</link>
+      <pubDate>Thu, 06 Dec 2018 17:16:34 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/channel/flutter-channel1/</guid>
+      <description>
+        
+          
+            原生通信系列
+
+
+ 在 flutter 开发中一定会有需要和原生通信的情况
+第一篇介绍的是 flutter 调用 Android
+这篇是给刚刚入门或者刚刚接触原生调用的朋友们使用的,老鸟们或者英文强的朋友还是直接看官方文档比较好
+创建项目 一般来说建议使用一个 plugin 作为一个单独的项目来将业务逻辑独立出去
+我这里使用命令行创建,事实上一律建议使用命令行创建,因为信息更加可见一些
+1flutter create --template plugin battle_power 2cd battle_power 前面都是固定格式,最后面那个是插件名,根据你自己的需要来修改
+创建好的截图如下 和开发 package 的时候不同,开发 plugin 需要打开 example/android 目录
+ 使用快捷的方式,或自己通过 Android Studio 的 open 打开项目
+ 等待完成
+ 接着就可以开始开发了,
+默认生成了一个 java 文件,可以称之为插件的主文件
+流程图  乱画的..随便看看就好
+android 端 1package com.example.battlepower; 23import io.flutter.plugin.common.MethodCall; 4import io.flutter.plugin.common.MethodChannel; 5import io.flutter.plugin.common.MethodChannel.MethodCallHandler; 6import io.flutter.plugin.common.MethodChannel.Result; 7import io.flutter.plugin.common.PluginRegistry.Registrar; 89/** BattlePowerPlugin */ 10public class BattlePowerPlugin implements MethodCallHandler { 11/** Plugin registration.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

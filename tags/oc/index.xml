@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>oc on CaiJingLong</title>
+    <link>https://kikt.top/tags/oc/</link>
+    <description>Recent content in oc on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 31 May 2019 14:43:33 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/oc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>flutter 在OC工程中添加swift库报错的问题</title>
+      <link>https://kikt.top/post/flutter/oc/add-swift-plugin/</link>
+      <pubDate>Fri, 31 May 2019 14:43:33 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/oc/add-swift-plugin/</guid>
+      <description>
+        
+          
+            下午看见群里有人问 swift 插件导入 oc 项目报错的问题, 我之前解决过, 但是忘了解决过程是怎么样的了, 这里记录下方便以后备查
+没兴趣追踪原因的直接查看
+         复现错误  创建一个主工程(oc)  1flutter create oc_project 创建一个插件工程(swift)  1cd oc_project 2flutter create -i swift -t plugin swift_plugin 关联工程  1swift_plugin:2path:./swift_plugin3```运行 iOS 项目得到错误信息  1Launchinglib/main.dartoniPhoneXSMaxindebugmode...23CocoaPods&amp;#39; output: 45↳ 67Preparing 89Analyzing dependencies 1011Inspecting targets to integrate 1213Using `ARCHS` setting to build architectures of target `Pods-Runner`: (``) 1415Fetching external sources 1617-&amp;gt; Fetching podspec for `Flutter` from `.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

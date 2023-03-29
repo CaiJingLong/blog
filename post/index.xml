@@ -1,0 +1,2890 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on CaiJingLong</title>
+    <link>https://kikt.top/post/</link>
+    <description>Recent content in Posts on CaiJingLong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 20 Jan 2023 20:45:00 +0800</lastBuildDate><atom:link href="https://kikt.top/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gradle 编写Plugin</title>
+      <link>https://kikt.top/post/gradle/03/%E7%BC%96%E5%86%99-plugin/</link>
+      <pubDate>Fri, 20 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/03/%E7%BC%96%E5%86%99-plugin/</guid>
+      <description>
+        
+          
+            首先，是官方文档 Gradle的插件支持任意的JVM语言来编写，当前最常见的是Java或Kotlin
+插件的类型 通常来说，插件的编写有3个位置
+ 直接在项目里写脚本，比如kts或者groovy的，好处是简单清晰，但这样的插件问题是无法运行在别的项目，并且不太适合复杂逻辑 在目录里写，好处是可以使用多个文件，并且相对工程化一些，缺点同上 单独的工程，对，插件本身也可以是一个gradle项目，通常一个Gradle plugin会包含多个Task。当然，实际引用时只需要一个jar包即可，无论你项目的类型，并且，可以公开发布到mavenCentral或自己的私服，方便引用，一般来说强烈推荐这种方式  项目脚本的方式 创建一个项目 gradle init --type=basic，然后一路回车默认下来即可 首先，编写一个Plugin，并且引入插件
+1import org.gradle.api.* 23class ScriptPlugin implements Plugin&amp;lt;Project&amp;gt;{ 4@Override 5public void apply(Project project) { 6println(&amp;#34;Apply the script plugin&amp;#34;) 7} 8} 910apply plugin: ScriptPlugin // 引入插件 这个插件只会做一个事，输出一行文本 然后，因为这个文件目前还在其他的文件里，我们将这个文件引入项目
+1apply from: &amp;#39;./s.groovy&amp;#39; 在引入前后分别执行 gradle tasks可以得到不同的日志 这里，可以看到这行日志，是执行在 configure project阶段 通常来说，引入插件不是目的，目的是在于添加task，并在后续中使用，我们修改一下插件的源码
+1import org.gradle.api.* 23class ScriptPlugin implements Plugin&amp;lt;Project&amp;gt;{ 4@Override 5public void apply(Project project) { 6println(&amp;#34;Apply the script plugin&amp;#34;) 7// 形参project是当前项目的引用，可以通过task方法添加任务 8 project.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle buildSrc</title>
+      <link>https://kikt.top/post/gradle/01/basic/03-buildsrc/</link>
+      <pubDate>Wed, 18 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01/basic/03-buildsrc/</guid>
+      <description>
+        
+          
+            使用方法 这个东西的使用方法很简单，在项目下创建一个buildSrc文件夹，然后刷新gradle项目即可 Gradle会自动将这个文件夹识别为一个Gradle项目，并支持在项目的build.gradle中引用
+我在项目中创建如下的一个文件夹 buildSrc 1plugins { 2id &amp;#39;java&amp;#39; 3} 1package top.kikt; 23import org.gradle.api.Plugin; 4import org.gradle.api.Project; 56public class MyPlugin implements Plugin&amp;lt;Project&amp;gt; { 78@Override 9public void apply(Project project) { 10System.out.println(&amp;#34;Apply MyPlugin from project: &amp;#34; + project.getName()); 11} 12} 1import top.kikt.MyPlugin 23plugins { 4id &amp;#39;java&amp;#39; 5} 67group &amp;#39;org.example&amp;#39; 8version &amp;#39;1.0-SNAPSHOT&amp;#39; 910repositories { 11mavenCentral() 12} 1314dependencies { 15testImplementation &amp;#39;org.junit.jupiter:junit-jupiter-api:5.8.1&amp;#39; 16testRuntimeOnly &amp;#39;org.junit.jupiter:junit-jupiter-engine:5.8.1&amp;#39; 17} 1819test { 20useJUnitPlatform() 21} 2223apply plugin: MyPlugin 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle Wrapper</title>
+      <link>https://kikt.top/post/gradle/01/03-gradle_wrapper/</link>
+      <pubDate>Mon, 16 Jan 2023 15:20:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01/03-gradle_wrapper/</guid>
+      <description>
+        
+          
+            Gradle 推荐使用 Wrapper 的方式来构建工程 Wrapper 根据我的理解，是帮助不同的所有开发同一个项目的人使用相同的 Gradle 版本，从而避免Gradle版本差异带来的问题，而“副作用”就是不同的项目使用相同的 Gradle Wrapper 版本不需要重新下载。
+给项目添加 wrapper 一般来说，如果使用的是 IDE（例如Jetbrains IDEA)或 创建的项目都会包含Wrapper，不需要自行添加。 但如果你的项目是命令创建的，或因为其他原因不包含 wrapper 目录，则需要自行添加 通过如下的代码给项目添加 wrapper，一般来说这取决于你的 gradle 版本，使用 gradle -v 或 gradle --version来查看版本
+1gradle wrapper 使用后，会根据你当前的Gradle版本创建wrapper
+关于版本控制 在版本控制工具上提交项目代码的时候，一定要把wrapper文件夹包含在内。 通常来说，一个带有wrapper的项目根目录会包含 gradlew 和 gradle.bat 文件，前者是给 linux/macOS 使用的，后者是 windows，使用方式是
+1./gradlew xxxx # mac/linux 2gradle.bat xxxx # windows 如果你 clone 的 gradle 项目代码不包含 wrapper 目录，那这个项目的管理者可能不太懂 gradle，很多时候你能跑起他的项目是需要靠运气的，因为不同版本的gradle差异还是存在的。
+版本号 一个典型的包含wrapper的项目结构如下 其中gradle-wrapper.properties文件内会指定了gradle的版本号等信息，一般建议使用对应的all版本，并且，如无特殊情况，新项目建议永远使用当前的最新版
+1distributionBase=GRADLE_USER_HOME 2distributionPath=wrapper/dists 3distributionUrl=https\://services.gradle.org/distributions/gradle-7.4-bin.zip 4zipStoreBase=GRADLE_USER_HOME 5zipStorePath=wrapper/dists 1distributionUrl=https\://services.gradle.org/distributions/gradle-7.4-bin.zip 2distributionUrl=https\://services.gradle.org/distributions/gradle-7.5.1-all.zip 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle 的约定式概念</title>
+      <link>https://kikt.top/post/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Mon, 16 Jan 2023 10:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/</guid>
+      <description>
+        
+          
+            Gradle 中存在很多约定式的东西，也就是理论上不支持配置，或者哪怕可以配置，也不建议修改的东西
+build.gradle Gradle 构建系统的入口，一般一个gradle项目应该首先看这里，这里会指定项目的几乎所有配置 对于Java项目来说，包含但不仅限于指定项目是java app还是java library，依赖的三方库，源文件包含什么，打包时应该包含的文件，签名方式，上传maven的配置等等
+settings.gradle 如果是子项目，可能不包含这个文件，但主项目一般都应该包含这个文件，一般情况下，这个文件指定了项目名称和整个工程包含的项目
+buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需要用到的源码，计划中，我会单独开一篇文章来聊聊怎么使用和有什么用。 Gradle buildSrc 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle Plugin</title>
+      <link>https://kikt.top/post/gradle/03-plugin/</link>
+      <pubDate>Sun, 15 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/03-plugin/</guid>
+      <description>
+        
+          
+            在 Gradle 中使用 Plugin 大概有如下两种方式
+ 使用 Gradle 第一方提供的内置插件，或第三方的插件 自己编写的，放在 buildSrc 的  在本篇中插件和 Plugin 为同义 本篇只写如何使用Plugin，关于编写Plugin单独开一篇来写 内置插件 有2种常见的引入模式
+1plugins { 2id &amp;#39;java&amp;#39; 3} 45apply plugin: &amp;#39;java&amp;#39; 6apply plugin: JavaPlugin // 注意这里没有引号，这个 JavaPlugin 是一个 Groovy 对象 这几种是相同的作用 需要注意的一点是，如果是使用 plugins 闭包来引入插件，则要注意顺序，否则会报如下的错，而apply plugin则没有这样的要求
+1only buildscript {}, pluginManagement {} and other plugins {} script blocks are allowed before plugins {} blocks, 2no other statements are allowed 按 Gradle 定义，只有buildscript``pluginManagement两种闭包可以放在这个前面，另外就是其他的 plugins 闭包可以在前面
+三方插件 1plugins { 2id &amp;#39;com.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle Task的创建和使用</title>
+      <link>https://kikt.top/post/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 15 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
+      <description>
+        
+          
+            创建栈 1tasks.register(&amp;#34;Hello&amp;#34;) { 2doLast { 3println(&amp;#34;Run the method do last&amp;#34;) 4} 5} 使用 gradle -q Hello会得到输出 任务的生命周期 12tasks.register(&amp;#34;World&amp;#34;) { 3println(&amp;#34;Config the world task&amp;#34;) 4dependsOn(&amp;#34;Hello&amp;#34;) 5doFirst { 6println(&amp;#34;World first&amp;#34;) 7} 8doLast { 9println(&amp;#34;World do last&amp;#34;) 10} 11} 1213tasks.register(&amp;#34;Hello&amp;#34;) { 14println(&amp;#34;Config the hello task&amp;#34;) 15doLast { 16println(&amp;#34;Hello do last&amp;#34;) 17} 18doFirst { 19println(&amp;#34;Hello do first&amp;#34;) 20} 21} 2223tasks.register(&amp;#34;Other&amp;#34;) { 24println(&amp;#34;Config the other task&amp;#34;) 25}  通过register来注册task，然后通过doLast和doFirst来确定顺序，通过dependsOn来指定是否要依赖其他的Task。有一个叫Other的任务因为没有被依赖，所以干脆就没有被调用，而本身的闭包内的内容是直接调用的，并没有遵循 Task 的依赖顺序，所以闭包内不能做其他任务做过的事。如果需要依赖其他的内容，还是需要在 doLast/doFirst里来做。
+除了任务本身的Task外，项目也可以做全局的task创建的监听，具体的参考。
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle 基础</title>
+      <link>https://kikt.top/post/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Sun, 15 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/</guid>
+      <description>
+        
+          
+            在我看来，Gradle 中有几项很基础的概念必须提前说明
+概念   Gradle 的约定式概念   
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle 命令行工具的使用</title>
+      <link>https://kikt.top/post/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 15 Jan 2023 10:33:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>
+        
+          
+            Gradle 本身包含一个命令行工具，正常情况下，Gradle的使用离不开命令行工具 一个正常的Gradle项目应该包含 gradle/wrapper 文件夹，这里会指明你项目使用的Gradle版本，以保证所有项目参与者在不同的系统都使用相同的Gradle版本
+最典型的使用 Gradle中最基本的概念之一，任务（Task），你需要执行哪个任务，就使用gradle [taskName]即可，典型的比如java项目包含的jar，安卓项目包含的assembleRelease，可以使用gradle tasks来查看当前项目包含的所有任务和对应的功能 参数的设置方式，可以在task前也可以在后，有两种参数，一种是有值的，一种是无值的(可以理解为true/false) 有值: --console=plain 无值: --build-cache --no-build-cache，就是在前面加--no-表示false 长参数，短参数的问题，简单来说，短参数有且只有一个字母，长参数就是完整单词，比如：--help``-h，是一个意思
+调用 Task gradle :jar 和 gradle jar 是一个意思 但是当你有子项目的时候，比如你的子项目叫sub1，而根项目和子项目有jartask，那如果想要单独调用子项目的jar task，需要使用 gradle :sub1:jar或gradle sub1:jar
+运行多个 task 当想要调用多个项目时，可以直接把task连续输入，使用空格分割即可，例如 gradle build jar就是同时调用两个task 同时运行多个项目时，gradle 的官方文档说明有如下2点
+ 尽量快，比如提供并行编译等等 安全，比如 gradle clean build就是先清除再构建，而不会边清除边构建  不执行某特定的 task  按照官网介绍，dist 任务依赖test和compile，同时compile也依赖test，可以使用gradle dist --exclude-task test来跳过test任务，同时也会忽略掉compileTest这种任务
+强制执行所有任务 gradle的任务有缓存机制（)，有的任务在某些时间内只会执行一次，可以强制指定这种任务每次都运行 gradle test --rerun-tasks
+失败，但继续 gradle test --continue Gradle在任何任务发生错误时，会停止所有的任务，通过上面的命令可以在发生错误时完成所有不相干的命令（只要没有依赖关系）。
+Task 名称的简写 这个很有意思，支持驼峰式的简写，比如你有一个任务叫myCompileSource，当然，也支持my-compile-src这种类型的简写 你只需要gradle mCS就可以调用myCompileSource任务
+约定式的任务 build check run clean 所有插件都应该包含的任务
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle 开始</title>
+      <link>https://kikt.top/post/gradle/00-gradle-%E5%BC%80%E5%A4%B4/</link>
+      <pubDate>Sat, 14 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/00-gradle-%E5%BC%80%E5%A4%B4/</guid>
+      <description>
+        
+          
+            官方的文档链接，针对的是 7.5.1 版本 本文章对应的所有代码托管在 中
+关于文档 项目可能会混杂 groovy、kotlin、java 的代码 groovy 是因为这是 gradle 默认使用的语言，.gradle 文件都是使用的 groovy 的语法 kotlin则是因为gradle将kt也作为一级语言来使用，扩展名大部分是kts java则是因为偶尔会有buildSrc文件夹内会使用，包括groovy中也会有java语法，因为几乎是完全兼容
+为什么需要 Gradle Gradle 在我的理解就是把复杂的过程简单化的过程，可以使用 Gradle 来构建自己的项目，如果有一个很复杂的项目或者项目是java、kotlin、android这样被gradle支持的类型，也应该使用gradle来完成它。
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Groovy 语法</title>
+      <link>https://kikt.top/post/gradle/01/api/groovy-%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Fri, 13 Jan 2023 13:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01/api/groovy-%E8%AF%AD%E6%B3%95/</guid>
+      <description>
+        
+          
+            本文不是从零教 groovy，而是一些基础的 groovy 语法，够用就行 另外，目前Gradle原生支持kts，简单来说就是用kt的语法来配置Gradle，新入门的话足够用 后续的文章会加大kts的使用比例，来替代 groovy
+基础类型 更多的是使用别人提供的插件，我们在使用的时候主要就是配置而已 gradle 脚本中包含了三种使用方式
+ 闭包 方法 .的调用  其中我们最常见的其实是闭包，其次是方法，最后才是.的调用
+方法 常见的apply其实就是调用 PluginAware.apply方法，from:则属于groovy的语法糖, from是方法的参数，冒号后跟的是参数
+1apply from: &amp;#39;xxx.groovy&amp;#39; // 这里的 apply 是一个自带的方法，使用的参数 2 3// 如果是 Java语法，则是如下写法： 4HashMap&amp;lt;String, ?&amp;gt; applies = new HashMap&amp;lt;String, ?&amp;gt;(); 5applies.put(&amp;#34;plugin&amp;#34;, MyPlugin) 6apply(applies) 然后 java中的方法调用方法是 println(&amp;quot;xxx&amp;quot;);groovy 中可以使用 println &amp;quot;&amp;quot;; 所以，常见的设置maven仓库的方式 maven { url &#39;&#39; }其实是先调用了 方法，然后在闭包中调用 setUrl 方法，参考
+闭包 groovy 的闭包很有意思 大量的闭包的签名是这样的
+1MavenArtifactRepository maven(Action&amp;lt;? super MavenArtifactRepository&amp;gt; action) 然后结合语法糖，形成了如下这种闭包
+1maven { 2url &amp;#39;xxxx&amp;#39; 3} 其实，这里的maven调用的是方法maven，同时，如果有需要，还可以使用变量来接收返回结果，并修改结果
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Gradle API</title>
+      <link>https://kikt.top/post/gradle/01/api/gradle-api/</link>
+      <pubDate>Thu, 12 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/01/api/gradle-api/</guid>
+      <description>
+        
+          
+            Project 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>目录 for content/post/gradle</title>
+      <link>https://kikt.top/post/gradle/menu/</link>
+      <pubDate>Tue, 10 Jan 2023 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/gradle/menu/</guid>
+      <description>
+        
+          
+              Gradle 开始   Gradle 命令行工具的使用   Gradle 基础   Gradle 的约定式概念   Gradle Task的创建和使用   Gradle Wrapper   Gradle Plugin   Gradle buildSrc   Gradle API   Groovy 语法   Gradle 编写Plugin   
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Kotlin Compose 05 鼠标事件</title>
+      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-05-mouse-event/</link>
+      <pubDate>Mon, 24 Oct 2022 12:00:35 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-05-mouse-event/</guid>
+      <description>
+        
+          
+            文章摘要
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Kotlin Compose 04 控件 Image</title>
+      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-04-image/</link>
+      <pubDate>Thu, 20 Oct 2022 11:18:07 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-04-image/</guid>
+      <description>
+        
+          
+            文档地址
+简单说明 首先，代码部分，我会以 LazyColumn 作为 App 的根容器，这个容器可以简单理解为 ScrollView 和 ListView 的混合体，后面会详细说
+然后每一个子元素会被包裹在一个 item {}闭包内，但每一个都包的话，很不oop，所以，我会略微封装一下，变成下面这样，这样我就可以直接在 MyColumn闭包内写每一个item了
+1@Composable 2fun App() { 3var text by remember { mutableStateOf(&amp;#34;Hello, World!&amp;#34;) } 4val platformName = getPlatformName() 56MyColumn { 7Button(onClick = { 8text = &amp;#34;Hello, $platformName&amp;#34; 9}) { 10Text(text) 11} 12} 1314} 1516@Composable 17fun MyColumn(content: @Composable LazyItemScope.() -&amp;gt; Unit) { 18LazyColumn { 19item { 20content() 21} 22} 23} 加载资源图片 compose 的图片是依托于 androidx.compose.foundation.Image控件来显示的 一个入门级的示例
+1package top.kikt.common.image 23import androidx.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Kotlin Compose Kotlin Compose 03 Window</title>
+      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-03-window/</link>
+      <pubDate>Tue, 18 Oct 2022 15:11:25 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-03-window/</guid>
+      <description>
+        
+          
+            在 Compose 中，有几个基本的概念
+概念 Application Application 是一个 Compose 的应用，它通常是一个顶层的 Composable 函数，它的参数是一个 @Composable 的函数，这个函数就是我们的应用的主体。
+Tray Tray 是一个托盘（状态栏的图标），它通常是一个顶层的 Composable 函数，它的参数是一个 @Composable 的函数，这个函数就是我们的托盘的主体。
+Window Window 是一个窗口，对应了 windows/macOS/Linux 的窗口，它通常是一个顶层的 Composable 函数， 它的参数是一个 @Composable 的函数，这个函数就是我们的窗口的主体。
+Widget Widget 是一个组件，也可以包含多个 Widget，包括 Text，Button，Image 等，都是 Widget，通常是一个 @Composable 函数。
+架构 学会管理 Window 在 Kotlin Compose 中是非常重要的。
+Compose 的结构如下，单Appliction，多 Window，多 Widget
+每个窗口都有独立的Menu
+Tray则由Application管理
+graph TD APP[Appliction]--W1[Window] W1--V1[Widget] W1--V2[Widget] W1--V3[Widget] APP--Tray[Tray] APP--W2[Window] W2--V11[Widget] W2--V12[Widget] W2--V13[Widget]  代码的组织 WindowManager 首先，需要配置一个顶层状态来使窗口和窗口状态可以对应上
+1package top.kikt.examples.window 23import androidx.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Kotlin Compose Kotlin Compose 02 Create Project</title>
+      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-02-create-project/</link>
+      <pubDate>Sun, 16 Oct 2022 08:29:17 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-02-create-project/</guid>
+      <description>
+        
+          
+            开发环境  macOS Idea 2022.2.1 jdk 17  开发环境这里，compose 打包时要求jdk版本大于15，而 java 的 lts 版本是8，11，17，我个人建议直接用17而不是15，开发时运行反而可以使用11，不过我个人觉得直接用17就好了
+创建项目 新建项目，选择 Compose Mutilplatform类型 这里左边可以单独选择支持的类型，右边是多类型（桌面端+安卓） 然后，等待依赖更新完成，我创建的是多类型的项目
+看看配置文件  项目的配置文件是 kts 文件，这是 Gradle 项目 groovy 以外的另一种一级语言，使用 kotlin 语法，相比 groovy 来说，语法更加的“严谨”
+settings.kts 1// Copyright 2000-2022 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. 2pluginManagement { // 这个闭包是用于配置项目中用到的 plugin 的一些配置，以便做到不同的 module 使用相同的配置 3 repositories { // 配置仓库 4 google() // 因为引入了安卓项目， google 仓库就是必须了的 5 gradlePluginPortal() // 这个是 gradle 的插件目录，一般很少用到 6 mavenCentral() 7maven(&amp;#34;https://maven.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Kotlin Compose Kotlin Compose 01 Start</title>
+      <link>https://kikt.top/post/kotlin-compose/kotlin-compose-01-start/</link>
+      <pubDate>Sat, 15 Oct 2022 10:00:05 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/kotlin-compose/kotlin-compose-01-start/</guid>
+      <description>
+        
+          
+            Kotlin compose 是啥玩意 用 kotlin 开发桌面应用的东西，Jetbrains 出品
+优势 Kotlin compose 在我看来，是一个很“巧妙”的东西，虽然这东西是 Jetbrains 开发的，但是使用了 Google 安卓的 Jetpack compose 的 api，这就造成了如下的优势
+ 可以在满足一定条件的前提下，将业务逻辑由安卓端快速迁移到桌面端，共用部分代码，求同存异 利用 jvm 体系强大的三方库来快速开发 帮助不熟悉桌面开发的小伙伴使用更加“移动端”的思想来看待桌面端  文档 基于 2022-10-18 的情况，有很多的文档
+       
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>使用javassist,修改jar包方法实现</title>
+      <link>https://kikt.top/post/java/crack/crack1/</link>
+      <pubDate>Sat, 03 Oct 2020 20:13:47 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/java/crack/crack1/</guid>
+      <description>
+        
+          
+            本篇仅用于记录本人学习javassist的过程, 其中任何步骤或思想被用于非法用途与本人无关
+环境介绍  macOS Jdk8, 因为我是安卓开发, 事实上理论上也支持 14(未实测) Intellij Idea 社区版   javassist 简介 javassist 是什么东西 首先, 放上, 简而言之, 这东西是一个库, 可以用来修改 java 的字节码
+同时, 这东西不需要你了解太多的 class 在储存为.class 文件时的储存方式, 但需要你对于 java 反射有一定的了解, 因为这东西是以 jar 包的方式引入到 java 应用中, 然后可以通过封装的方式来修改 class 内方法实现
+包含但不限于如下功能
+ 添加,删除字段, 方法, 类. 包 修改方法, 类可见性 修改方法的实现体  应用范围 那么, 这东西有啥用呢?
+比如, 有一个库是上古时期的人提供的, 没有源码, 没有文档, 开发者早联系不上了, 但我们可能需要修改其中的一个实现
+你可能会想: 反编译啊, 重打包啊
+但事实上很难行得通, 因为你重新编译时可能需要找到它当时依赖的所有 jar 包, 然后循环依赖引入, 或者可能你的 jar 包是一个安卓 jar 包, 所以需要安卓环境, 而把 android.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Github action 的开发到发布</title>
+      <link>https://kikt.top/post/github/actions/create/</link>
+      <pubDate>Mon, 07 Sep 2020 16:49:35 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/github/actions/create/</guid>
+      <description>
+        
+          
+            Github action 这东西是好东西, 但我看了一下, 很多朋友都是停留在用的阶段, 其实偶尔也要换换口味, 自己开发一个 action, 而不是仅仅是用
+简介 github actions 是 github 推出的一个工作流的工具, 目的是为了帮助我们在某些情况下主动触发仓库的动作, 从而完成 单元测试/CI/CD, 甚至包括 release,发布包管理工具等等
+官方关于 actions 有关的一些仓库都在这里: , github 的主语言是 js, 当然也肯定也支持 ts
+另外如果对于速度需求并不高的朋友, 也可以使用 docker, 但因为 docker 安装的过程会根据镜像大小有一定的耗时, 所以不一定适用于所有朋友
+如果，你对于本文章不是很感兴趣，可以参考
+新建 因为我对于 js 比较不喜欢, 所以使用 ts(虽然也不是很感冒, 但是会好一点)
+进入这个, 然后使用 按钮, 完成初始化的过程.
+这里我们创建一个仓库, 这个仓库的目的是自动给 issue 打上 label
+初始化后的仓库 简单介绍一下这个仓库, 有一些文件和注意事项
+ action.yml 是 action 本身的配置文件(别的项目实际就是读取这个东西来确定入口在哪里), 包括参数的配置都是这东西 一个标准的 npm 项目, 指定了入口 src 内是主要的 ts 代码 ts 代码需要被编译为 js 才能使用 dist 内就是编译产物, git 的版本控制需要包含 dist 下的所有文件, 不然运行的时候会是老代码 项目本身自带 action, 主要是 CI 这个项目的  入门 开发环境  vscode, 我这里是使用 vscode 进行编辑, 你请根据自己的情况 npm(node), 我是使用 nvm 管理的  如果你的 node 大于 12.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter Jenkins&#43;fastlane 自动化打测试包, 并上传蒲公英</title>
+      <link>https://kikt.top/post/flutter/jenkins&#43;fastlane/</link>
+      <pubDate>Wed, 19 Aug 2020 09:10:29 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/jenkins&#43;fastlane/</guid>
+      <description>
+        
+          
+            自动化打包上传是一个释放双手的过程, 本文就简单重复一下打包的过程
+本文包括 iOS 和 android 篇.
+如果有需要, macOS 和 web 也可以加进来, 步骤并不复杂, 但本篇暂时不讲
+开发环境  macOS, 如果你不是 macOS, 那你只能打包安卓部分 Xcode, 因为 Xcode 会自动安装包含 git 在内的一些其他环境, 所以理论上有这个就够了 brew android sdk flutter sdk jenkins fastlane  到 flutter sdk 为止就不讲了, 我相信看这篇文章的人, 起码 flutter 程序已经开发完了, 只是因为修改个文案就要打包的事被搞的不胜其扰, 才决定自动化的
+而开发 flutter 基本上可以理解为包含如下工具/SDK
+ ruby git Xcode brew Android SDK Flutter SDK  Jenkins 有几点要写在前面, 这东西建议使用 brew 安装, 当然你要是坚持, 也可以用 jendins 的 war/jar 包自己部署,见仁见智
+但不要使用 docker 的方式, 因为 docker 不包含 xcode 的环境, 执行起来比较麻烦
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>编译 go 源码为 android 动态库(so)</title>
+      <link>https://kikt.top/post/go/compile-for-android/</link>
+      <pubDate>Fri, 14 Aug 2020 20:45:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/go/compile-for-android/</guid>
+      <description>
+        
+          
+            golang跨平台, 性能强, 周边也算丰富
+一直有一个想法, 把这东西写的代码编译成各个平台的库, 未来在 flutter 里用
+开发环境和工具  MacOS(其他的暂时不考虑) Go  Go 1.14.6, 版本太低可能不能编译成 android 的 Goland , 咱现在是正版用户, 用开源项目申请的All products License , 你也可以根据自己的情况选择别的 IDE 或使用文本编辑器(vscode 也不错)   Android  Android Studio Cmake Android SDK Android NDK    Go 部分 go 源码 add_library.go
+1package main 23import &amp;#34;C&amp;#34; 45//export add 6func add(x, y int) int { 7return x + y 8} 910//export remove_int 11func remove_int(x, y int) int { 12return x - y 13} 1415func main() { 16} 这里有几点要注意
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter FocusNode 焦点那点事-(二)</title>
+      <link>https://kikt.top/post/flutter/focusnode-2/</link>
+      <pubDate>Wed, 22 Jul 2020 09:29:11 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/focusnode-2/</guid>
+      <description>
+        
+          
+            上一章, 简单的使用了一下 FocusNode 和周边的一些东西, 今天来扒一扒 FocusNode 整体的附着(attach)和分离(detach)
+flutter 环境还是针对 1.17.5
+Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主要对象的, 那么这东西是怎么附着到整体的呢
+构造方法
+  debugLabel, 这东西看名字就是 debug 用的, 先不管 onKey, 一看就是接受事件用的RawKeyEvent canRequestFocus, 就是能不能接受焦点 skipTraversal, 是否接受遍历  我们再找找方法
+ 有几个可能用到的关键字段, 我们一个个看, 但是不一定会用的到, 但是有所了解也是好
+  context, 这个是和控件结合 的, 单纯看这里还看不出来
+  _manager, 我们知道这个在 flutter 环境中其实是全局单例的, 但是这里为了解耦所以可能是哪里传进来的, 我们理论上可以忽略
+  _ancestors, 嗯.. 没有注释, 那就只能看看源码了 所以, 这个东西是把所有的父节点都装到了这个里. 嗯, 个人经验,应用层的话大概率用不上.
+  _descendants,这东西也是个三无, 没事 都在源码里了, 这东西是深度为 1 的子 node 的 descendants 和子node, 然后里面递归了.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter FocusNode 焦点那点事-(一)</title>
+      <link>https://kikt.top/post/flutter/focusnode-1/</link>
+      <pubDate>Tue, 21 Jul 2020 11:22:10 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/focusnode-1/</guid>
+      <description>
+        
+          
+            很多时候, flutter 中需要处理输入的焦点, 咱们今天就来看看控件怎么用
+本篇可以视为简单使用, 而不会深入源码去探讨怎么附着, 主要是 Focus 系列控件的使用, 和怎么在多输入框之间反复横跳
+环境说明  本篇基本基于 flutter sdk 的 1.17.5 版本来看, 其他版本应该大同小异, 但很多东西可能会随时间变化, 未来是否有效请继续验证 本篇基本是针对移动端来说的 写本文时, flutter web 的焦点比较迷, 似乎和移动版不太一样, 所以暂时略过不表 desktop 版只尝试了 macOS, 其他的桌面引擎请自行校验对错  相关 dart class flutter 中, 和焦点相关联类有如下几个:
+ FocusNode: 这个可以说是最常用到的, 核心类之一 FocusManager: 单例类, 整个 flutter 应用的焦点管理核心都是这东西在处理, 包括和原生交互弹出软键盘之类的操作 Focus: 一个 Widget, 用于给控件&amp;quot;添加&amp;quot;焦点能力, 包起来就行, InkWell 之类的控件能获取焦点能力都是靠这东西 FocusScope: 一个 Widget, Focus 的子类, 被这东西包起来的所有的子 widget 的 FocusNode 都会被自动注册到这个里面, 接受统一管理 FocusScopeNode: 这东西本身是 FocusNode 的子类, 但是它主要是给 FocusScope 用的,扩展了 FocusNode 的行为 FocusTraversalPolicy, FocusTraversalGroup: 这两个东西是 focus node 的策略, 用于排序哪个是下一个焦点的问题, 这两个东西本篇应该不讲, 有兴趣的可以去看官方文档, 目前个人认为应该用不上  FocusNode 这东西讲的人很多, 我也就不展开了, 简单的说一下几个方法
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>用 Caddy 解决 web 开发中本地跨域的问题</title>
+      <link>https://kikt.top/post/server/caddy/cros_for_local_dev/</link>
+      <pubDate>Sat, 06 Jun 2020 14:01:14 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/caddy/cros_for_local_dev/</guid>
+      <description>
+        
+          
+            最近在尝试 flutter web, 会遇到一个问题, app 没问题, 然而同样的代码在 web 里就不好使了, 主要就是跨域的问题
+搜了一下各种方案都是 nginx 的, 但是我抄过来发现不好使..
+所以自己摸索一下解决方案
+这个方案只适合于本地开发调试, 真实部署时只有两种方案
+ 让服务器 api 允许跨域 部署到和服务器同一个域名,同一个端口下  另: 目前个人还是觉得 flutter web 不适合商用, 比较适合的场景是, 没有 android/ios 插件的项目中做远端展示使用,比如内部就不用分发 apk/ipa 了, 那两个东西打包太慢了, 这时候直接用 flutter web 就比较靠谱了
+下载 Caddy 官网: 找最新版本下载
+因为这货是 GO 语言开发的, 所以只有单文件就可以部署了
+我是 mac os, 我用的是 brew 安装的, brew install caddy
+安装好了以后查看一下版本, 一定要是 2.0+ 版本的
+1$ caddy version 2v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8= 注意: 因为这东西 2.0 版本有大更改, 配置文件和 1.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Navigator Helper2</title>
+      <link>https://kikt.top/post/flutter/route/navigator-helper2/</link>
+      <pubDate>Thu, 30 Apr 2020 17:23:14 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/route/navigator-helper2/</guid>
+      <description>
+        
+          
+            因为随着开发时间越来越长, 对于很多东西又有了新的理解, 是时候回头对于某些东西进行查漏补缺了
+本篇就来补一补路由的东西
+GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 会把它设置给 Navigator, 这东西一旦设置成功, 后续就可以不用 Navigator.of, 拿到 NavigatorState 的实例了
+然后这东西设置成全局的, 就可以在今后跳转的时候不用 context 了, 并且可以利用这个东西里的 context 来拿到全局的 Provider 类(这个不在本篇预计范围内)
+设置:
+1MaterialApp( 2navigatorKey: navigatorKey, 3); 使用:
+1NavigatorState get navigator =&amp;gt; navigatorKey.currentState; RouteHelper 全文如下, 但是有一个问题, 这个 navigatorKey 的 context 不能用于 showDialog, 所以需要自定义 dialog 的 route,才可以无 context 调用, 所以加了新的方法
+同样的, 以前的 helper 中 push 才需要 context,pop 不需要考虑太多,所以没有 pop 方法, 现在因为有了全局 navigatorKey 来做路由, 所以添加了 pop 相关的方法
+1import &amp;#39;package:flutter/material.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter 怎么实现app整体灰度</title>
+      <link>https://kikt.top/post/flutter/grey-app/</link>
+      <pubDate>Sat, 04 Apr 2020 09:01:56 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/grey-app/</guid>
+      <description>
+        
+          
+            今天举国哀悼, 进入各种大厂的 app 也可以看到主色都变成灰色的了
+作为程序员我们肯定会想怎么可以实现的, 我简单研究了 10 分钟, flutter 中只要在整体外面套一个 ShaderMask, 然后修改 blendMode 即可
+核心代码:
+1class MyApp extends StatelessWidget { 2// This widget is the root of your application. 3 @override 4Widget build(BuildContext context) { 5return ShaderMask( 6child: OKToast( 7child: MaterialApp( 8title: &amp;#39;Pick Image Demo&amp;#39;, 9theme: ThemeData( 10primarySwatch: Colors.lime, 11), 12home: MyHomePage(title: &amp;#39;Pick Image Demo&amp;#39;), 13), 14), 15shaderCallback: (Rect bounds) { 16return ui.Gradient.linear(Offset.zero, 17Offset(bounds.width, bounds.height), [Colors.grey, Colors.grey]); 18}, 19// blendMode: BlendMode.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 插件开发之引入aar到安卓部分 并使用本地maven</title>
+      <link>https://kikt.top/post/flutter/plugin/flutter-sdk-import-aar/</link>
+      <pubDate>Mon, 30 Mar 2020 14:14:39 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/plugin/flutter-sdk-import-aar/</guid>
+      <description>
+        
+          
+            本篇主题: 在 flutter 插件中引入 aar
+本篇只包含 android 部分, iOS 的 framework 直接在 podspec 中引入就可以了,所以本篇略过不表
+做过安卓开发的朋友可能知道, aar 文件如果作为本地文件直接引入 library, 然后 app 引用 library 是会报找不到aar的, 需要在 app 中使用 flatDir 进行引入, 这种方式的缺点在于, 你必须在每个项目去配置, 很有侵入性
+熟悉 flutter 插件开发的朋友都知道,在我们开发 flutter 插件时, 插件是以 library module 的形式引入到项目中的
+这时如果 sdk 方对于安卓只提供了 aar, 在这种大前提下,我们有如下几种方法:
+ 使用 maven 公开服, 比如 jcenter, 或其他的 maven 仓库 使用本地 maven 仓库  本篇就使用这种本地 maven 仓库的方案来做
+完成本地 maven 的步骤 创建插件项目 第一步肯定是创建一个 flutter 插件
+1flutter create -t plugin example_for_flutter_plugin_local_maven 置入 aar 我这里用蒲公英的的 aar 举例:
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>hello</title>
+      <link>https://kikt.top/post/hello/</link>
+      <pubDate>Sun, 29 Mar 2020 14:41:48 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/hello/</guid>
+      <description>
+        
+          
+            我是标题
+1void main(){ 2print(&amp;#39;Hello&amp;#39;); 3} 1document.getElementById(&amp;#34;&amp;#34;); 1int main(){ 2printf(&amp;#34;Hello world&amp;#34;); 3return 0; 4} 1- (NSString*) log { 2NSLog(@&amp;#34;Hi objc&amp;#34;); 3} 1fun main(){ 2println(&amp;#34;Hello kotlin&amp;#34;) 3} 1class Project { 2func foo(str: String){ 3print(&amp;#34;Hello :\(str)&amp;#34;) 4} 5} 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>使用 jsdelivr 加速 cocoapod 库</title>
+      <link>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</link>
+      <pubDate>Wed, 18 Mar 2020 13:17:37 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/pod-use-jsdelivr-cdn-to/</guid>
+      <description>
+        
+          
+            iOS 开发时, cocoapods(后简称 pod) 是很常用的工具
+我们偶尔也会自己开发 pod 库并上传到 pod 上
+pod 的源码支持多种来源, 本地 path git http 等
+一般来说, 如果是纯开源库, 我们直接把源码上传到 github , 然后使用 git 依赖即可
+但是这有一个问题, github 的速度在中国大陆并不快, 我们有没有办法加速它呢?
+这时候经过搜索, jsdelivr 出现在了搜索引擎里, 号称国内外都可用的 cdn, 我用 wget 测试了一下, 国内外都可以保证 10M+/s 的速度
+jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
+但是, 上面也说了, 支持&amp;quot;任何&amp;quot;在 github 上的仓库, 很好, 我就喜欢这样的东西
+版本号的坑 文档上说支持所有 ref 作为版本号, 然而不是, 我这里测试只支持 tag/release
+包体大小限制 我的目的是为了给 flutter_ijkplayer 的 iOS 仓库找一个下载地址, ijkplayer 的 iOS 部分很大, 我打包完有 150M, 用了 xz 压缩方案让包变成了 35M
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter中的过场动画 PageTransitionsTheme</title>
+      <link>https://kikt.top/post/flutter/route-anim/</link>
+      <pubDate>Mon, 24 Feb 2020 17:55:49 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/route-anim/</guid>
+      <description>
+        
+          
+            过场动画 过场动画也就是切换路由时的动画
+这个东西有几种方案可以做
+ 继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性  前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
+这东西有如下的好处:
+ 设置一次, 你所有的MaterialPageRoute都可以生效 对于命名路由, 也就是pushNamed体系的也有效  先分析下源码 为啥分析源码? 因为如果上来就用显得不高端
+先找一个大家都知道的切入点, 一般的过场动画都是用的 Navigator.push 方法来实现的
+ 看看方法里的实现, 会发现很多常见的东西, 比如, 每一个 Route 都有自己的 OverlayEntry
+然后会有一个 install 方法
+ 而实际调用中, 这个 Overlay 会被插入到 Overlay 栈内, 从而在界面上显示
+    经过这一串的调用, 就把 Navigator push 和 Route 关联到了一起, 那么 theme 是怎么和 Route 关联起来的呢, 我们进入 MaterialPageRoute 看一下
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 1.12后 上传aar至maven私服</title>
+      <link>https://kikt.top/post/flutter/exists/upload-aar-to-maven/</link>
+      <pubDate>Tue, 04 Feb 2020 18:23:24 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/exists/upload-aar-to-maven/</guid>
+      <description>
+        
+          
+            前言 本篇写一个将 flutter 打包为 aar 置入已有项目的方案
+与不同的是: 本篇使用新版本的 flutter 环境, 使用 build aar 命令构建 aar,并上传至 maven 私服
+开发环境 1$ flutter doctor -v 2[✓] Flutter (Channel stable, v1.12.13+hotfix.7, on Mac OS X 10.15 19A602, locale zh-Hans-CN) 3• Flutter version 1.12.13+hotfix.7 at /Users/caijinglong/Library/Flutter/flutter_dev 4• Framework revision 9f5ff2306b (9 天前), 2020-01-26 22:38:26 -0800 5• Engine revision a67792536c 6• Dart version 2.7.0 准备步骤 创建宿主工程 这个是模拟你本来的项目
+作为原生开发者自行使用 Android Studio 创建即可
+ 一个标准的 android 项目, 除了 gradle 版本使用 6.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>上传图片到Azure</title>
+      <link>https://kikt.top/post/other/upload-image-to-azure/</link>
+      <pubDate>Fri, 31 Jan 2020 14:08:04 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/other/upload-image-to-azure/</guid>
+      <description>
+        
+          
+            前言 最近刚刚把图床迁移到 Azure, 因为 github 的图片不太好用,国内经常看不见
+然而吧, 那是正则批量扫描 markdown 文件, 然后下载文件, 直接使用 git 管理的, 几百张的时候倒是还可以接受
+但今后如果单张图片也需要这么做, 就很麻烦了, 以前是用 picGo 上传的图片
+虽然现在 picGO 支持自己写插件, 但是 js 不是我的强项, 所以想自己写一个试试看
+Api 分析 azure 有 Rest api 可以完成上传的步骤, 然而这个 api 需要一个 commitId, 不像 github 的 api 比较智能, 直接上传就行.
+但没关系, 我们可以通过两次接口访问得到它.
+使用 postman 来测试下
+访问 https://dev.azure.com/{{organization}}/{{project}}/_apis/git/repositories/{{repositoryId}}/pushes?api-version=5.0 得到一个结果
+ 然后访问这个 url 参数的接口可以获取 commitId
+ 也就是 git 的 commit hash 值
+ 这里把 oldObjectId 替换成刚刚拿到的 commitId, 其他的根据自己的情况替换, 比如 comment 是注释, path 是你要放到哪个目录和名字, content 是图片的 base64 值
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android 记录在macOS上使用 NDK20 编译ffmpeg4.2.2的过程</title>
+      <link>https://kikt.top/post/android/ffmpeg/compile-with-ndk20/</link>
+      <pubDate>Tue, 07 Jan 2020 11:50:07 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/ffmpeg/compile-with-ndk20/</guid>
+      <description>
+        
+          
+            前言 ijkplayer 的 ffmpeg 是旧版本的, ndk 也是旧的, 程序员爱折腾, 所以想用最新的 ndk 编译最新的 ffmpeg, 当前就是 ndk20+ffmpeg4.2.2 了
+第一步自然是搜索有没有现成的, 运气不错, 找到了大佬的示例
+本篇参考了 的内容, 但因为我是 macOS, 所以进行了一些修改 包括有的东西设置后发现没生效, 在实际打包的时候会报类似下面的这种错误
+1ld: warning: building for macOS, but linking in object file (libswresample/libswresample.a(resample.o)) built for free standing 所以我根据实际的报错内容进行了修改
+编译脚本 这里只需要修改你的 NDK 为你本地的 NDK 目录即可
+最新的代码在这里: gist.github.com 需要自备梯子
+1#!/bin/bash 2 3NDK=/Volumes/Evo512/sdk/android-ndk-r20 4TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/darwin-x86_64 5API=21 67function build_android 8{ 9echo &amp;#34;Compiling FFmpeg for $CPU&amp;#34; 10./configure \ 11 --prefix=$PREFIX \ 12 --libdir=$LIB_DIR \ 13 --enable-shared \ 14 --disable-static \ 15 --enable-jni \ 16 --disable-doc \ 17 --disable-symver \ 18 --disable-programs \ 19 --target-os=android \ 20 --arch=$ARCH \ 21 --cpu=$CPU \ 22 --cc=$CC \ 23 --cxx=$CXX \ 24 --enable-cross-compile \ 25 --sysroot=$SYSROOT \ 26 --extra-cflags=&amp;#34;-Os -fpic $OPTIMIZE_CFLAGS&amp;#34; \ 27 --extra-ldflags=&amp;#34;$ADDI_LDFLAGS&amp;#34; \ 28 --disable-asm \ 29 $COMMON_FF_CFG_FLAGS 30make clean 31make -j8 32make install 33echo &amp;#34;The Compilation of FFmpeg for $CPUis completed&amp;#34; 34} 3536# # armv8-a 37# source &amp;#34;config-env.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>2019 总结</title>
+      <link>https://kikt.top/post/blog/end-of-2019/</link>
+      <pubDate>Sat, 04 Jan 2020 15:43:37 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/blog/end-of-2019/</guid>
+      <description>
+        
+          
+            2019 年结束了, 本年做了什么呢?
+ 1940 次 github 提交
+公司工作 今年公司的工作并不繁重, 让我有了更多的时间来提升自己的专业技能
+在工作中使用 flutter 作为基础开发 app, 从而实现了更轻松的跨平台
+年中开发了一个新的商城 app, 当然也是 flutter
+年底用了三周时间优化了蓝牙体系
+个人开源工作 年初开源了 flutter_ijkplayer 项目
+年中零零散散开源了一些库
+Q3 重构了 photo_manager 底层
+年底开源了两个蓝牙库(spp/ble), 一个图片处理库
+编程技能 没有太多时间来对于 golang 提升, web 方面基本没学习, java 也没太碰
+但在 dart/flutter 这条路上越走越远了
+业余时间最多的是在音视频处理方面, ffmpeg 和 SDL 目前也算初步入坑了
+2020 年小目标  c/c++ 语言有更深入的学习, 结合 golang/cgo 完成跨语言调用, 以便于未来开发 go-flutter-desktop 的插件 音视频处理方面, 结合 flutter 继续深入 入坑 opencv, 结合 ffmpeg 进一步处理视频 初步完成对于 flutter framework/flutter engine/sky 的了解, 以便于未来对 flutter engine/flutter framework 提有效的建议 进一步完善已开源的项目 好好学英语 挣点小钱  
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>dart 2.6(一) 生成可执行二进制</title>
+      <link>https://kikt.top/post/dart/2-6-exec/</link>
+      <pubDate>Mon, 18 Nov 2019 16:09:31 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/dart/2-6-exec/</guid>
+      <description>
+        
+          
+            什么叫可执行二进制 以前虽然看似也可以生成二进制执行文件, 类似 pub/flutter 命令, 但是那实际也是调用 dart 命令来完成的, 也就是说, 你必须具备 dart 环境才可以
+比如以前的 c,后来的 go, 都可以编译成一个可执行文件, 比如./hello-world就可以运行, 然后在控制台输出结果
+而在 dart 2.6 版本中, 这个东西变成了现实
+如何做 1main(List&amp;lt;String&amp;gt; arguments) { 2print(&amp;#34;hello dart!&amp;#34;); 3} 使用$ dart2native bin/main.dart来完成编译过程, 然后会生成一个main.exe, 虽然看着是 exe, 但这个东西是一个当前系统下的可执行二进制文件
+1./bin/main.exe 2hello dart! 嗯, 这东西目前还不支持交叉编译, 也就是 mac 只能生成 mac 的, windows 只能生成 windows 的, 但是应该有很多人请愿, 未来一定会有相关的支持
+目前可以使用 github actions, 或者 docker 之类的东西来跨平台编译
+好处 单文件的部署方便, 未来写工具也会很方便
+劣势 不支持交叉编译
+文件较大, 一个简单的 helloworld 就有 6.7mb 之大, 相对应的, c 可能只有几 k, go 默认情况下也不到 1m,经过优化也能接近 c 的大小
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>在 Mac 上编译 OpenCV4 &#43; Idea 使用Java调用</title>
+      <link>https://kikt.top/post/java/mac/compile-opencv4/</link>
+      <pubDate>Tue, 12 Nov 2019 10:17:47 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/java/mac/compile-opencv4/</guid>
+      <description>
+        
+          
+            写在前面, 最近因为某些原因要用到 OpenCV, 加上这东西既然有 android 的库, 那说明 java 也有, 作为老本行我还是挺喜欢 Java 这个语言的
+打算在 mac 上使用, 但是发现没有编译好的 dylib 库, 所以只能自己动手了
+      使用 MacPorts 的失败之路 这条路实测不通
+ 这个 port 我通过 pkg 安装不上, 没有报错原因, 还给我残留了垃圾 通过编译 port 源码的方式安装完毕后, 安装 opencv 的过程需要安装一个 db48, 结果失败了, 猜测是 port 需要使用 db48 作为数据库来管理自己的库或者别的什么原因, 总之失败了  查看日志是 Xcode 的问题, 说已知 11.1 有问题, 请更新到 11.2 巴拉巴拉的..., 问题是开发人员知道 11.2 的问题更大... 用这版本 Xcode 的人 不能上传 appstore...
+11.1 有问题请修复 11.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>在 flutter 上使用 c 代码 - (二) 无源码的项目</title>
+      <link>https://kikt.top/post/flutter/ffi/2-first-party/</link>
+      <pubDate>Mon, 04 Nov 2019 17:15:11 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/ffi/2-first-party/</guid>
+      <description>
+        
+          
+            写在前面, 对于无源码的项目, 理论上必须有头文件,不然你不知道里面都定义了什么鬼东西.
+本篇虽然是写无源码的项目, 但实际上还是会有源码部分, 只是通过 cmake,clang,xcodebuild,ndk 等工具编译成 so/framework 以供 android/ios 引入
+生成动态库 整体的目录结构是这样的, 如果你只是要引入库, 可以跳过这步, 这步的主要做源码生成库的步骤
+1$ tree -L 3 cpp-source 2tree -L 3 cpp-source 3cpp-source 4├── android 5│ ├── CMakeLists.txt 6│ ├── build_android.sh 7│ └── cmd 8│ └── android.sh 9├── ios 10│ ├── CMakeLists.txt 11│ ├── build_ios.sh 12│ ├── cmd 13│ │ └── ios_abi_build.sh 14│ └── ios.toolchain.cmake 15└── src 16├── some.cpp 17└── some.h src 为源码
+some.cpp
+1#include &amp;#34;some.h&amp;#34;2#include &amp;lt;stdint.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>在 flutter 上使用 c 代码 - (一) 有源码的项目</title>
+      <link>https://kikt.top/post/flutter/ffi/1-first-party/</link>
+      <pubDate>Mon, 04 Nov 2019 11:35:42 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/ffi/1-first-party/</guid>
+      <description>
+        
+          
+            在 flutter 的 1.10.x 后的分支, dart:ffi 被并入 flutter, 现在 flutter 中也可以使用 ffi 了。
+这东西是啥玩意呢, 就是让 dart 可以直接调用 c/c++ 代码等东西的库, FFI(foreign function interface)， 在这里。
+但是在当前版本中, 这东西在官方说明中依然处于技术预览版, 就是可用, 但后续不保证 api 不变更。
+开发环境 首先我是 mac 系统, windows 系统不保证脚本的可用和工具的可用, linux 的话可能一些必要工具需要使用自己平台的包管理工具, 并且涉及到 ios 部分, 必须使用 mac。
+所有需要的工具包
+ Xcode(或 XcodeBuild 命令行工具) brew clang cmake Android 工具链  Android SDK NDK Android Studio(可选) Gradle   Flutter 工具链  SDK 1.10.x+   vscode(可选, 这东西看你的情况,作为示例的话只要是文本编辑器即可, 我本人使用这个作为主要的文本编辑器)  这里说的是包含后续所有用到的东西, 并不仅仅是本文。 其中对于 flutter 开发者可能需要单独安装的应该只有 NDK 和 Cmake, 这两个东西是包含在 android sdk 下的, 可以使用 android studio 下载, 也可以单独下载
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>dart 大文件读取</title>
+      <link>https://kikt.top/post/dart/file/read/</link>
+      <pubDate>Fri, 20 Sep 2019 15:15:51 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/dart/file/read/</guid>
+      <description>
+        
+          
+            好久没水文章了, 强行水一篇
+dart 中不可避免会出现文件读取的情况, 甚至是很大的文件, 比如 200M 的文件
+如果一次性读入内存,虽然也行得通, 但是如果在 flutter 中开启个 200M 大小的字节数组, 一不小心可能就 crash 了, 这时候就需要使用大文件读取的方案
+             异步读取 核心方法:
+1file.openRead(); 这个方法可以指定开始和结束的坐标, 并开启一个 stream
+stream 回调信息是 List&amp;lt;int&amp;gt;,单次最大读取 65536 个字节
+示例 1class FileUtils { 2File file; 34FileUtils(this.file); 56// 读取文件的某个范围返回 7 Future&amp;lt;List&amp;lt;int&amp;gt;&amp;gt; getRange(int start, int end) async { 8if (file == null || !file.existsSync()) { 9throw FileNotExistsError(); 10} 11if (start &amp;lt; 0) { 12throw RangeError.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Live Template groovy脚本的使用</title>
+      <link>https://kikt.top/post/jetbrains/template/live-template/</link>
+      <pubDate>Tue, 30 Jul 2019 21:43:25 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/jetbrains/template/live-template/</guid>
+      <description>
+        
+          
+            Jetbrains 全家桶,包括 android studio, 支持一个东西叫 Live Template
+这个东西可以预先储存一个模板, 帮助我们快速开发, 这个功能很多朋友应该都知道,也在用
+本篇使用dart作为主要示例语言, dart 语言语法比较简单, 有 java/js 等常用语言基础的都应该能看懂
+                    简单使用 虽然想要重点介绍 groovyScript 的脚本使用, 但是也应该简单介绍下 Live Template
+比如我可以存一个 stful, 然后会自动生成一段代码, 当然这个模板是 flutter 开发自带的
+ 进阶 自己搞一个小模板 这个模板就生成一个我们自己的类库调用, 比如我自己封装了一个 http 访问
+1final response = await HttpHelper.fetchString(url); 以这段代码为例, 我们一个小 app 可能有 100 个接口, 这时候 LiveTemplate 就派上用场了
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter Form 表单组件的初步解析</title>
+      <link>https://kikt.top/post/flutter/form/form1/</link>
+      <pubDate>Mon, 22 Jul 2019 15:16:45 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/form/form1/</guid>
+      <description>
+        
+          
+            在一个正常的应用程序中, 表单是用户交互的很重要的一部分
+flutter 中你可以自己&amp;quot;绑定&amp;quot;用户的输入数据和 state 中的字段
+当然, 还有另一个选择, Flutter 内置了 Form 组件给我们使用, 这个组件是 flutter 框架提供出来帮助我们操作表单的一个组件, 应该是官方较为推荐的方案
+不过 Form 的相关中文文章不太多, 基本都是介绍一下 TextFormField 的使用, 更多的 api 云里雾里的, 可能有些朋友不太好理解
+我粗略的解析下源码和自定义, 帮助看过的朋友理解下 Form 体系
+                            Form 体系的简单使用 自动校验 官方提供给了我们一些组件来结合 Form 使用, 最常见的就是 TextFormField
+1import &amp;#39;package:flutter/material.dart&amp;#39;; 23class SimpleUseComponent extends StatefulWidget { 4@override 5_SimpleUseComponentState createState() =&amp;gt; _SimpleUseComponentState(); 6} 78class _SimpleUseComponentState extends State&amp;lt;SimpleUseComponent&amp;gt; { 9@override 10Widget build(BuildContext context) { 11return Form( 12onChanged: () { 13print(&amp;#34;form change&amp;#34;); 14}, 15child: Column( 16children: &amp;lt;Widget&amp;gt;[ 17TextFormField( 18initialValue: &amp;#34;你好&amp;#34;, 19validator: (value) { 20if (value.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Go Flutter Desktop (二) go 二进制程序打包为 mac app(dmg)</title>
+      <link>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-2/</link>
+      <pubDate>Mon, 08 Jul 2019 14:16:54 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-2/</guid>
+      <description>
+        
+          
+            前篇对于 go-flutter 引擎进行了初步的探索, 打包终产物是一个二进制文件配合一些资源文件
+本篇研究如何将终产物变成一个 app, 进一步变成 dmg, 就和你网上下载的工具一样
+本篇默认你拥有全套的工具, git xcode flutter go hover
+                      打包出 go 终产物 这里以大佬的 为例
+1cd /tmp 2git clone https://github.com/fluttercandies/JsonToDart.git 3cd JsonToDart/Flutter/desktop 打包
+1hover build 这里可能很快也可能很慢, 根据你的工程大小和网络速度而言, 网络速度是因为要下载 flutter 依赖和 go-flutter 引擎相关的东西, 工程大小影响编译速度
+然后可以看到当前的目录结构
+1tree -L 2 desktop/build/outputs/darwin 2desktop/build/outputs/darwin 3├── FlutterEmbedder.framework 4│ ├── FlutterEmbedder -&amp;gt; Versions/Current/FlutterEmbedder 5│ ├── Headers -&amp;gt; Versions/Current/Headers 6│ ├── Modules -&amp;gt; Versions/Current/Modules 7│ ├── Resources -&amp;gt; Versions/Current/Resources 8│ └── Versions 9├── assets 10│ └── icon.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Go Flutter Desktop (一) 初探</title>
+      <link>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-1/</link>
+      <pubDate>Thu, 04 Jul 2019 16:07:17 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/desktop/go-desktop-engine/flutter-go-desktop-1/</guid>
+      <description>
+        
+          
+            Flutter 在去年的时候就有一个第三方的桌面引擎, 是用 golang 开发的
+Github 地址是:https://github.com/go-flutter-desktop/go-flutter
+目前在 mac,linux,windows 均可用, 作为一个 mac 用户, 除了 retina 下字显得有点小, 感觉没有单独适配外, 总体感觉是优于官方的 desktop 引擎的
+另外我是真实的 golang 脑残粉, 我觉得 golang 这东西真的太好了, 用 golang, 准不会错
+                                              开发环境 需要的开发环境, 因为我是 MacOS, 我以 macOS 为例,其他的请参考对应的系统
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>把flutter作为framework添加到已存在的iOS中</title>
+      <link>https://kikt.top/post/flutter/exists/add-flutter-to-ios/</link>
+      <pubDate>Sun, 16 Jun 2019 11:17:43 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/exists/add-flutter-to-ios/</guid>
+      <description>
+        
+          
+            之前写了一篇关于如何将 flutter 直接打包成 android aar 的文章, 本篇写一写如何将 flutter 打包成 framework 以便于直接让没有 flutter 环境的 iOS 开发者使用, 因为国内很多项目都有这样的要求
+本篇并不会做完全的工程集成化, 只是做一下如何将 flutter 的 framework 打出来, 并且置入到 iOS 原生工程中, 因为各项目一定户会有自己的特殊性, 不可能完全一样
+本篇打包脚本部分参考了 的内容,但是又有一些针对 flutter 版本的变化和 flutter type 不同的情况进行的修改, 不观看连接中的内容并不会影响观看
+                                     开发环境 MacOS
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>把flutter项目作为aar添加到已有的Android工程上</title>
+      <link>https://kikt.top/post/flutter/exists/android-as-aar-to-maven/</link>
+      <pubDate>Fri, 14 Jun 2019 09:06:24 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/exists/android-as-aar-to-maven/</guid>
+      <description>
+        
+          
+            对于已有工程想要尝鲜 Flutter, 很多公司给出了最佳实践方案, android 中是使用 aar 加入项目中, 这样原生开发对于 flutter 环境就没有要求了, 只要 flutter 打包后上传 maven 即可, 但是这部分的过程坑很多, 后面我会再补充这种方案
+我也摸索了一个实践方案, 将所有项目的 aar 由 flutter 方打包 aar 后将 aar 置入某一个固定位置 ,并置入一个 git 库管理, 然后 android 原生方直接 pull 后引入项目即可
+高能预警: 本篇会结合 flutter, android, aar, gradle, maven, docker 的知识来完成所有的步骤
+并不是每一个都会详细说明, 如果有不明白的可以在 的本文下面留言, 我会更新文章或给予解答, 其他渠道的可能不会有时间看
+                                                               开发环境 本人设备环境 MacOS 10.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter Desktop Mac版(二) 插件初探</title>
+      <link>https://kikt.top/post/flutter/desktop/flutter-desktop-2/</link>
+      <pubDate>Wed, 12 Jun 2019 16:47:14 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/desktop/flutter-desktop-2/</guid>
+      <description>
+        
+          
+            上篇粗略的查看了一下 desktop 的基本使用, 本篇探索一下插件的使用
+环境变量的配置请查看上篇,本篇不再赘述
+更新 继上一篇文章过去了几天, 这个桌面引擎有了一点点的更改: 现在完全用 swift 了,不用 oc 了,无论是 example 还是 plugin 模板都是如此
+所以, 为了省事,我重新 clone 了一个仓库, 然后准备用 swift 来创建插件
+$ git clone https://github.com/google/flutter-desktop-embedding.git flutter-desktop-embedding-2
+然后分别打开工程和插件 $ code flutter-desktop-embedding-2/example/ and $ code flutter-desktop-embedding-2/plugins/example_plugin
+这个 example_plugin 是给的模板, 最好是复制一份出来
+复制插件目录 1cd flutter-desktop-embedding-2/plugins 2cp -r example_plugin math_desktop 3code math_desktop 查看一下目录结构
+1tree math_desktop 23math_desktop 4├── LICENSE 5├── lib 6│ └── example_plugin.dart 7├── linux 8│ ├── Makefile 9│ ├── example_plugin.cc 10│ └── example_plugin.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter Desktop Mac版(一) 初探</title>
+      <link>https://kikt.top/post/flutter/desktop/flutter-desktop-1/</link>
+      <pubDate>Mon, 10 Jun 2019 14:40:17 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/desktop/flutter-desktop-1/</guid>
+      <description>
+        
+          
+            随着时间的逐渐推移, Flutter 开始了扩张之路
+flutter 已经不满足于移动端了,桌面端也有着自己的野心
+但无论如何,目前 flutter desktop 还仅仅处于 demo 玩一玩的阶段, 如果谁敢生产项目来一套, 我佩服你是个勇士
+ 官方说明 
+目前完成度最高的是 macOS 的版本,可用度很高, 而且由于同样使用 cocoapod,所以相对来说官方制作 engine 难度应该是最低的
+创建项目 现在建议使用官方本身提供的脚手架, 自己创建的话比较麻烦
+ 这个库目前托管在 google 下,还没有转给 flutter,也就是说暂时还不能称之为 flutter sdk 的一部分
+git clone 我根据文档创建了一个 sh 脚本,专门用于输出我如果想尝鲜 desktop 版需要的东西, 也就是环境变量了
+1export FLUTTER_ROOT=$PWD/flutter 2echo &amp;#34;使用前复制如下命令\n&amp;#34; 34echo &amp;#34;export FLUTTER_ROOT=$FLUTTER_ROOT&amp;#34; 5echo &amp;#34;export FLUTTER_HOME=$FLUTTER_ROOT&amp;#34; 6echo &amp;#34;export PATH=$FLUTTER_ROOT/bin:$PATH&amp;#34; 7echo &amp;#34;export ENABLE_FLUTTER_DESKTOP=true&amp;#34; 89echo &amp;#34;\n以上&amp;#34;  这里我单独的 clone 了一份 sdk, 跑在了 flutter 的 master 分支上
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter 在OC工程中添加swift库报错的问题</title>
+      <link>https://kikt.top/post/flutter/oc/add-swift-plugin/</link>
+      <pubDate>Fri, 31 May 2019 14:43:33 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/oc/add-swift-plugin/</guid>
+      <description>
+        
+          
+            下午看见群里有人问 swift 插件导入 oc 项目报错的问题, 我之前解决过, 但是忘了解决过程是怎么样的了, 这里记录下方便以后备查
+没兴趣追踪原因的直接查看
+         复现错误  创建一个主工程(oc)  1flutter create oc_project 创建一个插件工程(swift)  1cd oc_project 2flutter create -i swift -t plugin swift_plugin 关联工程  1swift_plugin:2path:./swift_plugin3```运行 iOS 项目得到错误信息  1Launchinglib/main.dartoniPhoneXSMaxindebugmode...23CocoaPods&amp;#39; output: 45↳ 67Preparing 89Analyzing dependencies 1011Inspecting targets to integrate 1213Using `ARCHS` setting to build architectures of target `Pods-Runner`: (``) 1415Fetching external sources 1617-&amp;gt; Fetching podspec for `Flutter` from `.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android Q 隐私篇(5) - 相机/网络</title>
+      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-5/</link>
+      <pubDate>Fri, 24 May 2019 15:00:09 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-5/</guid>
+      <description>
+        
+          
+            如下几个改动:
+相机 这个修改会影响所有的安装在 androidQ 上的应用, 不论你的 targetVersion 是多少
+从前,即使没有 Camera 的权限, 也可以访问相机设备的元数据, 现在不行了
+wifi 应用不能动 wifi 开关了, 现在只有通过设置来更改
+wifi 配置 现在必须有设备管理器的权限才能修改 wifi 配置
+ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权限, 则 wifi,蓝牙会有一堆不能访问的 api
+
+或者看下面
+  Telephony
+  
+ getCellLocation() getAllCellInfo() requestNetworkScan() requestCellInfoUpdate() getAvailableNetworks() getServiceStateForSubscriber getServiceState()    
+ requestNetworkScan()    
+ onResults()    
+ onCellLocationChanged() onCellInfoChanged() onServiceStateChanged()      Wi-Fi
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android Q 隐私篇(4) - 唯一标识符, 剪切板数据</title>
+      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-4/</link>
+      <pubDate>Fri, 24 May 2019 11:49:11 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-4/</guid>
+      <description>
+        
+          
+            第四篇,
+目录                        唯一识别码的前世 在开发中, 总有人会提出各种设备&amp;quot;唯一标识符&amp;quot;的概念,以便于定位用户的唯一性, 或对于用户行为进行分析
+很遗憾, 通过多年的探索, 目前没有任何一种特别准确, 一定能保证唯一的方案
+包括但不仅限于以下方案
+设备序列号 IMEI imsi mac 地址(wifi 模块)
+如以下代码:
+1package top.kikit.uniqueidprivacy 23import android.Manifest 4import android.annotation.SuppressLint 5import android.content.Context 6import android.os.Bundle 7import android.telephony.TelephonyManager 8import android.util.Log 9import androidx.appcompat.app.AppCompatActivity 10import com.tbruyelle.rxpermissions2.RxPermissions 1112class MainActivity : AppCompatActivity() { 13private val TAG = &amp;#34;MainActivity&amp;#34;; 1415private val rxPermissions = RxPermissions(this) 1617@SuppressLint(&amp;#34;CheckResult&amp;#34;) 18override fun onCreate(savedInstanceState: Bundle?
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android Q 隐私篇(3) - 限制后台活动</title>
+      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-3/</link>
+      <pubDate>Tue, 21 May 2019 09:49:25 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-3/</guid>
+      <description>
+        
+          
+            官方链接: 后台开启界面 这个限制主要限制的是: 当你的应用没有 Activity 在前台时, 后台应用无法主动开启界面
+流氓应用是可以这么干的, 只是大部分应用还算有节操, 没有这么做而已
+我自己遇到的除了我写的 Demo 以外,只有微信发生过这样的情况,还有一些其他应用是代码疏漏造成的
+作用范围 只要你的 app 运行在 androidQ 的设备上, 就不行,哪怕你的 targetVersion 是 28 也一样
+微信 微信也仅仅是在你登录以前登录过的电脑端时, 在你点击电脑端的确认后,才会在手机端弹出手动确认的弹框, 这一步原则上来讲也是客户自己的行为, 所以没有太大问题, 当然以后理论上就做不到了
+代码疏漏 一些应用的启动页, 比如设定了一个 Handler 的倒计时, 在 3 秒后关闭启动页,然后开启主页面
+然后,用户在启动页点了 home 键/back 键,过 3 秒后主页面依然出来了
+很遗憾,以后不行了 😁
+迁移需要修改的代码 无
+一个简单的示例代码 1class MainActivity : AppCompatActivity() { 23override fun onCreate(savedInstanceState: Bundle?) { 4super.onCreate(savedInstanceState) 5setContentView(R.layout.activity_main) 67Handler().postDelayed({ 8startActivity(Intent(this, this.javaClass)) 9finish() 10}, 3000) 11} 12} 这就完成了一个&amp;quot;流氓&amp;quot;式启动
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android Q 隐私篇(2) - 后台定位权限</title>
+      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-2/</link>
+      <pubDate>Tue, 21 May 2019 09:14:28 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-2/</guid>
+      <description>
+        
+          
+            本篇是系列第二篇, 主要分析下 android Q 下的后台定位权限 官方链接: , 有能力的朋友可以自己阅读,并不难
+目录                  定位权限 在从前的 android 中,定位权限不分前后台,只有两个
+1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_COARSE_LOCATION&amp;#34;/&amp;gt; 2&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_FINE_LOCATION&amp;#34;/&amp;gt; 分别代表大致位置和精确位置, 一般来说在使用时定位权限都是一起要或者都不要的, 而且这两个作为同一个组,一般都是一起申请,一次授权
+一般来说大部分人都是使用高德/百度地图作为定位 sdk 使用, 很显然这两个货申请一般也是都一起申请的
+androidQ 的权限 androidQ 中会添加一个新的权限
+1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_BACKGROUND_LOCATION&amp;#34; /&amp;gt; 这个就是对应的后台权限, 和以前的分类方式不同,以前是精确度,这个是前后台
+按照官方说明:
+ targetVersion: androidQ 或以上  如果 targetVersion 是 androidQ+, 则这个权限不会自动添加, 使用者需要自己添加,有就是有,没有就没有   如果 targetVersion 是 api 28(android 9.0)以下  如果你有以前版本的定位权限,则系统会在安装时帮你添加后台的权限(升级 androidOS 版本时不明) 在动态权限申请时,如果你申请的权限有以前的定位权限之一, 则会自动帮你在申请的权限里加上这个后台的    请求后台权限 上来是一段废话.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android Q 隐私篇(1) - 外部储存</title>
+      <link>https://kikt.top/post/android/android-q/privacy/android-q-privacy-1/</link>
+      <pubDate>Mon, 20 May 2019 09:43:48 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-q/privacy/android-q-privacy-1/</guid>
+      <description>
+        
+          
+            一年一度的 googleIO 开完以后,不出意外的 Android10.0 系统(AndroidQ)出来了
+隐私配置又㕛叒叕更新了..
+连接地址: 这个地址可能在来年就变成 android 11 的了, 所以仅保证在2019 年 05 月 20 日以及之后的一段时间内有效
+主要包含以下五大项目
+ 对于大部分应用来说,储存方式的更新会有所影响, 其他的可能都是 SDK 要做的事情,和普通开发者关系不大
+在适配新的系统前就和从前一样,暂时不升级 targetVersion,把 targetVersion 设置为 28 以下就不会影响旧程序了,就如同以前运行时权限真的是坑到爆炸,但是暂时不适配也是可以的
+但是未来无论如何都需要适配新系统,所以先来看看
+本篇只说储存的方式和权限问题,其他暂时略过不表
+目录                          检查迁移情况  有一个表格提供了如何检查和迁移的方案
+ 开发环境 说一下开发环境
+MacOS
+Android Studio 3.4.0
+android 9.0 设备一台
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>CameraX的使用</title>
+      <link>https://kikt.top/post/android/camera/camerax-usage/</link>
+      <pubDate>Tue, 14 May 2019 13:44:59 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/camera/camerax-usage/</guid>
+      <description>
+        
+          
+            我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程
+在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍
+ 目录                         介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
+最低支持的 API 等级是 API 21(5.0)
+开发环境 我当前的开发环境是
+MacOS 10.13.6
+Android Studio 3.4 小米 8 MIUI 10.3 稳定版 10.3.2.0(android 9.0)
+最低支持 官方说明为 AndroidStudio 3.3 API 21+的设备
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter Web 评测第二篇</title>
+      <link>https://kikt.top/post/flutter/flutter-web/flutter-web2/</link>
+      <pubDate>Mon, 13 May 2019 14:15:07 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-web/flutter-web2/</guid>
+      <description>
+        
+          
+            本篇只是的补充
+介绍一些当前的 flutter_web 版和 flutter 的移动版的差别
+            dart:io 包无法使用造成的影响 dart:io是一个在 flutter 中常用的包,但是在 web 版中是使用不了的
+dio 不能用 dio包用不了,因为 dio 包是依托于 dart:io 包中的 HttpClient 进行的封装
+并且因为国内很多初学者朋友人云亦云的选择了 dio 作为 http 的请求框架,所以今后如果有打算想要做 flutter_web 版的朋友可能现在就要考虑一下 dio 的使用问题了
+当然 dio 包今后也可以迁移底层访问库为,再进行二次封装形成 dio_with_http 那就是另一个故事了
+另外 web 中的 http 请求可以使用 使用库的访问如下:
+1import &amp;#39;package:http/http.dart&amp;#39; as http; 2Widget fromHttp() { 3return FutureBuilder&amp;lt;http.Response&amp;gt;( 4future: http.get(&amp;#34;https://api.github.com/&amp;#34;), 5builder: (BuildContext context, snapshot) { 6if (!
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>dart 2.3的新东西</title>
+      <link>https://kikt.top/post/flutter/dart/2-3-new/</link>
+      <pubDate>Thu, 09 May 2019 16:04:45 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/dart/2-3-new/</guid>
+      <description>
+        
+          
+            在最近两天 dart 更新到了 2.3 的稳定版
+增加了一些语法糖,对于开发 flutter 来说会更加的友好
+可以查看 当然,本篇不是翻译,只是对于新语法做一个简单的尝试
+...语法 这个语法很眼熟,在 js 中有类似的语法,其他语言可能也有
+什么意思呢
+看下面的代码
+1main(List&amp;lt;String&amp;gt; arguments) { 2list3Point(); 3} 45void list3Point() { 6var list1 = &amp;lt;int&amp;gt;[1, 2, 3, 4]; 78var list2 = &amp;lt;int&amp;gt;[ 90, 10...list1, 116, 12]; 1314print(list2); // [0, 1, 2, 3, 4, 6] 15} 这里可能会提示需要更新 sdk 约束,可能这个特性是 2.2.2 加入的,更新约束后 yaml 文件被修改
+1environment:2sdk:&amp;#39;&amp;gt;=2.2.2 &amp;lt;3.0.0&amp;#39;旧版本的实现需要以下几个步骤
+1void list3PointOld() { 2var list1 = &amp;lt;int&amp;gt;[1, 2, 3, 4]; 3var list2 = &amp;lt;int&amp;gt;[0]; 4list2.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter Web 评测第一篇</title>
+      <link>https://kikt.top/post/flutter/flutter-web/flutter-web1/</link>
+      <pubDate>Wed, 08 May 2019 10:15:07 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-web/flutter-web1/</guid>
+      <description>
+        
+          
+            最近 2019 的 google io 大会开始了,之前的&amp;quot;蜂鸟&amp;quot;引擎也在 flutter 官网中出现了, 不过这次改了个名字叫 具体的使用步骤参考项目 readme 中的方式来使用
+                             构建项目 建议: 配置dart,pub,~/.pub-cache/bin到环境变量
+配置 webdev
+1git clone https://github.com/flutter/flutter_web.git 2cd flutter_web/examples/hello_world/ 3flutter packages upgrade 4flutter packages pub global activate webdev 运行项目 简单运行 运行
+1webdev serve  提示我们,在本地 8080 端口, 在浏览器打开 http://localhost:8080
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter toast插件 OKToast的介绍</title>
+      <link>https://kikt.top/post/flutter/toast/oktoast/</link>
+      <pubDate>Thu, 18 Apr 2019 09:12:48 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/toast/oktoast/</guid>
+      <description>
+        
+          
+            OKToast 是一款 在 flutter 上 使用的 toast 插件
+使用简单, 可定制性强, 纯 flutter, 调用不用 context
+                             安装 查看文档: 在 pubspec 引入
+1dependencies:2oktoast:^2.2.0# 这一步请查询pub的最新版本获取包: $ flutter packages get
+引入: import &#39;package:oktoast/oktoast.dart&#39;;
+使用 在代码中定义 OKToast 组件 包裹你的 MaterialApp,不是包裹你的 Scaffold
+包裹你的 MaterialApp,不是包裹你的 Scaffold
+包裹你的 MaterialApp,不是包裹你的 Scaffold
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 版本更新内容查看</title>
+      <link>https://kikt.top/post/flutter/compare/version-compare/</link>
+      <pubDate>Wed, 10 Apr 2019 13:47:25 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/compare/version-compare/</guid>
+      <description>
+        
+          
+            分支 与很多项目不同, flutter 使用 master 作为开发分支而不是发布分支
+flutter 有几个主要的 branch:
+master: 主分支,开发分支
+dev: 发布第二快的分支, 每次的版本更新会优先发布到这个频道来, 主要给 flutter 尝鲜开发者使用
+beta: 测试分支, 这个分支更新相对缓慢
+stable: 可以在生产环境使用的, 相对问题最少,发布次数最少
+对比 flutter 更新速度很快,几乎每天都有 commit, 间隔几天就会有一个新版本释出
+flutter 以 v 开头,数字部分使用标准的三段版本号 vx.x.x
+那么如果我目前是 v1.4.10 但是我想看看新版本相对我使用中的版本都更新了什么东西怎么办?
+现在 dev 分支最新版是 v1.4.14,那么我可以通过
+可以通过 类似下面的连接把版本号替换为你需要对比的即可,前小后大,然后在浏览器中打开即可
+ 这其中有 53 次提交,后面有对应的提交记录日志,这个顺序是由早到晚
+源码的话,则点击 Files Changes,就可以看到修改内容
+点击下路蓝框的位置可以切换视图模式,列表还是详情 然后左边绿色是添加的内容,红色是删除的内容,白色是不变的内容,蓝色是折叠起来的不变内容
+rss 订阅 github 的 release 支持 rss 订阅
+
+我使用了这个 来订阅 flutter sdk 的更新
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter flutter.gradle分析</title>
+      <link>https://kikt.top/post/flutter/android/flutter.gradle/</link>
+      <pubDate>Mon, 01 Apr 2019 11:43:50 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/android/flutter.gradle/</guid>
+      <description>
+        
+          
+            所有的分析基于当前的 1.4.7 版本,flutter sdk 的版本更新可能会修改这个文件
+1Flutter 1.4.7 • channel dev • https://github.com/flutter/flutter.git 2Framework • revision 1bfa2f2311 (3 days ago) • 2019-03-29 10:05:18 -0700 3Engine • revision c4d14a0071 4Tools • Dart 2.2.1 (build 2.2.1-dev.2.0 None) 这个文件是 sdk 中的 android 部分的配置文件文件,简单分析一下流程,以便于魔改或在项目中可以配置项目
+gradle 使用的是 groovy 的语法,是一个 jvm 语言,在语法层级上兼容 Java 语法
+换句话说 System.out.println(&amp;quot;hello world&amp;quot;); 这样的方法是可用的
+分析 flutter 项目 项目 android/app/build.gradle 文件中都有定义
+1def localProperties = new Properties() 2def localPropertiesFile = rootProject.file(&amp;#39;local.properties&amp;#39;) 3if (localPropertiesFile.exists()) { 4localPropertiesFile.withReader(&amp;#39;UTF-8&amp;#39;) { reader -&amp;gt; 5localProperties.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter dialog (2) - showGeneralDialog的使用</title>
+      <link>https://kikt.top/post/flutter/dialog/dialog-2/</link>
+      <pubDate>Fri, 29 Mar 2019 10:50:38 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/dialog/dialog-2/</guid>
+      <description>
+        
+          
+            说了 showDialog 方法的使用
+但是这个方法有很多东西是固定的
+比如背景颜色,转换的时长和样式等等,很多东西你很难去自定义
+本篇我使用另一个方法showGeneralDialog来做一些自定义
+准备工作 同上一章一样,定义一个通用方法
+1Widget buildButton( 2String text, 3Function onPressed, { 4Color color = Colors.white, 5}) { 6return FlatButton( 7color: color, 8child: Text(text), 9onPressed: onPressed, 10); 11} 简单使用 这里有几个参数,虽然方法签名上只有 2 个@required注解的参数
+但事实上,在我当前的版本环境下,如下代码中所有的参数都是必填项,不填会报错 我的运行环境是这样的
+1flutter --version 2Flutter 1.3.14 • channel dev • https://github.com/flutter/flutter.git 3Framework • revision 8e7e435706 (6 days ago) • 2019-03-21 15:31:46 -0700 4Engine • revision d4d4883216 5Tools • Dart 2.2.1 (build 2.2.1-dev.2.0 None) 代码在这里
+1showGeneralDialog( 2context: context, 3barrierLabel: &amp;#34;你好&amp;#34;, 4barrierDismissible: true, 5transitionDuration: Duration(milliseconds: 300), 6pageBuilder: (BuildContext context, Animation animation, 7Animation secondaryAnimation) { 8return Center( 9child: Material( 10child: Container( 11color: Colors.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter dialog (1) - showDialog的讲解</title>
+      <link>https://kikt.top/post/flutter/dialog/dialog-1/</link>
+      <pubDate>Wed, 27 Mar 2019 10:50:38 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/dialog/dialog-1/</guid>
+      <description>
+        
+          
+            在应用开发中,或多或少都会遇到需要弹框的问题, 比如:需要用户确认,需要输入一些信息等等的问题,这就要用到 dialog 相关的概念了
+而在 flutter 中,所有可以看见的都是 Widget,dialog 也不例外
+不过和 android 或 iOS 中不同的一点是,Flutter 中 dialog 不是一个单独的类,而是一个可以由你自定义的 Widget
+写在前面 首先为了方便,我定义了一个简单的方法用于构建按钮
+1Widget buildButton( 2String text, 3Function onPressed, { 4Color color = Colors.white, 5}) { 6return FlatButton( 7color: color, 8child: Text(text), 9onPressed: onPressed, 10); 11} showDialog  dialog 的方法签名是这样的
+其中 context 和 builder 是必传项
+builder 需要返回一个 Widget,这个 Widget 会被作为 dialog 展示在页面上
+比如我简单的写了一个这个方法
+1showDialog( 2context: context, 3builder: (ctx) { 4return Center( 5child: Column( 6mainAxisSize: MainAxisSize.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter取消动态字体大小</title>
+      <link>https://kikt.top/post/flutter/layout/dynamic-text/</link>
+      <pubDate>Tue, 12 Mar 2019 15:18:07 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/layout/dynamic-text/</guid>
+      <description>
+        
+          
+            如果接触过原生开发的朋友可能知道
+最初几年官方推荐使用 sp 作为字体大小的单位，但是事实上经过长时间实践的情况下，大家都开始逐渐使用 dp 作为单位
+这样使用者调整系统字体大小，app 中的文字大小就不会受到影响，出现错误等情况
+flutter 中修改 iOS 中叫动态字体大小,对应辅助功能中的字体大小
+ android 中叫字体大小
+ 当你开发完成，又遇到用户修改系统字体大小导致某些地方错位，甚至按钮被挤出屏幕看不见了就是个问题了
+而 flutter 中没有单位的概念，我们应该如何实现这个功能呢
+在 flutter 中，是由 MediaQuery 来实现对应功能的
+1var data = MediaQuery.of(context); 2data.textScaleFactor; //这个就是对应的动态字体大小，我们只需要『修改』这个值就可以了 修改自然是不可能的，这东西都是 final 的，我们要做的就是 flutter 中的通用做法
+1class NoScaleTextWidget extends StatelessWidget { 2final Widget child; 34const NoScaleTextWidget({ 5Key key, 6@required this.child, 7}) : super(key: key); 89@override 10Widget build(BuildContext context) { 11return MaxScaleTextWidget( 12max: 1.0, 13child: child, 14); 15} 16} 1718class MaxScaleTextWidget extends StatelessWidget { 19final double max; 20final Widget child; 2122const MaxScaleTextWidget({ 23Key key, 24this.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Migrating to AndroidX</title>
+      <link>https://kikt.top/post/flutter/migrate-android-x/</link>
+      <pubDate>Wed, 06 Mar 2019 10:26:03 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/migrate-android-x/</guid>
+      <description>
+        
+          
+            无论在 android 开发中 还是 flutter 开发中,都会面临迁移 AndroidX 的问题
+官方有一个说明,可以
+下面是我总结的修改方式
+迁移到 androidX 修改 andorid 目录下的 app/build.gradle 1android{ 2compileSdkVersion 28 3} 使用了 gradle wrapper 如果 andorid 根目录下有这个文件夹/文件,则需要修改
+ 根据官网说明,最好修改到 4.10.1 以上
+gradle-wrapper.properties 文件
+修改版本号位置,我使用的是当前的最新版 5.2.1,你可以根据你的情况修改
+1distributionUrl=https\://services.gradle.org/distributions/gradle-5.2.1-all.zip 如果没有用这个,那么你需要修改的环境变量中的 gradle 版本,这个请自行百度/Google
+修改 android 目录下的 build.gradle 根目录下的 build.gradle ,这个是目前的最新版
+这个不是 gradle 的版本,你可以理解为与插件匹配,一般等于你的 android studio 的版本
+1buildscript{ 2dependencies { 3classpath &amp;#39;com.android.tools.build:gradle:3.3.1&amp;#39; 4} 5} 修改 android 目录下的 gradle.properties 如果没有,就添加这两行
+1android.enableJetifier=true 2android.useAndroidX=true 最后 做完上面的应该就可以了,运行下项目,如果有别的问题欢迎留言
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter log4d 日志包的使用</title>
+      <link>https://kikt.top/post/flutter/log/log4d-1/</link>
+      <pubDate>Mon, 04 Mar 2019 08:48:51 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/log/log4d-1/</guid>
+      <description>
+        
+          
+            最近闲来无事,撸了一个日志插件,功能很简单
+在开发机上开启一个服务端
+然后客户端(不仅是 flutter,而是只要可以使用dart:io就可以)开启远程连接,然后就可以发送日志到服务端了
+好处 这样的好处是,开发机可以实时接收到日志,并且保存到文件中
+因为我们很多时候会发生日志超出一个长度(好像是 1000 个),然后在 console 中不能完整显示的问题,比如网络网文请求,如果响应的报文不完整就不能复制出完整的 json,有的错误不太好定位
+使用这个插件后,就可以在开发机简单的通过命令保存日志,方便后续定位
+只要你的客户端可以访问到服务端,这就能实现
+开发过程 使用WebSocket连接,这个类在 dart 中依托于dart:io包,所以如果你是dart web,可能就用不了这个了,flutter和dart vm中是没问题的
+这个库支持使用 pub global, 配置 dart 和 pub 到环境变量后可以直接通过log4d在命令行中开启
+安装 1. 安装 参考上的 install 标签
+pub global activate log4d
+这一步完成后可以通过log4d,log4d_client 来使用插件
+2.客户端安装 作为一个库来使用, 首先在 pubspec.yaml 中加入依赖
+1dependencies:2log4d:^1.0.3# 这一步参考最新版3.获取库 pub get 或 flutter packages get
+4. 导入 import &#39;package:log4d/log4d.dart&#39;;
+使用  简单的使用方式就是服务端在命令行中开启
+1. 开启服务端 log4d -o build/test.log 这样就成功开启了,并且会在接受到日志后将日志保存到指定的目录下
+2. 在 flutter 中使用 封装一个简单的帮助类
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Pub Global 创建命令行应用程序</title>
+      <link>https://kikt.top/post/flutter/dart/bin/pub-global/</link>
+      <pubDate>Mon, 25 Feb 2019 13:53:52 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/dart/bin/pub-global/</guid>
+      <description>
+        
+          
+            前言 如果你接触过npm/yarn 应该知道,有一些包可以全局使用,就是安装后可以直接用,比如vue-cli这样的应用,应该是用node开发的
+在dart中也可以实现类似的功能, 使用就可以了,在连接中有完整的说明 也有这样的应用程序可以直接使用
+我在这里简单的实战一下,实现一个简单的cli应用程序
+这个程序没什么多余的功能,就简单的实现输入敲击unix获取时间戳
+建立工程前的准备 将dart,pub加入PATH环境变量 需要在环境变量中添加几个东西,添加环境变量的方式自己搜索一下
+一个是dart/bin的目录,你需要在命令行中让dart命令可用
+1➜ ~ dart --version 2Dart VM version: 2.1.0 (Tue Nov 13 18:22:02 2018 +0100) on &amp;#34;macos_x64&amp;#34; 相对应的dart/bin目录下还会有其他的一些工具,包含了pub,这个工具也是会用到的
+1➜ bin pub --version 2Pub 2.1.0 安装dart工程脚手架 
+$ pub global activate stagehand
+将pub-cache/bin目录加入PATH环境变量 这个目录通常是~/.pub-cache/bin目录
+验证stagehand可用 1➜ bin stagehand 2Stagehand will generate the given application type into the current directory. 34usage: stagehand &amp;lt;generator-name&amp;gt; 5--[no-]analytics Opt out of anonymous usage and crash reporting.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter 新状态管理方案 Provide 使用</title>
+      <link>https://kikt.top/post/flutter/state/provide-1/</link>
+      <pubDate>Thu, 21 Feb 2019 10:43:36 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/state/provide-1/</guid>
+      <description>
+        
+          
+            开这篇文章是因为看到这个库被托管在google的仓库下,而且说明是被设计出来替代ScopedModel的,而且更加灵活
+支持Builder模式和StreamBuilder模式,全局,局部都可以
+内部应该是结合InheritedWidget Notification体系实现的
+传统的bloc需要在每一个Repository中创建StreamController和Stream,甚至有的文章中,一个监听的修改需要修改5处,维护起来比较麻烦
+相比较而言Provide维护起来会稍微省事一些
+
+添加依赖 查看
+1dependencies:2provide:^1.0.1# 这里的版本查看官方1flutter packages get 1import &amp;#39;package:provide/provide.dart&amp;#39;; 使用方法 这里以简单的Counter为例 也就是在flutter的hello world工程的基础上来修改
+1. 定义一个Model 这个model需要继承ChangeNotifier
+12class Counter with ChangeNotifier { 3int _value; 45int get value =&amp;gt; _value; 67Counter(this._value); 89void inc() { 10_value++; 11notifyListeners(); //父类的方法,发出通知 12 } 13} 2. 定义一个全局的Provide 这里虽然定义在全局,但事实上也可以定义在页面级
+1void main() { 2var providers = Providers()..provide(Provider.function((ctx) =&amp;gt; Counter(0))); 34runApp( 5ProviderNode( 6child: MyApp(), 7providers: providers, 8), 9); 10} ProviderNode表示的是提供者
+3. 界面/监听 修改_MyHomePageState
+添加一个方法,用于获取Counter实例
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter ios 插件开发 appcode 加快索引速度</title>
+      <link>https://kikt.top/post/flutter/channel/flutter-ios-spec-edit/</link>
+      <pubDate>Tue, 19 Feb 2019 15:41:23 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/channel/flutter-ios-spec-edit/</guid>
+      <description>
+        
+          
+            ios 插件开发可以查看 本篇就不详细介绍了
+众所周知 xcode 这编辑器除了漂亮,其实开发效率来说和 appcode 无法相提并论..
+本篇与插件开发本身无关,目的只是为了加快 appcode 的索引速度,解决方案拉到后面查看
+使用 appcode 开发插件本身很简单,打开插件下的example/ios就可以了,不过这里有一个坑,因为 flutter 使用 link 的方式,可能有数级的../..之类的连接来指向插件文件夹
+ 这个在 xcode 中可能没问题,但是appcode中有一个索引的概念,这一步会遍历当前关联的所有同级文件,
+而这一步由于相对的关系甚至关联到了~这一级,也就是说会遍历当前用户全部的文件,这一步的速度太慢了,我们必须着手解决
+解决 打开example/ios/Podfile文件
+这个文件是cocoapod的配置文件,使用的是Ruby语言,
+这个文件一般是自动生成的,我们开发过程中正常情况下不需要关注这个文件
+我们需要修改这个文件,查看
+我们不使用 symlinks 的方案,而是采用另一种方案,直接用 path 的方式
+将这个 Podfile 文件改为这样 1plugin_pods.map { |p| 2name = p[:name] 3path = p[:path] 4specPath = &amp;#34;#{path}/ios/#{name}.podspec&amp;#34; 5pod p[:name],:path=&amp;gt;specPath 6} 然后在命令行运行
+1cd example/ios 2pod install 修改完成后是用 app 打开是这样的
+ 1.12.x 版本 [2020-01-17 更新] 某个版本后, 会提示我们原来的 pod 版本过时了
+这时候, 我们需要移除 example/ios 下的 Podfile 和 Podfile.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>dart中的生成器函数</title>
+      <link>https://kikt.top/post/flutter/dart/generators/</link>
+      <pubDate>Sun, 03 Feb 2019 17:19:23 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/dart/generators/</guid>
+      <description>
+        
+          
+            2019 年春节前最后一更了
+在 dart 中有生成器函数的语法,在很多其他的语言中也有,比如 js c#
+这个语法看上去和 async await 语法很像
+使用的关键字是 async* sync* yield yield*
+官方对于这个语法的说明可以参考这个连接
+其实async await也是一种生成器语法
+生成器语法就是你返回的类型通常情况下和 return 的类型可能不一致
+比如你return 1,但是返回值上却需要写Future&amp;lt;int&amp;gt;
+sync* 在 dart 中可以使用这个便利的生成一个迭代器
+如下所示
+ 这两种写法是一样的,但是第一个写法会简洁很多
+1main(List&amp;lt;String&amp;gt; arguments) { 2print(genList()); 3print(genList2()); 4} 56Iterable&amp;lt;int&amp;gt; genList({int max = 10}) sync* { 7var i = 0; 8while (i &amp;lt; max) { 9yield i; 10i++; 11} 12} 1314Iterable&amp;lt;int&amp;gt; genList2({int max = 10}) { 15var list = &amp;lt;int&amp;gt;[]; 16var i = 0; 17while (i &amp;lt; max) { 18list.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>创建 dart flutter 的 doc文档并部署</title>
+      <link>https://kikt.top/post/flutter/doc/create/</link>
+      <pubDate>Thu, 31 Jan 2019 08:50:34 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/doc/create/</guid>
+      <description>
+        
+          
+            是 flutter 的 api 文档页
+但是这个文档页有的时候不那么好访问, 也许你有自己的页面,或者你就是想简单的搭建一个 pages 到 gitee/github 上方便你以后的访问
+本篇就来教你怎么简单的达成这个目的
+gitee 部署完成后是这样的 准备工作  一个终端工具 dart sdk 一个 web 服务器(pages)  作为一个 flutter/dart 开发者,sdk 肯定是必备工具了
+如果你运行过 flutter doctor 命令,则 flutter 自带的 sdk 就会存在在的系统内 ${FLUTTER_HOME}/bin/cache/dart-sdk 这里替换为自己的 flutter sdk 的文件夹
+ 这里可以看见 dartdoc 这个就是创建文档的工具了
+先进入 sdk 下的 packages/flutter 文件夹
+然后运行$FLUTTER_HOME/bin/cache/dart-sdk/bin/dartdoc .命令 $FLUTTER_HOME 为你的 flutter sdk 所在目录
+ 等待一段时间
+然后可以看到当前文件夹下生成了一个doc目录,里面就是所有的文档了
+ 部署 直接双击 index.html 也可以打开,但是根据官方的说法,如果本地运行可能右上角的搜索不能使用,这就需要部署到服务器上了
+如果你有自己的云服务器,那么你估计对于部署应该有自己的理解,就不用继续看了
+本地部署 所以我们需要使用一些本地服务来部署
+比如 nginx/caddy/tomcat/apache 之类的服务器
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter pub 发布失败</title>
+      <link>https://kikt.top/post/flutter/package/publish-fail/</link>
+      <pubDate>Tue, 29 Jan 2019 15:44:30 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/package/publish-fail/</guid>
+      <description>
+        
+          
+            之前的很多技术文章太严肃了,本篇写一篇插件发布的文章
+什么是 pub 偶尔会经常听人说 发布包到 pub 了,那什么是 pub 呢
+官方描述: Pub is the package manager for Dart. / dart 语言的包管理器
+官网 pub 的官方 url: 这个域名有多个小伙伴同时 ping 过, 对应 ip 不相同,所以可知这个网站是有负载均衡的, 但是坑的地方来了, 部分在墙外,所以这就是这个网站偶尔国内访问不通畅的原因
+然后有几个国内镜像站点,可以查看官网介绍
+ 设置访问镜像 在环境变量中配置,这个根据系统不同设置方法不同
+mac 的话 可以使用 export 命令临时添加
+也可以在vi ~/.bash_profile,在这个文件中添加
+其他系统的设置方式请自行查找
+ 1PUB_HOSTED_URL=https://pub.flutter-io.cn 2FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn 这样在国内就很快了
+如果你需要发布插件的话,到这里就结束了
+发布 有的时候我们自己写了开源库,想要发布到 pub 上怎么办呢
+dart/flutter 对于插件没有审核的概念,而且发布很简单,你可以任意发布插件到 pub 上,只要不重复就可以了
+必备前提  一份代码 一份命令行翻墙工具 一个 google 账号  代码是必须的,不然没意义
+命令行翻墙工具是因为国内镜像发布不了,必须要连接到 pub 的官方源
+google 账号是确定权限用的,不能你说你是主人你就是主人了吧, 你要绑定库和你的作者身份,不然别人随手写一个覆盖你的插件岂不是乱套了
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>使用python爬取一个省市城市列表</title>
+      <link>https://kikt.top/post/python/get_city_datas/</link>
+      <pubDate>Fri, 25 Jan 2019 13:46:47 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/python/get_city_datas/</guid>
+      <description>
+        
+          
+            前言 最近打算使用 ,但是目前没有数据来源,就想着搜搜有没有 json 的数据,结果搜了一下只有各种数据库的
+然后搜了下有个网站说有很完整的数据的还是收费的
+作为一个穷人程序员,如果是公司用,我付费买一个也无所谓,但是本身是想私人使用,甚至开源出去,付费就没必要了
+这时候我想着,既然如此,我就爬一份数据,自己造一个吧
+说到爬虫,我们就想起了明年..两开花 python
+开发环境 使用的语言是 python3
+request_html+基本库
+爬取网页 
+查看网页 一级页面 使用 chrome dev 工具查看元素
+ 呃. table 体系,最近几年算是比较少见了
+分析了一下,整个页面只有备案号和省份名称是 a 标签,这下过滤一下备案号,剩下的不就是我们要的数据了吗
+二级页面 点开北京,数据比较少,只有市辖区 内蒙的就比较多一点了
+ 纯数字的是编码,其他的是名称,也是过滤掉 IPC 备案的就好
+三级页面 和二级页面基本一致
+ 撸码 city_get.py
+1import json 2from requests_html import HTMLSession 3import requests_html 45session = HTMLSession() 678class Entity: 9name: str 10link: str 11no: str 12baseUrl = &amp;#34;http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2017/&amp;#34; 1314def __str__(self) -&amp;gt; str: 15return &amp;#34;name:%s,link=%s&amp;#34; % (self.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>在Profile下分析android内存占用</title>
+      <link>https://kikt.top/post/flutter/android/profile-1/</link>
+      <pubDate>Tue, 22 Jan 2019 10:24:16 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/android/profile-1/</guid>
+      <description>
+        
+          
+            最近做了一篇 android 原生中加入 flutter 的尝试,顺便查看下内存占用
+在 debug 模式下肯定是不准的,所以随便看看就好了,只是为了满足好奇心,不代表真实项目中的真实表现,也不代表我的观点
+在原生刚刚打开后稳定的情况下查看内存占用
+ 可以看到 打开 Flutter 后内存会有明显上升
+ 红点处是我点击了按钮后的情况,会有内存抖动
+关闭 Flutter 界面后会发现内存回落很明显,说明内存相对比较稳定  过了段时间,其实是我在码字+上传图片,没看手机,发现内存更加平稳了,而且降低到了只有 30m
+ 换句话说其实在 android 上内存的表现还算可以,目测在关闭 flutterview 的界面后简单的界面是可以完全回收的,而且众所周知 release 蜜汁流畅 :-D
+ 本篇是随便写写的,不代表 flutter 在实际项目中的表现,因为实际项目原生,flutter 中都会有更复杂的机制,所以内存 cpu 的消耗会更大, 也可能会发生不可预知的情况
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>在原 Android 工程的基础上构建一个flutter工程</title>
+      <link>https://kikt.top/post/flutter/exists/android/</link>
+      <pubDate>Tue, 22 Jan 2019 07:50:31 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/exists/android/</guid>
+      <description>
+        
+          
+            在 flutter 开发的过程中不可能所有项目都是从零构建
+换句话说不是所有项目都是 flutter 为主工程,然后 android/ios 的工程为副工程
+大概率会遇到需要将 flutter 作为组件加入到原生项目中, 这种例子典型的就是阿里闲鱼,当然闲鱼团队的实力不是普通的小公司可以比的
+所幸的是,flutter 团队提供了一个 用于帮助我们完成这个过程
+创建一个 Android 工程 使用 Android Studio 创建一个新工程来模拟这个过程,会看这里的普遍都应该是 android 程序员出身,Hello World 工程是肯定会的,不会的话还是回炉加强一下吧
+如果你已经有现有工程,肯定是有 VCS 管理的,放心大胆的走出第一步,大不了就删除当前分支嘛,然后你可以跳过这一步,直接看 flutter 的过程
+ 创建 Flutter 这一步仅作为 官方 Android 部分的参考
+我目前使用的是 1.0.0 的发布版
+1Flutter 1.0.0 • channel dev • https://github.com/flutter/flutter.git 2Framework • revision 5391447fae (11 days ago) • 2018-11-29 19:41:26 -0800 3Engine • revision 7375a0f414 4Tools • Dart 2.1.0 (build 2.1.0-dev.9.4 f9ebf21297) wiki 后续可能会被修改,请查看最新的文档去解决
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>android 引入ffmpeg</title>
+      <link>https://kikt.top/post/android/android-include-ffmpeg/</link>
+      <pubDate>Mon, 14 Jan 2019 17:14:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-include-ffmpeg/</guid>
+      <description>
+        
+          
+            上篇介绍了如何 在 mac 系统下打包 ffmpeg 的 so
+这篇介绍如何引入 so 到项目中
+开发环境:
+1macos 2android studio 3.2.1 3ndk: 15.2.4203891 新建一个工程 新建工程时,勾选 c++支持
+ 将文件复制到项目内 需要复制的文件
+.h 头文件 so文件    在 cpp 中新建一个文件夹include/ffmpeg 把 include 中的文件夹复制到 ffmpeg 下
+在 main 下新建文件夹jniLibs,把 so 文件复制到其中 修改 CMakeList 完整的CMakeList.txt 如下
+1# For more information about using CMake with Android Studio, read the 2# documentation: https://d.android.com/studio/projects/add-native-code.html 3 4# Sets the minimum version of CMake required to build the native library.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>ndk编译ffmpeg</title>
+      <link>https://kikt.top/post/android/android-ffmpeg-compile-so/</link>
+      <pubDate>Mon, 14 Jan 2019 14:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-ffmpeg-compile-so/</guid>
+      <description>
+        
+          
+            最近在努力学习音视频相关东西,以备未来不时之需
+在音视频处理领域有一个绕不过去的著名项目就是FFmpeg,这个项目基于 GPL 开源协议,
+最新版本目前我在 mac 上无法编译,会报错
+使用的总体环境如下:
+1Macos: 10.13.6 (17G65) 2ffmpeg: 3.3.6 3ndk: 15.2.4203891 引用外部源码(尝试失败) 初次尝试的时候,希望可以通过 CMakeLists 中配置头文件和库的方式,直接引用,发现可能需要拷贝所有源代码到项目中,但这样需要 copy 的东西很多,对于真实的项目来说也许可行,但 demo 项目就太复杂了,而且不方便今后的使用
+交叉编译 so 这里有一个坑,就是 ndk 版本不能太低,因为之前使用过 ijkplayer,那个项目要求 11d 还是 11e 的 ndk 版本,我这次想直接用这个 ndk 版本,过程中会报很多错误,具体原因没有深究
+然后使用我 android sdk 中带的 ndk 版本果断成功
+这个是我的 ndk 版本,截至当前最新版本应该是 18.X
+版本号在 ndk 中查看 propertis 文件可以看见
+另一个叫法是 android-ndk-r15c
+1Pkg.Desc = Android NDK 2Pkg.Revision = 15.2.4203891 ffmpeg 版本:我开始是下载的最新版本 4.1 版 ,结果编译不通过,在 udp.c 中报错了,通过网络搜索到一个原因,ffmpeg 通过下载了一个 ffmpeg-3.3.6 解决
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter cupertino 复制粘贴弹窗报错的问题</title>
+      <link>https://kikt.top/post/flutter/framework/cupertino-paste-tooltip/</link>
+      <pubDate>Tue, 08 Jan 2019 17:34:10 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/framework/cupertino-paste-tooltip/</guid>
+      <description>
+        
+          
+            1NosuchMethodError: The getter &amp;#39;pasterButtonLabel&amp;#39; was called on null. 2Receiver: null 3Tried calling: pasteButtonLabel 在最近 app store 提交审核时被拒了,然后得到了一个这样的截图
+ 在 flutter 中可能会会出现各种问题,因为之前遇到过这个问题,但是那是我另一个应用,这个忘了设置了
+我快速搞了一下,重新提交了审核
+解决方式 1import &amp;#39;package:flutter/cupertino.dart&amp;#39;; 2import &amp;#39;package:flutter/foundation.dart&amp;#39;; 3import &amp;#39;package:flutter/material.dart&amp;#39;; 4import &amp;#39;package:flutter_localizations/flutter_localizations.dart&amp;#39;; 56class ChineseCupertinoLocalizations implements CupertinoLocalizations { 7final materialDelegate = GlobalMaterialLocalizations.delegate; 8final widgetsDelegate = GlobalWidgetsLocalizations.delegate; 9final local = const Locale(&amp;#39;zh&amp;#39;); 1011MaterialLocalizations ml; 1213Future init() async { 14ml = await materialDelegate.load(local); 15print(ml.pasteButtonLabel); 16} 1718@override 19String get alertDialogLabel =&amp;gt; ml.alertDialogLabel; 2021@override 22String get anteMeridiemAbbreviation =&amp;gt; ml.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Finish FlutterActivity 源码解析</title>
+      <link>https://kikt.top/post/flutter/android/finish-activity/</link>
+      <pubDate>Tue, 08 Jan 2019 16:07:06 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/android/finish-activity/</guid>
+      <description>
+        
+          
+            开篇声明:本篇文章不算是新手向的东西,你需要对于 flutter 和 android 本身有一定的了解
+文章原因 为啥要写这个文章呢
+最近有 qq 群的同学询问如何在关闭界面后在 service 中执行 dart 代码
+我当时的理解就是 flutter 是依附于 activity 存在的,但是这部分并没有任何实际支撑
+所以我抱着好奇的想法去跟了一下 engine 部分的源码
+flutter engine 简单介绍 这里简单介绍一下 flutter engine,
+在 android 系统上 flutter 是使用 FlutterView 实现的,
+对应的 java 层级的源码都在这里
+一般一个纯 flutter 项目中是这样的, 有一个 FlutterApplication 一个 FlutterActivity 一个 FlutterView,而我们 flutter 所有的界面都是在 FlutterView 上画的
+解析开始 以下基于你对于 android 原生开发有所涉猎,而不是完全不了的基础上展开
+我们都知道,当 finish Activity 后页面会回调onDestroy方法
+ 这个方法中会回调一个eventDelegate.onDestroy,我们查看以下这个东西具体是调用到哪里
+  能看到具体的调用是这样的
+  如果 Application 是 FlutterApplication 会直接将当前 Activity 置空
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter bottomSheet的使用</title>
+      <link>https://kikt.top/post/flutter/flutter-bootom-sheet/</link>
+      <pubDate>Mon, 07 Jan 2019 15:07:28 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-bootom-sheet/</guid>
+      <description>
+        
+          
+            前言 最近看到群里有朋友在问类似于
+ 这东西怎么实现
+我回答的可能不那么清楚,因为我就答了 bottomSheet,下次我可能会回答的更清楚些
+这东西在可能在 flutter 里有如下几种解释
+ Scaffold 的 bottomSheet 属性 一个叫 BottomSheet 的 widget 组件 Scaffold.showBottomSheet 方法 showBottomSheet 方法也就是一个底层弹窗  这里分别来简单的说一下
+Scaffold 的 bottomSheet 属性 这个就是前言中的那种东西的简单实现方式,直接把聊天的输入框(TextField)放在里面,用 Container 也好,也用其他什么控件也可以,当然 Container =&amp;gt; Row =&amp;gt; [TextField,Button]就能实现图上的效果了
+简单的页面代码如下
+1import &amp;#39;package:flutter/material.dart&amp;#39;; 23class BottomSheet1Page extends StatefulWidget { 4@override 5_BottomSheetPageState createState() =&amp;gt; _BottomSheetPageState(); 6} 78class _BottomSheetPageState extends State&amp;lt;BottomSheet1Page&amp;gt; { 9@override 10Widget build(BuildContext context) { 11return Scaffold( 12appBar: AppBar( 13title: Text(&amp;#39;bottom sheet&amp;#39;), 14), 15body: ListView.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Caddy 初探</title>
+      <link>https://kikt.top/post/server/caddy/caddy-first/</link>
+      <pubDate>Sat, 05 Jan 2019 11:13:08 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/caddy/caddy-first/</guid>
+      <description>
+        
+          
+            caddy 是使用 go 语言开发的一个 server 服务器
+相对于 nginx 来说,这个部署更简单,配置起来也很简单,很适合搭私人站点使用,而且相比于 nginx 来说,这个只有单文件,很适合小白使用
+而且,这东西最大的优点是,可以通过简单的配置来支持 https,而无需操心证书,另外还支持 http2 协议
+这里有一份,请注意查收
+入手 以 mac os 为例 我只需要 brew install caddy 然后, 运行 caddy,这样就完成了最简单的部署过程...
+当然这是因为有默认配置的关系,整个项目是单文件的,就只有一个 caddy 文件
+其他系统的参考
+运行结果如下 默认是 2015 端口,可能是代表这个项目是 2015 年创建/发布的?
+然后打开 就可以看到你的网页了,当然这里因为有默认的原因,你看到的也许是 404,或是其他的什么
+自定义配置 caddy 支持命令行的一些简单配置和配置文件的复杂配置
+命令行 使用caddy -h 可以看到最新最全的命令行参数列表 这里说命令行运行简单命令的意思并不是支持不全,而是有一些复杂的情况,如果用命令行来做调错比较麻烦
+比如 -agree 同意 CA 的协议
+-ca XXX 获取指定 host 的 ca 证书
+一般情况下比较有用的就是
+-conf string 使用配置文件
+-email string ca 的 email
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>github 一些小技巧</title>
+      <link>https://kikt.top/post/github/work-manager/</link>
+      <pubDate>Wed, 12 Dec 2018 15:21:47 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/github/work-manager/</guid>
+      <description>
+        
+          
+            最近沉迷 flutter,偶尔换换口味,看看 github
+很多知名的开源项目落户于 github,那么为什么呢,人云亦云吗?
+不一定, github 的工作流很强大.能够帮助我们更加清晰工作流程
+ 
+ 首先官方链接在此,英文好的直接去看
+ 另外还有一个帮助你学习 github 的小机器人
+ 
+ 这个小机器人能帮你系统的了解一些 github 的工作流和 github 的一些基本功能
+比如 github 仓库的元数据修改,关键字修改,github pages 的发布
+工作流包括 issues 中的
+PR 整体过程中 分派工作/审核/修改意见/冲突处理/merge 代码的流程,强烈建议 github 用的不好的人先去梳理一下
+issue 篇 常规的创建之类的就不说了,说一些你日常中看不到的东西,或者说看见了,但是不知道怎么玩出来的
+不会包含所有的东西,但是会有一些很神奇的效果
+通过代码创建一个 issue 比如我在某行代码发现了一个错误, 那么我可以直接在 github 中选中这个代码,然后开启一个 issue
+  点击行号
+  open new issue
+     通过这几个步骤,我们能看到,我们创建了一个指向改行的错误,这样开发者就能很简单的定位到该行,并且可以直观的在 issue 中看到该行代码,方便开发者定位
+
+创建一个永久可见的代码连接   提交后就可以看到了
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter http框架简介(1)</title>
+      <link>https://kikt.top/post/flutter/http/flutter-http1/</link>
+      <pubDate>Mon, 10 Dec 2018 13:44:44 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/http/flutter-http1/</guid>
+      <description>
+        
+          
+            http 简介 http 是一个 http 网络请求框架, 由 dart team 出品
+与HttpClient不是一回事,至于和 dio 孰优孰劣自己见仁见智吧
+通过下载
+基础的 api http 协议中有多种 METHOD,当然最常见的就是 GET POST,
+因为最近几年 restful 协议的频繁使用,使得 PUT,DELETE,PATCH 方法也有了一定的使用率
+基础使用 1import &amp;#39;package:http/http.dart&amp;#39; as http; 2void get(String url) async { 3http.Response response = await http.get(url); 45// 其他的返回值都是一样的 6 http.post(url); 7http.put(url); 8http.patch(url); 9http.delete(url); 10http.head(url); 11} 增加请求头 1void headerDemo(String url, Map&amp;lt;String, String&amp;gt; headers) async { 2http.get(url, headers: headers); 34// 其他的方法相同 5 } post 常见的请求方式 常见的请求方式有如下几种(来自于postman) 或者使用 查看也可以帮助加深理解
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 1.0.0 打包apk后运行错误</title>
+      <link>https://kikt.top/post/flutter/flutter-arm64-crash/</link>
+      <pubDate>Fri, 07 Dec 2018 17:04:04 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-arm64-crash/</guid>
+      <description>
+        
+          
+            java.lang.UnsatisfiedLinkError: dalvik.system.PathClassLoader[DexPathList[[zip file &amp;quot;/system/framework/android.test.runner.jar&amp;quot;, ...... base.apk!/lib/arm64-v8a, /system/lib64, /system/vendor/lib64]]] couldn&#39;t find &amp;quot;libflutter.so&amp;quot;
+这种问题可以看到其中有 arm64 的字样. 也有 libflutter.so
+在以前运行打包命令后 可以正常运行的项目,可能在更新 flutter 1.0.0 后不能正常运行
+1flutter build apk 这种情况通常是因为 so 文件没有打包到 apk 中造成的 拖动 apk 到 android Studio 中可以看到其中包含的库文件
+我前面有一篇的文章可以解释原理
+但是 flutter 升级后 可以查看flutter.gradle文件
+ 图片中的代码说明了当目标是 arm64 的时候, 会自动将 64 的 so 打包到 flutter 内, 这里的问题就造成了以前你在自己的 gradle 设置的打包选项和这个同时生效,也就是 v7 v8 的 so 都不进 apk 里了..
+一个小说明 在说解决方案前,有一点需要说明的是 armeabi -&amp;gt; v7 -&amp;gt;v8,这个是 arm cpu 架构的进化过程,而后来的 cpu 是兼容前代的 so 库,
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 原生通信 (四) - iOS 通知 Flutter</title>
+      <link>https://kikt.top/post/flutter/channel/flutter-channel4/</link>
+      <pubDate>Fri, 07 Dec 2018 10:43:45 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/channel/flutter-channel4/</guid>
+      <description>
+        
+          
+            原生通信系列
+
+
+ 本篇主要介绍如何在 iOS 中发布广播,然后在 dart 端进行订阅
+oc 先来查看 OC 篇
+1#import &amp;#34;BattlePowerPlugin.h&amp;#34; 2#import &amp;lt;Foundation/NSTimer.h&amp;gt; 3 4@implementation BattlePowerPlugin 56+ (void)registerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar { 7// ... 8 9[self registerPostTimerWithRegistrar:registrar]; 10} 1112+(void) registerPostTimerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar{ 13FlutterBasicMessageChannel *channel = [FlutterBasicMessageChannel messageChannelWithName:@&amp;#34;run_time&amp;#34; binaryMessenger:[registrar messenger]]; 1415long start = [self getNow]; 1617[NSTimer scheduledTimerWithTimeInterval:5 repeats:true block:^(NSTimer * _Nonnull timer) { 18long run = [self getNow] - start; 19[channel sendMessage:[NSNumber numberWithLong:run]]; 2021if (run &amp;gt; 100){ 22[timer invalidate]; 23} 24}]; 25} 2627+(long)getNow{ 28NSDate *date = [NSDate date]; 29long timeStamp = [date timeIntervalSince1970]; 30return timeStamp; 31} 3233//.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 原生通信 (三) - Flutter 调用 iOS</title>
+      <link>https://kikt.top/post/flutter/channel/flutter-channel3/</link>
+      <pubDate>Fri, 07 Dec 2018 10:43:43 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/channel/flutter-channel3/</guid>
+      <description>
+        
+          
+            原生通信系列
+
+
+ 本篇要介绍的是 flutter 调用 iOS 篇
+如果你没有看过我的前 2 篇,建议看一下. dart 端会承接上一篇的结果
+dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/services.dart&amp;#39;; 45class BattlePower { 6static const MethodChannel _channel = const MethodChannel(&amp;#39;battle_power&amp;#39;); 78static Future&amp;lt;String&amp;gt; get platformVersion async { 9final String version = await _channel.invokeMethod(&amp;#39;getPlatformVersion&amp;#39;); 10return version; 11} 1213static Future&amp;lt;int&amp;gt; requestNativeAdd(int x, int y) async { 14int result = await _channel.invokeMethod(&amp;#39;add&amp;#39;, {&amp;#34;x&amp;#34;: x, &amp;#34;y&amp;#34;: y}); 15return result; 16} 1718//.... 19} 这里和第一篇一样
+不详细介绍了
+ 这里是以 oc 为例的,不建议用 swift 开发插件,尤其是开源插件
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 原生通信 (二) - Android通知Flutter</title>
+      <link>https://kikt.top/post/flutter/channel/flutter-channel2/</link>
+      <pubDate>Fri, 07 Dec 2018 10:02:15 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/channel/flutter-channel2/</guid>
+      <description>
+        
+          
+            原生通信系列
+
+
+ 第二篇介绍的是原生通知 dart
+开篇就是灵魂流程图,自己体会吧 😆 不同于第一篇, 本篇是由 java 端作为发布端, dart 作为订阅端
+具体的创建过程请参考第一篇
+java 先看看 java 端代码
+1package com.example.battlepower; 23import java.util.Timer; 4import java.util.TimerTask; 56import io.flutter.plugin.common.BasicMessageChannel; 7import io.flutter.plugin.common.MethodCall; 8import io.flutter.plugin.common.MethodChannel; 9import io.flutter.plugin.common.MethodChannel.MethodCallHandler; 10import io.flutter.plugin.common.MethodChannel.Result; 11import io.flutter.plugin.common.PluginRegistry.Registrar; 12import io.flutter.plugin.common.StandardMessageCodec; 1314/** 15* BattlePowerPlugin 16*/ 17public class BattlePowerPlugin implements MethodCallHandler { 1819private static BasicMessageChannel&amp;lt;Object&amp;gt; runTimeSender; 2021private static Timer timer; 2223private static long startTime; 2425/** 26* Plugin registration. 27*/ 28public static void registerWith(Registrar registrar) { 29final MethodChannel channel = new MethodChannel(registrar.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 原生通信 (一) - flutter调用Android</title>
+      <link>https://kikt.top/post/flutter/channel/flutter-channel1/</link>
+      <pubDate>Thu, 06 Dec 2018 17:16:34 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/channel/flutter-channel1/</guid>
+      <description>
+        
+          
+            原生通信系列
+
+
+ 在 flutter 开发中一定会有需要和原生通信的情况
+第一篇介绍的是 flutter 调用 Android
+这篇是给刚刚入门或者刚刚接触原生调用的朋友们使用的,老鸟们或者英文强的朋友还是直接看官方文档比较好
+创建项目 一般来说建议使用一个 plugin 作为一个单独的项目来将业务逻辑独立出去
+我这里使用命令行创建,事实上一律建议使用命令行创建,因为信息更加可见一些
+1flutter create --template plugin battle_power 2cd battle_power 前面都是固定格式,最后面那个是插件名,根据你自己的需要来修改
+创建好的截图如下 和开发 package 的时候不同,开发 plugin 需要打开 example/android 目录
+ 使用快捷的方式,或自己通过 Android Studio 的 open 打开项目
+ 等待完成
+ 接着就可以开始开发了,
+默认生成了一个 java 文件,可以称之为插件的主文件
+流程图  乱画的..随便看看就好
+android 端 1package com.example.battlepower; 23import io.flutter.plugin.common.MethodCall; 4import io.flutter.plugin.common.MethodChannel; 5import io.flutter.plugin.common.MethodChannel.MethodCallHandler; 6import io.flutter.plugin.common.MethodChannel.Result; 7import io.flutter.plugin.common.PluginRegistry.Registrar; 89/** BattlePowerPlugin */ 10public class BattlePowerPlugin implements MethodCallHandler { 11/** Plugin registration.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 本人开发的一些开源库</title>
+      <link>https://kikt.top/post/flutter/flutter-self-library/</link>
+      <pubDate>Wed, 05 Dec 2018 11:50:03 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-self-library/</guid>
+      <description>
+        
+          
+            pub 库
+项目名: 项目地址: 简介: 图片压缩
+ 项目名: 项目地址: 项目简介: 仿 android toast 纯 flutter 实现
+ 项目名: 项目地址: 项目简介: 读取系统相册 纯 api 版 支持(ios/android)
+ 项目名: 项目地址: 项目简介: 相册图片选择器 基于 photo_manager
+ 项目名: 项目地址: 项目简介: ListView 的加载更多
+ 项目名: 项目地址: 项目简介: 配合 pageview 的简单圆点指示器
+ 项目名: 项目地址: 项目简介: 城市选择器
+ 项目名: 项目地址: 项目简介: 一个长按弹出菜单的小部件
+ 项目名: 项目地址: 项目简介: 日志插件,用于帮助将 flutter 上的日志记录至开发机
+ 如果用过的朋友觉得好用,请在遇到别人想用的时候帮忙感谢宣传
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docker 部署二进制</title>
+      <link>https://kikt.top/post/docker/docker-delop-bin-file/</link>
+      <pubDate>Fri, 16 Nov 2018 13:39:04 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/docker/docker-delop-bin-file/</guid>
+      <description>
+        
+          
+            在搜索引擎中,搜索了一下如何部署一个 go 的程序, 发现都是基于 golang 的镜像部署 go 源码的方案
+而基于 golang 源码部署 docker image 的大小有 700MB, 有时候并不需要这么大,我们生成二进制文件后 只需要基于 centos 来制作 image 就可以了, 当然如果对于 go 源码有持续部署的需求,那还是只能使用 golang 镜像
+ 目录结构  完整的目录结构就这么简单, main 是二进制运行文件
+main.go 1package main 23import &amp;#34;github.com/gin-gonic/gin&amp;#34; 45func main() { 6g := gin.Default() 78g.LoadHTMLGlob(&amp;#34;static/*&amp;#34;) 910g.GET(&amp;#34;/index&amp;#34;, func(c *gin.Context) { 11c.HTML(200, &amp;#34;index.html&amp;#34;, gin.H{ 12&amp;#34;title&amp;#34;: &amp;#34;标题&amp;#34;, 13}) 14}) 1516g.Run(&amp;#34;:80&amp;#34;) 17} 打包 go 二进制运行文件 这里因为我是 mac 系统,所以我需要交叉编译,具体的交叉编译可以查看我的
+1cd main 23CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docker-Compose 结合nginx实现跨容器转发</title>
+      <link>https://kikt.top/post/docker/docker-compose-and-nginx-forward/</link>
+      <pubDate>Thu, 15 Nov 2018 15:28:11 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/docker/docker-compose-and-nginx-forward/</guid>
+      <description>
+        
+          
+            开发环境 mac zsh docker-compose
+1~ docker-compose --version 2docker-compose version 1.22.0, build f46880f 目录结构  docker-compose.yml 1version:&amp;#34;3&amp;#34;2services:3web:# 服务的名称4image:nginx5volumes:# 文件夹映射6- /Users/cai/Documents/www:/usr/share/nginx/html:ro# 宿主:docker:只读 ,www目录7- ./config/web.conf:/etc/nginx/nginx.conf:ro# nginx配置文件8ports:# 端口转发 宿主:docker9- &amp;#34;8080:80&amp;#34;10- &amp;#34;8081:81&amp;#34;11# environment:12# - NGINX_HOST=foobar.com13# - NGINX_PORT=8014# command: /bin/bash -c &amp;#34;envsubst &amp;lt; /etc/nginx/conf.d/mysite.template &amp;gt; /etc/nginx/conf.d/default.conf &amp;amp;&amp;amp; exec nginx -g &amp;#39;daemon off;&amp;#39;&amp;#34;15networks:## 定义网络16nn:## 加入的网络的名称17ipv4_address:192.168.5.101## ipv4的ip地址1819web8082:20image:nginx21volumes:22- /Users/cai/Documents/www/8082:/usr/share/nginx/html:ro23ports:24- &amp;#34;8082:80&amp;#34;2526networks:27nn:28ipv4_address:192.168.5.1022930web8083:31image:nginx32volumes:33- /Users/cai/Documents/www/8083:/usr/share/nginx/html:ro34ports:35- &amp;#34;8083:80&amp;#34;3637networks:38nn:39ipv4_address:192.168.5.1034041networks:##定义网络组42nn:## 网络组名称43driver:bridge## 网络的模式44ipam:## 配置网络45driver:default46config:47- subnet:192.168.5.0/24## ip地址网络 这里宿主机一般会是该网段的 192.168.5.1,所以不要设置自网段为1配置服务 配置网络
+将服务加入同一个网络组,这样 docker 就可以在同一个网络组里了,由于 docker 的特性,每个容器会认为自己和另一个容器是局域网的关系
+我这里做的是 nginx 转发
+nginx.conf 1user nginx; 2worker_processes 1; 34error_log /var/log/nginx/error.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter - 点击事件(二) - 给图片增加点击UI效果</title>
+      <link>https://kikt.top/post/flutter/flutter-click-event-2/</link>
+      <pubDate>Wed, 14 Nov 2018 14:24:26 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-click-event-2/</guid>
+      <description>
+        
+          
+            flutter 中 如果给图片外面套 InkWell ,你会发现点击的逻辑生效了,但是 UI 上没反应
+备注: , 违反版权请联系我,删除
+ 代码如下
+1import &amp;#39;package:flutter/material.dart&amp;#39;; 23class ImageTapWidget extends StatefulWidget { 4final Widget child; 5final Function onTap; 67const ImageTapWidget({Key key, this.child, this.onTap}) : super(key: key); 89@override 10ImageTapWidgetState createState() { 11return new ImageTapWidgetState(); 12} 13} 1415class ImageTapWidgetState extends State&amp;lt;ImageTapWidget&amp;gt; { 16var isDown = false; 17@override 18Widget build(BuildContext context) { 19return GestureDetector( 20child: AnimatedContainer( 21duration: Duration(milliseconds: 500), 22foregroundDecoration: BoxDecoration( 23color: isDown ? Colors.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter - 点击事件(一) - 自定义一个方便的点击控件</title>
+      <link>https://kikt.top/post/flutter/flutter-click-event-1/</link>
+      <pubDate>Wed, 14 Nov 2018 13:29:26 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-click-event-1/</guid>
+      <description>
+        
+          
+            点击事件 android 中,所有 View 都可以直接 setOnClickListener, RN 中也有 TouchableHightlight 这样的控件可以直接套在外面,ios 中也可以有 UIControl 这样的控件可以直接添加点击事件.
+那么 flutter 中有吗? 答案自然是有. GestureDetector,InkResponse,InkWell, 包括一些琳琅满目的按钮,比如 FlatButton,MaterialButton,CupertinoButton,IconButton,ImageButton 这些组件都可以达到目的. 那么自定义的目的是什么呢?
+自定义的优点 最重要的自然就是可控性强,复用性强. 一次修改终身受用. 来看下面的这段代码
+1import &amp;#39;package:flutter/material.dart&amp;#39;; 23class MaterialTapWidget extends StatelessWidget { 4final double radius; 5final Function onTap; 6final Widget child; 7final double elevation; 8final Color backgroundColor; 9final Color splashColor; 10final Function onLongTap; 1112const MaterialTapWidget({ 13Key key, 14this.radius = 0.0, 15this.onTap, 16this.onLongTap, 17@required this.child, 18this.splashColor, 19this.elevation = 0.0, 20this.backgroundColor = Colors.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>【转】Golang 在 Mac、Linux、Windows 下如何交叉编译</title>
+      <link>https://kikt.top/post/go/cross-compilation/</link>
+      <pubDate>Tue, 13 Nov 2018 19:54:33 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/go/cross-compilation/</guid>
+      <description>
+        
+          
+            转自 Golang 支持交叉编译，在一个平台上生成另一个平台的可执行程序，最近使用了一下，非常好用，这里备忘一下。
+Mac 下编译 Linux 和 Windows 64 位可执行程序
+1CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go 2CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build main.go Linux 下编译 Mac 和 Windows 64 位可执行程序
+1CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build main.go 2CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build main.go Windows 下编译 Mac 和 Linux 64 位可执行程序
+1SET CGO_ENABLED=0 2SET GOOS=darwin 3SET GOARCH=amd64 4go build main.go 56SET CGO_ENABLED=0 7SET GOOS=linux 8SET GOARCH=amd64 9go build main.go GOOS：目标平台的操作系统（darwin、freebsd、linux、windows） GOARCH：目标平台的体系架构（386、amd64、arm） 交叉编译不支持 CGO 所以要禁用它
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>【简单翻译】flutter的设计哲学（ inside flutter）</title>
+      <link>https://kikt.top/post/flutter/inside-flutter/</link>
+      <pubDate>Sun, 11 Nov 2018 12:24:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/inside-flutter/</guid>
+      <description>
+        
+          
+            简单翻译 英文链接来自于
+对应的版本为 11 月 11 日版本 连接为 后续如有改动,请以最新的英文版本为准,有翻译不准确的地方请参照英文版本自行理解
+ 概述  本文档描述了 Flutter 工具包的内部工作原理，使 Flutter 的 API 成为可能。因为 Flutter 小部件是使用积极的可组合性(aggressive composition)构建的，所以使用 Flutter 构建的用户界面具有大量小部件。
+为了支持这种工作量，Flutter 使用次线性算法来布局和构建小部件，这些数据结构使树形手术变得高效，并且具有许多常量因子优化。
+通过一些额外的细节，这种设计还使开发人员可以使用回调来轻松创建无限滚动列表，这些回调可以构建用户可见的小部件。
+积极的可组合性（Aggressive composability）  Flutter 最独特的一个方面是其积极的可组合性。
+小部件是通过组合其他小部件构建的，这些小部件本身是由逐步更基本的小部件构建的。例如，Padding 是一个小部件而不是其他小部件的属性。因此，使用 Flutter 构建的用户界面由许多小部件组成。
+小部件构建递归在 RenderObjectWidgets 中触底，这些小部件在底层渲染树中创建节点。渲染树是一种数据结构，用于存储用户界面的几何图形，该几何图形在布局期间计算并在绘制和命中测试期间使用。大多数 Flutter 开发人员不直接创建对象，而是使用小部件操纵渲染树。
+为了在小部件层支持积极的可组合性，Flutter 在小部件和渲染树层使用了许多有效的算法和优化，这些将在以下小节中介绍。
+次线性布局 使用大量小部件和渲染对象，良好性能的关键是高效的算法。最重要的是布局的性能，布局是确定渲染对象的几何（例如，大小和位置）的算法。其他一些工具包使用 O（N²）或更差的布局算法（例如，某些约束域中的定点迭代）。 Flutter 的目标是初始布局的线性性能，以及随后更新现有布局的常见情况下的次线性布局性能。通常，布局所花费的时间量应该比渲染对象的数量更慢。
+Flutter 每帧执行一个布局，布局算法一次完成。约束通过父对象向下传递，父对象在每个子对象上调用布局方法。子项递归地执行自己的布局，然后通过返回布局方法将几何返回到树中。重要的是，一旦渲染对象从其布局方法返回，该渲染对象将不再被访问，直到下一帧的布局。这种方法将可能单独的度量和布局传递组合成单个传递，因此，每个渲染对象在布局期间最多访问两次：一次在树下，一次在树上。
+Flutter 有这个通用协议的几个专业。最常见的专业是 RenderBox，它以二维笛卡尔坐标运算。在框布局中，约束是最小和最大宽度以及最小和最大高度。在布局期间，子项通过选择这些边界内的大小来确定其几何。孩子从布局返回后，父母决定孩子在父母坐标系中的位置。请注意，孩子的布局不能取决于孩子的位置，因为孩子的位置直到孩子从布局返回后才确定。因此，父母可以自由地重新定位孩子，而无需重新计算孩子的布局。
+更一般地说，在布局期间，从父节点传递到子节点的唯一信息是约束，并且从子节点流向父节点的唯一信息是几何体。这些不变量可以减少布局期间所需的工作量：
+  如果孩子没有将自己的布局标记为脏，则孩子可以立即从布局返回，切断步行，只要父母给孩子的约束与孩子在前一个布局中收到的约束相同。
+  每当父级调用子级的布局方法时，父级指示它是否使用从子级返回的大小信息。如果经常发生父级不使用大小信息，那么如果子级选择新大小，则父级不需要重新计算其布局，因为父级保证新大小将符合现有约束。
+  严格约束是指只能通过一个有效几何体来满足的约束。例如，如果最小和最大宽度彼此相等并且最小和最大高度彼此相等，则满足这些约束的唯一尺寸是具有该宽度和高度的尺寸。如果父级提供严格约束，则父级无需在子级重新计算其布局时重新计算其布局，即使父级在其布局中使用子级的大小，因为子级无法在没有父级的新约束的情况下更改大小。
+  渲染对象可以声明它仅使用父级提供的约束来确定其几何。这样的声明通知框架该子渲染对象的父级在子级重新计算其布局时不需要重新计算其布局，即使约束不紧，即使父级的布局取决于子级的大小，因为子级无法更改大小没有来自其父级的新约束。
+  作为这些优化的结果，当渲染对象树包含脏节点时，在布局期间仅访问那些节点以及它们周围的子树的有限部分。
+次线性小部件构建 与布局算法类似，Flutter 的小部件构建算法是次线性的。构建之后，小部件由元素树保存，元素树保留用户界面的逻辑结构。元素树是必要的，因为小部件本身是不可变的，这意味着（除其他外），它们不能记住它们与其他小部件的父或子关系。元素树还包含与有状态窗口小部件关联的状态对象。
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter android So库对齐</title>
+      <link>https://kikt.top/post/flutter/so-about-1/</link>
+      <pubDate>Sat, 27 Oct 2018 12:18:08 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/so-about-1/</guid>
+      <description>
+        
+          
+            so 库说明 so 库在 android 中,是使用 c/c++代码编译出来的库文件,可以使用 ndk 调用,就是你在 android 代码中见到的 native 方法,具体的实现就在 so 库中
+关于 so 库兼容性问题 andorid 中或多或少都会引用到第三方库,而很多第三方库中都有 so 的存在,不论是复制到项目中(如百度地图),或是 gradle 依赖(如个推) 其中都涉及到了 so 库的相关问题,如果你选择的库是有所有 cpu 类型可选还好,如果不是,那么就需要自定义设置了
+举个栗子 你的 app 依赖两个库,分别是 lib1,lib2
+1lib1: arm64-v8a,armeabi-v7a 2lib2: armeabi-v7a 那么当你运行在 v7 的手机上时,因为你的项目含有 v7 的 so 库,所以没有问题,可以跑起来
+如果,你运行在 v8 手机上,那么你的项目就会 boom,崩了, 为啥呢? 这就涉及到 so 对齐了
+so 对齐 简单来说,就是要有就必须都有,如果一个没有,那就一个都不要
+比如上面的例子,如果你是自己复制到项目下的,你需要删掉 arm64-v8a 的文件夹
+如果是个推那种使用 gradle 依赖的方案,那么你需要修改 gradle 文件,这个是我的个推的配置 gradle
+1// 个推的ndk配置 2apply plugin: &amp;#39;com.android.application&amp;#39; 34android { 5defaultConfig { 6ndk { 7abiFilters &amp;#34;armeabi-v7a&amp;#34; 8// abiFilters &amp;#34;armeabi-v7a&amp;#34;,&amp;#34;arm64-v8a&amp;#34; 9 } 10} 11buildTypes { 12debug { 13ndk { 14abiFilters &amp;#34;armeabi-v7a&amp;#34;, &amp;#34;x86&amp;#34; 15// abiFilters &amp;#34;armeabi-v7a&amp;#34;, &amp;#34;x86&amp;#34;/*, &amp;#34;arm64-v8a&amp;#34;*/ 16 } 17} 18release{ 19ndk{ 20abiFilters &amp;#34;armeabi-v7a&amp;#34; 21} 22} 23} 24} 2526repositories { 27maven { url &amp;#34;http://mvn.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 如何自定义一个loadmore 加载更多</title>
+      <link>https://kikt.top/post/flutter/flutter-custom-loadmore/</link>
+      <pubDate>Thu, 06 Sep 2018 12:16:31 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-custom-loadmore/</guid>
+      <description>
+        
+          
+            自定义 loadmore 写在前面 这类的库在 pub 上有很多
+我为什么要自定义呢
+首先是项目需要，并且这种库普适性高，抽取出来今后复用也方便点
+另外记录一下编码思路,方便后续查看
+ 使用说明  或  看看构造方法 一共 5 个属性 child 是 ListView
+onLoadMore 是加载更多时的回调,由外部实现
+isFinish 加载完成
+delegate 是一个抽象类 有默认实现, 其中有 3 个方法,一个是根据状态给一个 widget 高度 一个是延迟加载的毫秒时间 一个是构建显示在内部的 Widget,这样就完全实现了外部可根据状态自定义 Widget
+LoadMoreTextBuilder 是一个根据状态构建文字的方案,默认实现了 中文/英文文字,如果只想修改文字,使用默认样式的话,可以直接用这个即可
+思路 首先考虑怎么自定义 一般来讲有 2 种方式，一个是到底部继续上拉加载，另一种是滚动到底部自动加载，我这里采取的是到底部自动加载方案
+不使用上拉加载的原因是：滚动到底继续上拉不符合正常人习惯，如果是惯性滚动到底，谁知道你后面还有没有东西的
+思考如何自定义 首先怎么样可以知道滚动到底了呢，最简单的方式，listview 的最后一行 build 的时候一定滚动到底了
+所以我们可以使用如下的方式定义
+12class _ListViewDemoPageState extends State&amp;lt;ListViewDemoPage&amp;gt; { 3var count = 10; 45@override 6Widget build(BuildContext context) { 7return ListView.builder( 8itemCount: count + 1, 9itemBuilder: _buildItem, 10); 11} 1213Widget _buildItem(BuildContext context, int index) { 14if (index == count) { 15return Text(&amp;#39;到底了&amp;#39;); 16} 17return Text(index.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 一个简单的Route Helper/Navigator Helper</title>
+      <link>https://kikt.top/post/flutter/flutter-simple-route-helper/</link>
+      <pubDate>Wed, 05 Sep 2018 12:13:39 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-simple-route-helper/</guid>
+      <description>
+        
+          
+            在 flutter 中 route 是一个绕不开,必须面对,且很常用东西
+Route 就是路由,顾名思义,负责你页面间的跳转
+不想看代码和思路分析的直接 copy 了拿去用就行 没有啥外部依赖,只需要注意_rootRoute 后面的字符串需要和 initialRoute 对应即可
+路由又分静态和动态路由
+静态就是不需要传参数的,这样的路由可以直接定义在 MaterialApp/WidgetsApp 里 这样可以通过Navigator.pushNamed调用
+ 动态的就是传入一个PageRoute, 通常是一个MaterialPageRoute 或者CupertinoPageRoute,或者你如果有自定义的有可以使用
+这里我使用一个我的工具类来实现跳转,因为大部分情况下,工程中的路由都是动态的,也就是需要传参数的,所以工具类中只包含了静态路由
+1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/material.dart&amp;#39;; 45class RouteHelper { 6static Future&amp;lt;T&amp;gt; pushWidget&amp;lt;T&amp;gt;( 7BuildContext context, 8Widget widget, { 9bool replaceRoot = false, 10bool replaceCurrent = false, 11}) { 12return pushRoute( 13context, 14MaterialPageRoute(builder: (ctx) =&amp;gt; widget), 15replaceRoot: replaceRoot, 16replaceCurrent: replaceCurrent, 17); 18} 1920static Future&amp;lt;T&amp;gt; pushRoute&amp;lt;T&amp;gt;( 21BuildContext context, 22PageRoute&amp;lt;T&amp;gt; route, { 23bool replaceRoot = false, 24bool replaceCurrent = false, 25}) { 26assert(!
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 依赖冲突解决</title>
+      <link>https://kikt.top/post/flutter/flutter-depo-conflict/</link>
+      <pubDate>Thu, 23 Aug 2018 12:12:19 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-depo-conflict/</guid>
+      <description>
+        
+          
+            有时候 flutter 更新 sdk 版本后不知道该不该更新 有时候 pub 库更新后和自己的其他类库发生了冲突
+ 类似于图上的情况
+遇到这样的问题应该怎么解决呢
+我们一步步解决
+首先,这种依赖一般是 pub 中引用的,先查看下原作者有没有最新版,也许就解决了呢
+无奈我们用到的类库是一个 5 个月没有更新过的类库,看来是指望不上了 没关系,我们进 pub 主页中
+ 一般都是有 github 的,我们点进 github 中 如果真没有 那就下一个 zip,然后自己创建一个吧
+然后 fork 项目,clone 下来,修改下
+ 可以参考下这个修改日志, 修改了库的引用地址,因为这两个库是同一个作者,这个依赖了另一个,我这里修改了另一个库,并且也同样 fork+clone 修改后上传到了自己的 github
+这里是另一个库的修改 我在这里修改了作者使用的依赖为更加新的版本
+接着返回自己的 app 项目中
+ 修改引用为 git 的方式
+接着再使用就没问题了
+git 依赖的引用方式可以参考 ,
+ 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Dart Flutter中的代码规范</title>
+      <link>https://kikt.top/post/flutter/dart-flutter-code-style/</link>
+      <pubDate>Wed, 22 Aug 2018 12:19:22 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/dart-flutter-code-style/</guid>
+      <description>
+        
+          
+            文章首发地址: 前言 最近看 qq 群里发的很多代码截图,感觉命名规则/文件命名都不符合规范 很多朋友都是从其他语言转向 dart/flutter 的,深感语言环境还需要大家共同去维护,建议还是规范化代码,这样所有人看着都会舒服 恰好 dart 语言官方有自己的代码规范和相关的说明,在 dartlang 官网上,英文好的建议阅读原文 连接地址 我这里仅粗略翻译和加入一些自己的理解
+图片均来自于上述 url 对应的页面中 当前 dart 版本为 2.0 版本,日期为 2018 年 08 月 22 日 可能会在未来有改动,到时请以最新文档为准
+文档中图片的绿色部分为正例,右上角带good标识 红色是反例,右上角带bad标识
+标识方案  在 dart 有 3 种常规标识方案 第一个为大写字母开头的驼峰式 如 UserInterface 每个词的首字母为大写 第二个是小写开头的驼峰式,如testRun,第一个单词是小写,后续每个单词首字母大写 第三个是每个单词均为小写,以下划线分隔,如user_response
+总结 如果不想往下看具体的图片和翻译,直接看这里
+文件名: 小写+下划线 类型名(类名,函数类型名):大写开头驼峰 变量名(包含 const final 常量):使用小写开头驼峰, 项目有特殊要求 const 可以使用大写+下划线的方式,如同java中一样 导包 as 后的名称为小写+下划线 不要用匈牙利命名法中的 kXXXX 这样的命名方式,应该去掉 k 超过两位的英文缩写一律按该单词为普通小写单词处理,使用小写
+导包有顺序要求,且每&amp;quot;部分&amp;quot;间空行分隔开,每部分内按字母排序,按如下顺序排序 dart sdk 内的库 flutter 内的库 第三方库 自己的库 相对路径引用
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>flutter json解析相关 for json_serializable</title>
+      <link>https://kikt.top/post/flutter/flutter-json/</link>
+      <pubDate>Thu, 09 Aug 2018 12:10:24 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-json/</guid>
+      <description>
+        
+          
+            以下所有相关来自于当前认知,flutter 还在高速发展/dart 也在不停更新,后续可能发生变化 目前 flutter dev 版本是 0.7.0
+dart 正式版是 2.0.0
+json_serializable 版本是 1.1.0
+具体的 json 解析可以参考这篇 连接来自于官网
+其中介绍了两种方式，第一种是手动解析
+需要的话可以参考一位大佬写的 这个有一个工具，python+qt 写的跨平台工具，有 linux/mac/windows 三端可执行文件
+第二种是利用
+ 1dependencies:2# Your other regular dependencies here3json_annotation:^0.2.345dev_dependencies:6# Your other dev_dependencies here7build_runner:^0.9.08json_serializable:^0.5.4这里有一个坑，就是高版本的 flutter hello world 工程创建时会自动依赖 flutter_test 的高版本，但是这个高版本的 flutter_test 和这个库的当前不兼容，所以会报错，删除掉 test 的引用或等待兼容性更新,我目前版本是 dev 分支的 0.5.7，不排除后续可以使用
+ 第二种方法需要手写 entity，bean，model，喜欢怎么叫你说了算，
+类似于这种格式，这里我写了一个网页专门用于 json=&amp;gt;dart 文件，可以直接完成这个步骤，将懒最大化
+  这里点击下载 复制文件到你的 flutter 中
+接着在命令行中敲
+1flutter packages pub run build_runner build  这里会有一个自动生成.g.dart 的文件，其中就有所有的解析相关的代码
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Mac Flutter 开发环境配置 从0到1 流程</title>
+      <link>https://kikt.top/post/flutter/mac-flutter-env-0-to-1/</link>
+      <pubDate>Sat, 04 Aug 2018 12:08:18 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/mac-flutter-env-0-to-1/</guid>
+      <description>
+        
+          
+            mac 开发环境配置 从入门到完成 本文首发简书 转载请注明出处  高能提示：文章字数不多，图很多，请做好战斗准备
+ 前言 写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章 因为 flutter 涉及到跨平台开发，所以预想中会包含四部分 mac 篇，android 篇，ios 篇，flutter 篇
+术语相关 cmd = command 键（空格左边） opt／alt = option 键（cmd 左边） ctrl = control（opt 左边） cli = 命令行工具（command-line interface,命令行界面) as = Android Studio
+写在前面 最低需要 xcode 9.0.0 以上的 xcode 版本 但是不建议从非官方渠道下载 xcode，以免遇到之前盗版 xcode 的问题
+我就是都装好了 8.3 才告诉我这个，没办法只能升级系统，再升级 xcode
+mac 篇 所谓 mac 篇就是一些基础的环境，和效率工具
+后面会使用
+cli 我这里使用，一个免费的开源的命令行工具 默认的命令行工具用 launchpad=&amp;gt; 其他 =&amp;gt; 终端打开
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter基础faq</title>
+      <link>https://kikt.top/post/flutter/flutter-base-faq/</link>
+      <pubDate>Thu, 02 Aug 2018 11:29:34 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-base-faq/</guid>
+      <description>
+        
+          
+            写在前面 这篇文章的目的是给纯 flutter 萌新回答一些基础问题,ctrl+f/cmd+f 搜索关键字 控件名 本篇会持续更新 最后更新时间 2018-08-02
+布局篇 flutter 中 控件各司其职,基础控件中基本只包含自己的功能 显示内容的负责显示内容,如 Text 负责文字,Image 负责图片 容器的负责容器,Row,Column,ListView 等 尺寸位置的负责自己,Padding,Container,SizedBox 等 触摸手势触摸相关:GestureDetector
+flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如你不应该有一个class TextButton extend Text/RaisedButton这样的方案出现 而应该是
+12class TextButton extends StatelessWidget { 3final Function onPressed; 4final String text; 5final Color color; 6final double fontSize; 7final EdgeInsets padding; 89const TextButton({ 10Key key, 11this.onPressed, 12this.text = &amp;#34;&amp;#34;, 13this.color = Colors.black87, 14this.fontSize = 14.0, 15this.padding = EdgeInsets.zero, 16}) : super(key: key); 1718@override 19Widget build(BuildContext context) { 20return new Material( 21color: Colors.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>github Clone速度慢的解决方案之一</title>
+      <link>https://kikt.top/post/other/github-clone-slow/</link>
+      <pubDate>Fri, 20 Jul 2018 11:36:31 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/other/github-clone-slow/</guid>
+      <description>
+        
+          
+            github 是每个程序员应该都会用到的平台,无奈对于国内貌似没有 CDN,速度极慢..
+我在网上搜了各种修改 host 的方案,无奈并不好用,也许用国外的 VPS 中转可以解决,当然那是要收费的,还需要一些技术门槛
+今天来一个傻瓜式的帮助方案 用 gitee 中转项目
+开始 注册账号 注册账号,已经有的话可以直接登录,更简单的方案,直接用 github 账号登录  新建项目 二选一 新开一个窗口,把你需要的 github 项目地址复制过来,我这里以 flutter/engine 为例 然后回到新建项目的页面
+点这里 然后照图上操作 最后点创建
+接着就等项目好了
+这里需要耐心等待,但无论如何 很大的项目应该比你自己从那下载要快很多,毕竟有时候你从 github 每秒只有几十或者 100 200K  项目好了后  我们看到,项目都好了
+这里复制项目地址
+ 然后命令行中 我们看到 4M 每秒的速度, 这在大项目中就帮了大忙了
+如果是 200M 的项目,你 200k 一秒 需要下 1000 秒,也就是 20 分钟
+而我这里 clone 只要 50 秒 前面的工作一共操作也就是 2 分钟 等待时间也就是 3~5 分钟
+并且哪怕需要在 github 提 PR 或者 fork github 项目也没关系 修改 remote 的 url 即可,毕竟 git 是去中心化的仓库
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter 项目新手向结构简析</title>
+      <link>https://kikt.top/post/flutter/flutter-newer-readme/</link>
+      <pubDate>Fri, 13 Jul 2018 11:03:12 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-newer-readme/</guid>
+      <description>
+        
+          
+            flutter 面向新手向 flutter 中一切界面层级的东西全部都是 Widget 这句话怎么理解呢?
+大到整个应用,小到一个文字控件,全部都是 Widget
+ 一个常规的 Application 图级可能是这样的,当然实际情况下会比这复杂很多 对应代码和实际情况看一下 为了和图片对应 我把所有的写到一个文件里
+12import &amp;#39;package:flutter/material.dart&amp;#39;; 34void main() =&amp;gt; runApp(new MyApp()); 56class MyApp extends StatelessWidget { 7@override 8Widget build(BuildContext context) { 9return new MaterialApp( 10title: &amp;#39;Flutter 结构简析&amp;#39;, 11theme: new ThemeData( 12primarySwatch: Colors.blue, // 这里是项目的主色调 13 ), 14home: MyHomePage(), 15); 16} 17} 1819class MyHomePage extends StatefulWidget { 20@override 21_MyHomePageState createState() =&amp;gt; _MyHomePageState(); 22} 2324class _MyHomePageState extends State&amp;lt;MyHomePage&amp;gt; { 25@override 26Widget build(BuildContext context) { 27return Scaffold( 28appBar: AppBar(), 29body: ListView( 30children: &amp;lt;Widget&amp;gt;[ 31ListTile(title: Text(&amp;#39;我是第一个item&amp;#39;)), 32ListTile(title: Text(&amp;#39;我是第二个item&amp;#39;)), 33], 34), 35); 36} 37}  这里的一切皆 widget 的意思就是 Application 是 Widget Page 是 Scaffold 是 Appbar 是 ListView 是 ListTile 也是 Text 也是
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Flutter开篇介绍</title>
+      <link>https://kikt.top/post/flutter/flutter-first-blog/</link>
+      <pubDate>Fri, 06 Jul 2018 09:13:17 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/flutter/flutter-first-blog/</guid>
+      <description>
+        
+          
+            flutter 介绍  所有的一切都是个人观点,不满可以留言,可以讨论,吵架大可不必 所有的资料仅 2018-07-06 时我所了解的,当前的 flutter 版本号 dev 为 0.5.6,beta 为 0.5.1 转载请注明出处,简书为第一发布平台(本人目前迁出简书平台,自建 blog)
+ 何谓 flutter 简介  google 自己的官方介绍,来源于
+为什么要用 flutter 跨平台框架,能开发 ios/android,性能不错
+已有那么多的跨平台方案,flutter 有什么优势 所有 UI 为 Flutter 平台自建,使用 skia 引擎绘制到屏幕上,能保持高度的统一性 所以 flutter 定位仅为 UI 框架,可以做一些业务逻辑
+劣势呢 目前与原生控件很难有机的结合到一个界面内
+1大概意思是,目前类似于baidumap,这样的控件只能是生硬的覆盖到flutter的界面上 2android中对应FlutterView(SurfaceView),ios中是FlutterViewController的根view 3你很难直接写方便的回调,手势控制 45WebView,直播等视频播放同理 与原生通信仅依赖一个接近字符串性质的通道,没有构建工具/编译层级的检查 尚处于初级阶段,开源社区还不活跃,相关社区关注度不高
+1关于字符串性质的通道: 2大概意思就是,所有的通信依赖于字符串 3比如flutter中需要定义 4static const MethodChannel _channel = const MethodChannel(&amp;#39;com.365.app/BarCode&amp;#39;); 5_channel.invokeMethod(&amp;#34;getData&amp;#34;, source); 6类似于这样的调用方式 78而原生中 也是需要定义出完全相同的字符串来表示通道名,方法名等等 flutter 使用 dart 语言开发 为什么使用 dart,貌似是说 flutter 的开发团队物理距离 dart 的团队很近,这段真实性未知
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>swift navigation title 标题颜色代码设置</title>
+      <link>https://kikt.top/post/ios/swift/swift-navigation-title-color-style/</link>
+      <pubDate>Tue, 13 Mar 2018 11:57:15 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/swift/swift-navigation-title-color-style/</guid>
+      <description>
+        
+          
+            简单记录,为后续方便查找,仅有代码片段
+可以放在ViewController的基类中
+1if let bar = self.navigationController?.navigationBar { 2bar.backgroundColor = .themeColor 3bar.tintColor = .white 4var attrs = bar.titleTextAttributes 5if attrs == nil { 6attrs = [NSAttributedStringKey:Any]() 7} 8attrs?[NSAttributedStringKey.foregroundColor] = UIColor.white 9bar.titleTextAttributes = attrs 10} 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Swift Ios11 修改navigationbar间距</title>
+      <link>https://kikt.top/post/ios/swift/swift-ios11-change-the-navigationbar-spacing/</link>
+      <pubDate>Fri, 09 Mar 2018 11:55:10 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/swift/swift-ios11-change-the-navigationbar-spacing/</guid>
+      <description>
+        
+          
+            写在前面 在 ios11 中,navigationbar 的 leftItem 都会多出来一个奇怪的白边,这个白边很不容易修改,从前的设置方法失效了
+之前看到有篇文章是修改 layoutMargins 的方案来做的 这个方案设置虽然简单,但是有一个问题,就是当你 push,pop 以后,位置就变了,也就是说,layoutMargins 就失效了,而且需要遍历,采用 ContentView 的字符串
+另外有一个方案是采用自定义 NavigationBar 的方案来做的 也算是简单暴力
+我这里采用另一个方案来做,而且比较简单,也就是自定义 view 的方案的来做
+思路 UIBarButtonItem.init(customView: view)这种方式如果直接将 Button 放进去,那么你设置的 frame 的位置是无效的
+那么我这里采用另一个取巧的方案去做 众所周知,ios 中的控件摆放是可以超出父控件距离的,也就是说,我使用一个 UIView 包裹真正用于显示的 View,然后将子 View 的 x 设置偏移也就可以解决了
+实现 12import UIKit 34extension UIViewController{ 5func setNavigatorLeftItem(customView:UIView) { 6var view:UIView 7if #available(iOS 11, *){ 8let padding:CGFloat = 20 9let frame = customView.frame 10view = UIView(frame: CGRect(x: 0, y: 0, width: frame.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>android 依赖冲突</title>
+      <link>https://kikt.top/post/android/android-repo-confire/</link>
+      <pubDate>Sun, 04 Mar 2018 17:14:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-repo-confire/</guid>
+      <description>
+        
+          
+            起因 在引入新的依赖后,有时你会报一些冲突的错误,尤其是 v4 v7 库的使用
+有的时候能&amp;quot;自动&amp;quot;纠正,但是大部分时候不行
+比如 A 库引用了 v7 26.x.x 的库, B 库使用了 v7 27.x.x 作为依赖
+解决方案 gradle 打包的过程中,首先会加载所有 gradle 脚本到库内
+然后才是运行的过程, 所以我们只需要在 app 级的build.gradle中增加如下代码即可
+1rootProject.allprojects { // 闭包循环每个工程 2 3subprojects { //每个工程子工程 4 project.configurations.all { //查找所有配置 5 resolutionStrategy.eachDependency { details -&amp;gt; //遍历所有依赖 6 if (details.requested.group == &amp;#39;com.android.support&amp;#39; 7&amp;amp;&amp;amp; details.requested.name.contains(&amp;#39;appcompat-v7&amp;#39;)) { 8details.useVersion &amp;#34;26.1.0&amp;#34; //将support包 v7替换为26.1.0 ,这里根据你自己的需要来改就可以了 9 } 10} 11} 12} 1314} 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Swift连接BLE蓝牙打印机</title>
+      <link>https://kikt.top/post/ios/swift/swift-connect-ble-printer/</link>
+      <pubDate>Wed, 13 Sep 2017 11:52:48 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/swift/swift-connect-ble-printer/</guid>
+      <description>
+        
+          
+            swift 蓝牙连接 项目简介 最近公司要用到便携式蓝牙打印机进行打印
+打印机使用的 ECS/POS 指令集
+ios 使用的 BLE 方案,安卓则是因为设备的原因只能选择普通蓝牙的连接方案
+BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜索下
+有个 mac 的蓝牙开发工具 LightBlue,很好用,mac app store 自己下就好了,这个很方便你理解 BLE 的蓝牙相关 device(central/peripheral)-&amp;gt;services-&amp;gt;characteristics
+ 这里可以看到,有一个 mobike,有兴趣的同学可以研究下 mobike 的蓝牙连接 ☺ 说笑一下,人家肯定有安全性校验的
+语言选型 最近在学习 ios 开发,因为我是 android 出身,学习 ios 开发的时候 swift3 已经出现很久了,所以我这里使用的 swift 进行开发
+坑 1 最初我使用了厂家提供的 ios sdk 进行开发,其中封装了很多常用的方法,让我自己以为很简单就能完成,但是事实上是我太天真了,首先厂家提供的是.a 的库,只有一个.h 文件暴露在外,我的项目是纯 swift 项目,这就不可避免的使用到了 swift 到 oc 的桥接
+坑 2 满以为桥接完了调 SDK 方法就行,谁知道调用的时候根本就没反应,没办法,只能摸石头过河进行开发了,最初使用的是 oc 的 corebluetooth 方案,因为实在是没找到 swift 的相关说法,baidu 没搜到,没办法,oc 毕竟也算是入门了,直接开干了
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>spring boot 渲染md格式模板</title>
+      <link>https://kikt.top/post/server/java/spring-boot/template/</link>
+      <pubDate>Sun, 27 Aug 2017 10:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/java/spring-boot/template/</guid>
+      <description>
+        
+          
+            写在前面 主要技术点:使用 thymeleaf+flexmark 渲染模板渲染 markdown 文件 ,highlight 渲染代码高亮 thymeleaf 模板负责渲染页面 flexmark 是 java 语言编写,负责将数据库中的 markdown 语法文本转为 html 文本 highlight 负责渲染 code 部分的代码,是一款 js+css 库
+步骤 首先定义一个 controller 和 requstmapping
+1package com.kikt.web.ctl.blog; 23import com.kikt.service.markdown.MarkdownService; 4import com.sun.org.apache.xpath.internal.operations.Mod; 5import org.springframework.beans.factory.annotation.Autowired; 6import org.springframework.stereotype.Controller; 7import org.springframework.ui.Model; 8import org.springframework.web.bind.annotation.RequestMapping; 9import org.springframework.web.bind.annotation.RequestMethod; 10import org.springframework.web.bind.annotation.RequestParam; 11import org.springframework.web.bind.annotation.RequestPart; 1213/** 14* Created by cai on 2017/8/25. 15*/ 16@Controller 17@RequestMapping(&amp;#34;/md&amp;#34;) 18public class MarkdownCtl { 1920@Autowired 21private MarkdownService service; 2223@RequestMapping(value = &amp;#34;/parse&amp;#34;, method = RequestMethod.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>spring boot 扫码登录 后端实现</title>
+      <link>https://kikt.top/post/server/java/spring-boot/scan-login/</link>
+      <pubDate>Fri, 25 Aug 2017 11:42:26 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/java/spring-boot/scan-login/</guid>
+      <description>
+        
+          
+            前言 在业内，扫码登陆不是什么新技术了，我这里主要是想自己实现一下这个功能，用的是简单实现，提供的只是思路 具体可以参考网上的其他文章 开发环境 mac+idea+paw+chrome+mysql 开发语言:java+kotlin mac:我的开发系统 idea:开发工具 paw:http调试工具  插一句 开发语言使用kotlin是有原因,kotlin是构建在jvm上的,而且有很多很方便的语法糖,敲代码速度很快  启动项目 首先配置一个 spring boot 的项目,这里使用 maven 构建的方案,因为我这里使用 gradle 构建总是会出现各种奇怪的问题
+pom.xml
+1&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; 2&amp;lt;project xmlns=&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34; xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34; 3xsi:schemaLocation=&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&amp;gt; 4&amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt; 56&amp;lt;groupId&amp;gt;com.kikt&amp;lt;/groupId&amp;gt; 7&amp;lt;artifactId&amp;gt;myapp&amp;lt;/artifactId&amp;gt; 8&amp;lt;version&amp;gt;0.0.1-SNAPSHOT&amp;lt;/version&amp;gt; 9&amp;lt;!--&amp;lt;packaging&amp;gt;war&amp;lt;/packaging&amp;gt;--&amp;gt; 10&amp;lt;packaging&amp;gt;war&amp;lt;/packaging&amp;gt; 1112&amp;lt;name&amp;gt;myapp&amp;lt;/name&amp;gt; 13&amp;lt;description&amp;gt;MyApp&amp;lt;/description&amp;gt; 1415&amp;lt;parent&amp;gt; 16&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; 17&amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; 18&amp;lt;version&amp;gt;1.5.4.RELEASE&amp;lt;/version&amp;gt; 19&amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt; 20&amp;lt;/parent&amp;gt; 2122&amp;lt;properties&amp;gt; 23&amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt; 24&amp;lt;project.reporting.outputEncoding&amp;gt;UTF-8&amp;lt;/project.reporting.outputEncoding&amp;gt; 25&amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt; 26&amp;lt;kotlin.version&amp;gt;1.1.3-2&amp;lt;/kotlin.version&amp;gt; 27&amp;lt;/properties&amp;gt; 2829&amp;lt;dependencies&amp;gt; 30&amp;lt;!--&amp;lt;dependency&amp;gt;--&amp;gt; 31&amp;lt;!--&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;--&amp;gt; 32&amp;lt;!--&amp;lt;artifactId&amp;gt;spring-boot-starter-data-jpa&amp;lt;/artifactId&amp;gt;--&amp;gt; 33&amp;lt;!--&amp;lt;/dependency&amp;gt;--&amp;gt; 34&amp;lt;dependency&amp;gt; 35&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; 36&amp;lt;artifactId&amp;gt;spring-boot-starter-data-rest&amp;lt;/artifactId&amp;gt; 37&amp;lt;/dependency&amp;gt; 38&amp;lt;dependency&amp;gt; 39&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; 40&amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; 41&amp;lt;/dependency&amp;gt; 4243&amp;lt;dependency&amp;gt; 44&amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt; 45&amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt; 46&amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt; 47&amp;lt;/dependency&amp;gt; 4849&amp;lt;dependency&amp;gt; 50&amp;lt;groupId&amp;gt;com.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>spring boot jdbctemplate mysql emoji 编码错误的问题</title>
+      <link>https://kikt.top/post/server/java/spring-boot/encoding-error/</link>
+      <pubDate>Wed, 23 Aug 2017 11:42:26 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/java/spring-boot/encoding-error/</guid>
+      <description>
+        
+          
+            前言 为啥标题这么长呢? 因为确实关联到了这些问题 最近买了个阿里云的打折主机,打算主机布个简易的服务器,顺便熟悉下 springboot 的一些知识, 数据库打算直接用简单 jdbctemplate 但是不巧 在提交上传的时候有中文,引起了乱码问题
+乱码问题 根据我多年的经验,乱码都是编码问题,baidu 了下
+修改 springboot.properties
+1spring.datasource.url = jdbc:mysql://127.0.0.1:3306/app?autoReconnect=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8 果然得到了解决
+emoji 报错 后来上传的内容中有 emoji 表情,报错信息UncategorizedSQLException 原因是 utf8 不支持长度为 4 的编码
+数据库 1createtableblog_content2(3`_id`intnotnullauto_incrementcomment&amp;#39;id 主键&amp;#39;4primarykey,5titlevarchar(50)default&amp;#39;没有标题&amp;#39;notnullcomment&amp;#39;标题&amp;#39;,6contentvarchar(1000)null,7tagvarchar(30)nullcomment&amp;#39;标签&amp;#39;,8insert_timetimestampdefaultCURRENT_TIMESTAMPnotnull,9update_timetimestampdefaultCURRENT_TIMESTAMPnotnullcomment&amp;#39;更新时间&amp;#39;,10author_uidintnotnull11)12comment&amp;#39;博客内容&amp;#39;13ENGINE=InnoDBDEFAULTcharsetutf8mb4collateutf8mb4_unicode_ci;14;1INSERTINTOblog_content(content,tag,author_uid)VALUES(&amp;#39;内容👌&amp;#39;,&amp;#39;1,2&amp;#39;,1);解决过程 数据库相关 根据网上的说法,修改数据库,修改表,修改表字段为 utf8mb4
+ ALTER DATABASE app CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci; ALTER TABLE blog_content CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; ALTER TABLE blog_content CHANGE content_emoji content_emoji VARCHAR(1000);
+ 再运行依然报错..
+这个时候我就不得不考虑问题出在程序内还是 mysql 内了 使用 mysql 的数据库连接,直接在 sql 中插入一条带 emoji 的数据,直接报错 那么就不是程序的问题了,数据库的问题 使用 SHOW VARIABLES WHERE Variable_name LIKE &#39;character_set_%&#39; OR Variable_name LIKE &#39;collation%&#39;;
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Swift3之将类作为参数</title>
+      <link>https://kikt.top/post/ios/swift/swift3-class-as-param/</link>
+      <pubDate>Fri, 04 Aug 2017 11:48:59 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/swift/swift3-class-as-param/</guid>
+      <description>
+        
+          
+            何谓将类名作为参数 举个栗子 看这么一个需求:
+ 一个 tableview,其中的 cell 是 nib 写的
+ 步骤:
+ 定义 1 个 cell 和对应的 xib 在 ViewController 中定义一个 Xib 加载对应文件,注册 xib  这个时候有一些步骤就是需要定义一个 xib 的文件名,cell 的 identitier,但是这两个东西都是字符串,如果一个字母敲错了或者后续业务逻辑/功能有更改,那么当你要修改 cell 对应的类名时,你就不得不一起修改文件名,字符串的名字,所有引用的名称..等等步骤
+这个时候就要想了,如果将这个 Cell 实现一个 protocol,protocol 中有 xibName,identifier,同时每个类去实现,然后 tableview 注册方法中只传类名不就可以了吗,这样以后如果有修改都只在 Cell 的类内部去写,就不容易出错了
+实现步骤 定义一个 Protocol 1protocol NibCell { 23static func nibName() -&amp;gt; String 45static func identifier() -&amp;gt; String 67} 定义一个 Cell 1import UIKit 23class OrderDetailCell: UITableViewCell,NibCell { 45static func nibName() -&amp;gt; String { 6return &amp;#34;OrderDetailCell&amp;#34; 7} 89static func identifier() -&amp;gt; String { 10return &amp;#34;OrderDetailCell&amp;#34; 11} 1213override func awakeFromNib() { 14super.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>RN/Weex的个人看法</title>
+      <link>https://kikt.top/post/other/rn-weex-my-idea/</link>
+      <pubDate>Thu, 13 Jul 2017 16:01:00 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/other/rn-weex-my-idea/</guid>
+      <description>
+        
+          
+            关于 react native 和 weex 之我见 写在前面 我是一个主 android 开发,原生的 ios 开发也算是初窥门径,主要是有一些东西如果能一次性开发,多次使用就好了,跨平台性嘛
+本文没有代码,只是一些简单的看法
+跨平台的探索 这里就有几个选择了,有纯粹的网页嵌入式开发,虽然是一个解决方案,但是毕竟不原生,而且网页渲染很不靠谱的感觉,否定掉了
+然后想起了react native和weex,都号称是使用 web 语言开发,然后渲染成原生控件,而且还支持热更新!
+好高端大气的样子啊!去尝试下吧
+react native 首先是react native,简称 RN facebook 的开源项目,语法和文档都还算可以接受
+开发环境配置 我是 jetbrain 的忠实粉丝嘛,webstorm 走起来,破解的方案自己 baidu 吧,这里就不宣传了
+导航条的问题 我翻遍了所有的文档,没找到一个考虑的导航控制器,导航条虽然有一个react-navigation
+但是我使用了一下这个,如果是自己写一个自己的项目还好,但是我们毕竟不是设计师,国内的设计们从来都是按照自己的方案设计导航条的啊!真没几个人是用系统自带的方案,这里用 react 的 navigation 很难自定义,我这里没找到可以修改标题颜色的方案
+而且还需要吐槽一点,我认为网页端最强的一点就是百分比适配方案是 css 自带的,非常强大,而这里居然没有了,完全是 px,这样面对不同的平台真的能好好的适配吗
+运行 这里就要说 webstorm 对于 react native 的支持了,帮我们全部配置好了,可以用鼠标选择 ios/android 直接运行就行了,真是 diao 啊
+日志问题/debug 问题 和源生相比,android studio/xcode 都是可以直接在 ide 里直接可以看到日志的,调试相对很方便,这里就不是这样了,真的很麻烦,需要在模拟器里开 debug 模式,然后 chrome 打开网页,开发者模式,看控制台才能看见
+这个时候我才知道,我们原生开发的开发环境真的比网页端的兄弟们好太多了
+动态部署 可以直接在模拟器点 cmd+R 就可以了 好简单啊!
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Ios版toast</title>
+      <link>https://kikt.top/post/ios/ios-toast/</link>
+      <pubDate>Sat, 08 Jul 2017 09:39:26 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/ios/ios-toast/</guid>
+      <description>
+        
+          
+            ios-toast-swift 
+swift 3.1 语法
+如果想支持其他的语法请自己修改 这里主要是模仿android端的提示方案  截图 背景灰色是因为我把 Demo 中的 ViewController 的 view 的 backgroundColor 修改为了 gray 不是会覆盖全屏的颜色
+这里有个小 bug 圆角么有包含全,后续改正
+食用方法  clone 项目 将 source 下的方法 copy 到源码内,如果有文件重名请自己改名 toast(&amp;quot;提示语句&amp;quot;) toast(&amp;quot;提示内容&amp;quot;,3) //内容 时长  源码分析 都是伪代码  代码分布 ToastView:自定义view相关的代码,基本没啥东西,就是加载了xib文件 Toast:帮助类,其中定义了如何附着到window中,位置,根据文字计算文字大小,渐隐动画等相关内容  提示 这里对于项目没有太多的侵入性 总体原理大概就是创建一个 view,将 view 附着到前台 window 中 这里有一点,这里的 toast 会覆盖掉软键盘
+如果想要修改 view 的样式,可以自己修改 ToastView.xib/ToastView.swift 内容很简单,就在ToastView中 可以自定义内容,更加丰富多彩,也可以基于扩展 content 是一个UILabel,用于显示内容  想要修改提示位置 Toast.swift 的 57~60行  想要修改大小 Toast.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>android 经典蓝牙编程 SPP</title>
+      <link>https://kikt.top/post/android/android-spp-bluetooth/</link>
+      <pubDate>Sat, 08 Jul 2017 09:35:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-spp-bluetooth/</guid>
+      <description>
+        
+          
+            前言 最近有一些蓝牙的通信需要做,就研究了一下蓝牙连接相关
+ 连接蓝牙电子秤 连接 pos 机打印  其中连接蓝牙电子秤是接收数据 pos 机打印是发送数据/接收数据
+流程图  流程图画的相当不专业,请自行脑补   核心类 因为这次的电子秤不是 4.0 的设备,所以没有使用 BLE 的开发,而是经典蓝牙(SPP)的连接方式 BluetoothAdapter
+全局变量
+1protected BluetoothAdapter mAdapter; 获取的方法,在 API18 下的时候使用的方式和以上的不一样,其实差别不大
+1if (SDK_INT &amp;lt; 18) { 2adapter = BluetoothAdapter.getDefaultAdapter(); 3} else { 4BluetoothManager bm = (BluetoothManager) getSystemService(BLUETOOTH_SERVICE); 5adapter = bm.getAdapter(); 6} 蓝牙使用的是注册广播的方式来获取系统给我们的通知 核心有以下的几种,注册广播的方法自己去搜下吧
+1BluetoothDevice.ACTION_FOUND//找到设备 2 BluetoothDevice.ACTION_NAME_CHANGED//设备的名字 3 BluetoothAdapter.ACTION_DISCOVERY_FINISHED//扫描结束 4 BluetoothDevice.ACTION_PAIRING_REQUEST//配对请求的放弃 5 BluetoothAdapter.STATE_OFF//蓝牙关闭 6 BluetoothAdapter.STATE_ON//蓝牙开启 连接 一般这种连接应该是全局单例,考虑写在了 service 中
+首先需要扫描所有的蓝牙连接,但是这里有个坑,就是如果你将广播注册在 onCreate 中和 onDestroy,你每次都需要接收系统的广播,如果出现同名或者别的原因,这里就会一直接收广播 所以这里需要动态的将广播注册与反注册 我这里使用的方案请参照流程图
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android6.0百度地图导入UnsatisfiedLinkError的问题</title>
+      <link>https://kikt.top/post/android/baidu-map-error/</link>
+      <pubDate>Tue, 07 Mar 2017 12:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/baidu-map-error/</guid>
+      <description>
+        
+          
+            前言 今天用 AS 写一个带有百度地图相关的项目时，发现了一个问题
+提示
+1Error:Execution failed for task &amp;#39;:app:compileDebugNdk&amp;#39;. 2&amp;gt; Error: Your project contains C++ files but it is not using a supported native build system. 3Consider using CMake or ndk-build integration with the stable Android Gradle plugin: 4https://developer.android.com/studio/projects/add-native-code.html 5or use the experimental plugin: 6http://tools.android.com/tech-docs/new-build-system/gradle-experimental. 我就找原因，先点开了两个网页，发现一个是用 CMake 构建 ndk 的还一个是用 experimental 插件构件 ndk 项目的
+这两个方式的共通点是都有 c 的源码，自己生成 so 文件，都不是我想要的
+因为以前这么写没有问题，我在网上找相同的问题，大家都是说把 targetVersion 改成 23 以下就解决了，但是这不是我想要的，况且我这么用了也没解决问题，毕竟 targetVersion 迁移到 23+是大势所趋
+我找了下原因，应该是 so 文件的原因，在 6.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Poi解析对比excel表格</title>
+      <link>https://kikt.top/post/server/java/poi/</link>
+      <pubDate>Mon, 27 Feb 2017 10:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/server/java/poi/</guid>
+      <description>
+        
+          
+            前言 这次不是 Android 的技术分享，是 java 的，当然把 poi 的代码放到 Android 中也可以用，毕竟同源嘛
+为啥会有这个文章呢，因为我老婆是会计嘛，她有时候会让我帮忙对账，两个 excel 文件，顺序也不同，需要我来对比出哪里有问题，也就是数不太对应，我想了一下，如果好几百个甚至几千个数字来对账，那我岂不是眼睛都花了，这样我哪里还有时间去happy愉快的撸代码了？ 作为一个程序员，我们要解放自己的眼睛，去做一些有意义的事情！
+开发环境 Intellij Idea+maven
+pom 文件
+1&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; 2&amp;lt;project xmlns=&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34; 3xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34; 4xsi:schemaLocation=&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&amp;gt; 5&amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt; 67&amp;lt;groupId&amp;gt;com.kikt&amp;lt;/groupId&amp;gt; 8&amp;lt;artifactId&amp;gt;ExcelDemo&amp;lt;/artifactId&amp;gt; 9&amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt; 10&amp;lt;build&amp;gt; 11&amp;lt;plugins&amp;gt; 12&amp;lt;plugin&amp;gt; 13&amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt; 14&amp;lt;artifactId&amp;gt;maven-compiler-plugin&amp;lt;/artifactId&amp;gt; 15&amp;lt;configuration&amp;gt; 16&amp;lt;source&amp;gt;1.7&amp;lt;/source&amp;gt; 17&amp;lt;target&amp;gt;1.7&amp;lt;/target&amp;gt; 18&amp;lt;/configuration&amp;gt; 19&amp;lt;/plugin&amp;gt; 20&amp;lt;/plugins&amp;gt; 21&amp;lt;/build&amp;gt; 2223&amp;lt;dependencies&amp;gt; 24&amp;lt;!-- https://mvnrepository.com/artifact/org.apache.poi/poi --&amp;gt; 25&amp;lt;dependency&amp;gt; 26&amp;lt;groupId&amp;gt;org.apache.poi&amp;lt;/groupId&amp;gt; 27&amp;lt;artifactId&amp;gt;poi&amp;lt;/artifactId&amp;gt; 28&amp;lt;version&amp;gt;3.15-beta2&amp;lt;/version&amp;gt; 29&amp;lt;/dependency&amp;gt; 30&amp;lt;!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml --&amp;gt; 31&amp;lt;dependency&amp;gt; 32&amp;lt;groupId&amp;gt;org.apache.poi&amp;lt;/groupId&amp;gt; 33&amp;lt;artifactId&amp;gt;poi-ooxml&amp;lt;/artifactId&amp;gt; 34&amp;lt;version&amp;gt;3.15-beta2&amp;lt;/version&amp;gt; 35&amp;lt;/dependency&amp;gt; 36&amp;lt;/dependencies&amp;gt; 3738&amp;lt;/project&amp;gt; 引入了 poi 的解析库的两个文件
+结构 首先是 poi 对于 excel 的结构分析 WorkBook-&amp;gt;Sheet-&amp;gt;Row-&amp;gt;Cell 放在 wps/excel 中看，WorkBook 对应的是工作簿，Sheet 是表，Row 顾名思义是行，Cell 是单元格
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>AIDL 安卓进程间通信/跨应用通信</title>
+      <link>https://kikt.top/post/android/android-aidl/</link>
+      <pubDate>Tue, 06 Dec 2016 10:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-aidl/</guid>
+      <description>
+        
+          
+            前言 最近出去面试找工作，被人问到 AIDL，我就回答这个东西我用过，也大概理解，Android 的进程间通信语言嘛
+人家不置可否，那我能咋着呢，毕竟没深入研究过，也没办法，咱只能回来奋发图强了
+写在前面 我以前就看过的一个博客，里面原理代码什么都有，写的水平肯定比我高
+ 
+ 首先字面解释 A=Android IDL=Interface definition language 意译就是 android 接口定义语言，马丹，完全看不明白 算了，就是 Android 官方给我们定义出来跨进程，甚至跨应用通信用的
+开发平台 Android Studio 2.2+Android 手机一部
+新建工程 这个就不说了，跳过 就是新建工程后再建一个 module 也是 android app，功能后面再说
+aidl 语法 这里请去看我写在前面，里面比较详细，或者自行 baidu/google，我也了解的不多
+代码示例 最关键的地方到了 其实就是新建一个 aidl 文件
+1// IMyAidlInterface.aidl 2package com.kikt.aidl; 34// Declare any non-default types here with import statements 5 6interface IMyAidlInterface { 78void test(int sum,int sum2); 9} 接着 make project，生成下 java 代码 找到生成的代码看下 我靠 好复杂，还是渣格式，这里格式化一下：
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android Studio 简单的JunitTest</title>
+      <link>https://kikt.top/post/android/android-junit/</link>
+      <pubDate>Sat, 22 Oct 2016 10:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-junit/</guid>
+      <description>
+        
+          
+            最近使用 AndroidStudio 的时候想要使用单元测试 因为有一些数据需要 Activity 的支持， 从网上找了一些教程，但自己使用时感觉不理想，发现都是一些业务逻辑的类，很少有直接针对 Activity 的单元测试 所以想自己写一个简单的 demo
+开发环境 Android Studio 2.2
+步骤 首先新建工程 然后会自动生成 MainActivity
+MainActivity 代码如下
+1public class MainActivity extends AppCompatActivity { 23// Used to load the &amp;#39;native-lib&amp;#39; library on application startup. 4 static { 5System.loadLibrary(&amp;#34;kikt-camera&amp;#34;); 6} 78@Override 9protected void onCreate(Bundle savedInstanceState) { 10super.onCreate(savedInstanceState); 11setContentView(R.layout.activity_main); 1213// Example of a call to a native method 14 TextView tv = (TextView) findViewById(R.id.sample_text); 15tv.setText(stringFromJNI()); 16} 1718/** 19* A native method that is implemented by the &amp;#39;native-lib&amp;#39; native library, 20* which is packaged with this application.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android Studio 2.2 ndk开发环境 gradle配置</title>
+      <link>https://kikt.top/post/android/android-studio-2-2-ndk-and-gradle-config/</link>
+      <pubDate>Fri, 21 Oct 2016 10:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-studio-2-2-ndk-and-gradle-config/</guid>
+      <description>
+        
+          
+            AndroidStudio2.2 中 对于 ndk/jni 建议使用 cmake 进行编译 而对于纯粹的 android 程序员来说，cmake 不是经常接触的方案，我在遇到 jni 相关时也遇到了一些问题，这里抛砖引玉吧
+开发环境 Android SDK/NDK Android Studio 2.2 友情提示：更新请科学上网
+准备工作 其实 demo 永远是最好的老师 我们直接自己创建一个 Project 好在 AS 对于对于 ndk 的支持越来越友好 选中 c++支持，这样创建出来的 gradle 文件就会自动创建相关的，有助于我们学习
+自动生成的核心文件 build.gradle MainActivity.java native-lib.cpp CMakelists.txt
+MainActivity.java MainActivity.java
+1System.loadLibrary(&amp;#34;native-lib&amp;#34;); //加载native-lib库 2 ... 3public native String stringFromJNI();//指向cpp文件中的方法  左边有一个箭头，这个点击可以直接跳到 cpp 文件中的方法
+gradle project 级别的和传统没有差别 看 module 级的
+1apply plugin: &amp;#39;com.android.application&amp;#39; 23android { 4... 5externalNativeBuild { 6cmake { 7cppFlags &amp;#34;&amp;#34; 8} 9} 10} 11.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Butterknife8.4.0的一些问题</title>
+      <link>https://kikt.top/post/android/butterknife8-1/</link>
+      <pubDate>Sun, 18 Sep 2016 19:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/butterknife8-1/</guid>
+      <description>
+        
+          
+            写在前面：  在 github 上 butterknife 的 star 有 11000+ 为啥有这么多人用这个插件 两点： 1、自动化 2、有人更新和维护
+GRADLE 根目录的 build.gradle 也就是 project 级
+1buildscript { 2repositories { 3mavenCentral() 4} 5dependencies { 6classpath &amp;#39;com.neenbedankt.gradle.plugins:android-apt:1.8&amp;#39; 7} 8} module 级别
+1apply plugin: &amp;#39;android-apt&amp;#39; 23android { 4... 5} 67dependencies { 8compile &amp;#39;com.jakewharton:butterknife:8.4.0&amp;#39; 9apt &amp;#39;com.jakewharton:butterknife-compiler:8.4.0&amp;#39; 10} 基本的注入我想大部分人都知道
+ButterKnife.bind(this) 这里可以是 View，Activity 等等
+还支持 Android annotations 的几个注解
+1@Optional //可选 2@Nullable //可能为空 在 8.4.0 中最大的改动可能就是使用 R2 代替 R 文件 我觉得这个可能是为了自动生成 R 文件经常出现问题的解决方案 应该是和 Android Studio 中的 instant run 有冲突
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Android剪切板的简单解析</title>
+      <link>https://kikt.top/post/android/android-clipboard-manager/</link>
+      <pubDate>Sun, 18 Sep 2016 10:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/android-clipboard-manager/</guid>
+      <description>
+        
+          
+            其实 android 的剪切板使用不算复杂 而且一般的应用需求不会太复杂，只要简单的应用即可
+一般都是点击事件时将某段文字复制到剪切板中
+Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象的方法是
+1Context.getSystemService(Context.CLIPBOARD_SERVICE); 2cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 在 API11 后 使用的是
+1android.content.ClipboardManager API11 前 使用的是
+1android.text.ClipboardManager 前者的方法声明是
+1public class ClipboardManager extends android.text.ClipboardManager 也就是说即使在 API11 后也可以使用旧的方法来获取和修改剪切板内的内容
+CharSequence text = cm.getText();可以获取到剪切板内的内容 使用cm.setText(&amp;quot;复制到剪切板&amp;quot;);可以将内容复制到剪切板内
+如果你的应用 minSDK 在 11 以上，可以直接用新的方法，毕竟老的已经过时了
+使用如下的代码
+1cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 2ClipData clipData = ClipData.newPlainText(&amp;#34;title&amp;#34;, &amp;#34;content23&amp;#34;); 3cm.setPrimaryClip(clipData); 可以简单的达到效果
+这个有一个对象ClipData
+1package com.dn.clipbroaddemo; 23import android.content.ClipData; 4import android.content.ClipDescription; 5import android.content.ClipboardManager; 6import android.os.Bundle; 7import android.support.v7.app.AppCompatActivity; 8import android.util.Log; 910public class MainActivity extends AppCompatActivity { 1112private ClipboardManager cm; 1314@Override 15protected void onCreate(Bundle savedInstanceState) { 16super.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Retroift简单二次封装</title>
+      <link>https://kikt.top/post/android/retroift-simple-packaging/</link>
+      <pubDate>Thu, 01 Sep 2016 10:45:55 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/retroift-simple-packaging/</guid>
+      <description>
+        
+          
+            retrofit 的简单二次封装 基于上次的后，可以对 retrofit 简单的二次封装
+1public interface HttpURL { 2String baseUrl = &amp;#34;http://127.0.0.1:32001/&amp;#34;; 3} 1public class RequestUtils { 23private static OkHttpClient client; 4private static Retrofit retrofit; 56private RequestUtils() { 7} 89static { 10client = new OkHttpClient() 11.newBuilder() 12.connectTimeout(8, TimeUnit.SECONDS) 13.readTimeout(8, TimeUnit.SECONDS) 14.writeTimeout(8, TimeUnit.SECONDS) 15.addInterceptor(new HttpInterceptor()) 16.build(); 1718retrofit = new Retrofit.Builder() 19.baseUrl(HttpURL.baseUrl) 20.client(client) 21.addConverterFactory(StringConverterFactory.create()) 22.build(); 23} 2425public static String post(String url, String body) throws IOException { 26RequestServer requestServer = retrofit.create(RequestServer.class); 27String[] path = url.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Retroift初探</title>
+      <link>https://kikt.top/post/android/retroift-first-develop/</link>
+      <pubDate>Wed, 31 Aug 2016 18:25:45 +0800</pubDate>
+      
+      <guid>https://kikt.top/post/android/retroift-first-develop/</guid>
+      <description>
+        
+          
+            retrofit 初探 引用 maven 1&amp;lt;dependency&amp;gt; 2&amp;lt;groupId&amp;gt;com.squareup.retrofit2&amp;lt;/groupId&amp;gt; 3&amp;lt;artifactId&amp;gt;retrofit&amp;lt;/artifactId&amp;gt; 4&amp;lt;version&amp;gt;2.1.0&amp;lt;/version&amp;gt; 5&amp;lt;/dependency&amp;gt; gradle 1api &amp;#39;com.squareup.retrofit2:retrofit:2.1.0&amp;#39; github  个人意见 其实，最适合使用 retrofit 的是 rest 请求类的交互，如果具体的请求参数是以 url 区分业务逻辑，请求参数通过 json 进行的，那其实 retrofit 不太适用
+俗话说，demo 是最好的学习 先来看看怎么定义业务逻辑
+1public interface GitHubService { 2@GET(&amp;#34;users/{user}/repos&amp;#34;) 3Call&amp;lt;List&amp;lt;Repo&amp;gt;&amp;gt; listRepos(@Path(&amp;#34;user&amp;#34;) String user); 4} 这里的{user}是一个会在实际使用时会被动态改变的，会根据 String user 中的变量而改变
+1public class RetrofitDemo { 2private static OkHttpClient client; 34static { 5client = new OkHttpClient.Builder() 6.addInterceptor(new HttpInterceptor()) 7.build(); 8} 910public static void main(String[] args) throws IOException { 11Retrofit retrofit = new Retrofit.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
