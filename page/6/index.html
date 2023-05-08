@@ -130,6 +130,81 @@
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
+        <a href="https://kikt.top/posts/android/android-include-ffmpeg/" title="android 引入ffmpeg">android 引入ffmpeg</a>
+      </h3>
+      
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      2019-01-14 17:14</span>
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/ffmpeg' title="ffmpeg" class="post_tag button button_translucent">ffmpeg
+        </a><a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
+        </a><a href='https://kikt.top/tags/ndk' title="ndk" class="post_tag button button_translucent">ndk
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=android%20%e5%bc%95%e5%85%a5ffmpeg&url=https%3a%2f%2fkikt.top%2fposts%2fandroid%2fandroid-include-ffmpeg%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fandroid%2fandroid-include-ffmpeg%2f&t=android%20%e5%bc%95%e5%85%a5ffmpeg" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://kikt.top/posts/android/android-include-ffmpeg/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    </div>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>上篇介绍了如何 在 mac 系统下打包 ffmpeg 的 so
+这篇介绍如何引入 so 到项目中
+开发环境:
+1macos 2android studio 3.2.1 3ndk: 15.2.4203891 新建一个工程 新建工程时,勾选 c++支持
+ 将文件复制到项目内 需要复制的文件
+.h 头文件 so文件    在 cpp 中新建一个文件夹include/ffmpeg 把 include 中的文件夹复制到 ffmpeg 下
+在 main 下新建文件夹jniLibs,把 so 文件复制到其中 修改 CMakeList 完整的CMakeList.txt 如下
+1# For more information about using …</p>
+          
+          <br>
+          <a href="https://kikt.top/posts/android/android-include-ffmpeg/" title="阅读更多" class="excerpt_more button">阅读更多</a>
+        </div>
+      </div>
+    </div>
+  </li>
+
+      <li class="post_item">
+  <div class="excerpt">
+    <div class="excerpt_header">
+      <h3 class="post_link">
         <a href="https://kikt.top/posts/android/android-ffmpeg-compile-so/" title="ndk编译ffmpeg">ndk编译ffmpeg</a>
       </h3>
       
@@ -1158,75 +1233,6 @@ main.go 1package main 23import &#34;github.com/gin-gonic/gin&#34; 45func main() 
     </div>
   </li>
 
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://kikt.top/posts/docker/docker-compose-and-nginx-forward/" title="Docker-Compose 结合nginx实现跨容器转发">Docker-Compose 结合nginx实现跨容器转发</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <title>calendar</title>
-  <use xlink:href="#calendar"></use>
-</svg>
-</span>
-    <span class="post_date">
-      2018-11-15 15:28</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/docker' title="docker" class="post_tag button button_translucent">docker
-        </a><a href='https://kikt.top/tags/nginx' title="nginx" class="post_tag button button_translucent">nginx
-        </a><a href='https://kikt.top/tags/docker-compose' title="docker-compose" class="post_tag button button_translucent">docker-compose
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    分享到:
-    <a href="https://twitter.com/intent/tweet?text=Docker-Compose%20%e7%bb%93%e5%90%88nginx%e5%ae%9e%e7%8e%b0%e8%b7%a8%e5%ae%b9%e5%99%a8%e8%bd%ac%e5%8f%91&url=https%3a%2f%2fkikt.top%2fposts%2fdocker%2fdocker-compose-and-nginx-forward%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>twitter</title>
-  <use xlink:href="#twitter"></use>
-</svg>
-
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fdocker%2fdocker-compose-and-nginx-forward%2f&t=Docker-Compose%20%e7%bb%93%e5%90%88nginx%e5%ae%9e%e7%8e%b0%e8%b7%a8%e5%ae%b9%e5%99%a8%e8%bd%ac%e5%8f%91" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>facebook</title>
-  <use xlink:href="#facebook"></use>
-</svg>
-
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <title>linkedin</title>
-  <use xlink:href="#linkedin"></use>
-</svg>
-
-    </a>
-    <a href="https://kikt.top/posts/docker/docker-compose-and-nginx-forward/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <title>copy</title>
-  <use xlink:href="#copy"></use>
-</svg>
-
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-      <div class="excerpt_footer">
-        <div class="pale">
-          
-            <p>开发环境 mac zsh docker-compose
-1$ docker-compose --version 2docker-compose version 1.22.0, build f46880f 目录结构  docker-compose.yml 1version:&#34;3&#34;2services:3web:# 服务的名称4image:nginx5volumes:# 文件夹映射6- /Users/cai/Documents/www:/usr/share/nginx/html:ro# 宿主:docker:只读 ,www目录7- ./config/web.conf:/etc/nginx/nginx.conf:ro# …</p>
-          
-          <br>
-          <a href="https://kikt.top/posts/docker/docker-compose-and-nginx-forward/" title="阅读更多" class="excerpt_more button">阅读更多</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
       <li>
     <ul class="pagination pagination-default">
       <li class="page-item">
@@ -1288,11 +1294,17 @@ main.go 1package main 23import &#34;github.com/gin-gonic/gin&#34; 45func main() 
     <h2 class="mt-4">精选文章</h2>
     <ul>
       <li>
+        <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/kotlin-compose/kotlin-compose-05-mouse-event/" class="nav-link" title="Kotlin Compose 05 鼠标事件">Kotlin Compose 05 鼠标事件</a>
       </li>
     </ul>
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
+      <li>
+        <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
+      </li>
       <li>
         <a href="https://kikt.top/posts/gradle/03/%E7%BC%96%E5%86%99-plugin/" class="nav-link" title="Gradle 编写Plugin">Gradle 编写Plugin</a>
       </li>
@@ -1313,9 +1325,6 @@ main.go 1package main 23import &#34;github.com/gin-gonic/gin&#34; 45func main() 
       </li>
       <li>
         <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle 命令行工具的使用">Gradle 命令行工具的使用</a>
       </li>
     </ul>
     <div>
@@ -1381,13 +1390,13 @@ main.go 1package main 23import &#34;github.com/gin-gonic/gin&#34; 45func main() 
           <span class="button_tally">3</span>
         </a>
         
-        <a href='https://kikt.top/categories/caddy/' class="post_tag button button_translucent" title="caddy">
-          CADDY
+        <a href='https://kikt.top/categories/c/' class="post_tag button button_translucent" title="c">
+          C
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://kikt.top/categories/go/' class="post_tag button button_translucent" title="go">
-          GO
+        <a href='https://kikt.top/categories/caddy/' class="post_tag button button_translucent" title="caddy">
+          CADDY
           <span class="button_tally">1</span>
         </a>
         
@@ -1398,6 +1407,10 @@ main.go 1package main 23import &#34;github.com/gin-gonic/gin&#34; 45func main() 
           <div class="tags_list">
             
             <a href='https://kikt.top/categories/android/' class=" post_tag button button_translucent" data-position=25 title="android">ANDROID<span class="button_tally">25</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/c/' class=" post_tag button button_translucent" data-position=1 title="c">C<span class="button_tally">1</span>
             </a>
             
             
