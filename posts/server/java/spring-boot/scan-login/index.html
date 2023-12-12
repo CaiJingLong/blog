@@ -18,13 +18,13 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="前言 在业内，扫码登陆不是什么新技术了，我这里主要是想自己实现一下这个功能，用的是简单实现，提供的只是思路 具体可以参考网上的其他文章 开发环境 mac&#43;idea&#43;paw&#43;chrome&#43;mysql 开发语言:java&#43;kotlin mac:我的开发系统 idea:开发工具 paw:http调试工具  插一句 开发语言使 …">
+<meta name="description" content="前言 在业内，扫码登陆不是什么新技术了，我这里主要是想自己实现一下这个功能，用的是简单实现，提供的只是思路 具体可以参考网上的其他文章 开发环境 mac&#43;idea&#43;paw&#43;chrome&#43;mysql 开发语言:java&#43;kotlin mac:我的开发系统 idea:开发工具 paw:http调试工具 插一句 开发语言使 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="spring boot 扫码登录 后端实现" />
 <meta property="og:url" content="https://kikt.top/posts/server/java/spring-boot/scan-login/" />
 <meta property="og:title" content="spring boot 扫码登录 后端实现" />
-<meta property="og:description" content="前言 在业内，扫码登陆不是什么新技术了，我这里主要是想自己实现一下这个功能，用的是简单实现，提供的只是思路 具体可以参考网上的其他文章 开发环境 mac&#43;idea&#43;paw&#43;chrome&#43;mysql 开发语言:java&#43;kotlin mac:我的开发系统 idea:开发工具 paw:http调试工具  插一句 开发语言使 …" />
+<meta property="og:description" content="前言 在业内，扫码登陆不是什么新技术了，我这里主要是想自己实现一下这个功能，用的是简单实现，提供的只是思路 具体可以参考网上的其他文章 开发环境 mac&#43;idea&#43;paw&#43;chrome&#43;mysql 开发语言:java&#43;kotlin mac:我的开发系统 idea:开发工具 paw:http调试工具 插一句 开发语言使 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -127,7 +127,7 @@
 </span>
     <span class="post_date">
       2017-08-25 11:42</span>
-    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/sprintboot' title="sprintboot" class="post_tag button button_translucent">sprintboot
+    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/sprintboot' title="sprintboot" class="post_tag button button_translucent">sprintboot
         </a><a href='https://kikt.top/tags/java' title="java" class="post_tag button button_translucent">java
         </a><a href='https://kikt.top/tags/%E6%89%AB%E7%A0%81' title="扫码" class="post_tag button button_translucent">扫码
         </a><a href='https://kikt.top/tags/server' title="server" class="post_tag button button_translucent">server
@@ -445,57 +445,57 @@ paw:http调试工具
 </span></span></span></code></pre></div><p>配置文件,使用的是 yml 的格式,也算比较容易理解吧</p>
 <h3 id="首先配置几个-controller">首先配置几个 Controller</h3>
 <p>除网页外,其他所有的交互方式使用 restful 的方式</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nd">@RestController</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/user&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserCtl</span> <span class="kd">extends</span> <span class="n">BaseCtl</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="kd">private</span> <span class="n">ScanService</span> <span class="n">scanService</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="kd">private</span> <span class="n">LoginService</span> <span class="n">loginService</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/login/{username}&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">login</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;username&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">&#34;pwd&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">pwd</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="k">return</span> <span class="n">loginService</span><span class="o">.</span><span class="na">login</span><span class="o">(</span><span class="n">username</span><span class="o">,</span> <span class="n">pwd</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl">
-</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/login&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">index</span><span class="o">(</span><span class="n">Model</span> <span class="n">model</span><span class="o">,</span> <span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">        <span class="n">String</span> <span class="n">sessionId</span> <span class="o">=</span> <span class="n">scanService</span><span class="o">.</span><span class="na">getSessionId</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl">        <span class="n">String</span> <span class="n">scheme</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getScheme</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">        <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;URL:&#34;</span> <span class="o">+</span> <span class="n">request</span><span class="o">.</span><span class="na">getRequestURL</span><span class="o">());</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl">        <span class="n">String</span> <span class="n">serverName</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getServerName</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;addr:&#34;</span> <span class="o">+</span> <span class="n">serverName</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">23</span><span class="cl">        <span class="n">String</span> <span class="n">contextPath</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getContextPath</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl">        <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;contextPath:&#34;</span> <span class="o">+</span> <span class="n">contextPath</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="kt">int</span> <span class="n">serverPort</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getServerPort</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">26</span><span class="cl">        <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;serverport:&#34;</span> <span class="o">+</span> <span class="n">serverPort</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">
-</span></span><span class="line"><span class="ln">28</span><span class="cl">        <span class="n">StringBuilder</span> <span class="n">path</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="n">path</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">scheme</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;://&#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">serverName</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;:&#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">serverPort</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">contextPath</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">30</span><span class="cl">
-</span></span><span class="line"><span class="ln">31</span><span class="cl">        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">&#34;sessionId&#34;</span><span class="o">,</span> <span class="n">sessionId</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">32</span><span class="cl">        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">&#34;qrcode&#34;</span><span class="o">,</span> <span class="n">path</span> <span class="o">+</span> <span class="s">&#34;/user/login/&#34;</span> <span class="o">+</span> <span class="n">sessionId</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">33</span><span class="cl">        <span class="k">return</span> <span class="s">&#34;index&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">34</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">35</span><span class="cl">
-</span></span><span class="line"><span class="ln">36</span><span class="cl">    <span class="c1">//for html wait login
-</span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="c1"></span>    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/wait/{sessionId}&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">38</span><span class="cl">    <span class="nd">@ResponseBody</span>
-</span></span><span class="line"><span class="ln">39</span><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">waitLogin</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;sessionId&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">sessionId</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">40</span><span class="cl">        <span class="k">return</span> <span class="n">scanService</span><span class="o">.</span><span class="na">waitForLogin</span><span class="o">(</span><span class="n">sessionId</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">41</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">42</span><span class="cl">
-</span></span><span class="line"><span class="ln">43</span><span class="cl">    <span class="c1">//phone scan for the login
-</span></span></span><span class="line"><span class="ln">44</span><span class="cl"><span class="c1"></span>    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/login/{sessionId}&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">45</span><span class="cl">    <span class="nd">@ResponseBody</span>
-</span></span><span class="line"><span class="ln">46</span><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">scanWithLogin</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;sessionId&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">sessionId</span><span class="o">,</span> <span class="nd">@RequestParam</span> <span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="nd">@RequestParam</span> <span class="n">String</span> <span class="n">token</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">47</span><span class="cl">        <span class="n">loginService</span><span class="o">.</span><span class="na">checkTokenWithName</span><span class="o">(</span><span class="n">username</span><span class="o">,</span> <span class="n">token</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">48</span><span class="cl">        <span class="k">return</span> <span class="n">scanService</span><span class="o">.</span><span class="na">scanWithLogin</span><span class="o">(</span><span class="n">sessionId</span><span class="o">,</span> <span class="n">username</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">49</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">50</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>这样就可以使用 http://localhost:8433/user/login/user 这样的 url,使用 post 方式,模拟表单<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/user&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserCtl</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseCtl</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ScanService</span><span class="w"> </span><span class="n">scanService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LoginService</span><span class="w"> </span><span class="n">loginService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/login/{username}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">POST</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&#34;username&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="nd">@RequestParam</span><span class="p">(</span><span class="s">&#34;pwd&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">pwd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">loginService</span><span class="p">.</span><span class="na">login</span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">pwd</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/login&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">GET</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sessionId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanService</span><span class="p">.</span><span class="na">getSessionId</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">scheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getScheme</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="na">debug</span><span class="p">(</span><span class="s">&#34;URL:&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getRequestURL</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">serverName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getServerName</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="na">debug</span><span class="p">(</span><span class="s">&#34;addr:&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">serverName</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">contextPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getContextPath</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="na">debug</span><span class="p">(</span><span class="s">&#34;contextPath:&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">contextPath</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">serverPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getServerPort</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="na">debug</span><span class="p">(</span><span class="s">&#34;serverport:&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">serverPort</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="w">        </span><span class="n">StringBuilder</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="w">        </span><span class="n">path</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">scheme</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;://&#34;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">serverName</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;:&#34;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">serverPort</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">contextPath</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&#34;sessionId&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">sessionId</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&#34;qrcode&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;/user/login/&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sessionId</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">33</span><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&#34;index&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">34</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">36</span><span class="cl"><span class="w">    </span><span class="c1">//for html wait login</span><span class="w">
+</span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/wait/{sessionId}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">POST</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">38</span><span class="cl"><span class="w">    </span><span class="nd">@ResponseBody</span><span class="w">
+</span></span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">waitLogin</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&#34;sessionId&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">sessionId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">40</span><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">scanService</span><span class="p">.</span><span class="na">waitForLogin</span><span class="p">(</span><span class="n">sessionId</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">41</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">42</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">43</span><span class="cl"><span class="w">    </span><span class="c1">//phone scan for the login</span><span class="w">
+</span></span></span><span class="line"><span class="ln">44</span><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/login/{sessionId}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">POST</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">45</span><span class="cl"><span class="w">    </span><span class="nd">@ResponseBody</span><span class="w">
+</span></span></span><span class="line"><span class="ln">46</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">scanWithLogin</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&#34;sessionId&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">sessionId</span><span class="p">,</span><span class="w"> </span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">47</span><span class="cl"><span class="w">        </span><span class="n">loginService</span><span class="p">.</span><span class="na">checkTokenWithName</span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">token</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">48</span><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">scanService</span><span class="p">.</span><span class="na">scanWithLogin</span><span class="p">(</span><span class="n">sessionId</span><span class="p">,</span><span class="w"> </span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">49</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">50</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>这样就可以使用 http://localhost:8433/user/login/user 这样的 url,使用 post 方式,模拟表单<br>
 同一个 url,使用 get 的方式,获取的就是二维码的显示页面<br>
 这里 index 是定义到一个模板页面,model 中可以设置一些属性在模板文件中进行调用,我这里模板用的是<code>thymeleaf</code></p>
 <h3 id="模板文件">模板文件</h3>
@@ -603,31 +603,31 @@ paw:http调试工具
 </span></span><span class="line"><span class="ln">22</span><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">map</span><span class="p">:</span> <span class="n">MutableMap</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">LoginSession</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">mutableMapOf</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">23</span><span class="cl">
 </span></span><span class="line"><span class="ln">24</span><span class="cl">    <span class="k">fun</span> <span class="nf">getSessionId</span><span class="p">():</span> <span class="n">String</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="k">val</span> <span class="py">random</span> <span class="p">=</span> <span class="n">UUID</span><span class="p">.</span><span class="n">randomUUID</span><span class="p">().</span><span class="n">toString</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="k">val</span> <span class="py">random</span> <span class="p">=</span> <span class="nc">UUID</span><span class="p">.</span><span class="n">randomUUID</span><span class="p">().</span><span class="n">toString</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">26</span><span class="cl">        <span class="n">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="n">random</span><span class="p">,</span> <span class="n">LoginSession</span><span class="p">())</span>
 </span></span><span class="line"><span class="ln">27</span><span class="cl">        <span class="k">return</span> <span class="n">random</span>
 </span></span><span class="line"><span class="ln">28</span><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="ln">29</span><span class="cl">
 </span></span><span class="line"><span class="ln">30</span><span class="cl">    <span class="k">fun</span> <span class="nf">waitForLogin</span><span class="p">(</span><span class="n">sessionId</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">String</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">31</span><span class="cl">        <span class="k">val</span> <span class="py">sessionData</span> <span class="p">=</span> <span class="n">map</span><span class="p">[</span><span class="n">sessionId</span><span class="p">]</span> <span class="o">?:</span> <span class="n">ErrorEnum</span><span class="p">.</span><span class="n">SESSION_SCAN_TIME_OUT</span><span class="p">.</span><span class="n">throwError</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl">        <span class="k">val</span> <span class="py">sessionData</span> <span class="p">=</span> <span class="n">map</span><span class="p">[</span><span class="n">sessionId</span><span class="p">]</span> <span class="o">?:</span> <span class="nc">ErrorEnum</span><span class="p">.</span><span class="nc">SESSION_SCAN_TIME_OUT</span><span class="p">.</span><span class="n">throwError</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">32</span><span class="cl">        <span class="k">val</span> <span class="py">waitForLogin</span><span class="p">:</span> <span class="n">String</span>
 </span></span><span class="line"><span class="ln">33</span><span class="cl">        <span class="k">try</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">34</span><span class="cl">            <span class="n">waitForLogin</span> <span class="p">=</span> <span class="n">sessionData</span><span class="p">.</span><span class="n">waitForLogin</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">35</span><span class="cl">        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">Exception</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">36</span><span class="cl">            <span class="n">map</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">sessionId</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">37</span><span class="cl">            <span class="n">ErrorEnum</span><span class="p">.</span><span class="n">SESSION_SCAN_TIME_OUT</span><span class="p">.</span><span class="n">throwError</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">37</span><span class="cl">            <span class="nc">ErrorEnum</span><span class="p">.</span><span class="nc">SESSION_SCAN_TIME_OUT</span><span class="p">.</span><span class="n">throwError</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">38</span><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="ln">39</span><span class="cl">        <span class="n">map</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">sessionId</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">40</span><span class="cl">        <span class="k">return</span> <span class="n">waitForLogin</span>
 </span></span><span class="line"><span class="ln">41</span><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="ln">42</span><span class="cl">
 </span></span><span class="line"><span class="ln">43</span><span class="cl">    <span class="k">fun</span> <span class="nf">scanWithLogin</span><span class="p">(</span><span class="n">sessionId</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">String</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">44</span><span class="cl">        <span class="k">val</span> <span class="py">sessionData</span> <span class="p">=</span> <span class="n">map</span><span class="p">[</span><span class="n">sessionId</span><span class="p">]</span> <span class="o">?:</span> <span class="n">ErrorEnum</span><span class="p">.</span><span class="n">SESSION_NO_FOUNT</span><span class="p">.</span><span class="n">throwError</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl">        <span class="k">val</span> <span class="py">sessionData</span> <span class="p">=</span> <span class="n">map</span><span class="p">[</span><span class="n">sessionId</span><span class="p">]</span> <span class="o">?:</span> <span class="nc">ErrorEnum</span><span class="p">.</span><span class="nc">SESSION_NO_FOUNT</span><span class="p">.</span><span class="n">throwError</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">45</span><span class="cl">        <span class="k">val</span> <span class="py">result</span> <span class="p">=</span> <span class="n">loginService</span><span class="o">?.</span><span class="n">login</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">46</span><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">47</span><span class="cl">            <span class="n">sessionData</span><span class="p">.</span><span class="n">login</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">48</span><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="ln">49</span><span class="cl">        <span class="k">return</span> <span class="n">Response</span><span class="p">.</span><span class="n">newSuccessResponse</span><span class="p">(</span><span class="s2">&#34;成功&#34;</span><span class="p">).</span><span class="n">toJson</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">49</span><span class="cl">        <span class="k">return</span> <span class="nc">Response</span><span class="p">.</span><span class="n">newSuccessResponse</span><span class="p">(</span><span class="s2">&#34;成功&#34;</span><span class="p">).</span><span class="n">toJson</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">50</span><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="ln">51</span><span class="cl">
 </span></span><span class="line"><span class="ln">52</span><span class="cl"><span class="p">}</span>
@@ -639,7 +639,7 @@ paw:http调试工具
 </span></span><span class="line"><span class="ln">58</span><span class="cl">    <span class="k">companion</span> <span class="k">object</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">59</span><span class="cl">        <span class="k">val</span> <span class="py">TIME</span><span class="n">_OUT</span><span class="p">:</span> <span class="n">Long</span> <span class="p">=</span> <span class="m">60000</span>
 </span></span><span class="line"><span class="ln">60</span><span class="cl">
-</span></span><span class="line"><span class="ln">61</span><span class="cl">        <span class="k">val</span> <span class="py">threadPool</span><span class="p">:</span> <span class="n">ExecutorService</span> <span class="p">=</span> <span class="n">Executors</span><span class="p">.</span><span class="n">newFixedThreadPool</span><span class="p">(</span><span class="m">30</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">61</span><span class="cl">        <span class="k">val</span> <span class="py">threadPool</span><span class="p">:</span> <span class="n">ExecutorService</span> <span class="p">=</span> <span class="nc">Executors</span><span class="p">.</span><span class="n">newFixedThreadPool</span><span class="p">(</span><span class="m">30</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">62</span><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="ln">63</span><span class="cl">
 </span></span><span class="line"><span class="ln">64</span><span class="cl">    <span class="k">fun</span> <span class="nf">waitForLogin</span><span class="p">():</span> <span class="n">String</span> <span class="p">{</span>
@@ -658,9 +658,9 @@ paw:http调试工具
 </span></span><span class="line"><span class="ln">77</span><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="ln">78</span><span class="cl">
 </span></span><span class="line"><span class="ln">79</span><span class="cl">    <span class="k">fun</span> <span class="nf">runDelayTimeout</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">80</span><span class="cl">        <span class="k">val</span> <span class="py">currentThread</span> <span class="p">=</span> <span class="n">Thread</span><span class="p">.</span><span class="n">currentThread</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">80</span><span class="cl">        <span class="k">val</span> <span class="py">currentThread</span> <span class="p">=</span> <span class="nc">Thread</span><span class="p">.</span><span class="n">currentThread</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">81</span><span class="cl">        <span class="n">threadPool</span><span class="p">.</span><span class="n">execute</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">82</span><span class="cl">            <span class="n">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">TIME_OUT</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">82</span><span class="cl">            <span class="nc">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">TIME_OUT</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">83</span><span class="cl">            <span class="n">currentThread</span><span class="p">.</span><span class="n">interrupt</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">84</span><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="ln">85</span><span class="cl">    <span class="p">}</span>
@@ -671,9 +671,9 @@ paw:http调试工具
 <h4 id="优化">优化</h4>
 <p>上面的连接 1 中需要设置一个超时时间,超时后返回失败,这里创建一个线程池,30 秒后尝试中断线程,上面</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln">1</span><span class="cl">    <span class="k">fun</span> <span class="nf">runDelayTimeout</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">        <span class="k">val</span> <span class="py">currentThread</span> <span class="p">=</span> <span class="n">Thread</span><span class="p">.</span><span class="n">currentThread</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">        <span class="k">val</span> <span class="py">currentThread</span> <span class="p">=</span> <span class="nc">Thread</span><span class="p">.</span><span class="n">currentThread</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">3</span><span class="cl">        <span class="n">threadPool</span><span class="p">.</span><span class="n">execute</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">            <span class="n">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">TIME_OUT</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">            <span class="nc">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">TIME_OUT</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">5</span><span class="cl">            <span class="n">currentThread</span><span class="p">.</span><span class="n">interrupt</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">6</span><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="ln">7</span><span class="cl">    <span class="p">}</span>
@@ -741,6 +741,9 @@ paw:http调试工具
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -761,9 +764,6 @@ paw:http调试工具
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -780,7 +780,7 @@ paw:http调试工具
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -880,7 +880,7 @@ paw:http调试工具
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -951,7 +951,7 @@ paw:http调试工具
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -1203,7 +1203,7 @@ paw:http调试工具
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1650,7 +1650,7 @@ paw:http调试工具
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

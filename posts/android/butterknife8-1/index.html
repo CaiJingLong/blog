@@ -18,17 +18,17 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="写在前面：  在 github 上 butterknife 的 star 有 11000&#43; 为啥有这么多人用这个插件 两点： 1、自动化 2、有人更新和维护
+<meta name="description" content="写在前面： 在 github 上 butterknife 的 star 有 11000&#43; 为啥有这么多人用这个插件 两点： 1、自动化 2、有人更新和维护
 GRADLE 根目录的 build.gradle 也就是 project 级
-1buildscript { 2repositories { …">
+1buildscript { 2 repositories { 3 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Butterknife8.4.0的一些问题" />
 <meta property="og:url" content="https://kikt.top/posts/android/butterknife8-1/" />
 <meta property="og:title" content="Butterknife8.4.0的一些问题" />
-<meta property="og:description" content="写在前面：  在 github 上 butterknife 的 star 有 11000&#43; 为啥有这么多人用这个插件 两点： 1、自动化 2、有人更新和维护
+<meta property="og:description" content="写在前面： 在 github 上 butterknife 的 star 有 11000&#43; 为啥有这么多人用这个插件 两点： 1、自动化 2、有人更新和维护
 GRADLE 根目录的 build.gradle 也就是 project 级
-1buildscript { 2repositories { …" />
+1buildscript { 2 repositories { 3 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -218,83 +218,83 @@ GRADLE 根目录的 build.gradle 也就是 project 级
 <p><code>ButterKnife.bind(this)</code>
 这里可以是 View，Activity 等等</p>
 <p>还支持 Android annotations 的几个注解</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="nd">@Optional</span> <span class="c1">//可选
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span><span class="nd">@Nullable</span> <span class="c1">//可能为空
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="nd">@Optional</span><span class="w"> </span><span class="c1">//可选</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w"></span><span class="nd">@Nullable</span><span class="w"> </span><span class="c1">//可能为空</span><span class="w">
 </span></span></span></code></pre></div><p>在 8.4.0 中最大的改动可能就是使用 R2 代替 R 文件
 我觉得这个可能是为了自动生成 R 文件经常出现问题的解决方案
 应该是和 Android Studio 中的 instant run 有冲突</p>
 <p>变量的注入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nd">@BindView</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="n">TextView</span> <span class="n">textView</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="nd">@BindString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">title</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="n">String</span> <span class="n">title</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="nd">@BindDrawable</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">graphic</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="n">Drawable</span> <span class="n">graphic</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="nd">@BindColor</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">color</span><span class="o">.</span><span class="na">red</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="kt">int</span> <span class="n">red</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">
-</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="nd">@BindDimen</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">dimen</span><span class="o">.</span><span class="na">spacer</span><span class="o">)</span> <span class="n">Float</span> <span class="n">spacer</span><span class="o">;</span> <span class="c1">// int (for pixel size) or float (for exact value) field
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nd">@BindView</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w"></span><span class="n">TextView</span><span class="w"> </span><span class="n">textView</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w"></span><span class="nd">@BindString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">title</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">title</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w"></span><span class="nd">@BindDrawable</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">graphic</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w"></span><span class="n">Drawable</span><span class="w"> </span><span class="n">graphic</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w"></span><span class="nd">@BindColor</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">color</span><span class="p">.</span><span class="na">red</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w"></span><span class="kt">int</span><span class="w"> </span><span class="n">red</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w"></span><span class="nd">@BindDimen</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">dimen</span><span class="p">.</span><span class="na">spacer</span><span class="p">)</span><span class="w"> </span><span class="n">Float</span><span class="w"> </span><span class="n">spacer</span><span class="p">;</span><span class="w"> </span><span class="c1">// int (for pixel size) or float (for exact value) field</span><span class="w">
 </span></span></span></code></pre></div><p>上面来自于官网</p>
 <p>可以修改 View 的属性
 An Android Property can also be used with the apply method.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">ButterKnife</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">nameViews</span><span class="o">,</span> <span class="n">View</span><span class="o">.</span><span class="na">ALPHA</span><span class="o">,</span> <span class="n">0</span><span class="o">.</span><span class="na">0f</span><span class="o">);</span>
-</span></span></code></pre></div><p>onclick 事件</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">//单View的写法
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span><span class="nd">@OnClick</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">submit</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">submit</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="c1">// TODO submit data to server...
-</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span><span class="o">}</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1">//也可以不写View参数
-</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"></span><span class="nd">@OnClick</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">submit</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">submit</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">  <span class="c1">// TODO submit data to server...
-</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1"></span><span class="o">}</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">
-</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1">//也可以将参数进行强转
-</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="c1"></span><span class="nd">@OnClick</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">submit</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">sayHi</span><span class="o">(</span><span class="n">Button</span> <span class="n">button</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">  <span class="n">button</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&#34;Hello!&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">
-</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="c1">//也可以是一个数组，这里批量注入
-</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="c1"></span><span class="nd">@OnClick</span><span class="o">({</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">door1</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">door2</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">door3</span> <span class="o">})</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">pickDoor</span><span class="o">(</span><span class="n">DoorView</span> <span class="n">door</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl">  <span class="k">if</span> <span class="o">(</span><span class="n">door</span><span class="o">.</span><span class="na">hasPrizeBehind</span><span class="o">())</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">23</span><span class="cl">    <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">&#34;You win!&#34;</span><span class="o">,</span> <span class="n">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl">  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">25</span><span class="cl">    <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">&#34;Try again&#34;</span><span class="o">,</span> <span class="n">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">26</span><span class="cl">  <span class="o">}</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h3 id="这个暂时没有试验稍后试验"><strong>这个暂时没有试验，稍后试验</strong></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">// Custom views can bind to their own listeners by not specifying an ID.
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FancyButton</span> <span class="kd">extends</span> <span class="n">Button</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="nd">@OnClick</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="c1">// TODO do something!
-</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="c1"></span>  <span class="o">}</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>一些特殊的点击事件</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="nd">@OnItemSelected</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">list_view</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="kt">void</span> <span class="nf">onItemSelected</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="c1">// TODO ...
-</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1"></span><span class="o">}</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="nd">@OnItemSelected</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">maybe_missing</span><span class="o">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="n">NOTHING_SELECTED</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="kt">void</span> <span class="nf">onNothingSelected</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">8</span><span class="cl">  <span class="c1">// TODO ...
-</span></span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="c1"></span><span class="o">}</span>
-</span></span></code></pre></div><p>官网还有一个 bouns，看起来是省去了强转，可以用在 dialog 等地方</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">ButterKnife</span><span class="p">.</span><span class="na">apply</span><span class="p">(</span><span class="n">nameViews</span><span class="p">,</span><span class="w"> </span><span class="n">View</span><span class="p">.</span><span class="na">ALPHA</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">.</span><span class="na">0f</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>onclick 事件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">//单View的写法</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w"></span><span class="nd">@OnClick</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">submit</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">submit</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">  </span><span class="c1">// TODO submit data to server...</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w"></span><span class="c1">//也可以不写View参数</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w"></span><span class="nd">@OnClick</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">submit</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">submit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">  </span><span class="c1">// TODO submit data to server...</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w"></span><span class="c1">//也可以将参数进行强转</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w"></span><span class="nd">@OnClick</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">submit</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sayHi</span><span class="p">(</span><span class="n">Button</span><span class="w"> </span><span class="n">button</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w">  </span><span class="n">button</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&#34;Hello!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w"></span><span class="c1">//也可以是一个数组，这里批量注入</span><span class="w">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w"></span><span class="nd">@OnClick</span><span class="p">({</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">door1</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">door2</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">door3</span><span class="w"> </span><span class="p">})</span><span class="w">
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">pickDoor</span><span class="p">(</span><span class="n">DoorView</span><span class="w"> </span><span class="n">door</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">door</span><span class="p">.</span><span class="na">hasPrizeBehind</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w">    </span><span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;You win!&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="w">    </span><span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Try again&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h3 id="这个暂时没有试验稍后试验"><strong>这个暂时没有试验，稍后试验</strong></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">// Custom views can bind to their own listeners by not specifying an ID.</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FancyButton</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Button</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w">  </span><span class="nd">@OnClick</span><span class="w">
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="w">    </span><span class="c1">// TODO do something!</span><span class="w">
+</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>一些特殊的点击事件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="nd">@OnItemSelected</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">list_view</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w"></span><span class="kt">void</span><span class="w"> </span><span class="nf">onItemSelected</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">position</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w">  </span><span class="c1">// TODO ...</span><span class="w">
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="w"></span><span class="nd">@OnItemSelected</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">maybe_missing</span><span class="p">,</span><span class="w"> </span><span class="n">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NOTHING_SELECTED</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="w"></span><span class="kt">void</span><span class="w"> </span><span class="nf">onNothingSelected</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="w">  </span><span class="c1">// TODO ...</span><span class="w">
+</span></span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>官网还有一个 bouns，看起来是省去了强转，可以用在 dialog 等地方</p>
 <p>BONUS</p>
 <p>Also included are findById methods which simplify code that still has to find views on a View, Activity, or Dialog. It uses generics to infer the return type and automatically performs the cast.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">View</span> <span class="n">view</span> <span class="o">=</span> <span class="n">LayoutInflater</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="n">context</span><span class="o">).</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">thing</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">TextView</span> <span class="n">firstName</span> <span class="o">=</span> <span class="n">ButterKnife</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="n">view</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">first_name</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">TextView</span> <span class="n">lastName</span> <span class="o">=</span> <span class="n">ButterKnife</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="n">view</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">last_name</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="n">ImageView</span> <span class="n">photo</span> <span class="o">=</span> <span class="n">ButterKnife</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="n">view</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">photo</span><span class="o">);</span>
-</span></span></code></pre></div><p>Add a static import for ButterKnife.findById and enjoy even more fun.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LayoutInflater</span><span class="p">.</span><span class="na">from</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">inflate</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">thing</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w"></span><span class="n">TextView</span><span class="w"> </span><span class="n">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ButterKnife</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">view</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">first_name</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w"></span><span class="n">TextView</span><span class="w"> </span><span class="n">lastName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ButterKnife</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">view</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">last_name</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="w"></span><span class="n">ImageView</span><span class="w"> </span><span class="n">photo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ButterKnife</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">view</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">photo</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>Add a static import for ButterKnife.findById and enjoy even more fun.</p>
 <p>android studio 中有插件哦
 搜索 Butterknife
 默认快捷键是 alt+insert 然后选 Butterknife 那个
@@ -361,6 +361,9 @@ An Android Property can also be used with the apply method.</p>
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -381,9 +384,6 @@ An Android Property can also be used with the apply method.</p>
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -400,7 +400,7 @@ An Android Property can also be used with the apply method.</p>
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -500,7 +500,7 @@ An Android Property can also be used with the apply method.</p>
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -571,7 +571,7 @@ An Android Property can also be used with the apply method.</p>
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -823,7 +823,7 @@ An Android Property can also be used with the apply method.</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1270,7 +1270,7 @@ An Android Property can also be used with the apply method.</p>
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

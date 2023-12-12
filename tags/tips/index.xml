@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/tips/</link>
     <description>Recent content in tips on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Wed, 12 Dec 2018 15:21:47 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/tips/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,22 +20,22 @@
             最近沉迷 flutter,偶尔换换口味,看看 github
 很多知名的开源项目落户于 github,那么为什么呢,人云亦云吗?
 不一定, github 的工作流很强大.能够帮助我们更加清晰工作流程
- 
- 首先官方链接在此,英文好的直接去看
- 另外还有一个帮助你学习 github 的小机器人
- 
- 这个小机器人能帮你系统的了解一些 github 的工作流和 github 的一些基本功能
+首先官方链接在此,英文好的直接去看
+另外还有一个帮助你学习 github 的小机器人
+这个小机器人能帮你系统的了解一些 github 的工作流和 github 的一些基本功能
 比如 github 仓库的元数据修改,关键字修改,github pages 的发布
 工作流包括 issues 中的
 PR 整体过程中 分派工作/审核/修改意见/冲突处理/merge 代码的流程,强烈建议 github 用的不好的人先去梳理一下
 issue 篇 常规的创建之类的就不说了,说一些你日常中看不到的东西,或者说看见了,但是不知道怎么玩出来的
 不会包含所有的东西,但是会有一些很神奇的效果
 通过代码创建一个 issue 比如我在某行代码发现了一个错误, 那么我可以直接在 github 中选中这个代码,然后开启一个 issue
-  点击行号
-  open new issue
-     通过这几个步骤,我们能看到,我们创建了一个指向改行的错误,这样开发者就能很简单的定位到该行,并且可以直观的在 issue 中看到该行代码,方便开发者定位
-
-创建一个永久可见的代码连接   提交后就可以看到了
+点击行号
+open new issue
+通过这几个步骤,我们能看到,我们创建了一个指向改行的错误,这样开发者就能很简单的定位到该行,并且可以直观的在 issue 中看到该行代码,方便开发者定位
+创建一个永久可见的代码连接 提交后就可以看到了
+TODO List 进度条 有的时候我们会需要使用 issue 来记录我们的开发过程,或者功能需求来提醒我们什么没做
+使用类似如下的写法来创建即可
+1- [X] 第一项工作 2- [ ] 第二项工作 3- [X] 第三项工作 4- [X] 第四项工作 成功后是这样的
           
           
         

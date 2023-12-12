@@ -18,13 +18,13 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="retrofit 初探 引用 maven 1&lt;dependency&gt; 2&lt;groupId&gt;com.squareup.retrofit2&lt;/groupId&gt; 3&lt;artifactId&gt;retrofit&lt;/artifactId&gt; …">
+<meta name="description" content="retrofit 初探 引用 maven 1&lt;dependency&gt; 2 &lt;groupId&gt;com.squareup.retrofit2&lt;/groupId&gt; 3 &lt;artifactId&gt;retrofit&lt;/artifactId&gt; 4 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Retroift初探" />
 <meta property="og:url" content="https://kikt.top/posts/android/retroift-first-develop/" />
 <meta property="og:title" content="Retroift初探" />
-<meta property="og:description" content="retrofit 初探 引用 maven 1&lt;dependency&gt; 2&lt;groupId&gt;com.squareup.retrofit2&lt;/groupId&gt; 3&lt;artifactId&gt;retrofit&lt;/artifactId&gt; …" />
+<meta property="og:description" content="retrofit 初探 引用 maven 1&lt;dependency&gt; 2 &lt;groupId&gt;com.squareup.retrofit2&lt;/groupId&gt; 3 &lt;artifactId&gt;retrofit&lt;/artifactId&gt; 4 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -127,7 +127,7 @@
 </span>
     <span class="post_date">
       2016-08-31 18:25</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
         </a><a href='https://kikt.top/tags/retrofit' title="retrofit" class="post_tag button button_translucent">retrofit
         </a>
     </span>
@@ -197,38 +197,38 @@
 <p>其实，最适合使用 retrofit 的是 rest 请求类的交互，如果具体的请求参数是以 url 区分业务逻辑，请求参数通过 json 进行的，那其实 retrofit 不太适用</p>
 <p>俗话说，demo 是最好的学习
 先来看看怎么定义业务逻辑</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">GitHubService</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="nd">@GET</span><span class="o">(</span><span class="s">&#34;users/{user}/repos&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">Call</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Repo</span><span class="o">&gt;&gt;</span> <span class="nf">listRepos</span><span class="o">(</span><span class="nd">@Path</span><span class="o">(</span><span class="s">&#34;user&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">user</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>这里的{user}是一个会在实际使用时会被动态改变的，会根据 String user 中的变量而改变</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RetrofitDemo</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">  <span class="kd">private</span> <span class="kd">static</span> <span class="n">OkHttpClient</span> <span class="n">client</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="kd">static</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">        <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OkHttpClient</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">                <span class="o">.</span><span class="na">addInterceptor</span><span class="o">(</span><span class="k">new</span> <span class="n">HttpInterceptor</span><span class="o">())</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="n">Retrofit</span> <span class="n">retrofit</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Retrofit</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">                <span class="o">.</span><span class="na">baseUrl</span><span class="o">(</span><span class="s">&#34;http://127.0.0.1:32001&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">                <span class="o">.</span><span class="na">addConverterFactory</span><span class="o">(</span><span class="n">GsonConverterFactory</span><span class="o">.</span><span class="na">create</span><span class="o">())</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">  <span class="c1">//              .addConverterFactory(StringConverterFactory.create())
-</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">client</span><span class="o">(</span><span class="n">client</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">
-</span></span><span class="line"><span class="ln">18</span><span class="cl">        <span class="n">RequestServer</span> <span class="n">requestServer</span> <span class="o">=</span> <span class="n">retrofit</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">RequestServer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl">        <span class="n">TestEntity</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TestEntity</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">        <span class="n">bean</span><span class="o">.</span><span class="na">setTest</span><span class="o">(</span><span class="s">&#34;text1&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl">        <span class="n">Call</span><span class="o">&lt;</span><span class="n">ResponseEntity</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">requestServer</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">&#34;ping&#34;</span><span class="o">,</span> <span class="s">&#34;test&#34;</span><span class="o">,</span> <span class="n">bean</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="n">Response</span><span class="o">&lt;</span><span class="n">ResponseEntity</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="n">call</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">23</span><span class="cl">        <span class="n">ResponseEntity</span> <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">body</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">body</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-</span></span><span class="line"><span class="ln">25</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>在上述的代码中
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">GitHubService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w">  </span><span class="nd">@GET</span><span class="p">(</span><span class="s">&#34;users/{user}/repos&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w">  </span><span class="n">Call</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Repo</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">listRepos</span><span class="p">(</span><span class="nd">@Path</span><span class="p">(</span><span class="s">&#34;user&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>这里的{user}是一个会在实际使用时会被动态改变的，会根据 String user 中的变量而改变</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RetrofitDemo</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">OkHttpClient</span><span class="w"> </span><span class="n">client</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">        </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OkHttpClient</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">addInterceptor</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HttpInterceptor</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">        </span><span class="n">Retrofit</span><span class="w"> </span><span class="n">retrofit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Retrofit</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">baseUrl</span><span class="p">(</span><span class="s">&#34;http://127.0.0.1:32001&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">addConverterFactory</span><span class="p">(</span><span class="n">GsonConverterFactory</span><span class="p">.</span><span class="na">create</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">  </span><span class="c1">//              .addConverterFactory(StringConverterFactory.create())</span><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">client</span><span class="p">(</span><span class="n">client</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w">        </span><span class="n">RequestServer</span><span class="w"> </span><span class="n">requestServer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">retrofit</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">RequestServer</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w">        </span><span class="n">TestEntity</span><span class="w"> </span><span class="n">bean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TestEntity</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w">        </span><span class="n">bean</span><span class="p">.</span><span class="na">setTest</span><span class="p">(</span><span class="s">&#34;text1&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w">        </span><span class="n">Call</span><span class="o">&lt;</span><span class="n">ResponseEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">requestServer</span><span class="p">.</span><span class="na">post</span><span class="p">(</span><span class="s">&#34;ping&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;test&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">bean</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="w">        </span><span class="n">Response</span><span class="o">&lt;</span><span class="n">ResponseEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">call</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w">        </span><span class="n">ResponseEntity</span><span class="w"> </span><span class="n">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="na">body</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">body</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>在上述的代码中
 访问的 url 是 <code>http://127.0.0.1:32001/ping/test</code>
 请求的方式是<code>post</code>
 返回值是<code>Call&lt;ResponseEntity&gt;</code> 这里的具体访问是框架实现的
@@ -240,88 +240,88 @@
 <p>看下<code>GsonConverterFactory</code>的实现</p>
 <p>
 这里其实就 4 个关键方法</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl">  <span class="nd">@Override</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">  <span class="kd">public</span> <span class="n">Converter</span><span class="o">&lt;</span><span class="n">ResponseBody</span><span class="o">,</span> <span class="o">?&gt;</span> <span class="n">responseBodyConverter</span><span class="o">(</span><span class="n">Type</span> <span class="n">type</span><span class="o">,</span> <span class="n">Annotation</span><span class="o">[]</span> <span class="n">annotations</span><span class="o">,</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">      <span class="n">Retrofit</span> <span class="n">retrofit</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">TypeAdapter</span><span class="o">&lt;?&gt;</span> <span class="n">adapter</span> <span class="o">=</span> <span class="n">gson</span><span class="o">.</span><span class="na">getAdapter</span><span class="o">(</span><span class="n">TypeToken</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">type</span><span class="o">));</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="n">GsonResponseBodyConverter</span><span class="o">&lt;&gt;(</span><span class="n">gson</span><span class="o">,</span> <span class="n">adapter</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="o">}</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="nd">@Override</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  <span class="kd">public</span> <span class="n">Converter</span><span class="o">&lt;?,</span> <span class="n">RequestBody</span><span class="o">&gt;</span> <span class="nf">requestBodyConverter</span><span class="o">(</span><span class="n">Type</span> <span class="n">type</span><span class="o">,</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">      <span class="n">Annotation</span><span class="o">[]</span> <span class="n">parameterAnnotations</span><span class="o">,</span> <span class="n">Annotation</span><span class="o">[]</span> <span class="n">methodAnnotations</span><span class="o">,</span> <span class="n">Retrofit</span> <span class="n">retrofit</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="n">TypeAdapter</span><span class="o">&lt;?&gt;</span> <span class="n">adapter</span> <span class="o">=</span> <span class="n">gson</span><span class="o">.</span><span class="na">getAdapter</span><span class="o">(</span><span class="n">TypeToken</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">type</span><span class="o">));</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="n">GsonRequestBodyConverter</span><span class="o">&lt;&gt;(</span><span class="n">gson</span><span class="o">,</span> <span class="n">adapter</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="o">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="nd">@Override</span> <span class="kd">public</span> <span class="n">RequestBody</span> <span class="nf">convert</span><span class="o">(</span><span class="n">T</span> <span class="n">value</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">Buffer</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Buffer</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="n">Writer</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutputStreamWriter</span><span class="o">(</span><span class="n">buffer</span><span class="o">.</span><span class="na">outputStream</span><span class="o">(),</span> <span class="n">UTF_8</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="n">JsonWriter</span> <span class="n">jsonWriter</span> <span class="o">=</span> <span class="n">gson</span><span class="o">.</span><span class="na">newJsonWriter</span><span class="o">(</span><span class="n">writer</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="n">adapter</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">jsonWriter</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">    <span class="n">jsonWriter</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl">    <span class="k">return</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">MEDIA_TYPE</span><span class="o">,</span> <span class="n">buffer</span><span class="o">.</span><span class="na">readByteString</span><span class="o">());</span>
-</span></span><span class="line"><span class="ln">8</span><span class="cl">  <span class="o">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl">  <span class="nd">@Override</span> <span class="kd">public</span> <span class="n">T</span> <span class="nf">convert</span><span class="o">(</span><span class="n">ResponseBody</span> <span class="n">value</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="n">JsonReader</span> <span class="n">jsonReader</span> <span class="o">=</span> <span class="n">gson</span><span class="o">.</span><span class="na">newJsonReader</span><span class="o">(</span><span class="n">value</span><span class="o">.</span><span class="na">charStream</span><span class="o">());</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="k">try</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">      <span class="k">return</span> <span class="n">adapter</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">jsonReader</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">      <span class="n">value</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">8</span><span class="cl">  <span class="o">}</span>
-</span></span></code></pre></div><p>前两个方法用于生成 Converter</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="w">  </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Converter</span><span class="o">&lt;</span><span class="n">ResponseBody</span><span class="p">,</span><span class="w"> </span><span class="o">?&gt;</span><span class="w"> </span><span class="n">responseBodyConverter</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">Annotation</span><span class="o">[]</span><span class="w"> </span><span class="n">annotations</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w">      </span><span class="n">Retrofit</span><span class="w"> </span><span class="n">retrofit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">    </span><span class="n">TypeAdapter</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">adapter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gson</span><span class="p">.</span><span class="na">getAdapter</span><span class="p">(</span><span class="n">TypeToken</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">type</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GsonResponseBodyConverter</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">gson</span><span class="p">,</span><span class="w"> </span><span class="n">adapter</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">  </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Converter</span><span class="o">&lt;?</span><span class="p">,</span><span class="w"> </span><span class="n">RequestBody</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">requestBodyConverter</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">      </span><span class="n">Annotation</span><span class="o">[]</span><span class="w"> </span><span class="n">parameterAnnotations</span><span class="p">,</span><span class="w"> </span><span class="n">Annotation</span><span class="o">[]</span><span class="w"> </span><span class="n">methodAnnotations</span><span class="p">,</span><span class="w"> </span><span class="n">Retrofit</span><span class="w"> </span><span class="n">retrofit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">    </span><span class="n">TypeAdapter</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">adapter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gson</span><span class="p">.</span><span class="na">getAdapter</span><span class="p">(</span><span class="n">TypeToken</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">type</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GsonRequestBodyConverter</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">gson</span><span class="p">,</span><span class="w"> </span><span class="n">adapter</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="n">RequestBody</span><span class="w"> </span><span class="nf">convert</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w">    </span><span class="n">Buffer</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Buffer</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w">    </span><span class="n">Writer</span><span class="w"> </span><span class="n">writer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OutputStreamWriter</span><span class="p">(</span><span class="n">buffer</span><span class="p">.</span><span class="na">outputStream</span><span class="p">(),</span><span class="w"> </span><span class="n">UTF_8</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="w">    </span><span class="n">JsonWriter</span><span class="w"> </span><span class="n">jsonWriter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gson</span><span class="p">.</span><span class="na">newJsonWriter</span><span class="p">(</span><span class="n">writer</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="w">    </span><span class="n">adapter</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">jsonWriter</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="w">    </span><span class="n">jsonWriter</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">RequestBody</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">MEDIA_TYPE</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="na">readByteString</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="w">  </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">convert</span><span class="p">(</span><span class="n">ResponseBody</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w">  </span><span class="n">JsonReader</span><span class="w"> </span><span class="n">jsonReader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gson</span><span class="p">.</span><span class="na">newJsonReader</span><span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="na">charStream</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">adapter</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">jsonReader</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="w">      </span><span class="n">value</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>前两个方法用于生成 Converter</p>
 <p>后面的是 Converter 中的方法
 用于将 bean 转化成 RequestBody
 和将 ResponseBody 转化成 bean</p>
 <p>仿照这个自己写一个 Factory
 StringConverterFactory</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">StringConverterFactory</span> <span class="kd">extends</span> <span class="n">Converter</span><span class="o">.</span><span class="na">Factory</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  <span class="kd">public</span> <span class="kd">static</span> <span class="n">StringConverterFactory</span> <span class="nf">create</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="n">StringConverterFactory</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  <span class="o">}</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">  <span class="kd">private</span> <span class="nf">StringConverterFactory</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="o">}</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
-</span></span><span class="line"><span class="ln">10</span><span class="cl">  <span class="nd">@Override</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">  <span class="kd">public</span> <span class="n">Converter</span><span class="o">&lt;</span><span class="n">ResponseBody</span><span class="o">,</span> <span class="o">?&gt;</span> <span class="n">responseBodyConverter</span><span class="o">(</span><span class="n">Type</span> <span class="n">type</span><span class="o">,</span> <span class="n">Annotation</span><span class="o">[]</span> <span class="n">annotations</span><span class="o">,</span> <span class="n">Retrofit</span> <span class="n">retrofit</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="n">StringResponseBodyConverter</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="o">}</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">
-</span></span><span class="line"><span class="ln">15</span><span class="cl">  <span class="nd">@Override</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">  <span class="kd">public</span> <span class="n">Converter</span><span class="o">&lt;?,</span> <span class="n">RequestBody</span><span class="o">&gt;</span> <span class="nf">requestBodyConverter</span><span class="o">(</span><span class="n">Type</span> <span class="n">type</span><span class="o">,</span> <span class="n">Annotation</span><span class="o">[]</span> <span class="n">parameterAnnotations</span><span class="o">,</span> <span class="n">Annotation</span><span class="o">[]</span> <span class="n">methodAnnotations</span><span class="o">,</span> <span class="n">Retrofit</span> <span class="n">retrofit</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="n">StringRequestBodyConverter</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">  <span class="o">}</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>StringRequestBodyConverter</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">final</span> <span class="kd">class</span> <span class="nc">StringRequestBodyConverter</span> <span class="kd">implements</span> <span class="n">Converter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">RequestBody</span><span class="o">&gt;</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">StringRequestBodyConverter</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="kd">public</span> <span class="n">RequestBody</span> <span class="nf">convert</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="k">return</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&#34;text/json&#34;</span><span class="o">),</span> <span class="n">s</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>StringResponseBodyConverter</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">final</span> <span class="kd">class</span> <span class="nc">StringResponseBodyConverter</span> <span class="kd">implements</span> <span class="n">Converter</span><span class="o">&lt;</span><span class="n">ResponseBody</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">StringResponseBodyConverter</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">convert</span><span class="o">(</span><span class="n">ResponseBody</span> <span class="n">value</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="k">try</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">            <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="na">string</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">            <span class="n">value</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>其实就是 Factory 中的两个方法控制使用哪个转化器转化
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StringConverterFactory</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Converter</span><span class="p">.</span><span class="na">Factory</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">StringConverterFactory</span><span class="w"> </span><span class="nf">create</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringConverterFactory</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="nf">StringConverterFactory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">  </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Converter</span><span class="o">&lt;</span><span class="n">ResponseBody</span><span class="p">,</span><span class="w"> </span><span class="o">?&gt;</span><span class="w"> </span><span class="n">responseBodyConverter</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">Annotation</span><span class="o">[]</span><span class="w"> </span><span class="n">annotations</span><span class="p">,</span><span class="w"> </span><span class="n">Retrofit</span><span class="w"> </span><span class="n">retrofit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringResponseBodyConverter</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w">  </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Converter</span><span class="o">&lt;?</span><span class="p">,</span><span class="w"> </span><span class="n">RequestBody</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">requestBodyConverter</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">Annotation</span><span class="o">[]</span><span class="w"> </span><span class="n">parameterAnnotations</span><span class="p">,</span><span class="w"> </span><span class="n">Annotation</span><span class="o">[]</span><span class="w"> </span><span class="n">methodAnnotations</span><span class="p">,</span><span class="w"> </span><span class="n">Retrofit</span><span class="w"> </span><span class="n">retrofit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringRequestBodyConverter</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>StringRequestBodyConverter</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StringRequestBodyConverter</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Converter</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">RequestBody</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w">    </span><span class="n">StringRequestBodyConverter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">RequestBody</span><span class="w"> </span><span class="nf">convert</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">RequestBody</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">MediaType</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&#34;text/json&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">s</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>StringResponseBodyConverter</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StringResponseBodyConverter</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Converter</span><span class="o">&lt;</span><span class="n">ResponseBody</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w">    </span><span class="n">StringResponseBodyConverter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">convert</span><span class="p">(</span><span class="n">ResponseBody</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">.</span><span class="na">string</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">            </span><span class="n">value</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>其实就是 Factory 中的两个方法控制使用哪个转化器转化
 两个 Convert 控制怎么转化</p>
 
       
@@ -384,6 +384,9 @@ StringConverterFactory</p>
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -404,9 +407,6 @@ StringConverterFactory</p>
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -423,7 +423,7 @@ StringConverterFactory</p>
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -523,7 +523,7 @@ StringConverterFactory</p>
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -594,7 +594,7 @@ StringConverterFactory</p>
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -846,7 +846,7 @@ StringConverterFactory</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1293,7 +1293,7 @@ StringConverterFactory</p>
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/go/</link>
     <description>Recent content in go on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Fri, 14 Aug 2020 20:45:00 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -18,8 +19,8 @@
           
             golang跨平台, 性能强, 周边也算丰富
 一直有一个想法, 把这东西写的代码编译成各个平台的库, 未来在 flutter 里用
-开发环境和工具  MacOS(其他的暂时不考虑) Go  Go 1.14.6, 版本太低可能不能编译成 android 的 Goland , 咱现在是正版用户, 用开源项目申请的All products License , 你也可以根据自己的情况选择别的 IDE 或使用文本编辑器(vscode 也不错)   Android  Android Studio Cmake Android SDK Android NDK    Go 部分 go 源码 add_library.go
-1package main 23import &amp;#34;C&amp;#34; 45//export add 6func add(x, y int) int { 7return x + y 8} 910//export remove_int 11func remove_int(x, y int) int { 12return x - y 13} 1415func main() { 16} 这里有几点要注意
+开发环境和工具 MacOS(其他的暂时不考虑) Go Go 1.14.6, 版本太低可能不能编译成 android 的 Goland , 咱现在是正版用户, 用开源项目申请的All products License , 你也可以根据自己的情况选择别的 IDE 或使用文本编辑器(vscode 也不错) Android Android Studio Cmake Android SDK Android NDK Go 部分 go 源码 add_library.go
+1package main 2 3import &amp;#34;C&amp;#34; 4 5//export add 6func add(x, y int) int { 7	return x + y 8} 9 10//export remove_int 11func remove_int(x, y int) int { 12	return x - y 13} 14 15func main() { 16} 这里有几点要注意
           
           
         
@@ -38,7 +39,7 @@
             前篇对于 go-flutter 引擎进行了初步的探索, 打包终产物是一个二进制文件配合一些资源文件
 本篇研究如何将终产物变成一个 app, 进一步变成 dmg, 就和你网上下载的工具一样
 本篇默认你拥有全套的工具, git xcode flutter go hover
-                      打包出 go 终产物 这里以大佬的 为例
+打包出 go 终产物 这里以大佬的 为例
 1cd /tmp 2git clone https://github.com/fluttercandies/JsonToDart.git 3cd JsonToDart/Flutter/desktop 打包
 1hover build 这里可能很快也可能很慢, 根据你的工程大小和网络速度而言, 网络速度是因为要下载 flutter 依赖和 go-flutter 引擎相关的东西, 工程大小影响编译速度
 然后可以看到当前的目录结构
@@ -62,7 +63,9 @@
 Github 地址是:https://github.com/go-flutter-desktop/go-flutter
 目前在 mac,linux,windows 均可用, 作为一个 mac 用户, 除了 retina 下字显得有点小, 感觉没有单独适配外, 总体感觉是优于官方的 desktop 引擎的
 另外我是真实的 golang 脑残粉, 我觉得 golang 这东西真的太好了, 用 golang, 准不会错
-                                              开发环境 需要的开发环境, 因为我是 MacOS, 我以 macOS 为例,其他的请参考对应的系统
+开发环境 需要的开发环境, 因为我是 MacOS, 我以 macOS 为例,其他的请参考对应的系统
+Xcode 命令行体系, 这个东西包含很多开发套件(Git), 无论你是否用 XCode 开发,都建议装一个... Flutter 环境和配套工具, 这个跑不掉,作为 flutter 开发者... go 语言环境(使用 brew 安装), 1.12+, IDE 用 Jetbrains 家的 goland (你用 VSCode 的话看你自己的情况) 环境安装 对 flutter 桌面版本感兴趣的一定接触过 flutter 开发, 我就默认你有 flutter 全套开发环境
+go 语言环境安装 $ brew install go
           
           
         

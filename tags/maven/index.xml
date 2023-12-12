@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/maven/</link>
     <description>Recent content in maven on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Mon, 30 Mar 2020 14:14:39 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/maven/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -21,7 +22,7 @@
 做过安卓开发的朋友可能知道, aar 文件如果作为本地文件直接引入 library, 然后 app 引用 library 是会报找不到aar的, 需要在 app 中使用 flatDir 进行引入, 这种方式的缺点在于, 你必须在每个项目去配置, 很有侵入性
 熟悉 flutter 插件开发的朋友都知道,在我们开发 flutter 插件时, 插件是以 library module 的形式引入到项目中的
 这时如果 sdk 方对于安卓只提供了 aar, 在这种大前提下,我们有如下几种方法:
- 使用 maven 公开服, 比如 jcenter, 或其他的 maven 仓库 使用本地 maven 仓库  本篇就使用这种本地 maven 仓库的方案来做
+使用 maven 公开服, 比如 jcenter, 或其他的 maven 仓库 使用本地 maven 仓库 本篇就使用这种本地 maven 仓库的方案来做
 完成本地 maven 的步骤 创建插件项目 第一步肯定是创建一个 flutter 插件
 1flutter create -t plugin example_for_flutter_plugin_local_maven 置入 aar 我这里用蒲公英的的 aar 举例:
           
@@ -41,9 +42,9 @@
           
             前言 本篇写一个将 flutter 打包为 aar 置入已有项目的方案
 与不同的是: 本篇使用新版本的 flutter 环境, 使用 build aar 命令构建 aar,并上传至 maven 私服
-开发环境 1$ flutter doctor -v 2[✓] Flutter (Channel stable, v1.12.13+hotfix.7, on Mac OS X 10.15 19A602, locale zh-Hans-CN) 3• Flutter version 1.12.13+hotfix.7 at /Users/caijinglong/Library/Flutter/flutter_dev 4• Framework revision 9f5ff2306b (9 天前), 2020-01-26 22:38:26 -0800 5• Engine revision a67792536c 6• Dart version 2.7.0 准备步骤 创建宿主工程 这个是模拟你本来的项目
+开发环境 1$ flutter doctor -v 2[✓] Flutter (Channel stable, v1.12.13+hotfix.7, on Mac OS X 10.15 19A602, locale zh-Hans-CN) 3 • Flutter version 1.12.13+hotfix.7 at /Users/caijinglong/Library/Flutter/flutter_dev 4 • Framework revision 9f5ff2306b (9 天前), 2020-01-26 22:38:26 -0800 5 • Engine revision a67792536c 6 • Dart version 2.7.0 准备步骤 创建宿主工程 这个是模拟你本来的项目
 作为原生开发者自行使用 Android Studio 创建即可
- 一个标准的 android 项目, 除了 gradle 版本使用 6.
+一个标准的 android 项目, 除了 gradle 版本使用 6.
           
           
         
@@ -63,7 +64,9 @@
 我也摸索了一个实践方案, 将所有项目的 aar 由 flutter 方打包 aar 后将 aar 置入某一个固定位置 ,并置入一个 git 库管理, 然后 android 原生方直接 pull 后引入项目即可
 高能预警: 本篇会结合 flutter, android, aar, gradle, maven, docker 的知识来完成所有的步骤
 并不是每一个都会详细说明, 如果有不明白的可以在 的本文下面留言, 我会更新文章或给予解答, 其他渠道的可能不会有时间看
-                                                               开发环境 本人设备环境 MacOS 10.
+开发环境 本人设备环境 MacOS 10.13.6 (17G65)
+flutter: Flutter 1.5.4-hotfix.2 • channel stable
+12019-10-25 更新说明: 这篇文章因为发布时效的原因, 当时还没有 `$ flutter build aar` 这个命令 2所以本人并没有实测两个东西的优劣性 预计需要的环境 1xcode 2android sdk 3gradle 4android studio 5flutter sdk 6docker # 这个 这些环境我默认你都有, 没有的话本篇不讲
           
           
         

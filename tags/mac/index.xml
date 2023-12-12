@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/mac/</link>
     <description>Recent content in mac on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 12 Nov 2019 10:17:47 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -18,9 +19,9 @@
           
             写在前面, 最近因为某些原因要用到 OpenCV, 加上这东西既然有 android 的库, 那说明 java 也有, 作为老本行我还是挺喜欢 Java 这个语言的
 打算在 mac 上使用, 但是发现没有编译好的 dylib 库, 所以只能自己动手了
-      使用 MacPorts 的失败之路 这条路实测不通
- 这个 port 我通过 pkg 安装不上, 没有报错原因, 还给我残留了垃圾 通过编译 port 源码的方式安装完毕后, 安装 opencv 的过程需要安装一个 db48, 结果失败了, 猜测是 port 需要使用 db48 作为数据库来管理自己的库或者别的什么原因, 总之失败了  查看日志是 Xcode 的问题, 说已知 11.1 有问题, 请更新到 11.2 巴拉巴拉的..., 问题是开发人员知道 11.2 的问题更大... 用这版本 Xcode 的人 不能上传 appstore...
-11.1 有问题请修复 11.
+使用 MacPorts 的失败之路 这条路实测不通
+这个 port 我通过 pkg 安装不上, 没有报错原因, 还给我残留了垃圾 通过编译 port 源码的方式安装完毕后, 安装 opencv 的过程需要安装一个 db48, 结果失败了, 猜测是 port 需要使用 db48 作为数据库来管理自己的库或者别的什么原因, 总之失败了 查看日志是 Xcode 的问题, 说已知 11.1 有问题, 请更新到 11.2 巴拉巴拉的..., 问题是开发人员知道 11.2 的问题更大... 用这版本 Xcode 的人 不能上传 appstore...
+11.1 有问题请修复 11.1 的问题.. 而不是简单让人升级, 升级 xcode 需要升级系统, 然后需要经历数个小时的折磨, 这只会让人放弃这个东西
           
           
         
@@ -36,14 +37,15 @@
       <description>
         
           
-            mac 开发环境配置 从入门到完成 本文首发简书 转载请注明出处  高能提示：文章字数不多，图很多，请做好战斗准备
- 前言 写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章 因为 flutter 涉及到跨平台开发，所以预想中会包含四部分 mac 篇，android 篇，ios 篇，flutter 篇
+            mac 开发环境配置 从入门到完成 本文首发简书 转载请注明出处 高能提示：文章字数不多，图很多，请做好战斗准备
+前言 写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章 因为 flutter 涉及到跨平台开发，所以预想中会包含四部分 mac 篇，android 篇，ios 篇，flutter 篇
 术语相关 cmd = command 键（空格左边） opt／alt = option 键（cmd 左边） ctrl = control（opt 左边） cli = 命令行工具（command-line interface,命令行界面) as = Android Studio
 写在前面 最低需要 xcode 9.0.0 以上的 xcode 版本 但是不建议从非官方渠道下载 xcode，以免遇到之前盗版 xcode 的问题
 我就是都装好了 8.3 才告诉我这个，没办法只能升级系统，再升级 xcode
 mac 篇 所谓 mac 篇就是一些基础的环境，和效率工具
 后面会使用
 cli 我这里使用，一个免费的开源的命令行工具 默认的命令行工具用 launchpad=&amp;gt; 其他 =&amp;gt; 终端打开
+zsh，用于替换 bash 环境，直接命令行中敲 zsh,即可进入，修改默认 zsh 的可以自行百度 oh my zsh，一个 zsh 插件 具体可以自行百度
           
           
         

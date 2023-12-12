@@ -135,7 +135,7 @@
 </span>
     <span class="post_date">
       2018-12-06 17:16</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/channel' title="channel" class="post_tag button button_translucent">channel
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/channel' title="channel" class="post_tag button button_translucent">channel
         </a><a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
         </a>
@@ -180,9 +180,7 @@
         <div class="pale">
           
             <p>原生通信系列
-
-
- 在 flutter 开发中一定会有需要和原生通信的情况
+在 flutter 开发中一定会有需要和原生通信的情况
 第一篇介绍的是 flutter 调用 Android
 这篇是给刚刚入门或者刚刚接触原生调用的朋友们使用的,老鸟们或者英文强的朋友还是直接看官方文档比较好
 创建项目 一般来说建议使用一个 plugin 作为一个单独的项目来将业务逻辑独立出去
@@ -212,7 +210,7 @@
 </span>
     <span class="post_date">
       2018-10-27 12:18</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/so' title="so" class="post_tag button button_translucent">so
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/so' title="so" class="post_tag button button_translucent">so
         </a><a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
         </a>
@@ -259,7 +257,7 @@
             <p>so 库说明 so 库在 android 中,是使用 c/c++代码编译出来的库文件,可以使用 ndk 调用,就是你在 android 代码中见到的 native 方法,具体的实现就在 so 库中
 关于 so 库兼容性问题 andorid 中或多或少都会引用到第三方库,而很多第三方库中都有 so 的存在,不论是复制到项目中(如百度地图),或是 gradle 依赖(如个推) 其中都涉及到了 so 库的相关问题,如果你选择的库是有所有 cpu 类型可选还好,如果不是,那么就需要自定义设置了
 举个栗子 你的 app 依赖两个库,分别是 lib1,lib2
-1lib1: arm64-v8a,armeabi-v7a 2lib2: …</p>
+1 lib1: arm64-v8a,armeabi-v7a 2 lib2: …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/so-about-1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -331,7 +329,7 @@
 比如 A 库引用了 v7 26.x.x 的库, B 库使用了 v7 27.x.x 作为依赖
 解决方案 gradle 打包的过程中,首先会加载所有 gradle 脚本到库内
 然后才是运行的过程, 所以我们只需要在 app 级的build.gradle中增加如下代码即可
-1rootProject.allprojects { // 闭包循环每个工程 2 3subprojects { //每个工程子工程 4 project.configurations.all { //查找所有配置 5 …</p>
+1rootProject.allprojects { // 闭包循环每个工程 2 3 subprojects { //每个工程子工程 4 project.configurations.all { //查找所有配置 5 …</p>
           
           <br>
           <a href="https://kikt.top/posts/android/android-repo-confire/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -400,11 +398,11 @@
         <div class="pale">
           
             <p>前言 最近有一些蓝牙的通信需要做,就研究了一下蓝牙连接相关
- 连接蓝牙电子秤 连接 pos 机打印  其中连接蓝牙电子秤是接收数据 pos 机打印是发送数据/接收数据
-流程图  流程图画的相当不专业,请自行脑补   核心类 因为这次的电子秤不是 4.0 的设备,所以没有使用 BLE 的开发,而是经典蓝牙(SPP)的连接方式 BluetoothAdapter
+连接蓝牙电子秤 连接 pos 机打印 其中连接蓝牙电子秤是接收数据 pos 机打印是发送数据/接收数据
+流程图 流程图画的相当不专业,请自行脑补 核心类 因为这次的电子秤不是 4.0 的设备,所以没有使用 BLE 的开发,而是经典蓝牙(SPP)的连接方式 BluetoothAdapter
 全局变量
 1protected BluetoothAdapter mAdapter; 获取的方法,在 API18 下的时候使用的方式和以上的不一样,其实差别不大
-1if (SDK_INT &lt; 18) { 2adapter = …</p>
+1if (SDK_INT &lt; 18) { 2 adapter = …</p>
           
           <br>
           <a href="https://kikt.top/posts/android/android-spp-bluetooth/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -473,7 +471,7 @@
           
             <p>前言 今天用 AS 写一个带有百度地图相关的项目时，发现了一个问题
 提示
-1Error:Execution failed for task &#39;:app:compileDebugNdk&#39;. 2&gt; Error: Your project contains C++ files but it is not using a supported native build system. 3Consider using CMake or ndk-build integration with the stable Android Gradle plugin: …</p>
+1 Error:Execution failed for task &#39;:app:compileDebugNdk&#39;. 2&gt; Error: Your project contains C++ files but it is not using a supported native build system. 3Consider using CMake or ndk-build integration with the stable Android Gradle plugin: 4 …</p>
           
           <br>
           <a href="https://kikt.top/posts/android/baidu-map-error/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -497,7 +495,7 @@
 </span>
     <span class="post_date">
       2016-12-06 10:45</span>
-    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/junit' title="junit" class="post_tag button button_translucent">junit
+    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/junit' title="junit" class="post_tag button button_translucent">junit
         </a><a href='https://kikt.top/tags/aidl' title="aidl" class="post_tag button button_translucent">aidl
         </a><a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
         </a>
@@ -544,8 +542,7 @@
             <p>前言 最近出去面试找工作，被人问到 AIDL，我就回答这个东西我用过，也大概理解，Android 的进程间通信语言嘛
 人家不置可否，那我能咋着呢，毕竟没深入研究过，也没办法，咱只能回来奋发图强了
 写在前面 我以前就看过的一个博客，里面原理代码什么都有，写的水平肯定比我高
- 
- 首先字面解释 A=Android IDL=Interface definition language 意译就是 android 接口定义语言，马丹，完全看不明白 算了，就是 Android 官方给我们定义出来跨进程，甚至跨应用通信用的
+首先字面解释 A=Android IDL=Interface definition language 意译就是 android 接口定义语言，马丹，完全看不明白 算了，就是 Android 官方给我们定义出来跨进程，甚至跨应用通信用的
 开发平台 Android Studio 2.2+Android 手机一部
 新建工程 这个就不说了， …</p>
           
@@ -618,7 +615,7 @@
 开发环境 Android Studio 2.2
 步骤 首先新建工程 然后会自动生成 MainActivity
 MainActivity 代码如下
-1public class MainActivity extends AppCompatActivity { 23// Used to load the &#39;native-lib&#39; library on …</p>
+1public class MainActivity extends AppCompatActivity { 2 3 // Used to load the &#39;native-lib&#39; library on …</p>
           
           <br>
           <a href="https://kikt.top/posts/android/android-junit/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -755,10 +752,10 @@ MainActivity 代码如下
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>写在前面：  在 github 上 butterknife 的 star 有 11000+ 为啥有这么多人用这个插件 两点： 1、自动化 2、有人更新和维护
+            <p>写在前面： 在 github 上 butterknife 的 star 有 11000+ 为啥有这么多人用这个插件 两点： 1、自动化 2、有人更新和维护
 GRADLE 根目录的 build.gradle 也就是 project 级
-1buildscript { 2repositories { 3mavenCentral() 4} 5dependencies { 6classpath &#39;com.neenbedankt.gradle.plugins:android-apt:1.8&#39; 7} 8} module 级别
-1apply plugin: &#39;android-apt&#39; 23android { …</p>
+1buildscript { 2 repositories { 3 mavenCentral() 4 } 5 dependencies { 6 classpath &#39;com.neenbedankt.gradle.plugins:android-apt:1.8&#39; 7 } 8} module 级别
+1apply plugin: &#39;android-apt&#39; 2 3android …</p>
           
           <br>
           <a href="https://kikt.top/posts/android/butterknife8-1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -897,7 +894,7 @@ Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象�
         <div class="pale">
           
             <p>retrofit 的简单二次封装 基于上次的后，可以对 retrofit 简单的二次封装
-1public interface HttpURL { 2String baseUrl = &#34;http://127.0.0.1:32001/&#34;; 3} 1public class RequestUtils { 23private static OkHttpClient client; 4private static Retrofit retrofit; 56private RequestUtils() { 7} 89static { 10client = new OkHttpClient() 11.newBuilder() …</p>
+1public interface HttpURL { 2 String baseUrl = &#34;http://127.0.0.1:32001/&#34;; 3} 1public class RequestUtils { 2 3 private static OkHttpClient client; 4 private static Retrofit retrofit; 5 6 private RequestUtils() { 7 } 8 9 static { 10 client = new OkHttpClient() 11 …</p>
           
           <br>
           <a href="https://kikt.top/posts/android/retroift-simple-packaging/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -921,7 +918,7 @@ Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象�
 </span>
     <span class="post_date">
       2016-08-31 18:25</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
         </a><a href='https://kikt.top/tags/retrofit' title="retrofit" class="post_tag button button_translucent">retrofit
         </a>
     </span>
@@ -964,7 +961,7 @@ Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象�
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>retrofit 初探 引用 maven 1&lt;dependency&gt; 2&lt;groupId&gt;com.squareup.retrofit2&lt;/groupId&gt; 3&lt;artifactId&gt;retrofit&lt;/artifactId&gt; 4&lt;version&gt;2.1.0&lt;/version&gt; 5&lt;/dependency&gt; gradle 1api &#39;com.squareup.retrofit2:retrofit:2.1.0&#39; github  个人意见 其实，最适合使用 retrofit 的是 rest 请求类的交互， …</p>
+            <p>retrofit 初探 引用 maven 1&lt;dependency&gt; 2 &lt;groupId&gt;com.squareup.retrofit2&lt;/groupId&gt; 3 &lt;artifactId&gt;retrofit&lt;/artifactId&gt; 4 &lt;version&gt;2.1.0&lt;/version&gt; 5&lt;/dependency&gt; gradle 1 api &#39;com.squareup.retrofit2:retrofit:2.1.0&#39; github 个人意见 其实，最适合使用 retrofit 的是 rest 请求类的交互，如果具体的请求参数 …</p>
           
           <br>
           <a href="https://kikt.top/posts/android/retroift-first-develop/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -1034,6 +1031,9 @@ Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象�
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -1054,9 +1054,6 @@ Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象�
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -1073,7 +1070,7 @@ Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象�
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -1173,7 +1170,7 @@ Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象�
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -1244,7 +1241,7 @@ Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象�
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -1496,7 +1493,7 @@ Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象�
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1943,7 +1940,7 @@ Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象�
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

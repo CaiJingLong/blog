@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E5%9F%8E%E5%B8%82/</link>
     <description>Recent content in 城市 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Fri, 25 Jan 2019 13:46:47 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E5%9F%8E%E5%B8%82/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -23,15 +24,14 @@
 说到爬虫,我们就想起了明年..两开花 python
 开发环境 使用的语言是 python3
 request_html+基本库
-爬取网页 
-查看网页 一级页面 使用 chrome dev 工具查看元素
- 呃. table 体系,最近几年算是比较少见了
+爬取网页 查看网页 一级页面 使用 chrome dev 工具查看元素
+呃. table 体系,最近几年算是比较少见了
 分析了一下,整个页面只有备案号和省份名称是 a 标签,这下过滤一下备案号,剩下的不就是我们要的数据了吗
 二级页面 点开北京,数据比较少,只有市辖区 内蒙的就比较多一点了
- 纯数字的是编码,其他的是名称,也是过滤掉 IPC 备案的就好
+纯数字的是编码,其他的是名称,也是过滤掉 IPC 备案的就好
 三级页面 和二级页面基本一致
- 撸码 city_get.py
-1import json 2from requests_html import HTMLSession 3import requests_html 45session = HTMLSession() 678class Entity: 9name: str 10link: str 11no: str 12baseUrl = &amp;#34;http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2017/&amp;#34; 1314def __str__(self) -&amp;gt; str: 15return &amp;#34;name:%s,link=%s&amp;#34; % (self.
+撸码 city_get.py
+1import json 2from requests_html import HTMLSession 3import requests_html 4 5session = HTMLSession() 6 7 8class Entity: 9 name: str 10 link: str 11 no: str 12 baseUrl = &amp;#34;http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2017/&amp;#34; 13 14 def __str__(self) -&amp;gt; str: 15 return &amp;#34;name:%s,link=%s&amp;#34; % (self.
           
           
         

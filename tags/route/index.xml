@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/route/</link>
     <description>Recent content in route on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Thu, 30 Apr 2020 17:23:14 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/route/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -21,10 +22,9 @@
 GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 会把它设置给 Navigator, 这东西一旦设置成功, 后续就可以不用 Navigator.of, 拿到 NavigatorState 的实例了
 然后这东西设置成全局的, 就可以在今后跳转的时候不用 context 了, 并且可以利用这个东西里的 context 来拿到全局的 Provider 类(这个不在本篇预计范围内)
 设置:
-1MaterialApp( 2navigatorKey: navigatorKey, 3); 使用:
+1MaterialApp( 2 navigatorKey: navigatorKey, 3); 使用:
 1NavigatorState get navigator =&amp;gt; navigatorKey.currentState; RouteHelper 全文如下, 但是有一个问题, 这个 navigatorKey 的 context 不能用于 showDialog, 所以需要自定义 dialog 的 route,才可以无 context 调用, 所以加了新的方法
 同样的, 以前的 helper 中 push 才需要 context,pop 不需要考虑太多,所以没有 pop 方法, 现在因为有了全局 navigatorKey 来做路由, 所以添加了 pop 相关的方法
-1import &amp;#39;package:flutter/material.
           
           
         
@@ -42,14 +42,15 @@ GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 
           
             过场动画 过场动画也就是切换路由时的动画
 这个东西有几种方案可以做
- 继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性  前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
+继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性 前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
 这东西有如下的好处:
- 设置一次, 你所有的MaterialPageRoute都可以生效 对于命名路由, 也就是pushNamed体系的也有效  先分析下源码 为啥分析源码? 因为如果上来就用显得不高端
+设置一次, 你所有的MaterialPageRoute都可以生效 对于命名路由, 也就是pushNamed体系的也有效 先分析下源码 为啥分析源码? 因为如果上来就用显得不高端
 先找一个大家都知道的切入点, 一般的过场动画都是用的 Navigator.push 方法来实现的
- 看看方法里的实现, 会发现很多常见的东西, 比如, 每一个 Route 都有自己的 OverlayEntry
+看看方法里的实现, 会发现很多常见的东西, 比如, 每一个 Route 都有自己的 OverlayEntry
 然后会有一个 install 方法
- 而实际调用中, 这个 Overlay 会被插入到 Overlay 栈内, 从而在界面上显示
-    经过这一串的调用, 就把 Navigator push 和 Route 关联到了一起, 那么 theme 是怎么和 Route 关联起来的呢, 我们进入 MaterialPageRoute 看一下
+而实际调用中, 这个 Overlay 会被插入到 Overlay 栈内, 从而在界面上显示
+经过这一串的调用, 就把 Navigator push 和 Route 关联到了一起, 那么 theme 是怎么和 Route 关联起来的呢, 我们进入 MaterialPageRoute 看一下
+我们看到, 这里是从 Theme 中找到 pageTransitionsTheme, 然后调用 pageTransitionsTheme 的 buildTransitions 方法来完成构建, 所以这就是我们可以在 theme 中一次修改, 多处生效的主因了
           
           
         
@@ -70,9 +71,9 @@ Route 就是路由,顾名思义,负责你页面间的跳转
 不想看代码和思路分析的直接 copy 了拿去用就行 没有啥外部依赖,只需要注意_rootRoute 后面的字符串需要和 initialRoute 对应即可
 路由又分静态和动态路由
 静态就是不需要传参数的,这样的路由可以直接定义在 MaterialApp/WidgetsApp 里 这样可以通过Navigator.pushNamed调用
- 动态的就是传入一个PageRoute, 通常是一个MaterialPageRoute 或者CupertinoPageRoute,或者你如果有自定义的有可以使用
+动态的就是传入一个PageRoute, 通常是一个MaterialPageRoute 或者CupertinoPageRoute,或者你如果有自定义的有可以使用
 这里我使用一个我的工具类来实现跳转,因为大部分情况下,工程中的路由都是动态的,也就是需要传参数的,所以工具类中只包含了静态路由
-1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/material.dart&amp;#39;; 45class RouteHelper { 6static Future&amp;lt;T&amp;gt; pushWidget&amp;lt;T&amp;gt;( 7BuildContext context, 8Widget widget, { 9bool replaceRoot = false, 10bool replaceCurrent = false, 11}) { 12return pushRoute( 13context, 14MaterialPageRoute(builder: (ctx) =&amp;gt; widget), 15replaceRoot: replaceRoot, 16replaceCurrent: replaceCurrent, 17); 18} 1920static Future&amp;lt;T&amp;gt; pushRoute&amp;lt;T&amp;gt;( 21BuildContext context, 22PageRoute&amp;lt;T&amp;gt; route, { 23bool replaceRoot = false, 24bool replaceCurrent = false, 25}) { 26assert(!
+1import &amp;#39;dart:async&amp;#39;; 2 3import &amp;#39;package:flutter/material.dart&amp;#39;; 4 5class RouteHelper { 6 static Future&amp;lt;T&amp;gt; pushWidget&amp;lt;T&amp;gt;( 7 BuildContext context, 8 Widget widget, { 9 bool replaceRoot = false, 10 bool replaceCurrent = false, 11 }) { 12 return pushRoute( 13 context, 14 MaterialPageRoute(builder: (ctx) =&amp;gt; widget), 15 replaceRoot: replaceRoot, 16 replaceCurrent: replaceCurrent, 17 ); 18 } 19 20 static Future&amp;lt;T&amp;gt; pushRoute&amp;lt;T&amp;gt;( 21 BuildContext context, 22 PageRoute&amp;lt;T&amp;gt; route, { 23 bool replaceRoot = false, 24 bool replaceCurrent = false, 25 }) { 26 assert(!
           
           
         

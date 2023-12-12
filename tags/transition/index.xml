@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/transition/</link>
     <description>Recent content in transition on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Mon, 24 Feb 2020 17:55:49 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/transition/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -18,14 +19,15 @@
           
             过场动画 过场动画也就是切换路由时的动画
 这个东西有几种方案可以做
- 继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性  前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
+继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性 前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
 这东西有如下的好处:
- 设置一次, 你所有的MaterialPageRoute都可以生效 对于命名路由, 也就是pushNamed体系的也有效  先分析下源码 为啥分析源码? 因为如果上来就用显得不高端
+设置一次, 你所有的MaterialPageRoute都可以生效 对于命名路由, 也就是pushNamed体系的也有效 先分析下源码 为啥分析源码? 因为如果上来就用显得不高端
 先找一个大家都知道的切入点, 一般的过场动画都是用的 Navigator.push 方法来实现的
- 看看方法里的实现, 会发现很多常见的东西, 比如, 每一个 Route 都有自己的 OverlayEntry
+看看方法里的实现, 会发现很多常见的东西, 比如, 每一个 Route 都有自己的 OverlayEntry
 然后会有一个 install 方法
- 而实际调用中, 这个 Overlay 会被插入到 Overlay 栈内, 从而在界面上显示
-    经过这一串的调用, 就把 Navigator push 和 Route 关联到了一起, 那么 theme 是怎么和 Route 关联起来的呢, 我们进入 MaterialPageRoute 看一下
+而实际调用中, 这个 Overlay 会被插入到 Overlay 栈内, 从而在界面上显示
+经过这一串的调用, 就把 Navigator push 和 Route 关联到了一起, 那么 theme 是怎么和 Route 关联起来的呢, 我们进入 MaterialPageRoute 看一下
+我们看到, 这里是从 Theme 中找到 pageTransitionsTheme, 然后调用 pageTransitionsTheme 的 buildTransitions 方法来完成构建, 所以这就是我们可以在 theme 中一次修改, 多处生效的主因了
           
           
         

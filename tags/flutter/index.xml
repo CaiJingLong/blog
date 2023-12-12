@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/flutter/</link>
     <description>Recent content in flutter on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Mon, 07 Sep 2020 16:49:35 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -25,7 +26,7 @@
 进入这个, 然后使用 按钮, 完成初始化的过程.
 这里我们创建一个仓库, 这个仓库的目的是自动给 issue 打上 label
 初始化后的仓库 简单介绍一下这个仓库, 有一些文件和注意事项
- action.yml 是 action 本身的配置文件(别的项目实际就是读取这个东西来确定入口在哪里), 包括参数的配置都是这东西 一个标准的 npm 项目, 指定了入口 src 内是主要的 ts 代码 ts 代码需要被编译为 js 才能使用 dist 内就是编译产物, git 的版本控制需要包含 dist 下的所有文件, 不然运行的时候会是老代码 项目本身自带 action, 主要是 CI 这个项目的  入门 开发环境  vscode, 我这里是使用 vscode 进行编辑, 你请根据自己的情况 npm(node), 我是使用 nvm 管理的  如果你的 node 大于 12.
+action.yml 是 action 本身的配置文件(别的项目实际就是读取这个东西来确定入口在哪里), 包括参数的配置都是这东西 一个标准的 npm 项目, 指定了入口 src 内是主要的 ts 代码 ts 代码需要被编译为 js 才能使用 dist 内就是编译产物, git 的版本控制需要包含 dist 下的所有文件, 不然运行的时候会是老代码 项目本身自带 action, 主要是 CI 这个项目的 入门 开发环境 vscode, 我这里是使用 vscode 进行编辑, 你请根据自己的情况 npm(node), 我是使用 nvm 管理的 如果你的 node 大于 12.
           
           
         
@@ -44,9 +45,9 @@
             自动化打包上传是一个释放双手的过程, 本文就简单重复一下打包的过程
 本文包括 iOS 和 android 篇.
 如果有需要, macOS 和 web 也可以加进来, 步骤并不复杂, 但本篇暂时不讲
-开发环境  macOS, 如果你不是 macOS, 那你只能打包安卓部分 Xcode, 因为 Xcode 会自动安装包含 git 在内的一些其他环境, 所以理论上有这个就够了 brew android sdk flutter sdk jenkins fastlane  到 flutter sdk 为止就不讲了, 我相信看这篇文章的人, 起码 flutter 程序已经开发完了, 只是因为修改个文案就要打包的事被搞的不胜其扰, 才决定自动化的
+开发环境 macOS, 如果你不是 macOS, 那你只能打包安卓部分 Xcode, 因为 Xcode 会自动安装包含 git 在内的一些其他环境, 所以理论上有这个就够了 brew android sdk flutter sdk jenkins fastlane 到 flutter sdk 为止就不讲了, 我相信看这篇文章的人, 起码 flutter 程序已经开发完了, 只是因为修改个文案就要打包的事被搞的不胜其扰, 才决定自动化的
 而开发 flutter 基本上可以理解为包含如下工具/SDK
- ruby git Xcode brew Android SDK Flutter SDK  Jenkins 有几点要写在前面, 这东西建议使用 brew 安装, 当然你要是坚持, 也可以用 jendins 的 war/jar 包自己部署,见仁见智
+ruby git Xcode brew Android SDK Flutter SDK Jenkins 有几点要写在前面, 这东西建议使用 brew 安装, 当然你要是坚持, 也可以用 jendins 的 war/jar 包自己部署,见仁见智
 但不要使用 docker 的方式, 因为 docker 不包含 xcode 的环境, 执行起来比较麻烦
           
           
@@ -67,12 +68,13 @@
 flutter 环境还是针对 1.17.5
 Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主要对象的, 那么这东西是怎么附着到整体的呢
 构造方法
-  debugLabel, 这东西看名字就是 debug 用的, 先不管 onKey, 一看就是接受事件用的RawKeyEvent canRequestFocus, 就是能不能接受焦点 skipTraversal, 是否接受遍历  我们再找找方法
- 有几个可能用到的关键字段, 我们一个个看, 但是不一定会用的到, 但是有所了解也是好
-  context, 这个是和控件结合 的, 单纯看这里还看不出来
-  _manager, 我们知道这个在 flutter 环境中其实是全局单例的, 但是这里为了解耦所以可能是哪里传进来的, 我们理论上可以忽略
-  _ancestors, 嗯.. 没有注释, 那就只能看看源码了 所以, 这个东西是把所有的父节点都装到了这个里. 嗯, 个人经验,应用层的话大概率用不上.
-  _descendants,这东西也是个三无, 没事 都在源码里了, 这东西是深度为 1 的子 node 的 descendants 和子node, 然后里面递归了.
+debugLabel, 这东西看名字就是 debug 用的, 先不管 onKey, 一看就是接受事件用的RawKeyEvent canRequestFocus, 就是能不能接受焦点 skipTraversal, 是否接受遍历 我们再找找方法
+有几个可能用到的关键字段, 我们一个个看, 但是不一定会用的到, 但是有所了解也是好
+context, 这个是和控件结合 的, 单纯看这里还看不出来
+_manager, 我们知道这个在 flutter 环境中其实是全局单例的, 但是这里为了解耦所以可能是哪里传进来的, 我们理论上可以忽略
+_ancestors, 嗯.. 没有注释, 那就只能看看源码了 所以, 这个东西是把所有的父节点都装到了这个里. 嗯, 个人经验,应用层的话大概率用不上.
+_descendants,这东西也是个三无, 没事 都在源码里了, 这东西是深度为 1 的子 node 的 descendants 和子node, 然后里面递归了... 换句话说, 其实, 这东西是所有的子 node
+_hasKeyboardToken 这东西暂时没看出作用, 先放放
           
           
         
@@ -90,8 +92,8 @@ Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主�
           
             很多时候, flutter 中需要处理输入的焦点, 咱们今天就来看看控件怎么用
 本篇可以视为简单使用, 而不会深入源码去探讨怎么附着, 主要是 Focus 系列控件的使用, 和怎么在多输入框之间反复横跳
-环境说明  本篇基本基于 flutter sdk 的 1.17.5 版本来看, 其他版本应该大同小异, 但很多东西可能会随时间变化, 未来是否有效请继续验证 本篇基本是针对移动端来说的 写本文时, flutter web 的焦点比较迷, 似乎和移动版不太一样, 所以暂时略过不表 desktop 版只尝试了 macOS, 其他的桌面引擎请自行校验对错  相关 dart class flutter 中, 和焦点相关联类有如下几个:
- FocusNode: 这个可以说是最常用到的, 核心类之一 FocusManager: 单例类, 整个 flutter 应用的焦点管理核心都是这东西在处理, 包括和原生交互弹出软键盘之类的操作 Focus: 一个 Widget, 用于给控件&amp;quot;添加&amp;quot;焦点能力, 包起来就行, InkWell 之类的控件能获取焦点能力都是靠这东西 FocusScope: 一个 Widget, Focus 的子类, 被这东西包起来的所有的子 widget 的 FocusNode 都会被自动注册到这个里面, 接受统一管理 FocusScopeNode: 这东西本身是 FocusNode 的子类, 但是它主要是给 FocusScope 用的,扩展了 FocusNode 的行为 FocusTraversalPolicy, FocusTraversalGroup: 这两个东西是 focus node 的策略, 用于排序哪个是下一个焦点的问题, 这两个东西本篇应该不讲, 有兴趣的可以去看官方文档, 目前个人认为应该用不上  FocusNode 这东西讲的人很多, 我也就不展开了, 简单的说一下几个方法
+环境说明 本篇基本基于 flutter sdk 的 1.17.5 版本来看, 其他版本应该大同小异, 但很多东西可能会随时间变化, 未来是否有效请继续验证 本篇基本是针对移动端来说的 写本文时, flutter web 的焦点比较迷, 似乎和移动版不太一样, 所以暂时略过不表 desktop 版只尝试了 macOS, 其他的桌面引擎请自行校验对错 相关 dart class flutter 中, 和焦点相关联类有如下几个:
+FocusNode: 这个可以说是最常用到的, 核心类之一 FocusManager: 单例类, 整个 flutter 应用的焦点管理核心都是这东西在处理, 包括和原生交互弹出软键盘之类的操作 Focus: 一个 Widget, 用于给控件&amp;quot;添加&amp;quot;焦点能力, 包起来就行, InkWell 之类的控件能获取焦点能力都是靠这东西 FocusScope: 一个 Widget, Focus 的子类, 被这东西包起来的所有的子 widget 的 FocusNode 都会被自动注册到这个里面, 接受统一管理 FocusScopeNode: 这东西本身是 FocusNode 的子类, 但是它主要是给 FocusScope 用的,扩展了 FocusNode 的行为 FocusTraversalPolicy, FocusTraversalGroup: 这两个东西是 focus node 的策略, 用于排序哪个是下一个焦点的问题, 这两个东西本篇应该不讲, 有兴趣的可以去看官方文档, 目前个人认为应该用不上 FocusNode 这东西讲的人很多, 我也就不展开了, 简单的说一下几个方法
           
           
         
@@ -112,10 +114,9 @@ Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主�
 GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 会把它设置给 Navigator, 这东西一旦设置成功, 后续就可以不用 Navigator.of, 拿到 NavigatorState 的实例了
 然后这东西设置成全局的, 就可以在今后跳转的时候不用 context 了, 并且可以利用这个东西里的 context 来拿到全局的 Provider 类(这个不在本篇预计范围内)
 设置:
-1MaterialApp( 2navigatorKey: navigatorKey, 3); 使用:
+1MaterialApp( 2 navigatorKey: navigatorKey, 3); 使用:
 1NavigatorState get navigator =&amp;gt; navigatorKey.currentState; RouteHelper 全文如下, 但是有一个问题, 这个 navigatorKey 的 context 不能用于 showDialog, 所以需要自定义 dialog 的 route,才可以无 context 调用, 所以加了新的方法
 同样的, 以前的 helper 中 push 才需要 context,pop 不需要考虑太多,所以没有 pop 方法, 现在因为有了全局 navigatorKey 来做路由, 所以添加了 pop 相关的方法
-1import &amp;#39;package:flutter/material.
           
           
         
@@ -134,7 +135,7 @@ GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 
             今天举国哀悼, 进入各种大厂的 app 也可以看到主色都变成灰色的了
 作为程序员我们肯定会想怎么可以实现的, 我简单研究了 10 分钟, flutter 中只要在整体外面套一个 ShaderMask, 然后修改 blendMode 即可
 核心代码:
-1class MyApp extends StatelessWidget { 2// This widget is the root of your application. 3 @override 4Widget build(BuildContext context) { 5return ShaderMask( 6child: OKToast( 7child: MaterialApp( 8title: &amp;#39;Pick Image Demo&amp;#39;, 9theme: ThemeData( 10primarySwatch: Colors.lime, 11), 12home: MyHomePage(title: &amp;#39;Pick Image Demo&amp;#39;), 13), 14), 15shaderCallback: (Rect bounds) { 16return ui.Gradient.linear(Offset.zero, 17Offset(bounds.width, bounds.height), [Colors.grey, Colors.grey]); 18}, 19// blendMode: BlendMode.
+1class MyApp extends StatelessWidget { 2 // This widget is the root of your application. 3 @override 4 Widget build(BuildContext context) { 5 return ShaderMask( 6 child: OKToast( 7 child: MaterialApp( 8 title: &amp;#39;Pick Image Demo&amp;#39;, 9 theme: ThemeData( 10 primarySwatch: Colors.lime, 11 ), 12 home: MyHomePage(title: &amp;#39;Pick Image Demo&amp;#39;), 13 ), 14 ), 15 shaderCallback: (Rect bounds) { 16 return ui.
           
           
         
@@ -155,7 +156,7 @@ GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 
 做过安卓开发的朋友可能知道, aar 文件如果作为本地文件直接引入 library, 然后 app 引用 library 是会报找不到aar的, 需要在 app 中使用 flatDir 进行引入, 这种方式的缺点在于, 你必须在每个项目去配置, 很有侵入性
 熟悉 flutter 插件开发的朋友都知道,在我们开发 flutter 插件时, 插件是以 library module 的形式引入到项目中的
 这时如果 sdk 方对于安卓只提供了 aar, 在这种大前提下,我们有如下几种方法:
- 使用 maven 公开服, 比如 jcenter, 或其他的 maven 仓库 使用本地 maven 仓库  本篇就使用这种本地 maven 仓库的方案来做
+使用 maven 公开服, 比如 jcenter, 或其他的 maven 仓库 使用本地 maven 仓库 本篇就使用这种本地 maven 仓库的方案来做
 完成本地 maven 的步骤 创建插件项目 第一步肯定是创建一个 flutter 插件
 1flutter create -t plugin example_for_flutter_plugin_local_maven 置入 aar 我这里用蒲公英的的 aar 举例:
           
@@ -200,14 +201,15 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
           
             过场动画 过场动画也就是切换路由时的动画
 这个东西有几种方案可以做
- 继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性  前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
+继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性 前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
 这东西有如下的好处:
- 设置一次, 你所有的MaterialPageRoute都可以生效 对于命名路由, 也就是pushNamed体系的也有效  先分析下源码 为啥分析源码? 因为如果上来就用显得不高端
+设置一次, 你所有的MaterialPageRoute都可以生效 对于命名路由, 也就是pushNamed体系的也有效 先分析下源码 为啥分析源码? 因为如果上来就用显得不高端
 先找一个大家都知道的切入点, 一般的过场动画都是用的 Navigator.push 方法来实现的
- 看看方法里的实现, 会发现很多常见的东西, 比如, 每一个 Route 都有自己的 OverlayEntry
+看看方法里的实现, 会发现很多常见的东西, 比如, 每一个 Route 都有自己的 OverlayEntry
 然后会有一个 install 方法
- 而实际调用中, 这个 Overlay 会被插入到 Overlay 栈内, 从而在界面上显示
-    经过这一串的调用, 就把 Navigator push 和 Route 关联到了一起, 那么 theme 是怎么和 Route 关联起来的呢, 我们进入 MaterialPageRoute 看一下
+而实际调用中, 这个 Overlay 会被插入到 Overlay 栈内, 从而在界面上显示
+经过这一串的调用, 就把 Navigator push 和 Route 关联到了一起, 那么 theme 是怎么和 Route 关联起来的呢, 我们进入 MaterialPageRoute 看一下
+我们看到, 这里是从 Theme 中找到 pageTransitionsTheme, 然后调用 pageTransitionsTheme 的 buildTransitions 方法来完成构建, 所以这就是我们可以在 theme 中一次修改, 多处生效的主因了
           
           
         
@@ -225,9 +227,9 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
           
             前言 本篇写一个将 flutter 打包为 aar 置入已有项目的方案
 与不同的是: 本篇使用新版本的 flutter 环境, 使用 build aar 命令构建 aar,并上传至 maven 私服
-开发环境 1$ flutter doctor -v 2[✓] Flutter (Channel stable, v1.12.13+hotfix.7, on Mac OS X 10.15 19A602, locale zh-Hans-CN) 3• Flutter version 1.12.13+hotfix.7 at /Users/caijinglong/Library/Flutter/flutter_dev 4• Framework revision 9f5ff2306b (9 天前), 2020-01-26 22:38:26 -0800 5• Engine revision a67792536c 6• Dart version 2.7.0 准备步骤 创建宿主工程 这个是模拟你本来的项目
+开发环境 1$ flutter doctor -v 2[✓] Flutter (Channel stable, v1.12.13+hotfix.7, on Mac OS X 10.15 19A602, locale zh-Hans-CN) 3 • Flutter version 1.12.13+hotfix.7 at /Users/caijinglong/Library/Flutter/flutter_dev 4 • Framework revision 9f5ff2306b (9 天前), 2020-01-26 22:38:26 -0800 5 • Engine revision a67792536c 6 • Dart version 2.7.0 准备步骤 创建宿主工程 这个是模拟你本来的项目
 作为原生开发者自行使用 Android Studio 创建即可
- 一个标准的 android 项目, 除了 gradle 版本使用 6.
+一个标准的 android 项目, 除了 gradle 版本使用 6.
           
           
         
@@ -246,9 +248,8 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
             写在前面, 对于无源码的项目, 理论上必须有头文件,不然你不知道里面都定义了什么鬼东西.
 本篇虽然是写无源码的项目, 但实际上还是会有源码部分, 只是通过 cmake,clang,xcodebuild,ndk 等工具编译成 so/framework 以供 android/ios 引入
 生成动态库 整体的目录结构是这样的, 如果你只是要引入库, 可以跳过这步, 这步的主要做源码生成库的步骤
-1$ tree -L 3 cpp-source 2tree -L 3 cpp-source 3cpp-source 4├── android 5│ ├── CMakeLists.txt 6│ ├── build_android.sh 7│ └── cmd 8│ └── android.sh 9├── ios 10│ ├── CMakeLists.txt 11│ ├── build_ios.sh 12│ ├── cmd 13│ │ └── ios_abi_build.sh 14│ └── ios.toolchain.cmake 15└── src 16├── some.cpp 17└── some.h src 为源码
+1$ tree -L 3 cpp-source 2tree -L 3 cpp-source 3cpp-source 4├── android 5│ ├── CMakeLists.txt 6│ ├── build_android.sh 7│ └── cmd 8│ └── android.sh 9├── ios 10│ ├── CMakeLists.txt 11│ ├── build_ios.sh 12│ ├── cmd 13│ │ └── ios_abi_build.sh 14│ └── ios.toolchain.cmake 15└── src 16 ├── some.cpp 17 └── some.h src 为源码
 some.cpp
-1#include &amp;#34;some.h&amp;#34;2#include &amp;lt;stdint.
           
           
         
@@ -269,7 +270,7 @@ some.cpp
 但是在当前版本中, 这东西在官方说明中依然处于技术预览版, 就是可用, 但后续不保证 api 不变更。
 开发环境 首先我是 mac 系统, windows 系统不保证脚本的可用和工具的可用, linux 的话可能一些必要工具需要使用自己平台的包管理工具, 并且涉及到 ios 部分, 必须使用 mac。
 所有需要的工具包
- Xcode(或 XcodeBuild 命令行工具) brew clang cmake Android 工具链  Android SDK NDK Android Studio(可选) Gradle   Flutter 工具链  SDK 1.10.x+   vscode(可选, 这东西看你的情况,作为示例的话只要是文本编辑器即可, 我本人使用这个作为主要的文本编辑器)  这里说的是包含后续所有用到的东西, 并不仅仅是本文。 其中对于 flutter 开发者可能需要单独安装的应该只有 NDK 和 Cmake, 这两个东西是包含在 android sdk 下的, 可以使用 android studio 下载, 也可以单独下载
+Xcode(或 XcodeBuild 命令行工具) brew clang cmake Android 工具链 Android SDK NDK Android Studio(可选) Gradle Flutter 工具链 SDK 1.10.x+ vscode(可选, 这东西看你的情况,作为示例的话只要是文本编辑器即可, 我本人使用这个作为主要的文本编辑器) 这里说的是包含后续所有用到的东西, 并不仅仅是本文。 其中对于 flutter 开发者可能需要单独安装的应该只有 NDK 和 Cmake, 这两个东西是包含在 android sdk 下的, 可以使用 android studio 下载, 也可以单独下载
           
           
         
@@ -288,10 +289,10 @@ some.cpp
             好久没水文章了, 强行水一篇
 dart 中不可避免会出现文件读取的情况, 甚至是很大的文件, 比如 200M 的文件
 如果一次性读入内存,虽然也行得通, 但是如果在 flutter 中开启个 200M 大小的字节数组, 一不小心可能就 crash 了, 这时候就需要使用大文件读取的方案
-             异步读取 核心方法:
+异步读取 核心方法:
 1file.openRead(); 这个方法可以指定开始和结束的坐标, 并开启一个 stream
 stream 回调信息是 List&amp;lt;int&amp;gt;,单次最大读取 65536 个字节
-示例 1class FileUtils { 2File file; 34FileUtils(this.file); 56// 读取文件的某个范围返回 7 Future&amp;lt;List&amp;lt;int&amp;gt;&amp;gt; getRange(int start, int end) async { 8if (file == null || !file.existsSync()) { 9throw FileNotExistsError(); 10} 11if (start &amp;lt; 0) { 12throw RangeError.
+示例 1class FileUtils { 2 File file; 3 4 FileUtils(this.file); 5 6 // 读取文件的某个范围返回 7 Future&amp;lt;List&amp;lt;int&amp;gt;&amp;gt; getRange(int start, int end) async { 8 if (file == null || !file.existsSync()) { 9 throw FileNotExistsError(); 10 } 11 if (start &amp;lt; 0) { 12 throw RangeError.
           
           
         
@@ -312,8 +313,8 @@ flutter 中你可以自己&amp;quot;绑定&amp;quot;用户的输入数据和 sta
 当然, 还有另一个选择, Flutter 内置了 Form 组件给我们使用, 这个组件是 flutter 框架提供出来帮助我们操作表单的一个组件, 应该是官方较为推荐的方案
 不过 Form 的相关中文文章不太多, 基本都是介绍一下 TextFormField 的使用, 更多的 api 云里雾里的, 可能有些朋友不太好理解
 我粗略的解析下源码和自定义, 帮助看过的朋友理解下 Form 体系
-                            Form 体系的简单使用 自动校验 官方提供给了我们一些组件来结合 Form 使用, 最常见的就是 TextFormField
-1import &amp;#39;package:flutter/material.dart&amp;#39;; 23class SimpleUseComponent extends StatefulWidget { 4@override 5_SimpleUseComponentState createState() =&amp;gt; _SimpleUseComponentState(); 6} 78class _SimpleUseComponentState extends State&amp;lt;SimpleUseComponent&amp;gt; { 9@override 10Widget build(BuildContext context) { 11return Form( 12onChanged: () { 13print(&amp;#34;form change&amp;#34;); 14}, 15child: Column( 16children: &amp;lt;Widget&amp;gt;[ 17TextFormField( 18initialValue: &amp;#34;你好&amp;#34;, 19validator: (value) { 20if (value.
+Form 体系的简单使用 自动校验 官方提供给了我们一些组件来结合 Form 使用, 最常见的就是 TextFormField
+1import &amp;#39;package:flutter/material.dart&amp;#39;; 2 3class SimpleUseComponent extends StatefulWidget { 4 @override 5 _SimpleUseComponentState createState() =&amp;gt; _SimpleUseComponentState(); 6} 7 8class _SimpleUseComponentState extends State&amp;lt;SimpleUseComponent&amp;gt; { 9 @override 10 Widget build(BuildContext context) { 11 return Form( 12 onChanged: () { 13 print(&amp;#34;form change&amp;#34;); 14 }, 15 child: Column( 16 children: &amp;lt;Widget&amp;gt;[ 17 TextFormField( 18 initialValue: &amp;#34;你好&amp;#34;, 19 validator: (value) { 20 if (value.
           
           
         
@@ -332,7 +333,7 @@ flutter 中你可以自己&amp;quot;绑定&amp;quot;用户的输入数据和 sta
             前篇对于 go-flutter 引擎进行了初步的探索, 打包终产物是一个二进制文件配合一些资源文件
 本篇研究如何将终产物变成一个 app, 进一步变成 dmg, 就和你网上下载的工具一样
 本篇默认你拥有全套的工具, git xcode flutter go hover
-                      打包出 go 终产物 这里以大佬的 为例
+打包出 go 终产物 这里以大佬的 为例
 1cd /tmp 2git clone https://github.com/fluttercandies/JsonToDart.git 3cd JsonToDart/Flutter/desktop 打包
 1hover build 这里可能很快也可能很慢, 根据你的工程大小和网络速度而言, 网络速度是因为要下载 flutter 依赖和 go-flutter 引擎相关的东西, 工程大小影响编译速度
 然后可以看到当前的目录结构
@@ -356,7 +357,9 @@ flutter 中你可以自己&amp;quot;绑定&amp;quot;用户的输入数据和 sta
 Github 地址是:https://github.com/go-flutter-desktop/go-flutter
 目前在 mac,linux,windows 均可用, 作为一个 mac 用户, 除了 retina 下字显得有点小, 感觉没有单独适配外, 总体感觉是优于官方的 desktop 引擎的
 另外我是真实的 golang 脑残粉, 我觉得 golang 这东西真的太好了, 用 golang, 准不会错
-                                              开发环境 需要的开发环境, 因为我是 MacOS, 我以 macOS 为例,其他的请参考对应的系统
+开发环境 需要的开发环境, 因为我是 MacOS, 我以 macOS 为例,其他的请参考对应的系统
+Xcode 命令行体系, 这个东西包含很多开发套件(Git), 无论你是否用 XCode 开发,都建议装一个... Flutter 环境和配套工具, 这个跑不掉,作为 flutter 开发者... go 语言环境(使用 brew 安装), 1.12+, IDE 用 Jetbrains 家的 goland (你用 VSCode 的话看你自己的情况) 环境安装 对 flutter 桌面版本感兴趣的一定接触过 flutter 开发, 我就默认你有 flutter 全套开发环境
+go 语言环境安装 $ brew install go
           
           
         
@@ -375,7 +378,15 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
             之前写了一篇关于如何将 flutter 直接打包成 android aar 的文章, 本篇写一写如何将 flutter 打包成 framework 以便于直接让没有 flutter 环境的 iOS 开发者使用, 因为国内很多项目都有这样的要求
 本篇并不会做完全的工程集成化, 只是做一下如何将 flutter 的 framework 打出来, 并且置入到 iOS 原生工程中, 因为各项目一定户会有自己的特殊性, 不可能完全一样
 本篇打包脚本部分参考了 的内容,但是又有一些针对 flutter 版本的变化和 flutter type 不同的情况进行的修改, 不观看连接中的内容并不会影响观看
-                                     开发环境 MacOS
+开发环境 MacOS
+XCode 10
+git
+flutter 及 flutter 的相关工具链
+cocoapods
+创建几个工程 iOS 原生工程 使用 xcode 创建 这个原生工程就是模拟你的原有工程
+Flutter 工程 这里我只使用 flutter module 的方式, 如果你 flutter 是 app 的方式创建的,则打包脚本的内容需要根据应用结构有所调整
+$ flutter create -t module flutter_module_for_ios
+这次直接在里面添加一个带有原生功能的插件, 和 android 篇相同依然选择 那个插件
           
           
         
@@ -395,7 +406,9 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
 我也摸索了一个实践方案, 将所有项目的 aar 由 flutter 方打包 aar 后将 aar 置入某一个固定位置 ,并置入一个 git 库管理, 然后 android 原生方直接 pull 后引入项目即可
 高能预警: 本篇会结合 flutter, android, aar, gradle, maven, docker 的知识来完成所有的步骤
 并不是每一个都会详细说明, 如果有不明白的可以在 的本文下面留言, 我会更新文章或给予解答, 其他渠道的可能不会有时间看
-                                                               开发环境 本人设备环境 MacOS 10.
+开发环境 本人设备环境 MacOS 10.13.6 (17G65)
+flutter: Flutter 1.5.4-hotfix.2 • channel stable
+12019-10-25 更新说明: 这篇文章因为发布时效的原因, 当时还没有 `$ flutter build aar` 这个命令 2所以本人并没有实测两个东西的优劣性 预计需要的环境 1xcode 2android sdk 3gradle 4android studio 5flutter sdk 6docker # 这个 这些环境我默认你都有, 没有的话本篇不讲
           
           
         
@@ -419,7 +432,7 @@ $ git clone https://github.com/google/flutter-desktop-embedding.git flutter-desk
 然后分别打开工程和插件 $ code flutter-desktop-embedding-2/example/ and $ code flutter-desktop-embedding-2/plugins/example_plugin
 这个 example_plugin 是给的模板, 最好是复制一份出来
 复制插件目录 1cd flutter-desktop-embedding-2/plugins 2cp -r example_plugin math_desktop 3code math_desktop 查看一下目录结构
-1tree math_desktop 23math_desktop 4├── LICENSE 5├── lib 6│ └── example_plugin.dart 7├── linux 8│ ├── Makefile 9│ ├── example_plugin.cc 10│ └── example_plugin.
+1tree math_desktop 2 3math_desktop 4├── LICENSE 5├── lib 6│ └── example_plugin.dart 7├── linux 8│ ├── Makefile 9│ ├── example_plugin.cc 10│ └── example_plugin.
           
           
         
@@ -438,12 +451,12 @@ $ git clone https://github.com/google/flutter-desktop-embedding.git flutter-desk
             随着时间的逐渐推移, Flutter 开始了扩张之路
 flutter 已经不满足于移动端了,桌面端也有着自己的野心
 但无论如何,目前 flutter desktop 还仅仅处于 demo 玩一玩的阶段, 如果谁敢生产项目来一套, 我佩服你是个勇士
- 官方说明 
-目前完成度最高的是 macOS 的版本,可用度很高, 而且由于同样使用 cocoapod,所以相对来说官方制作 engine 难度应该是最低的
+官方说明 目前完成度最高的是 macOS 的版本,可用度很高, 而且由于同样使用 cocoapod,所以相对来说官方制作 engine 难度应该是最低的
 创建项目 现在建议使用官方本身提供的脚手架, 自己创建的话比较麻烦
- 这个库目前托管在 google 下,还没有转给 flutter,也就是说暂时还不能称之为 flutter sdk 的一部分
+这个库目前托管在 google 下,还没有转给 flutter,也就是说暂时还不能称之为 flutter sdk 的一部分
 git clone 我根据文档创建了一个 sh 脚本,专门用于输出我如果想尝鲜 desktop 版需要的东西, 也就是环境变量了
-1export FLUTTER_ROOT=$PWD/flutter 2echo &amp;#34;使用前复制如下命令\n&amp;#34; 34echo &amp;#34;export FLUTTER_ROOT=$FLUTTER_ROOT&amp;#34; 5echo &amp;#34;export FLUTTER_HOME=$FLUTTER_ROOT&amp;#34; 6echo &amp;#34;export PATH=$FLUTTER_ROOT/bin:$PATH&amp;#34; 7echo &amp;#34;export ENABLE_FLUTTER_DESKTOP=true&amp;#34; 89echo &amp;#34;\n以上&amp;#34;  这里我单独的 clone 了一份 sdk, 跑在了 flutter 的 master 分支上
+1export FLUTTER_ROOT=$PWD/flutter 2echo &amp;#34;使用前复制如下命令\n&amp;#34; 3 4echo &amp;#34;export FLUTTER_ROOT=$FLUTTER_ROOT&amp;#34; 5echo &amp;#34;export FLUTTER_HOME=$FLUTTER_ROOT&amp;#34; 6echo &amp;#34;export PATH=$FLUTTER_ROOT/bin:$PATH&amp;#34; 7echo &amp;#34;export ENABLE_FLUTTER_DESKTOP=true&amp;#34; 8 9echo &amp;#34;\n以上&amp;#34; 这里我单独的 clone 了一份 sdk, 跑在了 flutter 的 master 分支上
+然后把 flutter 设置环境变量到这个 flutter sdk 上
           
           
         
@@ -461,7 +474,7 @@ git clone 我根据文档创建了一个 sh 脚本,专门用于输出我如果�
           
             下午看见群里有人问 swift 插件导入 oc 项目报错的问题, 我之前解决过, 但是忘了解决过程是怎么样的了, 这里记录下方便以后备查
 没兴趣追踪原因的直接查看
-         复现错误  创建一个主工程(oc)  1flutter create oc_project 创建一个插件工程(swift)  1cd oc_project 2flutter create -i swift -t plugin swift_plugin 关联工程  1swift_plugin:2path:./swift_plugin3```运行 iOS 项目得到错误信息  1Launchinglib/main.dartoniPhoneXSMaxindebugmode...23CocoaPods&amp;#39; output: 45↳ 67Preparing 89Analyzing dependencies 1011Inspecting targets to integrate 1213Using `ARCHS` setting to build architectures of target `Pods-Runner`: (``) 1415Fetching external sources 1617-&amp;gt; Fetching podspec for `Flutter` from `.
+复现错误 创建一个主工程(oc) 1flutter create oc_project 创建一个插件工程(swift) 1cd oc_project 2flutter create -i swift -t plugin swift_plugin 关联工程 1 swift_plugin: 2 path: ./swift_plugin 3 ``` 运行 iOS 项目得到错误信息 1Launching lib/main.dart on iPhone XS Max in debug mode... 2 3CocoaPods&amp;#39; output: 4 5↳ 6 7 Preparing 8 9 Analyzing dependencies 10 11 Inspecting targets to integrate 12 13 Using `ARCHS` setting to build architectures of target `Pods-Runner`: (``) 14 15 Fetching external sources 16 17 -&amp;gt; Fetching podspec for `Flutter` from `.
           
           
         
@@ -479,12 +492,12 @@ git clone 我根据文档创建了一个 sh 脚本,专门用于输出我如果�
           
             本篇只是的补充
 介绍一些当前的 flutter_web 版和 flutter 的移动版的差别
-            dart:io 包无法使用造成的影响 dart:io是一个在 flutter 中常用的包,但是在 web 版中是使用不了的
+dart:io 包无法使用造成的影响 dart:io是一个在 flutter 中常用的包,但是在 web 版中是使用不了的
 dio 不能用 dio包用不了,因为 dio 包是依托于 dart:io 包中的 HttpClient 进行的封装
 并且因为国内很多初学者朋友人云亦云的选择了 dio 作为 http 的请求框架,所以今后如果有打算想要做 flutter_web 版的朋友可能现在就要考虑一下 dio 的使用问题了
 当然 dio 包今后也可以迁移底层访问库为,再进行二次封装形成 dio_with_http 那就是另一个故事了
 另外 web 中的 http 请求可以使用 使用库的访问如下:
-1import &amp;#39;package:http/http.dart&amp;#39; as http; 2Widget fromHttp() { 3return FutureBuilder&amp;lt;http.Response&amp;gt;( 4future: http.get(&amp;#34;https://api.github.com/&amp;#34;), 5builder: (BuildContext context, snapshot) { 6if (!
+1import &amp;#39;package:http/http.dart&amp;#39; as http; 2Widget fromHttp() { 3 return FutureBuilder&amp;lt;http.Response&amp;gt;( 4 future: http.get(&amp;#34;https://api.github.com/&amp;#34;), 5 builder: (BuildContext context, snapshot) { 6 if (!snapshot.hasData) { 7 return Container(); 8 } 9 var body = snapshot.
           
           
         
@@ -506,9 +519,8 @@ dio 不能用 dio包用不了,因为 dio 包是依托于 dart:io 包中的 HttpC
 ...语法 这个语法很眼熟,在 js 中有类似的语法,其他语言可能也有
 什么意思呢
 看下面的代码
-1main(List&amp;lt;String&amp;gt; arguments) { 2list3Point(); 3} 45void list3Point() { 6var list1 = &amp;lt;int&amp;gt;[1, 2, 3, 4]; 78var list2 = &amp;lt;int&amp;gt;[ 90, 10...list1, 116, 12]; 1314print(list2); // [0, 1, 2, 3, 4, 6] 15} 这里可能会提示需要更新 sdk 约束,可能这个特性是 2.2.2 加入的,更新约束后 yaml 文件被修改
-1environment:2sdk:&amp;#39;&amp;gt;=2.2.2 &amp;lt;3.0.0&amp;#39;旧版本的实现需要以下几个步骤
-1void list3PointOld() { 2var list1 = &amp;lt;int&amp;gt;[1, 2, 3, 4]; 3var list2 = &amp;lt;int&amp;gt;[0]; 4list2.
+1main(List&amp;lt;String&amp;gt; arguments) { 2 list3Point(); 3} 4 5void list3Point() { 6 var list1 = &amp;lt;int&amp;gt;[1, 2, 3, 4]; 7 8 var list2 = &amp;lt;int&amp;gt;[ 9 0, 10 ...list1, 11 6, 12 ]; 13 14 print(list2); // [0, 1, 2, 3, 4, 6] 15} 这里可能会提示需要更新 sdk 约束,可能这个特性是 2.2.2 加入的,更新约束后 yaml 文件被修改
+1environment: 2 sdk: &amp;#39;&amp;gt;=2.2.2 &amp;lt;3.
           
           
         
@@ -525,10 +537,13 @@ dio 不能用 dio包用不了,因为 dio 包是依托于 dart:io 包中的 HttpC
         
           
             最近 2019 的 google io 大会开始了,之前的&amp;quot;蜂鸟&amp;quot;引擎也在 flutter 官网中出现了, 不过这次改了个名字叫 具体的使用步骤参考项目 readme 中的方式来使用
-                             构建项目 建议: 配置dart,pub,~/.pub-cache/bin到环境变量
+构建项目 建议: 配置dart,pub,~/.pub-cache/bin到环境变量
 配置 webdev
 1git clone https://github.com/flutter/flutter_web.git 2cd flutter_web/examples/hello_world/ 3flutter packages upgrade 4flutter packages pub global activate webdev 运行项目 简单运行 运行
-1webdev serve  提示我们,在本地 8080 端口, 在浏览器打开 http://localhost:8080
+1webdev serve 提示我们,在本地 8080 端口, 在浏览器打开 http://localhost:8080
+默认的 main.dart 比较简单,只有一个 Text 控件
+我这里修改一下 main.dart 文件,达到接近 flutter 移动项目 main.dart 的样子
+1// Copyright 2018 The Chromium Authors. All rights reserved. 2// Use of this source code is governed by a BSD-style license that can be 3// found in the LICENSE file.
           
           
         
@@ -546,12 +561,13 @@ dio 不能用 dio包用不了,因为 dio 包是依托于 dart:io 包中的 HttpC
           
             OKToast 是一款 在 flutter 上 使用的 toast 插件
 使用简单, 可定制性强, 纯 flutter, 调用不用 context
-                             安装 查看文档: 在 pubspec 引入
-1dependencies:2oktoast:^2.2.0# 这一步请查询pub的最新版本获取包: $ flutter packages get
+安装 查看文档: 在 pubspec 引入
+1dependencies: 2 oktoast: ^2.2.0 # 这一步请查询pub的最新版本 获取包: $ flutter packages get
 引入: import &#39;package:oktoast/oktoast.dart&#39;;
 使用 在代码中定义 OKToast 组件 包裹你的 MaterialApp,不是包裹你的 Scaffold
 包裹你的 MaterialApp,不是包裹你的 Scaffold
 包裹你的 MaterialApp,不是包裹你的 Scaffold
+1class MyApp extends StatelessWidget { 2 @override 3 Widget build(BuildContext context) { 4 return OKToast( // 这一步 5 child: new MaterialApp( 6 title: &amp;#39;Flutter Demo&amp;#39;, 7 theme: new ThemeData( 8 primarySwatch: Colors.
           
           
         
@@ -578,12 +594,12 @@ flutter 以 v 开头,数字部分使用标准的三段版本号 vx.x.x
 那么如果我目前是 v1.4.10 但是我想看看新版本相对我使用中的版本都更新了什么东西怎么办?
 现在 dev 分支最新版是 v1.4.14,那么我可以通过
 可以通过 类似下面的连接把版本号替换为你需要对比的即可,前小后大,然后在浏览器中打开即可
- 这其中有 53 次提交,后面有对应的提交记录日志,这个顺序是由早到晚
+这其中有 53 次提交,后面有对应的提交记录日志,这个顺序是由早到晚
 源码的话,则点击 Files Changes,就可以看到修改内容
 点击下路蓝框的位置可以切换视图模式,列表还是详情 然后左边绿色是添加的内容,红色是删除的内容,白色是不变的内容,蓝色是折叠起来的不变内容
 rss 订阅 github 的 release 支持 rss 订阅
-
 我使用了这个 来订阅 flutter sdk 的更新
+另外本站也支持 rss 订阅 后记 简单的说了下如何查看 flutter 更新,当然这个小技巧也适用于其他的 github 仓库
           
           
         
@@ -604,7 +620,7 @@ rss 订阅 github 的 release 支持 rss 订阅
 gradle 使用的是 groovy 的语法,是一个 jvm 语言,在语法层级上兼容 Java 语法
 换句话说 System.out.println(&amp;quot;hello world&amp;quot;); 这样的方法是可用的
 分析 flutter 项目 项目 android/app/build.gradle 文件中都有定义
-1def localProperties = new Properties() 2def localPropertiesFile = rootProject.file(&amp;#39;local.properties&amp;#39;) 3if (localPropertiesFile.exists()) { 4localPropertiesFile.withReader(&amp;#39;UTF-8&amp;#39;) { reader -&amp;gt; 5localProperties.
+1def localProperties = new Properties() 2def localPropertiesFile = rootProject.file(&amp;#39;local.properties&amp;#39;) 3if (localPropertiesFile.exists()) { 4 localPropertiesFile.
           
           
         
@@ -625,10 +641,9 @@ gradle 使用的是 groovy 的语法,是一个 jvm 语言,在语法层级上兼�
 比如背景颜色,转换的时长和样式等等,很多东西你很难去自定义
 本篇我使用另一个方法showGeneralDialog来做一些自定义
 准备工作 同上一章一样,定义一个通用方法
-1Widget buildButton( 2String text, 3Function onPressed, { 4Color color = Colors.white, 5}) { 6return FlatButton( 7color: color, 8child: Text(text), 9onPressed: onPressed, 10); 11} 简单使用 这里有几个参数,虽然方法签名上只有 2 个@required注解的参数
+1Widget buildButton( 2 String text, 3 Function onPressed, { 4 Color color = Colors.white, 5}) { 6 return FlatButton( 7 color: color, 8 child: Text(text), 9 onPressed: onPressed, 10 ); 11} 简单使用 这里有几个参数,虽然方法签名上只有 2 个@required注解的参数
 但事实上,在我当前的版本环境下,如下代码中所有的参数都是必填项,不填会报错 我的运行环境是这样的
-1flutter --version 2Flutter 1.3.14 • channel dev • https://github.com/flutter/flutter.git 3Framework • revision 8e7e435706 (6 days ago) • 2019-03-21 15:31:46 -0700 4Engine • revision d4d4883216 5Tools • Dart 2.2.1 (build 2.2.1-dev.2.0 None) 代码在这里
-1showGeneralDialog( 2context: context, 3barrierLabel: &amp;#34;你好&amp;#34;, 4barrierDismissible: true, 5transitionDuration: Duration(milliseconds: 300), 6pageBuilder: (BuildContext context, Animation animation, 7Animation secondaryAnimation) { 8return Center( 9child: Material( 10child: Container( 11color: Colors.
+1flutter --version 2Flutter 1.3.14 • channel dev • https://github.com/flutter/flutter.git 3Framework • revision 8e7e435706 (6 days ago) • 2019-03-21 15:31:46 -0700 4Engine • revision d4d4883216 5Tools • Dart 2.
           
           
         
@@ -648,11 +663,10 @@ gradle 使用的是 groovy 的语法,是一个 jvm 语言,在语法层级上兼�
 而在 flutter 中,所有可以看见的都是 Widget,dialog 也不例外
 不过和 android 或 iOS 中不同的一点是,Flutter 中 dialog 不是一个单独的类,而是一个可以由你自定义的 Widget
 写在前面 首先为了方便,我定义了一个简单的方法用于构建按钮
-1Widget buildButton( 2String text, 3Function onPressed, { 4Color color = Colors.white, 5}) { 6return FlatButton( 7color: color, 8child: Text(text), 9onPressed: onPressed, 10); 11} showDialog  dialog 的方法签名是这样的
+1 Widget buildButton( 2 String text, 3 Function onPressed, { 4 Color color = Colors.white, 5 }) { 6 return FlatButton( 7 color: color, 8 child: Text(text), 9 onPressed: onPressed, 10 ); 11 } showDialog dialog 的方法签名是这样的
 其中 context 和 builder 是必传项
 builder 需要返回一个 Widget,这个 Widget 会被作为 dialog 展示在页面上
 比如我简单的写了一个这个方法
-1showDialog( 2context: context, 3builder: (ctx) { 4return Center( 5child: Column( 6mainAxisSize: MainAxisSize.
           
           
         
@@ -672,12 +686,12 @@ builder 需要返回一个 Widget,这个 Widget 会被作为 dialog 展示在页
 最初几年官方推荐使用 sp 作为字体大小的单位，但是事实上经过长时间实践的情况下，大家都开始逐渐使用 dp 作为单位
 这样使用者调整系统字体大小，app 中的文字大小就不会受到影响，出现错误等情况
 flutter 中修改 iOS 中叫动态字体大小,对应辅助功能中的字体大小
- android 中叫字体大小
- 当你开发完成，又遇到用户修改系统字体大小导致某些地方错位，甚至按钮被挤出屏幕看不见了就是个问题了
+android 中叫字体大小
+当你开发完成，又遇到用户修改系统字体大小导致某些地方错位，甚至按钮被挤出屏幕看不见了就是个问题了
 而 flutter 中没有单位的概念，我们应该如何实现这个功能呢
 在 flutter 中，是由 MediaQuery 来实现对应功能的
 1var data = MediaQuery.of(context); 2data.textScaleFactor; //这个就是对应的动态字体大小，我们只需要『修改』这个值就可以了 修改自然是不可能的，这东西都是 final 的，我们要做的就是 flutter 中的通用做法
-1class NoScaleTextWidget extends StatelessWidget { 2final Widget child; 34const NoScaleTextWidget({ 5Key key, 6@required this.child, 7}) : super(key: key); 89@override 10Widget build(BuildContext context) { 11return MaxScaleTextWidget( 12max: 1.0, 13child: child, 14); 15} 16} 1718class MaxScaleTextWidget extends StatelessWidget { 19final double max; 20final Widget child; 2122const MaxScaleTextWidget({ 23Key key, 24this.
+1class NoScaleTextWidget extends StatelessWidget { 2 final Widget child; 3 4 const NoScaleTextWidget({ 5 Key key, 6 @required this.child, 7 }) : super(key: key); 8 9 @override 10 Widget build(BuildContext context) { 11 return MaxScaleTextWidget( 12 max: 1.
           
           
         
@@ -696,14 +710,14 @@ flutter 中修改 iOS 中叫动态字体大小,对应辅助功能中的字体大
             无论在 android 开发中 还是 flutter 开发中,都会面临迁移 AndroidX 的问题
 官方有一个说明,可以
 下面是我总结的修改方式
-迁移到 androidX 修改 andorid 目录下的 app/build.gradle 1android{ 2compileSdkVersion 28 3} 使用了 gradle wrapper 如果 andorid 根目录下有这个文件夹/文件,则需要修改
- 根据官网说明,最好修改到 4.10.1 以上
+迁移到 androidX 修改 andorid 目录下的 app/build.gradle 1android{ 2 compileSdkVersion 28 3} 使用了 gradle wrapper 如果 andorid 根目录下有这个文件夹/文件,则需要修改
+根据官网说明,最好修改到 4.10.1 以上
 gradle-wrapper.properties 文件
 修改版本号位置,我使用的是当前的最新版 5.2.1,你可以根据你的情况修改
 1distributionUrl=https\://services.gradle.org/distributions/gradle-5.2.1-all.zip 如果没有用这个,那么你需要修改的环境变量中的 gradle 版本,这个请自行百度/Google
 修改 android 目录下的 build.gradle 根目录下的 build.gradle ,这个是目前的最新版
 这个不是 gradle 的版本,你可以理解为与插件匹配,一般等于你的 android studio 的版本
-1buildscript{ 2dependencies { 3classpath &amp;#39;com.android.tools.build:gradle:3.3.1&amp;#39; 4} 5} 修改 android 目录下的 gradle.properties 如果没有,就添加这两行
+1buildscript{ 2 dependencies { 3 classpath &amp;#39;com.android.tools.build:gradle:3.3.1&amp;#39; 4 } 5} 修改 android 目录下的 gradle.properties 如果没有,就添加这两行
 1android.enableJetifier=true 2android.useAndroidX=true 最后 做完上面的应该就可以了,运行下项目,如果有别的问题欢迎留言
           
           
@@ -733,11 +747,10 @@ gradle-wrapper.properties 文件
 pub global activate log4d
 这一步完成后可以通过log4d,log4d_client 来使用插件
 2.客户端安装 作为一个库来使用, 首先在 pubspec.yaml 中加入依赖
-1dependencies:2log4d:^1.0.3# 这一步参考最新版3.获取库 pub get 或 flutter packages get
+1dependencies: 2 log4d: ^1.0.3 # 这一步参考最新版 3.获取库 pub get 或 flutter packages get
 4. 导入 import &#39;package:log4d/log4d.dart&#39;;
-使用  简单的使用方式就是服务端在命令行中开启
+使用 简单的使用方式就是服务端在命令行中开启
 1. 开启服务端 log4d -o build/test.log 这样就成功开启了,并且会在接受到日志后将日志保存到指定的目录下
-2. 在 flutter 中使用 封装一个简单的帮助类
           
           
         
@@ -758,14 +771,11 @@ pub global activate log4d
 内部应该是结合InheritedWidget Notification体系实现的
 传统的bloc需要在每一个Repository中创建StreamController和Stream,甚至有的文章中,一个监听的修改需要修改5处,维护起来比较麻烦
 相比较而言Provide维护起来会稍微省事一些
-
 添加依赖 查看
-1dependencies:2provide:^1.0.1# 这里的版本查看官方1flutter packages get 1import &amp;#39;package:provide/provide.dart&amp;#39;; 使用方法 这里以简单的Counter为例 也就是在flutter的hello world工程的基础上来修改
+1dependencies: 2 provide: ^1.0.1 # 这里的版本查看官方 1flutter packages get 1import &amp;#39;package:provide/provide.dart&amp;#39;; 使用方法 这里以简单的Counter为例 也就是在flutter的hello world工程的基础上来修改
 1. 定义一个Model 这个model需要继承ChangeNotifier
-12class Counter with ChangeNotifier { 3int _value; 45int get value =&amp;gt; _value; 67Counter(this._value); 89void inc() { 10_value++; 11notifyListeners(); //父类的方法,发出通知 12 } 13} 2. 定义一个全局的Provide 这里虽然定义在全局,但事实上也可以定义在页面级
-1void main() { 2var providers = Providers()..provide(Provider.function((ctx) =&amp;gt; Counter(0))); 34runApp( 5ProviderNode( 6child: MyApp(), 7providers: providers, 8), 9); 10} ProviderNode表示的是提供者
-3. 界面/监听 修改_MyHomePageState
-添加一个方法,用于获取Counter实例
+1 2class Counter with ChangeNotifier { 3 int _value; 4 5 int get value =&amp;gt; _value; 6 7 Counter(this._value); 8 9 void inc() { 10 _value++; 11 notifyListeners(); //父类的方法,发出通知 12 } 13} 2. 定义一个全局的Provide 这里虽然定义在全局,但事实上也可以定义在页面级
+1void main() { 2 var providers = Providers()..provide(Provider.function((ctx) =&amp;gt; Counter(0))); 3 4 runApp( 5 ProviderNode( 6 child: MyApp(), 7 providers: providers, 8 ), 9 ); 10} ProviderNode表示的是提供者
           
           
         
@@ -785,17 +795,16 @@ pub global activate log4d
 众所周知 xcode 这编辑器除了漂亮,其实开发效率来说和 appcode 无法相提并论..
 本篇与插件开发本身无关,目的只是为了加快 appcode 的索引速度,解决方案拉到后面查看
 使用 appcode 开发插件本身很简单,打开插件下的example/ios就可以了,不过这里有一个坑,因为 flutter 使用 link 的方式,可能有数级的../..之类的连接来指向插件文件夹
- 这个在 xcode 中可能没问题,但是appcode中有一个索引的概念,这一步会遍历当前关联的所有同级文件,
+这个在 xcode 中可能没问题,但是appcode中有一个索引的概念,这一步会遍历当前关联的所有同级文件,
 而这一步由于相对的关系甚至关联到了~这一级,也就是说会遍历当前用户全部的文件,这一步的速度太慢了,我们必须着手解决
 解决 打开example/ios/Podfile文件
 这个文件是cocoapod的配置文件,使用的是Ruby语言,
 这个文件一般是自动生成的,我们开发过程中正常情况下不需要关注这个文件
 我们需要修改这个文件,查看
 我们不使用 symlinks 的方案,而是采用另一种方案,直接用 path 的方式
-将这个 Podfile 文件改为这样 1plugin_pods.map { |p| 2name = p[:name] 3path = p[:path] 4specPath = &amp;#34;#{path}/ios/#{name}.podspec&amp;#34; 5pod p[:name],:path=&amp;gt;specPath 6} 然后在命令行运行
+将这个 Podfile 文件改为这样 1 plugin_pods.map { |p| 2 name = p[:name] 3 path = p[:path] 4 specPath = &amp;#34;#{path}/ios/#{name}.podspec&amp;#34; 5 pod p[:name],:path=&amp;gt;specPath 6 } 然后在命令行运行
 1cd example/ios 2pod install 修改完成后是用 app 打开是这样的
- 1.12.x 版本 [2020-01-17 更新] 某个版本后, 会提示我们原来的 pod 版本过时了
-这时候, 我们需要移除 example/ios 下的 Podfile 和 Podfile.
+1.12.x 版本 [2020-01-17 更新] 某个版本后, 会提示我们原来的 pod 版本过时了
           
           
         
@@ -821,8 +830,8 @@ pub global activate log4d
 比如你return 1,但是返回值上却需要写Future&amp;lt;int&amp;gt;
 sync* 在 dart 中可以使用这个便利的生成一个迭代器
 如下所示
- 这两种写法是一样的,但是第一个写法会简洁很多
-1main(List&amp;lt;String&amp;gt; arguments) { 2print(genList()); 3print(genList2()); 4} 56Iterable&amp;lt;int&amp;gt; genList({int max = 10}) sync* { 7var i = 0; 8while (i &amp;lt; max) { 9yield i; 10i++; 11} 12} 1314Iterable&amp;lt;int&amp;gt; genList2({int max = 10}) { 15var list = &amp;lt;int&amp;gt;[]; 16var i = 0; 17while (i &amp;lt; max) { 18list.
+这两种写法是一样的,但是第一个写法会简洁很多
+1main(List&amp;lt;String&amp;gt; arguments) { 2 print(genList()); 3 print(genList2()); 4} 5 6Iterable&amp;lt;int&amp;gt; genList({int max = 10}) sync* { 7 var i = 0; 8 while (i &amp;lt; max) { 9 yield i; 10 i++; 11 } 12} 13 14Iterable&amp;lt;int&amp;gt; genList2({int max = 10}) { 15 var list = &amp;lt;int&amp;gt;[]; 16 var i = 0; 17 while (i &amp;lt; max) { 18 list.
           
           
         
@@ -841,17 +850,19 @@ sync* 在 dart 中可以使用这个便利的生成一个迭代器
             是 flutter 的 api 文档页
 但是这个文档页有的时候不那么好访问, 也许你有自己的页面,或者你就是想简单的搭建一个 pages 到 gitee/github 上方便你以后的访问
 本篇就来教你怎么简单的达成这个目的
-gitee 部署完成后是这样的 准备工作  一个终端工具 dart sdk 一个 web 服务器(pages)  作为一个 flutter/dart 开发者,sdk 肯定是必备工具了
+gitee 部署完成后是这样的 准备工作 一个终端工具 dart sdk 一个 web 服务器(pages) 作为一个 flutter/dart 开发者,sdk 肯定是必备工具了
 如果你运行过 flutter doctor 命令,则 flutter 自带的 sdk 就会存在在的系统内 ${FLUTTER_HOME}/bin/cache/dart-sdk 这里替换为自己的 flutter sdk 的文件夹
- 这里可以看见 dartdoc 这个就是创建文档的工具了
+这里可以看见 dartdoc 这个就是创建文档的工具了
 先进入 sdk 下的 packages/flutter 文件夹
 然后运行$FLUTTER_HOME/bin/cache/dart-sdk/bin/dartdoc .命令 $FLUTTER_HOME 为你的 flutter sdk 所在目录
- 等待一段时间
+等待一段时间
 然后可以看到当前文件夹下生成了一个doc目录,里面就是所有的文档了
- 部署 直接双击 index.html 也可以打开,但是根据官方的说法,如果本地运行可能右上角的搜索不能使用,这就需要部署到服务器上了
+部署 直接双击 index.html 也可以打开,但是根据官方的说法,如果本地运行可能右上角的搜索不能使用,这就需要部署到服务器上了
 如果你有自己的云服务器,那么你估计对于部署应该有自己的理解,就不用继续看了
 本地部署 所以我们需要使用一些本地服务来部署
 比如 nginx/caddy/tomcat/apache 之类的服务器
+我这里本地部署使用一个简单的serve命令来部署,基于npm安装
+npm i serve或 yarn global add serve
           
           
         
@@ -872,17 +883,18 @@ gitee 部署完成后是这样的 准备工作  一个终端工具 dart sdk 一�
 官方描述: Pub is the package manager for Dart. / dart 语言的包管理器
 官网 pub 的官方 url: 这个域名有多个小伙伴同时 ping 过, 对应 ip 不相同,所以可知这个网站是有负载均衡的, 但是坑的地方来了, 部分在墙外,所以这就是这个网站偶尔国内访问不通畅的原因
 然后有几个国内镜像站点,可以查看官网介绍
- 设置访问镜像 在环境变量中配置,这个根据系统不同设置方法不同
+设置访问镜像 在环境变量中配置,这个根据系统不同设置方法不同
 mac 的话 可以使用 export 命令临时添加
 也可以在vi ~/.bash_profile,在这个文件中添加
 其他系统的设置方式请自行查找
- 1PUB_HOSTED_URL=https://pub.flutter-io.cn 2FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn 这样在国内就很快了
+1PUB_HOSTED_URL=https://pub.flutter-io.cn 2FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn 这样在国内就很快了
 如果你需要发布插件的话,到这里就结束了
 发布 有的时候我们自己写了开源库,想要发布到 pub 上怎么办呢
 dart/flutter 对于插件没有审核的概念,而且发布很简单,你可以任意发布插件到 pub 上,只要不重复就可以了
-必备前提  一份代码 一份命令行翻墙工具 一个 google 账号  代码是必须的,不然没意义
+必备前提 一份代码 一份命令行翻墙工具 一个 google 账号 代码是必须的,不然没意义
 命令行翻墙工具是因为国内镜像发布不了,必须要连接到 pub 的官方源
 google 账号是确定权限用的,不能你说你是主人你就是主人了吧, 你要绑定库和你的作者身份,不然别人随手写一个覆盖你的插件岂不是乱套了
+终端翻墙 这里因为涉及到连接 google,所以你必须保证你的终端翻墙了
           
           
         
@@ -901,11 +913,11 @@ google 账号是确定权限用的,不能你说你是主人你就是主人了吧
             最近做了一篇 android 原生中加入 flutter 的尝试,顺便查看下内存占用
 在 debug 模式下肯定是不准的,所以随便看看就好了,只是为了满足好奇心,不代表真实项目中的真实表现,也不代表我的观点
 在原生刚刚打开后稳定的情况下查看内存占用
- 可以看到 打开 Flutter 后内存会有明显上升
- 红点处是我点击了按钮后的情况,会有内存抖动
-关闭 Flutter 界面后会发现内存回落很明显,说明内存相对比较稳定  过了段时间,其实是我在码字+上传图片,没看手机,发现内存更加平稳了,而且降低到了只有 30m
- 换句话说其实在 android 上内存的表现还算可以,目测在关闭 flutterview 的界面后简单的界面是可以完全回收的,而且众所周知 release 蜜汁流畅 :-D
- 本篇是随便写写的,不代表 flutter 在实际项目中的表现,因为实际项目原生,flutter 中都会有更复杂的机制,所以内存 cpu 的消耗会更大, 也可能会发生不可预知的情况
+可以看到 打开 Flutter 后内存会有明显上升
+红点处是我点击了按钮后的情况,会有内存抖动
+关闭 Flutter 界面后会发现内存回落很明显,说明内存相对比较稳定 过了段时间,其实是我在码字+上传图片,没看手机,发现内存更加平稳了,而且降低到了只有 30m
+换句话说其实在 android 上内存的表现还算可以,目测在关闭 flutterview 的界面后简单的界面是可以完全回收的,而且众所周知 release 蜜汁流畅 :-D
+本篇是随便写写的,不代表 flutter 在实际项目中的表现,因为实际项目原生,flutter 中都会有更复杂的机制,所以内存 cpu 的消耗会更大, 也可能会发生不可预知的情况
           
           
         
@@ -927,7 +939,7 @@ google 账号是确定权限用的,不能你说你是主人你就是主人了吧
 所幸的是,flutter 团队提供了一个 用于帮助我们完成这个过程
 创建一个 Android 工程 使用 Android Studio 创建一个新工程来模拟这个过程,会看这里的普遍都应该是 android 程序员出身,Hello World 工程是肯定会的,不会的话还是回炉加强一下吧
 如果你已经有现有工程,肯定是有 VCS 管理的,放心大胆的走出第一步,大不了就删除当前分支嘛,然后你可以跳过这一步,直接看 flutter 的过程
- 创建 Flutter 这一步仅作为 官方 Android 部分的参考
+创建 Flutter 这一步仅作为 官方 Android 部分的参考
 我目前使用的是 1.0.0 的发布版
 1Flutter 1.0.0 • channel dev • https://github.com/flutter/flutter.git 2Framework • revision 5391447fae (11 days ago) • 2018-11-29 19:41:26 -0800 3Engine • revision 7375a0f414 4Tools • Dart 2.1.0 (build 2.1.0-dev.9.4 f9ebf21297) wiki 后续可能会被修改,请查看最新的文档去解决
           
@@ -946,9 +958,9 @@ google 账号是确定权限用的,不能你说你是主人你就是主人了吧
         
           
             1NosuchMethodError: The getter &amp;#39;pasterButtonLabel&amp;#39; was called on null. 2Receiver: null 3Tried calling: pasteButtonLabel 在最近 app store 提交审核时被拒了,然后得到了一个这样的截图
- 在 flutter 中可能会会出现各种问题,因为之前遇到过这个问题,但是那是我另一个应用,这个忘了设置了
+在 flutter 中可能会会出现各种问题,因为之前遇到过这个问题,但是那是我另一个应用,这个忘了设置了
 我快速搞了一下,重新提交了审核
-解决方式 1import &amp;#39;package:flutter/cupertino.dart&amp;#39;; 2import &amp;#39;package:flutter/foundation.dart&amp;#39;; 3import &amp;#39;package:flutter/material.dart&amp;#39;; 4import &amp;#39;package:flutter_localizations/flutter_localizations.dart&amp;#39;; 56class ChineseCupertinoLocalizations implements CupertinoLocalizations { 7final materialDelegate = GlobalMaterialLocalizations.delegate; 8final widgetsDelegate = GlobalWidgetsLocalizations.delegate; 9final local = const Locale(&amp;#39;zh&amp;#39;); 1011MaterialLocalizations ml; 1213Future init() async { 14ml = await materialDelegate.load(local); 15print(ml.pasteButtonLabel); 16} 1718@override 19String get alertDialogLabel =&amp;gt; ml.alertDialogLabel; 2021@override 22String get anteMeridiemAbbreviation =&amp;gt; ml.
+解决方式 1import &amp;#39;package:flutter/cupertino.dart&amp;#39;; 2import &amp;#39;package:flutter/foundation.dart&amp;#39;; 3import &amp;#39;package:flutter/material.dart&amp;#39;; 4import &amp;#39;package:flutter_localizations/flutter_localizations.dart&amp;#39;; 5 6class ChineseCupertinoLocalizations implements CupertinoLocalizations { 7 final materialDelegate = GlobalMaterialLocalizations.delegate; 8 final widgetsDelegate = GlobalWidgetsLocalizations.delegate; 9 final local = const Locale(&amp;#39;zh&amp;#39;); 10 11 MaterialLocalizations ml; 12 13 Future init() async { 14 ml = await materialDelegate.load(local); 15 print(ml.pasteButtonLabel); 16 } 17 18 @override 19 String get alertDialogLabel =&amp;gt; ml.
           
           
         
@@ -975,9 +987,10 @@ flutter engine 简单介绍 这里简单介绍一下 flutter engine,
 一般一个纯 flutter 项目中是这样的, 有一个 FlutterApplication 一个 FlutterActivity 一个 FlutterView,而我们 flutter 所有的界面都是在 FlutterView 上画的
 解析开始 以下基于你对于 android 原生开发有所涉猎,而不是完全不了的基础上展开
 我们都知道,当 finish Activity 后页面会回调onDestroy方法
- 这个方法中会回调一个eventDelegate.onDestroy,我们查看以下这个东西具体是调用到哪里
-  能看到具体的调用是这样的
-  如果 Application 是 FlutterApplication 会直接将当前 Activity 置空
+这个方法中会回调一个eventDelegate.onDestroy,我们查看以下这个东西具体是调用到哪里
+能看到具体的调用是这样的
+如果 Application 是 FlutterApplication 会直接将当前 Activity 置空
+根据 flutterview 附着与否执行detach或destroy
           
           
         
@@ -994,13 +1007,13 @@ flutter engine 简单介绍 这里简单介绍一下 flutter engine,
         
           
             前言 最近看到群里有朋友在问类似于
- 这东西怎么实现
+这东西怎么实现
 我回答的可能不那么清楚,因为我就答了 bottomSheet,下次我可能会回答的更清楚些
 这东西在可能在 flutter 里有如下几种解释
- Scaffold 的 bottomSheet 属性 一个叫 BottomSheet 的 widget 组件 Scaffold.showBottomSheet 方法 showBottomSheet 方法也就是一个底层弹窗  这里分别来简单的说一下
+Scaffold 的 bottomSheet 属性 一个叫 BottomSheet 的 widget 组件 Scaffold.showBottomSheet 方法 showBottomSheet 方法也就是一个底层弹窗 这里分别来简单的说一下
 Scaffold 的 bottomSheet 属性 这个就是前言中的那种东西的简单实现方式,直接把聊天的输入框(TextField)放在里面,用 Container 也好,也用其他什么控件也可以,当然 Container =&amp;gt; Row =&amp;gt; [TextField,Button]就能实现图上的效果了
 简单的页面代码如下
-1import &amp;#39;package:flutter/material.dart&amp;#39;; 23class BottomSheet1Page extends StatefulWidget { 4@override 5_BottomSheetPageState createState() =&amp;gt; _BottomSheetPageState(); 6} 78class _BottomSheetPageState extends State&amp;lt;BottomSheet1Page&amp;gt; { 9@override 10Widget build(BuildContext context) { 11return Scaffold( 12appBar: AppBar( 13title: Text(&amp;#39;bottom sheet&amp;#39;), 14), 15body: ListView.
+1import &amp;#39;package:flutter/material.dart&amp;#39;; 2 3class BottomSheet1Page extends StatefulWidget { 4 @override 5 _BottomSheetPageState createState() =&amp;gt; _BottomSheetPageState(); 6} 7 8class _BottomSheetPageState extends State&amp;lt;BottomSheet1Page&amp;gt; { 9 @override 10 Widget build(BuildContext context) { 11 return Scaffold( 12 appBar: AppBar( 13 title: Text(&amp;#39;bottom sheet&amp;#39;), 14 ), 15 body: ListView.
           
           
         
@@ -1021,7 +1034,7 @@ Scaffold 的 bottomSheet 属性 这个就是前言中的那种东西的简单实
 通过下载
 基础的 api http 协议中有多种 METHOD,当然最常见的就是 GET POST,
 因为最近几年 restful 协议的频繁使用,使得 PUT,DELETE,PATCH 方法也有了一定的使用率
-基础使用 1import &amp;#39;package:http/http.dart&amp;#39; as http; 2void get(String url) async { 3http.Response response = await http.get(url); 45// 其他的返回值都是一样的 6 http.post(url); 7http.put(url); 8http.patch(url); 9http.delete(url); 10http.head(url); 11} 增加请求头 1void headerDemo(String url, Map&amp;lt;String, String&amp;gt; headers) async { 2http.get(url, headers: headers); 34// 其他的方法相同 5 } post 常见的请求方式 常见的请求方式有如下几种(来自于postman) 或者使用 查看也可以帮助加深理解
+基础使用 1import &amp;#39;package:http/http.dart&amp;#39; as http; 2void get(String url) async { 3 http.Response response = await http.get(url); 4 5 // 其他的返回值都是一样的 6 http.post(url); 7 http.put(url); 8 http.patch(url); 9 http.delete(url); 10 http.head(url); 11} 增加请求头 1 void headerDemo(String url, Map&amp;lt;String, String&amp;gt; headers) async { 2 http.get(url, headers: headers); 3 4 // 其他的方法相同 5 } post 常见的请求方式 常见的请求方式有如下几种(来自于postman) 或者使用 查看也可以帮助加深理解
           
           
         
@@ -1043,7 +1056,7 @@ Scaffold 的 bottomSheet 属性 这个就是前言中的那种东西的简单实
 1flutter build apk 这种情况通常是因为 so 文件没有打包到 apk 中造成的 拖动 apk 到 android Studio 中可以看到其中包含的库文件
 我前面有一篇的文章可以解释原理
 但是 flutter 升级后 可以查看flutter.gradle文件
- 图片中的代码说明了当目标是 arm64 的时候, 会自动将 64 的 so 打包到 flutter 内, 这里的问题就造成了以前你在自己的 gradle 设置的打包选项和这个同时生效,也就是 v7 v8 的 so 都不进 apk 里了..
+图片中的代码说明了当目标是 arm64 的时候, 会自动将 64 的 so 打包到 flutter 内, 这里的问题就造成了以前你在自己的 gradle 设置的打包选项和这个同时生效,也就是 v7 v8 的 so 都不进 apk 里了..
 一个小说明 在说解决方案前,有一点需要说明的是 armeabi -&amp;gt; v7 -&amp;gt;v8,这个是 arm cpu 架构的进化过程,而后来的 cpu 是兼容前代的 so 库,
           
           
@@ -1061,11 +1074,9 @@ Scaffold 的 bottomSheet 属性 这个就是前言中的那种东西的简单实
         
           
             原生通信系列
-
-
- 本篇主要介绍如何在 iOS 中发布广播,然后在 dart 端进行订阅
+本篇主要介绍如何在 iOS 中发布广播,然后在 dart 端进行订阅
 oc 先来查看 OC 篇
-1#import &amp;#34;BattlePowerPlugin.h&amp;#34; 2#import &amp;lt;Foundation/NSTimer.h&amp;gt; 3 4@implementation BattlePowerPlugin 56+ (void)registerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar { 7// ... 8 9[self registerPostTimerWithRegistrar:registrar]; 10} 1112+(void) registerPostTimerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar{ 13FlutterBasicMessageChannel *channel = [FlutterBasicMessageChannel messageChannelWithName:@&amp;#34;run_time&amp;#34; binaryMessenger:[registrar messenger]]; 1415long start = [self getNow]; 1617[NSTimer scheduledTimerWithTimeInterval:5 repeats:true block:^(NSTimer * _Nonnull timer) { 18long run = [self getNow] - start; 19[channel sendMessage:[NSNumber numberWithLong:run]]; 2021if (run &amp;gt; 100){ 22[timer invalidate]; 23} 24}]; 25} 2627+(long)getNow{ 28NSDate *date = [NSDate date]; 29long timeStamp = [date timeIntervalSince1970]; 30return timeStamp; 31} 3233//.
+1#import &amp;#34;BattlePowerPlugin.h&amp;#34; 2#import &amp;lt;Foundation/NSTimer.h&amp;gt; 3 4@implementation BattlePowerPlugin 5 6+ (void)registerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar { 7 // ... 8 9 [self registerPostTimerWithRegistrar:registrar]; 10} 11 12+(void) registerPostTimerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar{ 13 FlutterBasicMessageChannel *channel = [FlutterBasicMessageChannel messageChannelWithName:@&amp;#34;run_time&amp;#34; binaryMessenger:[registrar messenger]]; 14 15 long start = [self getNow]; 16 17 [NSTimer scheduledTimerWithTimeInterval:5 repeats:true block:^(NSTimer * _Nonnull timer) { 18 long run = [self getNow] - start; 19 [channel sendMessage:[NSNumber numberWithLong:run]]; 20 21 if (run &amp;gt; 100){ 22 [timer invalidate]; 23 } 24 }]; 25} 26 27+(long)getNow{ 28 NSDate *date = [NSDate date]; 29 long timeStamp = [date timeIntervalSince1970]; 30 return timeStamp; 31} 32 33//.
           
           
         
@@ -1082,13 +1093,9 @@ oc 先来查看 OC 篇
         
           
             原生通信系列
-
-
- 本篇要介绍的是 flutter 调用 iOS 篇
+本篇要介绍的是 flutter 调用 iOS 篇
 如果你没有看过我的前 2 篇,建议看一下. dart 端会承接上一篇的结果
-dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/services.dart&amp;#39;; 45class BattlePower { 6static const MethodChannel _channel = const MethodChannel(&amp;#39;battle_power&amp;#39;); 78static Future&amp;lt;String&amp;gt; get platformVersion async { 9final String version = await _channel.invokeMethod(&amp;#39;getPlatformVersion&amp;#39;); 10return version; 11} 1213static Future&amp;lt;int&amp;gt; requestNativeAdd(int x, int y) async { 14int result = await _channel.invokeMethod(&amp;#39;add&amp;#39;, {&amp;#34;x&amp;#34;: x, &amp;#34;y&amp;#34;: y}); 15return result; 16} 1718//.... 19} 这里和第一篇一样
-不详细介绍了
- 这里是以 oc 为例的,不建议用 swift 开发插件,尤其是开源插件
+dart 1import &amp;#39;dart:async&amp;#39;; 2 3import &amp;#39;package:flutter/services.dart&amp;#39;; 4 5class BattlePower { 6 static const MethodChannel _channel = const MethodChannel(&amp;#39;battle_power&amp;#39;); 7 8 static Future&amp;lt;String&amp;gt; get platformVersion async { 9 final String version = await _channel.invokeMethod(&amp;#39;getPlatformVersion&amp;#39;); 10 return version; 11 } 12 13 static Future&amp;lt;int&amp;gt; requestNativeAdd(int x, int y) async { 14 int result = await _channel.invokeMethod(&amp;#39;add&amp;#39;, {&amp;#34;x&amp;#34;: x, &amp;#34;y&amp;#34;: y}); 15 return result; 16 } 17 18 //.
           
           
         
@@ -1105,13 +1112,11 @@ dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/ser
         
           
             原生通信系列
-
-
- 第二篇介绍的是原生通知 dart
+第二篇介绍的是原生通知 dart
 开篇就是灵魂流程图,自己体会吧 😆 不同于第一篇, 本篇是由 java 端作为发布端, dart 作为订阅端
 具体的创建过程请参考第一篇
 java 先看看 java 端代码
-1package com.example.battlepower; 23import java.util.Timer; 4import java.util.TimerTask; 56import io.flutter.plugin.common.BasicMessageChannel; 7import io.flutter.plugin.common.MethodCall; 8import io.flutter.plugin.common.MethodChannel; 9import io.flutter.plugin.common.MethodChannel.MethodCallHandler; 10import io.flutter.plugin.common.MethodChannel.Result; 11import io.flutter.plugin.common.PluginRegistry.Registrar; 12import io.flutter.plugin.common.StandardMessageCodec; 1314/** 15* BattlePowerPlugin 16*/ 17public class BattlePowerPlugin implements MethodCallHandler { 1819private static BasicMessageChannel&amp;lt;Object&amp;gt; runTimeSender; 2021private static Timer timer; 2223private static long startTime; 2425/** 26* Plugin registration. 27*/ 28public static void registerWith(Registrar registrar) { 29final MethodChannel channel = new MethodChannel(registrar.
+1package com.example.battlepower; 2 3import java.util.Timer; 4import java.util.TimerTask; 5 6import io.flutter.plugin.common.BasicMessageChannel; 7import io.flutter.plugin.common.MethodCall; 8import io.flutter.plugin.common.MethodChannel; 9import io.flutter.plugin.common.MethodChannel.MethodCallHandler; 10import io.flutter.plugin.common.MethodChannel.Result; 11import io.flutter.plugin.common.PluginRegistry.Registrar; 12import io.flutter.plugin.common.StandardMessageCodec; 13 14/** 15 * BattlePowerPlugin 16 */ 17public class BattlePowerPlugin implements MethodCallHandler { 18 19 private static BasicMessageChannel&amp;lt;Object&amp;gt; runTimeSender; 20 21 private static Timer timer; 22 23 private static long startTime; 24 25 /** 26 * Plugin registration.
           
           
         
@@ -1128,21 +1133,19 @@ java 先看看 java 端代码
         
           
             原生通信系列
-
-
- 在 flutter 开发中一定会有需要和原生通信的情况
+在 flutter 开发中一定会有需要和原生通信的情况
 第一篇介绍的是 flutter 调用 Android
 这篇是给刚刚入门或者刚刚接触原生调用的朋友们使用的,老鸟们或者英文强的朋友还是直接看官方文档比较好
 创建项目 一般来说建议使用一个 plugin 作为一个单独的项目来将业务逻辑独立出去
 我这里使用命令行创建,事实上一律建议使用命令行创建,因为信息更加可见一些
 1flutter create --template plugin battle_power 2cd battle_power 前面都是固定格式,最后面那个是插件名,根据你自己的需要来修改
 创建好的截图如下 和开发 package 的时候不同,开发 plugin 需要打开 example/android 目录
- 使用快捷的方式,或自己通过 Android Studio 的 open 打开项目
- 等待完成
- 接着就可以开始开发了,
+使用快捷的方式,或自己通过 Android Studio 的 open 打开项目
+等待完成
+接着就可以开始开发了,
 默认生成了一个 java 文件,可以称之为插件的主文件
-流程图  乱画的..随便看看就好
-android 端 1package com.example.battlepower; 23import io.flutter.plugin.common.MethodCall; 4import io.flutter.plugin.common.MethodChannel; 5import io.flutter.plugin.common.MethodChannel.MethodCallHandler; 6import io.flutter.plugin.common.MethodChannel.Result; 7import io.flutter.plugin.common.PluginRegistry.Registrar; 89/** BattlePowerPlugin */ 10public class BattlePowerPlugin implements MethodCallHandler { 11/** Plugin registration.
+流程图 乱画的..随便看看就好
+android 端 1package com.example.battlepower; 2 3import io.flutter.plugin.common.MethodCall; 4import io.flutter.plugin.common.MethodChannel; 5import io.flutter.plugin.common.MethodChannel.MethodCallHandler; 6import io.flutter.plugin.common.MethodChannel.Result; 7import io.flutter.plugin.common.PluginRegistry.Registrar; 8 9/** BattlePowerPlugin */ 10public class BattlePowerPlugin implements MethodCallHandler { 11 /** Plugin registration.
           
           
         
@@ -1160,15 +1163,15 @@ android 端 1package com.example.battlepower; 23import io.flutter.plugin.common.
           
             pub 库
 项目名: 项目地址: 简介: 图片压缩
- 项目名: 项目地址: 项目简介: 仿 android toast 纯 flutter 实现
- 项目名: 项目地址: 项目简介: 读取系统相册 纯 api 版 支持(ios/android)
- 项目名: 项目地址: 项目简介: 相册图片选择器 基于 photo_manager
- 项目名: 项目地址: 项目简介: ListView 的加载更多
- 项目名: 项目地址: 项目简介: 配合 pageview 的简单圆点指示器
- 项目名: 项目地址: 项目简介: 城市选择器
- 项目名: 项目地址: 项目简介: 一个长按弹出菜单的小部件
- 项目名: 项目地址: 项目简介: 日志插件,用于帮助将 flutter 上的日志记录至开发机
- 如果用过的朋友觉得好用,请在遇到别人想用的时候帮忙感谢宣传
+项目名: 项目地址: 项目简介: 仿 android toast 纯 flutter 实现
+项目名: 项目地址: 项目简介: 读取系统相册 纯 api 版 支持(ios/android)
+项目名: 项目地址: 项目简介: 相册图片选择器 基于 photo_manager
+项目名: 项目地址: 项目简介: ListView 的加载更多
+项目名: 项目地址: 项目简介: 配合 pageview 的简单圆点指示器
+项目名: 项目地址: 项目简介: 城市选择器
+项目名: 项目地址: 项目简介: 一个长按弹出菜单的小部件
+项目名: 项目地址: 项目简介: 日志插件,用于帮助将 flutter 上的日志记录至开发机
+如果用过的朋友觉得好用,请在遇到别人想用的时候帮忙感谢宣传
           
           
         
@@ -1186,8 +1189,8 @@ android 端 1package com.example.battlepower; 23import io.flutter.plugin.common.
           
             flutter 中 如果给图片外面套 InkWell ,你会发现点击的逻辑生效了,但是 UI 上没反应
 备注: , 违反版权请联系我,删除
- 代码如下
-1import &amp;#39;package:flutter/material.dart&amp;#39;; 23class ImageTapWidget extends StatefulWidget { 4final Widget child; 5final Function onTap; 67const ImageTapWidget({Key key, this.child, this.onTap}) : super(key: key); 89@override 10ImageTapWidgetState createState() { 11return new ImageTapWidgetState(); 12} 13} 1415class ImageTapWidgetState extends State&amp;lt;ImageTapWidget&amp;gt; { 16var isDown = false; 17@override 18Widget build(BuildContext context) { 19return GestureDetector( 20child: AnimatedContainer( 21duration: Duration(milliseconds: 500), 22foregroundDecoration: BoxDecoration( 23color: isDown ? Colors.
+代码如下
+1import &amp;#39;package:flutter/material.dart&amp;#39;; 2 3class ImageTapWidget extends StatefulWidget { 4 final Widget child; 5 final Function onTap; 6 7 const ImageTapWidget({Key key, this.child, this.onTap}) : super(key: key); 8 9 @override 10 ImageTapWidgetState createState() { 11 return new ImageTapWidgetState(); 12 } 13} 14 15class ImageTapWidgetState extends State&amp;lt;ImageTapWidget&amp;gt; { 16 var isDown = false; 17 @override 18 Widget build(BuildContext context) { 19 return GestureDetector( 20 child: AnimatedContainer( 21 duration: Duration(milliseconds: 500), 22 foregroundDecoration: BoxDecoration( 23 color: isDown ?
           
           
         
@@ -1206,7 +1209,7 @@ android 端 1package com.example.battlepower; 23import io.flutter.plugin.common.
             点击事件 android 中,所有 View 都可以直接 setOnClickListener, RN 中也有 TouchableHightlight 这样的控件可以直接套在外面,ios 中也可以有 UIControl 这样的控件可以直接添加点击事件.
 那么 flutter 中有吗? 答案自然是有. GestureDetector,InkResponse,InkWell, 包括一些琳琅满目的按钮,比如 FlatButton,MaterialButton,CupertinoButton,IconButton,ImageButton 这些组件都可以达到目的. 那么自定义的目的是什么呢?
 自定义的优点 最重要的自然就是可控性强,复用性强. 一次修改终身受用. 来看下面的这段代码
-1import &amp;#39;package:flutter/material.dart&amp;#39;; 23class MaterialTapWidget extends StatelessWidget { 4final double radius; 5final Function onTap; 6final Widget child; 7final double elevation; 8final Color backgroundColor; 9final Color splashColor; 10final Function onLongTap; 1112const MaterialTapWidget({ 13Key key, 14this.radius = 0.0, 15this.onTap, 16this.onLongTap, 17@required this.child, 18this.splashColor, 19this.elevation = 0.0, 20this.backgroundColor = Colors.
+1import &amp;#39;package:flutter/material.dart&amp;#39;; 2 3class MaterialTapWidget extends StatelessWidget { 4 final double radius; 5 final Function onTap; 6 final Widget child; 7 final double elevation; 8 final Color backgroundColor; 9 final Color splashColor; 10 final Function onLongTap; 11 12 const MaterialTapWidget({ 13 Key key, 14 this.
           
           
         
@@ -1224,10 +1227,10 @@ android 端 1package com.example.battlepower; 23import io.flutter.plugin.common.
           
             简单翻译 英文链接来自于
 对应的版本为 11 月 11 日版本 连接为 后续如有改动,请以最新的英文版本为准,有翻译不准确的地方请参照英文版本自行理解
- 概述  本文档描述了 Flutter 工具包的内部工作原理，使 Flutter 的 API 成为可能。因为 Flutter 小部件是使用积极的可组合性(aggressive composition)构建的，所以使用 Flutter 构建的用户界面具有大量小部件。
+概述 本文档描述了 Flutter 工具包的内部工作原理，使 Flutter 的 API 成为可能。因为 Flutter 小部件是使用积极的可组合性(aggressive composition)构建的，所以使用 Flutter 构建的用户界面具有大量小部件。
 为了支持这种工作量，Flutter 使用次线性算法来布局和构建小部件，这些数据结构使树形手术变得高效，并且具有许多常量因子优化。
 通过一些额外的细节，这种设计还使开发人员可以使用回调来轻松创建无限滚动列表，这些回调可以构建用户可见的小部件。
-积极的可组合性（Aggressive composability）  Flutter 最独特的一个方面是其积极的可组合性。
+积极的可组合性（Aggressive composability） Flutter 最独特的一个方面是其积极的可组合性。
 小部件是通过组合其他小部件构建的，这些小部件本身是由逐步更基本的小部件构建的。例如，Padding 是一个小部件而不是其他小部件的属性。因此，使用 Flutter 构建的用户界面由许多小部件组成。
 小部件构建递归在 RenderObjectWidgets 中触底，这些小部件在底层渲染树中创建节点。渲染树是一种数据结构，用于存储用户界面的几何图形，该几何图形在布局期间计算并在绘制和命中测试期间使用。大多数 Flutter 开发人员不直接创建对象，而是使用小部件操纵渲染树。
 为了在小部件层支持积极的可组合性，Flutter 在小部件和渲染树层使用了许多有效的算法和优化，这些将在以下小节中介绍。
@@ -1235,12 +1238,15 @@ android 端 1package com.example.battlepower; 23import io.flutter.plugin.common.
 Flutter 每帧执行一个布局，布局算法一次完成。约束通过父对象向下传递，父对象在每个子对象上调用布局方法。子项递归地执行自己的布局，然后通过返回布局方法将几何返回到树中。重要的是，一旦渲染对象从其布局方法返回，该渲染对象将不再被访问，直到下一帧的布局。这种方法将可能单独的度量和布局传递组合成单个传递，因此，每个渲染对象在布局期间最多访问两次：一次在树下，一次在树上。
 Flutter 有这个通用协议的几个专业。最常见的专业是 RenderBox，它以二维笛卡尔坐标运算。在框布局中，约束是最小和最大宽度以及最小和最大高度。在布局期间，子项通过选择这些边界内的大小来确定其几何。孩子从布局返回后，父母决定孩子在父母坐标系中的位置。请注意，孩子的布局不能取决于孩子的位置，因为孩子的位置直到孩子从布局返回后才确定。因此，父母可以自由地重新定位孩子，而无需重新计算孩子的布局。
 更一般地说，在布局期间，从父节点传递到子节点的唯一信息是约束，并且从子节点流向父节点的唯一信息是几何体。这些不变量可以减少布局期间所需的工作量：
-  如果孩子没有将自己的布局标记为脏，则孩子可以立即从布局返回，切断步行，只要父母给孩子的约束与孩子在前一个布局中收到的约束相同。
-  每当父级调用子级的布局方法时，父级指示它是否使用从子级返回的大小信息。如果经常发生父级不使用大小信息，那么如果子级选择新大小，则父级不需要重新计算其布局，因为父级保证新大小将符合现有约束。
-  严格约束是指只能通过一个有效几何体来满足的约束。例如，如果最小和最大宽度彼此相等并且最小和最大高度彼此相等，则满足这些约束的唯一尺寸是具有该宽度和高度的尺寸。如果父级提供严格约束，则父级无需在子级重新计算其布局时重新计算其布局，即使父级在其布局中使用子级的大小，因为子级无法在没有父级的新约束的情况下更改大小。
-  渲染对象可以声明它仅使用父级提供的约束来确定其几何。这样的声明通知框架该子渲染对象的父级在子级重新计算其布局时不需要重新计算其布局，即使约束不紧，即使父级的布局取决于子级的大小，因为子级无法更改大小没有来自其父级的新约束。
-  作为这些优化的结果，当渲染对象树包含脏节点时，在布局期间仅访问那些节点以及它们周围的子树的有限部分。
+如果孩子没有将自己的布局标记为脏，则孩子可以立即从布局返回，切断步行，只要父母给孩子的约束与孩子在前一个布局中收到的约束相同。
+每当父级调用子级的布局方法时，父级指示它是否使用从子级返回的大小信息。如果经常发生父级不使用大小信息，那么如果子级选择新大小，则父级不需要重新计算其布局，因为父级保证新大小将符合现有约束。
+严格约束是指只能通过一个有效几何体来满足的约束。例如，如果最小和最大宽度彼此相等并且最小和最大高度彼此相等，则满足这些约束的唯一尺寸是具有该宽度和高度的尺寸。如果父级提供严格约束，则父级无需在子级重新计算其布局时重新计算其布局，即使父级在其布局中使用子级的大小，因为子级无法在没有父级的新约束的情况下更改大小。
+渲染对象可以声明它仅使用父级提供的约束来确定其几何。这样的声明通知框架该子渲染对象的父级在子级重新计算其布局时不需要重新计算其布局，即使约束不紧，即使父级的布局取决于子级的大小，因为子级无法更改大小没有来自其父级的新约束。
+作为这些优化的结果，当渲染对象树包含脏节点时，在布局期间仅访问那些节点以及它们周围的子树的有限部分。
 次线性小部件构建 与布局算法类似，Flutter 的小部件构建算法是次线性的。构建之后，小部件由元素树保存，元素树保留用户界面的逻辑结构。元素树是必要的，因为小部件本身是不可变的，这意味着（除其他外），它们不能记住它们与其他小部件的父或子关系。元素树还包含与有状态窗口小部件关联的状态对象。
+响应于用户输入（或其他刺激），元素可能变脏，例如，如果开发人员在关联的状态对象上调用 setState（）。框架保留一个脏元素列表，并在构建阶段直接跳转到它们，跳过干净的元素。在构建阶段，信息在元素树中单向流动，这意味着在构建阶段期间每个元素最多访问一次。清洁后，元素不会再次变脏，因为通过感应，它的所有祖先元素也都是干净的。
+因为窗口小部件是不可变的，所以如果元素没有将自身标记为脏，则元素可以立即从构建返回，如果父级使用相同的窗口小部件重建元素，则会切断步行。此外，元素只需要比较两个窗口小部件引用的对象标识，以确定新窗口小部件与旧窗口小部件相同。开发人员利用此优化来实现重投影模式，其中窗口小部件包括在其构建中存储为成员变量的预构建子窗口小部件。
+在构建期间，Flutter 还避免使用 InheritedWidgets 遍历父链。如果窗口小部件通常走他们的父链，例如确定当前的主题颜色，则构建阶段将在树的深度变为 O（N 2），由于积极的组合，这可能非常大。为了避免这些父行为，框架通过在每个元素上维护一个 InheritedWidgets 的哈希表来向下推送元素树中的信息。通常，许多元素将引用相同的哈希表，该哈希表仅在引入新的 InheritedWidget 的元素上更改。
           
           
         
@@ -1259,12 +1265,12 @@ Flutter 有这个通用协议的几个专业。最常见的专业是 RenderBox�
             so 库说明 so 库在 android 中,是使用 c/c++代码编译出来的库文件,可以使用 ndk 调用,就是你在 android 代码中见到的 native 方法,具体的实现就在 so 库中
 关于 so 库兼容性问题 andorid 中或多或少都会引用到第三方库,而很多第三方库中都有 so 的存在,不论是复制到项目中(如百度地图),或是 gradle 依赖(如个推) 其中都涉及到了 so 库的相关问题,如果你选择的库是有所有 cpu 类型可选还好,如果不是,那么就需要自定义设置了
 举个栗子 你的 app 依赖两个库,分别是 lib1,lib2
-1lib1: arm64-v8a,armeabi-v7a 2lib2: armeabi-v7a 那么当你运行在 v7 的手机上时,因为你的项目含有 v7 的 so 库,所以没有问题,可以跑起来
+1 lib1: arm64-v8a,armeabi-v7a 2 lib2: armeabi-v7a 那么当你运行在 v7 的手机上时,因为你的项目含有 v7 的 so 库,所以没有问题,可以跑起来
 如果,你运行在 v8 手机上,那么你的项目就会 boom,崩了, 为啥呢? 这就涉及到 so 对齐了
 so 对齐 简单来说,就是要有就必须都有,如果一个没有,那就一个都不要
 比如上面的例子,如果你是自己复制到项目下的,你需要删掉 arm64-v8a 的文件夹
 如果是个推那种使用 gradle 依赖的方案,那么你需要修改 gradle 文件,这个是我的个推的配置 gradle
-1// 个推的ndk配置 2apply plugin: &amp;#39;com.android.application&amp;#39; 34android { 5defaultConfig { 6ndk { 7abiFilters &amp;#34;armeabi-v7a&amp;#34; 8// abiFilters &amp;#34;armeabi-v7a&amp;#34;,&amp;#34;arm64-v8a&amp;#34; 9 } 10} 11buildTypes { 12debug { 13ndk { 14abiFilters &amp;#34;armeabi-v7a&amp;#34;, &amp;#34;x86&amp;#34; 15// abiFilters &amp;#34;armeabi-v7a&amp;#34;, &amp;#34;x86&amp;#34;/*, &amp;#34;arm64-v8a&amp;#34;*/ 16 } 17} 18release{ 19ndk{ 20abiFilters &amp;#34;armeabi-v7a&amp;#34; 21} 22} 23} 24} 2526repositories { 27maven { url &amp;#34;http://mvn.
+1// 个推的ndk配置 2apply plugin: &amp;#39;com.
           
           
         
@@ -1284,7 +1290,7 @@ so 对齐 简单来说,就是要有就必须都有,如果一个没有,那就一�
 我为什么要自定义呢
 首先是项目需要，并且这种库普适性高，抽取出来今后复用也方便点
 另外记录一下编码思路,方便后续查看
- 使用说明  或  看看构造方法 一共 5 个属性 child 是 ListView
+使用说明 或 看看构造方法 一共 5 个属性 child 是 ListView
 onLoadMore 是加载更多时的回调,由外部实现
 isFinish 加载完成
 delegate 是一个抽象类 有默认实现, 其中有 3 个方法,一个是根据状态给一个 widget 高度 一个是延迟加载的毫秒时间 一个是构建显示在内部的 Widget,这样就完全实现了外部可根据状态自定义 Widget
@@ -1293,7 +1299,7 @@ LoadMoreTextBuilder 是一个根据状态构建文字的方案,默认实现了 �
 不使用上拉加载的原因是：滚动到底继续上拉不符合正常人习惯，如果是惯性滚动到底，谁知道你后面还有没有东西的
 思考如何自定义 首先怎么样可以知道滚动到底了呢，最简单的方式，listview 的最后一行 build 的时候一定滚动到底了
 所以我们可以使用如下的方式定义
-12class _ListViewDemoPageState extends State&amp;lt;ListViewDemoPage&amp;gt; { 3var count = 10; 45@override 6Widget build(BuildContext context) { 7return ListView.builder( 8itemCount: count + 1, 9itemBuilder: _buildItem, 10); 11} 1213Widget _buildItem(BuildContext context, int index) { 14if (index == count) { 15return Text(&amp;#39;到底了&amp;#39;); 16} 17return Text(index.
+1 2class _ListViewDemoPageState extends State&amp;lt;ListViewDemoPage&amp;gt; { 3 var count = 10; 4 5 @override 6 Widget build(BuildContext context) { 7 return ListView.
           
           
         
@@ -1314,9 +1320,9 @@ Route 就是路由,顾名思义,负责你页面间的跳转
 不想看代码和思路分析的直接 copy 了拿去用就行 没有啥外部依赖,只需要注意_rootRoute 后面的字符串需要和 initialRoute 对应即可
 路由又分静态和动态路由
 静态就是不需要传参数的,这样的路由可以直接定义在 MaterialApp/WidgetsApp 里 这样可以通过Navigator.pushNamed调用
- 动态的就是传入一个PageRoute, 通常是一个MaterialPageRoute 或者CupertinoPageRoute,或者你如果有自定义的有可以使用
+动态的就是传入一个PageRoute, 通常是一个MaterialPageRoute 或者CupertinoPageRoute,或者你如果有自定义的有可以使用
 这里我使用一个我的工具类来实现跳转,因为大部分情况下,工程中的路由都是动态的,也就是需要传参数的,所以工具类中只包含了静态路由
-1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/material.dart&amp;#39;; 45class RouteHelper { 6static Future&amp;lt;T&amp;gt; pushWidget&amp;lt;T&amp;gt;( 7BuildContext context, 8Widget widget, { 9bool replaceRoot = false, 10bool replaceCurrent = false, 11}) { 12return pushRoute( 13context, 14MaterialPageRoute(builder: (ctx) =&amp;gt; widget), 15replaceRoot: replaceRoot, 16replaceCurrent: replaceCurrent, 17); 18} 1920static Future&amp;lt;T&amp;gt; pushRoute&amp;lt;T&amp;gt;( 21BuildContext context, 22PageRoute&amp;lt;T&amp;gt; route, { 23bool replaceRoot = false, 24bool replaceCurrent = false, 25}) { 26assert(!
+1import &amp;#39;dart:async&amp;#39;; 2 3import &amp;#39;package:flutter/material.dart&amp;#39;; 4 5class RouteHelper { 6 static Future&amp;lt;T&amp;gt; pushWidget&amp;lt;T&amp;gt;( 7 BuildContext context, 8 Widget widget, { 9 bool replaceRoot = false, 10 bool replaceCurrent = false, 11 }) { 12 return pushRoute( 13 context, 14 MaterialPageRoute(builder: (ctx) =&amp;gt; widget), 15 replaceRoot: replaceRoot, 16 replaceCurrent: replaceCurrent, 17 ); 18 } 19 20 static Future&amp;lt;T&amp;gt; pushRoute&amp;lt;T&amp;gt;( 21 BuildContext context, 22 PageRoute&amp;lt;T&amp;gt; route, { 23 bool replaceRoot = false, 24 bool replaceCurrent = false, 25 }) { 26 assert(!
           
           
         
@@ -1333,20 +1339,19 @@ Route 就是路由,顾名思义,负责你页面间的跳转
         
           
             有时候 flutter 更新 sdk 版本后不知道该不该更新 有时候 pub 库更新后和自己的其他类库发生了冲突
- 类似于图上的情况
+类似于图上的情况
 遇到这样的问题应该怎么解决呢
 我们一步步解决
 首先,这种依赖一般是 pub 中引用的,先查看下原作者有没有最新版,也许就解决了呢
 无奈我们用到的类库是一个 5 个月没有更新过的类库,看来是指望不上了 没关系,我们进 pub 主页中
- 一般都是有 github 的,我们点进 github 中 如果真没有 那就下一个 zip,然后自己创建一个吧
+一般都是有 github 的,我们点进 github 中 如果真没有 那就下一个 zip,然后自己创建一个吧
 然后 fork 项目,clone 下来,修改下
- 可以参考下这个修改日志, 修改了库的引用地址,因为这两个库是同一个作者,这个依赖了另一个,我这里修改了另一个库,并且也同样 fork+clone 修改后上传到了自己的 github
+可以参考下这个修改日志, 修改了库的引用地址,因为这两个库是同一个作者,这个依赖了另一个,我这里修改了另一个库,并且也同样 fork+clone 修改后上传到了自己的 github
 这里是另一个库的修改 我在这里修改了作者使用的依赖为更加新的版本
 接着返回自己的 app 项目中
- 修改引用为 git 的方式
+修改引用为 git 的方式
 接着再使用就没问题了
 git 依赖的引用方式可以参考 ,
- 
           
           
         
@@ -1365,7 +1370,7 @@ git 依赖的引用方式可以参考 ,
             文章首发地址: 前言 最近看 qq 群里发的很多代码截图,感觉命名规则/文件命名都不符合规范 很多朋友都是从其他语言转向 dart/flutter 的,深感语言环境还需要大家共同去维护,建议还是规范化代码,这样所有人看着都会舒服 恰好 dart 语言官方有自己的代码规范和相关的说明,在 dartlang 官网上,英文好的建议阅读原文 连接地址 我这里仅粗略翻译和加入一些自己的理解
 图片均来自于上述 url 对应的页面中 当前 dart 版本为 2.0 版本,日期为 2018 年 08 月 22 日 可能会在未来有改动,到时请以最新文档为准
 文档中图片的绿色部分为正例,右上角带good标识 红色是反例,右上角带bad标识
-标识方案  在 dart 有 3 种常规标识方案 第一个为大写字母开头的驼峰式 如 UserInterface 每个词的首字母为大写 第二个是小写开头的驼峰式,如testRun,第一个单词是小写,后续每个单词首字母大写 第三个是每个单词均为小写,以下划线分隔,如user_response
+标识方案 在 dart 有 3 种常规标识方案 第一个为大写字母开头的驼峰式 如 UserInterface 每个词的首字母为大写 第二个是小写开头的驼峰式,如testRun,第一个单词是小写,后续每个单词首字母大写 第三个是每个单词均为小写,以下划线分隔,如user_response
 总结 如果不想往下看具体的图片和翻译,直接看这里
 文件名: 小写+下划线 类型名(类名,函数类型名):大写开头驼峰 变量名(包含 const final 常量):使用小写开头驼峰, 项目有特殊要求 const 可以使用大写+下划线的方式,如同java中一样 导包 as 后的名称为小写+下划线 不要用匈牙利命名法中的 kXXXX 这样的命名方式,应该去掉 k 超过两位的英文缩写一律按该单词为普通小写单词处理,使用小写
 导包有顺序要求,且每&amp;quot;部分&amp;quot;间空行分隔开,每部分内按字母排序,按如下顺序排序 dart sdk 内的库 flutter 内的库 第三方库 自己的库 相对路径引用
@@ -1391,12 +1396,10 @@ json_serializable 版本是 1.1.0
 其中介绍了两种方式，第一种是手动解析
 需要的话可以参考一位大佬写的 这个有一个工具，python+qt 写的跨平台工具，有 linux/mac/windows 三端可执行文件
 第二种是利用
- 1dependencies:2# Your other regular dependencies here3json_annotation:^0.2.345dev_dependencies:6# Your other dev_dependencies here7build_runner:^0.9.08json_serializable:^0.5.4这里有一个坑，就是高版本的 flutter hello world 工程创建时会自动依赖 flutter_test 的高版本，但是这个高版本的 flutter_test 和这个库的当前不兼容，所以会报错，删除掉 test 的引用或等待兼容性更新,我目前版本是 dev 分支的 0.5.7，不排除后续可以使用
- 第二种方法需要手写 entity，bean，model，喜欢怎么叫你说了算，
+1dependencies: 2 # Your other regular dependencies here 3 json_annotation: ^0.2.3 4 5dev_dependencies: 6 # Your other dev_dependencies here 7 build_runner: ^0.9.0 8 json_serializable: ^0.5.4 这里有一个坑，就是高版本的 flutter hello world 工程创建时会自动依赖 flutter_test 的高版本，但是这个高版本的 flutter_test 和这个库的当前不兼容，所以会报错，删除掉 test 的引用或等待兼容性更新,我目前版本是 dev 分支的 0.5.7，不排除后续可以使用
+第二种方法需要手写 entity，bean，model，喜欢怎么叫你说了算，
 类似于这种格式，这里我写了一个网页专门用于 json=&amp;gt;dart 文件，可以直接完成这个步骤，将懒最大化
-  这里点击下载 复制文件到你的 flutter 中
-接着在命令行中敲
-1flutter packages pub run build_runner build  这里会有一个自动生成.g.dart 的文件，其中就有所有的解析相关的代码
+这里点击下载 复制文件到你的 flutter 中
           
           
         
@@ -1412,14 +1415,15 @@ json_serializable 版本是 1.1.0
       <description>
         
           
-            mac 开发环境配置 从入门到完成 本文首发简书 转载请注明出处  高能提示：文章字数不多，图很多，请做好战斗准备
- 前言 写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章 因为 flutter 涉及到跨平台开发，所以预想中会包含四部分 mac 篇，android 篇，ios 篇，flutter 篇
+            mac 开发环境配置 从入门到完成 本文首发简书 转载请注明出处 高能提示：文章字数不多，图很多，请做好战斗准备
+前言 写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章 因为 flutter 涉及到跨平台开发，所以预想中会包含四部分 mac 篇，android 篇，ios 篇，flutter 篇
 术语相关 cmd = command 键（空格左边） opt／alt = option 键（cmd 左边） ctrl = control（opt 左边） cli = 命令行工具（command-line interface,命令行界面) as = Android Studio
 写在前面 最低需要 xcode 9.0.0 以上的 xcode 版本 但是不建议从非官方渠道下载 xcode，以免遇到之前盗版 xcode 的问题
 我就是都装好了 8.3 才告诉我这个，没办法只能升级系统，再升级 xcode
 mac 篇 所谓 mac 篇就是一些基础的环境，和效率工具
 后面会使用
 cli 我这里使用，一个免费的开源的命令行工具 默认的命令行工具用 launchpad=&amp;gt; 其他 =&amp;gt; 终端打开
+zsh，用于替换 bash 环境，直接命令行中敲 zsh,即可进入，修改默认 zsh 的可以自行百度 oh my zsh，一个 zsh 插件 具体可以自行百度
           
           
         
@@ -1438,7 +1442,7 @@ cli 我这里使用，一个免费的开源的命令行工具 默认的命令行
             写在前面 这篇文章的目的是给纯 flutter 萌新回答一些基础问题,ctrl+f/cmd+f 搜索关键字 控件名 本篇会持续更新 最后更新时间 2018-08-02
 布局篇 flutter 中 控件各司其职,基础控件中基本只包含自己的功能 显示内容的负责显示内容,如 Text 负责文字,Image 负责图片 容器的负责容器,Row,Column,ListView 等 尺寸位置的负责自己,Padding,Container,SizedBox 等 触摸手势触摸相关:GestureDetector
 flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如你不应该有一个class TextButton extend Text/RaisedButton这样的方案出现 而应该是
-12class TextButton extends StatelessWidget { 3final Function onPressed; 4final String text; 5final Color color; 6final double fontSize; 7final EdgeInsets padding; 89const TextButton({ 10Key key, 11this.onPressed, 12this.text = &amp;#34;&amp;#34;, 13this.color = Colors.black87, 14this.fontSize = 14.0, 15this.padding = EdgeInsets.zero, 16}) : super(key: key); 1718@override 19Widget build(BuildContext context) { 20return new Material( 21color: Colors.
+1 2class TextButton extends StatelessWidget { 3 final Function onPressed; 4 final String text; 5 final Color color; 6 final double fontSize; 7 final EdgeInsets padding; 8 9 const TextButton({ 10 Key key, 11 this.onPressed, 12 this.text = &amp;#34;&amp;#34;, 13 this.
           
           
         
@@ -1456,8 +1460,8 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
           
             flutter 面向新手向 flutter 中一切界面层级的东西全部都是 Widget 这句话怎么理解呢?
 大到整个应用,小到一个文字控件,全部都是 Widget
- 一个常规的 Application 图级可能是这样的,当然实际情况下会比这复杂很多 对应代码和实际情况看一下 为了和图片对应 我把所有的写到一个文件里
-12import &amp;#39;package:flutter/material.dart&amp;#39;; 34void main() =&amp;gt; runApp(new MyApp()); 56class MyApp extends StatelessWidget { 7@override 8Widget build(BuildContext context) { 9return new MaterialApp( 10title: &amp;#39;Flutter 结构简析&amp;#39;, 11theme: new ThemeData( 12primarySwatch: Colors.blue, // 这里是项目的主色调 13 ), 14home: MyHomePage(), 15); 16} 17} 1819class MyHomePage extends StatefulWidget { 20@override 21_MyHomePageState createState() =&amp;gt; _MyHomePageState(); 22} 2324class _MyHomePageState extends State&amp;lt;MyHomePage&amp;gt; { 25@override 26Widget build(BuildContext context) { 27return Scaffold( 28appBar: AppBar(), 29body: ListView( 30children: &amp;lt;Widget&amp;gt;[ 31ListTile(title: Text(&amp;#39;我是第一个item&amp;#39;)), 32ListTile(title: Text(&amp;#39;我是第二个item&amp;#39;)), 33], 34), 35); 36} 37}  这里的一切皆 widget 的意思就是 Application 是 Widget Page 是 Scaffold 是 Appbar 是 ListView 是 ListTile 也是 Text 也是
+一个常规的 Application 图级可能是这样的,当然实际情况下会比这复杂很多 对应代码和实际情况看一下 为了和图片对应 我把所有的写到一个文件里
+1 2import &amp;#39;package:flutter/material.dart&amp;#39;; 3 4void main() =&amp;gt; runApp(new MyApp()); 5 6class MyApp extends StatelessWidget { 7 @override 8 Widget build(BuildContext context) { 9 return new MaterialApp( 10 title: &amp;#39;Flutter 结构简析&amp;#39;, 11 theme: new ThemeData( 12 primarySwatch: Colors.blue, // 这里是项目的主色调 13 ), 14 home: MyHomePage(), 15 ); 16 } 17} 18 19class MyHomePage extends StatefulWidget { 20 @override 21 _MyHomePageState createState() =&amp;gt; _MyHomePageState(); 22} 23 24class _MyHomePageState extends State&amp;lt;MyHomePage&amp;gt; { 25 @override 26 Widget build(BuildContext context) { 27 return Scaffold( 28 appBar: AppBar(), 29 body: ListView( 30 children: &amp;lt;Widget&amp;gt;[ 31 ListTile(title: Text(&amp;#39;我是第一个item&amp;#39;)), 32 ListTile(title: Text(&amp;#39;我是第二个item&amp;#39;)), 33 ], 34 ), 35 ); 36 } 37} 这里的一切皆 widget 的意思就是 Application 是 Widget Page 是 Scaffold 是 Appbar 是 ListView 是 ListTile 也是 Text 也是
           
           
         
@@ -1473,13 +1477,13 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
       <description>
         
           
-            flutter 介绍  所有的一切都是个人观点,不满可以留言,可以讨论,吵架大可不必 所有的资料仅 2018-07-06 时我所了解的,当前的 flutter 版本号 dev 为 0.5.6,beta 为 0.5.1 转载请注明出处,简书为第一发布平台(本人目前迁出简书平台,自建 blog)
- 何谓 flutter 简介  google 自己的官方介绍,来源于
+            flutter 介绍 所有的一切都是个人观点,不满可以留言,可以讨论,吵架大可不必 所有的资料仅 2018-07-06 时我所了解的,当前的 flutter 版本号 dev 为 0.5.6,beta 为 0.5.1 转载请注明出处,简书为第一发布平台(本人目前迁出简书平台,自建 blog)
+何谓 flutter 简介 google 自己的官方介绍,来源于
 为什么要用 flutter 跨平台框架,能开发 ios/android,性能不错
 已有那么多的跨平台方案,flutter 有什么优势 所有 UI 为 Flutter 平台自建,使用 skia 引擎绘制到屏幕上,能保持高度的统一性 所以 flutter 定位仅为 UI 框架,可以做一些业务逻辑
 劣势呢 目前与原生控件很难有机的结合到一个界面内
-1大概意思是,目前类似于baidumap,这样的控件只能是生硬的覆盖到flutter的界面上 2android中对应FlutterView(SurfaceView),ios中是FlutterViewController的根view 3你很难直接写方便的回调,手势控制 45WebView,直播等视频播放同理 与原生通信仅依赖一个接近字符串性质的通道,没有构建工具/编译层级的检查 尚处于初级阶段,开源社区还不活跃,相关社区关注度不高
-1关于字符串性质的通道: 2大概意思就是,所有的通信依赖于字符串 3比如flutter中需要定义 4static const MethodChannel _channel = const MethodChannel(&amp;#39;com.365.app/BarCode&amp;#39;); 5_channel.invokeMethod(&amp;#34;getData&amp;#34;, source); 6类似于这样的调用方式 78而原生中 也是需要定义出完全相同的字符串来表示通道名,方法名等等 flutter 使用 dart 语言开发 为什么使用 dart,貌似是说 flutter 的开发团队物理距离 dart 的团队很近,这段真实性未知
+1 大概意思是,目前类似于baidumap,这样的控件只能是生硬的覆盖到flutter的界面上 2 android中对应FlutterView(SurfaceView),ios中是FlutterViewController的根view 3 你很难直接写方便的回调,手势控制 4 5 WebView,直播等视频播放同理 与原生通信仅依赖一个接近字符串性质的通道,没有构建工具/编译层级的检查 尚处于初级阶段,开源社区还不活跃,相关社区关注度不高
+1 关于字符串性质的通道: 2 大概意思就是,所有的通信依赖于字符串 3 比如flutter中需要定义 4 static const MethodChannel _channel = const MethodChannel(&amp;#39;com.365.app/BarCode&amp;#39;); 5 _channel.invokeMethod(&amp;#34;getData&amp;#34;, source); 6 类似于这样的调用方式 7 8 而原生中 也是需要定义出完全相同的字符串来表示通道名,方法名等等 flutter 使用 dart 语言开发 为什么使用 dart,貌似是说 flutter 的开发团队物理距离 dart 的团队很近,这段真实性未知
           
           
         

@@ -135,7 +135,7 @@
 </span>
     <span class="post_date">
       2020-04-30 17:23</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/navigator' title="navigator" class="post_tag button button_translucent">navigator
         </a><a href='https://kikt.top/tags/route' title="route" class="post_tag button button_translucent">route
         </a>
@@ -184,7 +184,7 @@
 GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 会把它设置给 Navigator, 这东西一旦设置成功, 后续就可以不用 Navigator.of, 拿到 NavigatorState 的实例了
 然后这东西设置成全局的, 就可以在今后跳转的时候不用 context 了, 并且可以利用这个东西里的 context 来拿到全局的 Provider 类(这个不在本篇预计范围内)
 设置:
-1MaterialApp( 2navigatorKey: navigatorKey, 3);  …</p>
+1MaterialApp( 2 navigatorKey: navigatorKey, 3); …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/route/navigator-helper2/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -255,9 +255,9 @@ GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 
           
             <p>过场动画 过场动画也就是切换路由时的动画
 这个东西有几种方案可以做
- 继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性  前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
+继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性 前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
 这东西有如下的好处:
- 设置一次, 你所有的MaterialPageRoute …</p>
+设置一次, 你所有的MaterialPageRoute都可以 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/route-anim/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -330,8 +330,8 @@ Route 就是路由,顾名思义,负责你页面间的跳转
 不想看代码和思路分析的直接 copy 了拿去用就行 没有啥外部依赖,只需要注意_rootRoute 后面的字符串需要和 initialRoute 对应即可
 路由又分静态和动态路由
 静态就是不需要传参数的,这样的路由可以直接定义在 MaterialApp/WidgetsApp 里 这样可以通过Navigator.pushNamed调用
- 动态的就是传入一个PageRoute, 通常是一个MaterialPageRoute 或者CupertinoPageRoute,或者你如果有自定义的有可以使用
-这里我使用一个我 …</p>
+动态的就是传入一个PageRoute, 通常是一个MaterialPageRoute 或者CupertinoPageRoute,或者你如果有自定义的有可以使用
+这里我使用一个我的 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/flutter-simple-route-helper/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -381,6 +381,9 @@ Route 就是路由,顾名思义,负责你页面间的跳转
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -401,9 +404,6 @@ Route 就是路由,顾名思义,负责你页面间的跳转
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -420,7 +420,7 @@ Route 就是路由,顾名思义,负责你页面间的跳转
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -520,7 +520,7 @@ Route 就是路由,顾名思义,负责你页面间的跳转
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -591,7 +591,7 @@ Route 就是路由,顾名思义,负责你页面间的跳转
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -843,7 +843,7 @@ Route 就是路由,顾名思义,负责你页面间的跳转
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1290,7 +1290,7 @@ Route 就是路由,顾名思义,负责你页面间的跳转
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

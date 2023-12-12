@@ -19,14 +19,14 @@
 
 <meta property="og:type" content="article">
 <meta name="description" content="开发环境 mac zsh docker-compose
-1$ docker-compose --version 2docker-compose version 1.22.0, build f46880f 目录结构  docker-compose.yml …">
+1$ docker-compose --version 2docker-compose version 1.22.0, build f46880f 目录结构 docker-compose.yml 1version: &#34;3&#34; 2services: 3 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Docker-Compose 结合nginx实现跨容器转发" />
 <meta property="og:url" content="https://kikt.top/posts/docker/docker-compose-and-nginx-forward/" />
 <meta property="og:title" content="Docker-Compose 结合nginx实现跨容器转发" />
 <meta property="og:description" content="开发环境 mac zsh docker-compose
-1$ docker-compose --version 2docker-compose version 1.22.0, build f46880f 目录结构  docker-compose.yml …" />
+1$ docker-compose --version 2docker-compose version 1.22.0, build f46880f 目录结构 docker-compose.yml 1version: &#34;3&#34; 2services: 3 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -251,78 +251,78 @@ docker-compose</p>
 <p>将服务加入同一个网络组,这样 docker 就可以在同一个网络组里了,由于 docker 的特性,每个容器会认为自己和另一个容器是局域网的关系</p>
 <p>我这里做的是 nginx 转发</p>
 <h3 id="nginxconf">nginx.conf</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">user</span>  <span class="n">nginx</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="n">worker_processes</span>  <span class="n">1</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="n">error_log</span>  <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">error</span><span class="o">.</span><span class="na">log</span> <span class="n">warn</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="n">pid</span>        <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nginx</span><span class="o">.</span><span class="na">pid</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="n">events</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="n">worker_connections</span>  <span class="n">1024</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">
-</span></span><span class="line"><span class="ln">12</span><span class="cl">
-</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="n">http</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="n">include</span>       <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">mime</span><span class="o">.</span><span class="na">types</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl">    <span class="n">default_type</span>  <span class="n">application</span><span class="o">/</span><span class="n">octet</span><span class="o">-</span><span class="n">stream</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">
-</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="n">log_format</span>  <span class="n">main</span>  <span class="err">&#39;</span><span class="n">$remote_addr</span> <span class="o">-</span> <span class="n">$remote_user</span> <span class="o">[</span><span class="n">$time_local</span><span class="o">]</span> <span class="s">&#34;$request&#34;</span> <span class="err">&#39;</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">                      <span class="err">&#39;</span><span class="n">$status</span> <span class="n">$body_bytes_sent</span> <span class="s">&#34;$http_referer&#34;</span> <span class="err">&#39;</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl">                      <span class="err">&#39;</span><span class="s">&#34;$http_user_agent&#34;</span> <span class="s">&#34;$http_x_forwarded_for&#34;</span><span class="err">&#39;</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">
-</span></span><span class="line"><span class="ln">21</span><span class="cl">    <span class="n">access_log</span>  <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">access</span><span class="o">.</span><span class="na">log</span>  <span class="n">main</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl">
-</span></span><span class="line"><span class="ln">23</span><span class="cl">    <span class="n">sendfile</span>        <span class="n">on</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl">    <span class="err">#</span><span class="n">tcp_nopush</span>     <span class="n">on</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">25</span><span class="cl">
-</span></span><span class="line"><span class="ln">26</span><span class="cl">    <span class="n">keepalive_timeout</span>  <span class="n">65</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">
-</span></span><span class="line"><span class="ln">28</span><span class="cl">    <span class="err">#</span><span class="n">gzip</span>  <span class="n">on</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">29</span><span class="cl">
-</span></span><span class="line"><span class="ln">30</span><span class="cl">    <span class="err">#</span> <span class="n">include</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="na">d</span><span class="o">/*.</span><span class="na">conf</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">31</span><span class="cl">
-</span></span><span class="line"><span class="ln">32</span><span class="cl">
-</span></span><span class="line"><span class="ln">33</span><span class="cl">    <span class="n">server</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">34</span><span class="cl">        <span class="n">listen</span>       <span class="n">80</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">35</span><span class="cl">        <span class="n">server_name</span>  <span class="n">localhost</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">36</span><span class="cl">
-</span></span><span class="line"><span class="ln">37</span><span class="cl">        <span class="err">#</span><span class="n">charset</span> <span class="n">koi8</span><span class="o">-</span><span class="n">r</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">38</span><span class="cl">        <span class="err">#</span><span class="n">access_log</span>  <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">host</span><span class="o">.</span><span class="na">access</span><span class="o">.</span><span class="na">log</span>  <span class="n">main</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">39</span><span class="cl">
-</span></span><span class="line"><span class="ln">40</span><span class="cl">        <span class="n">location</span> <span class="o">/</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">41</span><span class="cl">            <span class="n">root</span>   <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">html</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">42</span><span class="cl">            <span class="n">index</span>  <span class="n">index</span><span class="o">.</span><span class="na">html</span> <span class="n">index</span><span class="o">.</span><span class="na">htm</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">43</span><span class="cl">            <span class="err">#</span> <span class="n">proxy_pass</span> <span class="n">http</span><span class="o">:</span><span class="c1">//web8081;
-</span></span></span><span class="line"><span class="ln">44</span><span class="cl"><span class="c1"></span>        <span class="o">}</span>
-</span></span><span class="line"><span class="ln">45</span><span class="cl">
-</span></span><span class="line"><span class="ln">46</span><span class="cl">        <span class="n">error_page</span>   <span class="n">500</span> <span class="n">502</span> <span class="n">503</span> <span class="n">504</span>  <span class="o">/</span><span class="n">50x</span><span class="o">.</span><span class="na">html</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">47</span><span class="cl">        <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="n">50x</span><span class="o">.</span><span class="na">html</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">48</span><span class="cl">            <span class="n">root</span>   <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">html</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">49</span><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="ln">50</span><span class="cl">
-</span></span><span class="line"><span class="ln">51</span><span class="cl">        <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="n">300</span><span class="o">.</span><span class="na">html</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">52</span><span class="cl">            <span class="n">proxy_redirect</span> <span class="n">off</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">53</span><span class="cl">            <span class="n">proxy_pass</span> <span class="n">http</span><span class="o">:</span><span class="c1">//192.168.5.102/index.html; ## 备注1
-</span></span></span><span class="line"><span class="ln">54</span><span class="cl"><span class="c1"></span>        <span class="o">}</span>
-</span></span><span class="line"><span class="ln">55</span><span class="cl">
-</span></span><span class="line"><span class="ln">56</span><span class="cl">        <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="n">600</span><span class="o">.</span><span class="na">html</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">57</span><span class="cl">            <span class="n">proxy_redirect</span> <span class="n">off</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">58</span><span class="cl">            <span class="n">proxy_pass</span> <span class="n">http</span><span class="o">:</span><span class="c1">//192.168.5.103/index.html; ## 备注2
-</span></span></span><span class="line"><span class="ln">59</span><span class="cl"><span class="c1"></span>        <span class="o">}</span>
-</span></span><span class="line"><span class="ln">60</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">61</span><span class="cl">
-</span></span><span class="line"><span class="ln">62</span><span class="cl">    <span class="n">server</span><span class="o">{</span>
-</span></span><span class="line"><span class="ln">63</span><span class="cl">        <span class="n">listen</span> <span class="n">81</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">64</span><span class="cl">        <span class="n">server_name</span> <span class="n">localhost</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">65</span><span class="cl">
-</span></span><span class="line"><span class="ln">66</span><span class="cl">        <span class="n">location</span> <span class="o">/</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">67</span><span class="cl">            <span class="n">root</span>   <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">sub</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">68</span><span class="cl">            <span class="n">index</span>  <span class="n">index</span><span class="o">.</span><span class="na">html</span> <span class="n">index</span><span class="o">.</span><span class="na">htm</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">69</span><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="ln">70</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">71</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>备注 1,备注 2 将 300.html 600.html 转发到 103 的 ip 地址
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">user</span><span class="w">  </span><span class="n">nginx</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w"></span><span class="n">worker_processes</span><span class="w">  </span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w"></span><span class="n">error_log</span><span class="w">  </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">error</span><span class="p">.</span><span class="na">log</span><span class="w"> </span><span class="n">warn</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w"></span><span class="n">pid</span><span class="w">        </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nginx</span><span class="p">.</span><span class="na">pid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w"></span><span class="n">events</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">    </span><span class="n">worker_connections</span><span class="w">  </span><span class="n">1024</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w"></span><span class="n">http</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">    </span><span class="n">include</span><span class="w">       </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">mime</span><span class="p">.</span><span class="na">types</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w">    </span><span class="n">default_type</span><span class="w">  </span><span class="n">application</span><span class="o">/</span><span class="n">octet</span><span class="o">-</span><span class="n">stream</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w">    </span><span class="n">log_format</span><span class="w">  </span><span class="n">main</span><span class="w">  </span><span class="err">&#39;</span><span class="n">$remote_addr</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">$remote_user</span><span class="w"> </span><span class="o">[</span><span class="n">$time_local</span><span class="o">]</span><span class="w"> </span><span class="s">&#34;$request&#34;</span><span class="w"> </span><span class="err">&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w">                      </span><span class="err">&#39;</span><span class="n">$status</span><span class="w"> </span><span class="n">$body_bytes_sent</span><span class="w"> </span><span class="s">&#34;$http_referer&#34;</span><span class="w"> </span><span class="err">&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w">                      </span><span class="err">&#39;</span><span class="s">&#34;$http_user_agent&#34;</span><span class="w"> </span><span class="s">&#34;$http_x_forwarded_for&#34;</span><span class="err">&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w">    </span><span class="n">access_log</span><span class="w">  </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">access</span><span class="p">.</span><span class="na">log</span><span class="w">  </span><span class="n">main</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w">    </span><span class="n">sendfile</span><span class="w">        </span><span class="n">on</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w">    </span><span class="err">#</span><span class="n">tcp_nopush</span><span class="w">     </span><span class="n">on</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="w">    </span><span class="n">keepalive_timeout</span><span class="w">  </span><span class="n">65</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="w">    </span><span class="err">#</span><span class="n">gzip</span><span class="w">  </span><span class="n">on</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">include</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="na">d</span><span class="o">/*</span><span class="p">.</span><span class="na">conf</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">33</span><span class="cl"><span class="w">    </span><span class="n">server</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">34</span><span class="cl"><span class="w">        </span><span class="n">listen</span><span class="w">       </span><span class="n">80</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="w">        </span><span class="n">server_name</span><span class="w">  </span><span class="n">localhost</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">36</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="w">        </span><span class="err">#</span><span class="n">charset</span><span class="w"> </span><span class="n">koi8</span><span class="o">-</span><span class="n">r</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">38</span><span class="cl"><span class="w">        </span><span class="err">#</span><span class="n">access_log</span><span class="w">  </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">host</span><span class="p">.</span><span class="na">access</span><span class="p">.</span><span class="na">log</span><span class="w">  </span><span class="n">main</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">40</span><span class="cl"><span class="w">        </span><span class="n">location</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">41</span><span class="cl"><span class="w">            </span><span class="n">root</span><span class="w">   </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">html</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">42</span><span class="cl"><span class="w">            </span><span class="n">index</span><span class="w">  </span><span class="n">index</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="n">index</span><span class="p">.</span><span class="na">htm</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">43</span><span class="cl"><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">proxy_pass</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="c1">//web8081;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">44</span><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">45</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">46</span><span class="cl"><span class="w">        </span><span class="n">error_page</span><span class="w">   </span><span class="n">500</span><span class="w"> </span><span class="n">502</span><span class="w"> </span><span class="n">503</span><span class="w"> </span><span class="n">504</span><span class="w">  </span><span class="o">/</span><span class="n">50x</span><span class="p">.</span><span class="na">html</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">47</span><span class="cl"><span class="w">        </span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="n">50x</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">48</span><span class="cl"><span class="w">            </span><span class="n">root</span><span class="w">   </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">html</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">49</span><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">50</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">51</span><span class="cl"><span class="w">        </span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="n">300</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">52</span><span class="cl"><span class="w">            </span><span class="n">proxy_redirect</span><span class="w"> </span><span class="n">off</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">53</span><span class="cl"><span class="w">            </span><span class="n">proxy_pass</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="c1">//192.168.5.102/index.html; ## 备注1</span><span class="w">
+</span></span></span><span class="line"><span class="ln">54</span><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">55</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">56</span><span class="cl"><span class="w">        </span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="n">600</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">57</span><span class="cl"><span class="w">            </span><span class="n">proxy_redirect</span><span class="w"> </span><span class="n">off</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">58</span><span class="cl"><span class="w">            </span><span class="n">proxy_pass</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="c1">//192.168.5.103/index.html; ## 备注2</span><span class="w">
+</span></span></span><span class="line"><span class="ln">59</span><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">60</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">61</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">62</span><span class="cl"><span class="w">    </span><span class="n">server</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">63</span><span class="cl"><span class="w">        </span><span class="n">listen</span><span class="w"> </span><span class="n">81</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">64</span><span class="cl"><span class="w">        </span><span class="n">server_name</span><span class="w"> </span><span class="n">localhost</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">65</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">66</span><span class="cl"><span class="w">        </span><span class="n">location</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">67</span><span class="cl"><span class="w">            </span><span class="n">root</span><span class="w">   </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">sub</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">68</span><span class="cl"><span class="w">            </span><span class="n">index</span><span class="w">  </span><span class="n">index</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="n">index</span><span class="p">.</span><span class="na">htm</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">69</span><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">70</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">71</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>备注 1,备注 2 将 300.html 600.html 转发到 103 的 ip 地址
 由于 docker 中 nginx 端口默认配置的是 80,所以 http 的端口转发没有端口号
 8082 端口 对于 8080 端口默认服务器来讲 ip 地址是 102</p>
 <h2 id="启动">启动</h2>
@@ -405,6 +405,9 @@ docker-compose</p>
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -425,9 +428,6 @@ docker-compose</p>
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -444,7 +444,7 @@ docker-compose</p>
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -544,7 +544,7 @@ docker-compose</p>
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -615,7 +615,7 @@ docker-compose</p>
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -867,7 +867,7 @@ docker-compose</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1314,7 +1314,7 @@ docker-compose</p>
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

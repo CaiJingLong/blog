@@ -135,7 +135,7 @@
 </span>
     <span class="post_date">
       2020-09-07 16:49</span>
-    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/actions' title="actions" class="post_tag button button_translucent">actions
         </a>
     </span>
@@ -206,7 +206,7 @@
 </span>
     <span class="post_date">
       2020-08-19 09:10</span>
-    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/jenkins' title="jenkins" class="post_tag button button_translucent">jenkins
+    <span class="post_time"> · 9 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/jenkins' title="jenkins" class="post_tag button button_translucent">jenkins
         </a><a href='https://kikt.top/tags/fastlane' title="fastlane" class="post_tag button button_translucent">fastlane
         </a><a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a>
@@ -253,7 +253,8 @@
             <p>自动化打包上传是一个释放双手的过程, 本文就简单重复一下打包的过程
 本文包括 iOS 和 android 篇.
 如果有需要, macOS 和 web 也可以加进来, 步骤并不复杂, 但本篇暂时不讲
-开发环境  macOS, 如果你不是 macOS, 那你只能打包安卓部分 Xcode, 因为 Xcode 会自动安装包含 git 在内的一些其他环境, 所以理论上有这个就够了 brew android sdk flutter sdk jenkins fastlane  到 flutter sdk 为止就不讲了, 我相信看这篇文章的人, 起码 flutter 程序已经开发完了, 只是因为修改个文案就要打包的事被搞的不胜其扰, …</p>
+开发环境 macOS, 如果你不是 macOS, 那你只能打包安卓部分 Xcode, 因为 Xcode 会自动安装包含 git 在内的一些其他环境, 所以理论上有这个就够了 brew android sdk flutter sdk jenkins fastlane 到 flutter sdk 为止就不讲了, 我相信看这篇文章的人, 起码 flutter 程序已经开发完了, 只是因为修改个文案就要打包的事被搞的不胜其扰, 才决定自动化的
+而 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/jenkins&#43;fastlane/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -326,8 +327,8 @@
 flutter 环境还是针对 1.17.5
 Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主要对象的, 那么这东西是怎么附着到整体的呢
 构造方法
-  debugLabel, 这东西看名字就是 debug 用的, 先不管 onKey, 一看就是接受事件用的RawKeyEvent canRequestFocus, 就是能不能接受焦点 skipTraversal, 是否接受遍历  我们再找找方法
- 有几个可能用到的关键字段, 我们一个个看, 但是不一定会用的 …</p>
+debugLabel, 这东西看名字就是 debug 用的, 先不管 onKey, 一看就是接受事件用的RawKeyEvent canRequestFocus, 就是能不能接受焦点 skipTraversal, 是否接受遍历 我们再找找方法
+有几个可能用到的关键字段, 我们一个个看, 但是不一定会用的到, 但 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/focusnode-2/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -351,7 +352,7 @@ Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主�
 </span>
     <span class="post_date">
       2020-07-21 11:22</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/%E7%84%A6%E7%82%B9' title="焦点" class="post_tag button button_translucent">焦点
         </a><a href='https://kikt.top/tags/focus' title="focus" class="post_tag button button_translucent">focus
         </a><a href='https://kikt.top/tags/focusnode' title="focusNode" class="post_tag button button_translucent">focusNode
@@ -398,7 +399,7 @@ Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主�
           
             <p>很多时候, flutter 中需要处理输入的焦点, 咱们今天就来看看控件怎么用
 本篇可以视为简单使用, 而不会深入源码去探讨怎么附着, 主要是 Focus 系列控件的使用, 和怎么在多输入框之间反复横跳
-环境说明  本篇基本基于 flutter sdk 的 1.17.5 版本来看, 其他版本应该大同小异, 但很多东西可能会随时间变化, 未来是否有效请继续验证 本篇基本是针对移动端来说的 写本文时, flutter web 的焦点比较迷, 似乎和移动版不太一样, 所以暂时略过不表 desktop 版只尝试了 macOS, 其他的桌面引擎请自行校验对错  相关 dart class flutter 中, 和焦点相关联类有如下几个: …</p>
+环境说明 本篇基本基于 flutter sdk 的 1.17.5 版本来看, 其他版本应该大同小异, 但很多东西可能会随时间变化, 未来是否有效请继续验证 本篇基本是针对移动端来说的 写本文时, flutter web 的焦点比较迷, 似乎和移动版不太一样, 所以暂时略过不表 desktop 版只尝试了 macOS, 其他的桌面引擎请自行校验对错 相关 dart class flutter 中, 和焦点相关联类有如下几个: …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/focusnode-1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -422,7 +423,7 @@ Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主�
 </span>
     <span class="post_date">
       2020-04-30 17:23</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/navigator' title="navigator" class="post_tag button button_translucent">navigator
         </a><a href='https://kikt.top/tags/route' title="route" class="post_tag button button_translucent">route
         </a>
@@ -471,7 +472,7 @@ Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主�
 GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 会把它设置给 Navigator, 这东西一旦设置成功, 后续就可以不用 Navigator.of, 拿到 NavigatorState 的实例了
 然后这东西设置成全局的, 就可以在今后跳转的时候不用 context 了, 并且可以利用这个东西里的 context 来拿到全局的 Provider 类(这个不在本篇预计范围内)
 设置:
-1MaterialApp( 2navigatorKey: navigatorKey, 3);  …</p>
+1MaterialApp( 2 navigatorKey: navigatorKey, 3); …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/route/navigator-helper2/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -541,7 +542,7 @@ GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 
             <p>今天举国哀悼, 进入各种大厂的 app 也可以看到主色都变成灰色的了
 作为程序员我们肯定会想怎么可以实现的, 我简单研究了 10 分钟, flutter 中只要在整体外面套一个 ShaderMask, 然后修改 blendMode 即可
 核心代码:
-1class MyApp extends StatelessWidget { 2// This widget is the root of your application. 3 @override 4Widget build(BuildContext context) { 5return ShaderMask( 6child: OKToast( 7child: MaterialApp( …</p>
+1class MyApp extends StatelessWidget { 2 // This widget is the root of your application. 3 @override 4 Widget build(BuildContext context) { 5 return ShaderMask( 6 child: OKToast( 7 child: …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/grey-app/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -637,7 +638,7 @@ GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 
 </span>
     <span class="post_date">
       2020-03-18 13:17</span>
-    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/ios' title="iOS" class="post_tag button button_translucent">iOS
         </a><a href='https://kikt.top/tags/cocoapods' title="cocoapods" class="post_tag button button_translucent">cocoapods
         </a><a href='https://kikt.top/tags/github' title="github" class="post_tag button button_translucent">github
@@ -761,9 +762,9 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
           
             <p>过场动画 过场动画也就是切换路由时的动画
 这个东西有几种方案可以做
- 继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性  前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
+继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性 前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
 这东西有如下的好处:
- 设置一次, 你所有的MaterialPageRoute …</p>
+设置一次, 你所有的MaterialPageRoute都可以 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/route-anim/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -787,7 +788,7 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
 </span>
     <span class="post_date">
       2020-02-04 18:23</span>
-    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/maven' title="maven" class="post_tag button button_translucent">maven
         </a><a href='https://kikt.top/tags/aar' title="aar" class="post_tag button button_translucent">aar
         </a>
@@ -833,7 +834,7 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
           
             <p>前言 本篇写一个将 flutter 打包为 aar 置入已有项目的方案
 与不同的是: 本篇使用新版本的 flutter 环境, 使用 build aar 命令构建 aar,并上传至 maven 私服
-开发环境 1$ flutter doctor -v 2[✓] Flutter (Channel stable, v1.12.13+hotfix.7, on Mac OS X 10.15 19A602, locale zh-Hans-CN) 3• Flutter version 1.12.13+hotfix.7 at /Users/caijinglong/Library/Flutter/flutter_dev 4• Framework …</p>
+开发环境 1$ flutter doctor -v 2[✓] Flutter (Channel stable, v1.12.13+hotfix.7, on Mac OS X 10.15 19A602, locale zh-Hans-CN) 3 • Flutter version 1.12.13+hotfix.7 at /Users/caijinglong/Library/Flutter/flutter_dev 4 • Framework …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/exists/upload-aar-to-maven/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -929,7 +930,7 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
 </span>
     <span class="post_date">
       2019-11-04 11:35</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/dart' title="dart" class="post_tag button button_translucent">dart
         </a><a href='https://kikt.top/tags/c' title="c" class="post_tag button button_translucent">c
         </a><a href='https://kikt.top/tags/ffi' title="ffi" class="post_tag button button_translucent">ffi
@@ -979,7 +980,7 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
 但是在当前版本中, 这东西在官方说明中依然处于技术预览版, 就是可用, 但后续不保证 api 不变更。
 开发环境 首先我是 mac 系统, windows 系统不保证脚本的可用和工具的可用, linux 的话可能一些必要工具需要使用自己平台的包管理工具, 并且涉及到 ios 部分, 必须使用 mac。
 所有需要的工具包
- Xcode( …</p>
+Xcode( …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/ffi/1-first-party/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -1050,10 +1051,10 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
             <p>好久没水文章了, 强行水一篇
 dart 中不可避免会出现文件读取的情况, 甚至是很大的文件, 比如 200M 的文件
 如果一次性读入内存,虽然也行得通, 但是如果在 flutter 中开启个 200M 大小的字节数组, 一不小心可能就 crash 了, 这时候就需要使用大文件读取的方案
-             异步读取 核心方法:
+异步读取 核心方法:
 1file.openRead(); 这个方法可以指定开始和结束的坐标, 并开启一个 stream
 stream 回调信息是 List&lt;int&gt;,单次最大读取 65536 个字节
-示例 1class FileUtils { 2File file; 34FileUtils(this.file); …</p>
+示例 1class FileUtils { 2 File file; 3 4 FileUtils(this.file); 5 6 // 读取 …</p>
           
           <br>
           <a href="https://kikt.top/posts/dart/file/read/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -1126,7 +1127,7 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
 当然, 还有另一个选择, Flutter 内置了 Form 组件给我们使用, 这个组件是 flutter 框架提供出来帮助我们操作表单的一个组件, 应该是官方较为推荐的方案
 不过 Form 的相关中文文章不太多, 基本都是介绍一下 TextFormField 的使用, 更多的 api 云里雾里的, 可能有些朋友不太好理解
 我粗略的解析下源码和自定义, 帮助看过的朋友理解下 Form 体系
-                            Form 体系的简单使用 自动校验 官 …</p>
+Form 体系的简单使用 自动校验 官方提供给了我们一些组件来结合 Form 使用, 最常见的 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/form/form1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -1199,9 +1200,9 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
             <p>前篇对于 go-flutter 引擎进行了初步的探索, 打包终产物是一个二进制文件配合一些资源文件
 本篇研究如何将终产物变成一个 app, 进一步变成 dmg, 就和你网上下载的工具一样
 本篇默认你拥有全套的工具, git xcode flutter go hover
-                      打包出 go 终产物 这里以大佬的 为例
+打包出 go 终产物 这里以大佬的 为例
 1cd /tmp 2git clone https://github.com/fluttercandies/JsonToDart.git 3cd JsonToDart/Flutter/desktop 打包
-1hover build 这里可能很快也可能很慢, 根据你的工程大小和网络速度 …</p>
+1hover build 这里可能很快也可能很慢, 根据你的工程大小和网络速度而言, 网络速度是因为要下载 flutter …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/desktop/go-desktop-engine/flutter-go-desktop-2/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -1280,6 +1281,9 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -1300,9 +1304,6 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -1319,7 +1320,7 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -1419,7 +1420,7 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -1490,7 +1491,7 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -1742,7 +1743,7 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -2189,7 +2190,7 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</link>
     <description>Recent content in 代码规范 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Wed, 22 Aug 2018 12:19:22 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,7 +20,7 @@
             文章首发地址: 前言 最近看 qq 群里发的很多代码截图,感觉命名规则/文件命名都不符合规范 很多朋友都是从其他语言转向 dart/flutter 的,深感语言环境还需要大家共同去维护,建议还是规范化代码,这样所有人看着都会舒服 恰好 dart 语言官方有自己的代码规范和相关的说明,在 dartlang 官网上,英文好的建议阅读原文 连接地址 我这里仅粗略翻译和加入一些自己的理解
 图片均来自于上述 url 对应的页面中 当前 dart 版本为 2.0 版本,日期为 2018 年 08 月 22 日 可能会在未来有改动,到时请以最新文档为准
 文档中图片的绿色部分为正例,右上角带good标识 红色是反例,右上角带bad标识
-标识方案  在 dart 有 3 种常规标识方案 第一个为大写字母开头的驼峰式 如 UserInterface 每个词的首字母为大写 第二个是小写开头的驼峰式,如testRun,第一个单词是小写,后续每个单词首字母大写 第三个是每个单词均为小写,以下划线分隔,如user_response
+标识方案 在 dart 有 3 种常规标识方案 第一个为大写字母开头的驼峰式 如 UserInterface 每个词的首字母为大写 第二个是小写开头的驼峰式,如testRun,第一个单词是小写,后续每个单词首字母大写 第三个是每个单词均为小写,以下划线分隔,如user_response
 总结 如果不想往下看具体的图片和翻译,直接看这里
 文件名: 小写+下划线 类型名(类名,函数类型名):大写开头驼峰 变量名(包含 const final 常量):使用小写开头驼峰, 项目有特殊要求 const 可以使用大写+下划线的方式,如同java中一样 导包 as 后的名称为小写+下划线 不要用匈牙利命名法中的 kXXXX 这样的命名方式,应该去掉 k 超过两位的英文缩写一律按该单词为普通小写单词处理,使用小写
 导包有顺序要求,且每&amp;quot;部分&amp;quot;间空行分隔开,每部分内按字母排序,按如下顺序排序 dart sdk 内的库 flutter 内的库 第三方库 自己的库 相对路径引用

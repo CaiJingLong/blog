@@ -5,6 +5,7 @@
     <link>https://kikt.top/categories/dart/</link>
     <description>Recent content in dart on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Mon, 18 Nov 2019 16:09:31 +0800</lastBuildDate><atom:link href="https://kikt.top/categories/dart/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,7 +20,7 @@
             什么叫可执行二进制 以前虽然看似也可以生成二进制执行文件, 类似 pub/flutter 命令, 但是那实际也是调用 dart 命令来完成的, 也就是说, 你必须具备 dart 环境才可以
 比如以前的 c,后来的 go, 都可以编译成一个可执行文件, 比如./hello-world就可以运行, 然后在控制台输出结果
 而在 dart 2.6 版本中, 这个东西变成了现实
-如何做 1main(List&amp;lt;String&amp;gt; arguments) { 2print(&amp;#34;hello dart!&amp;#34;); 3} 使用$ dart2native bin/main.dart来完成编译过程, 然后会生成一个main.exe, 虽然看着是 exe, 但这个东西是一个当前系统下的可执行二进制文件
+如何做 1main(List&amp;lt;String&amp;gt; arguments) { 2 print(&amp;#34;hello dart!&amp;#34;); 3} 使用$ dart2native bin/main.dart来完成编译过程, 然后会生成一个main.exe, 虽然看着是 exe, 但这个东西是一个当前系统下的可执行二进制文件
 1./bin/main.exe 2hello dart! 嗯, 这东西目前还不支持交叉编译, 也就是 mac 只能生成 mac 的, windows 只能生成 windows 的, 但是应该有很多人请愿, 未来一定会有相关的支持
 目前可以使用 github actions, 或者 docker 之类的东西来跨平台编译
 好处 单文件的部署方便, 未来写工具也会很方便
@@ -43,10 +44,10 @@
             好久没水文章了, 强行水一篇
 dart 中不可避免会出现文件读取的情况, 甚至是很大的文件, 比如 200M 的文件
 如果一次性读入内存,虽然也行得通, 但是如果在 flutter 中开启个 200M 大小的字节数组, 一不小心可能就 crash 了, 这时候就需要使用大文件读取的方案
-             异步读取 核心方法:
+异步读取 核心方法:
 1file.openRead(); 这个方法可以指定开始和结束的坐标, 并开启一个 stream
 stream 回调信息是 List&amp;lt;int&amp;gt;,单次最大读取 65536 个字节
-示例 1class FileUtils { 2File file; 34FileUtils(this.file); 56// 读取文件的某个范围返回 7 Future&amp;lt;List&amp;lt;int&amp;gt;&amp;gt; getRange(int start, int end) async { 8if (file == null || !file.existsSync()) { 9throw FileNotExistsError(); 10} 11if (start &amp;lt; 0) { 12throw RangeError.
+示例 1class FileUtils { 2 File file; 3 4 FileUtils(this.file); 5 6 // 读取文件的某个范围返回 7 Future&amp;lt;List&amp;lt;int&amp;gt;&amp;gt; getRange(int start, int end) async { 8 if (file == null || !file.existsSync()) { 9 throw FileNotExistsError(); 10 } 11 if (start &amp;lt; 0) { 12 throw RangeError.
           
           
         
@@ -68,9 +69,8 @@ stream 回调信息是 List&amp;lt;int&amp;gt;,单次最大读取 65536 个字�
 ...语法 这个语法很眼熟,在 js 中有类似的语法,其他语言可能也有
 什么意思呢
 看下面的代码
-1main(List&amp;lt;String&amp;gt; arguments) { 2list3Point(); 3} 45void list3Point() { 6var list1 = &amp;lt;int&amp;gt;[1, 2, 3, 4]; 78var list2 = &amp;lt;int&amp;gt;[ 90, 10...list1, 116, 12]; 1314print(list2); // [0, 1, 2, 3, 4, 6] 15} 这里可能会提示需要更新 sdk 约束,可能这个特性是 2.2.2 加入的,更新约束后 yaml 文件被修改
-1environment:2sdk:&amp;#39;&amp;gt;=2.2.2 &amp;lt;3.0.0&amp;#39;旧版本的实现需要以下几个步骤
-1void list3PointOld() { 2var list1 = &amp;lt;int&amp;gt;[1, 2, 3, 4]; 3var list2 = &amp;lt;int&amp;gt;[0]; 4list2.
+1main(List&amp;lt;String&amp;gt; arguments) { 2 list3Point(); 3} 4 5void list3Point() { 6 var list1 = &amp;lt;int&amp;gt;[1, 2, 3, 4]; 7 8 var list2 = &amp;lt;int&amp;gt;[ 9 0, 10 ...list1, 11 6, 12 ]; 13 14 print(list2); // [0, 1, 2, 3, 4, 6] 15} 这里可能会提示需要更新 sdk 约束,可能这个特性是 2.2.2 加入的,更新约束后 yaml 文件被修改
+1environment: 2 sdk: &amp;#39;&amp;gt;=2.2.2 &amp;lt;3.
           
           
         
@@ -93,10 +93,9 @@ stream 回调信息是 List&amp;lt;int&amp;gt;,单次最大读取 65536 个字�
 建立工程前的准备 将dart,pub加入PATH环境变量 需要在环境变量中添加几个东西,添加环境变量的方式自己搜索一下
 一个是dart/bin的目录,你需要在命令行中让dart命令可用
 1➜ ~ dart --version 2Dart VM version: 2.1.0 (Tue Nov 13 18:22:02 2018 +0100) on &amp;#34;macos_x64&amp;#34; 相对应的dart/bin目录下还会有其他的一些工具,包含了pub,这个工具也是会用到的
-1➜ bin pub --version 2Pub 2.1.0 安装dart工程脚手架 
-$ pub global activate stagehand
+1➜ bin pub --version 2Pub 2.1.0 安装dart工程脚手架 $ pub global activate stagehand
 将pub-cache/bin目录加入PATH环境变量 这个目录通常是~/.pub-cache/bin目录
-验证stagehand可用 1➜ bin stagehand 2Stagehand will generate the given application type into the current directory. 34usage: stagehand &amp;lt;generator-name&amp;gt; 5--[no-]analytics Opt out of anonymous usage and crash reporting.
+验证stagehand可用 1➜ bin stagehand 2Stagehand will generate the given application type into the current directory. 3 4usage: stagehand &amp;lt;generator-name&amp;gt; 5 --[no-]analytics Opt out of anonymous usage and crash reporting.
           
           
         
@@ -115,7 +114,7 @@ $ pub global activate stagehand
             文章首发地址: 前言 最近看 qq 群里发的很多代码截图,感觉命名规则/文件命名都不符合规范 很多朋友都是从其他语言转向 dart/flutter 的,深感语言环境还需要大家共同去维护,建议还是规范化代码,这样所有人看着都会舒服 恰好 dart 语言官方有自己的代码规范和相关的说明,在 dartlang 官网上,英文好的建议阅读原文 连接地址 我这里仅粗略翻译和加入一些自己的理解
 图片均来自于上述 url 对应的页面中 当前 dart 版本为 2.0 版本,日期为 2018 年 08 月 22 日 可能会在未来有改动,到时请以最新文档为准
 文档中图片的绿色部分为正例,右上角带good标识 红色是反例,右上角带bad标识
-标识方案  在 dart 有 3 种常规标识方案 第一个为大写字母开头的驼峰式 如 UserInterface 每个词的首字母为大写 第二个是小写开头的驼峰式,如testRun,第一个单词是小写,后续每个单词首字母大写 第三个是每个单词均为小写,以下划线分隔,如user_response
+标识方案 在 dart 有 3 种常规标识方案 第一个为大写字母开头的驼峰式 如 UserInterface 每个词的首字母为大写 第二个是小写开头的驼峰式,如testRun,第一个单词是小写,后续每个单词首字母大写 第三个是每个单词均为小写,以下划线分隔,如user_response
 总结 如果不想往下看具体的图片和翻译,直接看这里
 文件名: 小写+下划线 类型名(类名,函数类型名):大写开头驼峰 变量名(包含 const final 常量):使用小写开头驼峰, 项目有特殊要求 const 可以使用大写+下划线的方式,如同java中一样 导包 as 后的名称为小写+下划线 不要用匈牙利命名法中的 kXXXX 这样的命名方式,应该去掉 k 超过两位的英文缩写一律按该单词为普通小写单词处理,使用小写
 导包有顺序要求,且每&amp;quot;部分&amp;quot;间空行分隔开,每部分内按字母排序,按如下顺序排序 dart sdk 内的库 flutter 内的库 第三方库 自己的库 相对路径引用

@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/navigator/</link>
     <description>Recent content in navigator on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Thu, 30 Apr 2020 17:23:14 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/navigator/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -21,10 +22,9 @@
 GlobalKey 这东西要单独说一说, 设置一下这东西, 你的 WidgetsApp 会把它设置给 Navigator, 这东西一旦设置成功, 后续就可以不用 Navigator.of, 拿到 NavigatorState 的实例了
 然后这东西设置成全局的, 就可以在今后跳转的时候不用 context 了, 并且可以利用这个东西里的 context 来拿到全局的 Provider 类(这个不在本篇预计范围内)
 设置:
-1MaterialApp( 2navigatorKey: navigatorKey, 3); 使用:
+1MaterialApp( 2 navigatorKey: navigatorKey, 3); 使用:
 1NavigatorState get navigator =&amp;gt; navigatorKey.currentState; RouteHelper 全文如下, 但是有一个问题, 这个 navigatorKey 的 context 不能用于 showDialog, 所以需要自定义 dialog 的 route,才可以无 context 调用, 所以加了新的方法
 同样的, 以前的 helper 中 push 才需要 context,pop 不需要考虑太多,所以没有 pop 方法, 现在因为有了全局 navigatorKey 来做路由, 所以添加了 pop 相关的方法
-1import &amp;#39;package:flutter/material.
           
           
         

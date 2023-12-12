@@ -182,7 +182,7 @@
           
             <p>下午看见群里有人问 swift 插件导入 oc 项目报错的问题, 我之前解决过, 但是忘了解决过程是怎么样的了, 这里记录下方便以后备查
 没兴趣追踪原因的直接查看
-         复现错误  创建一个主工程(oc)  1flutter create oc_project 创建一个插件工程(swift)  1cd oc_project 2flutter create -i swift -t plugin swift_plugin 关联工程  1swift_plugin:2path:./swift_plugin3```运行 iOS …</p>
+复现错误 创建一个主工程(oc) 1flutter create oc_project 创建一个插件工程(swift) 1cd oc_project 2flutter create -i swift -t plugin swift_plugin 关联工程 1 swift_plugin: 2 path: ./swift_plugin 3 ``` 运行 iOS 项目得到错误信息 1Launching lib/main.dart on iPhone XS Max in …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/oc/add-swift-plugin/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -252,7 +252,7 @@
           
             <p>简单记录,为后续方便查找,仅有代码片段
 可以放在ViewController的基类中
-1if let bar = self.navigationController?.navigationBar { 2bar.backgroundColor = .themeColor 3bar.tintColor = .white 4var attrs = bar.titleTextAttributes 5if attrs == nil { 6attrs = [NSAttributedStringKey:Any]() 7} 8attrs?[NSAttributedStringKey.foregroundColor] = UIColor.white …</p>
+1if let bar = self.navigationController?.navigationBar { 2 bar.backgroundColor = .themeColor 3 bar.tintColor = .white 4 var attrs = bar.titleTextAttributes 5 if attrs == nil { 6 attrs = [NSAttributedStringKey:Any]() 7 } 8 attrs?[NSAttributedStringKey.foregroundColor] = …</p>
           
           <br>
           <a href="https://kikt.top/posts/ios/swift/swift-navigation-title-color-style/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -348,7 +348,7 @@
 </span>
     <span class="post_date">
       2017-09-13 11:52</span>
-    <span class="post_time"> · 9 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/ios' title="iOS" class="post_tag button button_translucent">iOS
+    <span class="post_time"> · 13 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/ios' title="iOS" class="post_tag button button_translucent">iOS
         </a><a href='https://kikt.top/tags/swift' title="swift" class="post_tag button button_translucent">swift
         </a><a href='https://kikt.top/tags/ble' title="ble" class="post_tag button button_translucent">ble
         </a>
@@ -397,8 +397,8 @@
 ios 使用的 BLE 方案,安卓则是因为设备的原因只能选择普通蓝牙的连接方案
 BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜索下
 有个 mac 的蓝牙开发工具 LightBlue,很好用,mac app store 自己下就好了,这个很方便你理解 BLE 的蓝牙相关 device(central/peripheral)-&gt;services-&gt;characteristics
- 这里可以看到,有一个 mobike,有兴趣的同学可以研究下 mobike 的蓝牙连接 ☺ 说笑一下,人家肯定有安全性校验的
- …</p>
+这里可以看到,有一个 mobike,有兴趣的同学可以研究下 mobike 的蓝牙连接 ☺ 说笑一下,人家肯定有安全性校验的
+语 …</p>
           
           <br>
           <a href="https://kikt.top/posts/ios/swift/swift-connect-ble-printer/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -466,9 +466,9 @@ BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜
         <div class="pale">
           
             <p>何谓将类名作为参数 举个栗子 看这么一个需求:
- 一个 tableview,其中的 cell 是 nib 写的
- 步骤:
- 定义 1 个 cell 和对应的 xib 在 ViewController 中定义一个 Xib 加载对应文件,注册 xib  这个时候有一些步骤就是需要定义一个 xib 的文件名,cell 的 identitier,但是这两个东西都是字符串,如果一个字母敲错了或者后续业务逻辑/功能有更改,那么当你要修改 cell 对应的类名时,你就不得不一起修改文件名,字符串的名字,所有引用的名称..等等步骤
+一个 tableview,其中的 cell 是 nib 写的
+步骤:
+定义 1 个 cell 和对应的 xib 在 ViewController 中定义一个 Xib 加载对应文件,注册 xib 这个时候有一些步骤就是需要定义一个 xib 的文件名,cell 的 identitier,但是这两个东西都是字符串,如果一个字母敲错了或者后续业务逻辑/功能有更改,那么当你要修改 cell 对应的类名时,你就不得不一起修改文件名,字符串的名字,所有引用的名称..等等步骤
 这个时候就要想了,如果将这个 Cell 实现一个 protocol,protocol …</p>
           
           <br>
@@ -537,11 +537,10 @@ BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>ios-toast-swift 
-swift 3.1 语法
-如果想支持其他的语法请自己修改 这里主要是模仿android端的提示方案  截图 背景灰色是因为我把 Demo 中的 ViewController 的 view 的 backgroundColor 修改为了 gray 不是会覆盖全屏的颜色
+            <p>ios-toast-swift swift 3.1 语法
+如果想支持其他的语法请自己修改 这里主要是模仿android端的提示方案 截图 背景灰色是因为我把 Demo 中的 ViewController 的 view 的 backgroundColor 修改为了 gray 不是会覆盖全屏的颜色
 这里有个小 bug 圆角么有包含全,后续改正
-食用方法  clone 项目 将 source 下的方法 copy 到源码内,如果有文件重名请自己改名 toast(&quot;提示语句&quot;) toast(&quot;提示内容&quot;,3) //内容 时长  源码分析 都是伪代码  代码分布 ToastView:自定义view相关 …</p>
+食用方法 clone 项目 将 source 下的方法 copy 到源码内,如果有文件重名请自己改名 toast(&quot;提示语句&quot;) toast(&quot;提示内容&quot;,3) //内容 时长 源码分析 都是伪代码 代码分布 ToastView:自定义view相关的代码,基 …</p>
           
           <br>
           <a href="https://kikt.top/posts/ios/ios-toast/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -591,6 +590,9 @@ swift 3.1 语法
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -611,9 +613,6 @@ swift 3.1 语法
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -630,7 +629,7 @@ swift 3.1 语法
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -730,7 +729,7 @@ swift 3.1 语法
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -801,7 +800,7 @@ swift 3.1 语法
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -1053,7 +1052,7 @@ swift 3.1 语法
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1500,7 +1499,7 @@ swift 3.1 语法
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

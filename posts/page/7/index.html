@@ -124,6 +124,76 @@
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
+        <a href="https://kikt.top/posts/docker/docker-delop-bin-file/" title="Docker 部署二进制">Docker 部署二进制</a>
+      </h3>
+      
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      2018-11-16 13:39</span>
+    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/docker' title="docker" class="post_tag button button_translucent">docker
+        </a><a href='https://kikt.top/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6' title="二进制" class="post_tag button button_translucent">二进制
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=Docker%20%e9%83%a8%e7%bd%b2%e4%ba%8c%e8%bf%9b%e5%88%b6&url=https%3a%2f%2fkikt.top%2fposts%2fdocker%2fdocker-delop-bin-file%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fdocker%2fdocker-delop-bin-file%2f&t=Docker%20%e9%83%a8%e7%bd%b2%e4%ba%8c%e8%bf%9b%e5%88%b6" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://kikt.top/posts/docker/docker-delop-bin-file/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    </div>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>在搜索引擎中,搜索了一下如何部署一个 go 的程序, 发现都是基于 golang 的镜像部署 go 源码的方案
+而基于 golang 源码部署 docker image 的大小有 700MB, 有时候并不需要这么大,我们生成二进制文件后 只需要基于 centos 来制作 image 就可以了, 当然如果对于 go 源码有持续部署的需求,那还是只能使用 golang 镜像
+目录结构 完整的目录结构就这么简单, main 是二进制运行文件
+main.go 1package main 2 3import &#34;github.com/gin-gonic/gin&#34; 4 5func main() { 6 g := …</p>
+          
+          <br>
+          <a href="https://kikt.top/posts/docker/docker-delop-bin-file/" title="阅读更多" class="excerpt_more button">阅读更多</a>
+        </div>
+      </div>
+    </div>
+  </li>
+
+      <li class="post_item">
+  <div class="excerpt">
+    <div class="excerpt_header">
+      <h3 class="post_link">
         <a href="https://kikt.top/posts/docker/docker-compose-and-nginx-forward/" title="Docker-Compose 结合nginx实现跨容器转发">Docker-Compose 结合nginx实现跨容器转发</a>
       </h3>
       
@@ -180,7 +250,7 @@
         <div class="pale">
           
             <p>开发环境 mac zsh docker-compose
-1$ docker-compose --version 2docker-compose version 1.22.0, build f46880f 目录结构  docker-compose.yml 1version:&#34;3&#34;2services:3web:# 服务的名称4image:nginx5volumes:# 文件夹映射6- /Users/cai/Documents/www:/usr/share/nginx/html:ro# 宿主:docker:只读 ,www目录7- ./config/web.conf:/etc/nginx/nginx.conf:ro# …</p>
+1$ docker-compose --version 2docker-compose version 1.22.0, build f46880f 目录结构 docker-compose.yml 1version: &#34;3&#34; 2services: 3 web: # 服务的名称 4 image: nginx 5 volumes: # 文件夹映射 6 - /Users/cai/Documents/www:/usr/share/nginx/html:ro # 宿主:docker:只读 ,www目录 7 - …</p>
           
           <br>
           <a href="https://kikt.top/posts/docker/docker-compose-and-nginx-forward/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -250,8 +320,8 @@
           
             <p>flutter 中 如果给图片外面套 InkWell ,你会发现点击的逻辑生效了,但是 UI 上没反应
 备注: , 违反版权请联系我,删除
- 代码如下
-1import &#39;package:flutter/material.dart&#39;; 23class ImageTapWidget extends StatefulWidget { 4final Widget child; 5final Function onTap; 67const ImageTapWidget({Key key, this.child, this.onTap}) : super(key: key); 89@override …</p>
+代码如下
+1import &#39;package:flutter/material.dart&#39;; 2 3class ImageTapWidget extends StatefulWidget { 4 final Widget child; 5 final Function onTap; 6 7 const ImageTapWidget({Key key, this.child, this.onTap}) : super(key: key); 8 9 @override 10 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/flutter-click-event-2/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -275,7 +345,7 @@
 </span>
     <span class="post_date">
       2018-11-14 13:29</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/%E7%82%B9%E5%87%BB' title="点击" class="post_tag button button_translucent">点击
         </a><a href='https://kikt.top/tags/tap' title="tap" class="post_tag button button_translucent">tap
         </a>
@@ -461,9 +531,9 @@ Mac 下编译 Linux 和 Windows 64 位可执行程序
           
             <p>简单翻译 英文链接来自于
 对应的版本为 11 月 11 日版本 连接为 后续如有改动,请以最新的英文版本为准,有翻译不准确的地方请参照英文版本自行理解
- 概述  本文档描述了 Flutter 工具包的内部工作原理，使 Flutter 的 API 成为可能。因为 Flutter 小部件是使用积极的可组合性(aggressive composition)构建的，所以使用 Flutter 构建的用户界面具有大量小部件。
+概述 本文档描述了 Flutter 工具包的内部工作原理，使 Flutter 的 API 成为可能。因为 Flutter 小部件是使用积极的可组合性(aggressive composition)构建的，所以使用 Flutter 构建的用户界面具有大量小部件。
 为了支持这种工作量，Flutter 使用次线性算法来布局和构建小部件，这些数据结构使树形手术变得高效，并且具有许多常量因子优化。
-通过一些额外的细节，这种设计还使开发人员可以使用回调来轻松创建无限滚动列表，这些回调可以构建 …</p>
+通过一些额外的细节，这种设计还使开发人员可以使用回调来轻松创建无限滚动列表，这些回调可以构建用户 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/inside-flutter/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -487,7 +557,7 @@ Mac 下编译 Linux 和 Windows 64 位可执行程序
 </span>
     <span class="post_date">
       2018-10-27 12:18</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/so' title="so" class="post_tag button button_translucent">so
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/so' title="so" class="post_tag button button_translucent">so
         </a><a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
         </a>
@@ -534,7 +604,7 @@ Mac 下编译 Linux 和 Windows 64 位可执行程序
             <p>so 库说明 so 库在 android 中,是使用 c/c++代码编译出来的库文件,可以使用 ndk 调用,就是你在 android 代码中见到的 native 方法,具体的实现就在 so 库中
 关于 so 库兼容性问题 andorid 中或多或少都会引用到第三方库,而很多第三方库中都有 so 的存在,不论是复制到项目中(如百度地图),或是 gradle 依赖(如个推) 其中都涉及到了 so 库的相关问题,如果你选择的库是有所有 cpu 类型可选还好,如果不是,那么就需要自定义设置了
 举个栗子 你的 app 依赖两个库,分别是 lib1,lib2
-1lib1: arm64-v8a,armeabi-v7a 2lib2: …</p>
+1 lib1: arm64-v8a,armeabi-v7a 2 lib2: …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/so-about-1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -605,11 +675,11 @@ Mac 下编译 Linux 和 Windows 64 位可执行程序
 我为什么要自定义呢
 首先是项目需要，并且这种库普适性高，抽取出来今后复用也方便点
 另外记录一下编码思路,方便后续查看
- 使用说明  或  看看构造方法 一共 5 个属性 child 是 ListView
+使用说明 或 看看构造方法 一共 5 个属性 child 是 ListView
 onLoadMore 是加载更多时的回调,由外部实现
 isFinish 加载完成
 delegate 是一个抽象类 有默认实现, 其中有 3 个方法,一个是根据状态给一个 widget 高度 一个是延迟加载的毫秒时间 一个是构建显示在内部的 Widget,这样就完全实现了外部可根据状态自定义 Widget
-LoadMoreTextBuilder 是一个根据状态构建文字的 …</p>
+LoadMoreTextBuilder 是一个根据状态构建文字的方案, …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/flutter-custom-loadmore/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -682,8 +752,8 @@ Route 就是路由,顾名思义,负责你页面间的跳转
 不想看代码和思路分析的直接 copy 了拿去用就行 没有啥外部依赖,只需要注意_rootRoute 后面的字符串需要和 initialRoute 对应即可
 路由又分静态和动态路由
 静态就是不需要传参数的,这样的路由可以直接定义在 MaterialApp/WidgetsApp 里 这样可以通过Navigator.pushNamed调用
- 动态的就是传入一个PageRoute, 通常是一个MaterialPageRoute 或者CupertinoPageRoute,或者你如果有自定义的有可以使用
-这里我使用一个我 …</p>
+动态的就是传入一个PageRoute, 通常是一个MaterialPageRoute 或者CupertinoPageRoute,或者你如果有自定义的有可以使用
+这里我使用一个我的 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/flutter-simple-route-helper/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -751,14 +821,14 @@ Route 就是路由,顾名思义,负责你页面间的跳转
         <div class="pale">
           
             <p>有时候 flutter 更新 sdk 版本后不知道该不该更新 有时候 pub 库更新后和自己的其他类库发生了冲突
- 类似于图上的情况
+类似于图上的情况
 遇到这样的问题应该怎么解决呢
 我们一步步解决
 首先,这种依赖一般是 pub 中引用的,先查看下原作者有没有最新版,也许就解决了呢
 无奈我们用到的类库是一个 5 个月没有更新过的类库,看来是指望不上了 没关系,我们进 pub 主页中
- 一般都是有 github 的,我们点进 github 中 如果真没有 那就下一个 zip,然后自己创建一个吧
+一般都是有 github 的,我们点进 github 中 如果真没有 那就下一个 zip,然后自己创建一个吧
 然后 fork 项目,clone 下来,修改下
- 可以参考下这个修改日志, 修改了库的引用地址,因为这两个库是同一个作者,这个依赖了另一个,我这里修改了另一个库, …</p>
+可以参考下这个修改日志, 修改了库的引用地址,因为这两个库是同一个作者,这个依赖了另一个,我这里修改了另一个库,并且也 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/flutter-depo-conflict/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -828,8 +898,7 @@ Route 就是路由,顾名思义,负责你页面间的跳转
           
             <p>文章首发地址: 前言 最近看 qq 群里发的很多代码截图,感觉命名规则/文件命名都不符合规范 很多朋友都是从其他语言转向 dart/flutter 的,深感语言环境还需要大家共同去维护,建议还是规范化代码,这样所有人看着都会舒服 恰好 dart 语言官方有自己的代码规范和相关的说明,在 dartlang 官网上,英文好的建议阅读原文 连接地址 我这里仅粗略翻译和加入一些自己的理解
 图片均来自于上述 url 对应的页面中 当前 dart 版本为 2.0 版本,日期为 2018 年 08 月 22 日 可能会在未来有改动,到时请以最新文档为准
-文档中图片的绿色部分为正例,右上角带good标识 红色是反例,右上角带bad标识
-标识方案   …</p>
+文档中图片的绿色部分为正例,右上角带good标识 红色是反例,右上角带bad …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/dart-flutter-code-style/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -904,7 +973,7 @@ json_serializable 版本是 1.1.0
 其中介绍了两种方式，第一种是手动解析
 需要的话可以参考一位大佬写的 这个有一个工具，python+qt 写的跨平台工具，有 linux/mac/windows 三端可执行文件
 第二种是利用
- 1dependencies:2# Your other regular dependencies …</p>
+1dependencies: 2 # Your other regular dependencies here 3 json_annotation: …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/flutter-json/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -972,8 +1041,8 @@ json_serializable 版本是 1.1.0
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>mac 开发环境配置 从入门到完成 本文首发简书 转载请注明出处  高能提示：文章字数不多，图很多，请做好战斗准备
- 前言 写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章 因为 flutter 涉及到跨平台开发，所以预想中会包含四部分 mac 篇，android 篇，ios 篇，flutter 篇
+            <p>mac 开发环境配置 从入门到完成 本文首发简书 转载请注明出处 高能提示：文章字数不多，图很多，请做好战斗准备
+前言 写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章 因为 flutter 涉及到跨平台开发，所以预想中会包含四部分 mac 篇，android 篇，ios 篇，flutter 篇
 术语相关 cmd = command 键（空格左边） opt／alt = option 键（cmd 左边） ctrl = control（opt 左边） cli = 命令行工具（command-line interface,命令行界面) as = …</p>
           
           <br>
@@ -1113,82 +1182,13 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
             <p>github 是每个程序员应该都会用到的平台,无奈对于国内貌似没有 CDN,速度极慢..
 我在网上搜了各种修改 host 的方案,无奈并不好用,也许用国外的 VPS 中转可以解决,当然那是要收费的,还需要一些技术门槛
 今天来一个傻瓜式的帮助方案 用 gitee 中转项目
-开始 注册账号 注册账号,已经有的话可以直接登录,更简单的方案,直接用 github 账号登录  新建项目 二选一 新开一个窗口,把你需要的 github 项目地址复制过来,我这里以 flutter/engine 为例 然后回到新建项目的页面
+开始 注册账号 注册账号,已经有的话可以直接登录,更简单的方案,直接用 github 账号登录 新建项目 二选一 新开一个窗口,把你需要的 github 项目地址复制过来,我这里以 flutter/engine 为例 然后回到新建项目的页面
 点这里 然后照图上操作 最后点创建
 接着就等项目好了
-这里需要耐心等待,但无论如何 很大的项目应该比你自己从那下载要快很多, …</p>
+这里需要耐心等待,但无论如何 很大的项目应该比你自己从那下载要快很多,毕 …</p>
           
           <br>
           <a href="https://kikt.top/posts/other/github-clone-slow/" title="阅读更多" class="excerpt_more button">阅读更多</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://kikt.top/posts/flutter/flutter-newer-readme/" title="Flutter 项目新手向结构简析">Flutter 项目新手向结构简析</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <title>calendar</title>
-  <use xlink:href="#calendar"></use>
-</svg>
-</span>
-    <span class="post_date">
-      2018-07-13 11:03</span>
-    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    分享到:
-    <a href="https://twitter.com/intent/tweet?text=Flutter%20%e9%a1%b9%e7%9b%ae%e6%96%b0%e6%89%8b%e5%90%91%e7%bb%93%e6%9e%84%e7%ae%80%e6%9e%90&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fflutter-newer-readme%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>twitter</title>
-  <use xlink:href="#twitter"></use>
-</svg>
-
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fflutter-newer-readme%2f&t=Flutter%20%e9%a1%b9%e7%9b%ae%e6%96%b0%e6%89%8b%e5%90%91%e7%bb%93%e6%9e%84%e7%ae%80%e6%9e%90" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>facebook</title>
-  <use xlink:href="#facebook"></use>
-</svg>
-
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <title>linkedin</title>
-  <use xlink:href="#linkedin"></use>
-</svg>
-
-    </a>
-    <a href="https://kikt.top/posts/flutter/flutter-newer-readme/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <title>copy</title>
-  <use xlink:href="#copy"></use>
-</svg>
-
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-      <div class="excerpt_footer">
-        <div class="pale">
-          
-            <p>flutter 面向新手向 flutter 中一切界面层级的东西全部都是 Widget 这句话怎么理解呢?
-大到整个应用,小到一个文字控件,全部都是 Widget
- 一个常规的 Application 图级可能是这样的,当然实际情况下会比这复杂很多 对应代码和实际情况看一下 为了和图片对应 我把所有的写到一个文件里
-12import &#39;package:flutter/material.dart&#39;; 34void main() =&gt; runApp(new MyApp()); 56class MyApp extends StatelessWidget { 7@override 8Widget …</p>
-          
-          <br>
-          <a href="https://kikt.top/posts/flutter/flutter-newer-readme/" title="阅读更多" class="excerpt_more button">阅读更多</a>
         </div>
       </div>
     </div>
@@ -1264,6 +1264,9 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -1284,9 +1287,6 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -1303,7 +1303,7 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -1403,7 +1403,7 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -1474,7 +1474,7 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -1726,7 +1726,7 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -2173,7 +2173,7 @@ flutter 中在 widget 层级提倡组合模式,而不提倡继承模式 比如�
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

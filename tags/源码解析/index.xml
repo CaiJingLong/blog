@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</link>
     <description>Recent content in 源码解析 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 08 Jan 2019 16:07:06 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -27,9 +28,10 @@ flutter engine 简单介绍 这里简单介绍一下 flutter engine,
 一般一个纯 flutter 项目中是这样的, 有一个 FlutterApplication 一个 FlutterActivity 一个 FlutterView,而我们 flutter 所有的界面都是在 FlutterView 上画的
 解析开始 以下基于你对于 android 原生开发有所涉猎,而不是完全不了的基础上展开
 我们都知道,当 finish Activity 后页面会回调onDestroy方法
- 这个方法中会回调一个eventDelegate.onDestroy,我们查看以下这个东西具体是调用到哪里
-  能看到具体的调用是这样的
-  如果 Application 是 FlutterApplication 会直接将当前 Activity 置空
+这个方法中会回调一个eventDelegate.onDestroy,我们查看以下这个东西具体是调用到哪里
+能看到具体的调用是这样的
+如果 Application 是 FlutterApplication 会直接将当前 Activity 置空
+根据 flutterview 附着与否执行detach或destroy
           
           
         

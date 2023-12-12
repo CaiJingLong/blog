@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE/</link>
     <description>Recent content in 已有项目 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Fri, 14 Jun 2019 09:06:24 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -20,7 +21,9 @@
 我也摸索了一个实践方案, 将所有项目的 aar 由 flutter 方打包 aar 后将 aar 置入某一个固定位置 ,并置入一个 git 库管理, 然后 android 原生方直接 pull 后引入项目即可
 高能预警: 本篇会结合 flutter, android, aar, gradle, maven, docker 的知识来完成所有的步骤
 并不是每一个都会详细说明, 如果有不明白的可以在 的本文下面留言, 我会更新文章或给予解答, 其他渠道的可能不会有时间看
-                                                               开发环境 本人设备环境 MacOS 10.
+开发环境 本人设备环境 MacOS 10.13.6 (17G65)
+flutter: Flutter 1.5.4-hotfix.2 • channel stable
+12019-10-25 更新说明: 这篇文章因为发布时效的原因, 当时还没有 `$ flutter build aar` 这个命令 2所以本人并没有实测两个东西的优劣性 预计需要的环境 1xcode 2android sdk 3gradle 4android studio 5flutter sdk 6docker # 这个 这些环境我默认你都有, 没有的话本篇不讲
           
           
         

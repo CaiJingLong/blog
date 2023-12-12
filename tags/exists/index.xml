@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/exists/</link>
     <description>Recent content in exists on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Sun, 16 Jun 2019 11:17:43 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/exists/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,7 +20,15 @@
             之前写了一篇关于如何将 flutter 直接打包成 android aar 的文章, 本篇写一写如何将 flutter 打包成 framework 以便于直接让没有 flutter 环境的 iOS 开发者使用, 因为国内很多项目都有这样的要求
 本篇并不会做完全的工程集成化, 只是做一下如何将 flutter 的 framework 打出来, 并且置入到 iOS 原生工程中, 因为各项目一定户会有自己的特殊性, 不可能完全一样
 本篇打包脚本部分参考了 的内容,但是又有一些针对 flutter 版本的变化和 flutter type 不同的情况进行的修改, 不观看连接中的内容并不会影响观看
-                                     开发环境 MacOS
+开发环境 MacOS
+XCode 10
+git
+flutter 及 flutter 的相关工具链
+cocoapods
+创建几个工程 iOS 原生工程 使用 xcode 创建 这个原生工程就是模拟你的原有工程
+Flutter 工程 这里我只使用 flutter module 的方式, 如果你 flutter 是 app 的方式创建的,则打包脚本的内容需要根据应用结构有所调整
+$ flutter create -t module flutter_module_for_ios
+这次直接在里面添加一个带有原生功能的插件, 和 android 篇相同依然选择 那个插件
           
           
         
@@ -41,7 +50,7 @@
 所幸的是,flutter 团队提供了一个 用于帮助我们完成这个过程
 创建一个 Android 工程 使用 Android Studio 创建一个新工程来模拟这个过程,会看这里的普遍都应该是 android 程序员出身,Hello World 工程是肯定会的,不会的话还是回炉加强一下吧
 如果你已经有现有工程,肯定是有 VCS 管理的,放心大胆的走出第一步,大不了就删除当前分支嘛,然后你可以跳过这一步,直接看 flutter 的过程
- 创建 Flutter 这一步仅作为 官方 Android 部分的参考
+创建 Flutter 这一步仅作为 官方 Android 部分的参考
 我目前使用的是 1.0.0 的发布版
 1Flutter 1.0.0 • channel dev • https://github.com/flutter/flutter.git 2Framework • revision 5391447fae (11 days ago) • 2018-11-29 19:41:26 -0800 3Engine • revision 7375a0f414 4Tools • Dart 2.1.0 (build 2.1.0-dev.9.4 f9ebf21297) wiki 后续可能会被修改,请查看最新的文档去解决
           

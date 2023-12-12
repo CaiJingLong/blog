@@ -20,8 +20,8 @@
 <meta property="og:type" content="article">
 <meta name="description" content="我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程
 在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍
- 介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
-最低 …">
+介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
+最低支 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="CameraX的使用" />
@@ -29,8 +29,8 @@
 <meta property="og:title" content="CameraX的使用" />
 <meta property="og:description" content="我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程
 在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍
- 介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
-最低 …" />
+介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
+最低支 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -133,7 +133,7 @@
 </span>
     <span class="post_date">
       2019-05-14 13:44</span>
-    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
+    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
         </a><a href='https://kikt.top/tags/camera' title="camera" class="post_tag button button_translucent">camera
         </a><a href='https://kikt.top/tags/camerax' title="cameraX" class="post_tag button button_translucent">cameraX
         </a>
@@ -281,7 +281,7 @@ API 21+的设备</p>
 </span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="k">import</span> <span class="nn">kotlinx.android.synthetic.main.activity_main.*</span>
 </span></span><span class="line"><span class="ln">12</span><span class="cl">
 </span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="k">private</span> <span class="k">const</span> <span class="k">val</span> <span class="py">REQUEST</span><span class="n">_CODE_PERMISSIONS</span> <span class="p">=</span> <span class="m">10</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="k">private</span> <span class="k">val</span> <span class="py">REQUIRED</span><span class="n">_PERMISSIONS</span> <span class="p">=</span> <span class="n">arrayOf</span><span class="p">(</span><span class="n">Manifest</span><span class="p">.</span><span class="n">permission</span><span class="p">.</span><span class="n">CAMERA</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="k">private</span> <span class="k">val</span> <span class="py">REQUIRED</span><span class="n">_PERMISSIONS</span> <span class="p">=</span> <span class="n">arrayOf</span><span class="p">(</span><span class="nc">Manifest</span><span class="p">.</span><span class="n">permission</span><span class="p">.</span><span class="n">CAMERA</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">15</span><span class="cl">
 </span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="k">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">(),</span> <span class="n">LifecycleOwner</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">17</span><span class="cl">
@@ -289,14 +289,14 @@ API 21+的设备</p>
 </span></span><span class="line"><span class="ln">19</span><span class="cl">
 </span></span><span class="line"><span class="ln">20</span><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">21</span><span class="cl">        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="n">setContentView</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">23</span><span class="cl">        <span class="n">viewFinder</span> <span class="p">=</span> <span class="n">view_finder</span>
 </span></span><span class="line"><span class="ln">24</span><span class="cl">
 </span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="c1">// Request camera permissions
 </span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">allPermissionsGranted</span><span class="p">())</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">27</span><span class="cl">            <span class="n">viewFinder</span><span class="p">.</span><span class="n">post</span> <span class="p">{</span> <span class="n">startCamera</span><span class="p">()</span> <span class="p">}</span>
 </span></span><span class="line"><span class="ln">28</span><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">29</span><span class="cl">            <span class="n">ActivityCompat</span><span class="p">.</span><span class="n">requestPermissions</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">            <span class="nc">ActivityCompat</span><span class="p">.</span><span class="n">requestPermissions</span><span class="p">(</span>
 </span></span><span class="line"><span class="ln">30</span><span class="cl">                <span class="k">this</span><span class="p">,</span> <span class="n">REQUIRED_PERMISSIONS</span><span class="p">,</span> <span class="n">REQUEST_CODE_PERMISSIONS</span>
 </span></span><span class="line"><span class="ln">31</span><span class="cl">            <span class="p">)</span>
 </span></span><span class="line"><span class="ln">32</span><span class="cl">        <span class="p">}</span>
@@ -325,10 +325,10 @@ API 21+的设备</p>
 </span></span><span class="line"><span class="ln">55</span><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">allPermissionsGranted</span><span class="p">())</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">56</span><span class="cl">                <span class="n">viewFinder</span><span class="p">.</span><span class="n">post</span> <span class="p">{</span> <span class="n">startCamera</span><span class="p">()</span> <span class="p">}</span>
 </span></span><span class="line"><span class="ln">57</span><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">58</span><span class="cl">                <span class="n">Toast</span><span class="p">.</span><span class="n">makeText</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">58</span><span class="cl">                <span class="nc">Toast</span><span class="p">.</span><span class="n">makeText</span><span class="p">(</span>
 </span></span><span class="line"><span class="ln">59</span><span class="cl">                    <span class="k">this</span><span class="p">,</span>
 </span></span><span class="line"><span class="ln">60</span><span class="cl">                    <span class="s2">&#34;Permissions not granted by the user.&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">61</span><span class="cl">                    <span class="n">Toast</span><span class="p">.</span><span class="n">LENGTH_SHORT</span>
+</span></span><span class="line"><span class="ln">61</span><span class="cl">                    <span class="nc">Toast</span><span class="p">.</span><span class="n">LENGTH_SHORT</span>
 </span></span><span class="line"><span class="ln">62</span><span class="cl">                <span class="p">).</span><span class="n">show</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">63</span><span class="cl">                <span class="n">finish</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">64</span><span class="cl">            <span class="p">}</span>
@@ -340,9 +340,9 @@ API 21+的设备</p>
 </span></span></span><span class="line"><span class="ln">70</span><span class="cl"><span class="cm">     */</span>
 </span></span><span class="line"><span class="ln">71</span><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">allPermissionsGranted</span><span class="p">():</span> <span class="n">Boolean</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">72</span><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="n">permission</span> <span class="k">in</span> <span class="n">REQUIRED_PERMISSIONS</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">73</span><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">ContextCompat</span><span class="p">.</span><span class="n">checkSelfPermission</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">73</span><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nc">ContextCompat</span><span class="p">.</span><span class="n">checkSelfPermission</span><span class="p">(</span>
 </span></span><span class="line"><span class="ln">74</span><span class="cl">                    <span class="k">this</span><span class="p">,</span> <span class="n">permission</span>
-</span></span><span class="line"><span class="ln">75</span><span class="cl">                <span class="p">)</span> <span class="o">!=</span> <span class="n">PackageManager</span><span class="p">.</span><span class="n">PERMISSION_GRANTED</span>
+</span></span><span class="line"><span class="ln">75</span><span class="cl">                <span class="p">)</span> <span class="o">!=</span> <span class="nc">PackageManager</span><span class="p">.</span><span class="n">PERMISSION_GRANTED</span>
 </span></span><span class="line"><span class="ln">76</span><span class="cl">            <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">77</span><span class="cl">                <span class="k">return</span> <span class="k">false</span>
 </span></span><span class="line"><span class="ln">78</span><span class="cl">            <span class="p">}</span>
@@ -355,7 +355,7 @@ API 21+的设备</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln"> 1</span><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">startCamera</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">
 </span></span><span class="line"><span class="ln"> 3</span><span class="cl">        <span class="c1">// Create configuration object for the viewfinder use case
-</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">previewConfig</span> <span class="p">=</span> <span class="n">PreviewConfig</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">previewConfig</span> <span class="p">=</span> <span class="nc">PreviewConfig</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln"> 5</span><span class="cl">            <span class="n">setTargetAspectRatio</span><span class="p">(</span><span class="n">Rational</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
 </span></span><span class="line"><span class="ln"> 6</span><span class="cl">            <span class="n">setTargetResolution</span><span class="p">(</span><span class="n">Size</span><span class="p">(</span><span class="m">640</span><span class="p">,</span> <span class="m">640</span><span class="p">))</span>
 </span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="p">}.</span><span class="n">build</span><span class="p">()</span>
@@ -379,7 +379,7 @@ API 21+的设备</p>
 </span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="c1"></span>        <span class="c1">// If Android Studio complains about &#34;this&#34; being not a LifecycleOwner
 </span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="c1"></span>        <span class="c1">// try rebuilding the project or updating the appcompat dependency to
 </span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="c1"></span>        <span class="c1">// version 1.1.0 or higher.
-</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="c1"></span>        <span class="n">CameraX</span><span class="p">.</span><span class="n">bindToLifecycle</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">preview</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="c1"></span>        <span class="nc">CameraX</span><span class="p">.</span><span class="n">bindToLifecycle</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">preview</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">29</span><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="ln">30</span><span class="cl">
 </span></span><span class="line"><span class="ln">31</span><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">updateTransform</span><span class="p">()</span> <span class="p">{</span>
@@ -391,10 +391,10 @@ API 21+的设备</p>
 </span></span><span class="line"><span class="ln">37</span><span class="cl">
 </span></span><span class="line"><span class="ln">38</span><span class="cl">        <span class="c1">// 纠正屏幕方向的错误
 </span></span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">rotationDegrees</span> <span class="p">=</span> <span class="k">when</span> <span class="p">(</span><span class="n">viewFinder</span><span class="p">.</span><span class="n">display</span><span class="p">.</span><span class="n">rotation</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">40</span><span class="cl">            <span class="n">Surface</span><span class="p">.</span><span class="n">ROTATION_0</span> <span class="o">-&gt;</span> <span class="m">0</span>
-</span></span><span class="line"><span class="ln">41</span><span class="cl">            <span class="n">Surface</span><span class="p">.</span><span class="n">ROTATION_90</span> <span class="o">-&gt;</span> <span class="m">90</span>
-</span></span><span class="line"><span class="ln">42</span><span class="cl">            <span class="n">Surface</span><span class="p">.</span><span class="n">ROTATION_180</span> <span class="o">-&gt;</span> <span class="m">180</span>
-</span></span><span class="line"><span class="ln">43</span><span class="cl">            <span class="n">Surface</span><span class="p">.</span><span class="n">ROTATION_270</span> <span class="o">-&gt;</span> <span class="m">270</span>
+</span></span><span class="line"><span class="ln">40</span><span class="cl">            <span class="nc">Surface</span><span class="p">.</span><span class="n">ROTATION_0</span> <span class="o">-&gt;</span> <span class="m">0</span>
+</span></span><span class="line"><span class="ln">41</span><span class="cl">            <span class="nc">Surface</span><span class="p">.</span><span class="n">ROTATION_90</span> <span class="o">-&gt;</span> <span class="m">90</span>
+</span></span><span class="line"><span class="ln">42</span><span class="cl">            <span class="nc">Surface</span><span class="p">.</span><span class="n">ROTATION_180</span> <span class="o">-&gt;</span> <span class="m">180</span>
+</span></span><span class="line"><span class="ln">43</span><span class="cl">            <span class="nc">Surface</span><span class="p">.</span><span class="n">ROTATION_270</span> <span class="o">-&gt;</span> <span class="m">270</span>
 </span></span><span class="line"><span class="ln">44</span><span class="cl">            <span class="k">else</span> <span class="o">-&gt;</span> <span class="k">return</span>
 </span></span><span class="line"><span class="ln">45</span><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="ln">46</span><span class="cl">        <span class="n">matrix</span><span class="p">.</span><span class="n">postRotate</span><span class="p">(-</span><span class="n">rotationDegrees</span><span class="p">.</span><span class="n">toFloat</span><span class="p">(),</span> <span class="n">centerX</span><span class="p">,</span> <span class="n">centerY</span><span class="p">)</span>
@@ -433,11 +433,11 @@ API 21+的设备</p>
 </span></span></code></pre></div><p>修改 startCamera 方法</p>
 <p>添加一段代码</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln"> 1</span><span class="cl">     <span class="c1">// 添加拍照的代码, 这里和预览的相同
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">imageCaptureConfig</span> <span class="p">=</span> <span class="n">ImageCaptureConfig</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">imageCaptureConfig</span> <span class="p">=</span> <span class="nc">ImageCaptureConfig</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln"> 3</span><span class="cl">            <span class="p">.</span><span class="n">apply</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln"> 4</span><span class="cl">                <span class="n">setTargetAspectRatio</span><span class="p">(</span><span class="n">Rational</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
 </span></span><span class="line"><span class="ln"> 5</span><span class="cl">                <span class="c1">// setTargetResolution(Size(640, 640)) // 设置这个,但实际获取则会根据这个有所不同,根据注释说明, 会是与目标更接近的一个分辨率, 但是可能会因为设备的不同而造成可能崩溃的问题, 不确定就不设置
-</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1"></span>                <span class="n">setCaptureMode</span><span class="p">(</span><span class="n">ImageCapture</span><span class="p">.</span><span class="n">CaptureMode</span><span class="p">.</span><span class="n">MIN_LATENCY</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1"></span>                <span class="n">setCaptureMode</span><span class="p">(</span><span class="nc">ImageCapture</span><span class="p">.</span><span class="nc">CaptureMode</span><span class="p">.</span><span class="n">MIN_LATENCY</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln"> 7</span><span class="cl">            <span class="p">}.</span><span class="n">build</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln"> 8</span><span class="cl">
 </span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="k">val</span> <span class="py">imageCapture</span> <span class="p">=</span> <span class="n">ImageCapture</span><span class="p">(</span><span class="n">imageCaptureConfig</span><span class="p">)</span>
@@ -451,24 +451,24 @@ API 21+的设备</p>
 </span></span><span class="line"><span class="ln">17</span><span class="cl">            <span class="c1">// 捕捉图片
 </span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="c1"></span>            <span class="n">imageCapture</span><span class="p">.</span><span class="n">takePicture</span><span class="p">(</span><span class="k">file</span><span class="p">,</span> <span class="k">object</span> <span class="err">: </span><span class="nc">ImageCapture</span><span class="p">.</span><span class="n">OnImageSavedListener</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">19</span><span class="cl">                <span class="k">override</span> <span class="k">fun</span> <span class="nf">onError</span><span class="p">(</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">                    <span class="n">error</span><span class="p">:</span> <span class="n">ImageCapture</span><span class="p">.</span><span class="n">UseCaseError</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">                    <span class="n">error</span><span class="p">:</span> <span class="nc">ImageCapture</span><span class="p">.</span><span class="n">UseCaseError</span><span class="p">,</span>
 </span></span><span class="line"><span class="ln">21</span><span class="cl">                    <span class="n">message</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">exc</span><span class="p">:</span> <span class="n">Throwable</span><span class="p">?</span>
 </span></span><span class="line"><span class="ln">22</span><span class="cl">                <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">23</span><span class="cl">                    <span class="k">val</span> <span class="py">msg</span> <span class="p">=</span> <span class="s2">&#34;Photo capture failed: </span><span class="si">$message</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl">                    <span class="n">Toast</span><span class="p">.</span><span class="n">makeText</span><span class="p">(</span><span class="n">baseContext</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">Toast</span><span class="p">.</span><span class="n">LENGTH_SHORT</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">25</span><span class="cl">                    <span class="n">Log</span><span class="p">.</span><span class="n">e</span><span class="p">(</span><span class="s2">&#34;CameraXApp&#34;</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">                    <span class="nc">Toast</span><span class="p">.</span><span class="n">makeText</span><span class="p">(</span><span class="n">baseContext</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="nc">Toast</span><span class="p">.</span><span class="n">LENGTH_SHORT</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">                    <span class="nc">Log</span><span class="p">.</span><span class="n">e</span><span class="p">(</span><span class="s2">&#34;CameraXApp&#34;</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">26</span><span class="cl">                    <span class="n">exc</span><span class="o">?.</span><span class="n">printStackTrace</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">27</span><span class="cl">                <span class="p">}</span>
 </span></span><span class="line"><span class="ln">28</span><span class="cl">
 </span></span><span class="line"><span class="ln">29</span><span class="cl">                <span class="k">override</span> <span class="k">fun</span> <span class="nf">onImageSaved</span><span class="p">(</span><span class="k">file</span><span class="p">:</span> <span class="n">File</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">30</span><span class="cl">                    <span class="k">val</span> <span class="py">msg</span> <span class="p">=</span> <span class="s2">&#34;Photo capture succeeded: </span><span class="si">${file.absolutePath}</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="ln">31</span><span class="cl">                    <span class="n">Toast</span><span class="p">.</span><span class="n">makeText</span><span class="p">(</span><span class="n">baseContext</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">Toast</span><span class="p">.</span><span class="n">LENGTH_SHORT</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">32</span><span class="cl">                    <span class="n">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;CameraXApp&#34;</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl">                    <span class="nc">Toast</span><span class="p">.</span><span class="n">makeText</span><span class="p">(</span><span class="n">baseContext</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="nc">Toast</span><span class="p">.</span><span class="n">LENGTH_SHORT</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">                    <span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;CameraXApp&#34;</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">33</span><span class="cl">                <span class="p">}</span>
 </span></span><span class="line"><span class="ln">34</span><span class="cl">            <span class="p">})</span>
 </span></span><span class="line"><span class="ln">35</span><span class="cl">        <span class="p">}</span>
 </span></span></code></pre></div><p>别忘了修改这里</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">CameraX</span><span class="p">.</span><span class="n">bindToLifecycle</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">preview</span><span class="p">,</span> <span class="n">imageCapture</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln">1</span><span class="cl"><span class="nc">CameraX</span><span class="p">.</span><span class="n">bindToLifecycle</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">preview</span><span class="p">,</span> <span class="n">imageCapture</span><span class="p">)</span>
 </span></span></code></pre></div><p>然后点击拍照按钮</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">2019-05-14 15:20:50.839 13521-13521/top.kikt.camerax.usage D/CameraXApp: Photo capture succeeded: /storage/emulated/0/Android/media/top.kikt.camerax.usage/1557818450473.jpg
 </span></span></code></pre></div><p>可以看到我们成功的拍了一张照片</p>
@@ -492,7 +492,7 @@ API 21+的设备</p>
 </span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="k">import</span> <span class="nn">java.util.concurrent.TimeUnit</span>
 </span></span><span class="line"><span class="ln"> 7</span><span class="cl">
 </span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1">/// create 2019-05-14 by cai
-</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">LuminosityAnalyzer</span> <span class="p">:</span> <span class="n">ImageAnalysis</span><span class="p">.</span><span class="n">Analyzer</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">LuminosityAnalyzer</span> <span class="p">:</span> <span class="nc">ImageAnalysis</span><span class="p">.</span><span class="n">Analyzer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="k">private</span> <span class="k">var</span> <span class="py">lastAnalyzedTimestamp</span> <span class="p">=</span> <span class="m">0L</span>
 </span></span><span class="line"><span class="ln">11</span><span class="cl">
 </span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="cm">/**
@@ -507,10 +507,10 @@ API 21+的设备</p>
 </span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="c1"></span>    <span class="p">}</span>
 </span></span><span class="line"><span class="ln">22</span><span class="cl">
 </span></span><span class="line"><span class="ln">23</span><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">analyze</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageProxy</span><span class="p">,</span> <span class="n">rotationDegrees</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl">        <span class="k">val</span> <span class="py">currentTimestamp</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">currentTimeMillis</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">        <span class="k">val</span> <span class="py">currentTimestamp</span> <span class="p">=</span> <span class="nc">System</span><span class="p">.</span><span class="n">currentTimeMillis</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="c1">// Calculate the average luma no more often than every second
 </span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">currentTimestamp</span> <span class="p">-</span> <span class="n">lastAnalyzedTimestamp</span> <span class="o">&gt;=</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">            <span class="n">TimeUnit</span><span class="p">.</span><span class="n">SECONDS</span><span class="p">.</span><span class="n">toMillis</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">            <span class="nc">TimeUnit</span><span class="p">.</span><span class="nc">SECONDS</span><span class="p">.</span><span class="n">toMillis</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">28</span><span class="cl">        <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">29</span><span class="cl">            <span class="c1">// Since format in ImageAnalysis is YUV, image.planes[0]
 </span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="c1"></span>            <span class="c1">// contains the Y (luminance) plane
@@ -522,7 +522,7 @@ API 21+的设备</p>
 </span></span><span class="line"><span class="ln">36</span><span class="cl">            <span class="c1">// Compute average luminance for the image
 </span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="c1"></span>            <span class="k">val</span> <span class="py">luma</span> <span class="p">=</span> <span class="n">pixels</span><span class="p">.</span><span class="n">average</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">38</span><span class="cl">            <span class="c1">// Log the new luma value
-</span></span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="c1"></span>            <span class="n">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;CameraXApp&#34;</span><span class="p">,</span> <span class="s2">&#34;Average luminosity: </span><span class="si">$luma</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="c1"></span>            <span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;CameraXApp&#34;</span><span class="p">,</span> <span class="s2">&#34;Average luminosity: </span><span class="si">$luma</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">40</span><span class="cl">            <span class="c1">// Update timestamp of last analyzed frame
 </span></span></span><span class="line"><span class="ln">41</span><span class="cl"><span class="c1"></span>            <span class="n">lastAnalyzedTimestamp</span> <span class="p">=</span> <span class="n">currentTimestamp</span>
 </span></span><span class="line"><span class="ln">42</span><span class="cl">        <span class="p">}</span>
@@ -531,7 +531,7 @@ API 21+的设备</p>
 </span></span></code></pre></div><p>还是回到<code>startCamera</code>方法</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln"> 1</span><span class="cl">
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="c1">/// 统计配置
-</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="py">analyzerConfig</span> <span class="p">=</span> <span class="n">ImageAnalysisConfig</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="py">analyzerConfig</span> <span class="p">=</span> <span class="nc">ImageAnalysisConfig</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln"> 4</span><span class="cl">        <span class="c1">// Use a worker thread for image analysis to prevent glitches
 </span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">analyzerThread</span> <span class="p">=</span> <span class="n">HandlerThread</span><span class="p">(</span>
 </span></span><span class="line"><span class="ln"> 6</span><span class="cl">            <span class="s2">&#34;LuminosityAnalysis&#34;</span>
@@ -539,7 +539,7 @@ API 21+的设备</p>
 </span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="n">setCallbackHandler</span><span class="p">(</span><span class="n">Handler</span><span class="p">(</span><span class="n">analyzerThread</span><span class="p">.</span><span class="n">looper</span><span class="p">))</span>
 </span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="c1">// In our analysis, we care more about the latest image than
 </span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span>        <span class="c1">// analyzing *every* image
-</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1"></span>        <span class="n">setImageReaderMode</span><span class="p">(</span><span class="n">ImageAnalysis</span><span class="p">.</span><span class="n">ImageReaderMode</span><span class="p">.</span><span class="n">ACQUIRE_LATEST_IMAGE</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1"></span>        <span class="n">setImageReaderMode</span><span class="p">(</span><span class="nc">ImageAnalysis</span><span class="p">.</span><span class="nc">ImageReaderMode</span><span class="p">.</span><span class="n">ACQUIRE_LATEST_IMAGE</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="p">}.</span><span class="n">build</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">13</span><span class="cl">
 </span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="c1">// 设置
@@ -549,7 +549,7 @@ API 21+的设备</p>
 </span></span></code></pre></div><p>别忘了绑定生命周期</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln">1</span><span class="cl">    <span class="c1">// 绑定生命周期和CameraX , 这里第二步修改的时候别忘了把imageCapture 也一起绑定上
 </span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span>    <span class="c1">// 同理,第三步的时候需要绑上分析器
-</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"></span>    <span class="n">CameraX</span><span class="p">.</span><span class="n">bindToLifecycle</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">preview</span><span class="p">,</span> <span class="n">imageCapture</span><span class="p">,</span> <span class="n">analyzerUseCase</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"></span>    <span class="nc">CameraX</span><span class="p">.</span><span class="n">bindToLifecycle</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">preview</span><span class="p">,</span> <span class="n">imageCapture</span><span class="p">,</span> <span class="n">analyzerUseCase</span><span class="p">)</span>
 </span></span></code></pre></div><p>接着重新运行代码,随着预览的图像不同会呈现一个平均亮度</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">2019-05-14 15:37:32.883 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 136.85490234375
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">2019-05-14 15:37:33.889 14412-14435/top.kikt.camerax.usage D/CameraXApp: Average luminosity: 118.26471354166667
@@ -666,6 +666,9 @@ API 21+的设备</p>
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -686,9 +689,6 @@ API 21+的设备</p>
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -705,7 +705,7 @@ API 21+的设备</p>
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -805,7 +805,7 @@ API 21+的设备</p>
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -876,7 +876,7 @@ API 21+的设备</p>
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -1128,7 +1128,7 @@ API 21+的设备</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1575,7 +1575,7 @@ API 21+的设备</p>
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

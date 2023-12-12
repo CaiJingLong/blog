@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/migrate/</link>
     <description>Recent content in Migrate on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Wed, 06 Mar 2019 10:26:03 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/migrate/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,14 +20,14 @@
             无论在 android 开发中 还是 flutter 开发中,都会面临迁移 AndroidX 的问题
 官方有一个说明,可以
 下面是我总结的修改方式
-迁移到 androidX 修改 andorid 目录下的 app/build.gradle 1android{ 2compileSdkVersion 28 3} 使用了 gradle wrapper 如果 andorid 根目录下有这个文件夹/文件,则需要修改
- 根据官网说明,最好修改到 4.10.1 以上
+迁移到 androidX 修改 andorid 目录下的 app/build.gradle 1android{ 2 compileSdkVersion 28 3} 使用了 gradle wrapper 如果 andorid 根目录下有这个文件夹/文件,则需要修改
+根据官网说明,最好修改到 4.10.1 以上
 gradle-wrapper.properties 文件
 修改版本号位置,我使用的是当前的最新版 5.2.1,你可以根据你的情况修改
 1distributionUrl=https\://services.gradle.org/distributions/gradle-5.2.1-all.zip 如果没有用这个,那么你需要修改的环境变量中的 gradle 版本,这个请自行百度/Google
 修改 android 目录下的 build.gradle 根目录下的 build.gradle ,这个是目前的最新版
 这个不是 gradle 的版本,你可以理解为与插件匹配,一般等于你的 android studio 的版本
-1buildscript{ 2dependencies { 3classpath &amp;#39;com.android.tools.build:gradle:3.3.1&amp;#39; 4} 5} 修改 android 目录下的 gradle.properties 如果没有,就添加这两行
+1buildscript{ 2 dependencies { 3 classpath &amp;#39;com.android.tools.build:gradle:3.3.1&amp;#39; 4 } 5} 修改 android 目录下的 gradle.properties 如果没有,就添加这两行
 1android.enableJetifier=true 2android.useAndroidX=true 最后 做完上面的应该就可以了,运行下项目,如果有别的问题欢迎留言
           
           

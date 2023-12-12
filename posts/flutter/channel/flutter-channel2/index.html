@@ -19,26 +19,22 @@
 
 <meta property="og:type" content="article">
 <meta name="description" content="原生通信系列
-
-
- 第二篇介绍的是原生通知 dart
+第二篇介绍的是原生通知 dart
 开篇就是灵魂流程图,自己体会吧 😆 不同于第一篇, 本篇是由 java 端作为发布端, dart 作为订阅端
 具体的创建过程请参考第一篇
 java 先看看 java 端代码
-1package com.example.battlepower; 23import …">
+1package com.example.battlepower; 2 3import …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Flutter 原生通信 (二) - Android通知Flutter" />
 <meta property="og:url" content="https://kikt.top/posts/flutter/channel/flutter-channel2/" />
 <meta property="og:title" content="Flutter 原生通信 (二) - Android通知Flutter" />
 <meta property="og:description" content="原生通信系列
-
-
- 第二篇介绍的是原生通知 dart
+第二篇介绍的是原生通知 dart
 开篇就是灵魂流程图,自己体会吧 😆 不同于第一篇, 本篇是由 java 端作为发布端, dart 作为订阅端
 具体的创建过程请参考第一篇
 java 先看看 java 端代码
-1package com.example.battlepower; 23import …" />
+1package com.example.battlepower; 2 3import …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -141,7 +137,7 @@ java 先看看 java 端代码
 </span>
     <span class="post_date">
       2018-12-07 10:02</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/channel' title="channel" class="post_tag button button_translucent">channel
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/channel' title="channel" class="post_tag button button_translucent">channel
         </a><a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
         </a>
@@ -209,68 +205,68 @@ java 先看看 java 端代码
 具体的创建过程请参考第一篇</p>
 <h2 id="java">java</h2>
 <p>先看看 java 端代码</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">package</span> <span class="nn">com.example.battlepower</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Timer</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="kn">import</span> <span class="nn">java.util.TimerTask</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="kn">import</span> <span class="nn">io.flutter.plugin.common.BasicMessageChannel</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="kn">import</span> <span class="nn">io.flutter.plugin.common.MethodCall</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="kn">import</span> <span class="nn">io.flutter.plugin.common.MethodChannel</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="kn">import</span> <span class="nn">io.flutter.plugin.common.MethodChannel.MethodCallHandler</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="kn">import</span> <span class="nn">io.flutter.plugin.common.MethodChannel.Result</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="kn">import</span> <span class="nn">io.flutter.plugin.common.PluginRegistry.Registrar</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="kn">import</span> <span class="nn">io.flutter.plugin.common.StandardMessageCodec</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">
-</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.example.battlepower</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Timer</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.TimerTask</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">io.flutter.plugin.common.BasicMessageChannel</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">io.flutter.plugin.common.MethodCall</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">io.flutter.plugin.common.MethodChannel</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">io.flutter.plugin.common.MethodChannel.MethodCallHandler</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">io.flutter.plugin.common.MethodChannel.Result</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">io.flutter.plugin.common.PluginRegistry.Registrar</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">io.flutter.plugin.common.StandardMessageCodec</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="cm"> * BattlePowerPlugin
-</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BattlePowerPlugin</span> <span class="kd">implements</span> <span class="n">MethodCallHandler</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">
-</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">BasicMessageChannel</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">runTimeSender</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">
-</span></span><span class="line"><span class="ln">21</span><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Timer</span> <span class="n">timer</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl">
-</span></span><span class="line"><span class="ln">23</span><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">long</span> <span class="n">startTime</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl">
-</span></span><span class="line"><span class="ln">25</span><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BattlePowerPlugin</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">MethodCallHandler</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">BasicMessageChannel</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">runTimeSender</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Timer</span><span class="w"> </span><span class="n">timer</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">startTime</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="cm">     * Plugin registration.
-</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="ln">28</span><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">registerWith</span><span class="o">(</span><span class="n">Registrar</span> <span class="n">registrar</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="kd">final</span> <span class="n">MethodChannel</span> <span class="n">channel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MethodChannel</span><span class="o">(</span><span class="n">registrar</span><span class="o">.</span><span class="na">messenger</span><span class="o">(),</span> <span class="s">&#34;battle_power&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">30</span><span class="cl">        <span class="n">BattlePowerPlugin</span> <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BattlePowerPlugin</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">31</span><span class="cl">        <span class="n">channel</span><span class="o">.</span><span class="na">setMethodCallHandler</span><span class="o">(</span><span class="n">handler</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">32</span><span class="cl">
-</span></span><span class="line"><span class="ln">33</span><span class="cl">        <span class="n">runTimeSender</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicMessageChannel</span><span class="o">&lt;&gt;(</span><span class="n">registrar</span><span class="o">.</span><span class="na">messenger</span><span class="o">(),</span> <span class="s">&#34;run_time&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">StandardMessageCodec</span><span class="o">());</span>
-</span></span><span class="line"><span class="ln">34</span><span class="cl">        <span class="n">startTime</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">35</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">36</span><span class="cl">
-</span></span><span class="line"><span class="ln">37</span><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">startTimeSender</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">38</span><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">timer</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">39</span><span class="cl">            <span class="n">timer</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">40</span><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">41</span><span class="cl">            <span class="n">timer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Timer</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">42</span><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="ln">43</span><span class="cl">
-</span></span><span class="line"><span class="ln">44</span><span class="cl">        <span class="n">timer</span><span class="o">.</span><span class="na">schedule</span><span class="o">(</span><span class="k">new</span> <span class="n">TimerTask</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">45</span><span class="cl">            <span class="nd">@Override</span>
-</span></span><span class="line"><span class="ln">46</span><span class="cl">            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">47</span><span class="cl">                <span class="k">if</span> <span class="o">(</span><span class="n">runTimeSender</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">48</span><span class="cl">                    <span class="n">runTimeSender</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">startTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">49</span><span class="cl">                <span class="o">}</span>
-</span></span><span class="line"><span class="ln">50</span><span class="cl">            <span class="o">}</span>
-</span></span><span class="line"><span class="ln">51</span><span class="cl">        <span class="o">},</span> <span class="n">5000</span><span class="o">,</span> <span class="n">5000</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">52</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">53</span><span class="cl">
-</span></span><span class="line"><span class="ln">54</span><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">cancelTimer</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">55</span><span class="cl">        <span class="n">timer</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">56</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">57</span><span class="cl">
-</span></span><span class="line"><span class="ln">58</span><span class="cl">    <span class="c1">// ...
-</span></span></span><span class="line"><span class="ln">59</span><span class="cl"><span class="c1"></span><span class="o">}</span>
-</span></span></code></pre></div><p>这里创建<code>BasicMessageChannel</code>类来负责传递消息</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">runTimeSender</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicMessageChannel</span><span class="o">&lt;&gt;(</span><span class="n">registrar</span><span class="o">.</span><span class="na">messenger</span><span class="o">(),</span> <span class="s">&#34;run_time&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">StandardMessageCodec</span><span class="o">());</span>
-</span></span></code></pre></div><p>第一个可以视为固定参数 ,略过不表, 第二个是插件名,需要全应用唯一,第三个是编解码器,如果你看过第一篇,则应该知道了</p>
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">registerWith</span><span class="p">(</span><span class="n">Registrar</span><span class="w"> </span><span class="n">registrar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">MethodChannel</span><span class="w"> </span><span class="n">channel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MethodChannel</span><span class="p">(</span><span class="n">registrar</span><span class="p">.</span><span class="na">messenger</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;battle_power&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="w">        </span><span class="n">BattlePowerPlugin</span><span class="w"> </span><span class="n">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BattlePowerPlugin</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="w">        </span><span class="n">channel</span><span class="p">.</span><span class="na">setMethodCallHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">33</span><span class="cl"><span class="w">        </span><span class="n">runTimeSender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BasicMessageChannel</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">registrar</span><span class="p">.</span><span class="na">messenger</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;run_time&#34;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StandardMessageCodec</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="ln">34</span><span class="cl"><span class="w">        </span><span class="n">startTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">36</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startTimeSender</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">38</span><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">timer</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="w">            </span><span class="n">timer</span><span class="p">.</span><span class="na">cancel</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">40</span><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">41</span><span class="cl"><span class="w">            </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Timer</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">42</span><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">43</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">44</span><span class="cl"><span class="w">        </span><span class="n">timer</span><span class="p">.</span><span class="na">schedule</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">TimerTask</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">45</span><span class="cl"><span class="w">            </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="ln">46</span><span class="cl"><span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">47</span><span class="cl"><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">runTimeSender</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">48</span><span class="cl"><span class="w">                    </span><span class="n">runTimeSender</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">startTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">49</span><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">50</span><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">51</span><span class="cl"><span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="n">5000</span><span class="p">,</span><span class="w"> </span><span class="n">5000</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">52</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">53</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">54</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">cancelTimer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">55</span><span class="cl"><span class="w">        </span><span class="n">timer</span><span class="p">.</span><span class="na">cancel</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">56</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">57</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">58</span><span class="cl"><span class="w">    </span><span class="c1">// ...</span><span class="w">
+</span></span></span><span class="line"><span class="ln">59</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>这里创建<code>BasicMessageChannel</code>类来负责传递消息</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">runTimeSender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BasicMessageChannel</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">registrar</span><span class="p">.</span><span class="na">messenger</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;run_time&#34;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StandardMessageCodec</span><span class="p">());</span><span class="w">
+</span></span></span></code></pre></div><p>第一个可以视为固定参数 ,略过不表, 第二个是插件名,需要全应用唯一,第三个是编解码器,如果你看过第一篇,则应该知道了</p>
 <hr>
 <p>这个主要功能大概能看懂,就是间隔 5 秒发送一个广播, 广播这个插件的运行时间</p>
 <h2 id="dart">dart</h2>
@@ -354,6 +350,9 @@ java 先看看 java 端代码
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -374,9 +373,6 @@ java 先看看 java 端代码
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -393,7 +389,7 @@ java 先看看 java 端代码
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -493,7 +489,7 @@ java 先看看 java 端代码
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -564,7 +560,7 @@ java 先看看 java 端代码
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -816,7 +812,7 @@ java 先看看 java 端代码
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1263,7 +1259,7 @@ java 先看看 java 端代码
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

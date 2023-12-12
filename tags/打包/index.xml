@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E6%89%93%E5%8C%85/</link>
     <description>Recent content in 打包 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Fri, 07 Dec 2018 17:04:04 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E6%89%93%E5%8C%85/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -22,7 +23,7 @@
 1flutter build apk 这种情况通常是因为 so 文件没有打包到 apk 中造成的 拖动 apk 到 android Studio 中可以看到其中包含的库文件
 我前面有一篇的文章可以解释原理
 但是 flutter 升级后 可以查看flutter.gradle文件
- 图片中的代码说明了当目标是 arm64 的时候, 会自动将 64 的 so 打包到 flutter 内, 这里的问题就造成了以前你在自己的 gradle 设置的打包选项和这个同时生效,也就是 v7 v8 的 so 都不进 apk 里了..
+图片中的代码说明了当目标是 arm64 的时候, 会自动将 64 的 so 打包到 flutter 内, 这里的问题就造成了以前你在自己的 gradle 设置的打包选项和这个同时生效,也就是 v7 v8 的 so 都不进 apk 里了..
 一个小说明 在说解决方案前,有一点需要说明的是 armeabi -&amp;gt; v7 -&amp;gt;v8,这个是 arm cpu 架构的进化过程,而后来的 cpu 是兼容前代的 so 库,
           
           

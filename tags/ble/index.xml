@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/ble/</link>
     <description>Recent content in ble on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Wed, 13 Sep 2017 11:52:48 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/ble/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -21,10 +22,11 @@
 ios 使用的 BLE 方案,安卓则是因为设备的原因只能选择普通蓝牙的连接方案
 BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜索下
 有个 mac 的蓝牙开发工具 LightBlue,很好用,mac app store 自己下就好了,这个很方便你理解 BLE 的蓝牙相关 device(central/peripheral)-&amp;gt;services-&amp;gt;characteristics
- 这里可以看到,有一个 mobike,有兴趣的同学可以研究下 mobike 的蓝牙连接 ☺ 说笑一下,人家肯定有安全性校验的
+这里可以看到,有一个 mobike,有兴趣的同学可以研究下 mobike 的蓝牙连接 ☺ 说笑一下,人家肯定有安全性校验的
 语言选型 最近在学习 ios 开发,因为我是 android 出身,学习 ios 开发的时候 swift3 已经出现很久了,所以我这里使用的 swift 进行开发
 坑 1 最初我使用了厂家提供的 ios sdk 进行开发,其中封装了很多常用的方法,让我自己以为很简单就能完成,但是事实上是我太天真了,首先厂家提供的是.a 的库,只有一个.h 文件暴露在外,我的项目是纯 swift 项目,这就不可避免的使用到了 swift 到 oc 的桥接
 坑 2 满以为桥接完了调 SDK 方法就行,谁知道调用的时候根本就没反应,没办法,只能摸石头过河进行开发了,最初使用的是 oc 的 corebluetooth 方案,因为实在是没找到 swift 的相关说法,baidu 没搜到,没办法,oc 毕竟也算是入门了,直接开干了
+坑 3 开发完 oc 的连接 demo,强迫症发作,决定一定要用纯 swift 开发,毕竟我们还是要跟随时代脚步的嘛
           
           
         

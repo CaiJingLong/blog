@@ -5,6 +5,7 @@
     <link>https://kikt.top/categories/%E6%9D%82%E9%A1%B9/</link>
     <description>Recent content in 杂项 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Sat, 04 Jan 2020 15:43:37 +0800</lastBuildDate><atom:link href="https://kikt.top/categories/%E6%9D%82%E9%A1%B9/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -17,7 +18,7 @@
         
           
             2019 年结束了, 本年做了什么呢?
- 1940 次 github 提交
+1940 次 github 提交
 公司工作 今年公司的工作并不繁重, 让我有了更多的时间来提升自己的专业技能
 在工作中使用 flutter 作为基础开发 app, 从而实现了更轻松的跨平台
 年中开发了一个新的商城 app, 当然也是 flutter
@@ -29,7 +30,7 @@ Q3 重构了 photo_manager 底层
 编程技能 没有太多时间来对于 golang 提升, web 方面基本没学习, java 也没太碰
 但在 dart/flutter 这条路上越走越远了
 业余时间最多的是在音视频处理方面, ffmpeg 和 SDL 目前也算初步入坑了
-2020 年小目标  c/c++ 语言有更深入的学习, 结合 golang/cgo 完成跨语言调用, 以便于未来开发 go-flutter-desktop 的插件 音视频处理方面, 结合 flutter 继续深入 入坑 opencv, 结合 ffmpeg 进一步处理视频 初步完成对于 flutter framework/flutter engine/sky 的了解, 以便于未来对 flutter engine/flutter framework 提有效的建议 进一步完善已开源的项目 好好学英语 挣点小钱  
+2020 年小目标 c/c++ 语言有更深入的学习, 结合 golang/cgo 完成跨语言调用, 以便于未来开发 go-flutter-desktop 的插件 音视频处理方面, 结合 flutter 继续深入 入坑 opencv, 结合 ffmpeg 进一步处理视频 初步完成对于 flutter framework/flutter engine/sky 的了解, 以便于未来对 flutter engine/flutter framework 提有效的建议 进一步完善已开源的项目 好好学英语 挣点小钱 
           
           
         

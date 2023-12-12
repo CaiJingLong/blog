@@ -131,7 +131,7 @@
 </span>
     <span class="post_date">
       2020-01-07 11:50</span>
-    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/ffmpeg' title="ffmpeg" class="post_tag button button_translucent">ffmpeg
+    <span class="post_time"> · 8 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/ffmpeg' title="ffmpeg" class="post_tag button button_translucent">ffmpeg
         </a><a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
         </a><a href='https://kikt.top/tags/ndk' title="ndk" class="post_tag button button_translucent">ndk
         </a>
@@ -723,18 +723,18 @@
 </span></span><span class="line"><span class="ln">47</span><span class="cl">        <span class="n">avformat_close_input</span><span class="p">(</span><span class="o">&amp;</span><span class="n">context</span><span class="p">);</span>
 </span></span><span class="line"><span class="ln">48</span><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="ln">49</span><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">package</span> <span class="nn">top.kikt.ffmpeg_sdl_example</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FFmpeg</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="kd">static</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">loadLibrary</span><span class="o">(</span><span class="s">&#34;ffmpeg-bridge&#34;</span><span class="o">);</span> <span class="c1">// 引入so库, 至于其他的库, 因为在cmake里配置link了, 我实测不需要单独引入
-</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1"></span>    <span class="o">}</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">native</span> <span class="kt">void</span> <span class="nf">dumpInfo</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">);</span> <span class="c1">// 映射到ffmpeg-bridge中的对应方法
-</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>接着在项目里调用就可以像是调用 ffmpeg 中的 <code>av_dump_format</code> 方法一样了</p>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">top.kikt.ffmpeg_sdl_example</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FFmpeg</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">loadLibrary</span><span class="p">(</span><span class="s">&#34;ffmpeg-bridge&#34;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 引入so库, 至于其他的库, 因为在cmake里配置link了, 我实测不需要单独引入</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">native</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dumpInfo</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="p">);</span><span class="w"> </span><span class="c1">// 映射到ffmpeg-bridge中的对应方法</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>接着在项目里调用就可以像是调用 ffmpeg 中的 <code>av_dump_format</code> 方法一样了</p>
 <p>这里还要说明一下, 在 c/cpp 端还有一种是用函数指针的方式来映射方法, 可以</p>
 <p>这种方法在方法声明时不需要遵循那个<code>包名_类名_方法名</code>的命名方式, 但是需要定义一些其他的东西, 这个可以百度搜索一下具体的定义规则, 这里就顺便说一下而已</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">package</span> <span class="nn">top.kikt.ffmpeg_sdl_example</span>
@@ -749,10 +749,10 @@
 </span></span><span class="line"><span class="ln">10</span><span class="cl">
 </span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">12</span><span class="cl">        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="n">setContentView</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">14</span><span class="cl">
 </span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="n">sample_button</span><span class="p">.</span><span class="n">setOnClickListener</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">            <span class="n">FFmpeg</span><span class="p">.</span><span class="n">dumpInfo</span><span class="p">(</span><span class="s2">&#34;http://media.w3.org/2010/05/sintel/trailer.mp4&#34;</span><span class="p">)</span> <span class="c1">// 这里因为没有在异步线程调用, 所以会卡UI, 忽略即可😁
+</span></span><span class="line"><span class="ln">16</span><span class="cl">            <span class="nc">FFmpeg</span><span class="p">.</span><span class="n">dumpInfo</span><span class="p">(</span><span class="s2">&#34;http://media.w3.org/2010/05/sintel/trailer.mp4&#34;</span><span class="p">)</span> <span class="c1">// 这里因为没有在异步线程调用, 所以会卡UI, 忽略即可😁
 </span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="c1"></span>        <span class="p">}</span>
 </span></span><span class="line"><span class="ln">18</span><span class="cl">
 </span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="p">}</span>
@@ -827,6 +827,9 @@
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -847,9 +850,6 @@
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -866,7 +866,7 @@
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -966,7 +966,7 @@
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -1037,7 +1037,7 @@
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -1289,7 +1289,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1736,7 +1736,7 @@
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/loadmore/</link>
     <description>Recent content in loadmore on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Thu, 06 Sep 2018 12:16:31 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/loadmore/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -20,7 +21,7 @@
 我为什么要自定义呢
 首先是项目需要，并且这种库普适性高，抽取出来今后复用也方便点
 另外记录一下编码思路,方便后续查看
- 使用说明  或  看看构造方法 一共 5 个属性 child 是 ListView
+使用说明 或 看看构造方法 一共 5 个属性 child 是 ListView
 onLoadMore 是加载更多时的回调,由外部实现
 isFinish 加载完成
 delegate 是一个抽象类 有默认实现, 其中有 3 个方法,一个是根据状态给一个 widget 高度 一个是延迟加载的毫秒时间 一个是构建显示在内部的 Widget,这样就完全实现了外部可根据状态自定义 Widget
@@ -29,7 +30,7 @@ LoadMoreTextBuilder 是一个根据状态构建文字的方案,默认实现了 �
 不使用上拉加载的原因是：滚动到底继续上拉不符合正常人习惯，如果是惯性滚动到底，谁知道你后面还有没有东西的
 思考如何自定义 首先怎么样可以知道滚动到底了呢，最简单的方式，listview 的最后一行 build 的时候一定滚动到底了
 所以我们可以使用如下的方式定义
-12class _ListViewDemoPageState extends State&amp;lt;ListViewDemoPage&amp;gt; { 3var count = 10; 45@override 6Widget build(BuildContext context) { 7return ListView.builder( 8itemCount: count + 1, 9itemBuilder: _buildItem, 10); 11} 1213Widget _buildItem(BuildContext context, int index) { 14if (index == count) { 15return Text(&amp;#39;到底了&amp;#39;); 16} 17return Text(index.
+1 2class _ListViewDemoPageState extends State&amp;lt;ListViewDemoPage&amp;gt; { 3 var count = 10; 4 5 @override 6 Widget build(BuildContext context) { 7 return ListView.
           
           
         

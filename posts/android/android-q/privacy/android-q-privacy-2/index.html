@@ -247,12 +247,12 @@
 <p>官方给的示例如下</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">val</span> <span class="py">permissionAccessCoarseLocationApproved</span> <span class="p">=</span> <span class="n">ActivityCompat</span>
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="p">.</span><span class="n">checkSelfPermission</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">permission</span><span class="p">.</span><span class="n">ACCESS_COARSE_LOCATION</span><span class="p">)</span> <span class="o">==</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">PackageManager</span><span class="p">.</span><span class="n">PERMISSION_GRANTED</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="nc">PackageManager</span><span class="p">.</span><span class="n">PERMISSION_GRANTED</span>
 </span></span><span class="line"><span class="ln"> 4</span><span class="cl">
 </span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">permissionAccessCoarseLocationApproved</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln"> 6</span><span class="cl">   <span class="k">val</span> <span class="py">backgroundLocationPermissionApproved</span> <span class="p">=</span> <span class="n">ActivityCompat</span>
 </span></span><span class="line"><span class="ln"> 7</span><span class="cl">       <span class="p">.</span><span class="n">checkSelfPermission</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">permission</span><span class="p">.</span><span class="n">ACCESS_BACKGROUND_LOCATION</span><span class="p">)</span> <span class="o">==</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">       <span class="n">PackageManager</span><span class="p">.</span><span class="n">PERMISSION_GRANTED</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">       <span class="nc">PackageManager</span><span class="p">.</span><span class="n">PERMISSION_GRANTED</span>
 </span></span><span class="line"><span class="ln"> 9</span><span class="cl">
 </span></span><span class="line"><span class="ln">10</span><span class="cl">   <span class="k">if</span> <span class="p">(</span><span class="n">backgroundLocationPermissionApproved</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">11</span><span class="cl">       <span class="c1">// App can access location both in the foreground and in the background.
@@ -263,17 +263,17 @@
 </span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="c1"></span>       <span class="c1">// warning the user that your app must have all-the-time access to
 </span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="c1"></span>       <span class="c1">// location in order to function properly. Then, request background
 </span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="c1"></span>       <span class="c1">// location.
-</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="c1"></span>       <span class="n">ActivityCompat</span><span class="p">.</span><span class="n">requestPermissions</span><span class="p">(</span><span class="k">this</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">           <span class="n">arrayOf</span><span class="p">(</span><span class="n">Manifest</span><span class="p">.</span><span class="n">permission</span><span class="p">.</span><span class="n">ACCESS_BACKGROUND_LOCATION</span><span class="p">),</span>
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="c1"></span>       <span class="nc">ActivityCompat</span><span class="p">.</span><span class="n">requestPermissions</span><span class="p">(</span><span class="k">this</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">           <span class="n">arrayOf</span><span class="p">(</span><span class="nc">Manifest</span><span class="p">.</span><span class="n">permission</span><span class="p">.</span><span class="n">ACCESS_BACKGROUND_LOCATION</span><span class="p">),</span>
 </span></span><span class="line"><span class="ln">21</span><span class="cl">           <span class="n">your</span><span class="p">-</span><span class="n">permission</span><span class="p">-</span><span class="n">request</span><span class="p">-</span><span class="n">code</span>
 </span></span><span class="line"><span class="ln">22</span><span class="cl">       <span class="p">)</span>
 </span></span><span class="line"><span class="ln">23</span><span class="cl">   <span class="p">}</span>
 </span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">25</span><span class="cl">   <span class="c1">// App doesn&#39;t have access to the device&#39;s location at all. Make full request
 </span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="c1"></span>   <span class="c1">// for permission.
-</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="c1"></span>   <span class="n">ActivityCompat</span><span class="p">.</span><span class="n">requestPermissions</span><span class="p">(</span><span class="k">this</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">28</span><span class="cl">       <span class="n">arrayOf</span><span class="p">(</span><span class="n">Manifest</span><span class="p">.</span><span class="n">permission</span><span class="p">.</span><span class="n">ACCESS_COARSE_LOCATION</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">29</span><span class="cl">               <span class="n">Manifest</span><span class="p">.</span><span class="n">permission</span><span class="p">.</span><span class="n">ACCESS_BACKGROUND_LOCATION</span><span class="p">),</span>
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="c1"></span>   <span class="nc">ActivityCompat</span><span class="p">.</span><span class="n">requestPermissions</span><span class="p">(</span><span class="k">this</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">       <span class="n">arrayOf</span><span class="p">(</span><span class="nc">Manifest</span><span class="p">.</span><span class="n">permission</span><span class="p">.</span><span class="n">ACCESS_COARSE_LOCATION</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">               <span class="nc">Manifest</span><span class="p">.</span><span class="n">permission</span><span class="p">.</span><span class="n">ACCESS_BACKGROUND_LOCATION</span><span class="p">),</span>
 </span></span><span class="line"><span class="ln">30</span><span class="cl">       <span class="n">your</span><span class="p">-</span><span class="n">permission</span><span class="p">-</span><span class="n">request</span><span class="p">-</span><span class="n">code</span>
 </span></span><span class="line"><span class="ln">31</span><span class="cl">   <span class="p">)</span>
 </span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="p">}</span>
@@ -355,6 +355,9 @@
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -375,9 +378,6 @@
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -394,7 +394,7 @@
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -494,7 +494,7 @@
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -565,7 +565,7 @@
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -817,7 +817,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1264,7 +1264,7 @@
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

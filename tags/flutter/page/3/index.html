@@ -182,8 +182,8 @@
             <p>无论在 android 开发中 还是 flutter 开发中,都会面临迁移 AndroidX 的问题
 官方有一个说明,可以
 下面是我总结的修改方式
-迁移到 androidX 修改 andorid 目录下的 app/build.gradle 1android{ 2compileSdkVersion 28 3} 使用了 gradle wrapper 如果 andorid 根目录下有这个文件夹/文件,则需要修改
- 根据官网说明,最好修改到 4.10.1 以上
+迁移到 androidX 修改 andorid 目录下的 app/build.gradle 1android{ 2 compileSdkVersion 28 3} 使用了 gradle wrapper 如果 andorid 根目录下有这个文件夹/文件,则需要修改
+根据官网说明,最好修改到 4.10.1 以上
 gradle-wrapper.properties 文件
 修改版本号位置,我使用的是当前的最新版 5.2.1, …</p>
           
@@ -209,7 +209,7 @@ gradle-wrapper.properties 文件
 </span>
     <span class="post_date">
       2019-03-04 08:48</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/log' title="log" class="post_tag button button_translucent">log
         </a>
     </span>
@@ -283,7 +283,7 @@ gradle-wrapper.properties 文件
 </span>
     <span class="post_date">
       2019-02-21 10:43</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86' title="状态管理" class="post_tag button button_translucent">状态管理
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86' title="状态管理" class="post_tag button button_translucent">状态管理
         </a><a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a>
     </span>
@@ -331,9 +331,8 @@ gradle-wrapper.properties 文件
 内部应该是结合InheritedWidget Notification体系实现的
 传统的bloc需要在每一个Repository中创建StreamController和Stream,甚至有的文章中,一个监听的修改需要修改5处,维护起来比较麻烦
 相比较而言Provide维护起来会稍微省事一些
-
 添加依赖 查看
-1dependencies:2provide:^1.0.1# 这里的版本查看官方1flutter packages get …</p>
+1dependencies: 2 provide: ^1.0.1 # 这里的版本查看官方 1flutter packages get …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/state/provide-1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -405,8 +404,8 @@ gradle-wrapper.properties 文件
 众所周知 xcode 这编辑器除了漂亮,其实开发效率来说和 appcode 无法相提并论..
 本篇与插件开发本身无关,目的只是为了加快 appcode 的索引速度,解决方案拉到后面查看
 使用 appcode 开发插件本身很简单,打开插件下的example/ios就可以了,不过这里有一个坑,因为 flutter 使用 link 的方式,可能有数级的../..之类的连接来指向插件文件夹
- 这个在 xcode 中可能没问题,但是appcode中有一个索引的概念,这一步会遍历当前关联的所有同级文件,
-而这一步由于相对的关系甚至关联到了~这一级,也就是说会遍历当前用户全部的文件,这一步的速度太慢 …</p>
+这个在 xcode 中可能没问题,但是appcode中有一个索引的概念,这一步会遍历当前关联的所有同级文件,
+而这一步由于相对的关系甚至关联到了~这一级,也就是说会遍历当前用户全部的文件,这一步的速度太慢了, …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/channel/flutter-ios-spec-edit/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -484,7 +483,7 @@ gradle-wrapper.properties 文件
 比如你return 1,但是返回值上却需要写Future&lt;int&gt;
 sync* 在 dart 中可以使用这个便利的生成一个迭代器
 如下所示
- 这两种写法是一样的,但是第一个写法会简洁很多
+这两种写法是一样的,但是第一个写法会简洁很多
 1main(List&lt;String&gt; …</p>
           
           <br>
@@ -556,9 +555,9 @@ sync* 在 dart 中可以使用这个便利的生成一个迭代器
             <p>是 flutter 的 api 文档页
 但是这个文档页有的时候不那么好访问, 也许你有自己的页面,或者你就是想简单的搭建一个 pages 到 gitee/github 上方便你以后的访问
 本篇就来教你怎么简单的达成这个目的
-gitee 部署完成后是这样的 准备工作  一个终端工具 dart sdk 一个 web 服务器(pages)  作为一个 flutter/dart 开发者,sdk 肯定是必备工具了
+gitee 部署完成后是这样的 准备工作 一个终端工具 dart sdk 一个 web 服务器(pages) 作为一个 flutter/dart 开发者,sdk 肯定是必备工具了
 如果你运行过 flutter doctor 命令,则 flutter 自带的 sdk 就会存在在的系统内 ${FLUTTER_HOME}/bin/cache/dart-sdk 这里替换为自己的 flutter sdk 的文件夹
- 这 …</p>
+这里可以 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/doc/create/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -631,7 +630,7 @@ gitee 部署完成后是这样的 准备工作  一个终端工具 dart sdk 一�
 官方描述: Pub is the package manager for Dart. / dart 语言的包管理器
 官网 pub 的官方 url: 这个域名有多个小伙伴同时 ping 过, 对应 ip 不相同,所以可知这个网站是有负载均衡的, 但是坑的地方来了, 部分在墙外,所以这就是这个网站偶尔国内访问不通畅的原因
 然后有几个国内镜像站点,可以查看官网介绍
- 设置访问镜像 在环境变量中配置,这个根据系统不同设置方法不同
+设置访问镜像 在环境变量中配置,这个根据系统不同设置方法不同
 mac 的话 可以使用 export 命令临时添加
 也可以在vi …</p>
           
@@ -703,10 +702,10 @@ mac 的话 可以使用 export 命令临时添加
             <p>最近做了一篇 android 原生中加入 flutter 的尝试,顺便查看下内存占用
 在 debug 模式下肯定是不准的,所以随便看看就好了,只是为了满足好奇心,不代表真实项目中的真实表现,也不代表我的观点
 在原生刚刚打开后稳定的情况下查看内存占用
- 可以看到 打开 Flutter 后内存会有明显上升
- 红点处是我点击了按钮后的情况,会有内存抖动
-关闭 Flutter 界面后会发现内存回落很明显,说明内存相对比较稳定  过了段时间,其实是我在码字+上传图片,没看手机,发现内存更加平稳了,而且降低到了只有 30m
- 换句话说其实在 android 上内存的表现还算可以,目测在关闭 flutterview 的界面后简单的界面是可以完全回 …</p>
+可以看到 打开 Flutter 后内存会有明显上升
+红点处是我点击了按钮后的情况,会有内存抖动
+关闭 Flutter 界面后会发现内存回落很明显,说明内存相对比较稳定 过了段时间,其实是我在码字+上传图片,没看手机,发现内存更加平稳了,而且降低到了只有 30m
+换句话说其实在 android 上内存的表现还算可以,目测在关闭 flutterview 的界面后简单的界面是可以完全回收的,而 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/android/profile-1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -730,7 +729,7 @@ mac 的话 可以使用 export 命令临时添加
 </span>
     <span class="post_date">
       2019-01-22 07:50</span>
-    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
         </a><a href='https://kikt.top/tags/exists' title="exists" class="post_tag button button_translucent">exists
         </a>
@@ -803,7 +802,7 @@ mac 的话 可以使用 export 命令临时添加
 </span>
     <span class="post_date">
       2019-01-08 17:34</span>
-    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/cupertino' title="cupertino" class="post_tag button button_translucent">cupertino
+    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/cupertino' title="cupertino" class="post_tag button button_translucent">cupertino
         </a><a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a>
     </span>
@@ -847,7 +846,7 @@ mac 的话 可以使用 export 命令临时添加
         <div class="pale">
           
             <p>1NosuchMethodError: The getter &#39;pasterButtonLabel&#39; was called on null. 2Receiver: null 3Tried calling: pasteButtonLabel 在最近 app store 提交审核时被拒了,然后得到了一个这样的截图
- 在 flutter 中可能会会出现各种问题,因为之前遇到过这个问题,但是那是我另一个应用,这个忘了设置了
+在 flutter 中可能会会出现各种问题,因为之前遇到过这个问题,但是那是我另一个应用,这个忘了设置了
 我快速搞了一下,重新提交了审核
 解决方式 1import &#39;package:flutter/cupertino.dart&#39;; 2import …</p>
           
@@ -949,7 +948,7 @@ flutter engine 简单介绍 这里简单介绍一下 flutter engine,
 </span>
     <span class="post_date">
       2019-01-07 15:07</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/bottomsheet' title="bottomsheet" class="post_tag button button_translucent">bottomsheet
         </a><a href='https://kikt.top/tags/ui' title="ui" class="post_tag button button_translucent">ui
         </a>
@@ -994,11 +993,11 @@ flutter engine 简单介绍 这里简单介绍一下 flutter engine,
         <div class="pale">
           
             <p>前言 最近看到群里有朋友在问类似于
- 这东西怎么实现
+这东西怎么实现
 我回答的可能不那么清楚,因为我就答了 bottomSheet,下次我可能会回答的更清楚些
 这东西在可能在 flutter 里有如下几种解释
- Scaffold 的 bottomSheet 属性 一个叫 BottomSheet 的 widget 组件 Scaffold.showBottomSheet 方法 showBottomSheet 方法也就是一个底层弹窗  这里分别来简单的说一下
-Scaffold 的 bottomSheet 属性 这个就是前言中的那种东西的简单实现方式,直接把聊天的输入框(TextField)放在里面,用 Container 也好,也用其他什么控件也可以,当 …</p>
+Scaffold 的 bottomSheet 属性 一个叫 BottomSheet 的 widget 组件 Scaffold.showBottomSheet 方法 showBottomSheet 方法也就是一个底层弹窗 这里分别来简单的说一下
+Scaffold 的 bottomSheet 属性 这个就是前言中的那种东西的简单实现方式,直接把聊天的输入框(TextField)放在里面,用 Container 也好,也用其他什么控件也可以, …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/flutter-bootom-sheet/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -1022,7 +1021,7 @@ Scaffold 的 bottomSheet 属性 这个就是前言中的那种东西的简单实
 </span>
     <span class="post_date">
       2018-12-10 13:44</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/http' title="http" class="post_tag button button_translucent">http
         </a>
     </span>
@@ -1070,7 +1069,7 @@ Scaffold 的 bottomSheet 属性 这个就是前言中的那种东西的简单实
 通过下载
 基础的 api http 协议中有多种 METHOD,当然最常见的就是 GET POST,
 因为最近几年 restful 协议的频繁使用,使得 PUT,DELETE,PATCH 方法也有了一定的使用率
-基础使用 1import &#39;package:http/http.dart&#39; as http; 2void get(String url) async { 3http.Response response = await http.get(url); …</p>
+基础使用 1import &#39;package:http/http.dart&#39; as http; 2void get(String url) async { 3 http.Response response = await http.get(url); …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/http/flutter-http1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -1209,11 +1208,9 @@ Scaffold 的 bottomSheet 属性 这个就是前言中的那种东西的简单实
         <div class="pale">
           
             <p>原生通信系列
-
-
- 本篇主要介绍如何在 iOS 中发布广播,然后在 dart 端进行订阅
+本篇主要介绍如何在 iOS 中发布广播,然后在 dart 端进行订阅
 oc 先来查看 OC 篇
-1#import &#34;BattlePowerPlugin.h&#34; 2#import &lt;Foundation/NSTimer.h&gt; 3 4@implementation BattlePowerPlugin 56+ (void)registerWithRegistrar:(NSObject&lt;FlutterPluginRegistrar&gt;*)registrar { 7// ... 8 9[self registerPostTimerWithRegistrar:registrar]; 10} …</p>
+1#import &#34;BattlePowerPlugin.h&#34; 2#import &lt;Foundation/NSTimer.h&gt; 3 4@implementation BattlePowerPlugin 5 6+ (void)registerWithRegistrar:(NSObject&lt;FlutterPluginRegistrar&gt;*)registrar { 7 // ... 8 9 [self registerPostTimerWithRegistrar:registrar]; 10} …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/channel/flutter-channel4/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -1292,6 +1289,9 @@ oc 先来查看 OC 篇
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -1312,9 +1312,6 @@ oc 先来查看 OC 篇
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -1331,7 +1328,7 @@ oc 先来查看 OC 篇
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -1431,7 +1428,7 @@ oc 先来查看 OC 篇
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -1502,7 +1499,7 @@ oc 先来查看 OC 篇
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -1754,7 +1751,7 @@ oc 先来查看 OC 篇
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -2201,7 +2198,7 @@ oc 先来查看 OC 篇
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

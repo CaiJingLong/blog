@@ -19,14 +19,14 @@
 
 <meta property="og:type" content="article">
 <meta name="description" content="retrofit 的简单二次封装 基于上次的后，可以对 retrofit 简单的二次封装
-1public interface HttpURL { 2String baseUrl = &#34;http://127.0.0.1:32001/&#34;; 3} 1public class RequestUtils { …">
+1public interface HttpURL { 2 String baseUrl = &#34;http://127.0.0.1:32001/&#34;; 3} 1public class RequestUtils { 2 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Retroift简单二次封装" />
 <meta property="og:url" content="https://kikt.top/posts/android/retroift-simple-packaging/" />
 <meta property="og:title" content="Retroift简单二次封装" />
 <meta property="og:description" content="retrofit 的简单二次封装 基于上次的后，可以对 retrofit 简单的二次封装
-1public interface HttpURL { 2String baseUrl = &#34;http://127.0.0.1:32001/&#34;; 3} 1public class RequestUtils { …" />
+1public interface HttpURL { 2 String baseUrl = &#34;http://127.0.0.1:32001/&#34;; 3} 1public class RequestUtils { 2 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -175,47 +175,47 @@
     
     <div class="post_body"><h1 id="retrofit-的简单二次封装">retrofit 的简单二次封装</h1>
 <p>基于上次的后，可以对 retrofit 简单的二次封装</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">HttpURL</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">String</span> <span class="n">baseUrl</span> <span class="o">=</span> <span class="s">&#34;http://127.0.0.1:32001/&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RequestUtils</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">OkHttpClient</span> <span class="n">client</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Retrofit</span> <span class="n">retrofit</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="kd">private</span> <span class="nf">RequestUtils</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="kd">static</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OkHttpClient</span><span class="o">()</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">                <span class="o">.</span><span class="na">newBuilder</span><span class="o">()</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">                <span class="o">.</span><span class="na">connectTimeout</span><span class="o">(</span><span class="n">8</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">                <span class="o">.</span><span class="na">readTimeout</span><span class="o">(</span><span class="n">8</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">                <span class="o">.</span><span class="na">writeTimeout</span><span class="o">(</span><span class="n">8</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl">                <span class="o">.</span><span class="na">addInterceptor</span><span class="o">(</span><span class="k">new</span> <span class="n">HttpInterceptor</span><span class="o">())</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">
-</span></span><span class="line"><span class="ln">18</span><span class="cl">        <span class="n">retrofit</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Retrofit</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl">                <span class="o">.</span><span class="na">baseUrl</span><span class="o">(</span><span class="n">HttpURL</span><span class="o">.</span><span class="na">baseUrl</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">                <span class="o">.</span><span class="na">client</span><span class="o">(</span><span class="n">client</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl">                <span class="o">.</span><span class="na">addConverterFactory</span><span class="o">(</span><span class="n">StringConverterFactory</span><span class="o">.</span><span class="na">create</span><span class="o">())</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">23</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl">
-</span></span><span class="line"><span class="ln">25</span><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">post</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">String</span> <span class="n">body</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">26</span><span class="cl">        <span class="n">RequestServer</span> <span class="n">requestServer</span> <span class="o">=</span> <span class="n">retrofit</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">RequestServer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">        <span class="n">String</span><span class="o">[]</span> <span class="n">path</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;/&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">28</span><span class="cl">        <span class="n">Call</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">requestServer</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">path</span><span class="o">[</span><span class="n">0</span><span class="o">],</span> <span class="n">path</span><span class="o">[</span><span class="n">1</span><span class="o">],</span> <span class="n">body</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="n">Response</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="n">call</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">30</span><span class="cl">        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="na">body</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">31</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">32</span><span class="cl">
-</span></span><span class="line"><span class="ln">33</span><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">34</span><span class="cl">        <span class="n">String</span> <span class="n">hello</span> <span class="o">=</span> <span class="n">post</span><span class="o">(</span><span class="s">&#34;ping/test&#34;</span><span class="o">,</span> <span class="s">&#34;hello&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">35</span><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">hello</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">36</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>输出结果</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">HttpURL</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">baseUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;http://127.0.0.1:32001/&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RequestUtils</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">OkHttpClient</span><span class="w"> </span><span class="n">client</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Retrofit</span><span class="w"> </span><span class="n">retrofit</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">RequestUtils</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">        </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OkHttpClient</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">connectTimeout</span><span class="p">(</span><span class="n">8</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">readTimeout</span><span class="p">(</span><span class="n">8</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">writeTimeout</span><span class="p">(</span><span class="n">8</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">addInterceptor</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HttpInterceptor</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w">        </span><span class="n">retrofit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Retrofit</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">baseUrl</span><span class="p">(</span><span class="n">HttpURL</span><span class="p">.</span><span class="na">baseUrl</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">client</span><span class="p">(</span><span class="n">client</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">addConverterFactory</span><span class="p">(</span><span class="n">StringConverterFactory</span><span class="p">.</span><span class="na">create</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">body</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="w">        </span><span class="n">RequestServer</span><span class="w"> </span><span class="n">requestServer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">retrofit</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">RequestServer</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="w">        </span><span class="n">Call</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">requestServer</span><span class="p">.</span><span class="na">post</span><span class="p">(</span><span class="n">path</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="o">[</span><span class="n">1</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">body</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="w">        </span><span class="n">Response</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">call</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="na">body</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">33</span><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">34</span><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">post</span><span class="p">(</span><span class="s">&#34;ping/test&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;hello&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">hello</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">36</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>输出结果</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">{</span> <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;msg&#34;</span><span class="p">:</span> <span class="s2">&#34;成功&#34;</span> <span class="p">}</span> <span class="p">}</span>
 </span></span></code></pre></div><p>这里的 post 方法就是传入 url，请求参数是 body，返回值就是 String 类型，如果需要对 string，如果需要对返回值进行处理，再接受 hello 的对应参数进行处理即可</p>
 <p>同样的道理，现在很多的网站可以使用 put/delete/get/post 等不同的 method 方法在同一个 URL 下区分不同的业务逻辑和返回值，只要进行对应的封装即可</p>
@@ -280,6 +280,9 @@
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -300,9 +303,6 @@
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -319,7 +319,7 @@
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -419,7 +419,7 @@
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -490,7 +490,7 @@
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -742,7 +742,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1189,7 +1189,7 @@
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E4%BB%8B%E7%BB%8D/</link>
     <description>Recent content in 介绍 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Fri, 06 Jul 2018 09:13:17 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E4%BB%8B%E7%BB%8D/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -16,13 +17,13 @@
       <description>
         
           
-            flutter 介绍  所有的一切都是个人观点,不满可以留言,可以讨论,吵架大可不必 所有的资料仅 2018-07-06 时我所了解的,当前的 flutter 版本号 dev 为 0.5.6,beta 为 0.5.1 转载请注明出处,简书为第一发布平台(本人目前迁出简书平台,自建 blog)
- 何谓 flutter 简介  google 自己的官方介绍,来源于
+            flutter 介绍 所有的一切都是个人观点,不满可以留言,可以讨论,吵架大可不必 所有的资料仅 2018-07-06 时我所了解的,当前的 flutter 版本号 dev 为 0.5.6,beta 为 0.5.1 转载请注明出处,简书为第一发布平台(本人目前迁出简书平台,自建 blog)
+何谓 flutter 简介 google 自己的官方介绍,来源于
 为什么要用 flutter 跨平台框架,能开发 ios/android,性能不错
 已有那么多的跨平台方案,flutter 有什么优势 所有 UI 为 Flutter 平台自建,使用 skia 引擎绘制到屏幕上,能保持高度的统一性 所以 flutter 定位仅为 UI 框架,可以做一些业务逻辑
 劣势呢 目前与原生控件很难有机的结合到一个界面内
-1大概意思是,目前类似于baidumap,这样的控件只能是生硬的覆盖到flutter的界面上 2android中对应FlutterView(SurfaceView),ios中是FlutterViewController的根view 3你很难直接写方便的回调,手势控制 45WebView,直播等视频播放同理 与原生通信仅依赖一个接近字符串性质的通道,没有构建工具/编译层级的检查 尚处于初级阶段,开源社区还不活跃,相关社区关注度不高
-1关于字符串性质的通道: 2大概意思就是,所有的通信依赖于字符串 3比如flutter中需要定义 4static const MethodChannel _channel = const MethodChannel(&amp;#39;com.365.app/BarCode&amp;#39;); 5_channel.invokeMethod(&amp;#34;getData&amp;#34;, source); 6类似于这样的调用方式 78而原生中 也是需要定义出完全相同的字符串来表示通道名,方法名等等 flutter 使用 dart 语言开发 为什么使用 dart,貌似是说 flutter 的开发团队物理距离 dart 的团队很近,这段真实性未知
+1 大概意思是,目前类似于baidumap,这样的控件只能是生硬的覆盖到flutter的界面上 2 android中对应FlutterView(SurfaceView),ios中是FlutterViewController的根view 3 你很难直接写方便的回调,手势控制 4 5 WebView,直播等视频播放同理 与原生通信仅依赖一个接近字符串性质的通道,没有构建工具/编译层级的检查 尚处于初级阶段,开源社区还不活跃,相关社区关注度不高
+1 关于字符串性质的通道: 2 大概意思就是,所有的通信依赖于字符串 3 比如flutter中需要定义 4 static const MethodChannel _channel = const MethodChannel(&amp;#39;com.365.app/BarCode&amp;#39;); 5 _channel.invokeMethod(&amp;#34;getData&amp;#34;, source); 6 类似于这样的调用方式 7 8 而原生中 也是需要定义出完全相同的字符串来表示通道名,方法名等等 flutter 使用 dart 语言开发 为什么使用 dart,貌似是说 flutter 的开发团队物理距离 dart 的团队很近,这段真实性未知
           
           
         

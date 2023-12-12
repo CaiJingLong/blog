@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E7%82%B9%E5%87%BB/</link>
     <description>Recent content in 点击 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Wed, 14 Nov 2018 14:24:26 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E7%82%B9%E5%87%BB/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -18,8 +19,8 @@
           
             flutter 中 如果给图片外面套 InkWell ,你会发现点击的逻辑生效了,但是 UI 上没反应
 备注: , 违反版权请联系我,删除
- 代码如下
-1import &amp;#39;package:flutter/material.dart&amp;#39;; 23class ImageTapWidget extends StatefulWidget { 4final Widget child; 5final Function onTap; 67const ImageTapWidget({Key key, this.child, this.onTap}) : super(key: key); 89@override 10ImageTapWidgetState createState() { 11return new ImageTapWidgetState(); 12} 13} 1415class ImageTapWidgetState extends State&amp;lt;ImageTapWidget&amp;gt; { 16var isDown = false; 17@override 18Widget build(BuildContext context) { 19return GestureDetector( 20child: AnimatedContainer( 21duration: Duration(milliseconds: 500), 22foregroundDecoration: BoxDecoration( 23color: isDown ? Colors.
+代码如下
+1import &amp;#39;package:flutter/material.dart&amp;#39;; 2 3class ImageTapWidget extends StatefulWidget { 4 final Widget child; 5 final Function onTap; 6 7 const ImageTapWidget({Key key, this.child, this.onTap}) : super(key: key); 8 9 @override 10 ImageTapWidgetState createState() { 11 return new ImageTapWidgetState(); 12 } 13} 14 15class ImageTapWidgetState extends State&amp;lt;ImageTapWidget&amp;gt; { 16 var isDown = false; 17 @override 18 Widget build(BuildContext context) { 19 return GestureDetector( 20 child: AnimatedContainer( 21 duration: Duration(milliseconds: 500), 22 foregroundDecoration: BoxDecoration( 23 color: isDown ?
           
           
         
@@ -38,7 +39,7 @@
             点击事件 android 中,所有 View 都可以直接 setOnClickListener, RN 中也有 TouchableHightlight 这样的控件可以直接套在外面,ios 中也可以有 UIControl 这样的控件可以直接添加点击事件.
 那么 flutter 中有吗? 答案自然是有. GestureDetector,InkResponse,InkWell, 包括一些琳琅满目的按钮,比如 FlatButton,MaterialButton,CupertinoButton,IconButton,ImageButton 这些组件都可以达到目的. 那么自定义的目的是什么呢?
 自定义的优点 最重要的自然就是可控性强,复用性强. 一次修改终身受用. 来看下面的这段代码
-1import &amp;#39;package:flutter/material.dart&amp;#39;; 23class MaterialTapWidget extends StatelessWidget { 4final double radius; 5final Function onTap; 6final Widget child; 7final double elevation; 8final Color backgroundColor; 9final Color splashColor; 10final Function onLongTap; 1112const MaterialTapWidget({ 13Key key, 14this.radius = 0.0, 15this.onTap, 16this.onLongTap, 17@required this.child, 18this.splashColor, 19this.elevation = 0.0, 20this.backgroundColor = Colors.
+1import &amp;#39;package:flutter/material.dart&amp;#39;; 2 3class MaterialTapWidget extends StatelessWidget { 4 final double radius; 5 final Function onTap; 6 final Widget child; 7 final double elevation; 8 final Color backgroundColor; 9 final Color splashColor; 10 final Function onLongTap; 11 12 const MaterialTapWidget({ 13 Key key, 14 this.
           
           
         

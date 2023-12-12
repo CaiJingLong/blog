@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E6%96%87%E6%A1%A3/</link>
     <description>Recent content in 文档 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Thu, 31 Jan 2019 08:50:34 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E6%96%87%E6%A1%A3/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,17 +20,19 @@
             是 flutter 的 api 文档页
 但是这个文档页有的时候不那么好访问, 也许你有自己的页面,或者你就是想简单的搭建一个 pages 到 gitee/github 上方便你以后的访问
 本篇就来教你怎么简单的达成这个目的
-gitee 部署完成后是这样的 准备工作  一个终端工具 dart sdk 一个 web 服务器(pages)  作为一个 flutter/dart 开发者,sdk 肯定是必备工具了
+gitee 部署完成后是这样的 准备工作 一个终端工具 dart sdk 一个 web 服务器(pages) 作为一个 flutter/dart 开发者,sdk 肯定是必备工具了
 如果你运行过 flutter doctor 命令,则 flutter 自带的 sdk 就会存在在的系统内 ${FLUTTER_HOME}/bin/cache/dart-sdk 这里替换为自己的 flutter sdk 的文件夹
- 这里可以看见 dartdoc 这个就是创建文档的工具了
+这里可以看见 dartdoc 这个就是创建文档的工具了
 先进入 sdk 下的 packages/flutter 文件夹
 然后运行$FLUTTER_HOME/bin/cache/dart-sdk/bin/dartdoc .命令 $FLUTTER_HOME 为你的 flutter sdk 所在目录
- 等待一段时间
+等待一段时间
 然后可以看到当前文件夹下生成了一个doc目录,里面就是所有的文档了
- 部署 直接双击 index.html 也可以打开,但是根据官方的说法,如果本地运行可能右上角的搜索不能使用,这就需要部署到服务器上了
+部署 直接双击 index.html 也可以打开,但是根据官方的说法,如果本地运行可能右上角的搜索不能使用,这就需要部署到服务器上了
 如果你有自己的云服务器,那么你估计对于部署应该有自己的理解,就不用继续看了
 本地部署 所以我们需要使用一些本地服务来部署
 比如 nginx/caddy/tomcat/apache 之类的服务器
+我这里本地部署使用一个简单的serve命令来部署,基于npm安装
+npm i serve或 yarn global add serve
           
           
         

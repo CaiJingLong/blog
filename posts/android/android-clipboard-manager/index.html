@@ -180,72 +180,72 @@ Android 中的剪切板是使用ClipboardManager …" />
 <p>一般都是点击事件时将某段文字复制到剪切板中</p>
 <p>Android 中的剪切板是使用<code>ClipboardManager</code>来管理的
 获取这个对象的方法是</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">Context</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">CLIPBOARD_SERVICE</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">cm</span> <span class="o">=</span> <span class="o">(</span><span class="n">ClipboardManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">CLIPBOARD_SERVICE</span><span class="o">);</span>
-</span></span></code></pre></div><p>在 API11 后
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">Context</span><span class="p">.</span><span class="na">getSystemService</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="na">CLIPBOARD_SERVICE</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w"></span><span class="n">cm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ClipboardManager</span><span class="p">)</span><span class="w"> </span><span class="n">getSystemService</span><span class="p">(</span><span class="n">CLIPBOARD_SERVICE</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>在 API11 后
 使用的是</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">ClipboardManager</span>
-</span></span></code></pre></div><p>API11 前
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">android</span><span class="p">.</span><span class="na">content</span><span class="p">.</span><span class="na">ClipboardManager</span><span class="w">
+</span></span></span></code></pre></div><p>API11 前
 使用的是</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">android</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">ClipboardManager</span>
-</span></span></code></pre></div><p>前者的方法声明是</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClipboardManager</span> <span class="kd">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">ClipboardManager</span>
-</span></span></code></pre></div><p>也就是说即使在 API11 后也可以使用旧的方法来获取和修改剪切板内的内容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">android</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">ClipboardManager</span><span class="w">
+</span></span></span></code></pre></div><p>前者的方法声明是</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ClipboardManager</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">android</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">ClipboardManager</span><span class="w">
+</span></span></span></code></pre></div><p>也就是说即使在 API11 后也可以使用旧的方法来获取和修改剪切板内的内容</p>
 <p><code>CharSequence text = cm.getText();</code>可以获取到剪切板内的内容
 使用<code>cm.setText(&quot;复制到剪切板&quot;);</code>可以将内容复制到剪切板内</p>
 <p>如果你的应用 minSDK 在 11 以上，可以直接用新的方法，毕竟老的已经过时了</p>
 <p>使用如下的代码</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl">    <span class="n">cm</span> <span class="o">=</span> <span class="o">(</span><span class="n">ClipboardManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">CLIPBOARD_SERVICE</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">ClipData</span> <span class="n">clipData</span> <span class="o">=</span> <span class="n">ClipData</span><span class="o">.</span><span class="na">newPlainText</span><span class="o">(</span><span class="s">&#34;title&#34;</span><span class="o">,</span> <span class="s">&#34;content23&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="n">cm</span><span class="o">.</span><span class="na">setPrimaryClip</span><span class="o">(</span><span class="n">clipData</span><span class="o">);</span>
-</span></span></code></pre></div><p>可以简单的达到效果</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="w">    </span><span class="n">cm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ClipboardManager</span><span class="p">)</span><span class="w"> </span><span class="n">getSystemService</span><span class="p">(</span><span class="n">CLIPBOARD_SERVICE</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w">    </span><span class="n">ClipData</span><span class="w"> </span><span class="n">clipData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ClipData</span><span class="p">.</span><span class="na">newPlainText</span><span class="p">(</span><span class="s">&#34;title&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;content23&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w">    </span><span class="n">cm</span><span class="p">.</span><span class="na">setPrimaryClip</span><span class="p">(</span><span class="n">clipData</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>可以简单的达到效果</p>
 <p>这个有一个对象<code>ClipData</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">package</span> <span class="nn">com.dn.clipbroaddemo</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kn">import</span> <span class="nn">android.content.ClipData</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="kn">import</span> <span class="nn">android.content.ClipDescription</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="kn">import</span> <span class="nn">android.content.ClipboardManager</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="kn">import</span> <span class="nn">android.util.Log</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">
-</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="kd">private</span> <span class="n">ClipboardManager</span> <span class="n">cm</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">
-</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl">    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">
-</span></span><span class="line"><span class="ln">19</span><span class="cl">        <span class="n">cm</span> <span class="o">=</span> <span class="o">(</span><span class="n">ClipboardManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">CLIPBOARD_SERVICE</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">
-</span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="c1">//        ClipData clipData = ClipData.newPlainText(&#34;title&#34;, &#34;content23&#34;);
-</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="c1">//        cm.setPrimaryClip(clipData);
-</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="c1">//        ClipData primaryClip = cm.getPrimaryClip();
-</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln">26</span><span class="cl">        <span class="n">ClipData</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClipData</span><span class="o">(</span><span class="k">new</span> <span class="n">ClipDescription</span><span class="o">(</span><span class="s">&#34;label&#34;</span><span class="o">,</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="n">ClipDescription</span><span class="o">.</span><span class="na">MIMETYPE_TEXT_PLAIN</span><span class="o">}),</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">                <span class="k">new</span> <span class="n">ClipData</span><span class="o">.</span><span class="na">Item</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">));</span>
-</span></span><span class="line"><span class="ln">28</span><span class="cl">        <span class="n">data</span><span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="k">new</span> <span class="n">ClipData</span><span class="o">.</span><span class="na">Item</span><span class="o">(</span><span class="s">&#34;test0&#34;</span><span class="o">));</span>
-</span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="n">data</span><span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="k">new</span> <span class="n">ClipData</span><span class="o">.</span><span class="na">Item</span><span class="o">(</span><span class="s">&#34;test1&#34;</span><span class="o">));</span>
-</span></span><span class="line"><span class="ln">30</span><span class="cl">
-</span></span><span class="line"><span class="ln">31</span><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">.</span><span class="na">getItemCount</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">32</span><span class="cl">            <span class="n">ClipData</span><span class="o">.</span><span class="na">Item</span> <span class="n">item</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getItemAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">33</span><span class="cl">            <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;MainActivity&#34;</span><span class="o">,</span> <span class="s">&#34;item:&#34;</span> <span class="o">+</span> <span class="n">item</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">34</span><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="ln">35</span><span class="cl">
-</span></span><span class="line"><span class="ln">36</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>日志输出：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">09</span><span class="o">-</span><span class="n">18</span> <span class="n">15</span><span class="o">:</span><span class="n">49</span><span class="o">:</span><span class="n">26</span><span class="o">.</span><span class="na">977</span> <span class="n">30431</span><span class="o">-</span><span class="n">30431</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="na">dn</span><span class="o">.</span><span class="na">clipbroaddemo</span> <span class="n">D</span><span class="o">/</span><span class="n">MainActivity</span><span class="o">:</span> <span class="n">item</span><span class="o">:</span><span class="n">ClipData</span><span class="o">.</span><span class="na">Item</span> <span class="o">{</span> <span class="n">T</span><span class="o">:</span><span class="n">test</span> <span class="o">}</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">09</span><span class="o">-</span><span class="n">18</span> <span class="n">15</span><span class="o">:</span><span class="n">49</span><span class="o">:</span><span class="n">26</span><span class="o">.</span><span class="na">977</span> <span class="n">30431</span><span class="o">-</span><span class="n">30431</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="na">dn</span><span class="o">.</span><span class="na">clipbroaddemo</span> <span class="n">D</span><span class="o">/</span><span class="n">MainActivity</span><span class="o">:</span> <span class="n">item</span><span class="o">:</span><span class="n">ClipData</span><span class="o">.</span><span class="na">Item</span> <span class="o">{</span> <span class="n">T</span><span class="o">:</span><span class="n">test0</span> <span class="o">}</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">09</span><span class="o">-</span><span class="n">18</span> <span class="n">15</span><span class="o">:</span><span class="n">49</span><span class="o">:</span><span class="n">26</span><span class="o">.</span><span class="na">977</span> <span class="n">30431</span><span class="o">-</span><span class="n">30431</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="na">dn</span><span class="o">.</span><span class="na">clipbroaddemo</span> <span class="n">D</span><span class="o">/</span><span class="n">MainActivity</span><span class="o">:</span> <span class="n">item</span><span class="o">:</span><span class="n">ClipData</span><span class="o">.</span><span class="na">Item</span> <span class="o">{</span> <span class="n">T</span><span class="o">:</span><span class="n">test1</span> <span class="o">}</span>
-</span></span></code></pre></div><p>这个对象中可以放很多 Item，我想目的是为了扩展剪切板的功能吧
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.dn.clipbroaddemo</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">android.content.ClipData</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">android.content.ClipDescription</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">android.content.ClipboardManager</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">android.os.Bundle</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">android.support.v7.app.AppCompatActivity</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">android.util.Log</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ClipboardManager</span><span class="w"> </span><span class="n">cm</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w">        </span><span class="n">cm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ClipboardManager</span><span class="p">)</span><span class="w"> </span><span class="n">getSystemService</span><span class="p">(</span><span class="n">CLIPBOARD_SERVICE</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w"></span><span class="c1">//        ClipData clipData = ClipData.newPlainText(&#34;title&#34;, &#34;content23&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="w"></span><span class="c1">//        cm.setPrimaryClip(clipData);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w"></span><span class="c1">//        ClipData primaryClip = cm.getPrimaryClip();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="w">        </span><span class="n">ClipData</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ClipData</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ClipDescription</span><span class="p">(</span><span class="s">&#34;label&#34;</span><span class="p">,</span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="p">{</span><span class="n">ClipDescription</span><span class="p">.</span><span class="na">MIMETYPE_TEXT_PLAIN</span><span class="p">}),</span><span class="w">
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">ClipData</span><span class="p">.</span><span class="na">Item</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="w">        </span><span class="n">data</span><span class="p">.</span><span class="na">addItem</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ClipData</span><span class="p">.</span><span class="na">Item</span><span class="p">(</span><span class="s">&#34;test0&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="w">        </span><span class="n">data</span><span class="p">.</span><span class="na">addItem</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ClipData</span><span class="p">.</span><span class="na">Item</span><span class="p">(</span><span class="s">&#34;test1&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">getItemCount</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="w">            </span><span class="n">ClipData</span><span class="p">.</span><span class="na">Item</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">getItemAt</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">33</span><span class="cl"><span class="w">            </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">&#34;MainActivity&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;item:&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">34</span><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">36</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>日志输出：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">09</span><span class="o">-</span><span class="n">18</span><span class="w"> </span><span class="n">15</span><span class="p">:</span><span class="n">49</span><span class="p">:</span><span class="n">26</span><span class="p">.</span><span class="na">977</span><span class="w"> </span><span class="n">30431</span><span class="o">-</span><span class="n">30431</span><span class="o">/</span><span class="n">com</span><span class="p">.</span><span class="na">dn</span><span class="p">.</span><span class="na">clipbroaddemo</span><span class="w"> </span><span class="n">D</span><span class="o">/</span><span class="n">MainActivity</span><span class="p">:</span><span class="w"> </span><span class="n">item</span><span class="p">:</span><span class="n">ClipData</span><span class="p">.</span><span class="na">Item</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">T</span><span class="p">:</span><span class="n">test</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w"></span><span class="n">09</span><span class="o">-</span><span class="n">18</span><span class="w"> </span><span class="n">15</span><span class="p">:</span><span class="n">49</span><span class="p">:</span><span class="n">26</span><span class="p">.</span><span class="na">977</span><span class="w"> </span><span class="n">30431</span><span class="o">-</span><span class="n">30431</span><span class="o">/</span><span class="n">com</span><span class="p">.</span><span class="na">dn</span><span class="p">.</span><span class="na">clipbroaddemo</span><span class="w"> </span><span class="n">D</span><span class="o">/</span><span class="n">MainActivity</span><span class="p">:</span><span class="w"> </span><span class="n">item</span><span class="p">:</span><span class="n">ClipData</span><span class="p">.</span><span class="na">Item</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">T</span><span class="p">:</span><span class="n">test0</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w"></span><span class="n">09</span><span class="o">-</span><span class="n">18</span><span class="w"> </span><span class="n">15</span><span class="p">:</span><span class="n">49</span><span class="p">:</span><span class="n">26</span><span class="p">.</span><span class="na">977</span><span class="w"> </span><span class="n">30431</span><span class="o">-</span><span class="n">30431</span><span class="o">/</span><span class="n">com</span><span class="p">.</span><span class="na">dn</span><span class="p">.</span><span class="na">clipbroaddemo</span><span class="w"> </span><span class="n">D</span><span class="o">/</span><span class="n">MainActivity</span><span class="p">:</span><span class="w"> </span><span class="n">item</span><span class="p">:</span><span class="n">ClipData</span><span class="p">.</span><span class="na">Item</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">T</span><span class="p">:</span><span class="n">test1</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>这个对象中可以放很多 Item，我想目的是为了扩展剪切板的功能吧
 构造方法中需要传入一个<code>ClipDescription</code>从字面意义上看应该是用于描述 Data</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">ClipDescription</span> <span class="n">primaryClipDescription</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="na">getPrimaryClipDescription</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">ClipData</span> <span class="n">primaryClip</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="na">getPrimaryClip</span><span class="o">();</span>
-</span></span></code></pre></div><p>还可以从剪切板中取出对应的描述和 data 信息</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">ClipDescription</span><span class="w"> </span><span class="n">primaryClipDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cm</span><span class="p">.</span><span class="na">getPrimaryClipDescription</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w"></span><span class="n">ClipData</span><span class="w"> </span><span class="n">primaryClip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cm</span><span class="p">.</span><span class="na">getPrimaryClip</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><p>还可以从剪切板中取出对应的描述和 data 信息</p>
 <p>总结来说：
 获取 manager 对象
 新建剪切板的内容对象
@@ -311,6 +311,9 @@ Android 中的剪切板是使用ClipboardManager …" />
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -331,9 +334,6 @@ Android 中的剪切板是使用ClipboardManager …" />
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -350,7 +350,7 @@ Android 中的剪切板是使用ClipboardManager …" />
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -450,7 +450,7 @@ Android 中的剪切板是使用ClipboardManager …" />
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -521,7 +521,7 @@ Android 中的剪切板是使用ClipboardManager …" />
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -773,7 +773,7 @@ Android 中的剪切板是使用ClipboardManager …" />
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1220,7 +1220,7 @@ Android 中的剪切板是使用ClipboardManager …" />
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

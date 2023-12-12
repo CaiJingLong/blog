@@ -131,7 +131,7 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
 </span>
     <span class="post_date">
       2019-07-04 16:07</span>
-    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/desktop' title="desktop" class="post_tag button button_translucent">desktop
         </a><a href='https://kikt.top/tags/go' title="go" class="post_tag button button_translucent">go
         </a>
@@ -650,7 +650,7 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
 </span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="nx">flutter</span><span class="p">.</span><span class="nf">AddPlugin</span><span class="p">(</span><span class="nx">version</span><span class="p">.</span><span class="nx">VersionPlugin</span><span class="p">{}),</span>
 </span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>这时候重新运行下项目会报一个错</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">build</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">Caijinglong</span><span class="o">/</span><span class="nx">flutter</span><span class="o">-</span><span class="k">go</span><span class="o">-</span><span class="nx">example</span><span class="o">/</span><span class="nx">desktop</span><span class="o">/</span><span class="nx">cmd</span><span class="p">:</span> <span class="nx">cannot</span> <span class="nx">load</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">caijinglong</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">flutter</span><span class="o">-</span><span class="nx">plugin</span><span class="o">/</span><span class="nx">version</span><span class="p">:</span> <span class="nx">cannot</span> <span class="nx">find</span> <span class="nx">module</span> <span class="nx">providing</span> <span class="kn">package</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">caijinglong</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">flutter</span><span class="o">-</span><span class="nx">plugin</span><span class="o">/</span><span class="nx">version</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">build</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Caijinglong</span><span class="o">/</span><span class="n">flutter</span><span class="o">-</span><span class="n">go</span><span class="o">-</span><span class="n">example</span><span class="o">/</span><span class="n">desktop</span><span class="o">/</span><span class="n">cmd</span><span class="p">:</span> <span class="n">cannot</span> <span class="nb">load</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">caijinglong</span><span class="o">/</span><span class="n">go</span><span class="o">-</span><span class="n">flutter</span><span class="o">-</span><span class="n">plugin</span><span class="o">/</span><span class="n">version</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">module</span> <span class="n">providing</span> <span class="n">package</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">caijinglong</span><span class="o">/</span><span class="n">go</span><span class="o">-</span><span class="n">flutter</span><span class="o">-</span><span class="n">plugin</span><span class="o">/</span><span class="n">version</span>
 </span></span></code></pre></div><p>这个是因为插件没有发布到 github 所致, 我们先在本地测试下, 需要按照官方文档修改一下</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mod" data-lang="mod"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">module</span> <span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">Caijinglong</span><span class="o">/</span><span class="n">flutter</span><span class="o">-</span><span class="n">go</span><span class="o">-</span><span class="n">example</span><span class="o">/</span><span class="n">desktop</span>
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">
@@ -763,6 +763,9 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -783,9 +786,6 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -802,7 +802,7 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -902,7 +902,7 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -973,7 +973,7 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -1225,7 +1225,7 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1672,7 +1672,7 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

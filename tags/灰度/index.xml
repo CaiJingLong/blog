@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E7%81%B0%E5%BA%A6/</link>
     <description>Recent content in 灰度 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Sat, 04 Apr 2020 09:01:56 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E7%81%B0%E5%BA%A6/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,7 +20,7 @@
             今天举国哀悼, 进入各种大厂的 app 也可以看到主色都变成灰色的了
 作为程序员我们肯定会想怎么可以实现的, 我简单研究了 10 分钟, flutter 中只要在整体外面套一个 ShaderMask, 然后修改 blendMode 即可
 核心代码:
-1class MyApp extends StatelessWidget { 2// This widget is the root of your application. 3 @override 4Widget build(BuildContext context) { 5return ShaderMask( 6child: OKToast( 7child: MaterialApp( 8title: &amp;#39;Pick Image Demo&amp;#39;, 9theme: ThemeData( 10primarySwatch: Colors.lime, 11), 12home: MyHomePage(title: &amp;#39;Pick Image Demo&amp;#39;), 13), 14), 15shaderCallback: (Rect bounds) { 16return ui.Gradient.linear(Offset.zero, 17Offset(bounds.width, bounds.height), [Colors.grey, Colors.grey]); 18}, 19// blendMode: BlendMode.
+1class MyApp extends StatelessWidget { 2 // This widget is the root of your application. 3 @override 4 Widget build(BuildContext context) { 5 return ShaderMask( 6 child: OKToast( 7 child: MaterialApp( 8 title: &amp;#39;Pick Image Demo&amp;#39;, 9 theme: ThemeData( 10 primarySwatch: Colors.lime, 11 ), 12 home: MyHomePage(title: &amp;#39;Pick Image Demo&amp;#39;), 13 ), 14 ), 15 shaderCallback: (Rect bounds) { 16 return ui.
           
           
         

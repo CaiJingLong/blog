@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/android/</link>
     <description>Recent content in android on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Fri, 14 Aug 2020 20:45:00 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -18,8 +19,8 @@
           
             golang跨平台, 性能强, 周边也算丰富
 一直有一个想法, 把这东西写的代码编译成各个平台的库, 未来在 flutter 里用
-开发环境和工具  MacOS(其他的暂时不考虑) Go  Go 1.14.6, 版本太低可能不能编译成 android 的 Goland , 咱现在是正版用户, 用开源项目申请的All products License , 你也可以根据自己的情况选择别的 IDE 或使用文本编辑器(vscode 也不错)   Android  Android Studio Cmake Android SDK Android NDK    Go 部分 go 源码 add_library.go
-1package main 23import &amp;#34;C&amp;#34; 45//export add 6func add(x, y int) int { 7return x + y 8} 910//export remove_int 11func remove_int(x, y int) int { 12return x - y 13} 1415func main() { 16} 这里有几点要注意
+开发环境和工具 MacOS(其他的暂时不考虑) Go Go 1.14.6, 版本太低可能不能编译成 android 的 Goland , 咱现在是正版用户, 用开源项目申请的All products License , 你也可以根据自己的情况选择别的 IDE 或使用文本编辑器(vscode 也不错) Android Android Studio Cmake Android SDK Android NDK Go 部分 go 源码 add_library.go
+1package main 2 3import &amp;#34;C&amp;#34; 4 5//export add 6func add(x, y int) int { 7	return x + y 8} 9 10//export remove_int 11func remove_int(x, y int) int { 12	return x - y 13} 14 15func main() { 16} 这里有几点要注意
           
           
         
@@ -41,7 +42,7 @@
 1ld: warning: building for macOS, but linking in object file (libswresample/libswresample.a(resample.o)) built for free standing 所以我根据实际的报错内容进行了修改
 编译脚本 这里只需要修改你的 NDK 为你本地的 NDK 目录即可
 最新的代码在这里: gist.github.com 需要自备梯子
-1#!/bin/bash 2 3NDK=/Volumes/Evo512/sdk/android-ndk-r20 4TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/darwin-x86_64 5API=21 67function build_android 8{ 9echo &amp;#34;Compiling FFmpeg for $CPU&amp;#34; 10./configure \ 11 --prefix=$PREFIX \ 12 --libdir=$LIB_DIR \ 13 --enable-shared \ 14 --disable-static \ 15 --enable-jni \ 16 --disable-doc \ 17 --disable-symver \ 18 --disable-programs \ 19 --target-os=android \ 20 --arch=$ARCH \ 21 --cpu=$CPU \ 22 --cc=$CC \ 23 --cxx=$CXX \ 24 --enable-cross-compile \ 25 --sysroot=$SYSROOT \ 26 --extra-cflags=&amp;#34;-Os -fpic $OPTIMIZE_CFLAGS&amp;#34; \ 27 --extra-ldflags=&amp;#34;$ADDI_LDFLAGS&amp;#34; \ 28 --disable-asm \ 29 $COMMON_FF_CFG_FLAGS 30make clean 31make -j8 32make install 33echo &amp;#34;The Compilation of FFmpeg for $CPUis completed&amp;#34; 34} 3536# # armv8-a 37# source &amp;#34;config-env.
+1#!/bin/bash 2 3NDK=/Volumes/Evo512/sdk/android-ndk-r20 4TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/darwin-x86_64 5API=21 6 7function build_android 8{ 9echo &amp;#34;Compiling FFmpeg for $CPU&amp;#34; 10./configure \ 11 --prefix=$PREFIX \ 12 --libdir=$LIB_DIR \ 13 --enable-shared \ 14 --disable-static \ 15 --enable-jni \ 16 --disable-doc \ 17 --disable-symver \ 18 --disable-programs \ 19 --target-os=android \ 20 --arch=$ARCH \ 21 --cpu=$CPU \ 22 --cc=$CC \ 23 --cxx=$CXX \ 24 --enable-cross-compile \ 25 --sysroot=$SYSROOT \ 26 --extra-cflags=&amp;#34;-Os -fpic $OPTIMIZE_CFLAGS&amp;#34; \ 27 --extra-ldflags=&amp;#34;$ADDI_LDFLAGS&amp;#34; \ 28 --disable-asm \ 29 $COMMON_FF_CFG_FLAGS 30make clean 31make -j8 32make install 33echo &amp;#34;The Compilation of FFmpeg for $CPU is completed&amp;#34; 34} 35 36# # armv8-a 37# source &amp;#34;config-env.
           
           
         
@@ -61,7 +62,9 @@
 我也摸索了一个实践方案, 将所有项目的 aar 由 flutter 方打包 aar 后将 aar 置入某一个固定位置 ,并置入一个 git 库管理, 然后 android 原生方直接 pull 后引入项目即可
 高能预警: 本篇会结合 flutter, android, aar, gradle, maven, docker 的知识来完成所有的步骤
 并不是每一个都会详细说明, 如果有不明白的可以在 的本文下面留言, 我会更新文章或给予解答, 其他渠道的可能不会有时间看
-                                                               开发环境 本人设备环境 MacOS 10.
+开发环境 本人设备环境 MacOS 10.13.6 (17G65)
+flutter: Flutter 1.5.4-hotfix.2 • channel stable
+12019-10-25 更新说明: 这篇文章因为发布时效的原因, 当时还没有 `$ flutter build aar` 这个命令 2所以本人并没有实测两个东西的优劣性 预计需要的环境 1xcode 2android sdk 3gradle 4android studio 5flutter sdk 6docker # 这个 这些环境我默认你都有, 没有的话本篇不讲
           
           
         
@@ -83,14 +86,11 @@
 wifi 应用不能动 wifi 开关了, 现在只有通过设置来更改
 wifi 配置 现在必须有设备管理器的权限才能修改 wifi 配置
 ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权限, 则 wifi,蓝牙会有一堆不能访问的 api
-
 或者看下面
-  Telephony
-  
- getCellLocation() getAllCellInfo() requestNetworkScan() requestCellInfoUpdate() getAvailableNetworks() getServiceStateForSubscriber getServiceState()    
- requestNetworkScan()    
- onResults()    
- onCellLocationChanged() onCellInfoChanged() onServiceStateChanged()      Wi-Fi
+Telephony
+getCellLocation() getAllCellInfo() requestNetworkScan() requestCellInfoUpdate() getAvailableNetworks() getServiceStateForSubscriber getServiceState() requestNetworkScan() onResults() onCellLocationChanged() onCellInfoChanged() onServiceStateChanged() Wi-Fi
+startScan() getScanResults() getConnectionInfo() getConfiguredNetworks() Bluetooth
+startDiscovery() startLeScan() LeScanCallback() 后记 以上
           
           
         
@@ -112,7 +112,7 @@ ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权�
 包括但不仅限于以下方案
 设备序列号 IMEI imsi mac 地址(wifi 模块)
 如以下代码:
-1package top.kikit.uniqueidprivacy 23import android.Manifest 4import android.annotation.SuppressLint 5import android.content.Context 6import android.os.Bundle 7import android.telephony.TelephonyManager 8import android.util.Log 9import androidx.appcompat.app.AppCompatActivity 10import com.tbruyelle.rxpermissions2.RxPermissions 1112class MainActivity : AppCompatActivity() { 13private val TAG = &amp;#34;MainActivity&amp;#34;; 1415private val rxPermissions = RxPermissions(this) 1617@SuppressLint(&amp;#34;CheckResult&amp;#34;) 18override fun onCreate(savedInstanceState: Bundle?) { 19super.onCreate(savedInstanceState) 20setContentView(R.layout.activity_main) 212223val mTelephonyMgr = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager 2425rxPermissions.request(Manifest.permission.READ_PHONE_STATE) 26.subscribe { 27if (it) { 28val subscriberId = mTelephonyMgr.
+1package top.kikit.uniqueidprivacy 2 3import android.Manifest 4import android.annotation.SuppressLint 5import android.content.Context 6import android.os.Bundle 7import android.telephony.TelephonyManager 8import android.util.Log 9import androidx.appcompat.app.AppCompatActivity 10import com.tbruyelle.rxpermissions2.RxPermissions 11 12class MainActivity : AppCompatActivity() { 13 private val TAG = &amp;#34;MainActivity&amp;#34;; 14 15 private val rxPermissions = RxPermissions(this) 16 17 @SuppressLint(&amp;#34;CheckResult&amp;#34;) 18 override fun onCreate(savedInstanceState: Bundle?) { 19 super.onCreate(savedInstanceState) 20 setContentView(R.layout.activity_main) 21 22 23 val mTelephonyMgr = getSystemService(Context.
           
           
         
@@ -137,7 +137,7 @@ ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权�
 然后,用户在启动页点了 home 键/back 键,过 3 秒后主页面依然出来了
 很遗憾,以后不行了 😁
 迁移需要修改的代码 无
-一个简单的示例代码 1class MainActivity : AppCompatActivity() { 23override fun onCreate(savedInstanceState: Bundle?) { 4super.onCreate(savedInstanceState) 5setContentView(R.layout.activity_main) 67Handler().postDelayed({ 8startActivity(Intent(this, this.javaClass)) 9finish() 10}, 3000) 11} 12} 这就完成了一个&amp;quot;流氓&amp;quot;式启动
+一个简单的示例代码 1class MainActivity : AppCompatActivity() { 2 3 override fun onCreate(savedInstanceState: Bundle?) { 4 super.onCreate(savedInstanceState) 5 setContentView(R.layout.activity_main) 6 7 Handler().postDelayed({ 8 startActivity(Intent(this, this.
           
           
         
@@ -158,10 +158,12 @@ ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权�
 1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_COARSE_LOCATION&amp;#34;/&amp;gt; 2&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_FINE_LOCATION&amp;#34;/&amp;gt; 分别代表大致位置和精确位置, 一般来说在使用时定位权限都是一起要或者都不要的, 而且这两个作为同一个组,一般都是一起申请,一次授权
 一般来说大部分人都是使用高德/百度地图作为定位 sdk 使用, 很显然这两个货申请一般也是都一起申请的
 androidQ 的权限 androidQ 中会添加一个新的权限
-1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_BACKGROUND_LOCATION&amp;#34; /&amp;gt; 这个就是对应的后台权限, 和以前的分类方式不同,以前是精确度,这个是前后台
+1 &amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_BACKGROUND_LOCATION&amp;#34; /&amp;gt; 这个就是对应的后台权限, 和以前的分类方式不同,以前是精确度,这个是前后台
 按照官方说明:
- targetVersion: androidQ 或以上  如果 targetVersion 是 androidQ+, 则这个权限不会自动添加, 使用者需要自己添加,有就是有,没有就没有   如果 targetVersion 是 api 28(android 9.0)以下  如果你有以前版本的定位权限,则系统会在安装时帮你添加后台的权限(升级 androidOS 版本时不明) 在动态权限申请时,如果你申请的权限有以前的定位权限之一, 则会自动帮你在申请的权限里加上这个后台的    请求后台权限 上来是一段废话... 简单解释, 你需要后台权限吗?
- 不需要 需要  这个不是我们自己能定的, 以国内来看, 接 sdk (推送,定位,分享.
+targetVersion: androidQ 或以上 如果 targetVersion 是 androidQ+, 则这个权限不会自动添加, 使用者需要自己添加,有就是有,没有就没有 如果 targetVersion 是 api 28(android 9.0)以下 如果你有以前版本的定位权限,则系统会在安装时帮你添加后台的权限(升级 androidOS 版本时不明) 在动态权限申请时,如果你申请的权限有以前的定位权限之一, 则会自动帮你在申请的权限里加上这个后台的 请求后台权限 上来是一段废话... 简单解释, 你需要后台权限吗?
+不需要 需要 这个不是我们自己能定的, 以国内来看, 接 sdk (推送,定位,分享...)就要, 不接也要
+如果不需要 请参考
+Service 中声明一个前台定位的 type 类型
           
           
         
@@ -181,12 +183,12 @@ androidQ 的权限 androidQ 中会添加一个新的权限
 隐私配置又㕛叒叕更新了..
 连接地址: 这个地址可能在来年就变成 android 11 的了, 所以仅保证在2019 年 05 月 20 日以及之后的一段时间内有效
 主要包含以下五大项目
- 对于大部分应用来说,储存方式的更新会有所影响, 其他的可能都是 SDK 要做的事情,和普通开发者关系不大
+对于大部分应用来说,储存方式的更新会有所影响, 其他的可能都是 SDK 要做的事情,和普通开发者关系不大
 在适配新的系统前就和从前一样,暂时不升级 targetVersion,把 targetVersion 设置为 28 以下就不会影响旧程序了,就如同以前运行时权限真的是坑到爆炸,但是暂时不适配也是可以的
 但是未来无论如何都需要适配新系统,所以先来看看
 本篇只说储存的方式和权限问题,其他暂时略过不表
-检查迁移情况  有一个表格提供了如何检查和迁移的方案
- 开发环境 说一下开发环境
+检查迁移情况 有一个表格提供了如何检查和迁移的方案
+开发环境 说一下开发环境
 MacOS
 Android Studio 3.4.0
 android 9.0 设备一台
@@ -211,17 +213,17 @@ androidQ build.gradle 当前想尝试 androidQ 的话, 编译版本和目标版�
           
             我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程
 在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍
- 介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
+介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
 最低支持的 API 等级是 API 21(5.0)
 开发环境 我当前的开发环境是
 MacOS 10.13.6
 Android Studio 3.4 小米 8 MIUI 10.3 稳定版 10.3.2.0(android 9.0)
 最低支持 官方说明为 AndroidStudio 3.3 API 21+的设备
 编码准备 新建项目 修改这两项
- 最低 21, 使用 androidX
+最低 21, 使用 androidX
 添加依赖 在 app 级别的 build.gradle 中添加如下依赖
 这个版本当前还是 alpha 版本,后续可能会升级为正式版, 可以查看
-1dependencies { 2def camerax_version = &amp;#34;1.0.0-alpha01&amp;#34; 3implementation &amp;#34;androidx.
+1dependencies { 2 def camerax_version = &amp;#34;1.0.0-alpha01&amp;#34; 3 implementation &amp;#34;androidx.
           
           
         
@@ -240,11 +242,11 @@ Android Studio 3.4 小米 8 MIUI 10.3 稳定版 10.3.2.0(android 9.0)
             最近做了一篇 android 原生中加入 flutter 的尝试,顺便查看下内存占用
 在 debug 模式下肯定是不准的,所以随便看看就好了,只是为了满足好奇心,不代表真实项目中的真实表现,也不代表我的观点
 在原生刚刚打开后稳定的情况下查看内存占用
- 可以看到 打开 Flutter 后内存会有明显上升
- 红点处是我点击了按钮后的情况,会有内存抖动
-关闭 Flutter 界面后会发现内存回落很明显,说明内存相对比较稳定  过了段时间,其实是我在码字+上传图片,没看手机,发现内存更加平稳了,而且降低到了只有 30m
- 换句话说其实在 android 上内存的表现还算可以,目测在关闭 flutterview 的界面后简单的界面是可以完全回收的,而且众所周知 release 蜜汁流畅 :-D
- 本篇是随便写写的,不代表 flutter 在实际项目中的表现,因为实际项目原生,flutter 中都会有更复杂的机制,所以内存 cpu 的消耗会更大, 也可能会发生不可预知的情况
+可以看到 打开 Flutter 后内存会有明显上升
+红点处是我点击了按钮后的情况,会有内存抖动
+关闭 Flutter 界面后会发现内存回落很明显,说明内存相对比较稳定 过了段时间,其实是我在码字+上传图片,没看手机,发现内存更加平稳了,而且降低到了只有 30m
+换句话说其实在 android 上内存的表现还算可以,目测在关闭 flutterview 的界面后简单的界面是可以完全回收的,而且众所周知 release 蜜汁流畅 :-D
+本篇是随便写写的,不代表 flutter 在实际项目中的表现,因为实际项目原生,flutter 中都会有更复杂的机制,所以内存 cpu 的消耗会更大, 也可能会发生不可预知的情况
           
           
         
@@ -266,7 +268,7 @@ Android Studio 3.4 小米 8 MIUI 10.3 稳定版 10.3.2.0(android 9.0)
 所幸的是,flutter 团队提供了一个 用于帮助我们完成这个过程
 创建一个 Android 工程 使用 Android Studio 创建一个新工程来模拟这个过程,会看这里的普遍都应该是 android 程序员出身,Hello World 工程是肯定会的,不会的话还是回炉加强一下吧
 如果你已经有现有工程,肯定是有 VCS 管理的,放心大胆的走出第一步,大不了就删除当前分支嘛,然后你可以跳过这一步,直接看 flutter 的过程
- 创建 Flutter 这一步仅作为 官方 Android 部分的参考
+创建 Flutter 这一步仅作为 官方 Android 部分的参考
 我目前使用的是 1.0.0 的发布版
 1Flutter 1.0.0 • channel dev • https://github.com/flutter/flutter.git 2Framework • revision 5391447fae (11 days ago) • 2018-11-29 19:41:26 -0800 3Engine • revision 7375a0f414 4Tools • Dart 2.1.0 (build 2.1.0-dev.9.4 f9ebf21297) wiki 后续可能会被修改,请查看最新的文档去解决
           
@@ -288,8 +290,8 @@ Android Studio 3.4 小米 8 MIUI 10.3 稳定版 10.3.2.0(android 9.0)
 这篇介绍如何引入 so 到项目中
 开发环境:
 1macos 2android studio 3.2.1 3ndk: 15.2.4203891 新建一个工程 新建工程时,勾选 c++支持
- 将文件复制到项目内 需要复制的文件
-.h 头文件 so文件    在 cpp 中新建一个文件夹include/ffmpeg 把 include 中的文件夹复制到 ffmpeg 下
+将文件复制到项目内 需要复制的文件
+.h 头文件 so文件 在 cpp 中新建一个文件夹include/ffmpeg 把 include 中的文件夹复制到 ffmpeg 下
 在 main 下新建文件夹jniLibs,把 so 文件复制到其中 修改 CMakeList 完整的CMakeList.txt 如下
 1# For more information about using CMake with Android Studio, read the 2# documentation: https://d.android.com/studio/projects/add-native-code.html 3 4# Sets the minimum version of CMake required to build the native library.
           
@@ -344,9 +346,10 @@ flutter engine 简单介绍 这里简单介绍一下 flutter engine,
 一般一个纯 flutter 项目中是这样的, 有一个 FlutterApplication 一个 FlutterActivity 一个 FlutterView,而我们 flutter 所有的界面都是在 FlutterView 上画的
 解析开始 以下基于你对于 android 原生开发有所涉猎,而不是完全不了的基础上展开
 我们都知道,当 finish Activity 后页面会回调onDestroy方法
- 这个方法中会回调一个eventDelegate.onDestroy,我们查看以下这个东西具体是调用到哪里
-  能看到具体的调用是这样的
-  如果 Application 是 FlutterApplication 会直接将当前 Activity 置空
+这个方法中会回调一个eventDelegate.onDestroy,我们查看以下这个东西具体是调用到哪里
+能看到具体的调用是这样的
+如果 Application 是 FlutterApplication 会直接将当前 Activity 置空
+根据 flutterview 附着与否执行detach或destroy
           
           
         
@@ -363,13 +366,11 @@ flutter engine 简单介绍 这里简单介绍一下 flutter engine,
         
           
             原生通信系列
-
-
- 第二篇介绍的是原生通知 dart
+第二篇介绍的是原生通知 dart
 开篇就是灵魂流程图,自己体会吧 😆 不同于第一篇, 本篇是由 java 端作为发布端, dart 作为订阅端
 具体的创建过程请参考第一篇
 java 先看看 java 端代码
-1package com.example.battlepower; 23import java.util.Timer; 4import java.util.TimerTask; 56import io.flutter.plugin.common.BasicMessageChannel; 7import io.flutter.plugin.common.MethodCall; 8import io.flutter.plugin.common.MethodChannel; 9import io.flutter.plugin.common.MethodChannel.MethodCallHandler; 10import io.flutter.plugin.common.MethodChannel.Result; 11import io.flutter.plugin.common.PluginRegistry.Registrar; 12import io.flutter.plugin.common.StandardMessageCodec; 1314/** 15* BattlePowerPlugin 16*/ 17public class BattlePowerPlugin implements MethodCallHandler { 1819private static BasicMessageChannel&amp;lt;Object&amp;gt; runTimeSender; 2021private static Timer timer; 2223private static long startTime; 2425/** 26* Plugin registration. 27*/ 28public static void registerWith(Registrar registrar) { 29final MethodChannel channel = new MethodChannel(registrar.
+1package com.example.battlepower; 2 3import java.util.Timer; 4import java.util.TimerTask; 5 6import io.flutter.plugin.common.BasicMessageChannel; 7import io.flutter.plugin.common.MethodCall; 8import io.flutter.plugin.common.MethodChannel; 9import io.flutter.plugin.common.MethodChannel.MethodCallHandler; 10import io.flutter.plugin.common.MethodChannel.Result; 11import io.flutter.plugin.common.PluginRegistry.Registrar; 12import io.flutter.plugin.common.StandardMessageCodec; 13 14/** 15 * BattlePowerPlugin 16 */ 17public class BattlePowerPlugin implements MethodCallHandler { 18 19 private static BasicMessageChannel&amp;lt;Object&amp;gt; runTimeSender; 20 21 private static Timer timer; 22 23 private static long startTime; 24 25 /** 26 * Plugin registration.
           
           
         
@@ -386,21 +387,19 @@ java 先看看 java 端代码
         
           
             原生通信系列
-
-
- 在 flutter 开发中一定会有需要和原生通信的情况
+在 flutter 开发中一定会有需要和原生通信的情况
 第一篇介绍的是 flutter 调用 Android
 这篇是给刚刚入门或者刚刚接触原生调用的朋友们使用的,老鸟们或者英文强的朋友还是直接看官方文档比较好
 创建项目 一般来说建议使用一个 plugin 作为一个单独的项目来将业务逻辑独立出去
 我这里使用命令行创建,事实上一律建议使用命令行创建,因为信息更加可见一些
 1flutter create --template plugin battle_power 2cd battle_power 前面都是固定格式,最后面那个是插件名,根据你自己的需要来修改
 创建好的截图如下 和开发 package 的时候不同,开发 plugin 需要打开 example/android 目录
- 使用快捷的方式,或自己通过 Android Studio 的 open 打开项目
- 等待完成
- 接着就可以开始开发了,
+使用快捷的方式,或自己通过 Android Studio 的 open 打开项目
+等待完成
+接着就可以开始开发了,
 默认生成了一个 java 文件,可以称之为插件的主文件
-流程图  乱画的..随便看看就好
-android 端 1package com.example.battlepower; 23import io.flutter.plugin.common.MethodCall; 4import io.flutter.plugin.common.MethodChannel; 5import io.flutter.plugin.common.MethodChannel.MethodCallHandler; 6import io.flutter.plugin.common.MethodChannel.Result; 7import io.flutter.plugin.common.PluginRegistry.Registrar; 89/** BattlePowerPlugin */ 10public class BattlePowerPlugin implements MethodCallHandler { 11/** Plugin registration.
+流程图 乱画的..随便看看就好
+android 端 1package com.example.battlepower; 2 3import io.flutter.plugin.common.MethodCall; 4import io.flutter.plugin.common.MethodChannel; 5import io.flutter.plugin.common.MethodChannel.MethodCallHandler; 6import io.flutter.plugin.common.MethodChannel.Result; 7import io.flutter.plugin.common.PluginRegistry.Registrar; 8 9/** BattlePowerPlugin */ 10public class BattlePowerPlugin implements MethodCallHandler { 11 /** Plugin registration.
           
           
         
@@ -419,12 +418,12 @@ android 端 1package com.example.battlepower; 23import io.flutter.plugin.common.
             so 库说明 so 库在 android 中,是使用 c/c++代码编译出来的库文件,可以使用 ndk 调用,就是你在 android 代码中见到的 native 方法,具体的实现就在 so 库中
 关于 so 库兼容性问题 andorid 中或多或少都会引用到第三方库,而很多第三方库中都有 so 的存在,不论是复制到项目中(如百度地图),或是 gradle 依赖(如个推) 其中都涉及到了 so 库的相关问题,如果你选择的库是有所有 cpu 类型可选还好,如果不是,那么就需要自定义设置了
 举个栗子 你的 app 依赖两个库,分别是 lib1,lib2
-1lib1: arm64-v8a,armeabi-v7a 2lib2: armeabi-v7a 那么当你运行在 v7 的手机上时,因为你的项目含有 v7 的 so 库,所以没有问题,可以跑起来
+1 lib1: arm64-v8a,armeabi-v7a 2 lib2: armeabi-v7a 那么当你运行在 v7 的手机上时,因为你的项目含有 v7 的 so 库,所以没有问题,可以跑起来
 如果,你运行在 v8 手机上,那么你的项目就会 boom,崩了, 为啥呢? 这就涉及到 so 对齐了
 so 对齐 简单来说,就是要有就必须都有,如果一个没有,那就一个都不要
 比如上面的例子,如果你是自己复制到项目下的,你需要删掉 arm64-v8a 的文件夹
 如果是个推那种使用 gradle 依赖的方案,那么你需要修改 gradle 文件,这个是我的个推的配置 gradle
-1// 个推的ndk配置 2apply plugin: &amp;#39;com.android.application&amp;#39; 34android { 5defaultConfig { 6ndk { 7abiFilters &amp;#34;armeabi-v7a&amp;#34; 8// abiFilters &amp;#34;armeabi-v7a&amp;#34;,&amp;#34;arm64-v8a&amp;#34; 9 } 10} 11buildTypes { 12debug { 13ndk { 14abiFilters &amp;#34;armeabi-v7a&amp;#34;, &amp;#34;x86&amp;#34; 15// abiFilters &amp;#34;armeabi-v7a&amp;#34;, &amp;#34;x86&amp;#34;/*, &amp;#34;arm64-v8a&amp;#34;*/ 16 } 17} 18release{ 19ndk{ 20abiFilters &amp;#34;armeabi-v7a&amp;#34; 21} 22} 23} 24} 2526repositories { 27maven { url &amp;#34;http://mvn.
+1// 个推的ndk配置 2apply plugin: &amp;#39;com.
           
           
         
@@ -445,7 +444,7 @@ so 对齐 简单来说,就是要有就必须都有,如果一个没有,那就一�
 比如 A 库引用了 v7 26.x.x 的库, B 库使用了 v7 27.x.x 作为依赖
 解决方案 gradle 打包的过程中,首先会加载所有 gradle 脚本到库内
 然后才是运行的过程, 所以我们只需要在 app 级的build.gradle中增加如下代码即可
-1rootProject.allprojects { // 闭包循环每个工程 2 3subprojects { //每个工程子工程 4 project.configurations.all { //查找所有配置 5 resolutionStrategy.eachDependency { details -&amp;gt; //遍历所有依赖 6 if (details.requested.group == &amp;#39;com.android.support&amp;#39; 7&amp;amp;&amp;amp; details.requested.name.contains(&amp;#39;appcompat-v7&amp;#39;)) { 8details.useVersion &amp;#34;26.1.0&amp;#34; //将support包 v7替换为26.1.0 ,这里根据你自己的需要来改就可以了 9 } 10} 11} 12} 1314} 
+1rootProject.allprojects { // 闭包循环每个工程 2 3 subprojects { //每个工程子工程 4 project.configurations.all { //查找所有配置 5 resolutionStrategy.eachDependency { details -&amp;gt; //遍历所有依赖 6 if (details.requested.group == &amp;#39;com.android.support&amp;#39; 7 &amp;amp;&amp;amp; details.requested.name.contains(&amp;#39;appcompat-v7&amp;#39;)) { 8 details.useVersion &amp;#34;26.1.0&amp;#34; //将support包 v7替换为26.1.0 ,这里根据你自己的需要来改就可以了 9 } 10 } 11 } 12 } 13 14} 
           
           
         
@@ -462,12 +461,12 @@ so 对齐 简单来说,就是要有就必须都有,如果一个没有,那就一�
         
           
             前言 最近有一些蓝牙的通信需要做,就研究了一下蓝牙连接相关
- 连接蓝牙电子秤 连接 pos 机打印  其中连接蓝牙电子秤是接收数据 pos 机打印是发送数据/接收数据
-流程图  流程图画的相当不专业,请自行脑补   核心类 因为这次的电子秤不是 4.0 的设备,所以没有使用 BLE 的开发,而是经典蓝牙(SPP)的连接方式 BluetoothAdapter
+连接蓝牙电子秤 连接 pos 机打印 其中连接蓝牙电子秤是接收数据 pos 机打印是发送数据/接收数据
+流程图 流程图画的相当不专业,请自行脑补 核心类 因为这次的电子秤不是 4.0 的设备,所以没有使用 BLE 的开发,而是经典蓝牙(SPP)的连接方式 BluetoothAdapter
 全局变量
 1protected BluetoothAdapter mAdapter; 获取的方法,在 API18 下的时候使用的方式和以上的不一样,其实差别不大
-1if (SDK_INT &amp;lt; 18) { 2adapter = BluetoothAdapter.getDefaultAdapter(); 3} else { 4BluetoothManager bm = (BluetoothManager) getSystemService(BLUETOOTH_SERVICE); 5adapter = bm.getAdapter(); 6} 蓝牙使用的是注册广播的方式来获取系统给我们的通知 核心有以下的几种,注册广播的方法自己去搜下吧
-1BluetoothDevice.ACTION_FOUND//找到设备 2 BluetoothDevice.ACTION_NAME_CHANGED//设备的名字 3 BluetoothAdapter.ACTION_DISCOVERY_FINISHED//扫描结束 4 BluetoothDevice.ACTION_PAIRING_REQUEST//配对请求的放弃 5 BluetoothAdapter.STATE_OFF//蓝牙关闭 6 BluetoothAdapter.STATE_ON//蓝牙开启 连接 一般这种连接应该是全局单例,考虑写在了 service 中
+1if (SDK_INT &amp;lt; 18) { 2 adapter = BluetoothAdapter.getDefaultAdapter(); 3} else { 4 BluetoothManager bm = (BluetoothManager) getSystemService(BLUETOOTH_SERVICE); 5 adapter = bm.getAdapter(); 6} 蓝牙使用的是注册广播的方式来获取系统给我们的通知 核心有以下的几种,注册广播的方法自己去搜下吧
+1 BluetoothDevice.ACTION_FOUND//找到设备 2 BluetoothDevice.ACTION_NAME_CHANGED//设备的名字 3 BluetoothAdapter.ACTION_DISCOVERY_FINISHED//扫描结束 4 BluetoothDevice.ACTION_PAIRING_REQUEST//配对请求的放弃 5 BluetoothAdapter.STATE_OFF//蓝牙关闭 6 BluetoothAdapter.STATE_ON//蓝牙开启 连接 一般这种连接应该是全局单例,考虑写在了 service 中
 首先需要扫描所有的蓝牙连接,但是这里有个坑,就是如果你将广播注册在 onCreate 中和 onDestroy,你每次都需要接收系统的广播,如果出现同名或者别的原因,这里就会一直接收广播 所以这里需要动态的将广播注册与反注册 我这里使用的方案请参照流程图
           
           
@@ -486,10 +485,9 @@ so 对齐 简单来说,就是要有就必须都有,如果一个没有,那就一�
           
             前言 今天用 AS 写一个带有百度地图相关的项目时，发现了一个问题
 提示
-1Error:Execution failed for task &amp;#39;:app:compileDebugNdk&amp;#39;. 2&amp;gt; Error: Your project contains C++ files but it is not using a supported native build system. 3Consider using CMake or ndk-build integration with the stable Android Gradle plugin: 4https://developer.android.com/studio/projects/add-native-code.html 5or use the experimental plugin: 6http://tools.android.com/tech-docs/new-build-system/gradle-experimental. 我就找原因，先点开了两个网页，发现一个是用 CMake 构建 ndk 的还一个是用 experimental 插件构件 ndk 项目的
+1 Error:Execution failed for task &amp;#39;:app:compileDebugNdk&amp;#39;. 2&amp;gt; Error: Your project contains C++ files but it is not using a supported native build system. 3Consider using CMake or ndk-build integration with the stable Android Gradle plugin: 4 https://developer.android.com/studio/projects/add-native-code.html 5or use the experimental plugin: 6 http://tools.android.com/tech-docs/new-build-system/gradle-experimental. 我就找原因，先点开了两个网页，发现一个是用 CMake 构建 ndk 的还一个是用 experimental 插件构件 ndk 项目的
 这两个方式的共通点是都有 c 的源码，自己生成 so 文件，都不是我想要的
 因为以前这么写没有问题，我在网上找相同的问题，大家都是说把 targetVersion 改成 23 以下就解决了，但是这不是我想要的，况且我这么用了也没解决问题，毕竟 targetVersion 迁移到 23+是大势所趋
-我找了下原因，应该是 so 文件的原因，在 6.
           
           
         
@@ -508,13 +506,12 @@ so 对齐 简单来说,就是要有就必须都有,如果一个没有,那就一�
             前言 最近出去面试找工作，被人问到 AIDL，我就回答这个东西我用过，也大概理解，Android 的进程间通信语言嘛
 人家不置可否，那我能咋着呢，毕竟没深入研究过，也没办法，咱只能回来奋发图强了
 写在前面 我以前就看过的一个博客，里面原理代码什么都有，写的水平肯定比我高
- 
- 首先字面解释 A=Android IDL=Interface definition language 意译就是 android 接口定义语言，马丹，完全看不明白 算了，就是 Android 官方给我们定义出来跨进程，甚至跨应用通信用的
+首先字面解释 A=Android IDL=Interface definition language 意译就是 android 接口定义语言，马丹，完全看不明白 算了，就是 Android 官方给我们定义出来跨进程，甚至跨应用通信用的
 开发平台 Android Studio 2.2+Android 手机一部
 新建工程 这个就不说了，跳过 就是新建工程后再建一个 module 也是 android app，功能后面再说
 aidl 语法 这里请去看我写在前面，里面比较详细，或者自行 baidu/google，我也了解的不多
 代码示例 最关键的地方到了 其实就是新建一个 aidl 文件
-1// IMyAidlInterface.aidl 2package com.kikt.aidl; 34// Declare any non-default types here with import statements 5 6interface IMyAidlInterface { 78void test(int sum,int sum2); 9} 接着 make project，生成下 java 代码 找到生成的代码看下 我靠 好复杂，还是渣格式，这里格式化一下：
+1// IMyAidlInterface.aidl 2package com.kikt.aidl; 3 4// Declare any non-default types here with import statements 5 6interface IMyAidlInterface { 7 8 void test(int sum,int sum2); 9} 接着 make project，生成下 java 代码 找到生成的代码看下 我靠 好复杂，还是渣格式，这里格式化一下：
           
           
         
@@ -534,7 +531,7 @@ aidl 语法 这里请去看我写在前面，里面比较详细，或者自行 b
 开发环境 Android Studio 2.2
 步骤 首先新建工程 然后会自动生成 MainActivity
 MainActivity 代码如下
-1public class MainActivity extends AppCompatActivity { 23// Used to load the &amp;#39;native-lib&amp;#39; library on application startup. 4 static { 5System.loadLibrary(&amp;#34;kikt-camera&amp;#34;); 6} 78@Override 9protected void onCreate(Bundle savedInstanceState) { 10super.onCreate(savedInstanceState); 11setContentView(R.layout.activity_main); 1213// Example of a call to a native method 14 TextView tv = (TextView) findViewById(R.id.sample_text); 15tv.setText(stringFromJNI()); 16} 1718/** 19* A native method that is implemented by the &amp;#39;native-lib&amp;#39; native library, 20* which is packaged with this application.
+1public class MainActivity extends AppCompatActivity { 2 3 // Used to load the &amp;#39;native-lib&amp;#39; library on application startup. 4 static { 5 System.loadLibrary(&amp;#34;kikt-camera&amp;#34;); 6 } 7 8 @Override 9 protected void onCreate(Bundle savedInstanceState) { 10 super.onCreate(savedInstanceState); 11 setContentView(R.layout.activity_main); 12 13 // Example of a call to a native method 14 TextView tv = (TextView) findViewById(R.
           
           
         
@@ -555,9 +552,9 @@ MainActivity 代码如下
 准备工作 其实 demo 永远是最好的老师 我们直接自己创建一个 Project 好在 AS 对于对于 ndk 的支持越来越友好 选中 c++支持，这样创建出来的 gradle 文件就会自动创建相关的，有助于我们学习
 自动生成的核心文件 build.gradle MainActivity.java native-lib.cpp CMakelists.txt
 MainActivity.java MainActivity.java
-1System.loadLibrary(&amp;#34;native-lib&amp;#34;); //加载native-lib库 2 ... 3public native String stringFromJNI();//指向cpp文件中的方法  左边有一个箭头，这个点击可以直接跳到 cpp 文件中的方法
+1 System.loadLibrary(&amp;#34;native-lib&amp;#34;); //加载native-lib库 2 ... 3 public native String stringFromJNI();//指向cpp文件中的方法 左边有一个箭头，这个点击可以直接跳到 cpp 文件中的方法
 gradle project 级别的和传统没有差别 看 module 级的
-1apply plugin: &amp;#39;com.android.application&amp;#39; 23android { 4... 5externalNativeBuild { 6cmake { 7cppFlags &amp;#34;&amp;#34; 8} 9} 10} 11.
+1apply plugin: &amp;#39;com.android.application&amp;#39; 2 3android { 4 ... 5 externalNativeBuild { 6 cmake { 7 cppFlags &amp;#34;&amp;#34; 8 } 9 } 10 } 11 .
           
           
         
@@ -573,13 +570,13 @@ gradle project 级别的和传统没有差别 看 module 级的
       <description>
         
           
-            写在前面：  在 github 上 butterknife 的 star 有 11000+ 为啥有这么多人用这个插件 两点： 1、自动化 2、有人更新和维护
+            写在前面： 在 github 上 butterknife 的 star 有 11000+ 为啥有这么多人用这个插件 两点： 1、自动化 2、有人更新和维护
 GRADLE 根目录的 build.gradle 也就是 project 级
-1buildscript { 2repositories { 3mavenCentral() 4} 5dependencies { 6classpath &amp;#39;com.neenbedankt.gradle.plugins:android-apt:1.8&amp;#39; 7} 8} module 级别
-1apply plugin: &amp;#39;android-apt&amp;#39; 23android { 4... 5} 67dependencies { 8compile &amp;#39;com.jakewharton:butterknife:8.4.0&amp;#39; 9apt &amp;#39;com.jakewharton:butterknife-compiler:8.4.0&amp;#39; 10} 基本的注入我想大部分人都知道
+1buildscript { 2 repositories { 3 mavenCentral() 4 } 5 dependencies { 6 classpath &amp;#39;com.neenbedankt.gradle.plugins:android-apt:1.8&amp;#39; 7 } 8} module 级别
+1apply plugin: &amp;#39;android-apt&amp;#39; 2 3android { 4 ... 5} 6 7dependencies { 8 compile &amp;#39;com.jakewharton:butterknife:8.4.0&amp;#39; 9 apt &amp;#39;com.jakewharton:butterknife-compiler:8.4.0&amp;#39; 10} 基本的注入我想大部分人都知道
 ButterKnife.bind(this) 这里可以是 View，Activity 等等
 还支持 Android annotations 的几个注解
-1@Optional //可选 2@Nullable //可能为空 在 8.4.0 中最大的改动可能就是使用 R2 代替 R 文件 我觉得这个可能是为了自动生成 R 文件经常出现问题的解决方案 应该是和 Android Studio 中的 instant run 有冲突
+1@Optional //可选 2@Nullable //可能为空 在 8.
           
           
         
@@ -605,9 +602,9 @@ Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象�
 CharSequence text = cm.getText();可以获取到剪切板内的内容 使用cm.setText(&amp;quot;复制到剪切板&amp;quot;);可以将内容复制到剪切板内
 如果你的应用 minSDK 在 11 以上，可以直接用新的方法，毕竟老的已经过时了
 使用如下的代码
-1cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 2ClipData clipData = ClipData.newPlainText(&amp;#34;title&amp;#34;, &amp;#34;content23&amp;#34;); 3cm.setPrimaryClip(clipData); 可以简单的达到效果
+1 cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 2 ClipData clipData = ClipData.newPlainText(&amp;#34;title&amp;#34;, &amp;#34;content23&amp;#34;); 3 cm.setPrimaryClip(clipData); 可以简单的达到效果
 这个有一个对象ClipData
-1package com.dn.clipbroaddemo; 23import android.content.ClipData; 4import android.content.ClipDescription; 5import android.content.ClipboardManager; 6import android.os.Bundle; 7import android.support.v7.app.AppCompatActivity; 8import android.util.Log; 910public class MainActivity extends AppCompatActivity { 1112private ClipboardManager cm; 1314@Override 15protected void onCreate(Bundle savedInstanceState) { 16super.
+1package com.dn.clipbroaddemo; 2 3import android.content.ClipData; 4import android.content.ClipDescription; 5import android.content.ClipboardManager; 6import android.os.Bundle; 7import android.support.v7.app.AppCompatActivity; 8import android.
           
           
         
@@ -624,7 +621,7 @@ CharSequence text = cm.getText();可以获取到剪切板内的内容 使用cm.s
         
           
             retrofit 的简单二次封装 基于上次的后，可以对 retrofit 简单的二次封装
-1public interface HttpURL { 2String baseUrl = &amp;#34;http://127.0.0.1:32001/&amp;#34;; 3} 1public class RequestUtils { 23private static OkHttpClient client; 4private static Retrofit retrofit; 56private RequestUtils() { 7} 89static { 10client = new OkHttpClient() 11.newBuilder() 12.connectTimeout(8, TimeUnit.SECONDS) 13.readTimeout(8, TimeUnit.SECONDS) 14.writeTimeout(8, TimeUnit.SECONDS) 15.addInterceptor(new HttpInterceptor()) 16.build(); 1718retrofit = new Retrofit.Builder() 19.baseUrl(HttpURL.baseUrl) 20.client(client) 21.addConverterFactory(StringConverterFactory.create()) 22.build(); 23} 2425public static String post(String url, String body) throws IOException { 26RequestServer requestServer = retrofit.create(RequestServer.class); 27String[] path = url.
+1public interface HttpURL { 2 String baseUrl = &amp;#34;http://127.0.0.1:32001/&amp;#34;; 3} 1public class RequestUtils { 2 3 private static OkHttpClient client; 4 private static Retrofit retrofit; 5 6 private RequestUtils() { 7 } 8 9 static { 10 client = new OkHttpClient() 11 .newBuilder() 12 .connectTimeout(8, TimeUnit.SECONDS) 13 .readTimeout(8, TimeUnit.SECONDS) 14 .writeTimeout(8, TimeUnit.SECONDS) 15 .addInterceptor(new HttpInterceptor()) 16 .build(); 17 18 retrofit = new Retrofit.Builder() 19 .baseUrl(HttpURL.baseUrl) 20 .
           
           
         
@@ -640,10 +637,10 @@ CharSequence text = cm.getText();可以获取到剪切板内的内容 使用cm.s
       <description>
         
           
-            retrofit 初探 引用 maven 1&amp;lt;dependency&amp;gt; 2&amp;lt;groupId&amp;gt;com.squareup.retrofit2&amp;lt;/groupId&amp;gt; 3&amp;lt;artifactId&amp;gt;retrofit&amp;lt;/artifactId&amp;gt; 4&amp;lt;version&amp;gt;2.1.0&amp;lt;/version&amp;gt; 5&amp;lt;/dependency&amp;gt; gradle 1api &amp;#39;com.squareup.retrofit2:retrofit:2.1.0&amp;#39; github  个人意见 其实，最适合使用 retrofit 的是 rest 请求类的交互，如果具体的请求参数是以 url 区分业务逻辑，请求参数通过 json 进行的，那其实 retrofit 不太适用
+            retrofit 初探 引用 maven 1&amp;lt;dependency&amp;gt; 2 &amp;lt;groupId&amp;gt;com.squareup.retrofit2&amp;lt;/groupId&amp;gt; 3 &amp;lt;artifactId&amp;gt;retrofit&amp;lt;/artifactId&amp;gt; 4 &amp;lt;version&amp;gt;2.1.0&amp;lt;/version&amp;gt; 5&amp;lt;/dependency&amp;gt; gradle 1 api &amp;#39;com.squareup.retrofit2:retrofit:2.1.0&amp;#39; github 个人意见 其实，最适合使用 retrofit 的是 rest 请求类的交互，如果具体的请求参数是以 url 区分业务逻辑，请求参数通过 json 进行的，那其实 retrofit 不太适用
 俗话说，demo 是最好的学习 先来看看怎么定义业务逻辑
-1public interface GitHubService { 2@GET(&amp;#34;users/{user}/repos&amp;#34;) 3Call&amp;lt;List&amp;lt;Repo&amp;gt;&amp;gt; listRepos(@Path(&amp;#34;user&amp;#34;) String user); 4} 这里的{user}是一个会在实际使用时会被动态改变的，会根据 String user 中的变量而改变
-1public class RetrofitDemo { 2private static OkHttpClient client; 34static { 5client = new OkHttpClient.Builder() 6.addInterceptor(new HttpInterceptor()) 7.build(); 8} 910public static void main(String[] args) throws IOException { 11Retrofit retrofit = new Retrofit.
+1public interface GitHubService { 2 @GET(&amp;#34;users/{user}/repos&amp;#34;) 3 Call&amp;lt;List&amp;lt;Repo&amp;gt;&amp;gt; listRepos(@Path(&amp;#34;user&amp;#34;) String user); 4} 这里的{user}是一个会在实际使用时会被动态改变的，会根据 String user 中的变量而改变
+1public class RetrofitDemo { 2 private static OkHttpClient client; 3 4 static { 5 client = new OkHttpClient.Builder() 6 .addInterceptor(new HttpInterceptor()) 7 .
           
           
         

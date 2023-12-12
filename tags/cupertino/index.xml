@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/cupertino/</link>
     <description>Recent content in cupertino on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 08 Jan 2019 17:34:10 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/cupertino/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -17,9 +18,9 @@
         
           
             1NosuchMethodError: The getter &amp;#39;pasterButtonLabel&amp;#39; was called on null. 2Receiver: null 3Tried calling: pasteButtonLabel 在最近 app store 提交审核时被拒了,然后得到了一个这样的截图
- 在 flutter 中可能会会出现各种问题,因为之前遇到过这个问题,但是那是我另一个应用,这个忘了设置了
+在 flutter 中可能会会出现各种问题,因为之前遇到过这个问题,但是那是我另一个应用,这个忘了设置了
 我快速搞了一下,重新提交了审核
-解决方式 1import &amp;#39;package:flutter/cupertino.dart&amp;#39;; 2import &amp;#39;package:flutter/foundation.dart&amp;#39;; 3import &amp;#39;package:flutter/material.dart&amp;#39;; 4import &amp;#39;package:flutter_localizations/flutter_localizations.dart&amp;#39;; 56class ChineseCupertinoLocalizations implements CupertinoLocalizations { 7final materialDelegate = GlobalMaterialLocalizations.delegate; 8final widgetsDelegate = GlobalWidgetsLocalizations.delegate; 9final local = const Locale(&amp;#39;zh&amp;#39;); 1011MaterialLocalizations ml; 1213Future init() async { 14ml = await materialDelegate.load(local); 15print(ml.pasteButtonLabel); 16} 1718@override 19String get alertDialogLabel =&amp;gt; ml.alertDialogLabel; 2021@override 22String get anteMeridiemAbbreviation =&amp;gt; ml.
+解决方式 1import &amp;#39;package:flutter/cupertino.dart&amp;#39;; 2import &amp;#39;package:flutter/foundation.dart&amp;#39;; 3import &amp;#39;package:flutter/material.dart&amp;#39;; 4import &amp;#39;package:flutter_localizations/flutter_localizations.dart&amp;#39;; 5 6class ChineseCupertinoLocalizations implements CupertinoLocalizations { 7 final materialDelegate = GlobalMaterialLocalizations.delegate; 8 final widgetsDelegate = GlobalWidgetsLocalizations.delegate; 9 final local = const Locale(&amp;#39;zh&amp;#39;); 10 11 MaterialLocalizations ml; 12 13 Future init() async { 14 ml = await materialDelegate.load(local); 15 print(ml.pasteButtonLabel); 16 } 17 18 @override 19 String get alertDialogLabel =&amp;gt; ml.
           
           
         

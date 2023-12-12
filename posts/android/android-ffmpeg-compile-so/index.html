@@ -213,18 +213,18 @@
 <p>这个是我的 ndk 版本,截至当前最新版本应该是 18.X</p>
 <p>版本号在 ndk 中查看 propertis 文件可以看见</p>
 <p>另一个叫法是 android-ndk-r15c</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Pkg.Desc = Android NDK
-</span></span><span class="line"><span class="ln">2</span><span class="cl">Pkg.Revision = 15.2.4203891
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="ln">1</span><span class="cl"><span class="na">Pkg.Desc</span> <span class="o">=</span> <span class="s">Android NDK</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="na">Pkg.Revision</span> <span class="o">=</span> <span class="s">15.2.4203891</span>
 </span></span></code></pre></div><p>ffmpeg 版本:我开始是下载的最新版本 4.1 版 ,结果编译不通过,在 udp.c 中报错了,通过网络搜索到一个原因,ffmpeg </p>
 <p>通过下载了一个 ffmpeg-3.3.6 解决</p>
 <p>另外,亲测最新的 NDKr18 并不能编译 3.3.6 会报一个</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">/Users/caijinglong/Library/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc is unable to create an executable file.
-</span></span><span class="line"><span class="ln">2</span><span class="cl">C compiler test failed.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="ln">1</span><span class="cl"><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">caijinglong</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Android</span><span class="o">/</span><span class="n">sdk</span><span class="o">/</span><span class="n">ndk</span><span class="o">-</span><span class="n">bundle</span><span class="o">/</span><span class="n">toolchains</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">androideabi</span><span class="o">-</span><span class="mf">4.9</span><span class="o">/</span><span class="n">prebuilt</span><span class="o">/</span><span class="n">darwin</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">androideabi</span><span class="o">-</span><span class="n">gcc</span> <span class="n">is</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">create</span> <span class="n">an</span> <span class="n">executable</span> <span class="n">file</span><span class="o">.</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">C</span> <span class="n">compiler</span> <span class="n">test</span> <span class="n">failed</span><span class="o">.</span>
 </span></span><span class="line"><span class="ln">3</span><span class="cl">
-</span></span><span class="line"><span class="ln">4</span><span class="cl">If you think configure made a mistake, make sure you are using the latest
-</span></span><span class="line"><span class="ln">5</span><span class="cl">version from Git.  If the latest version fails, report the problem to the
-</span></span><span class="line"><span class="ln">6</span><span class="cl">ffmpeg-user@ffmpeg.org mailing list or IRC #ffmpeg on irc.freenode.net.
-</span></span><span class="line"><span class="ln">7</span><span class="cl">Include the log file &#34;config.log&#34; produced by configure as this will help
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="n">If</span> <span class="n">you</span> <span class="n">think</span> <span class="n">configure</span> <span class="n">made</span> <span class="n">a</span> <span class="n">mistake</span><span class="p">,</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">you</span> <span class="n">are</span> <span class="n">using</span> <span class="n">the</span> <span class="n">latest</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">version</span> <span class="n">from</span> <span class="n">Git</span><span class="o">.</span>  <span class="n">If</span> <span class="n">the</span> <span class="n">latest</span> <span class="n">version</span> <span class="n">fails</span><span class="p">,</span> <span class="n">report</span> <span class="n">the</span> <span class="n">problem</span> <span class="n">to</span> <span class="n">the</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="n">ffmpeg</span><span class="o">-</span><span class="n">user</span><span class="err">@</span><span class="n">ffmpeg</span><span class="o">.</span><span class="n">org</span> <span class="n">mailing</span> <span class="n">list</span> <span class="ow">or</span> <span class="n">IRC</span> <span class="c1">#ffmpeg on irc.freenode.net.</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="n">Include</span> <span class="n">the</span> <span class="nb">log</span> <span class="n">file</span> <span class="s2">&#34;config.log&#34;</span> <span class="n">produced</span> <span class="n">by</span> <span class="n">configure</span> <span class="n">as</span> <span class="n">this</span> <span class="n">will</span> <span class="n">help</span>
 </span></span></code></pre></div><p>换成 r15c 后分分钟钟成功</p>
 <h3 id="结论">结论</h3>
 <p>在 mac 下,使用 ndk 15.2.4203891(r15c) + ffmpeg 3.3.6 一定可以成功,其他的环境不保证</p>
@@ -389,6 +389,9 @@
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -409,9 +412,6 @@
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -428,7 +428,7 @@
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -528,7 +528,7 @@
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -599,7 +599,7 @@
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -851,7 +851,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1298,7 +1298,7 @@
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

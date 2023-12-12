@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/2.3/</link>
     <description>Recent content in 2.3 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Thu, 09 May 2019 16:04:45 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/2.3/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -22,9 +23,8 @@
 ...语法 这个语法很眼熟,在 js 中有类似的语法,其他语言可能也有
 什么意思呢
 看下面的代码
-1main(List&amp;lt;String&amp;gt; arguments) { 2list3Point(); 3} 45void list3Point() { 6var list1 = &amp;lt;int&amp;gt;[1, 2, 3, 4]; 78var list2 = &amp;lt;int&amp;gt;[ 90, 10...list1, 116, 12]; 1314print(list2); // [0, 1, 2, 3, 4, 6] 15} 这里可能会提示需要更新 sdk 约束,可能这个特性是 2.2.2 加入的,更新约束后 yaml 文件被修改
-1environment:2sdk:&amp;#39;&amp;gt;=2.2.2 &amp;lt;3.0.0&amp;#39;旧版本的实现需要以下几个步骤
-1void list3PointOld() { 2var list1 = &amp;lt;int&amp;gt;[1, 2, 3, 4]; 3var list2 = &amp;lt;int&amp;gt;[0]; 4list2.
+1main(List&amp;lt;String&amp;gt; arguments) { 2 list3Point(); 3} 4 5void list3Point() { 6 var list1 = &amp;lt;int&amp;gt;[1, 2, 3, 4]; 7 8 var list2 = &amp;lt;int&amp;gt;[ 9 0, 10 ...list1, 11 6, 12 ]; 13 14 print(list2); // [0, 1, 2, 3, 4, 6] 15} 这里可能会提示需要更新 sdk 约束,可能这个特性是 2.2.2 加入的,更新约束后 yaml 文件被修改
+1environment: 2 sdk: &amp;#39;&amp;gt;=2.2.2 &amp;lt;3.
           
           
         

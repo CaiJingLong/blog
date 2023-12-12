@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/framework/</link>
     <description>Recent content in framework on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Sun, 16 Jun 2019 11:17:43 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/framework/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,7 +20,15 @@
             之前写了一篇关于如何将 flutter 直接打包成 android aar 的文章, 本篇写一写如何将 flutter 打包成 framework 以便于直接让没有 flutter 环境的 iOS 开发者使用, 因为国内很多项目都有这样的要求
 本篇并不会做完全的工程集成化, 只是做一下如何将 flutter 的 framework 打出来, 并且置入到 iOS 原生工程中, 因为各项目一定户会有自己的特殊性, 不可能完全一样
 本篇打包脚本部分参考了 的内容,但是又有一些针对 flutter 版本的变化和 flutter type 不同的情况进行的修改, 不观看连接中的内容并不会影响观看
-                                     开发环境 MacOS
+开发环境 MacOS
+XCode 10
+git
+flutter 及 flutter 的相关工具链
+cocoapods
+创建几个工程 iOS 原生工程 使用 xcode 创建 这个原生工程就是模拟你的原有工程
+Flutter 工程 这里我只使用 flutter module 的方式, 如果你 flutter 是 app 的方式创建的,则打包脚本的内容需要根据应用结构有所调整
+$ flutter create -t module flutter_module_for_ios
+这次直接在里面添加一个带有原生功能的插件, 和 android 篇相同依然选择 那个插件
           
           
         

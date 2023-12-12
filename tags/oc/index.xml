@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/oc/</link>
     <description>Recent content in oc on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Fri, 31 May 2019 14:43:33 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/oc/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -18,7 +19,7 @@
           
             下午看见群里有人问 swift 插件导入 oc 项目报错的问题, 我之前解决过, 但是忘了解决过程是怎么样的了, 这里记录下方便以后备查
 没兴趣追踪原因的直接查看
-         复现错误  创建一个主工程(oc)  1flutter create oc_project 创建一个插件工程(swift)  1cd oc_project 2flutter create -i swift -t plugin swift_plugin 关联工程  1swift_plugin:2path:./swift_plugin3```运行 iOS 项目得到错误信息  1Launchinglib/main.dartoniPhoneXSMaxindebugmode...23CocoaPods&amp;#39; output: 45↳ 67Preparing 89Analyzing dependencies 1011Inspecting targets to integrate 1213Using `ARCHS` setting to build architectures of target `Pods-Runner`: (``) 1415Fetching external sources 1617-&amp;gt; Fetching podspec for `Flutter` from `.
+复现错误 创建一个主工程(oc) 1flutter create oc_project 创建一个插件工程(swift) 1cd oc_project 2flutter create -i swift -t plugin swift_plugin 关联工程 1 swift_plugin: 2 path: ./swift_plugin 3 ``` 运行 iOS 项目得到错误信息 1Launching lib/main.dart on iPhone XS Max in debug mode... 2 3CocoaPods&amp;#39; output: 4 5↳ 6 7 Preparing 8 9 Analyzing dependencies 10 11 Inspecting targets to integrate 12 13 Using `ARCHS` setting to build architectures of target `Pods-Runner`: (``) 14 15 Fetching external sources 16 17 -&amp;gt; Fetching podspec for `Flutter` from `.
           
           
         

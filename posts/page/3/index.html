@@ -124,6 +124,83 @@
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
+        <a href="https://kikt.top/posts/ios/pod-use-jsdelivr-cdn-to/" title="使用 jsdelivr 加速 cocoapod 库">使用 jsdelivr 加速 cocoapod 库</a>
+      </h3>
+      
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      2020-03-18 13:17</span>
+    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+        </a><a href='https://kikt.top/tags/ios' title="iOS" class="post_tag button button_translucent">iOS
+        </a><a href='https://kikt.top/tags/cocoapods' title="cocoapods" class="post_tag button button_translucent">cocoapods
+        </a><a href='https://kikt.top/tags/github' title="github" class="post_tag button button_translucent">github
+        </a><a href='https://kikt.top/tags/jsdelivr' title="jsdelivr" class="post_tag button button_translucent">jsdelivr
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=%e4%bd%bf%e7%94%a8%20jsdelivr%20%e5%8a%a0%e9%80%9f%20cocoapod%20%e5%ba%93&url=https%3a%2f%2fkikt.top%2fposts%2fios%2fpod-use-jsdelivr-cdn-to%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fios%2fpod-use-jsdelivr-cdn-to%2f&t=%e4%bd%bf%e7%94%a8%20jsdelivr%20%e5%8a%a0%e9%80%9f%20cocoapod%20%e5%ba%93" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://kikt.top/posts/ios/pod-use-jsdelivr-cdn-to/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    </div>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>iOS 开发时, cocoapods(后简称 pod) 是很常用的工具
+我们偶尔也会自己开发 pod 库并上传到 pod 上
+pod 的源码支持多种来源, 本地 path git http 等
+一般来说, 如果是纯开源库, 我们直接把源码上传到 github , 然后使用 git 依赖即可
+但是这有一个问题, github 的速度在中国大陆并不快, 我们有没有办法加速它呢?
+这时候经过搜索, jsdelivr 出现在了搜索引擎里, 号称国内外都可用的 cdn, 我用 wget 测试了一下, 国内外都可以保证 10M+/s 的速度
+jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
+但是, 上面也说了, 支 …</p>
+          
+          <br>
+          <a href="https://kikt.top/posts/ios/pod-use-jsdelivr-cdn-to/" title="阅读更多" class="excerpt_more button">阅读更多</a>
+        </div>
+      </div>
+    </div>
+  </li>
+
+      <li class="post_item">
+  <div class="excerpt">
+    <div class="excerpt_header">
+      <h3 class="post_link">
         <a href="https://kikt.top/posts/flutter/route-anim/" title="flutter中的过场动画 PageTransitionsTheme">flutter中的过场动画 PageTransitionsTheme</a>
       </h3>
       
@@ -182,9 +259,9 @@
           
             <p>过场动画 过场动画也就是切换路由时的动画
 这个东西有几种方案可以做
- 继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性  前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
+继承 PageRoute来做, 复写 5 个抽象方法, 并抽象buildTransitions 继承已有的系统类, 比如 MaterialPageRoute 或者 CupertinoPageRoute 一劳永逸的方案, 使用PageTransitionsTheme类结合 MaterialApp 的 theme 的pageTransitionsTheme属性 前两种目前网络上也有一些人做了分享, 但第三种好像很少有人使用, 我这里就来说一下PageTransitionsTheme的用法
 这东西有如下的好处:
- 设置一次, 你所有的MaterialPageRoute …</p>
+设置一次, 你所有的MaterialPageRoute都可以 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/route-anim/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -208,7 +285,7 @@
 </span>
     <span class="post_date">
       2020-02-04 18:23</span>
-    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/maven' title="maven" class="post_tag button button_translucent">maven
         </a><a href='https://kikt.top/tags/aar' title="aar" class="post_tag button button_translucent">aar
         </a>
@@ -254,7 +331,7 @@
           
             <p>前言 本篇写一个将 flutter 打包为 aar 置入已有项目的方案
 与不同的是: 本篇使用新版本的 flutter 环境, 使用 build aar 命令构建 aar,并上传至 maven 私服
-开发环境 1$ flutter doctor -v 2[✓] Flutter (Channel stable, v1.12.13+hotfix.7, on Mac OS X 10.15 19A602, locale zh-Hans-CN) 3• Flutter version 1.12.13+hotfix.7 at /Users/caijinglong/Library/Flutter/flutter_dev 4• Framework …</p>
+开发环境 1$ flutter doctor -v 2[✓] Flutter (Channel stable, v1.12.13+hotfix.7, on Mac OS X 10.15 19A602, locale zh-Hans-CN) 3 • Flutter version 1.12.13+hotfix.7 at /Users/caijinglong/Library/Flutter/flutter_dev 4 • Framework …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/exists/upload-aar-to-maven/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -278,7 +355,7 @@
 </span>
     <span class="post_date">
       2020-01-31 14:08</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/%E5%9B%BE%E5%BA%8A' title="图床" class="post_tag button button_translucent">图床
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/%E5%9B%BE%E5%BA%8A' title="图床" class="post_tag button button_translucent">图床
         </a><a href='https://kikt.top/tags/azure' title="azure" class="post_tag button button_translucent">azure
         </a>
     </span>
@@ -351,7 +428,7 @@ Api 分析 azure 有 Rest api 可以完成上传的步骤, 然而这个 api 需�
 </span>
     <span class="post_date">
       2020-01-07 11:50</span>
-    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/ffmpeg' title="ffmpeg" class="post_tag button button_translucent">ffmpeg
+    <span class="post_time"> · 8 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/ffmpeg' title="ffmpeg" class="post_tag button button_translucent">ffmpeg
         </a><a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
         </a><a href='https://kikt.top/tags/ndk' title="ndk" class="post_tag button button_translucent">ndk
         </a>
@@ -465,7 +542,7 @@ Api 分析 azure 有 Rest api 可以完成上传的步骤, 然而这个 api 需�
         <div class="pale">
           
             <p>2019 年结束了, 本年做了什么呢?
- 1940 次 github 提交
+1940 次 github 提交
 公司工作 今年公司的工作并不繁重, 让我有了更多的时间来提升自己的专业技能
 在工作中使用 flutter 作为基础开发 app, 从而实现了更轻松的跨平台
 年中开发了一个新的商城 app, 当然也是 flutter
@@ -545,7 +622,7 @@ Q3 重构了 photo_manager 底层
             <p>什么叫可执行二进制 以前虽然看似也可以生成二进制执行文件, 类似 pub/flutter 命令, 但是那实际也是调用 dart 命令来完成的, 也就是说, 你必须具备 dart 环境才可以
 比如以前的 c,后来的 go, 都可以编译成一个可执行文件, 比如./hello-world就可以运行, 然后在控制台输出结果
 而在 dart 2.6 版本中, 这个东西变成了现实
-如何做 1main(List&lt;String&gt; arguments) { 2print(&#34;hello dart!&#34;); 3} 使用$ dart2native bin/main.dart来完成编译过程, 然后会生成一个main.exe, 虽然看 …</p>
+如何做 1main(List&lt;String&gt; arguments) { 2 print(&#34;hello dart!&#34;); 3} 使用$ dart2native bin/main.dart来完成编译过程, 然后会生成一个main.exe, 虽然 …</p>
           
           <br>
           <a href="https://kikt.top/posts/dart/2-6-exec/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -615,8 +692,8 @@ Q3 重构了 photo_manager 底层
           
             <p>写在前面, 最近因为某些原因要用到 OpenCV, 加上这东西既然有 android 的库, 那说明 java 也有, 作为老本行我还是挺喜欢 Java 这个语言的
 打算在 mac 上使用, 但是发现没有编译好的 dylib 库, 所以只能自己动手了
-      使用 MacPorts 的失败之路 这条路实测不通
- 这个 port 我通过 pkg 安装不上, 没有报错原因, 还给我残留了垃圾 通过编译 port 源码的方式安装完毕后, 安装 opencv 的过程需要安装一个 db48, 结果失败了, 猜测是 port 需要使用 db48 作为数据库来管理自己的库或者别的什么原因, 总之失败了  查看日志是 Xcode 的问题, 说已 …</p>
+使用 MacPorts 的失败之路 这条路实测不通
+这个 port 我通过 pkg 安装不上, 没有报错原因, 还给我残留了垃圾 通过编译 port 源码的方式安装完毕后, 安装 opencv 的过程需要安装一个 db48, 结果失败了, 猜测是 port 需要使用 db48 作为数据库来管理自己的库或者别的什么原因, 总之失败了 查看日志是 Xcode 的问题, 说已知 11.1 有 …</p>
           
           <br>
           <a href="https://kikt.top/posts/java/mac/compile-opencv4/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -712,7 +789,7 @@ Q3 重构了 photo_manager 底层
 </span>
     <span class="post_date">
       2019-11-04 11:35</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/dart' title="dart" class="post_tag button button_translucent">dart
         </a><a href='https://kikt.top/tags/c' title="c" class="post_tag button button_translucent">c
         </a><a href='https://kikt.top/tags/ffi' title="ffi" class="post_tag button button_translucent">ffi
@@ -762,7 +839,7 @@ Q3 重构了 photo_manager 底层
 但是在当前版本中, 这东西在官方说明中依然处于技术预览版, 就是可用, 但后续不保证 api 不变更。
 开发环境 首先我是 mac 系统, windows 系统不保证脚本的可用和工具的可用, linux 的话可能一些必要工具需要使用自己平台的包管理工具, 并且涉及到 ios 部分, 必须使用 mac。
 所有需要的工具包
- Xcode( …</p>
+Xcode( …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/ffi/1-first-party/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -833,10 +910,10 @@ Q3 重构了 photo_manager 底层
             <p>好久没水文章了, 强行水一篇
 dart 中不可避免会出现文件读取的情况, 甚至是很大的文件, 比如 200M 的文件
 如果一次性读入内存,虽然也行得通, 但是如果在 flutter 中开启个 200M 大小的字节数组, 一不小心可能就 crash 了, 这时候就需要使用大文件读取的方案
-             异步读取 核心方法:
+异步读取 核心方法:
 1file.openRead(); 这个方法可以指定开始和结束的坐标, 并开启一个 stream
 stream 回调信息是 List&lt;int&gt;,单次最大读取 65536 个字节
-示例 1class FileUtils { 2File file; 34FileUtils(this.file); …</p>
+示例 1class FileUtils { 2 File file; 3 4 FileUtils(this.file); 5 6 // 读取 …</p>
           
           <br>
           <a href="https://kikt.top/posts/dart/file/read/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -911,9 +988,9 @@ stream 回调信息是 List&lt;int&gt;,单次最大读取 65536 个字节
             <p>Jetbrains 全家桶,包括 android studio, 支持一个东西叫 Live Template
 这个东西可以预先储存一个模板, 帮助我们快速开发, 这个功能很多朋友应该都知道,也在用
 本篇使用dart作为主要示例语言, dart 语言语法比较简单, 有 java/js 等常用语言基础的都应该能看懂
-                    简单使用 虽然想要重点介绍 groovyScript 的脚本使用, 但是也应该简单介绍下 Live Template
+简单使用 虽然想要重点介绍 groovyScript 的脚本使用, 但是也应该简单介绍下 Live Template
 比如我可以存一个 stful, 然后会自动生成一段代码, 当然这个模板是 flutter 开发自带的
- 进阶 自己搞一个小模板 这个模板就生成一个我们自己的类库调用,  …</p>
+进阶 自己搞一个小模板 这个模板就生成一个我们自己的类库调用, 比如我自己封装了一个 http …</p>
           
           <br>
           <a href="https://kikt.top/posts/jetbrains/template/live-template/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -986,7 +1063,7 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
 当然, 还有另一个选择, Flutter 内置了 Form 组件给我们使用, 这个组件是 flutter 框架提供出来帮助我们操作表单的一个组件, 应该是官方较为推荐的方案
 不过 Form 的相关中文文章不太多, 基本都是介绍一下 TextFormField 的使用, 更多的 api 云里雾里的, 可能有些朋友不太好理解
 我粗略的解析下源码和自定义, 帮助看过的朋友理解下 Form 体系
-                            Form 体系的简单使用 自动校验 官 …</p>
+Form 体系的简单使用 自动校验 官方提供给了我们一些组件来结合 Form 使用, 最常见的 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/form/form1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -1059,9 +1136,9 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
             <p>前篇对于 go-flutter 引擎进行了初步的探索, 打包终产物是一个二进制文件配合一些资源文件
 本篇研究如何将终产物变成一个 app, 进一步变成 dmg, 就和你网上下载的工具一样
 本篇默认你拥有全套的工具, git xcode flutter go hover
-                      打包出 go 终产物 这里以大佬的 为例
+打包出 go 终产物 这里以大佬的 为例
 1cd /tmp 2git clone https://github.com/fluttercandies/JsonToDart.git 3cd JsonToDart/Flutter/desktop 打包
-1hover build 这里可能很快也可能很慢, 根据你的工程大小和网络速度 …</p>
+1hover build 这里可能很快也可能很慢, 根据你的工程大小和网络速度而言, 网络速度是因为要下载 flutter …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/desktop/go-desktop-engine/flutter-go-desktop-2/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -1085,7 +1162,7 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
 </span>
     <span class="post_date">
       2019-07-04 16:07</span>
-    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/desktop' title="desktop" class="post_tag button button_translucent">desktop
         </a><a href='https://kikt.top/tags/go' title="go" class="post_tag button button_translucent">go
         </a>
@@ -1133,81 +1210,11 @@ flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中�
 Github 地址是:https://github.com/go-flutter-desktop/go-flutter
 目前在 mac,linux,windows 均可用, 作为一个 mac 用户, 除了 retina 下字显得有点小, 感觉没有单独适配外, 总体感觉是优于官方的 desktop 引擎的
 另外我是真实的 golang 脑残粉, 我觉得 golang 这东西真的太好了, 用 golang, 准不会错
-                                              开发环境 需要的开发环境, …</p>
+开发环境 需要的开发环境, 因为我是 MacOS, 我以 macOS 为例,其他的请参考对应的系统
+Xcode 命令行体系, 这个东西包含 …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/desktop/go-desktop-engine/flutter-go-desktop-1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://kikt.top/posts/flutter/exists/add-flutter-to-ios/" title="把flutter作为framework添加到已存在的iOS中">把flutter作为framework添加到已存在的iOS中</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <title>calendar</title>
-  <use xlink:href="#calendar"></use>
-</svg>
-</span>
-    <span class="post_date">
-      2019-06-16 11:17</span>
-    <span class="post_time"> · 9 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
-        </a><a href='https://kikt.top/tags/ios' title="ios" class="post_tag button button_translucent">ios
-        </a><a href='https://kikt.top/tags/exists' title="exists" class="post_tag button button_translucent">exists
-        </a><a href='https://kikt.top/tags/framework' title="framework" class="post_tag button button_translucent">framework
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    分享到:
-    <a href="https://twitter.com/intent/tweet?text=%e6%8a%8aflutter%e4%bd%9c%e4%b8%baframework%e6%b7%bb%e5%8a%a0%e5%88%b0%e5%b7%b2%e5%ad%98%e5%9c%a8%e7%9a%84iOS%e4%b8%ad&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fexists%2fadd-flutter-to-ios%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>twitter</title>
-  <use xlink:href="#twitter"></use>
-</svg>
-
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fexists%2fadd-flutter-to-ios%2f&t=%e6%8a%8aflutter%e4%bd%9c%e4%b8%baframework%e6%b7%bb%e5%8a%a0%e5%88%b0%e5%b7%b2%e5%ad%98%e5%9c%a8%e7%9a%84iOS%e4%b8%ad" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>facebook</title>
-  <use xlink:href="#facebook"></use>
-</svg>
-
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <title>linkedin</title>
-  <use xlink:href="#linkedin"></use>
-</svg>
-
-    </a>
-    <a href="https://kikt.top/posts/flutter/exists/add-flutter-to-ios/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <title>copy</title>
-  <use xlink:href="#copy"></use>
-</svg>
-
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-      <div class="excerpt_footer">
-        <div class="pale">
-          
-            <p>之前写了一篇关于如何将 flutter 直接打包成 android aar 的文章, 本篇写一写如何将 flutter 打包成 framework 以便于直接让没有 flutter 环境的 iOS 开发者使用, 因为国内很多项目都有这样的要求
-本篇并不会做完全的工程集成化, 只是做一下如何将 flutter 的 framework 打出来, 并且置入到 iOS 原生工程中, 因为各项目一定户会有自己的特殊性, 不可能完全一样
-本篇打包脚本部分参考了 的内容,但是又有一些针对 flutter 版本的变化和 flutter type 不同的情况进行的修改, …</p>
-          
-          <br>
-          <a href="https://kikt.top/posts/flutter/exists/add-flutter-to-ios/" title="阅读更多" class="excerpt_more button">阅读更多</a>
         </div>
       </div>
     </div>
@@ -1283,6 +1290,9 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -1303,9 +1313,6 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -1322,7 +1329,7 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -1422,7 +1429,7 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -1493,7 +1500,7 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -1745,7 +1752,7 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -2192,7 +2199,7 @@ Github 地址是:https://github.com/go-flutter-desktop/go-flutter
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

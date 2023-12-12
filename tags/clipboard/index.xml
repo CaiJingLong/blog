@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/clipboard/</link>
     <description>Recent content in Clipboard on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Sun, 18 Sep 2016 10:45:55 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/clipboard/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -26,9 +27,9 @@ Android 中的剪切板是使用ClipboardManager来管理的 获取这个对象�
 CharSequence text = cm.getText();可以获取到剪切板内的内容 使用cm.setText(&amp;quot;复制到剪切板&amp;quot;);可以将内容复制到剪切板内
 如果你的应用 minSDK 在 11 以上，可以直接用新的方法，毕竟老的已经过时了
 使用如下的代码
-1cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 2ClipData clipData = ClipData.newPlainText(&amp;#34;title&amp;#34;, &amp;#34;content23&amp;#34;); 3cm.setPrimaryClip(clipData); 可以简单的达到效果
+1 cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 2 ClipData clipData = ClipData.newPlainText(&amp;#34;title&amp;#34;, &amp;#34;content23&amp;#34;); 3 cm.setPrimaryClip(clipData); 可以简单的达到效果
 这个有一个对象ClipData
-1package com.dn.clipbroaddemo; 23import android.content.ClipData; 4import android.content.ClipDescription; 5import android.content.ClipboardManager; 6import android.os.Bundle; 7import android.support.v7.app.AppCompatActivity; 8import android.util.Log; 910public class MainActivity extends AppCompatActivity { 1112private ClipboardManager cm; 1314@Override 15protected void onCreate(Bundle savedInstanceState) { 16super.
+1package com.dn.clipbroaddemo; 2 3import android.content.ClipData; 4import android.content.ClipDescription; 5import android.content.ClipboardManager; 6import android.os.Bundle; 7import android.support.v7.app.AppCompatActivity; 8import android.
           
           
         

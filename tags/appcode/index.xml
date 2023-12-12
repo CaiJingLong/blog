@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/appcode/</link>
     <description>Recent content in appcode on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 19 Feb 2019 15:41:23 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/appcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -20,17 +21,16 @@
 众所周知 xcode 这编辑器除了漂亮,其实开发效率来说和 appcode 无法相提并论..
 本篇与插件开发本身无关,目的只是为了加快 appcode 的索引速度,解决方案拉到后面查看
 使用 appcode 开发插件本身很简单,打开插件下的example/ios就可以了,不过这里有一个坑,因为 flutter 使用 link 的方式,可能有数级的../..之类的连接来指向插件文件夹
- 这个在 xcode 中可能没问题,但是appcode中有一个索引的概念,这一步会遍历当前关联的所有同级文件,
+这个在 xcode 中可能没问题,但是appcode中有一个索引的概念,这一步会遍历当前关联的所有同级文件,
 而这一步由于相对的关系甚至关联到了~这一级,也就是说会遍历当前用户全部的文件,这一步的速度太慢了,我们必须着手解决
 解决 打开example/ios/Podfile文件
 这个文件是cocoapod的配置文件,使用的是Ruby语言,
 这个文件一般是自动生成的,我们开发过程中正常情况下不需要关注这个文件
 我们需要修改这个文件,查看
 我们不使用 symlinks 的方案,而是采用另一种方案,直接用 path 的方式
-将这个 Podfile 文件改为这样 1plugin_pods.map { |p| 2name = p[:name] 3path = p[:path] 4specPath = &amp;#34;#{path}/ios/#{name}.podspec&amp;#34; 5pod p[:name],:path=&amp;gt;specPath 6} 然后在命令行运行
+将这个 Podfile 文件改为这样 1 plugin_pods.map { |p| 2 name = p[:name] 3 path = p[:path] 4 specPath = &amp;#34;#{path}/ios/#{name}.podspec&amp;#34; 5 pod p[:name],:path=&amp;gt;specPath 6 } 然后在命令行运行
 1cd example/ios 2pod install 修改完成后是用 app 打开是这样的
- 1.12.x 版本 [2020-01-17 更新] 某个版本后, 会提示我们原来的 pod 版本过时了
-这时候, 我们需要移除 example/ios 下的 Podfile 和 Podfile.
+1.12.x 版本 [2020-01-17 更新] 某个版本后, 会提示我们原来的 pod 版本过时了
           
           
         

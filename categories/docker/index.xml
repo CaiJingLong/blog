@@ -5,6 +5,7 @@
     <link>https://kikt.top/categories/docker/</link>
     <description>Recent content in docker on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Sat, 05 Jan 2019 11:13:08 +0800</lastBuildDate><atom:link href="https://kikt.top/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -49,9 +50,8 @@
           
             在搜索引擎中,搜索了一下如何部署一个 go 的程序, 发现都是基于 golang 的镜像部署 go 源码的方案
 而基于 golang 源码部署 docker image 的大小有 700MB, 有时候并不需要这么大,我们生成二进制文件后 只需要基于 centos 来制作 image 就可以了, 当然如果对于 go 源码有持续部署的需求,那还是只能使用 golang 镜像
- 目录结构  完整的目录结构就这么简单, main 是二进制运行文件
-main.go 1package main 23import &amp;#34;github.com/gin-gonic/gin&amp;#34; 45func main() { 6g := gin.Default() 78g.LoadHTMLGlob(&amp;#34;static/*&amp;#34;) 910g.GET(&amp;#34;/index&amp;#34;, func(c *gin.Context) { 11c.HTML(200, &amp;#34;index.html&amp;#34;, gin.H{ 12&amp;#34;title&amp;#34;: &amp;#34;标题&amp;#34;, 13}) 14}) 1516g.Run(&amp;#34;:80&amp;#34;) 17} 打包 go 二进制运行文件 这里因为我是 mac 系统,所以我需要交叉编译,具体的交叉编译可以查看我的
-1cd main 23CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.
+目录结构 完整的目录结构就这么简单, main 是二进制运行文件
+main.go 1package main 2 3import &amp;#34;github.com/gin-gonic/gin&amp;#34; 4 5func main() { 6 g := gin.Default() 7 8 g.LoadHTMLGlob(&amp;#34;static/*&amp;#34;) 9 10 g.GET(&amp;#34;/index&amp;#34;, func(c *gin.Context) { 11 c.HTML(200, &amp;#34;index.html&amp;#34;, gin.H{ 12 &amp;#34;title&amp;#34;: &amp;#34;标题&amp;#34;, 13 }) 14 }) 15 16 g.Run(&amp;#34;:80&amp;#34;) 17} 打包 go 二进制运行文件 这里因为我是 mac 系统,所以我需要交叉编译,具体的交叉编译可以查看我的
           
           
         
@@ -68,10 +68,7 @@ main.go 1package main 23import &amp;#34;github.com/gin-gonic/gin&amp;#34; 45func
         
           
             开发环境 mac zsh docker-compose
-1$ docker-compose --version 2docker-compose version 1.22.0, build f46880f 目录结构  docker-compose.yml 1version:&amp;#34;3&amp;#34;2services:3web:# 服务的名称4image:nginx5volumes:# 文件夹映射6- /Users/cai/Documents/www:/usr/share/nginx/html:ro# 宿主:docker:只读 ,www目录7- ./config/web.conf:/etc/nginx/nginx.conf:ro# nginx配置文件8ports:# 端口转发 宿主:docker9- &amp;#34;8080:80&amp;#34;10- &amp;#34;8081:81&amp;#34;11# environment:12# - NGINX_HOST=foobar.com13# - NGINX_PORT=8014# command: /bin/bash -c &amp;#34;envsubst &amp;lt; /etc/nginx/conf.d/mysite.template &amp;gt; /etc/nginx/conf.d/default.conf &amp;amp;&amp;amp; exec nginx -g &amp;#39;daemon off;&amp;#39;&amp;#34;15networks:## 定义网络16nn:## 加入的网络的名称17ipv4_address:192.168.5.101## ipv4的ip地址1819web8082:20image:nginx21volumes:22- /Users/cai/Documents/www/8082:/usr/share/nginx/html:ro23ports:24- &amp;#34;8082:80&amp;#34;2526networks:27nn:28ipv4_address:192.168.5.1022930web8083:31image:nginx32volumes:33- /Users/cai/Documents/www/8083:/usr/share/nginx/html:ro34ports:35- &amp;#34;8083:80&amp;#34;3637networks:38nn:39ipv4_address:192.168.5.1034041networks:##定义网络组42nn:## 网络组名称43driver:bridge## 网络的模式44ipam:## 配置网络45driver:default46config:47- subnet:192.168.5.0/24## ip地址网络 这里宿主机一般会是该网段的 192.168.5.1,所以不要设置自网段为1配置服务 配置网络
-将服务加入同一个网络组,这样 docker 就可以在同一个网络组里了,由于 docker 的特性,每个容器会认为自己和另一个容器是局域网的关系
-我这里做的是 nginx 转发
-nginx.conf 1user nginx; 2worker_processes 1; 34error_log /var/log/nginx/error.
+1$ docker-compose --version 2docker-compose version 1.22.0, build f46880f 目录结构 docker-compose.yml 1version: &amp;#34;3&amp;#34; 2services: 3 web: # 服务的名称 4 image: nginx 5 volumes: # 文件夹映射 6 - /Users/cai/Documents/www:/usr/share/nginx/html:ro # 宿主:docker:只读 ,www目录 7 - ./config/web.conf:/etc/nginx/nginx.conf:ro # nginx配置文件 8 ports: # 端口转发 宿主:docker 9 - &amp;#34;8080:80&amp;#34; 10 - &amp;#34;8081:81&amp;#34; 11 # environment: 12 # - NGINX_HOST=foobar.com 13 # - NGINX_PORT=80 14 # command: /bin/bash -c &amp;#34;envsubst &amp;lt; /etc/nginx/conf.d/mysite.template &amp;gt; /etc/nginx/conf.
           
           
         

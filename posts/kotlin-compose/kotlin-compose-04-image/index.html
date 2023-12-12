@@ -128,7 +128,7 @@
 </span>
     <span class="post_date">
       2022-10-20 11:18</span>
-    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/kotlin-compose' title="Kotlin-Compose" class="post_tag button button_translucent">Kotlin-Compose
+    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/kotlin-compose' title="Kotlin-Compose" class="post_tag button button_translucent">Kotlin-Compose
         </a>
     </span>
     <span class="page_only">&nbsp;·
@@ -204,7 +204,7 @@
 </span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="ln">15</span><span class="cl">
 </span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="nd">@Composable</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="k">fun</span> <span class="nf">MyColumn</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="nd">@Composable</span> <span class="n">LazyItemScope</span><span class="p">.()</span> <span class="o">-&gt;</span> <span class="n">Unit</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="k">fun</span> <span class="nf">MyColumn</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="nd">@Composable</span> <span class="nc">LazyItemScope</span><span class="p">.()</span> <span class="o">-&gt;</span> <span class="n">Unit</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">18</span><span class="cl">    <span class="n">LazyColumn</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">19</span><span class="cl">        <span class="n">item</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">20</span><span class="cl">            <span class="n">content</span><span class="p">()</span>
@@ -238,8 +238,8 @@
 </span></span><span class="line"><span class="ln">22</span><span class="cl">    <span class="n">Image</span><span class="p">(</span>
 </span></span><span class="line"><span class="ln">23</span><span class="cl">        <span class="n">painter</span> <span class="p">=</span> <span class="n">painterResource</span><span class="p">(</span><span class="s2">&#34;header.svg&#34;</span><span class="p">),</span> <span class="c1">// 支持格式：(BMP, GIF, HEIF, ICO, JPEG, PNG, WBMP, WebP) and vector formats (SVG, XML vector drawable).
 </span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="c1"></span>        <span class="n">contentDescription</span> <span class="p">=</span> <span class="s2">&#34;Sample&#34;</span><span class="p">,</span> <span class="c1">// 用于无障碍
-</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="c1"></span>        <span class="n">modifier</span> <span class="p">=</span> <span class="n">Modifier</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="m">200.</span><span class="n">dp</span><span class="p">,</span> <span class="m">200.</span><span class="n">dp</span><span class="p">),</span> <span class="c1">// 设置约束
-</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="c1"></span>        <span class="n">contentScale</span> <span class="p">=</span> <span class="n">ContentScale</span><span class="p">.</span><span class="n">FillBounds</span><span class="p">,</span> <span class="c1">// 设置缩放模式
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="c1"></span>        <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="m">200.</span><span class="n">dp</span><span class="p">,</span> <span class="m">200.</span><span class="n">dp</span><span class="p">),</span> <span class="c1">// 设置约束
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="c1"></span>        <span class="n">contentScale</span> <span class="p">=</span> <span class="nc">ContentScale</span><span class="p">.</span><span class="n">FillBounds</span><span class="p">,</span> <span class="c1">// 设置缩放模式
 </span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="c1"></span>    <span class="p">)</span>
 </span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>
@@ -280,27 +280,27 @@ painterResource 支持的格式很多</p>
 </span></span><span class="line"><span class="ln"> 27</span><span class="cl"><span class="k">import</span> <span class="nn">java.net.URL</span>
 </span></span><span class="line"><span class="ln"> 28</span><span class="cl">
 </span></span><span class="line"><span class="ln"> 29</span><span class="cl"><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">=</span> <span class="n">singleWindowApplication</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 30</span><span class="cl">    <span class="k">val</span> <span class="py">density</span> <span class="p">=</span> <span class="n">LocalDensity</span><span class="p">.</span><span class="n">current</span>
+</span></span><span class="line"><span class="ln"> 30</span><span class="cl">    <span class="k">val</span> <span class="py">density</span> <span class="p">=</span> <span class="nc">LocalDensity</span><span class="p">.</span><span class="n">current</span>
 </span></span><span class="line"><span class="ln"> 31</span><span class="cl">    <span class="n">Column</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln"> 32</span><span class="cl">        <span class="n">AsyncImage</span><span class="p">(</span>
 </span></span><span class="line"><span class="ln"> 33</span><span class="cl">            <span class="n">load</span> <span class="p">=</span> <span class="p">{</span> <span class="n">loadImageBitmap</span><span class="p">(</span><span class="n">File</span><span class="p">(</span><span class="s2">&#34;sample.png&#34;</span><span class="p">))</span> <span class="p">},</span>
 </span></span><span class="line"><span class="ln"> 34</span><span class="cl">            <span class="n">painterFor</span> <span class="p">=</span> <span class="p">{</span> <span class="n">remember</span> <span class="p">{</span> <span class="n">BitmapPainter</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">}</span> <span class="p">},</span>
 </span></span><span class="line"><span class="ln"> 35</span><span class="cl">            <span class="n">contentDescription</span> <span class="p">=</span> <span class="s2">&#34;Sample&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 36</span><span class="cl">            <span class="n">modifier</span> <span class="p">=</span> <span class="n">Modifier</span><span class="p">.</span><span class="n">width</span><span class="p">(</span><span class="m">200.</span><span class="n">dp</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 36</span><span class="cl">            <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="n">width</span><span class="p">(</span><span class="m">200.</span><span class="n">dp</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln"> 37</span><span class="cl">        <span class="p">)</span>
 </span></span><span class="line"><span class="ln"> 38</span><span class="cl">        <span class="n">AsyncImage</span><span class="p">(</span>
 </span></span><span class="line"><span class="ln"> 39</span><span class="cl">            <span class="n">load</span> <span class="p">=</span> <span class="p">{</span> <span class="n">loadSvgPainter</span><span class="p">(</span><span class="s2">&#34;https://github.com/JetBrains/compose-jb/raw/master/artwork/idea-logo.svg&#34;</span><span class="p">,</span> <span class="n">density</span><span class="p">)</span> <span class="p">},</span>
 </span></span><span class="line"><span class="ln"> 40</span><span class="cl">            <span class="n">painterFor</span> <span class="p">=</span> <span class="p">{</span> <span class="k">it</span> <span class="p">},</span>
 </span></span><span class="line"><span class="ln"> 41</span><span class="cl">            <span class="n">contentDescription</span> <span class="p">=</span> <span class="s2">&#34;Idea logo&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 42</span><span class="cl">            <span class="n">contentScale</span> <span class="p">=</span> <span class="n">ContentScale</span><span class="p">.</span><span class="n">FillWidth</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 43</span><span class="cl">            <span class="n">modifier</span> <span class="p">=</span> <span class="n">Modifier</span><span class="p">.</span><span class="n">width</span><span class="p">(</span><span class="m">200.</span><span class="n">dp</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 42</span><span class="cl">            <span class="n">contentScale</span> <span class="p">=</span> <span class="nc">ContentScale</span><span class="p">.</span><span class="n">FillWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 43</span><span class="cl">            <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="n">width</span><span class="p">(</span><span class="m">200.</span><span class="n">dp</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln"> 44</span><span class="cl">        <span class="p">)</span>
 </span></span><span class="line"><span class="ln"> 45</span><span class="cl">        <span class="n">AsyncImage</span><span class="p">(</span>
 </span></span><span class="line"><span class="ln"> 46</span><span class="cl">            <span class="n">load</span> <span class="p">=</span> <span class="p">{</span> <span class="n">loadXmlImageVector</span><span class="p">(</span><span class="n">File</span><span class="p">(</span><span class="s2">&#34;compose-logo.xml&#34;</span><span class="p">),</span> <span class="n">density</span><span class="p">)</span> <span class="p">},</span>
 </span></span><span class="line"><span class="ln"> 47</span><span class="cl">            <span class="n">painterFor</span> <span class="p">=</span> <span class="p">{</span> <span class="n">rememberVectorPainter</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">},</span>
 </span></span><span class="line"><span class="ln"> 48</span><span class="cl">            <span class="n">contentDescription</span> <span class="p">=</span> <span class="s2">&#34;Compose logo&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 49</span><span class="cl">            <span class="n">contentScale</span> <span class="p">=</span> <span class="n">ContentScale</span><span class="p">.</span><span class="n">FillWidth</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 50</span><span class="cl">            <span class="n">modifier</span> <span class="p">=</span> <span class="n">Modifier</span><span class="p">.</span><span class="n">width</span><span class="p">(</span><span class="m">200.</span><span class="n">dp</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 49</span><span class="cl">            <span class="n">contentScale</span> <span class="p">=</span> <span class="nc">ContentScale</span><span class="p">.</span><span class="n">FillWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 50</span><span class="cl">            <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="n">width</span><span class="p">(</span><span class="m">200.</span><span class="n">dp</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln"> 51</span><span class="cl">        <span class="p">)</span>
 </span></span><span class="line"><span class="ln"> 52</span><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="ln"> 53</span><span class="cl"><span class="p">}</span>
@@ -311,10 +311,10 @@ painterResource 支持的格式很多</p>
 </span></span><span class="line"><span class="ln"> 58</span><span class="cl">    <span class="n">painterFor</span><span class="p">:</span> <span class="nd">@Composable</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Painter</span><span class="p">,</span>
 </span></span><span class="line"><span class="ln"> 59</span><span class="cl">    <span class="n">contentDescription</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
 </span></span><span class="line"><span class="ln"> 60</span><span class="cl">    <span class="n">modifier</span><span class="p">:</span> <span class="n">Modifier</span> <span class="p">=</span> <span class="n">Modifier</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 61</span><span class="cl">    <span class="n">contentScale</span><span class="p">:</span> <span class="n">ContentScale</span> <span class="p">=</span> <span class="n">ContentScale</span><span class="p">.</span><span class="n">Fit</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 61</span><span class="cl">    <span class="n">contentScale</span><span class="p">:</span> <span class="n">ContentScale</span> <span class="p">=</span> <span class="nc">ContentScale</span><span class="p">.</span><span class="n">Fit</span><span class="p">,</span>
 </span></span><span class="line"><span class="ln"> 62</span><span class="cl"><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln"> 63</span><span class="cl">    <span class="k">val</span> <span class="py">image</span><span class="p">:</span> <span class="n">T</span><span class="p">?</span> <span class="k">by</span> <span class="n">produceState</span><span class="p">&lt;</span><span class="n">T</span><span class="p">?&gt;(</span><span class="k">null</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 64</span><span class="cl">        <span class="n">value</span> <span class="p">=</span> <span class="n">withContext</span><span class="p">(</span><span class="n">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 64</span><span class="cl">        <span class="k">value</span> <span class="p">=</span> <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln"> 65</span><span class="cl">            <span class="k">try</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln"> 66</span><span class="cl">                <span class="n">load</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln"> 67</span><span class="cl">            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">IOException</span><span class="p">)</span> <span class="p">{</span>
@@ -404,15 +404,15 @@ painterResource 支持的格式很多</p>
 </span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="k">fun</span> <span class="nf">CanvasImageExample</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">23</span><span class="cl">    <span class="k">val</span> <span class="py">image</span> <span class="p">=</span> <span class="n">Logo</span><span class="p">()</span>
 </span></span><span class="line"><span class="ln">24</span><span class="cl">
-</span></span><span class="line"><span class="ln">25</span><span class="cl">    <span class="n">Canvas</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="n">Modifier</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="m">100.</span><span class="n">dp</span><span class="p">,</span> <span class="m">100.</span><span class="n">dp</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">    <span class="n">Canvas</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="m">100.</span><span class="n">dp</span><span class="p">,</span> <span class="m">100.</span><span class="n">dp</span><span class="p">))</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">26</span><span class="cl">        <span class="k">val</span> <span class="py">redPaint</span> <span class="p">=</span> <span class="n">Paint</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">            <span class="n">color</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">Red</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">            <span class="n">color</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="n">Red</span>
 </span></span><span class="line"><span class="ln">28</span><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="k">val</span> <span class="py">bluePaint</span> <span class="p">=</span> <span class="n">Paint</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">30</span><span class="cl">            <span class="n">color</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">Blue</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">            <span class="n">color</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="n">Blue</span>
 </span></span><span class="line"><span class="ln">31</span><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="ln">32</span><span class="cl">        <span class="k">val</span> <span class="py">greenPaint</span> <span class="p">=</span> <span class="n">Paint</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">33</span><span class="cl">            <span class="n">color</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">Green</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">            <span class="n">color</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="n">Green</span>
 </span></span><span class="line"><span class="ln">34</span><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="ln">35</span><span class="cl">        <span class="n">drawIntoCanvas</span> <span class="p">{</span> <span class="n">canvas</span><span class="p">:</span> <span class="n">Canvas</span> <span class="o">-&gt;</span>
 </span></span><span class="line"><span class="ln">36</span><span class="cl">            <span class="n">canvas</span><span class="p">.</span><span class="n">withSave</span> <span class="p">{</span>
@@ -423,7 +423,7 @@ painterResource 支持的格式很多</p>
 </span></span><span class="line"><span class="ln">41</span><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="ln">42</span><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="ln">43</span><span class="cl">
-</span></span><span class="line"><span class="ln">44</span><span class="cl">    <span class="n">Canvas</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="n">Modifier</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="m">400.</span><span class="n">dp</span><span class="p">,</span> <span class="m">400.</span><span class="n">dp</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl">    <span class="n">Canvas</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="m">400.</span><span class="n">dp</span><span class="p">,</span> <span class="m">400.</span><span class="n">dp</span><span class="p">))</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">45</span><span class="cl">        <span class="n">drawIntoCanvas</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">46</span><span class="cl">            <span class="k">it</span><span class="p">.</span><span class="n">withSave</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">47</span><span class="cl">                <span class="k">it</span><span class="p">.</span><span class="n">drawImageRect</span><span class="p">(</span>
@@ -474,7 +474,7 @@ Painter 的实现类有这些，理论上可以通过任意一个来实现，支
 </span></span><span class="line"><span class="ln"> 7</span><span class="cl">
 </span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="nd">@Composable</span>
 </span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="k">fun</span> <span class="nf">ImageIconPainter</span><span class="p">():</span> <span class="n">Painter</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="k">return</span> <span class="n">ColorPainter</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Blue</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="k">return</span> <span class="n">ColorPainter</span><span class="p">(</span><span class="nc">Color</span><span class="p">.</span><span class="n">Blue</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="菜单栏图标设置">菜单栏图标设置</h2>
 <p>
@@ -580,6 +580,9 @@ menu 就是定义弹出的选项， 使用 Item 方法来定义每个选项即�
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -600,9 +603,6 @@ menu 就是定义弹出的选项， 使用 Item 方法来定义每个选项即�
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -619,7 +619,7 @@ menu 就是定义弹出的选项， 使用 Item 方法来定义每个选项即�
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -719,7 +719,7 @@ menu 就是定义弹出的选项， 使用 Item 方法来定义每个选项即�
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -790,7 +790,7 @@ menu 就是定义弹出的选项， 使用 Item 方法来定义每个选项即�
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -1042,7 +1042,7 @@ menu 就是定义弹出的选项， 使用 Item 方法来定义每个选项即�
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1489,7 +1489,7 @@ menu 就是定义弹出的选项， 使用 Item 方法来定义每个选项即�
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>

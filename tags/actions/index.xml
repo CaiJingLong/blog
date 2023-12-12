@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/actions/</link>
     <description>Recent content in actions on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Mon, 07 Sep 2020 16:49:35 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/actions/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -25,7 +26,7 @@
 进入这个, 然后使用 按钮, 完成初始化的过程.
 这里我们创建一个仓库, 这个仓库的目的是自动给 issue 打上 label
 初始化后的仓库 简单介绍一下这个仓库, 有一些文件和注意事项
- action.yml 是 action 本身的配置文件(别的项目实际就是读取这个东西来确定入口在哪里), 包括参数的配置都是这东西 一个标准的 npm 项目, 指定了入口 src 内是主要的 ts 代码 ts 代码需要被编译为 js 才能使用 dist 内就是编译产物, git 的版本控制需要包含 dist 下的所有文件, 不然运行的时候会是老代码 项目本身自带 action, 主要是 CI 这个项目的  入门 开发环境  vscode, 我这里是使用 vscode 进行编辑, 你请根据自己的情况 npm(node), 我是使用 nvm 管理的  如果你的 node 大于 12.
+action.yml 是 action 本身的配置文件(别的项目实际就是读取这个东西来确定入口在哪里), 包括参数的配置都是这东西 一个标准的 npm 项目, 指定了入口 src 内是主要的 ts 代码 ts 代码需要被编译为 js 才能使用 dist 内就是编译产物, git 的版本控制需要包含 dist 下的所有文件, 不然运行的时候会是老代码 项目本身自带 action, 主要是 CI 这个项目的 入门 开发环境 vscode, 我这里是使用 vscode 进行编辑, 你请根据自己的情况 npm(node), 我是使用 nvm 管理的 如果你的 node 大于 12.
           
           
         

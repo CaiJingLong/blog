@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/pub/</link>
     <description>Recent content in pub on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Mon, 25 Feb 2019 13:53:52 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/pub/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -23,10 +24,9 @@
 建立工程前的准备 将dart,pub加入PATH环境变量 需要在环境变量中添加几个东西,添加环境变量的方式自己搜索一下
 一个是dart/bin的目录,你需要在命令行中让dart命令可用
 1➜ ~ dart --version 2Dart VM version: 2.1.0 (Tue Nov 13 18:22:02 2018 +0100) on &amp;#34;macos_x64&amp;#34; 相对应的dart/bin目录下还会有其他的一些工具,包含了pub,这个工具也是会用到的
-1➜ bin pub --version 2Pub 2.1.0 安装dart工程脚手架 
-$ pub global activate stagehand
+1➜ bin pub --version 2Pub 2.1.0 安装dart工程脚手架 $ pub global activate stagehand
 将pub-cache/bin目录加入PATH环境变量 这个目录通常是~/.pub-cache/bin目录
-验证stagehand可用 1➜ bin stagehand 2Stagehand will generate the given application type into the current directory. 34usage: stagehand &amp;lt;generator-name&amp;gt; 5--[no-]analytics Opt out of anonymous usage and crash reporting.
+验证stagehand可用 1➜ bin stagehand 2Stagehand will generate the given application type into the current directory. 3 4usage: stagehand &amp;lt;generator-name&amp;gt; 5 --[no-]analytics Opt out of anonymous usage and crash reporting.
           
           
         
@@ -47,17 +47,18 @@ $ pub global activate stagehand
 官方描述: Pub is the package manager for Dart. / dart 语言的包管理器
 官网 pub 的官方 url: 这个域名有多个小伙伴同时 ping 过, 对应 ip 不相同,所以可知这个网站是有负载均衡的, 但是坑的地方来了, 部分在墙外,所以这就是这个网站偶尔国内访问不通畅的原因
 然后有几个国内镜像站点,可以查看官网介绍
- 设置访问镜像 在环境变量中配置,这个根据系统不同设置方法不同
+设置访问镜像 在环境变量中配置,这个根据系统不同设置方法不同
 mac 的话 可以使用 export 命令临时添加
 也可以在vi ~/.bash_profile,在这个文件中添加
 其他系统的设置方式请自行查找
- 1PUB_HOSTED_URL=https://pub.flutter-io.cn 2FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn 这样在国内就很快了
+1PUB_HOSTED_URL=https://pub.flutter-io.cn 2FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn 这样在国内就很快了
 如果你需要发布插件的话,到这里就结束了
 发布 有的时候我们自己写了开源库,想要发布到 pub 上怎么办呢
 dart/flutter 对于插件没有审核的概念,而且发布很简单,你可以任意发布插件到 pub 上,只要不重复就可以了
-必备前提  一份代码 一份命令行翻墙工具 一个 google 账号  代码是必须的,不然没意义
+必备前提 一份代码 一份命令行翻墙工具 一个 google 账号 代码是必须的,不然没意义
 命令行翻墙工具是因为国内镜像发布不了,必须要连接到 pub 的官方源
 google 账号是确定权限用的,不能你说你是主人你就是主人了吧, 你要绑定库和你的作者身份,不然别人随手写一个覆盖你的插件岂不是乱套了
+终端翻墙 这里因为涉及到连接 google,所以你必须保证你的终端翻墙了
           
           
         
@@ -75,15 +76,15 @@ google 账号是确定权限用的,不能你说你是主人你就是主人了吧
           
             pub 库
 项目名: 项目地址: 简介: 图片压缩
- 项目名: 项目地址: 项目简介: 仿 android toast 纯 flutter 实现
- 项目名: 项目地址: 项目简介: 读取系统相册 纯 api 版 支持(ios/android)
- 项目名: 项目地址: 项目简介: 相册图片选择器 基于 photo_manager
- 项目名: 项目地址: 项目简介: ListView 的加载更多
- 项目名: 项目地址: 项目简介: 配合 pageview 的简单圆点指示器
- 项目名: 项目地址: 项目简介: 城市选择器
- 项目名: 项目地址: 项目简介: 一个长按弹出菜单的小部件
- 项目名: 项目地址: 项目简介: 日志插件,用于帮助将 flutter 上的日志记录至开发机
- 如果用过的朋友觉得好用,请在遇到别人想用的时候帮忙感谢宣传
+项目名: 项目地址: 项目简介: 仿 android toast 纯 flutter 实现
+项目名: 项目地址: 项目简介: 读取系统相册 纯 api 版 支持(ios/android)
+项目名: 项目地址: 项目简介: 相册图片选择器 基于 photo_manager
+项目名: 项目地址: 项目简介: ListView 的加载更多
+项目名: 项目地址: 项目简介: 配合 pageview 的简单圆点指示器
+项目名: 项目地址: 项目简介: 城市选择器
+项目名: 项目地址: 项目简介: 一个长按弹出菜单的小部件
+项目名: 项目地址: 项目简介: 日志插件,用于帮助将 flutter 上的日志记录至开发机
+如果用过的朋友觉得好用,请在遇到别人想用的时候帮忙感谢宣传
           
           
         

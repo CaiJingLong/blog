@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/junit/</link>
     <description>Recent content in junit on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 06 Dec 2016 10:45:55 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/junit/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,13 +20,12 @@
             前言 最近出去面试找工作，被人问到 AIDL，我就回答这个东西我用过，也大概理解，Android 的进程间通信语言嘛
 人家不置可否，那我能咋着呢，毕竟没深入研究过，也没办法，咱只能回来奋发图强了
 写在前面 我以前就看过的一个博客，里面原理代码什么都有，写的水平肯定比我高
- 
- 首先字面解释 A=Android IDL=Interface definition language 意译就是 android 接口定义语言，马丹，完全看不明白 算了，就是 Android 官方给我们定义出来跨进程，甚至跨应用通信用的
+首先字面解释 A=Android IDL=Interface definition language 意译就是 android 接口定义语言，马丹，完全看不明白 算了，就是 Android 官方给我们定义出来跨进程，甚至跨应用通信用的
 开发平台 Android Studio 2.2+Android 手机一部
 新建工程 这个就不说了，跳过 就是新建工程后再建一个 module 也是 android app，功能后面再说
 aidl 语法 这里请去看我写在前面，里面比较详细，或者自行 baidu/google，我也了解的不多
 代码示例 最关键的地方到了 其实就是新建一个 aidl 文件
-1// IMyAidlInterface.aidl 2package com.kikt.aidl; 34// Declare any non-default types here with import statements 5 6interface IMyAidlInterface { 78void test(int sum,int sum2); 9} 接着 make project，生成下 java 代码 找到生成的代码看下 我靠 好复杂，还是渣格式，这里格式化一下：
+1// IMyAidlInterface.aidl 2package com.kikt.aidl; 3 4// Declare any non-default types here with import statements 5 6interface IMyAidlInterface { 7 8 void test(int sum,int sum2); 9} 接着 make project，生成下 java 代码 找到生成的代码看下 我靠 好复杂，还是渣格式，这里格式化一下：
           
           
         
@@ -45,7 +45,7 @@ aidl 语法 这里请去看我写在前面，里面比较详细，或者自行 b
 开发环境 Android Studio 2.2
 步骤 首先新建工程 然后会自动生成 MainActivity
 MainActivity 代码如下
-1public class MainActivity extends AppCompatActivity { 23// Used to load the &amp;#39;native-lib&amp;#39; library on application startup. 4 static { 5System.loadLibrary(&amp;#34;kikt-camera&amp;#34;); 6} 78@Override 9protected void onCreate(Bundle savedInstanceState) { 10super.onCreate(savedInstanceState); 11setContentView(R.layout.activity_main); 1213// Example of a call to a native method 14 TextView tv = (TextView) findViewById(R.id.sample_text); 15tv.setText(stringFromJNI()); 16} 1718/** 19* A native method that is implemented by the &amp;#39;native-lib&amp;#39; native library, 20* which is packaged with this application.
+1public class MainActivity extends AppCompatActivity { 2 3 // Used to load the &amp;#39;native-lib&amp;#39; library on application startup. 4 static { 5 System.loadLibrary(&amp;#34;kikt-camera&amp;#34;); 6 } 7 8 @Override 9 protected void onCreate(Bundle savedInstanceState) { 10 super.onCreate(savedInstanceState); 11 setContentView(R.layout.activity_main); 12 13 // Example of a call to a native method 14 TextView tv = (TextView) findViewById(R.
           
           
         
@@ -66,9 +66,9 @@ MainActivity 代码如下
 准备工作 其实 demo 永远是最好的老师 我们直接自己创建一个 Project 好在 AS 对于对于 ndk 的支持越来越友好 选中 c++支持，这样创建出来的 gradle 文件就会自动创建相关的，有助于我们学习
 自动生成的核心文件 build.gradle MainActivity.java native-lib.cpp CMakelists.txt
 MainActivity.java MainActivity.java
-1System.loadLibrary(&amp;#34;native-lib&amp;#34;); //加载native-lib库 2 ... 3public native String stringFromJNI();//指向cpp文件中的方法  左边有一个箭头，这个点击可以直接跳到 cpp 文件中的方法
+1 System.loadLibrary(&amp;#34;native-lib&amp;#34;); //加载native-lib库 2 ... 3 public native String stringFromJNI();//指向cpp文件中的方法 左边有一个箭头，这个点击可以直接跳到 cpp 文件中的方法
 gradle project 级别的和传统没有差别 看 module 级的
-1apply plugin: &amp;#39;com.android.application&amp;#39; 23android { 4... 5externalNativeBuild { 6cmake { 7cppFlags &amp;#34;&amp;#34; 8} 9} 10} 11.
+1apply plugin: &amp;#39;com.android.application&amp;#39; 2 3android { 4 ... 5 externalNativeBuild { 6 cmake { 7 cppFlags &amp;#34;&amp;#34; 8 } 9 } 10 } 11 .
           
           
         

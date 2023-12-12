@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/yield/</link>
     <description>Recent content in yield on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Sun, 03 Feb 2019 17:19:23 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/yield/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -26,8 +27,8 @@
 比如你return 1,但是返回值上却需要写Future&amp;lt;int&amp;gt;
 sync* 在 dart 中可以使用这个便利的生成一个迭代器
 如下所示
- 这两种写法是一样的,但是第一个写法会简洁很多
-1main(List&amp;lt;String&amp;gt; arguments) { 2print(genList()); 3print(genList2()); 4} 56Iterable&amp;lt;int&amp;gt; genList({int max = 10}) sync* { 7var i = 0; 8while (i &amp;lt; max) { 9yield i; 10i++; 11} 12} 1314Iterable&amp;lt;int&amp;gt; genList2({int max = 10}) { 15var list = &amp;lt;int&amp;gt;[]; 16var i = 0; 17while (i &amp;lt; max) { 18list.
+这两种写法是一样的,但是第一个写法会简洁很多
+1main(List&amp;lt;String&amp;gt; arguments) { 2 print(genList()); 3 print(genList2()); 4} 5 6Iterable&amp;lt;int&amp;gt; genList({int max = 10}) sync* { 7 var i = 0; 8 while (i &amp;lt; max) { 9 yield i; 10 i++; 11 } 12} 13 14Iterable&amp;lt;int&amp;gt; genList2({int max = 10}) { 15 var list = &amp;lt;int&amp;gt;[]; 16 var i = 0; 17 while (i &amp;lt; max) { 18 list.
           
           
         

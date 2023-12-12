@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E5%86%B2%E7%AA%81/</link>
     <description>Recent content in 冲突 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Thu, 23 Aug 2018 12:12:19 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E5%86%B2%E7%AA%81/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -17,20 +18,19 @@
         
           
             有时候 flutter 更新 sdk 版本后不知道该不该更新 有时候 pub 库更新后和自己的其他类库发生了冲突
- 类似于图上的情况
+类似于图上的情况
 遇到这样的问题应该怎么解决呢
 我们一步步解决
 首先,这种依赖一般是 pub 中引用的,先查看下原作者有没有最新版,也许就解决了呢
 无奈我们用到的类库是一个 5 个月没有更新过的类库,看来是指望不上了 没关系,我们进 pub 主页中
- 一般都是有 github 的,我们点进 github 中 如果真没有 那就下一个 zip,然后自己创建一个吧
+一般都是有 github 的,我们点进 github 中 如果真没有 那就下一个 zip,然后自己创建一个吧
 然后 fork 项目,clone 下来,修改下
- 可以参考下这个修改日志, 修改了库的引用地址,因为这两个库是同一个作者,这个依赖了另一个,我这里修改了另一个库,并且也同样 fork+clone 修改后上传到了自己的 github
+可以参考下这个修改日志, 修改了库的引用地址,因为这两个库是同一个作者,这个依赖了另一个,我这里修改了另一个库,并且也同样 fork+clone 修改后上传到了自己的 github
 这里是另一个库的修改 我在这里修改了作者使用的依赖为更加新的版本
 接着返回自己的 app 项目中
- 修改引用为 git 的方式
+修改引用为 git 的方式
 接着再使用就没问题了
 git 依赖的引用方式可以参考 ,
- 
           
           
         
@@ -51,7 +51,7 @@ git 依赖的引用方式可以参考 ,
 比如 A 库引用了 v7 26.x.x 的库, B 库使用了 v7 27.x.x 作为依赖
 解决方案 gradle 打包的过程中,首先会加载所有 gradle 脚本到库内
 然后才是运行的过程, 所以我们只需要在 app 级的build.gradle中增加如下代码即可
-1rootProject.allprojects { // 闭包循环每个工程 2 3subprojects { //每个工程子工程 4 project.configurations.all { //查找所有配置 5 resolutionStrategy.eachDependency { details -&amp;gt; //遍历所有依赖 6 if (details.requested.group == &amp;#39;com.android.support&amp;#39; 7&amp;amp;&amp;amp; details.requested.name.contains(&amp;#39;appcompat-v7&amp;#39;)) { 8details.useVersion &amp;#34;26.1.0&amp;#34; //将support包 v7替换为26.1.0 ,这里根据你自己的需要来改就可以了 9 } 10} 11} 12} 1314} 
+1rootProject.allprojects { // 闭包循环每个工程 2 3 subprojects { //每个工程子工程 4 project.configurations.all { //查找所有配置 5 resolutionStrategy.eachDependency { details -&amp;gt; //遍历所有依赖 6 if (details.requested.group == &amp;#39;com.android.support&amp;#39; 7 &amp;amp;&amp;amp; details.requested.name.contains(&amp;#39;appcompat-v7&amp;#39;)) { 8 details.useVersion &amp;#34;26.1.0&amp;#34; //将support包 v7替换为26.1.0 ,这里根据你自己的需要来改就可以了 9 } 10 } 11 } 12 } 13 14} 
           
           
         

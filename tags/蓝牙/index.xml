@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E8%93%9D%E7%89%99/</link>
     <description>Recent content in 蓝牙 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Sat, 08 Jul 2017 09:35:55 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E8%93%9D%E7%89%99/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -17,12 +18,12 @@
         
           
             前言 最近有一些蓝牙的通信需要做,就研究了一下蓝牙连接相关
- 连接蓝牙电子秤 连接 pos 机打印  其中连接蓝牙电子秤是接收数据 pos 机打印是发送数据/接收数据
-流程图  流程图画的相当不专业,请自行脑补   核心类 因为这次的电子秤不是 4.0 的设备,所以没有使用 BLE 的开发,而是经典蓝牙(SPP)的连接方式 BluetoothAdapter
+连接蓝牙电子秤 连接 pos 机打印 其中连接蓝牙电子秤是接收数据 pos 机打印是发送数据/接收数据
+流程图 流程图画的相当不专业,请自行脑补 核心类 因为这次的电子秤不是 4.0 的设备,所以没有使用 BLE 的开发,而是经典蓝牙(SPP)的连接方式 BluetoothAdapter
 全局变量
 1protected BluetoothAdapter mAdapter; 获取的方法,在 API18 下的时候使用的方式和以上的不一样,其实差别不大
-1if (SDK_INT &amp;lt; 18) { 2adapter = BluetoothAdapter.getDefaultAdapter(); 3} else { 4BluetoothManager bm = (BluetoothManager) getSystemService(BLUETOOTH_SERVICE); 5adapter = bm.getAdapter(); 6} 蓝牙使用的是注册广播的方式来获取系统给我们的通知 核心有以下的几种,注册广播的方法自己去搜下吧
-1BluetoothDevice.ACTION_FOUND//找到设备 2 BluetoothDevice.ACTION_NAME_CHANGED//设备的名字 3 BluetoothAdapter.ACTION_DISCOVERY_FINISHED//扫描结束 4 BluetoothDevice.ACTION_PAIRING_REQUEST//配对请求的放弃 5 BluetoothAdapter.STATE_OFF//蓝牙关闭 6 BluetoothAdapter.STATE_ON//蓝牙开启 连接 一般这种连接应该是全局单例,考虑写在了 service 中
+1if (SDK_INT &amp;lt; 18) { 2 adapter = BluetoothAdapter.getDefaultAdapter(); 3} else { 4 BluetoothManager bm = (BluetoothManager) getSystemService(BLUETOOTH_SERVICE); 5 adapter = bm.getAdapter(); 6} 蓝牙使用的是注册广播的方式来获取系统给我们的通知 核心有以下的几种,注册广播的方法自己去搜下吧
+1 BluetoothDevice.ACTION_FOUND//找到设备 2 BluetoothDevice.ACTION_NAME_CHANGED//设备的名字 3 BluetoothAdapter.ACTION_DISCOVERY_FINISHED//扫描结束 4 BluetoothDevice.ACTION_PAIRING_REQUEST//配对请求的放弃 5 BluetoothAdapter.STATE_OFF//蓝牙关闭 6 BluetoothAdapter.STATE_ON//蓝牙开启 连接 一般这种连接应该是全局单例,考虑写在了 service 中
 首先需要扫描所有的蓝牙连接,但是这里有个坑,就是如果你将广播注册在 onCreate 中和 onDestroy,你每次都需要接收系统的广播,如果出现同名或者别的原因,这里就会一直接收广播 所以这里需要动态的将广播注册与反注册 我这里使用的方案请参照流程图
           
           

@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/golang/</link>
     <description>Recent content in golang on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 13 Nov 2018 19:54:33 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -20,7 +21,7 @@
 Mac 下编译 Linux 和 Windows 64 位可执行程序
 1CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go 2CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build main.go Linux 下编译 Mac 和 Windows 64 位可执行程序
 1CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build main.go 2CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build main.go Windows 下编译 Mac 和 Linux 64 位可执行程序
-1SET CGO_ENABLED=0 2SET GOOS=darwin 3SET GOARCH=amd64 4go build main.go 56SET CGO_ENABLED=0 7SET GOOS=linux 8SET GOARCH=amd64 9go build main.go GOOS：目标平台的操作系统（darwin、freebsd、linux、windows） GOARCH：目标平台的体系架构（386、amd64、arm） 交叉编译不支持 CGO 所以要禁用它
+1SET CGO_ENABLED=0 2SET GOOS=darwin 3SET GOARCH=amd64 4go build main.go 5 6SET CGO_ENABLED=0 7SET GOOS=linux 8SET GOARCH=amd64 9go build main.go GOOS：目标平台的操作系统（darwin、freebsd、linux、windows） GOARCH：目标平台的体系架构（386、amd64、arm） 交叉编译不支持 CGO 所以要禁用它
           
           
         

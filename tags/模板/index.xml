@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E6%A8%A1%E6%9D%BF/</link>
     <description>Recent content in 模板 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 30 Jul 2019 21:43:25 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E6%A8%A1%E6%9D%BF/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,10 +20,19 @@
             Jetbrains 全家桶,包括 android studio, 支持一个东西叫 Live Template
 这个东西可以预先储存一个模板, 帮助我们快速开发, 这个功能很多朋友应该都知道,也在用
 本篇使用dart作为主要示例语言, dart 语言语法比较简单, 有 java/js 等常用语言基础的都应该能看懂
-                    简单使用 虽然想要重点介绍 groovyScript 的脚本使用, 但是也应该简单介绍下 Live Template
+简单使用 虽然想要重点介绍 groovyScript 的脚本使用, 但是也应该简单介绍下 Live Template
 比如我可以存一个 stful, 然后会自动生成一段代码, 当然这个模板是 flutter 开发自带的
- 进阶 自己搞一个小模板 这个模板就生成一个我们自己的类库调用, 比如我自己封装了一个 http 访问
+进阶 自己搞一个小模板 这个模板就生成一个我们自己的类库调用, 比如我自己封装了一个 http 访问
 1final response = await HttpHelper.fetchString(url); 以这段代码为例, 我们一个小 app 可能有 100 个接口, 这时候 LiveTemplate 就派上用场了
+我这里为了图省事, 直接指定只要是 dart 语言都生效 指定变量 使用两个$符号把变量包起来, 就可以指定变量名称 $1$
+相同的变量会被同时编辑
+变量名是自己定义的
+表达式后面会说
+默认值, 只有在没有表达式的时候才有用
+是否跳过是说, 如果设置了表达式或者默认值就不再需要手动输入了, 适用于你确定表达式没错的情况
+表达式(函数) Jetbrains 有一个页面来讲预置的表达式和对应的说明
+包括一些常见的功能
+clipboard(): 剪切板 camelCase(String): 驼峰 capitalize(String): 首字母大写 className(): 类名 date(sDate): 日期 fileName(): 文件名 fileNameWithoutExtension(): 无扩展文件名 groovyScript(&amp;quot;groovy code&amp;quot;, arg1) :执行 groovy 脚本 比如我可以组合使用一些功能以达到快速输入类名的功能
           
           
         

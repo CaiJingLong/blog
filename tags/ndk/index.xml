@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/ndk/</link>
     <description>Recent content in ndk on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 07 Jan 2020 11:50:07 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/ndk/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -22,7 +23,7 @@
 1ld: warning: building for macOS, but linking in object file (libswresample/libswresample.a(resample.o)) built for free standing 所以我根据实际的报错内容进行了修改
 编译脚本 这里只需要修改你的 NDK 为你本地的 NDK 目录即可
 最新的代码在这里: gist.github.com 需要自备梯子
-1#!/bin/bash 2 3NDK=/Volumes/Evo512/sdk/android-ndk-r20 4TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/darwin-x86_64 5API=21 67function build_android 8{ 9echo &amp;#34;Compiling FFmpeg for $CPU&amp;#34; 10./configure \ 11 --prefix=$PREFIX \ 12 --libdir=$LIB_DIR \ 13 --enable-shared \ 14 --disable-static \ 15 --enable-jni \ 16 --disable-doc \ 17 --disable-symver \ 18 --disable-programs \ 19 --target-os=android \ 20 --arch=$ARCH \ 21 --cpu=$CPU \ 22 --cc=$CC \ 23 --cxx=$CXX \ 24 --enable-cross-compile \ 25 --sysroot=$SYSROOT \ 26 --extra-cflags=&amp;#34;-Os -fpic $OPTIMIZE_CFLAGS&amp;#34; \ 27 --extra-ldflags=&amp;#34;$ADDI_LDFLAGS&amp;#34; \ 28 --disable-asm \ 29 $COMMON_FF_CFG_FLAGS 30make clean 31make -j8 32make install 33echo &amp;#34;The Compilation of FFmpeg for $CPUis completed&amp;#34; 34} 3536# # armv8-a 37# source &amp;#34;config-env.
+1#!/bin/bash 2 3NDK=/Volumes/Evo512/sdk/android-ndk-r20 4TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/darwin-x86_64 5API=21 6 7function build_android 8{ 9echo &amp;#34;Compiling FFmpeg for $CPU&amp;#34; 10./configure \ 11 --prefix=$PREFIX \ 12 --libdir=$LIB_DIR \ 13 --enable-shared \ 14 --disable-static \ 15 --enable-jni \ 16 --disable-doc \ 17 --disable-symver \ 18 --disable-programs \ 19 --target-os=android \ 20 --arch=$ARCH \ 21 --cpu=$CPU \ 22 --cc=$CC \ 23 --cxx=$CXX \ 24 --enable-cross-compile \ 25 --sysroot=$SYSROOT \ 26 --extra-cflags=&amp;#34;-Os -fpic $OPTIMIZE_CFLAGS&amp;#34; \ 27 --extra-ldflags=&amp;#34;$ADDI_LDFLAGS&amp;#34; \ 28 --disable-asm \ 29 $COMMON_FF_CFG_FLAGS 30make clean 31make -j8 32make install 33echo &amp;#34;The Compilation of FFmpeg for $CPU is completed&amp;#34; 34} 35 36# # armv8-a 37# source &amp;#34;config-env.
           
           
         
@@ -42,8 +43,8 @@
 这篇介绍如何引入 so 到项目中
 开发环境:
 1macos 2android studio 3.2.1 3ndk: 15.2.4203891 新建一个工程 新建工程时,勾选 c++支持
- 将文件复制到项目内 需要复制的文件
-.h 头文件 so文件    在 cpp 中新建一个文件夹include/ffmpeg 把 include 中的文件夹复制到 ffmpeg 下
+将文件复制到项目内 需要复制的文件
+.h 头文件 so文件 在 cpp 中新建一个文件夹include/ffmpeg 把 include 中的文件夹复制到 ffmpeg 下
 在 main 下新建文件夹jniLibs,把 so 文件复制到其中 修改 CMakeList 完整的CMakeList.txt 如下
 1# For more information about using CMake with Android Studio, read the 2# documentation: https://d.android.com/studio/projects/add-native-code.html 3 4# Sets the minimum version of CMake required to build the native library.
           

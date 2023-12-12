@@ -5,6 +5,7 @@
     <link>https://kikt.top/categories/%E6%B6%82%E9%B8%A6/</link>
     <description>Recent content in 涂鸦 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 22 Jan 2019 10:24:16 +0800</lastBuildDate><atom:link href="https://kikt.top/categories/%E6%B6%82%E9%B8%A6/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,11 +20,11 @@
             最近做了一篇 android 原生中加入 flutter 的尝试,顺便查看下内存占用
 在 debug 模式下肯定是不准的,所以随便看看就好了,只是为了满足好奇心,不代表真实项目中的真实表现,也不代表我的观点
 在原生刚刚打开后稳定的情况下查看内存占用
- 可以看到 打开 Flutter 后内存会有明显上升
- 红点处是我点击了按钮后的情况,会有内存抖动
-关闭 Flutter 界面后会发现内存回落很明显,说明内存相对比较稳定  过了段时间,其实是我在码字+上传图片,没看手机,发现内存更加平稳了,而且降低到了只有 30m
- 换句话说其实在 android 上内存的表现还算可以,目测在关闭 flutterview 的界面后简单的界面是可以完全回收的,而且众所周知 release 蜜汁流畅 :-D
- 本篇是随便写写的,不代表 flutter 在实际项目中的表现,因为实际项目原生,flutter 中都会有更复杂的机制,所以内存 cpu 的消耗会更大, 也可能会发生不可预知的情况
+可以看到 打开 Flutter 后内存会有明显上升
+红点处是我点击了按钮后的情况,会有内存抖动
+关闭 Flutter 界面后会发现内存回落很明显,说明内存相对比较稳定 过了段时间,其实是我在码字+上传图片,没看手机,发现内存更加平稳了,而且降低到了只有 30m
+换句话说其实在 android 上内存的表现还算可以,目测在关闭 flutterview 的界面后简单的界面是可以完全回收的,而且众所周知 release 蜜汁流畅 :-D
+本篇是随便写写的,不代表 flutter 在实际项目中的表现,因为实际项目原生,flutter 中都会有更复杂的机制,所以内存 cpu 的消耗会更大, 也可能会发生不可预知的情况
           
           
         

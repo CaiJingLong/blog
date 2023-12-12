@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/azure/</link>
     <description>Recent content in azure on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Fri, 31 Jan 2020 14:08:04 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/azure/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -24,9 +25,9 @@ Api 分析 azure 有 Rest api 可以完成上传的步骤, 然而这个 api 需�
 但没关系, 我们可以通过两次接口访问得到它.
 使用 postman 来测试下
 访问 https://dev.azure.com/{{organization}}/{{project}}/_apis/git/repositories/{{repositoryId}}/pushes?api-version=5.0 得到一个结果
- 然后访问这个 url 参数的接口可以获取 commitId
- 也就是 git 的 commit hash 值
- 这里把 oldObjectId 替换成刚刚拿到的 commitId, 其他的根据自己的情况替换, 比如 comment 是注释, path 是你要放到哪个目录和名字, content 是图片的 base64 值
+然后访问这个 url 参数的接口可以获取 commitId
+也就是 git 的 commit hash 值
+这里把 oldObjectId 替换成刚刚拿到的 commitId, 其他的根据自己的情况替换, 比如 comment 是注释, path 是你要放到哪个目录和名字, content 是图片的 base64 值
           
           
         

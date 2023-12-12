@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kikt.top/</loc>
-    <lastmod>2023-04-24T08:23:52+08:00</lastmod>
+    <lastmod>2023-12-12T14:45:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/categories/</loc>
+    <lastmod>2023-12-12T14:45:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/tags/gradle/</loc>
+    <lastmod>2023-12-12T14:45:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/categories/gradle/</loc>
+    <lastmod>2023-12-12T14:45:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/posts/</loc>
+    <lastmod>2023-12-12T14:45:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/tags/</loc>
+    <lastmod>2023-12-12T14:45:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/posts/gradle/gradle-wapper-mirrors/</loc>
+    <lastmod>2023-12-12T14:45:00+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/categories/c/</loc>
     <lastmod>2023-04-24T08:23:52+08:00</lastmod>
@@ -11,22 +29,7 @@
     <loc>https://kikt.top/posts/c/base/</loc>
     <lastmod>2023-04-24T08:23:52+08:00</lastmod>
   </url><url>
-    <loc>https://kikt.top/categories/</loc>
-    <lastmod>2023-04-24T08:23:52+08:00</lastmod>
-  </url><url>
-    <loc>https://kikt.top/posts/</loc>
-    <lastmod>2023-04-24T08:23:52+08:00</lastmod>
-  </url><url>
-    <loc>https://kikt.top/tags/gradle/</loc>
-    <lastmod>2023-01-20T20:45:00+08:00</lastmod>
-  </url><url>
-    <loc>https://kikt.top/categories/gradle/</loc>
-    <lastmod>2023-01-20T20:45:00+08:00</lastmod>
-  </url><url>
     <loc>https://kikt.top/posts/gradle/03/%E7%BC%96%E5%86%99-plugin/</loc>
-    <lastmod>2023-01-20T20:45:00+08:00</lastmod>
-  </url><url>
-    <loc>https://kikt.top/tags/</loc>
     <lastmod>2023-01-20T20:45:00+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/posts/gradle/01/basic/03-buildsrc/</loc>

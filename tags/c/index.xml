@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/c/</link>
     <description>Recent content in c on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Mon, 04 Nov 2019 17:15:11 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,9 +20,8 @@
             写在前面, 对于无源码的项目, 理论上必须有头文件,不然你不知道里面都定义了什么鬼东西.
 本篇虽然是写无源码的项目, 但实际上还是会有源码部分, 只是通过 cmake,clang,xcodebuild,ndk 等工具编译成 so/framework 以供 android/ios 引入
 生成动态库 整体的目录结构是这样的, 如果你只是要引入库, 可以跳过这步, 这步的主要做源码生成库的步骤
-1$ tree -L 3 cpp-source 2tree -L 3 cpp-source 3cpp-source 4├── android 5│ ├── CMakeLists.txt 6│ ├── build_android.sh 7│ └── cmd 8│ └── android.sh 9├── ios 10│ ├── CMakeLists.txt 11│ ├── build_ios.sh 12│ ├── cmd 13│ │ └── ios_abi_build.sh 14│ └── ios.toolchain.cmake 15└── src 16├── some.cpp 17└── some.h src 为源码
+1$ tree -L 3 cpp-source 2tree -L 3 cpp-source 3cpp-source 4├── android 5│ ├── CMakeLists.txt 6│ ├── build_android.sh 7│ └── cmd 8│ └── android.sh 9├── ios 10│ ├── CMakeLists.txt 11│ ├── build_ios.sh 12│ ├── cmd 13│ │ └── ios_abi_build.sh 14│ └── ios.toolchain.cmake 15└── src 16 ├── some.cpp 17 └── some.h src 为源码
 some.cpp
-1#include &amp;#34;some.h&amp;#34;2#include &amp;lt;stdint.
           
           
         
@@ -42,7 +42,7 @@ some.cpp
 但是在当前版本中, 这东西在官方说明中依然处于技术预览版, 就是可用, 但后续不保证 api 不变更。
 开发环境 首先我是 mac 系统, windows 系统不保证脚本的可用和工具的可用, linux 的话可能一些必要工具需要使用自己平台的包管理工具, 并且涉及到 ios 部分, 必须使用 mac。
 所有需要的工具包
- Xcode(或 XcodeBuild 命令行工具) brew clang cmake Android 工具链  Android SDK NDK Android Studio(可选) Gradle   Flutter 工具链  SDK 1.10.x+   vscode(可选, 这东西看你的情况,作为示例的话只要是文本编辑器即可, 我本人使用这个作为主要的文本编辑器)  这里说的是包含后续所有用到的东西, 并不仅仅是本文。 其中对于 flutter 开发者可能需要单独安装的应该只有 NDK 和 Cmake, 这两个东西是包含在 android sdk 下的, 可以使用 android studio 下载, 也可以单独下载
+Xcode(或 XcodeBuild 命令行工具) brew clang cmake Android 工具链 Android SDK NDK Android Studio(可选) Gradle Flutter 工具链 SDK 1.10.x+ vscode(可选, 这东西看你的情况,作为示例的话只要是文本编辑器即可, 我本人使用这个作为主要的文本编辑器) 这里说的是包含后续所有用到的东西, 并不仅仅是本文。 其中对于 flutter 开发者可能需要单独安装的应该只有 NDK 和 Cmake, 这两个东西是包含在 android sdk 下的, 可以使用 android studio 下载, 也可以单独下载
           
           
         

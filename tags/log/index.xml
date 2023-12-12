@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/log/</link>
     <description>Recent content in log on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Mon, 04 Mar 2019 08:48:51 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/log/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -29,11 +30,10 @@
 pub global activate log4d
 这一步完成后可以通过log4d,log4d_client 来使用插件
 2.客户端安装 作为一个库来使用, 首先在 pubspec.yaml 中加入依赖
-1dependencies:2log4d:^1.0.3# 这一步参考最新版3.获取库 pub get 或 flutter packages get
+1dependencies: 2 log4d: ^1.0.3 # 这一步参考最新版 3.获取库 pub get 或 flutter packages get
 4. 导入 import &#39;package:log4d/log4d.dart&#39;;
-使用  简单的使用方式就是服务端在命令行中开启
+使用 简单的使用方式就是服务端在命令行中开启
 1. 开启服务端 log4d -o build/test.log 这样就成功开启了,并且会在接受到日志后将日志保存到指定的目录下
-2. 在 flutter 中使用 封装一个简单的帮助类
           
           
         

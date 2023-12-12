@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/</link>
     <description>Recent content in 百度地图 on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 07 Mar 2017 12:45:55 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -18,10 +19,9 @@
           
             前言 今天用 AS 写一个带有百度地图相关的项目时，发现了一个问题
 提示
-1Error:Execution failed for task &amp;#39;:app:compileDebugNdk&amp;#39;. 2&amp;gt; Error: Your project contains C++ files but it is not using a supported native build system. 3Consider using CMake or ndk-build integration with the stable Android Gradle plugin: 4https://developer.android.com/studio/projects/add-native-code.html 5or use the experimental plugin: 6http://tools.android.com/tech-docs/new-build-system/gradle-experimental. 我就找原因，先点开了两个网页，发现一个是用 CMake 构建 ndk 的还一个是用 experimental 插件构件 ndk 项目的
+1 Error:Execution failed for task &amp;#39;:app:compileDebugNdk&amp;#39;. 2&amp;gt; Error: Your project contains C++ files but it is not using a supported native build system. 3Consider using CMake or ndk-build integration with the stable Android Gradle plugin: 4 https://developer.android.com/studio/projects/add-native-code.html 5or use the experimental plugin: 6 http://tools.android.com/tech-docs/new-build-system/gradle-experimental. 我就找原因，先点开了两个网页，发现一个是用 CMake 构建 ndk 的还一个是用 experimental 插件构件 ndk 项目的
 这两个方式的共通点是都有 c 的源码，自己生成 so 文件，都不是我想要的
 因为以前这么写没有问题，我在网上找相同的问题，大家都是说把 targetVersion 改成 23 以下就解决了，但是这不是我想要的，况且我这么用了也没解决问题，毕竟 targetVersion 迁移到 23+是大势所趋
-我找了下原因，应该是 so 文件的原因，在 6.
           
           
         

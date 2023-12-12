@@ -5,6 +5,7 @@
     <link>https://kikt.top/tags/ios/</link>
     <description>Recent content in iOS on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Wed, 18 Mar 2020 13:17:37 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -44,7 +45,15 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
             之前写了一篇关于如何将 flutter 直接打包成 android aar 的文章, 本篇写一写如何将 flutter 打包成 framework 以便于直接让没有 flutter 环境的 iOS 开发者使用, 因为国内很多项目都有这样的要求
 本篇并不会做完全的工程集成化, 只是做一下如何将 flutter 的 framework 打出来, 并且置入到 iOS 原生工程中, 因为各项目一定户会有自己的特殊性, 不可能完全一样
 本篇打包脚本部分参考了 的内容,但是又有一些针对 flutter 版本的变化和 flutter type 不同的情况进行的修改, 不观看连接中的内容并不会影响观看
-                                     开发环境 MacOS
+开发环境 MacOS
+XCode 10
+git
+flutter 及 flutter 的相关工具链
+cocoapods
+创建几个工程 iOS 原生工程 使用 xcode 创建 这个原生工程就是模拟你的原有工程
+Flutter 工程 这里我只使用 flutter module 的方式, 如果你 flutter 是 app 的方式创建的,则打包脚本的内容需要根据应用结构有所调整
+$ flutter create -t module flutter_module_for_ios
+这次直接在里面添加一个带有原生功能的插件, 和 android 篇相同依然选择 那个插件
           
           
         
@@ -61,11 +70,9 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
         
           
             原生通信系列
-
-
- 本篇主要介绍如何在 iOS 中发布广播,然后在 dart 端进行订阅
+本篇主要介绍如何在 iOS 中发布广播,然后在 dart 端进行订阅
 oc 先来查看 OC 篇
-1#import &amp;#34;BattlePowerPlugin.h&amp;#34; 2#import &amp;lt;Foundation/NSTimer.h&amp;gt; 3 4@implementation BattlePowerPlugin 56+ (void)registerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar { 7// ... 8 9[self registerPostTimerWithRegistrar:registrar]; 10} 1112+(void) registerPostTimerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar{ 13FlutterBasicMessageChannel *channel = [FlutterBasicMessageChannel messageChannelWithName:@&amp;#34;run_time&amp;#34; binaryMessenger:[registrar messenger]]; 1415long start = [self getNow]; 1617[NSTimer scheduledTimerWithTimeInterval:5 repeats:true block:^(NSTimer * _Nonnull timer) { 18long run = [self getNow] - start; 19[channel sendMessage:[NSNumber numberWithLong:run]]; 2021if (run &amp;gt; 100){ 22[timer invalidate]; 23} 24}]; 25} 2627+(long)getNow{ 28NSDate *date = [NSDate date]; 29long timeStamp = [date timeIntervalSince1970]; 30return timeStamp; 31} 3233//.
+1#import &amp;#34;BattlePowerPlugin.h&amp;#34; 2#import &amp;lt;Foundation/NSTimer.h&amp;gt; 3 4@implementation BattlePowerPlugin 5 6+ (void)registerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar { 7 // ... 8 9 [self registerPostTimerWithRegistrar:registrar]; 10} 11 12+(void) registerPostTimerWithRegistrar:(NSObject&amp;lt;FlutterPluginRegistrar&amp;gt;*)registrar{ 13 FlutterBasicMessageChannel *channel = [FlutterBasicMessageChannel messageChannelWithName:@&amp;#34;run_time&amp;#34; binaryMessenger:[registrar messenger]]; 14 15 long start = [self getNow]; 16 17 [NSTimer scheduledTimerWithTimeInterval:5 repeats:true block:^(NSTimer * _Nonnull timer) { 18 long run = [self getNow] - start; 19 [channel sendMessage:[NSNumber numberWithLong:run]]; 20 21 if (run &amp;gt; 100){ 22 [timer invalidate]; 23 } 24 }]; 25} 26 27+(long)getNow{ 28 NSDate *date = [NSDate date]; 29 long timeStamp = [date timeIntervalSince1970]; 30 return timeStamp; 31} 32 33//.
           
           
         
@@ -82,13 +89,9 @@ oc 先来查看 OC 篇
         
           
             原生通信系列
-
-
- 本篇要介绍的是 flutter 调用 iOS 篇
+本篇要介绍的是 flutter 调用 iOS 篇
 如果你没有看过我的前 2 篇,建议看一下. dart 端会承接上一篇的结果
-dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/services.dart&amp;#39;; 45class BattlePower { 6static const MethodChannel _channel = const MethodChannel(&amp;#39;battle_power&amp;#39;); 78static Future&amp;lt;String&amp;gt; get platformVersion async { 9final String version = await _channel.invokeMethod(&amp;#39;getPlatformVersion&amp;#39;); 10return version; 11} 1213static Future&amp;lt;int&amp;gt; requestNativeAdd(int x, int y) async { 14int result = await _channel.invokeMethod(&amp;#39;add&amp;#39;, {&amp;#34;x&amp;#34;: x, &amp;#34;y&amp;#34;: y}); 15return result; 16} 1718//.... 19} 这里和第一篇一样
-不详细介绍了
- 这里是以 oc 为例的,不建议用 swift 开发插件,尤其是开源插件
+dart 1import &amp;#39;dart:async&amp;#39;; 2 3import &amp;#39;package:flutter/services.dart&amp;#39;; 4 5class BattlePower { 6 static const MethodChannel _channel = const MethodChannel(&amp;#39;battle_power&amp;#39;); 7 8 static Future&amp;lt;String&amp;gt; get platformVersion async { 9 final String version = await _channel.invokeMethod(&amp;#39;getPlatformVersion&amp;#39;); 10 return version; 11 } 12 13 static Future&amp;lt;int&amp;gt; requestNativeAdd(int x, int y) async { 14 int result = await _channel.invokeMethod(&amp;#39;add&amp;#39;, {&amp;#34;x&amp;#34;: x, &amp;#34;y&amp;#34;: y}); 15 return result; 16 } 17 18 //.
           
           
         
@@ -106,7 +109,7 @@ dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/ser
           
             简单记录,为后续方便查找,仅有代码片段
 可以放在ViewController的基类中
-1if let bar = self.navigationController?.navigationBar { 2bar.backgroundColor = .themeColor 3bar.tintColor = .white 4var attrs = bar.titleTextAttributes 5if attrs == nil { 6attrs = [NSAttributedStringKey:Any]() 7} 8attrs?[NSAttributedStringKey.foregroundColor] = UIColor.white 9bar.titleTextAttributes = attrs 10} 
+1if let bar = self.navigationController?.navigationBar { 2 bar.backgroundColor = .themeColor 3 bar.tintColor = .white 4 var attrs = bar.titleTextAttributes 5 if attrs == nil { 6 attrs = [NSAttributedStringKey:Any]() 7 } 8 attrs?[NSAttributedStringKey.foregroundColor] = UIColor.white 9 bar.titleTextAttributes = attrs 10} 
           
           
         
@@ -128,7 +131,7 @@ dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/ser
 我这里采用另一个方案来做,而且比较简单,也就是自定义 view 的方案的来做
 思路 UIBarButtonItem.init(customView: view)这种方式如果直接将 Button 放进去,那么你设置的 frame 的位置是无效的
 那么我这里采用另一个取巧的方案去做 众所周知,ios 中的控件摆放是可以超出父控件距离的,也就是说,我使用一个 UIView 包裹真正用于显示的 View,然后将子 View 的 x 设置偏移也就可以解决了
-实现 12import UIKit 34extension UIViewController{ 5func setNavigatorLeftItem(customView:UIView) { 6var view:UIView 7if #available(iOS 11, *){ 8let padding:CGFloat = 20 9let frame = customView.frame 10view = UIView(frame: CGRect(x: 0, y: 0, width: frame.
+实现 1 2import UIKit 3 4extension UIViewController{ 5 func setNavigatorLeftItem(customView:UIView) { 6 var view:UIView 7 if #available(iOS 11, *){ 8 let padding:CGFloat = 20 9 let frame = customView.frame 10 view = UIView(frame: CGRect(x: 0, y: 0, width: frame.
           
           
         
@@ -149,10 +152,11 @@ dart 1import &amp;#39;dart:async&amp;#39;; 23import &amp;#39;package:flutter/ser
 ios 使用的 BLE 方案,安卓则是因为设备的原因只能选择普通蓝牙的连接方案
 BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜索下
 有个 mac 的蓝牙开发工具 LightBlue,很好用,mac app store 自己下就好了,这个很方便你理解 BLE 的蓝牙相关 device(central/peripheral)-&amp;gt;services-&amp;gt;characteristics
- 这里可以看到,有一个 mobike,有兴趣的同学可以研究下 mobike 的蓝牙连接 ☺ 说笑一下,人家肯定有安全性校验的
+这里可以看到,有一个 mobike,有兴趣的同学可以研究下 mobike 的蓝牙连接 ☺ 说笑一下,人家肯定有安全性校验的
 语言选型 最近在学习 ios 开发,因为我是 android 出身,学习 ios 开发的时候 swift3 已经出现很久了,所以我这里使用的 swift 进行开发
 坑 1 最初我使用了厂家提供的 ios sdk 进行开发,其中封装了很多常用的方法,让我自己以为很简单就能完成,但是事实上是我太天真了,首先厂家提供的是.a 的库,只有一个.h 文件暴露在外,我的项目是纯 swift 项目,这就不可避免的使用到了 swift 到 oc 的桥接
 坑 2 满以为桥接完了调 SDK 方法就行,谁知道调用的时候根本就没反应,没办法,只能摸石头过河进行开发了,最初使用的是 oc 的 corebluetooth 方案,因为实在是没找到 swift 的相关说法,baidu 没搜到,没办法,oc 毕竟也算是入门了,直接开干了
+坑 3 开发完 oc 的连接 demo,强迫症发作,决定一定要用纯 swift 开发,毕竟我们还是要跟随时代脚步的嘛
           
           
         
@@ -169,11 +173,11 @@ BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜
         
           
             何谓将类名作为参数 举个栗子 看这么一个需求:
- 一个 tableview,其中的 cell 是 nib 写的
- 步骤:
- 定义 1 个 cell 和对应的 xib 在 ViewController 中定义一个 Xib 加载对应文件,注册 xib  这个时候有一些步骤就是需要定义一个 xib 的文件名,cell 的 identitier,但是这两个东西都是字符串,如果一个字母敲错了或者后续业务逻辑/功能有更改,那么当你要修改 cell 对应的类名时,你就不得不一起修改文件名,字符串的名字,所有引用的名称..等等步骤
+一个 tableview,其中的 cell 是 nib 写的
+步骤:
+定义 1 个 cell 和对应的 xib 在 ViewController 中定义一个 Xib 加载对应文件,注册 xib 这个时候有一些步骤就是需要定义一个 xib 的文件名,cell 的 identitier,但是这两个东西都是字符串,如果一个字母敲错了或者后续业务逻辑/功能有更改,那么当你要修改 cell 对应的类名时,你就不得不一起修改文件名,字符串的名字,所有引用的名称..等等步骤
 这个时候就要想了,如果将这个 Cell 实现一个 protocol,protocol 中有 xibName,identifier,同时每个类去实现,然后 tableview 注册方法中只传类名不就可以了吗,这样以后如果有修改都只在 Cell 的类内部去写,就不容易出错了
-实现步骤 定义一个 Protocol 1protocol NibCell { 23static func nibName() -&amp;gt; String 45static func identifier() -&amp;gt; String 67} 定义一个 Cell 1import UIKit 23class OrderDetailCell: UITableViewCell,NibCell { 45static func nibName() -&amp;gt; String { 6return &amp;#34;OrderDetailCell&amp;#34; 7} 89static func identifier() -&amp;gt; String { 10return &amp;#34;OrderDetailCell&amp;#34; 11} 1213override func awakeFromNib() { 14super.
+实现步骤 定义一个 Protocol 1protocol NibCell { 2 3 static func nibName() -&amp;gt; String 4 5 static func identifier() -&amp;gt; String 6 7} 定义一个 Cell 1import UIKit 2 3class OrderDetailCell: UITableViewCell,NibCell { 4 5 static func nibName() -&amp;gt; String { 6 return &amp;#34;OrderDetailCell&amp;#34; 7 } 8 9 static func identifier() -&amp;gt; String { 10 return &amp;#34;OrderDetailCell&amp;#34; 11 } 12 13 override func awakeFromNib() { 14 super.
           
           
         
@@ -189,12 +193,11 @@ BLE 蓝牙相关的概念性东西我这里就不说了 大家可以自己去搜
       <description>
         
           
-            ios-toast-swift 
-swift 3.1 语法
-如果想支持其他的语法请自己修改 这里主要是模仿android端的提示方案  截图 背景灰色是因为我把 Demo 中的 ViewController 的 view 的 backgroundColor 修改为了 gray 不是会覆盖全屏的颜色
+            ios-toast-swift swift 3.1 语法
+如果想支持其他的语法请自己修改 这里主要是模仿android端的提示方案 截图 背景灰色是因为我把 Demo 中的 ViewController 的 view 的 backgroundColor 修改为了 gray 不是会覆盖全屏的颜色
 这里有个小 bug 圆角么有包含全,后续改正
-食用方法  clone 项目 将 source 下的方法 copy 到源码内,如果有文件重名请自己改名 toast(&amp;quot;提示语句&amp;quot;) toast(&amp;quot;提示内容&amp;quot;,3) //内容 时长  源码分析 都是伪代码  代码分布 ToastView:自定义view相关的代码,基本没啥东西,就是加载了xib文件 Toast:帮助类,其中定义了如何附着到window中,位置,根据文字计算文字大小,渐隐动画等相关内容  提示 这里对于项目没有太多的侵入性 总体原理大概就是创建一个 view,将 view 附着到前台 window 中 这里有一点,这里的 toast 会覆盖掉软键盘
-如果想要修改 view 的样式,可以自己修改 ToastView.xib/ToastView.swift 内容很简单,就在ToastView中 可以自定义内容,更加丰富多彩,也可以基于扩展 content 是一个UILabel,用于显示内容  想要修改提示位置 Toast.swift 的 57~60行  想要修改大小 Toast.
+食用方法 clone 项目 将 source 下的方法 copy 到源码内,如果有文件重名请自己改名 toast(&amp;quot;提示语句&amp;quot;) toast(&amp;quot;提示内容&amp;quot;,3) //内容 时长 源码分析 都是伪代码 代码分布 ToastView:自定义view相关的代码,基本没啥东西,就是加载了xib文件 Toast:帮助类,其中定义了如何附着到window中,位置,根据文字计算文字大小,渐隐动画等相关内容 提示 这里对于项目没有太多的侵入性 总体原理大概就是创建一个 view,将 view 附着到前台 window 中 这里有一点,这里的 toast 会覆盖掉软键盘
+如果想要修改 view 的样式,可以自己修改 ToastView.xib/ToastView.swift 内容很简单,就在ToastView中 可以自定义内容,更加丰富多彩,也可以基于扩展 content 是一个UILabel,用于显示内容 想要修改提示位置 Toast.swift 的 57~60行 想要修改大小 Toast.swift的35~50行左右 动画效果 Toast.swift的66~87行 License/开源协议 Copyright 2017 JingLong Cai Licensed under the Apache License, Version 2.
           
           
         

@@ -201,7 +201,7 @@
 </span>
     <span class="post_date">
       2022-10-20 11:18</span>
-    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/kotlin-compose' title="Kotlin-Compose" class="post_tag button button_translucent">Kotlin-Compose
+    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/kotlin-compose' title="Kotlin-Compose" class="post_tag button button_translucent">Kotlin-Compose
         </a>
     </span>
     <span class="page_only">&nbsp;·
@@ -246,7 +246,7 @@
             <p>文档地址
 简单说明 首先，代码部分，我会以 LazyColumn 作为 App 的根容器，这个容器可以简单理解为 ScrollView 和 ListView 的混合体，后面会详细说
 然后每一个子元素会被包裹在一个 item {}闭包内，但每一个都包的话，很不oop，所以，我会略微封装一下，变成下面这样，这样我就可以直接在 MyColumn闭包内写每一个item了
-1@Composable 2fun App() { 3var text by remember { mutableStateOf(&#34;Hello, World!&#34;) } 4val platformName = getPlatformName() …</p>
+1@Composable 2fun App() { 3 var text by remember { mutableStateOf(&#34;Hello, World!&#34;) } 4 val platformName = getPlatformName() 5 6 …</p>
           
           <br>
           <a href="https://kikt.top/posts/kotlin-compose/kotlin-compose-04-image/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -339,7 +339,7 @@ Window Window 是一个窗口，对应了 windows/macOS/Linux 的窗口，它通
 </span>
     <span class="post_date">
       2022-10-16 08:29</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/kotlin-compose' title="Kotlin-Compose" class="post_tag button button_translucent">Kotlin-Compose
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/kotlin-compose' title="Kotlin-Compose" class="post_tag button button_translucent">Kotlin-Compose
         </a>
     </span>
     <span class="page_only">&nbsp;·
@@ -381,9 +381,9 @@ Window Window 是一个窗口，对应了 windows/macOS/Linux 的窗口，它通
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>开发环境  macOS Idea 2022.2.1 jdk 17  开发环境这里，compose 打包时要求jdk版本大于15，而 java 的 lts 版本是8，11，17，我个人建议直接用17而不是15，开发时运行反而可以使用11，不过我个人觉得直接用17就好了
+            <p>开发环境 macOS Idea 2022.2.1 jdk 17 开发环境这里，compose 打包时要求jdk版本大于15，而 java 的 lts 版本是8，11，17，我个人建议直接用17而不是15，开发时运行反而可以使用11，不过我个人觉得直接用17就好了
 创建项目 新建项目，选择 Compose Mutilplatform类型 这里左边可以单独选择支持的类型，右边是多类型（桌面端+安卓） 然后，等待依赖更新完成，我创建的是多类型的项目
-看看配置文件  项目的配置文件是 kts 文件，这是 Gradle 项目 groovy 以外的另一种一级语言，使用 kotlin 语法，相比 groovy 来说，语法更加的“严谨” …</p>
+看看配置文件 项目的配置文件是 kts 文件，这是 Gradle 项目 groovy 以外的另一种一级语言，使用 kotlin 语法，相比 groovy 来说，语法更加的“严谨” …</p>
           
           <br>
           <a href="https://kikt.top/posts/kotlin-compose/kotlin-compose-02-create-project/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -451,8 +451,7 @@ Window Window 是一个窗口，对应了 windows/macOS/Linux 的窗口，它通
           
             <p>Kotlin compose 是啥玩意 用 kotlin 开发桌面应用的东西，Jetbrains 出品
 优势 Kotlin compose 在我看来，是一个很“巧妙”的东西，虽然这东西是 Jetbrains 开发的，但是使用了 Google 安卓的 Jetpack compose 的 api，这就造成了如下的优势
- 可以在满足一定条件的前提下，将业务逻辑由安卓端快速迁移到桌面端，共用部分代码，求同存异 利用 jvm 体系强大的三方库来快速开发 帮助不熟悉桌面开发的小伙伴使用更加“移动端”的思想来看待桌面端  文档 基于 2022-10-18 的情况，有很多的文档
-       </p>
+可以在满足一定条件的前提下，将业务逻辑由安卓端快速迁移到桌面端，共用部分代码，求同存异 利用 jvm 体系强大的三方库来快速开发 帮助不熟悉桌面开发的小伙伴使用更加“移动端”的思想来看待桌面端 文档 基于 2022-10-18 的情况，有很多的文档</p>
           
           <br>
           <a href="https://kikt.top/posts/kotlin-compose/kotlin-compose-01-start/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -502,6 +501,9 @@ Window Window 是一个窗口，对应了 windows/macOS/Linux 的窗口，它通
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -522,9 +524,6 @@ Window Window 是一个窗口，对应了 windows/macOS/Linux 的窗口，它通
       <li>
         <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" class="nav-link" title="Gradle 基础">Gradle 基础</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -541,7 +540,7 @@ Window Window 是一个窗口，对应了 windows/macOS/Linux 的窗口，它通
         
         <a href='https://kikt.top/categories/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">12</span>
+          <span class="button_tally">13</span>
         </a>
         
         <a href='https://kikt.top/categories/ios/' class="post_tag button button_translucent" title="ios">
@@ -641,7 +640,7 @@ Window Window 是一个窗口，对应了 windows/macOS/Linux 的窗口，它通
             </a>
             
             
-            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=12 title="gradle">GRADLE<span class="button_tally">12</span>
+            <a href='https://kikt.top/categories/gradle/' class=" post_tag button button_translucent" data-position=13 title="gradle">GRADLE<span class="button_tally">13</span>
             </a>
             
             
@@ -712,7 +711,7 @@ Window Window 是一个窗口，对应了 windows/macOS/Linux 的窗口，它通
         
         <a href='https://kikt.top/tags/gradle/' class="post_tag button button_translucent" title="gradle">
           GRADLE
-          <span class="button_tally">14</span>
+          <span class="button_tally">15</span>
         </a>
         
         <a href='https://kikt.top/tags/ios/' class="post_tag button button_translucent" title="ios">
@@ -964,7 +963,7 @@ Window Window 是一个窗口，对应了 windows/macOS/Linux 的窗口，它通
             </a>
             
             
-            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=14 title="gradle">GRADLE<span class="button_tally">14</span>
+            <a href='https://kikt.top/tags/gradle/' class=" post_tag button button_translucent" data-position=15 title="gradle">GRADLE<span class="button_tally">15</span>
             </a>
             
             
@@ -1411,7 +1410,7 @@ Window Window 是一个窗口，对应了 windows/macOS/Linux 的窗口，它通
 
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
+  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
 
     
   </body>
