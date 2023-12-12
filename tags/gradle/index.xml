@@ -22,10 +22,9 @@
 直接替换 url 这种情况适用于项目是内部项目或者都是国内人员参与的项目。
 替换方式为直接替换 gradle/wrapper/gradle-wrapper.properties 下的 url 到国内镜像即可， 比如 https://mirrors.cloud.tencent.com/gradle/gradle-8.5-all.zip。
 使用代理 自备
-不能替换的情况 比如某个项目是开源项目，你需要上传到 github，那你就不应该这么做了，你不能假定使用者都是国内的人。 那你就需要研究下正常情况下是放在哪里的了。
-有几种方式，自行下载并复制到对应文件夹下。
-默认情况下，每个版本的 Gradle wrapper 会在 $GRADLE_HOME/wrapper/dists/{version}/{hash} 下 这个 version 是包含类型的，例如 gradle-7.4-all ，是包含 -all 后缀的。 然后 hash 则是 md5 后，生成方法在
-1 2 /** 3 * This method computes a hash of the provided {@code string}. 4 * &amp;lt;p&amp;gt; 5 * The algorithm in use by this method is as follows: 6 * &amp;lt;ol&amp;gt; 7 * &amp;lt;li&amp;gt;Compute the MD5 value of {@code string}.
+不能替换的情况 比如某个项目是开源项目，你需要上传到 github，那你就不应该这么做了，你不能假定使用者都是国内的人。 这种情况下可能就需要研究下正常情况下是放在哪里的了。
+主要方式就是自行下载并复制到对应文件夹下。
+默认情况下，每个版本的 Gradle wrapper 会在 $GRADLE_HOME/wrapper/dists/{version}/{hash} 下 这个 version 是包含类型的，例如 gradle-7.4-all ，是包含 -all 后缀的。 然后 hash 则是 md5 后的 base36，生成方法在 1 2 /** 3 * This method computes a hash of the provided {@code string}. 4 * &amp;lt;p&amp;gt; 5 * The algorithm in use by this method is as follows: 6 * &amp;lt;ol&amp;gt; 7 * &amp;lt;li&amp;gt;Compute the MD5 value of {@code string}.
           
           
         

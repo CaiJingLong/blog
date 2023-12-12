@@ -190,11 +190,11 @@
 <p>自备</p>
 <h2 id="不能替换的情况">不能替换的情况</h2>
 <p>比如某个项目是开源项目，你需要上传到 github，那你就不应该这么做了，你不能假定使用者都是国内的人。
-那你就需要研究下正常情况下是放在哪里的了。</p>
-<p>有几种方式，自行下载并复制到对应文件夹下。</p>
+这种情况下可能就需要研究下正常情况下是放在哪里的了。</p>
+<p>主要方式就是自行下载并复制到对应文件夹下。</p>
 <p>默认情况下，每个版本的 Gradle wrapper 会在 <code>$GRADLE_HOME/wrapper/dists/{version}/{hash}</code> 下
 这个 version 是包含类型的，例如 <strong>gradle-7.4-all</strong> ，是包含 -all 后缀的。
-然后 hash 则是 md5 后，生成方法在</p>
+然后 hash 则是 md5 后的 base36，生成方法在 </p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="cm">     * This method computes a hash of the provided {@code string}.
@@ -216,8 +216,8 @@
 </span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&#34;Could not hash input string.&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><p>这样，我们只需要根据 url 替换，并帮它完成下载步骤即可。</p>
-<p>我也写了一个工具来简化这个步骤，自取。</p>
+</span></span></span></code></pre></div><p>其实这样，我们只需要根据 url 替换，并帮它完成下载步骤即可，写个工具即可。</p>
+<p>工具在下面自取。</p>
 <p></p>
 
       
