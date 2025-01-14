@@ -18,21 +18,27 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="以下所有相关来自于当前认知,flutter 还在高速发展/dart 也在不停更新,后续可能发生变化 目前 flutter dev 版本是 0.7.0
+<meta name="description" content="以下所有相关来自于当前认知,flutter 还在高速发展/dart 也在不停更新,后续可能发生变化
+目前 flutter dev 版本是 0.7.0
 dart 正式版是 2.0.0
 json_serializable 版本是 1.1.0
-具体的 json 解析可以参考这篇 连接来自于官网
-其中介绍了两种方式，第一种是手 …">
+具体的 json 解析可以参考这篇 
+json
+ 连接来自于官网
+其中介绍了两种方 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="flutter json解析相关 for json_serializable" />
 <meta property="og:url" content="https://kikt.top/posts/flutter/flutter-json/" />
 <meta property="og:title" content="flutter json解析相关 for json_serializable" />
-<meta property="og:description" content="以下所有相关来自于当前认知,flutter 还在高速发展/dart 也在不停更新,后续可能发生变化 目前 flutter dev 版本是 0.7.0
+<meta property="og:description" content="以下所有相关来自于当前认知,flutter 还在高速发展/dart 也在不停更新,后续可能发生变化
+目前 flutter dev 版本是 0.7.0
 dart 正式版是 2.0.0
 json_serializable 版本是 1.1.0
-具体的 json 解析可以参考这篇 连接来自于官网
-其中介绍了两种方式，第一种是手 …" />
+具体的 json 解析可以参考这篇 
+json
+ 连接来自于官网
+其中介绍了两种方 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -46,11 +52,12 @@ json_serializable 版本是 1.1.0
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/custom.css">
     
   </head>
   
@@ -60,7 +67,7 @@ json_serializable 版本是 1.1.0
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -82,10 +89,10 @@ json_serializable 版本是 1.1.0
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -121,6 +128,7 @@ json_serializable 版本是 1.1.0
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -135,7 +143,7 @@ json_serializable 版本是 1.1.0
 </span>
     <span class="post_date">
       2018-08-09 12:10</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/json' title="json" class="post_tag button button_translucent">json
         </a><a href='https://kikt.top/tags/json_serializable' title="json_serializable" class="post_tag button button_translucent">json_serializable
         </a>
@@ -192,10 +200,16 @@ json_serializable 版本是 1.1.0
 目前 flutter dev 版本是 0.7.0<br>
 dart 正式版是 2.0.0<br>
 json_serializable 版本是 1.1.0</p>
-<p>具体的 json 解析可以参考这篇  连接来自于官网</p>
+<p>具体的 json 解析可以参考这篇 
+<a href="https://flutter.io/json/" >json</a>
+ 连接来自于官网</p>
 <p>其中介绍了两种方式，第一种是手动解析</p>
-<p>需要的话可以参考一位大佬写的  这个有一个工具，python+qt 写的跨平台工具，有 linux/mac/windows 三端可执行文件</p>
-<p>第二种是利用</p>
+<p>需要的话可以参考一位大佬写的 
+<a href="https://juejin.im/post/5b4e04bbe51d45198c018e6e" >在 Flutter 开发过程中快速生成 json 解析模板类的工具</a>
+ 这个有一个工具，python+qt 写的跨平台工具，有 linux/mac/windows 三端可执行文件</p>
+<p>第二种是利用
+<a href="https://pub.dartlang.org/packages/json_serializable" >json_serializable</a>
+</p>
 <p>
 <p class="md__image">
   <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982014932.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
@@ -223,6 +237,8 @@ json_serializable 版本是 1.1.0</p>
 </p>
 
 类似于这种格式，这里我写了一个网页专门用于 json=&gt;dart 文件，可以直接完成这个步骤，将懒最大化<br>
+
+<a href="https://caijinglong.github.io/json2dart/index_ch.html" >使用 json2dart</a>
 </p>
 <p>
 <p class="md__image">
@@ -259,7 +275,9 @@ json_serializable 版本是 1.1.0</p>
 <h3 id="坑">坑</h3>
 <p>dart2js 后 1.0 这样的数无法区分是 int 还是 double<br>
 因为 <code>1.0 is int</code> 是 <code>true</code>, <code>1.0 is double</code> 也是 <code>true</code> 这个是 js 的问题，最终我使用 <code>num</code> 来代替 <code>int</code>,否则在解析的过程中 <code>double</code> 强转为 <code>int</code> 会报错</p>
-<p>这个问题我在 dart 官方的中提问了,结果是因为 js 方面性能来考虑的问题。</p>
+<p>这个问题我在 dart 官方的
+<a href="https://github.com/dart-lang/sdk/issues/34105" >issue</a>
+中提问了,结果是因为 js 方面性能来考虑的问题。</p>
 <p>2018-08-24 更新<br>
 这部分问题已经得到了修正<br>
 我用了另一个解决方案来解决 int/double 的问题<br>
@@ -268,21 +286,24 @@ json_serializable 版本是 1.1.0</p>
 <p>因为 <code>json_serializable</code> 的 1.0 版本更新后,外加生成规则的改变,我添加了版本区分,1.0 版本和 0.x.x 的版本都支持</p>
 <p>关于新注解 <code>JsonLiteral</code><br>
 <code>json_serializable</code> 库在 1.0 版本中添加了对于本地 json 文件的支持,你将 json 文件放入本地,然后使用 <code>JsonLiteral</code> 注解引入 json 文件,即可自动生成对应的 dart 文件,g.dart 文件,不过这种方式我本人并未验证<br>
-可以参考,这个示例是 1.0.0 中的 ref 版本</p>
+可以参考
+<a href="https://github.com/dart-lang/json_serializable/blob/8e9fff9dbc1ceea36b2fe9344e1f03b117cdac3b/example/lib/example.dart" >官方示例</a>
+,这个示例是 1.0.0 中的 ref 版本</p>
 <hr>
 <p>最后祝大家使用愉快<br>
 json 解析愉快</p>
-<p></p>
+<p>
+<a href="https://github.com/caijinglong/json2dart" >项目 github 地址</a>
+</p>
 <p>flutter 很好 欢迎入坑</p>
-<p>后续如果方法失效,请联系 email 我  ,或者 github issue</p>
+<p>后续如果方法失效,请联系 email 我 
+<a href="mailto:cjl_spy@163.com" >cjl_spy@163.com</a>
+ ,或者 github issue</p>
 
       
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -290,10 +311,7 @@ json 解析愉快</p>
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -706,7 +724,7 @@ json 解析愉快</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -766,7 +784,7 @@ json 解析愉快</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -866,7 +884,7 @@ json 解析愉快</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1243,9 +1261,9 @@ json 解析愉快</p>
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

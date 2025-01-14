@@ -17,15 +17,40 @@
       <description>
         
           
-            mac 开发环境配置 从入门到完成 本文首发简书 转载请注明出处 高能提示：文章字数不多，图很多，请做好战斗准备
-前言 写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章 因为 flutter 涉及到跨平台开发，所以预想中会包含四部分 mac 篇，android 篇，ios 篇，flutter 篇
-术语相关 cmd = command 键（空格左边） opt／alt = option 键（cmd 左边） ctrl = control（opt 左边） cli = 命令行工具（command-line interface,命令行界面) as = Android Studio
-写在前面 最低需要 xcode 9.0.0 以上的 xcode 版本 但是不建议从非官方渠道下载 xcode，以免遇到之前盗版 xcode 的问题
-我就是都装好了 8.3 才告诉我这个，没办法只能升级系统，再升级 xcode
-mac 篇 所谓 mac 篇就是一些基础的环境，和效率工具
-后面会使用
-cli 我这里使用，一个免费的开源的命令行工具 默认的命令行工具用 launchpad=&amp;gt; 其他 =&amp;gt; 终端打开
-zsh，用于替换 bash 环境，直接命令行中敲 zsh,即可进入，修改默认 zsh 的可以自行百度 oh my zsh，一个 zsh 插件 具体可以自行百度
+            &lt;h1 id=&#34;mac-开发环境配置-从入门到完成&#34;&gt;mac 开发环境配置 从入门到完成&lt;/h1&gt;
+&lt;p&gt;本文首发简书
+转载请注明出处
+
+&lt;a href=&#34;https://www.jianshu.com/p/c55ad0e8f24f&#34; &gt;原文连接&lt;/a&gt;
+
+
+&lt;a href=&#34;https://juejin.im/post/5b66ef39f265da0f8e1a0af8&#34; &gt;掘金连接&lt;/a&gt;
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;高能提示：文章字数不多，图很多，请做好战斗准备&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章
+因为 flutter 涉及到跨平台开发，所以预想中会包含四部分
+mac 篇，android 篇，ios 篇，flutter 篇&lt;/p&gt;
+&lt;h3 id=&#34;术语相关&#34;&gt;术语相关&lt;/h3&gt;
+&lt;p&gt;cmd = command 键（空格左边）
+opt／alt = option 键（cmd 左边）
+ctrl = control（opt 左边）
+cli = 命令行工具（command-line interface,命令行界面)
+as = Android Studio&lt;/p&gt;
+&lt;h3 id=&#34;写在前面&#34;&gt;写在前面&lt;/h3&gt;
+&lt;p&gt;最低需要 xcode 9.0.0 以上的 xcode 版本
+但是不建议从非官方渠道下载 xcode，以免遇到之前盗版 xcode 的问题&lt;/p&gt;
+&lt;p&gt;我就是都装好了 8.3 才告诉我这个，没办法只能升级系统，再升级 xcode&lt;/p&gt;
+&lt;h3 id=&#34;mac-篇&#34;&gt;mac 篇&lt;/h3&gt;
+&lt;p&gt;所谓 mac 篇就是一些基础的环境，和效率工具&lt;/p&gt;
+&lt;p&gt;后面会使用&lt;/p&gt;
+&lt;h4 id=&#34;cli&#34;&gt;cli&lt;/h4&gt;
+&lt;p&gt;我这里使用
+&lt;a href=&#34;https://www.iterm2.com/&#34; &gt;iterm2&lt;/a&gt;
+，一个免费的开源的命令行工具
+默认的命令行工具用 launchpad=&amp;gt; 其他 =&amp;gt; 终端打开&lt;/p&gt;
           
           
         

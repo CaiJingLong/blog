@@ -39,11 +39,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/custom.css">
     
   </head>
   
@@ -53,7 +54,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -75,10 +76,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -114,6 +115,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -135,7 +137,7 @@
 </span>
     <span class="post_date">
       2019-07-22 15:16</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/form' title="form" class="post_tag button button_translucent">form
         </a><a href='https://kikt.top/tags/%E8%A1%A8%E5%8D%95' title="表单" class="post_tag button button_translucent">表单
         </a>
@@ -179,12 +181,26 @@
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>在一个正常的应用程序中, 表单是用户交互的很重要的一部分
-flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中的字段
-当然, 还有另一个选择, Flutter 内置了 Form 组件给我们使用, 这个组件是 flutter 框架提供出来帮助我们操作表单的一个组件, 应该是官方较为推荐的方案
-不过 Form 的相关中文文章不太多, 基本都是介绍一下 TextFormField 的使用, 更多的 api 云里雾里的, 可能有些朋友不太好理解
-我粗略的解析下源码和自定义, 帮助看过的朋友理解下 Form 体系
-Form 体系的简单使用 自动校验 官方提供给了我们一些组件来结合 Form 使用, 最常见的 …</p>
+            <p>在一个正常的应用程序中, 表单是用户交互的很重要的一部分</p>
+<p>flutter 中你可以自己&quot;绑定&quot;用户的输入数据和 state 中的字段</p>
+<p>当然, 还有另一个选择, Flutter 内置了 <code>Form</code> 组件给我们使用, 这个组件是 flutter 框架提供出来帮助我们操作表单的一个组件, 应该是官方较为推荐的方案</p>
+<p>不过 <code>Form</code> 的相关中文文章不太多, 基本都是介绍一下 <code>TextFormField</code> 的使用, 更多的 api 云里雾里的, 可能有些朋友不太好理解<br>
+我粗略的解析下源码和自定义, 帮助看过的朋友理解下 <code>Form</code> 体系</p>
+<ul>
+<li>
+<a href="#form-%e4%bd%93%e7%b3%bb%e7%9a%84%e7%ae%80%e5%8d%95%e4%bd%bf%e7%94%a8" >Form 体系的简单使用</a>
+
+<ul>
+<li>
+<a href="#%e8%87%aa%e5%8a%a8%e6%a0%a1%e9%aa%8c" >自动校验</a>
+</li>
+<li>
+<a href="#%e7%82%b9%e5%87%bb%e5%90%8e%e6%a0%a1%e9%aa%8c" >点击后校验</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#form-%e4%bd%93%e7%b3%bb%e6%ba%90%e7%a0%81" >Form …</a></li></li></ul></li></ul>
           
           <br>
           <a href="https://kikt.top/posts/flutter/form/form1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -604,7 +620,7 @@ Form 体系的简单使用 自动校验 官方提供给了我们一些组件来�
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -664,7 +680,7 @@ Form 体系的简单使用 自动校验 官方提供给了我们一些组件来�
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -764,7 +780,7 @@ Form 体系的简单使用 自动校验 官方提供给了我们一些组件来�
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1141,9 +1157,9 @@ Form 体系的简单使用 自动校验 官方提供给了我们一些组件来�
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

@@ -44,11 +44,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../css/custom.css">
     
   </head>
   
@@ -58,7 +59,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -80,10 +81,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -119,6 +120,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -194,11 +196,15 @@
     <div class="post_body"><p>caddy 是使用 go 语言开发的一个 server 服务器</p>
 <p>相对于 nginx 来说,这个部署更简单,配置起来也很简单,很适合搭私人站点使用,而且相比于 nginx 来说,这个只有单文件,很适合小白使用</p>
 <p>而且,这东西最大的优点是,可以通过简单的配置来支持 https,而无需操心证书,另外还支持 http2 协议</p>
-<p>这里有一份,请注意查收</p>
+<p>这里有一份
+<a href="https://dengxiaolong.com/caddy/zh/" >中文文档</a>
+,请注意查收</p>
 <h2 id="入手">入手</h2>
 <p>以 mac os 为例 我只需要 <code>brew install caddy</code> 然后, 运行 <code>caddy</code>,这样就完成了最简单的部署过程...</p>
 <p>当然这是因为有默认配置的关系,整个项目是单文件的,就只有一个 caddy 文件</p>
-<p>其他系统的参考</p>
+<p>其他系统的参考
+<a href="https://caddyserver.com/" >官网</a>
+</p>
 <p>运行结果如下
 
 <p class="md__image">
@@ -206,7 +212,9 @@
 </p>
 
 默认是 2015 端口,可能是代表这个项目是 2015 年创建/发布的?</p>
-<p>然后打开  就可以看到你的网页了,当然这里因为有默认的原因,你看到的也许是 404,或是其他的什么</p>
+<p>然后打开 
+<a href="http://localhost:2015/" >http://localhost:2015/</a>
+ 就可以看到你的网页了,当然这里因为有默认的原因,你看到的也许是 404,或是其他的什么</p>
 <h2 id="自定义配置">自定义配置</h2>
 <p>caddy 支持命令行的一些简单配置和配置文件的复杂配置</p>
 <h3 id="命令行">命令行</h3>
@@ -228,17 +236,21 @@
 <p><code>-port string</code> 端口号</p>
 <p><code>-log string</code> 日志文件的目录</p>
 <p><code>-http2</code> 支持 http2 协议</p>
-<p>这部分具体的可以参考 部分</p>
+<p>这部分具体的可以参考 
+<a href="https://caddyserver.com/docs/cli" >官网 cli</a>
+部分</p>
 <p>CA 相关的  就是 https 要用到的东西</p>
 <p>在使用域名的方式之前 你需要确定好你的域名解析是指向当前这台计算机的</p>
 <h3 id="配置文件">配置文件</h3>
 <p>这个使用起来很简单 就是 <code>caddy -conf XXX</code> 这里的 XXX 是配置文件的目录</p>
-<p>然后 caddy 会去读取配置文件 这部分可以参考 部分,这个是 caddyfile 文件的基本语法</p>
+<p>然后 caddy 会去读取配置文件 这部分可以参考
+<a href="https://caddyserver.com/docs/caddyfile" >官网 caddyfile</a>
+ 部分,这个是 caddyfile 文件的基本语法</p>
 <p>还有一种方式就是简单的使用<code>caddy</code> 这里 caddy 会在当前的运行路径下根据默认约定去寻找 Caddyfile 文件作为配置</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-caddy" data-lang="caddy"><span class="line"><span class="ln">1</span><span class="cl"><span class="gh">localhost:80</span> <span class="p">{</span>
 </span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="k">root</span> <span class="nd">/Users/caijinglong/www</span>
 </span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="k">gzip</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="k">log</span> <span class="nd">/Users/caijinglong/www/log/caddy.log</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="k">log</span> <span class="s">/Users/caijinglong/www/log/caddy.log</span>
 </span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>这里是一个简单配置方案 80 端口</p>
 <p>这里就是开启 html 的文件目录,gzip ,指定日志文件,</p>
@@ -261,7 +273,9 @@
 </p>
 <p>我们的服务器就启动起来了</p>
 <p>然后进行一些其他的配置</p>
-<p>这里可以参考一下 </p>
+<p>这里可以参考一下 
+<a href="https://caddyserver.com/docs/http-caddyfile" >http 协议的配置</a>
+</p>
 <p>我们在配置文件上有标题的概念 这个标题就是反向代理的地址
 
 <p class="md__image">
@@ -296,7 +310,9 @@
 </span></span><span class="line"><span class="ln">11</span><span class="cl">      - $HOME/html/www:/srv
 </span></span><span class="line"><span class="ln">12</span><span class="cl">    environment:
 </span></span><span class="line"><span class="ln">13</span><span class="cl">      - TZ=Asia/Shanghai
-</span></span></code></pre></div><p>这里我使用的镜像是</p>
+</span></span></code></pre></div><p>这里我使用的镜像是
+<a href="https://hub.docker.com/r/abiosoft/caddy" >abiosoft/caddy</a>
+</p>
 <p>这里有详细介绍,我只是使用了几个简单的配置</p>
 <ol>
 <li>指定了端口号,将 80 443 端口映射出来</li>
@@ -331,9 +347,6 @@
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -341,10 +354,7 @@
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -757,7 +767,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -817,7 +827,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -917,7 +927,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1294,9 +1304,9 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

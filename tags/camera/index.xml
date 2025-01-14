@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>camera on CaiJingLong</title>
+    <title>Camera on CaiJingLong</title>
     <link>https://kikt.top/tags/camera/</link>
-    <description>Recent content in camera on CaiJingLong</description>
+    <description>Recent content in Camera on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,19 +17,46 @@
       <description>
         
           
-            我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程
-在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍
-介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
-最低支持的 API 等级是 API 21(5.0)
-开发环境 我当前的开发环境是
-MacOS 10.13.6
-Android Studio 3.4 小米 8 MIUI 10.3 稳定版 10.3.2.0(android 9.0)
-最低支持 官方说明为 AndroidStudio 3.3 API 21+的设备
-编码准备 新建项目 修改这两项
-最低 21, 使用 androidX
-添加依赖 在 app 级别的 build.gradle 中添加如下依赖
-这个版本当前还是 alpha 版本,后续可能会升级为正式版, 可以查看
-1dependencies { 2 def camerax_version = &amp;#34;1.0.0-alpha01&amp;#34; 3 implementation &amp;#34;androidx.
+            &lt;p&gt;我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程&lt;/p&gt;
+&lt;p&gt;在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://developer.android.com/training/camerax&#34; &gt;官网链接&lt;/a&gt;
+
+
+&lt;a href=&#34;https://codelabs.developers.google.com/codelabs/camerax-getting-started/#0&#34; &gt;官方使用说明&lt;/a&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
+&lt;p&gt;CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机&lt;/p&gt;
+&lt;p&gt;最低支持的 API 等级是 API 21(5.0)&lt;/p&gt;
+&lt;h2 id=&#34;开发环境&#34;&gt;开发环境&lt;/h2&gt;
+&lt;p&gt;我当前的开发环境是&lt;/p&gt;
+&lt;p&gt;MacOS 10.13.6&lt;br&gt;
+Android Studio 3.4
+小米 8 MIUI 10.3 稳定版 10.3.2.0(android 9.0)&lt;/p&gt;
+&lt;p&gt;最低支持
+官方说明为 AndroidStudio 3.3
+API 21+的设备&lt;/p&gt;
+&lt;h2 id=&#34;编码准备&#34;&gt;编码准备&lt;/h2&gt;
+&lt;h3 id=&#34;新建项目&#34;&gt;新建项目&lt;/h3&gt;
+&lt;p&gt;修改这两项&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190514135542.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190514135542.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;最低 21, 使用 androidX&lt;/p&gt;
+&lt;h3 id=&#34;添加依赖&#34;&gt;添加依赖&lt;/h3&gt;
+&lt;p&gt;在 app 级别的 build.gradle 中添加如下依赖&lt;/p&gt;
+&lt;p&gt;这个版本当前还是 alpha 版本,后续可能会升级为正式版, 可以查看
+&lt;a href=&#34;https://mvnrepository.com/artifact/androidx.camera/camera-core&#34; &gt;mvn 仓库中的版本号&lt;/a&gt;
+&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-groovy&#34; data-lang=&#34;groovy&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;dependencies&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kt&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;camerax_version&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;1.0.0-alpha01&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;implementation&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;androidx.camera:camera-core:${camerax_version}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;implementation&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;androidx.camera:camera-camera2:${camerax_version}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;尝试运行项目&#34;&gt;尝试运行项目&lt;/h3&gt;
+&lt;p&gt;运行项目,我这里可以成功跑起来,说明依赖添加是成功的&lt;/p&gt;
           
           
         

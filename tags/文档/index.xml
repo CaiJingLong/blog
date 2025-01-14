@@ -17,22 +17,48 @@
       <description>
         
           
-            是 flutter 的 api 文档页
-但是这个文档页有的时候不那么好访问, 也许你有自己的页面,或者你就是想简单的搭建一个 pages 到 gitee/github 上方便你以后的访问
-本篇就来教你怎么简单的达成这个目的
-gitee 部署完成后是这样的 准备工作 一个终端工具 dart sdk 一个 web 服务器(pages) 作为一个 flutter/dart 开发者,sdk 肯定是必备工具了
-如果你运行过 flutter doctor 命令,则 flutter 自带的 sdk 就会存在在的系统内 ${FLUTTER_HOME}/bin/cache/dart-sdk 这里替换为自己的 flutter sdk 的文件夹
-这里可以看见 dartdoc 这个就是创建文档的工具了
-先进入 sdk 下的 packages/flutter 文件夹
-然后运行$FLUTTER_HOME/bin/cache/dart-sdk/bin/dartdoc .命令 $FLUTTER_HOME 为你的 flutter sdk 所在目录
-等待一段时间
-然后可以看到当前文件夹下生成了一个doc目录,里面就是所有的文档了
-部署 直接双击 index.html 也可以打开,但是根据官方的说法,如果本地运行可能右上角的搜索不能使用,这就需要部署到服务器上了
-如果你有自己的云服务器,那么你估计对于部署应该有自己的理解,就不用继续看了
-本地部署 所以我们需要使用一些本地服务来部署
-比如 nginx/caddy/tomcat/apache 之类的服务器
-我这里本地部署使用一个简单的serve命令来部署,基于npm安装
-npm i serve或 yarn global add serve
+            &lt;p&gt;
+&lt;a href=&#34;https://docs.flutter.io/&#34; &gt;https://docs.flutter.io/&lt;/a&gt;
+ 是 flutter 的 api 文档页&lt;/p&gt;
+&lt;p&gt;但是这个文档页有的时候不那么好访问, 也许你有自己的页面,或者你就是想简单的搭建一个 pages 到 gitee/github 上方便你以后的访问&lt;/p&gt;
+&lt;p&gt;本篇就来教你怎么简单的达成这个目的&lt;/p&gt;
+&lt;p&gt;gitee 部署完成后是这样的 
+&lt;a href=&#34;https://kikt.gitee.io/flutter-doc/&#34; &gt;https://kikt.gitee.io/flutter-doc/&lt;/a&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;一个终端工具&lt;/li&gt;
+&lt;li&gt;dart sdk&lt;/li&gt;
+&lt;li&gt;一个 web 服务器(pages)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;作为一个 flutter/dart 开发者,sdk 肯定是必备工具了&lt;/p&gt;
+&lt;p&gt;如果你运行过 flutter doctor 命令,则 flutter 自带的 sdk 就会存在在的系统内 &lt;code&gt;${FLUTTER_HOME}/bin/cache/dart-sdk&lt;/code&gt; 这里替换为自己的 flutter sdk 的文件夹&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190131085751.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190131085751.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+
+这里可以看见 &lt;code&gt;dartdoc&lt;/code&gt; 这个就是创建文档的工具了&lt;/p&gt;
+&lt;p&gt;先进入 sdk 下的 packages/flutter 文件夹&lt;/p&gt;
+&lt;p&gt;然后运行&lt;code&gt;$FLUTTER_HOME/bin/cache/dart-sdk/bin/dartdoc .&lt;/code&gt;命令 &lt;code&gt;$FLUTTER_HOME&lt;/code&gt; 为你的 flutter sdk 所在目录&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190131090043.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190131090043.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;等待一段时间&lt;/p&gt;
+&lt;p&gt;然后可以看到当前文件夹下生成了一个&lt;code&gt;doc&lt;/code&gt;目录,里面就是所有的文档了&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190131090659.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190131090659.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;部署&#34;&gt;部署&lt;/h2&gt;
+&lt;p&gt;直接双击 index.html 也可以打开,但是根据官方的说法,如果本地运行可能右上角的搜索不能使用,这就需要部署到服务器上了&lt;/p&gt;
+&lt;p&gt;如果你有自己的云服务器,那么你估计对于部署应该有自己的理解,就不用继续看了&lt;/p&gt;
+&lt;h3 id=&#34;本地部署&#34;&gt;本地部署&lt;/h3&gt;
+&lt;p&gt;所以我们需要使用一些本地服务来部署&lt;/p&gt;
+&lt;p&gt;比如 nginx/caddy/tomcat/apache 之类的服务器&lt;/p&gt;
           
           
         

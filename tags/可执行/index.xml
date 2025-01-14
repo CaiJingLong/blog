@@ -17,15 +17,24 @@
       <description>
         
           
-            什么叫可执行二进制 以前虽然看似也可以生成二进制执行文件, 类似 pub/flutter 命令, 但是那实际也是调用 dart 命令来完成的, 也就是说, 你必须具备 dart 环境才可以
-比如以前的 c,后来的 go, 都可以编译成一个可执行文件, 比如./hello-world就可以运行, 然后在控制台输出结果
-而在 dart 2.6 版本中, 这个东西变成了现实
-如何做 1main(List&amp;lt;String&amp;gt; arguments) { 2 print(&amp;#34;hello dart!&amp;#34;); 3} 使用$ dart2native bin/main.dart来完成编译过程, 然后会生成一个main.exe, 虽然看着是 exe, 但这个东西是一个当前系统下的可执行二进制文件
-1./bin/main.exe 2hello dart! 嗯, 这东西目前还不支持交叉编译, 也就是 mac 只能生成 mac 的, windows 只能生成 windows 的, 但是应该有很多人请愿, 未来一定会有相关的支持
-目前可以使用 github actions, 或者 docker 之类的东西来跨平台编译
-好处 单文件的部署方便, 未来写工具也会很方便
-劣势 不支持交叉编译
-文件较大, 一个简单的 helloworld 就有 6.7mb 之大, 相对应的, c 可能只有几 k, go 默认情况下也不到 1m,经过优化也能接近 c 的大小
+            &lt;h2 id=&#34;什么叫可执行二进制&#34;&gt;什么叫可执行二进制&lt;/h2&gt;
+&lt;p&gt;以前虽然看似也可以生成二进制执行文件, 类似 pub/flutter 命令, 但是那实际也是调用 dart 命令来完成的, 也就是说, 你必须具备 dart 环境才可以&lt;/p&gt;
+&lt;p&gt;比如以前的 c,后来的 go, 都可以编译成一个可执行文件, 比如&lt;code&gt;./hello-world&lt;/code&gt;就可以运行, 然后在控制台输出结果&lt;/p&gt;
+&lt;p&gt;而在 dart 2.6 版本中, 这个东西变成了现实&lt;/p&gt;
+&lt;h2 id=&#34;如何做&#34;&gt;如何做&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-dart&#34; data-lang=&#34;dart&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arguments&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;hello dart!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用&lt;code&gt;$ dart2native bin/main.dart&lt;/code&gt;来完成编译过程, 然后会生成一个&lt;code&gt;main.exe&lt;/code&gt;, 虽然看着是 exe, 但这个东西是一个当前系统下的可执行二进制文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;./bin/main.exe
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;hello dart!
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;嗯, 这东西目前还不支持交叉编译, 也就是 mac 只能生成 mac 的, windows 只能生成 windows 的, 但是应该有很多人请愿, 未来一定会有相关的支持&lt;/p&gt;
+&lt;p&gt;目前可以使用 github actions, 或者 docker 之类的东西来跨平台编译&lt;/p&gt;
+&lt;h2 id=&#34;好处&#34;&gt;好处&lt;/h2&gt;
+&lt;p&gt;单文件的部署方便, 未来写工具也会很方便&lt;/p&gt;
+&lt;h2 id=&#34;劣势&#34;&gt;劣势&lt;/h2&gt;
+&lt;p&gt;不支持交叉编译&lt;/p&gt;
+&lt;p&gt;文件较大, 一个简单的 helloworld 就有 6.7mb 之大, 相对应的, c 可能只有几 k, go 默认情况下也不到 1m,经过优化也能接近 c 的大小&lt;/p&gt;
           
           
         

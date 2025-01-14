@@ -17,18 +17,42 @@
       <description>
         
           
-            无论在 android 开发中 还是 flutter 开发中,都会面临迁移 AndroidX 的问题
-官方有一个说明,可以
-下面是我总结的修改方式
-迁移到 androidX 修改 andorid 目录下的 app/build.gradle 1android{ 2 compileSdkVersion 28 3} 使用了 gradle wrapper 如果 andorid 根目录下有这个文件夹/文件,则需要修改
-根据官网说明,最好修改到 4.10.1 以上
-gradle-wrapper.properties 文件
-修改版本号位置,我使用的是当前的最新版 5.2.1,你可以根据你的情况修改
-1distributionUrl=https\://services.gradle.org/distributions/gradle-5.2.1-all.zip 如果没有用这个,那么你需要修改的环境变量中的 gradle 版本,这个请自行百度/Google
-修改 android 目录下的 build.gradle 根目录下的 build.gradle ,这个是目前的最新版
-这个不是 gradle 的版本,你可以理解为与插件匹配,一般等于你的 android studio 的版本
-1buildscript{ 2 dependencies { 3 classpath &amp;#39;com.android.tools.build:gradle:3.3.1&amp;#39; 4 } 5} 修改 android 目录下的 gradle.properties 如果没有,就添加这两行
-1android.enableJetifier=true 2android.useAndroidX=true 最后 做完上面的应该就可以了,运行下项目,如果有别的问题欢迎留言
+            &lt;p&gt;无论在 android 开发中 还是 flutter 开发中,都会面临迁移 AndroidX 的问题&lt;/p&gt;
+&lt;p&gt;官方有一个说明,可以
+&lt;a href=&#34;https://developer.android.google.cn/jetpack/androidx?hl=zh-cn&#34; &gt;参考链接&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;下面是我总结的修改方式&lt;/p&gt;
+&lt;h2 id=&#34;迁移到-androidx&#34;&gt;迁移到 androidX&lt;/h2&gt;
+&lt;h2 id=&#34;修改-andorid-目录下的-appbuildgradle&#34;&gt;修改 andorid 目录下的 app/build.gradle&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-groovy&#34; data-lang=&#34;groovy&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;android&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;compileSdkVersion&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;28&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;使用了-gradle-wrapper&#34;&gt;使用了 gradle wrapper&lt;/h2&gt;
+&lt;p&gt;如果 andorid 根目录下有这个文件夹/文件,则需要修改&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190306135103.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190306135103.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;根据官网说明,最好修改到 4.10.1 以上&lt;/p&gt;
+&lt;p&gt;gradle-wrapper.properties 文件&lt;/p&gt;
+&lt;p&gt;修改版本号位置,我使用的是当前的最新版 5.2.1,你可以根据你的情况修改&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-properties&#34; data-lang=&#34;properties&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;distributionUrl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;https\://services.gradle.org/distributions/gradle-5.2.1-all.zip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果没有用这个,那么你需要修改的环境变量中的 gradle 版本,这个请自行百度/Google&lt;/p&gt;
+&lt;h2 id=&#34;修改-android-目录下的-buildgradle&#34;&gt;修改 android 目录下的 build.gradle&lt;/h2&gt;
+&lt;p&gt;根目录下的 build.gradle ,这个是目前的最新版&lt;/p&gt;
+&lt;p&gt;这个不是 gradle 的版本,你可以理解为与插件匹配,一般等于你的 android studio 的版本&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;buildscript&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;dependencies&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;classpath&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;com.android.tools.build:gradle:3.3.1&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;修改-android-目录下的-gradleproperties&#34;&gt;修改 android 目录下的 gradle.properties&lt;/h2&gt;
+&lt;p&gt;如果没有,就添加这两行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-properties&#34; data-lang=&#34;properties&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;android.enableJetifier&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;android.useAndroidX&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;最后&#34;&gt;最后&lt;/h2&gt;
+&lt;p&gt;做完上面的应该就可以了,运行下项目,如果有别的问题欢迎留言&lt;/p&gt;
           
           
         

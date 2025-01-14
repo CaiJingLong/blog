@@ -17,13 +17,141 @@
       <description>
         
           
-            对于已有工程想要尝鲜 Flutter, 很多公司给出了最佳实践方案, android 中是使用 aar 加入项目中, 这样原生开发对于 flutter 环境就没有要求了, 只要 flutter 打包后上传 maven 即可, 但是这部分的过程坑很多, 后面我会再补充这种方案
-我也摸索了一个实践方案, 将所有项目的 aar 由 flutter 方打包 aar 后将 aar 置入某一个固定位置 ,并置入一个 git 库管理, 然后 android 原生方直接 pull 后引入项目即可
-高能预警: 本篇会结合 flutter, android, aar, gradle, maven, docker 的知识来完成所有的步骤
-并不是每一个都会详细说明, 如果有不明白的可以在 的本文下面留言, 我会更新文章或给予解答, 其他渠道的可能不会有时间看
-开发环境 本人设备环境 MacOS 10.13.6 (17G65)
-flutter: Flutter 1.5.4-hotfix.2 • channel stable
-12019-10-25 更新说明: 这篇文章因为发布时效的原因, 当时还没有 `$ flutter build aar` 这个命令 2所以本人并没有实测两个东西的优劣性 预计需要的环境 1xcode 2android sdk 3gradle 4android studio 5flutter sdk 6docker # 这个 这些环境我默认你都有, 没有的话本篇不讲
+            &lt;p&gt;对于已有工程想要尝鲜 Flutter, 很多公司给出了最佳实践方案, android 中是使用 aar 加入项目中, 这样原生开发对于 flutter 环境就没有要求了, 只要 flutter 打包后上传 maven 即可, 但是这部分的过程坑很多, 后面我会再补充这种方案&lt;/p&gt;
+&lt;p&gt;我也摸索了一个实践方案, 将所有项目的 aar 由 flutter 方打包 aar 后将 aar 置入某一个固定位置 ,并置入一个 git 库管理, 然后 android 原生方直接 pull 后引入项目即可&lt;/p&gt;
+&lt;p&gt;高能预警: 本篇会结合 flutter, android, aar, gradle, maven, docker 的知识来完成所有的步骤&lt;/p&gt;
+&lt;p&gt;并不是每一个都会详细说明, 如果有不明白的可以在 
+&lt;a href=&#34;https://www.kikt.top&#34; &gt;https://www.kikt.top&lt;/a&gt;
+ 的本文下面留言, 我会更新文章或给予解答, 其他渠道的可能不会有时间看&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83&#34; &gt;开发环境&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e6%9c%ac%e4%ba%ba%e8%ae%be%e5%a4%87%e7%8e%af%e5%a2%83&#34; &gt;本人设备环境&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e9%a2%84%e8%ae%a1%e9%9c%80%e8%a6%81%e7%9a%84%e7%8e%af%e5%a2%83&#34; &gt;预计需要的环境&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#flutter&#34; &gt;flutter&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%88%9b%e5%bb%ba-flutter-module&#34; &gt;创建 flutter module&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#maven-%e7%9a%84%e5%a4%84%e7%90%86%e6%96%b9%e5%bc%8f%e7%9c%8b%e7%9c%8b%e5%b0%b1%e8%a1%8c%e4%bd%9c%e4%b8%ba%e9%94%99%e8%af%af%e5%b0%9d%e8%af%95%e7%9a%84%e6%ad%a5%e9%aa%a4&#34; &gt;maven 的处理方式(看看就行,作为错误尝试的步骤)&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e9%85%8d%e7%bd%ae&#34; &gt;配置&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e8%bf%90%e8%a1%8c&#34; &gt;运行&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e4%b8%8a%e4%bc%a0-aar&#34; &gt;上传 aar&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e4%bd%bf%e7%94%a8-gradle-%e4%b8%8a%e4%bc%a0-aar&#34; &gt;使用 gradle 上传 aar&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#android-%e9%a1%b9%e7%9b%aehost&#34; &gt;Android 项目(host)&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e6%96%b0%e5%bb%ba%e9%a1%b9%e7%9b%ae&#34; &gt;新建项目&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%bc%95%e5%85%a5-maven-%e4%be%9d%e8%b5%96&#34; &gt;引入 maven 依赖&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e6%b7%bb%e5%8a%a0%e4%bb%93%e5%ba%93&#34; &gt;添加仓库&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e7%bc%96%e7%a0%81&#34; &gt;编码&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e8%bf%90%e8%a1%8c%e9%a1%b9%e7%9b%ae&#34; &gt;运行项目&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%9c%a8-flutter-%e4%b8%ad%e6%b7%bb%e5%8a%a0%e5%b8%a6%e6%9c%89%e5%8e%9f%e7%94%9f%e5%8a%9f%e8%83%bd%e7%9a%84%e5%ba%93&#34; &gt;在 flutter 中添加带有原生功能的库&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%9c%a8-flutter-%e4%b8%ad%e6%b7%bb%e5%8a%a0%e5%ba%93&#34; &gt;在 flutter 中添加库&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e4%b8%8a%e4%bc%a0%e6%96%b0%e7%89%88%e6%9c%ac%e7%9a%84-aar&#34; &gt;上传新版本的 aar&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e6%80%9d%e8%80%83%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88&#34; &gt;思考解决方案&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#fat-aar&#34; &gt;fat-aar&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#flutter-%e7%9a%84%e6%8f%92%e4%bb%b6%e5%ba%93%e4%b8%8a%e4%bc%a0%e8%87%b3-maven&#34; &gt;flutter 的插件库上传至 maven&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88-%e4%bd%bf%e7%94%a8-aar-%e5%92%8c-git-%e7%ae%a1%e7%90%86&#34; &gt;解决方案-使用 aar 和 git 管理&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%a4%84%e7%90%86-flutter-%e7%ab%af&#34; &gt;处理 flutter 端&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e6%96%b0%e5%bb%ba%e4%b8%80%e4%b8%aa%e7%9b%ae%e5%bd%95%e7%94%a8%e4%ba%8e%e5%ad%98%e6%94%be-aar&#34; &gt;新建一个目录用于存放 aar&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e4%bf%ae%e6%94%b9-android-%e4%b8%bb%e5%b7%a5%e7%a8%8b&#34; &gt;修改 android 主工程&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e6%80%bb%e7%bb%93%e4%b8%80%e4%b8%8b%e6%89%80%e6%9c%89%e4%bf%ae%e6%94%b9&#34; &gt;总结一下所有修改&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#dart-%e8%84%9a%e6%9c%ac&#34; &gt;dart 脚本&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%8e%9f%e7%94%9f%e9%83%a8%e5%88%86%e4%bf%ae%e6%94%b9&#34; &gt;原生部分修改&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e8%bf%90%e8%a1%8c%e8%84%9a%e6%9c%ac&#34; &gt;运行脚本&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%90%8e%e8%ae%b0&#34; &gt;后记&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;开发环境&#34;&gt;开发环境&lt;/h2&gt;
+&lt;h3 id=&#34;本人设备环境&#34;&gt;本人设备环境&lt;/h3&gt;
+&lt;p&gt;MacOS 10.13.6 (17G65)&lt;br&gt;
+flutter: Flutter 1.5.4-hotfix.2 • channel stable&lt;/p&gt;
           
           
         

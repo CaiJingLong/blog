@@ -19,14 +19,16 @@
 
 <meta property="og:type" content="article">
 <meta name="description" content="Github action 这东西是好东西, 但我看了一下, 很多朋友都是停留在用的阶段, 其实偶尔也要换换口味, 自己开发一个 action, 而不是仅仅是用
-简介 github actions 是 github 推出的一个工作流的工具, 目的是为了帮助我们在某些情况下主动触发仓库的动作, 从而完成 单元测 …">
+简介
+github actions 是 github 推出的一个工作流的工具, 目的是为了帮助我们在某些情况下主动触发仓库的动作, 从而完成 单元测 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Github action 的开发到发布" />
 <meta property="og:url" content="https://kikt.top/posts/github/actions/create/" />
 <meta property="og:title" content="Github action 的开发到发布" />
 <meta property="og:description" content="Github action 这东西是好东西, 但我看了一下, 很多朋友都是停留在用的阶段, 其实偶尔也要换换口味, 自己开发一个 action, 而不是仅仅是用
-简介 github actions 是 github 推出的一个工作流的工具, 目的是为了帮助我们在某些情况下主动触发仓库的动作, 从而完成 单元测 …" />
+简介
+github actions 是 github 推出的一个工作流的工具, 目的是为了帮助我们在某些情况下主动触发仓库的动作, 从而完成 单元测 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -40,11 +42,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../css/custom.css">
     
   </head>
   
@@ -54,7 +57,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -76,10 +79,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -115,6 +118,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -129,7 +133,7 @@
 </span>
     <span class="post_date">
       2020-09-07 16:49</span>
-    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/actions' title="actions" class="post_tag button button_translucent">actions
         </a>
     </span>
@@ -211,13 +215,21 @@
     <div class="post_body"><p>Github action 这东西是好东西, 但我看了一下, 很多朋友都是停留在用的阶段, 其实偶尔也要换换口味, 自己开发一个 action, 而不是仅仅是用</p>
 <h2 id="简介">简介</h2>
 <p>github actions 是 github 推出的一个工作流的工具, 目的是为了帮助我们在某些情况下主动触发仓库的动作, 从而完成 单元测试/CI/CD, 甚至包括 release,发布包管理工具等等</p>
-<p>官方关于 actions 有关的一些仓库都在这里:  , </p>
+<p>官方关于 actions 有关的一些仓库都在这里: 
+<a href="https://github.com/actions" >https://github.com/actions</a>
+ , 
+<a href="https://docs.github.com/en/actions" >文档在这里</a>
+</p>
 <p>github 的主语言是 js, 当然也肯定也支持 ts</p>
 <p>另外如果对于速度需求并不高的朋友, 也可以使用 docker, 但因为 docker 安装的过程会根据镜像大小有一定的耗时, 所以不一定适用于所有朋友</p>
-<p>如果，你对于本文章不是很感兴趣，可以参考</p>
+<p>如果，你对于本文章不是很感兴趣，可以参考
+<a href="https://docs.github.com/en/actions/creating-actions" >创建 action 的文档</a>
+</p>
 <h2 id="新建">新建</h2>
 <p>因为我对于 js 比较不喜欢, 所以使用 ts(虽然也不是很感冒, 但是会好一点)</p>
-<p>进入这个, 然后使用
+<p>进入这个
+<a href="https://github.com/actions/typescript-action" >仓库</a>
+, 然后使用
 <p class="md__image">
   <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1599469136.png" alt="image-20200907165856148"  crossorigin/>
 </p>
@@ -247,12 +259,22 @@
 </span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nb">cd</span> action_auto_label
 </span></span><span class="line"><span class="ln">3</span><span class="cl">npm i
 </span></span></code></pre></div><h3 id="官方支持库">官方支持库</h3>
-<p>包含了 github 官方支持的一些库, 就不一一介绍了</p>
+<p>
+<a href="https://github.com/actions/toolkit" >toolkit</a>
+包含了 github 官方支持的一些库, 就不一一介绍了</p>
 <ul>
-<li> actions 的核心库, 会被默认包含</li>
-<li> 如果你需要执行 cli 工具, 比如 ls, mkdir, 之类的操作, 可以用这个, 可以便利的封装过程和日志输出之类的东西</li>
-<li> glob 匹配文件, 我们都知道 <code>ls *.sh</code> 这样的东西, 这个*就是 glob, 而不是正则</li>
-<li> github 的封装, 这东西就包含了操作 github 本身的操作</li>
+<li>
+<a href="https://github.com/actions/toolkit/blob/main/packages/core" >@actions/core</a>
+ actions 的核心库, 会被默认包含</li>
+<li>
+<a href="https://github.com/actions/toolkit/blob/main/packages/exec" >@actions/exec</a>
+ 如果你需要执行 cli 工具, 比如 ls, mkdir, 之类的操作, 可以用这个, 可以便利的封装过程和日志输出之类的东西</li>
+<li>
+<a href="https://github.com/actions/toolkit/blob/main/packages/io" >@actions/io</a>
+ glob 匹配文件, 我们都知道 <code>ls *.sh</code> 这样的东西, 这个*就是 glob, 而不是正则</li>
+<li>
+<a href="https://github.com/actions/toolkit/blob/main/packages/github" >@actions/github</a>
+ github 的封装, 这东西就包含了操作 github 本身的操作</li>
 </ul>
 <p>因为本篇要操作 github, 所以我们把这个东西加入以下</p>
 <p><code>npm i @actions/github</code></p>
@@ -313,23 +335,47 @@
 </span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w"></span><span class="nt">runs</span><span class="p">:</span><span class="w"> </span><span class="c"># 运行的环境</span><span class="w">
 </span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;node12&#34;</span><span class="w"> </span><span class="c"># 运行环境为 node12</span><span class="w">
 </span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">  </span><span class="nt">main</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;dist/index.js&#34;</span><span class="w"> </span><span class="c"># 入口文件, 就是这个东西要求我们必须编译ts为js后才可用</span><span class="w">
-</span></span></span></code></pre></div><p>看过了默认文件内容后, 我们要开始尝试修改了, 我们通过文档得知, 有如下的配置参数</p>
+</span></span></span></code></pre></div><p>看过了默认文件内容后, 我们要开始尝试修改了
+<a href="https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions" >(文档在这里)</a>
+, 我们通过文档得知, 有如下的配置参数</p>
 <ul>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
+<li>
+<a href="https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#name" ><code>name</code></a>
+</li>
+<li>
+<a href="https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#author" ><code>author</code></a>
+</li>
+<li>
+<a href="https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#description" ><code>description</code></a>
+</li>
+<li>
+<a href="https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#inputs" ><code>inputs</code></a>
+</li>
+<li>
+<a href="https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#outputs" ><code>outputs</code></a>
+</li>
+<li>
+<a href="https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#outputs-for-composite-run-steps-actions" ><code>outputs</code> for composite run steps actions</a>
+</li>
+<li>
+<a href="https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runs-for-javascript-actions" ><code>runs</code> for JavaScript actions</a>
+</li>
+<li>
+<a href="https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runs-for-composite-run-steps-actions" ><code>runs</code> for composite run steps actions</a>
+</li>
+<li>
+<a href="https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runs-for-docker-actions" ><code>runs</code> for Docker actions</a>
+</li>
+<li>
+<a href="https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#branding" ><code>branding</code></a>
+</li>
 </ul>
 <p>在配置中没有出现的 2 个参数</p>
 <ol>
 <li>outputs: 输出参数, 因为各个 action 之间其实互相是不知道的, 用这个, 可以做到约定式输出, 比如我在 actions 1 里执行了某个东西, 并将其中计算的结果放到这个参数内, 后面就可以用了, 可以简单理解为 action 的返回值</li>
-<li>branding: action 对应的徽章样式, 是在里的样子</li>
+<li>branding: action 对应的徽章样式, 是在
+<a href="https://github.com/marketplace?type=actions" >GitHub Marketplace</a>
+里的样子</li>
 </ol>
 <p>我们知道 runs 支持三种形式</p>
 <ol>
@@ -340,7 +386,9 @@
 <p>inputs 有一个需要注意的点: 在 js 代码里获取的时候, 使用原名称即可, 但如果你是在 shell 里使用(composite, 或其他语言, 比如 docker 使用 c 语言或者 java 等等), 则需要通过 <code>INPUT_&lt;VARIABLE_NAME&gt;</code>的名称在环境变量里获取</p>
 <p>简单的概念完成了, 接着我们就来实战一下</p>
 <h3 id="环境变量">环境变量</h3>
-<p>环境变量就是你在配置自己的工作流时, 可以使用 <code>$ENV_VAR</code>这种方式来使用环境变量, 至于来源, 看, 包括但不仅限于<code>$HOME</code>,<code>$GITHUB_WORKSPACE</code>之类的, 具体看官方文档</p>
+<p>环境变量就是你在配置自己的工作流时, 可以使用 <code>$ENV_VAR</code>这种方式来使用环境变量, 至于来源, 看
+<a href="https://docs.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables#default-environment-variables" >github 默认的环境变量</a>
+, 包括但不仅限于<code>$HOME</code>,<code>$GITHUB_WORKSPACE</code>之类的, 具体看官方文档</p>
 <h3 id="配置敏感信息的问题">配置敏感信息的问题</h3>
 <p>我们都知道, 很多情况下, 项目有一些隐秘信息, 不能直接配置在项目内, 包括但不仅限于:</p>
 <ul>
@@ -349,7 +397,9 @@
 <li>私钥信息</li>
 <li>各种网站的 api key,app key, secret key 等等</li>
 </ul>
-<p>这时候, 就需要有一些技巧来配置它们, 并在代码中读取, </p>
+<p>这时候, 就需要有一些技巧来配置它们, 并在代码中读取, 
+<a href="https://docs.github.com/en/actions/configuring-and-managing-workflows/using-variables-and-secrets-in-a-workflow" >官方文档</a>
+</p>
 <h4 id="配置">配置</h4>
 <p>这一步是在 github 仓库的 setting 里完成的</p>
 <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1599525251.png" alt="image-20200908083410791" style="zoom:33%;" />
@@ -566,7 +616,9 @@
 <p>也就是说, 在经历过这些以后, 就可以简单的达到我们的目的,后续的话, 可以根据需求扩展功能, 目前的瑕疵是, 部分功能调试起来并不方便</p>
 <p>在实际使用时为了单元测试的方便, 可以封装的更加细一些. 比如: 把,github token, issue, repo, owner, title 等参数全部抽出去, 以便于本地测试是否真的有用</p>
 <h2 id="发布">发布</h2>
-<p>写完了, 要发布了, 也就是让别人可以在  里搜到你的作品</p>
+<p>写完了, 要发布了, 也就是让别人可以在 
+<a href="https://github.com/marketplace?type=actions" >action 商店</a>
+ 里搜到你的作品</p>
 <p>一般来讲有如下三个步骤</p>
 <ol>
 <li>写 README</li>
@@ -607,7 +659,9 @@
 
 , 使用时可以接受诸如<code>v1</code> <code>v1.0.0</code> <code>commitHash</code>, <code>master</code> 这样的标记, 但, 一般不建议使用@master</p>
 <h3 id="发布吧">发布吧</h3>
-<p>, 选中你的 action, 这个名字是你定义在<code>action.yml</code>里的</p>
+<p>
+<a href="https://github.com/marketplace/new" >网址在这</a>
+, 选中你的 action, 这个名字是你定义在<code>action.yml</code>里的</p>
 <p>
 <p class="md__image">
   <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1599621342.png" alt="image-20200909111541661"  crossorigin/>
@@ -628,7 +682,9 @@
 <p>然后, 如果你是第一次使用, 可能有两个额外步骤</p>
 <ol>
 <li>发布的协议</li>
-<li>要求必须开启两步验证, 我这里使用 , 你可以使用别的任何 github 支持的工具, 具体的过程可以百度一下</li>
+<li>要求必须开启两步验证, 我这里使用
+<a href="https://authy.com/" >authy</a>
+ , 你可以使用别的任何 github 支持的工具, 具体的过程可以百度一下</li>
 </ol>
 <p>
 <p class="md__image">
@@ -637,15 +693,14 @@
 </p>
 <p>提示重名了, 我们修改一下 action.yml , 接着就可以用了</p>
 <h2 id="后记">后记</h2>
-<p>本篇结合了 github 文档和模板完成了 github action 的创建, 使用, 调用的过程 </p>
+<p>本篇结合了 github 文档和模板完成了 github action 的创建, 使用, 调用的过程 
+<a href="https://github.com/CaiJingLong/action_auto_label" >仓库</a>
+</p>
 
       
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -653,10 +708,7 @@
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -1069,7 +1121,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -1129,7 +1181,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -1229,7 +1281,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1606,9 +1658,9 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

@@ -19,16 +19,20 @@
 
 <meta property="og:type" content="article">
 <meta name="description" content="在 flutter 的 1.10.x 后的分支, dart:ffi 被并入 flutter, 现在 flutter 中也可以使用 ffi 了。
-这东西是啥玩意呢, 就是让 dart 可以直接调用 c/c&#43;&#43; 代码等东西的库, FFI(foreign function interface)， 在这里。
-但是在当前版本中, …">
+这东西是啥玩意呢, 就是让 dart 可以直接调用 c/c&#43;&#43; 代码等东西的库, FFI(foreign function interface)， 
+官方文档
+在这里。
+但是在 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="在 flutter 上使用 c 代码 - (一) 有源码的项目" />
 <meta property="og:url" content="https://kikt.top/posts/flutter/ffi/1-first-party/" />
 <meta property="og:title" content="在 flutter 上使用 c 代码 - (一) 有源码的项目" />
 <meta property="og:description" content="在 flutter 的 1.10.x 后的分支, dart:ffi 被并入 flutter, 现在 flutter 中也可以使用 ffi 了。
-这东西是啥玩意呢, 就是让 dart 可以直接调用 c/c&#43;&#43; 代码等东西的库, FFI(foreign function interface)， 在这里。
-但是在当前版本中, …" />
+这东西是啥玩意呢, 就是让 dart 可以直接调用 c/c&#43;&#43; 代码等东西的库, FFI(foreign function interface)， 
+官方文档
+在这里。
+但是在 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -42,11 +46,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../css/custom.css">
     
   </head>
   
@@ -56,7 +61,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -78,10 +83,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -117,6 +122,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -201,7 +207,9 @@
     </div>
     
     <div class="post_body"><p>在 flutter 的 1.10.x 后的分支, dart:ffi 被并入 flutter, 现在 flutter 中也可以使用 ffi 了。<br>
-这东西是啥玩意呢, 就是让 dart 可以直接调用 c/c++ 代码等东西的库, FFI(foreign function interface)， 在这里。</p>
+这东西是啥玩意呢, 就是让 dart 可以直接调用 c/c++ 代码等东西的库, FFI(foreign function interface)， 
+<a href="https://flutter.dev/docs/development/platform-integration/c-interop" >官方文档</a>
+在这里。</p>
 <p>但是在当前版本中, 这东西在官方说明中依然处于技术预览版, 就是可用, 但后续不保证 api 不变更。</p>
 <h2 id="开发环境">开发环境</h2>
 <p>首先我是 mac 系统, windows 系统不保证脚本的可用和工具的可用, linux 的话可能一些必要工具需要使用自己平台的包管理工具, 并且涉及到 ios 部分, 必须使用 mac。</p>
@@ -229,7 +237,9 @@
 <p>这里说的是包含后续所有用到的东西, 并不仅仅是本文。
 其中对于 flutter 开发者可能需要单独安装的应该只有 NDK 和 Cmake, 这两个东西是包含在 android sdk 下的, 可以使用 android studio 下载, 也可以单独下载</p>
 <h2 id="ffi-的简单介绍">ffi 的简单介绍</h2>
-<p>根据说明</p>
+<p>根据
+<a href="https://dart.dev/guides/libraries/c-interop" >官方文档</a>
+说明</p>
 <p>可以理解为, 将 c 的类型和 dart 的类型关联起来, 然后 ffi 会在内部将两端关联起来, 完成调用</p>
 <p>有如下几种类型
 
@@ -303,8 +313,12 @@
 </span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="p">.</span><span class="n">asFunction</span><span class="p">();</span>
 </span></span></code></pre></div><h3 id="打包和运行">打包和运行</h3>
 <p>在 dart vm 中,可以有多种方案, 只要能编译出 dylib 即可</p>
-<p>官方的中是直接使用 make, 内部使用 gcc 打包编译</p>
-<p>这里有一个,是设置 dylib 的目录到环境变量中, 以便于运行时可以找到动态库</p>
+<p>官方的
+<a href="https://github.com/dart-lang/samples/tree/aa0ade1a0460d7dc541b777b99644f9e20ba68b8/ffi/hello_world" >hello world 示例</a>
+中是直接使用 make, 内部使用 gcc 打包编译</p>
+<p>这里有一个
+<a href="https://github.com/dart-lang/samples/blob/aa0ade1a0460d7dc541b777b99644f9e20ba68b8/ffi/hello_world/setup.sh" >脚本</a>
+,是设置 dylib 的目录到环境变量中, 以便于运行时可以找到动态库</p>
 <h2 id="在-flutter-中使用">在 flutter 中使用</h2>
 <p>接着就要开始在 flutter 中使用了, 和在 dart vm 中使用不一样, 不能使用环境变量, 而是需要将库置入到项目中</p>
 <h3 id="创建仓库">创建仓库</h3>
@@ -429,16 +443,15 @@
 <p>比如, 文档的缺失, 现在如何传递字符串,数组都是问题, 虽然有结构体的定义, 也能看到部分说明, 但没有简单的示例帮助开发者快速使用.</p>
 <p>只有基本数据类型, 目前可能还不需要借用 c 来解决, 未来则要看 ffi 会开放到什么程度.</p>
 <h2 id="后记">后记</h2>
-<p>项目地址: </p>
+<p>项目地址: 
+<a href="https://github.com/caijinglong/example_for_flutter_ffi" >https://github.com/caijinglong/example_for_flutter_ffi</a>
+</p>
 <p>以上</p>
 
       
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -446,10 +459,7 @@
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -862,7 +872,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -922,7 +932,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -1022,7 +1032,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1399,9 +1409,9 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

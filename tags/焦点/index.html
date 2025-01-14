@@ -39,11 +39,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/custom.css">
     
   </head>
   
@@ -53,7 +54,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -75,10 +76,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -114,6 +115,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -180,12 +182,30 @@
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>上一章, 简单的使用了一下 FocusNode 和周边的一些东西, 今天来扒一扒 FocusNode 整体的附着(attach)和分离(detach)
-flutter 环境还是针对 1.17.5
-Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主要对象的, 那么这东西是怎么附着到整体的呢
-构造方法
-debugLabel, 这东西看名字就是 debug 用的, 先不管 onKey, 一看就是接受事件用的RawKeyEvent canRequestFocus, 就是能不能接受焦点 skipTraversal, 是否接受遍历 我们再找找方法
-有几个可能用到的关键字段, 我们一个个看, 但是不一定会用的到, 但 …</p>
+            <p>上一章, 简单的使用了一下 <code>FocusNode</code> 和周边的一些东西, 今天来扒一扒 <code>FocusNode</code> 整体的附着(attach)和分离(detach)<br>
+flutter 环境还是针对 1.17.5</p>
+<h2 id="focus-家族的源码分析">Focus 家族的源码分析</h2>
+<h3 id="附着">附着</h3>
+<p>首先第一, 平时是以 <code>FocusNode</code> 为主要对象的, 那么这东西是怎么附着到整体的呢</p>
+<p>构造方法</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595382471.png" alt="1595382471"  crossorigin/>
+</p>
+</p>
+<ul>
+<li><code>debugLabel</code>, 这东西看名字就是 debug 用的, 先不管</li>
+<li><code>onKey</code>, 一看就是接受事件用的<code>RawKeyEvent</code></li>
+<li><code>canRequestFocus</code>, 就是能不能接受焦点</li>
+<li><code>skipTraversal</code>, 是否接受遍历</li>
+</ul>
+<p>我们再找找方法</p>
+<p>
+<p class="md__image">
+  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595381640.png" alt="1595381640"  crossorigin/>
+</p>
+</p>
+<p>有几个可能用到的关键字段, 我们一个 …</p></p></p></p></p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/focusnode-2/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -254,9 +274,17 @@ debugLabel, 这东西看名字就是 debug 用的, 先不管 onKey, 一看就是
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>很多时候, flutter 中需要处理输入的焦点, 咱们今天就来看看控件怎么用
-本篇可以视为简单使用, 而不会深入源码去探讨怎么附着, 主要是 Focus 系列控件的使用, 和怎么在多输入框之间反复横跳
-环境说明 本篇基本基于 flutter sdk 的 1.17.5 版本来看, 其他版本应该大同小异, 但很多东西可能会随时间变化, 未来是否有效请继续验证 本篇基本是针对移动端来说的 写本文时, flutter web 的焦点比较迷, 似乎和移动版不太一样, 所以暂时略过不表 desktop 版只尝试了 macOS, 其他的桌面引擎请自行校验对错 相关 dart class flutter 中, 和焦点相关联类有如下几个: …</p>
+            <p>很多时候, flutter 中需要处理输入的焦点, 咱们今天就来看看控件怎么用</p>
+<p>本篇可以视为简单使用, 而不会深入源码去探讨怎么附着, 主要是 Focus 系列控件的使用, 和怎么在多输入框之间反复横跳</p>
+<h2 id="环境说明">环境说明</h2>
+<ol>
+<li>本篇基本基于 flutter sdk 的 1.17.5 版本来看, 其他版本应该大同小异, 但很多东西可能会随时间变化, 未来是否有效请继续验证</li>
+<li>本篇基本是针对移动端来说的</li>
+<li>写本文时, flutter web 的焦点比较迷, 似乎和移动版不太一样, 所以暂时略过不表</li>
+<li>desktop 版只尝试了 macOS, 其他的桌面引擎请自行校验对错</li>
+</ol>
+<h2 id="相关-dart-class">相关 dart class</h2>
+<p>flutter 中, 和焦点相关联类有如下几个: …</p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/focusnode-1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -676,7 +704,7 @@ debugLabel, 这东西看名字就是 debug 用的, 先不管 onKey, 一看就是
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -736,7 +764,7 @@ debugLabel, 这东西看名字就是 debug 用的, 先不管 onKey, 一看就是
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -836,7 +864,7 @@ debugLabel, 这东西看名字就是 debug 用的, 先不管 onKey, 一看就是
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1213,9 +1241,9 @@ debugLabel, 这东西看名字就是 debug 用的, 先不管 onKey, 一看就是
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

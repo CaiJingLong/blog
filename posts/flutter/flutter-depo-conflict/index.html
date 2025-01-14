@@ -18,23 +18,35 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="有时候 flutter 更新 sdk 版本后不知道该不该更新 有时候 pub 库更新后和自己的其他类库发生了冲突
+<meta name="description" content="有时候 flutter 更新 sdk 版本后不知道该不该更新
+有时候 pub 库更新后和自己的其他类库发生了冲突
+
+
+  
+
+
 类似于图上的情况
 遇到这样的问题应该怎么解决呢
 我们一步步解决
 首先,这种依赖一般是 pub 中引用的,先查看下原作者有没有最新版,也许就解决了呢
-无奈我们用到的类库是一个 5 个月没有更新过的类库,看来是 …">
+无奈我们用到的类库是一个 5 个月没有更新过 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Flutter 依赖冲突解决" />
 <meta property="og:url" content="https://kikt.top/posts/flutter/flutter-depo-conflict/" />
 <meta property="og:title" content="Flutter 依赖冲突解决" />
-<meta property="og:description" content="有时候 flutter 更新 sdk 版本后不知道该不该更新 有时候 pub 库更新后和自己的其他类库发生了冲突
+<meta property="og:description" content="有时候 flutter 更新 sdk 版本后不知道该不该更新
+有时候 pub 库更新后和自己的其他类库发生了冲突
+
+
+  
+
+
 类似于图上的情况
 遇到这样的问题应该怎么解决呢
 我们一步步解决
 首先,这种依赖一般是 pub 中引用的,先查看下原作者有没有最新版,也许就解决了呢
-无奈我们用到的类库是一个 5 个月没有更新过的类库,看来是 …" />
+无奈我们用到的类库是一个 5 个月没有更新过 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -48,11 +60,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/custom.css">
     
   </head>
   
@@ -62,7 +75,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -84,10 +97,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -123,6 +136,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -201,7 +215,9 @@
 </p>
 <p>一般都是有 github 的,我们点进 github 中
 如果真没有 那就下一个 zip,然后自己创建一个吧</p>
-<p>然后 fork 项目,clone 下来,修改下</p>
+<p>然后 fork 项目,clone 下来,修改下
+<a href="https://github.com/CaiJingLong/flutter_cached_network_image/commit/fea280d51955b7b81ede7f2f69ef8aaf925cc971" >commit</a>
+</p>
 <p>
 <p class="md__image">
   <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981927669.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
@@ -209,6 +225,8 @@
 
 可以参考下这个修改日志, 修改了库的引用地址,因为这两个库是同一个作者,这个依赖了另一个,我这里修改了另一个库,并且也同样 fork+clone 修改后上传到了自己的 github</p>
 <p>这里是另一个库的修改
+
+<a href="https://github.com/CaiJingLong/flutter_cache_manager/commit/38b368c80e34707c49b146132670ec7ccb3566b7" >commit</a>
 
 
 <p class="md__image">
@@ -224,7 +242,11 @@
 
 修改引用为 git 的方式</p>
 <p>接着再使用就没问题了</p>
-<p>git 依赖的引用方式可以参考 ,</p>
+<p>git 依赖的引用方式可以参考 
+<a href="https://flutter.io/using-packages/" >flutter 官网</a>
+,
+<a href="https://www.dartlang.org/tools/pub/dependencies#git-packages" >dart 官网</a>
+</p>
 <p>
 <p class="md__image">
   <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981929568.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
@@ -235,9 +257,6 @@
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -245,10 +264,7 @@
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -661,7 +677,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -721,7 +737,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -821,7 +837,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1198,9 +1214,9 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

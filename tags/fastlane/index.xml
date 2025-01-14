@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>fastlane on CaiJingLong</title>
+    <title>Fastlane on CaiJingLong</title>
     <link>https://kikt.top/tags/fastlane/</link>
-    <description>Recent content in fastlane on CaiJingLong</description>
+    <description>Recent content in Fastlane on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,13 +17,32 @@
       <description>
         
           
-            自动化打包上传是一个释放双手的过程, 本文就简单重复一下打包的过程
-本文包括 iOS 和 android 篇.
-如果有需要, macOS 和 web 也可以加进来, 步骤并不复杂, 但本篇暂时不讲
-开发环境 macOS, 如果你不是 macOS, 那你只能打包安卓部分 Xcode, 因为 Xcode 会自动安装包含 git 在内的一些其他环境, 所以理论上有这个就够了 brew android sdk flutter sdk jenkins fastlane 到 flutter sdk 为止就不讲了, 我相信看这篇文章的人, 起码 flutter 程序已经开发完了, 只是因为修改个文案就要打包的事被搞的不胜其扰, 才决定自动化的
-而开发 flutter 基本上可以理解为包含如下工具/SDK
-ruby git Xcode brew Android SDK Flutter SDK Jenkins 有几点要写在前面, 这东西建议使用 brew 安装, 当然你要是坚持, 也可以用 jendins 的 war/jar 包自己部署,见仁见智
-但不要使用 docker 的方式, 因为 docker 不包含 xcode 的环境, 执行起来比较麻烦
+            &lt;p&gt;自动化打包上传是一个释放双手的过程, 本文就简单重复一下打包的过程&lt;/p&gt;
+&lt;p&gt;本文包括 iOS 和 android 篇.&lt;/p&gt;
+&lt;p&gt;如果有需要, macOS 和 web 也可以加进来, 步骤并不复杂, 但本篇暂时不讲&lt;/p&gt;
+&lt;h2 id=&#34;开发环境&#34;&gt;开发环境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;macOS, 如果你不是 macOS, 那你只能打包安卓部分&lt;/li&gt;
+&lt;li&gt;Xcode, 因为 Xcode 会自动安装包含 git 在内的一些其他环境, 所以理论上有这个就够了&lt;/li&gt;
+&lt;li&gt;brew&lt;/li&gt;
+&lt;li&gt;android sdk&lt;/li&gt;
+&lt;li&gt;flutter sdk&lt;/li&gt;
+&lt;li&gt;jenkins&lt;/li&gt;
+&lt;li&gt;fastlane&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;到 flutter sdk 为止就不讲了, 我相信看这篇文章的人, 起码 flutter 程序已经开发完了, 只是因为修改个文案就要打包的事被搞的不胜其扰, 才决定自动化的&lt;/p&gt;
+&lt;p&gt;而开发 flutter 基本上可以理解为包含如下工具/SDK&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ruby&lt;/li&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;Xcode&lt;/li&gt;
+&lt;li&gt;brew&lt;/li&gt;
+&lt;li&gt;Android SDK&lt;/li&gt;
+&lt;li&gt;Flutter SDK&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;jenkins&#34;&gt;Jenkins&lt;/h3&gt;
+&lt;p&gt;有几点要写在前面, 这东西建议使用 brew 安装, 当然你要是坚持, 也可以用 jendins 的 war/jar 包自己部署,见仁见智&lt;/p&gt;
+&lt;p&gt;但&lt;strong&gt;不要&lt;/strong&gt;使用 docker 的方式, 因为 docker 不包含 xcode 的环境, 执行起来比较麻烦&lt;/p&gt;
           
           
         

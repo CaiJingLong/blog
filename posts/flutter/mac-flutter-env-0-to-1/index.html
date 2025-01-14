@@ -18,15 +18,41 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="mac 开发环境配置 从入门到完成 本文首发简书 转载请注明出处 高能提示：文章字数不多，图很多，请做好战斗准备
-前言 写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章 因为 flutter 涉及到跨平台开发， …">
+<meta name="description" content="mac 开发环境配置 从入门到完成
+本文首发简书
+转载请注明出处
+
+原文连接
+
+
+掘金连接
+
+
+高能提示：文章字数不多，图很多，请做好战斗准备
+
+前言
+写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章
+因为 flutter 涉及到跨平 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Mac Flutter 开发环境配置 从0到1 流程" />
 <meta property="og:url" content="https://kikt.top/posts/flutter/mac-flutter-env-0-to-1/" />
 <meta property="og:title" content="Mac Flutter 开发环境配置 从0到1 流程" />
-<meta property="og:description" content="mac 开发环境配置 从入门到完成 本文首发简书 转载请注明出处 高能提示：文章字数不多，图很多，请做好战斗准备
-前言 写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章 因为 flutter 涉及到跨平台开发， …" />
+<meta property="og:description" content="mac 开发环境配置 从入门到完成
+本文首发简书
+转载请注明出处
+
+原文连接
+
+
+掘金连接
+
+
+高能提示：文章字数不多，图很多，请做好战斗准备
+
+前言
+写这篇文章的原因是我自己的 macbook 开不开机，返修后，所有开发环境全部没有了，正好要重新配置开发环境，所以写一个从零配置的文章
+因为 flutter 涉及到跨平 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -40,11 +66,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/custom.css">
     
   </head>
   
@@ -54,7 +81,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -76,10 +103,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -115,6 +142,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -197,6 +225,10 @@
 <p>本文首发简书
 转载请注明出处
 
+<a href="https://www.jianshu.com/p/c55ad0e8f24f" >原文连接</a>
+
+
+<a href="https://juejin.im/post/5b66ef39f265da0f8e1a0af8" >掘金连接</a>
 </p>
 <blockquote>
 <p>高能提示：文章字数不多，图很多，请做好战斗准备</p>
@@ -219,11 +251,15 @@ as = Android Studio</p>
 <p>所谓 mac 篇就是一些基础的环境，和效率工具</p>
 <p>后面会使用</p>
 <h4 id="cli">cli</h4>
-<p>我这里使用，一个免费的开源的命令行工具
+<p>我这里使用
+<a href="https://www.iterm2.com/" >iterm2</a>
+，一个免费的开源的命令行工具
 默认的命令行工具用 launchpad=&gt; 其他 =&gt; 终端打开</p>
 <p>zsh，用于替换 bash 环境，直接命令行中敲 zsh,即可进入，修改默认 zsh 的可以自行百度
 oh my zsh，一个 zsh 插件 具体可以自行百度</p>
-<p> 一个很方便的包管理工具，基于 ruby+git
+<p>
+<a href="https://brew.sh/index_zh-cn" >brew</a>
+ 一个很方便的包管理工具，基于 ruby+git
 命令行敲
 <code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code>即可
 这里会自动安装 xcode 命令行环境，git 环境，需要输入密码确认</p>
@@ -232,7 +268,9 @@ oh my zsh，一个 zsh 插件 具体可以自行百度</p>
 Paw http 工具
 Sip 取色器</p>
 <h4 id="dmg-相关">dmg 相关</h4>
-<p>遇到提示 dmg 损坏，不要着急 并不一定是真的损坏里，参考这里  ，允许所有的来源即可</p>
+<p>遇到提示 dmg 损坏，不要着急 并不一定是真的损坏里，参考这里 
+<a href="https://bbs.feng.com/read-htm-tid-10584598.html" >https://bbs.feng.com/read-htm-tid-10584598.html</a>
+ ，允许所有的来源即可</p>
 <p>对于 mac 新手来说，可能不会使用 dmg，双击打开，有允许点允许，有 dmg 密码输入密码，最后将应用拖入到 application／应用里，一般 dmg 里都有快捷方式，没有的话自己打开 finder／访达，拖到应用程序里面也行
 
 <p class="md__image">
@@ -313,7 +351,9 @@ p 粘贴行
 </p>
 <h3 id="android-环境篇">android 环境篇</h3>
 <h4 id="android-studio-安装">android studio 安装</h4>
-<p>这里我使用一个中文镜像  下载
+<p>这里我使用一个中文镜像 
+<a href="http://www.android-studio.org/" >http://www.android-studio.org/</a>
+ 下载
 有梯子的可以去 android 官网下载</p>
 <p>拖到 application 里</p>
 <p>打开</p>
@@ -356,6 +396,8 @@ p 粘贴行
 <h4 id="配置-android-的环境变量">配置 android 的环境变量</h4>
 <h5 id="jdk">jdk</h5>
 <p>
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" >oracle jdk1.8</a>
+
 
 <p class="md__image">
   <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981955143.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
@@ -403,9 +445,13 @@ java -version</p>
 <p>终于要开始 flutter 篇了</p>
 <h4 id="pub-环境变量">pub 环境变量</h4>
 <p>这里建议没有常驻翻墙的同学打开下面的页面，配置下中文的 pub 镜像，pub 是 dart 官方提供的一个中心仓库，可以将依赖／开源库上传到上面</p>
-<p></p>
+<p>
+<a href="https://github.com/flutter/flutter/wiki/Using-Flutter-in-China" >https://github.com/flutter/flutter/wiki/Using-Flutter-in-China</a>
+</p>
 <h4 id="官网">官网</h4>
-<p>有能力的同学这里自己进入按照 mac 篇进行配置
+<p>有能力的同学这里自己进入
+<a href="https://flutter.io" >flutter 官网</a>
+按照 mac 篇进行配置
 或者继续看下去</p>
 <h4 id="开始安装-flutter">开始安装 flutter</h4>
 <p>cli：</p>
@@ -824,9 +870,6 @@ cli:</p>
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -834,10 +877,7 @@ cli:</p>
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -1250,7 +1290,7 @@ cli:</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -1310,7 +1350,7 @@ cli:</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -1410,7 +1450,7 @@ cli:</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1787,9 +1827,9 @@ cli:</p>
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

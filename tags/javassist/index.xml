@@ -17,14 +17,33 @@
       <description>
         
           
-            本篇仅用于记录本人学习javassist的过程, 其中任何步骤或思想被用于非法用途与本人无关
-环境介绍 macOS Jdk8, 因为我是安卓开发, 事实上理论上也支持 14(未实测) Intellij Idea 社区版 javassist 简介 javassist 是什么东西 首先, 放上, 简而言之, 这东西是一个库, 可以用来修改 java 的字节码
-同时, 这东西不需要你了解太多的 class 在储存为.class 文件时的储存方式, 但需要你对于 java 反射有一定的了解, 因为这东西是以 jar 包的方式引入到 java 应用中, 然后可以通过封装的方式来修改 class 内方法实现
-包含但不限于如下功能
-添加,删除字段, 方法, 类. 包 修改方法, 类可见性 修改方法的实现体 应用范围 那么, 这东西有啥用呢?
-比如, 有一个库是上古时期的人提供的, 没有源码, 没有文档, 开发者早联系不上了, 但我们可能需要修改其中的一个实现
-你可能会想: 反编译啊, 重打包啊
-但事实上很难行得通, 因为你重新编译时可能需要找到它当时依赖的所有 jar 包, 然后循环依赖引入, 或者可能你的 jar 包是一个安卓 jar 包, 所以需要安卓环境, 而把 android.
+            &lt;p&gt;本篇仅用于记录本人学习&lt;code&gt;javassist&lt;/code&gt;的过程, 其中任何步骤或思想被用于非法用途与&lt;strong&gt;本人无关&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;环境介绍&#34;&gt;环境介绍&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;macOS&lt;/li&gt;
+&lt;li&gt;Jdk8, 因为我是安卓开发, 事实上理论上也支持 14(未实测)&lt;/li&gt;
+&lt;li&gt;Intellij Idea 社区版&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://mvnrepository.com/artifact/org.javassist/javassist/3.27.0-GA&#34; &gt;javassist 3.27.0-GA&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;javassist-简介&#34;&gt;javassist 简介&lt;/h2&gt;
+&lt;h3 id=&#34;javassist-是什么东西&#34;&gt;javassist 是什么东西&lt;/h3&gt;
+&lt;p&gt;首先, 放上
+&lt;a href=&#34;http://www.javassist.org/&#34; &gt;官网&lt;/a&gt;
+, 简而言之, 这东西是一个库, 可以用来修改 java 的字节码&lt;/p&gt;
+&lt;p&gt;同时, 这东西不需要你了解太多的 class 在储存为.class 文件时的储存方式, 但需要你对于 java 反射有一定的了解, 因为这东西是以 jar 包的方式引入到 java 应用中, 然后可以通过封装的方式来修改 class 内方法实现&lt;/p&gt;
+&lt;p&gt;包含但不限于如下功能&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;添加,删除字段, 方法, 类. 包&lt;/li&gt;
+&lt;li&gt;修改方法, 类可见性&lt;/li&gt;
+&lt;li&gt;修改方法的实现体&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;应用范围&#34;&gt;应用范围&lt;/h3&gt;
+&lt;p&gt;那么, 这东西有啥用呢?&lt;/p&gt;
+&lt;p&gt;比如, 有一个库是上古时期的人提供的, 没有源码, 没有文档, 开发者早联系不上了, 但我们可能需要修改其中的一个实现&lt;/p&gt;
+&lt;p&gt;你可能会想: 反编译啊, 重打包啊&lt;/p&gt;
+&lt;p&gt;但事实上很难行得通, 因为你重新编译时可能需要找到它当时依赖的所有 jar 包, 然后循环依赖引入, 或者可能你的 jar 包是一个安卓 jar 包, 所以需要安卓环境, 而把 android.jar 包引入 java 工程, 想想就很带感&lt;/p&gt;
           
           
         

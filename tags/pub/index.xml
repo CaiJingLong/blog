@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>pub on CaiJingLong</title>
+    <title>Pub on CaiJingLong</title>
     <link>https://kikt.top/tags/pub/</link>
-    <description>Recent content in pub on CaiJingLong</description>
+    <description>Recent content in Pub on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,16 +17,52 @@
       <description>
         
           
-            前言 如果你接触过npm/yarn 应该知道,有一些包可以全局使用,就是安装后可以直接用,比如vue-cli这样的应用,应该是用node开发的
-在dart中也可以实现类似的功能, 使用就可以了,在连接中有完整的说明 也有这样的应用程序可以直接使用
-我在这里简单的实战一下,实现一个简单的cli应用程序
-这个程序没什么多余的功能,就简单的实现输入敲击unix获取时间戳
-建立工程前的准备 将dart,pub加入PATH环境变量 需要在环境变量中添加几个东西,添加环境变量的方式自己搜索一下
-一个是dart/bin的目录,你需要在命令行中让dart命令可用
-1➜ ~ dart --version 2Dart VM version: 2.1.0 (Tue Nov 13 18:22:02 2018 +0100) on &amp;#34;macos_x64&amp;#34; 相对应的dart/bin目录下还会有其他的一些工具,包含了pub,这个工具也是会用到的
-1➜ bin pub --version 2Pub 2.1.0 安装dart工程脚手架 $ pub global activate stagehand
-将pub-cache/bin目录加入PATH环境变量 这个目录通常是~/.pub-cache/bin目录
-验证stagehand可用 1➜ bin stagehand 2Stagehand will generate the given application type into the current directory. 3 4usage: stagehand &amp;lt;generator-name&amp;gt; 5 --[no-]analytics Opt out of anonymous usage and crash reporting.
+            &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;如果你接触过npm/yarn 应该知道,有一些包可以全局使用,就是安装后可以直接用,比如vue-cli这样的应用,应该是用node开发的&lt;/p&gt;
+&lt;p&gt;在dart中也可以实现类似的功能, 使用
+&lt;a href=&#34;https://www.dartlang.org/tools/pub/cmd/pub-global&#34; &gt;pub global&lt;/a&gt;
+就可以了,在连接中有完整的说明
+也有
+&lt;a href=&#34;https://pub.dartlang.org/packages/stagehand&#34; &gt;stagehand&lt;/a&gt;
+这样的应用程序可以直接使用&lt;/p&gt;
+&lt;p&gt;我在这里简单的实战一下,实现一个简单的cli应用程序&lt;/p&gt;
+&lt;p&gt;这个程序没什么多余的功能,就简单的实现输入敲击&lt;code&gt;unix&lt;/code&gt;获取时间戳&lt;/p&gt;
+&lt;h2 id=&#34;建立工程前的准备&#34;&gt;建立工程前的准备&lt;/h2&gt;
+&lt;h3 id=&#34;将dartpub加入path环境变量&#34;&gt;将dart,pub加入PATH环境变量&lt;/h3&gt;
+&lt;p&gt;需要在环境变量中添加几个东西,添加环境变量的方式自己搜索一下&lt;/p&gt;
+&lt;p&gt;一个是dart/bin的目录,你需要在命令行中让dart命令可用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;➜  ~ dart --version
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Dart VM version: 2.1.0 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Tue Nov &lt;span class=&#34;m&#34;&gt;13&lt;/span&gt; 18:22:02 &lt;span class=&#34;m&#34;&gt;2018&lt;/span&gt; +0100&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; on &lt;span class=&#34;s2&#34;&gt;&amp;#34;macos_x64&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;相对应的dart/bin目录下还会有其他的一些工具,包含了pub,这个工具也是会用到的&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;➜  bin pub --version
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Pub 2.1.0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;安装dart工程脚手架&#34;&gt;安装dart工程脚手架&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://pub.dartlang.org/packages/stagehand#-installing-tab-&#34; &gt;pub连接&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;$ pub global activate stagehand&lt;/p&gt;
+&lt;h3 id=&#34;将pub-cachebin目录加入path环境变量&#34;&gt;将pub-cache/bin目录加入PATH环境变量&lt;/h3&gt;
+&lt;p&gt;这个目录通常是&lt;code&gt;~/.pub-cache/bin&lt;/code&gt;目录&lt;/p&gt;
+&lt;h3 id=&#34;验证stagehand可用&#34;&gt;验证&lt;code&gt;stagehand&lt;/code&gt;可用&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;➜  bin stagehand
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Stagehand will generate the given application &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt; into the current directory.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;usage: stagehand &amp;lt;generator-name&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    --&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;no-&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;analytics    Opt out of anonymous usage and crash reporting.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;-h, --help              Help!
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    --version           Display the version &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; stagehand.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    --author            The author name to use &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; file headers.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                        &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;defaults to &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;your name&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Available generators:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  console-full   - A command-line application sample.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  package-simple - A starting point &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; Dart libraries or applications.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  server-shelf   - A web server built using the shelf package.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  web-angular    - A web app with material design components.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  web-simple     - A web app that uses only core Dart libraries.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  web-stagexl    - A starting point &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; 2D animation and games.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;建立工程&#34;&gt;建立工程&lt;/h2&gt;
+&lt;p&gt;这一步默认你所有的环境变量都配置完毕,dart pub stagehand 都可用&lt;/p&gt;
           
           
         
@@ -42,23 +78,44 @@
       <description>
         
           
-            之前的很多技术文章太严肃了,本篇写一篇插件发布的文章
-什么是 pub 偶尔会经常听人说 发布包到 pub 了,那什么是 pub 呢
-官方描述: Pub is the package manager for Dart. / dart 语言的包管理器
-官网 pub 的官方 url: 这个域名有多个小伙伴同时 ping 过, 对应 ip 不相同,所以可知这个网站是有负载均衡的, 但是坑的地方来了, 部分在墙外,所以这就是这个网站偶尔国内访问不通畅的原因
-然后有几个国内镜像站点,可以查看官网介绍
-设置访问镜像 在环境变量中配置,这个根据系统不同设置方法不同
-mac 的话 可以使用 export 命令临时添加
-也可以在vi ~/.bash_profile,在这个文件中添加
-其他系统的设置方式请自行查找
-1PUB_HOSTED_URL=https://pub.flutter-io.cn 2FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn 这样在国内就很快了
-如果你需要发布插件的话,到这里就结束了
-发布 有的时候我们自己写了开源库,想要发布到 pub 上怎么办呢
-dart/flutter 对于插件没有审核的概念,而且发布很简单,你可以任意发布插件到 pub 上,只要不重复就可以了
-必备前提 一份代码 一份命令行翻墙工具 一个 google 账号 代码是必须的,不然没意义
-命令行翻墙工具是因为国内镜像发布不了,必须要连接到 pub 的官方源
-google 账号是确定权限用的,不能你说你是主人你就是主人了吧, 你要绑定库和你的作者身份,不然别人随手写一个覆盖你的插件岂不是乱套了
-终端翻墙 这里因为涉及到连接 google,所以你必须保证你的终端翻墙了
+            &lt;p&gt;之前的很多技术文章太严肃了,本篇写一篇插件发布的文章&lt;/p&gt;
+&lt;h2 id=&#34;什么是-pub&#34;&gt;什么是 pub&lt;/h2&gt;
+&lt;p&gt;偶尔会经常听人说 发布包到 pub 了,那什么是 pub 呢&lt;/p&gt;
+&lt;p&gt;官方描述: Pub is the package manager for Dart. / dart 语言的包管理器&lt;/p&gt;
+&lt;h2 id=&#34;官网&#34;&gt;官网&lt;/h2&gt;
+&lt;p&gt;pub 的官方 url: 
+&lt;a href=&#34;https://pub.dartlang.org/&#34; &gt;https://pub.dartlang.org/&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;这个域名有多个小伙伴同时 ping 过, 对应 ip 不相同,所以可知这个网站是有负载均衡的, 但是坑的地方来了, 部分在墙外,所以这就是这个网站偶尔国内访问不通畅的原因&lt;/p&gt;
+&lt;p&gt;然后有几个国内镜像站点,可以查看官网介绍
+&lt;a href=&#34;https://flutter.io/community/china&#34; &gt;Using Flutter in China&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://pub.flutter-io.cn&#34; &gt;flutter-io&lt;/a&gt;
+ 
+&lt;a href=&#34;https://dart-pub.mirrors.sjtug.sjtu.edu.cn/&#34; &gt;上海交大&lt;/a&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;设置访问镜像&#34;&gt;设置访问镜像&lt;/h2&gt;
+&lt;p&gt;在环境变量中配置,这个根据系统不同设置方法不同&lt;/p&gt;
+&lt;p&gt;mac 的话 可以使用 export 命令临时添加&lt;/p&gt;
+&lt;p&gt;也可以在&lt;code&gt;vi ~/.bash_profile&lt;/code&gt;,在这个文件中添加&lt;/p&gt;
+&lt;p&gt;其他系统的设置方式请自行查找&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;PUB_HOSTED_URL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://pub.flutter-io.cn
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;FLUTTER_STORAGE_BASE_URL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://storage.flutter-io.cn
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样在国内就很快了&lt;/p&gt;
+&lt;p&gt;如果你需要发布插件的话,到这里就结束了&lt;/p&gt;
+&lt;h2 id=&#34;发布&#34;&gt;发布&lt;/h2&gt;
+&lt;p&gt;有的时候我们自己写了开源库,想要发布到 pub 上怎么办呢&lt;/p&gt;
+&lt;p&gt;dart/flutter 对于插件没有审核的概念,而且发布很简单,你可以任意发布插件到 pub 上,只要不重复就可以了&lt;/p&gt;
+&lt;h3 id=&#34;必备前提&#34;&gt;必备前提&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;一份代码&lt;/li&gt;
+&lt;li&gt;一份命令行翻墙工具&lt;/li&gt;
+&lt;li&gt;一个 google 账号&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;代码是必须的,不然没意义&lt;/p&gt;
+&lt;p&gt;命令行翻墙工具是因为国内镜像发布不了,必须要连接到 pub 的官方源&lt;/p&gt;
           
           
         
@@ -74,17 +131,78 @@ google 账号是确定权限用的,不能你说你是主人你就是主人了吧
       <description>
         
           
-            pub 库
-项目名: 项目地址: 简介: 图片压缩
-项目名: 项目地址: 项目简介: 仿 android toast 纯 flutter 实现
-项目名: 项目地址: 项目简介: 读取系统相册 纯 api 版 支持(ios/android)
-项目名: 项目地址: 项目简介: 相册图片选择器 基于 photo_manager
-项目名: 项目地址: 项目简介: ListView 的加载更多
-项目名: 项目地址: 项目简介: 配合 pageview 的简单圆点指示器
-项目名: 项目地址: 项目简介: 城市选择器
-项目名: 项目地址: 项目简介: 一个长按弹出菜单的小部件
-项目名: 项目地址: 项目简介: 日志插件,用于帮助将 flutter 上的日志记录至开发机
-如果用过的朋友觉得好用,请在遇到别人想用的时候帮忙感谢宣传
+            &lt;p&gt;pub 库&lt;/p&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://github.com/OpenFlutter/flutter_image_compress&#34; &gt;flutter_image_compress&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/flutter_image_compress&#34; &gt;https://pub.dartlang.org/packages/flutter_image_compress&lt;/a&gt;
+&lt;br&gt;
+简介: 图片压缩&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/oktoast&#34; &gt;oktoast&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/OpenFlutter/flutter_oktoast&#34; &gt;https://github.com/OpenFlutter/flutter_oktoast&lt;/a&gt;
+&lt;br&gt;
+项目简介: 仿 android toast 纯 flutter 实现&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/photo_manager&#34; &gt;photo_manager&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_photo_manager&#34; &gt;https://github.com/CaiJingLong/flutter_photo_manager&lt;/a&gt;
+&lt;br&gt;
+项目简介: 读取系统相册 纯 api 版 支持(ios/android)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/photo&#34; &gt;photo&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_photo&#34; &gt;https://github.com/CaiJingLong/flutter_photo&lt;/a&gt;
+&lt;br&gt;
+项目简介: 相册图片选择器 基于 photo_manager&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/loadmore&#34; &gt;loadmore&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/OpenFlutter/flutter_listview_loadmore&#34; &gt;https://github.com/OpenFlutter/flutter_listview_loadmore&lt;/a&gt;
+&lt;br&gt;
+项目简介: ListView 的加载更多&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/page_indicator&#34; &gt;flutter_page_indicator&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_page_indicator&#34; &gt;https://github.com/CaiJingLong/flutter_page_indicator&lt;/a&gt;
+&lt;br&gt;
+项目简介: 配合 pageview 的简单圆点指示器&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/city_picker&#34; &gt;city_picker&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_city_picker&#34; &gt;https://github.com/CaiJingLong/flutter_city_picker&lt;/a&gt;
+
+项目简介: 城市选择器&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/menu&#34; &gt;menu&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_long_tap_menu&#34; &gt;https://github.com/CaiJingLong/flutter_long_tap_menu&lt;/a&gt;
+&lt;br&gt;
+项目简介: 一个长按弹出菜单的小部件&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/log4d&#34; &gt;log4d&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/log4d&#34; &gt;https://github.com/CaiJingLong/log4d&lt;/a&gt;
+&lt;br&gt;
+项目简介: 日志插件,用于帮助将 flutter 上的日志记录至开发机&lt;/p&gt;
           
           
         

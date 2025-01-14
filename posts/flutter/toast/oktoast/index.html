@@ -20,8 +20,33 @@
 <meta property="og:type" content="article">
 <meta name="description" content="OKToast 是一款 在 flutter 上 使用的 toast 插件
 使用简单, 可定制性强, 纯 flutter, 调用不用 context
-安装 查看文档: 在 pubspec 引入
-1dependencies: 2 oktoast: ^2.2.0 # 这一步请查询pub的最新版本 获取包: $ flutter …">
+
+
+安装
+
+
+使用
+
+
+
+在代码中定义 OKToast 组件
+
+
+调用
+
+
+
+文本 toast
+
+
+自定义 widget
+
+
+
+
+
+
+简单的 toast …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="flutter toast插件 OKToast的介绍" />
@@ -29,8 +54,33 @@
 <meta property="og:title" content="flutter toast插件 OKToast的介绍" />
 <meta property="og:description" content="OKToast 是一款 在 flutter 上 使用的 toast 插件
 使用简单, 可定制性强, 纯 flutter, 调用不用 context
-安装 查看文档: 在 pubspec 引入
-1dependencies: 2 oktoast: ^2.2.0 # 这一步请查询pub的最新版本 获取包: $ flutter …" />
+
+
+安装
+
+
+使用
+
+
+
+在代码中定义 OKToast 组件
+
+
+调用
+
+
+
+文本 toast
+
+
+自定义 widget
+
+
+
+
+
+
+简单的 toast …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -44,11 +94,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../css/custom.css">
     
   </head>
   
@@ -58,7 +109,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -80,10 +131,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -119,6 +170,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -199,36 +251,68 @@
     <div class="post_body"><p>OKToast 是一款 在 flutter 上 使用的 toast 插件</p>
 <p>使用简单, 可定制性强, 纯 flutter, 调用不用 context</p>
 <ul>
-<li></li>
 <li>
-<ul>
-<li></li>
+<a href="#%e5%ae%89%e8%a3%85" >安装</a>
+</li>
 <li>
+<a href="#%e4%bd%bf%e7%94%a8" >使用</a>
+
 <ul>
-<li></li>
-<li></li>
-</ul>
+<li>
+<a href="#%e5%9c%a8%e4%bb%a3%e7%a0%81%e4%b8%ad%e5%ae%9a%e4%b9%89-oktoast-%e7%bb%84%e4%bb%b6" >在代码中定义 OKToast 组件</a>
+</li>
+<li>
+<a href="#%e8%b0%83%e7%94%a8" >调用</a>
+
+<ul>
+<li>
+<a href="#%e6%96%87%e6%9c%ac-toast" >文本 toast</a>
+</li>
+<li>
+<a href="#%e8%87%aa%e5%ae%9a%e4%b9%89-widget" >自定义 widget</a>
 </li>
 </ul>
 </li>
-<li></li>
-<li>
-<ul>
-<li>
-<ul>
-<li></li>
-<li></li>
-<li></li>
 </ul>
+</li>
+<li>
+<a href="#%e7%ae%80%e5%8d%95%e7%9a%84-toast-%e5%ae%9e%e7%8e%b0" >简单的 toast 实现</a>
+</li>
+<li>
+<a href="#%e8%bf%9b%e9%98%b6%e4%bd%bf%e7%94%a8" >进阶使用</a>
+
+<ul>
+<li>
+<a href="#%e9%9a%90%e8%97%8f%e5%b7%b2%e5%87%ba%e7%8e%b0%e7%9a%84-toast" >隐藏已出现的 toast</a>
+
+<ul>
+<li>
+<a href="#%e9%9a%90%e8%97%8f%e6%89%80%e6%9c%89%e7%9a%84-toast" >隐藏所有的 toast</a>
+</li>
+<li>
+<a href="#%e9%9a%90%e8%97%8f%e5%8d%95%e7%8b%ac%e7%9a%84-toast" >隐藏单独的 toast</a>
+</li>
+<li>
+<a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e5%b1%9e%e6%80%a7" >自定义属性</a>
 </li>
 </ul>
 </li>
-<li></li>
-<li></li>
-<li></li>
+</ul>
+</li>
+<li>
+<a href="#%e6%9c%ac%e6%96%87%e5%ae%8c%e6%95%b4%e7%9a%84-maindart" >本文完整的 main.dart</a>
+</li>
+<li>
+<a href="#%e5%92%8c-fluttertoast-%e7%9a%84%e5%af%b9%e6%af%94" >和 fluttertoast 的对比</a>
+</li>
+<li>
+<a href="#%e5%90%8e%e8%ae%b0" >后记</a>
+</li>
 </ul>
 <h2 id="安装">安装</h2>
-<p>查看文档: </p>
+<p>查看文档: 
+<a href="https://pub.dartlang.org/packages/oktoast#-installing-tab-" >https://pub.dartlang.org/packages/oktoast#-installing-tab-</a>
+</p>
 <p>在 pubspec 引入</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="ln">1</span><span class="cl"><span class="nt">dependencies</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w">  </span><span class="nt">oktoast</span><span class="p">:</span><span class="w"> </span><span class="l">^2.2.0</span><span class="w"> </span><span class="c"># 这一步请查询pub的最新版本</span><span class="w">
@@ -514,9 +598,6 @@
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -524,10 +605,7 @@
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -940,7 +1018,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -1000,7 +1078,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -1100,7 +1178,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1477,9 +1555,9 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

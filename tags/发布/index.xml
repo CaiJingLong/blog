@@ -17,23 +17,44 @@
       <description>
         
           
-            之前的很多技术文章太严肃了,本篇写一篇插件发布的文章
-什么是 pub 偶尔会经常听人说 发布包到 pub 了,那什么是 pub 呢
-官方描述: Pub is the package manager for Dart. / dart 语言的包管理器
-官网 pub 的官方 url: 这个域名有多个小伙伴同时 ping 过, 对应 ip 不相同,所以可知这个网站是有负载均衡的, 但是坑的地方来了, 部分在墙外,所以这就是这个网站偶尔国内访问不通畅的原因
-然后有几个国内镜像站点,可以查看官网介绍
-设置访问镜像 在环境变量中配置,这个根据系统不同设置方法不同
-mac 的话 可以使用 export 命令临时添加
-也可以在vi ~/.bash_profile,在这个文件中添加
-其他系统的设置方式请自行查找
-1PUB_HOSTED_URL=https://pub.flutter-io.cn 2FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn 这样在国内就很快了
-如果你需要发布插件的话,到这里就结束了
-发布 有的时候我们自己写了开源库,想要发布到 pub 上怎么办呢
-dart/flutter 对于插件没有审核的概念,而且发布很简单,你可以任意发布插件到 pub 上,只要不重复就可以了
-必备前提 一份代码 一份命令行翻墙工具 一个 google 账号 代码是必须的,不然没意义
-命令行翻墙工具是因为国内镜像发布不了,必须要连接到 pub 的官方源
-google 账号是确定权限用的,不能你说你是主人你就是主人了吧, 你要绑定库和你的作者身份,不然别人随手写一个覆盖你的插件岂不是乱套了
-终端翻墙 这里因为涉及到连接 google,所以你必须保证你的终端翻墙了
+            &lt;p&gt;之前的很多技术文章太严肃了,本篇写一篇插件发布的文章&lt;/p&gt;
+&lt;h2 id=&#34;什么是-pub&#34;&gt;什么是 pub&lt;/h2&gt;
+&lt;p&gt;偶尔会经常听人说 发布包到 pub 了,那什么是 pub 呢&lt;/p&gt;
+&lt;p&gt;官方描述: Pub is the package manager for Dart. / dart 语言的包管理器&lt;/p&gt;
+&lt;h2 id=&#34;官网&#34;&gt;官网&lt;/h2&gt;
+&lt;p&gt;pub 的官方 url: 
+&lt;a href=&#34;https://pub.dartlang.org/&#34; &gt;https://pub.dartlang.org/&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;这个域名有多个小伙伴同时 ping 过, 对应 ip 不相同,所以可知这个网站是有负载均衡的, 但是坑的地方来了, 部分在墙外,所以这就是这个网站偶尔国内访问不通畅的原因&lt;/p&gt;
+&lt;p&gt;然后有几个国内镜像站点,可以查看官网介绍
+&lt;a href=&#34;https://flutter.io/community/china&#34; &gt;Using Flutter in China&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://pub.flutter-io.cn&#34; &gt;flutter-io&lt;/a&gt;
+ 
+&lt;a href=&#34;https://dart-pub.mirrors.sjtug.sjtu.edu.cn/&#34; &gt;上海交大&lt;/a&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;设置访问镜像&#34;&gt;设置访问镜像&lt;/h2&gt;
+&lt;p&gt;在环境变量中配置,这个根据系统不同设置方法不同&lt;/p&gt;
+&lt;p&gt;mac 的话 可以使用 export 命令临时添加&lt;/p&gt;
+&lt;p&gt;也可以在&lt;code&gt;vi ~/.bash_profile&lt;/code&gt;,在这个文件中添加&lt;/p&gt;
+&lt;p&gt;其他系统的设置方式请自行查找&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;PUB_HOSTED_URL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://pub.flutter-io.cn
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;FLUTTER_STORAGE_BASE_URL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://storage.flutter-io.cn
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样在国内就很快了&lt;/p&gt;
+&lt;p&gt;如果你需要发布插件的话,到这里就结束了&lt;/p&gt;
+&lt;h2 id=&#34;发布&#34;&gt;发布&lt;/h2&gt;
+&lt;p&gt;有的时候我们自己写了开源库,想要发布到 pub 上怎么办呢&lt;/p&gt;
+&lt;p&gt;dart/flutter 对于插件没有审核的概念,而且发布很简单,你可以任意发布插件到 pub 上,只要不重复就可以了&lt;/p&gt;
+&lt;h3 id=&#34;必备前提&#34;&gt;必备前提&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;一份代码&lt;/li&gt;
+&lt;li&gt;一份命令行翻墙工具&lt;/li&gt;
+&lt;li&gt;一个 google 账号&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;代码是必须的,不然没意义&lt;/p&gt;
+&lt;p&gt;命令行翻墙工具是因为国内镜像发布不了,必须要连接到 pub 的官方源&lt;/p&gt;
           
           
         

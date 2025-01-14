@@ -17,13 +17,46 @@
       <description>
         
           
-            文章首发地址: 前言 最近看 qq 群里发的很多代码截图,感觉命名规则/文件命名都不符合规范 很多朋友都是从其他语言转向 dart/flutter 的,深感语言环境还需要大家共同去维护,建议还是规范化代码,这样所有人看着都会舒服 恰好 dart 语言官方有自己的代码规范和相关的说明,在 dartlang 官网上,英文好的建议阅读原文 连接地址 我这里仅粗略翻译和加入一些自己的理解
-图片均来自于上述 url 对应的页面中 当前 dart 版本为 2.0 版本,日期为 2018 年 08 月 22 日 可能会在未来有改动,到时请以最新文档为准
-文档中图片的绿色部分为正例,右上角带good标识 红色是反例,右上角带bad标识
-标识方案 在 dart 有 3 种常规标识方案 第一个为大写字母开头的驼峰式 如 UserInterface 每个词的首字母为大写 第二个是小写开头的驼峰式,如testRun,第一个单词是小写,后续每个单词首字母大写 第三个是每个单词均为小写,以下划线分隔,如user_response
-总结 如果不想往下看具体的图片和翻译,直接看这里
-文件名: 小写+下划线 类型名(类名,函数类型名):大写开头驼峰 变量名(包含 const final 常量):使用小写开头驼峰, 项目有特殊要求 const 可以使用大写+下划线的方式,如同java中一样 导包 as 后的名称为小写+下划线 不要用匈牙利命名法中的 kXXXX 这样的命名方式,应该去掉 k 超过两位的英文缩写一律按该单词为普通小写单词处理,使用小写
-导包有顺序要求,且每&amp;quot;部分&amp;quot;间空行分隔开,每部分内按字母排序,按如下顺序排序 dart sdk 内的库 flutter 内的库 第三方库 自己的库 相对路径引用
+            &lt;p&gt;文章首发地址: 
+&lt;a href=&#34;https://www.jianshu.com/p/047eb78dce53&#34; &gt;https://www.jianshu.com/p/047eb78dce53&lt;/a&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;最近看 qq 群里发的很多代码截图,感觉命名规则/文件命名都不符合规范
+很多朋友都是从其他语言转向 dart/flutter 的,深感语言环境还需要大家共同去维护,建议还是规范化代码,这样所有人看着都会舒服
+恰好 dart 语言官方有自己的代码规范和相关的说明,在 dartlang 官网上,英文好的建议阅读原文
+连接地址 
+&lt;a href=&#34;https://www.dartlang.org/guides/language/effective-dart/style&#34; &gt;https://www.dartlang.org/guides/language/effective-dart/style&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;我这里仅粗略翻译和加入一些自己的理解&lt;/p&gt;
+&lt;p&gt;图片均来自于上述 url 对应的页面中
+当前 dart 版本为 2.0 版本,日期为 2018 年 08 月 22 日
+可能会在未来有改动,到时请以最新文档为准&lt;/p&gt;
+&lt;p&gt;文档中图片的绿色部分为正例,右上角带&lt;code&gt;good&lt;/code&gt;标识
+红色是反例,右上角带&lt;code&gt;bad&lt;/code&gt;标识&lt;/p&gt;
+&lt;h2 id=&#34;标识方案&#34;&gt;标识方案&lt;/h2&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981930822.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;在 dart 有 3 种常规标识方案
+第一个为大写字母开头的驼峰式 如 &lt;code&gt;UserInterface&lt;/code&gt; 每个词的首字母为大写
+第二个是小写开头的驼峰式,如&lt;code&gt;testRun&lt;/code&gt;,第一个单词是小写,后续每个单词首字母大写
+第三个是每个单词均为小写,以下划线分隔,如&lt;code&gt;user_response&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;如果不想往下看具体的图片和翻译,直接看这里&lt;/p&gt;
+&lt;p&gt;文件名: 小写+下划线
+类型名(类名,函数类型名):大写开头驼峰
+变量名(包含 const final 常量):使用小写开头驼峰, 项目有特殊要求 const 可以使用大写+下划线的方式,如同&lt;code&gt;java&lt;/code&gt;中一样
+导包 as 后的名称为小写+下划线
+不要用匈牙利命名法中的 kXXXX 这样的命名方式,应该去掉 k
+超过两位的英文缩写一律按该单词为普通小写单词处理,使用小写&lt;/p&gt;
+&lt;p&gt;导包有顺序要求,且每&amp;quot;部分&amp;quot;间空行分隔开,每部分内按字母排序,按如下顺序排序
+dart sdk 内的库
+flutter 内的库
+第三方库
+自己的库
+相对路径引用&lt;/p&gt;
           
           
         

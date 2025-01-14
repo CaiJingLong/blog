@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>azure on CaiJingLong</title>
+    <title>Azure on CaiJingLong</title>
     <link>https://kikt.top/tags/azure/</link>
-    <description>Recent content in azure on CaiJingLong</description>
+    <description>Recent content in Azure on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,17 +17,37 @@
       <description>
         
           
-            前言 最近刚刚把图床迁移到 Azure, 因为 github 的图片不太好用,国内经常看不见
-然而吧, 那是正则批量扫描 markdown 文件, 然后下载文件, 直接使用 git 管理的, 几百张的时候倒是还可以接受
-但今后如果单张图片也需要这么做, 就很麻烦了, 以前是用 picGo 上传的图片
-虽然现在 picGO 支持自己写插件, 但是 js 不是我的强项, 所以想自己写一个试试看
-Api 分析 azure 有 Rest api 可以完成上传的步骤, 然而这个 api 需要一个 commitId, 不像 github 的 api 比较智能, 直接上传就行.
-但没关系, 我们可以通过两次接口访问得到它.
-使用 postman 来测试下
-访问 https://dev.azure.com/{{organization}}/{{project}}/_apis/git/repositories/{{repositoryId}}/pushes?api-version=5.0 得到一个结果
-然后访问这个 url 参数的接口可以获取 commitId
-也就是 git 的 commit hash 值
-这里把 oldObjectId 替换成刚刚拿到的 commitId, 其他的根据自己的情况替换, 比如 comment 是注释, path 是你要放到哪个目录和名字, content 是图片的 base64 值
+            &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;最近刚刚把图床迁移到 Azure, 因为 github 的图片不太好用,国内经常看不见&lt;/p&gt;
+&lt;p&gt;然而吧, 那是正则批量扫描 markdown 文件, 然后下载文件, 直接使用 git 管理的, 几百张的时候倒是还可以接受&lt;/p&gt;
+&lt;p&gt;但今后如果单张图片也需要这么做, 就很麻烦了, 以前是用 picGo 上传的图片&lt;/p&gt;
+&lt;p&gt;虽然现在 picGO 支持自己写插件, 但是 js 不是我的强项, 所以想自己写一个试试看&lt;/p&gt;
+&lt;h2 id=&#34;api-分析&#34;&gt;Api 分析&lt;/h2&gt;
+&lt;p&gt;azure 有 Rest api 可以完成上传的步骤, 
+&lt;a href=&#34;https://docs.microsoft.com/en-us/rest/api/azure/devops/git/pushes/create?view=azure-devops-rest-5.0&#34; &gt;文档&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;然而这个 api 需要一个 commitId, 不像 github 的 api 比较智能, 直接上传就行.&lt;/p&gt;
+&lt;p&gt;但没关系, 我们可以通过两次接口访问得到它.&lt;/p&gt;
+&lt;p&gt;使用 postman 来测试下&lt;/p&gt;
+&lt;p&gt;访问 &lt;code&gt;https://dev.azure.com/{{organization}}/{{project}}/_apis/git/repositories/{{repositoryId}}/pushes?api-version=5.0&lt;/code&gt; 得到一个结果&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458172767.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=master&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&amp;amp;download=true&#34; alt=&#34;img&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;然后访问这个 url 参数的接口可以获取 commitId&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458246889.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=master&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&amp;amp;download=true&#34; alt=&#34;img&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;也就是 git 的 commit hash 值&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458511347.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=master&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&amp;amp;download=true&#34; alt=&#34;img&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;这里把 oldObjectId 替换成刚刚拿到的 commitId, 其他的根据自己的情况替换, 比如 comment 是注释, path 是你要放到哪个目录和名字, content 是图片的 base64 值&lt;/p&gt;
           
           
         

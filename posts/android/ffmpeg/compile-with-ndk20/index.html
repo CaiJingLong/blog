@@ -18,17 +18,45 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="前言 ijkplayer 的 ffmpeg 是旧版本的, ndk 也是旧的, 程序员爱折腾, 所以想用最新的 ndk 编译最新的 ffmpeg, 当前就是 ndk20&#43;ffmpeg4.2.2 了
-第一步自然是搜索有没有现成的, 运气不错, 找到了大佬的示例
-本篇参考了 的内容, 但因为我是 macOS, 所以进行了一些 …">
+<meta name="description" content="
+
+前言
+
+
+编译脚本
+
+
+android 中引入
+
+
+后记
+
+
+前言
+ijkplayer 的 ffmpeg 是旧版本的, ndk 也是旧的, 程序员爱折腾, 所以想用最新的 ndk 编译最新的 ffmpeg, 当前就是 ndk20&#43;ffmpeg4.2.2 了
+第一步自然是搜索有没有现成的, 运气不错, 找到了大佬的示 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Android 记录在macOS上使用 NDK20 编译ffmpeg4.2.2的过程" />
 <meta property="og:url" content="https://kikt.top/posts/android/ffmpeg/compile-with-ndk20/" />
 <meta property="og:title" content="Android 记录在macOS上使用 NDK20 编译ffmpeg4.2.2的过程" />
-<meta property="og:description" content="前言 ijkplayer 的 ffmpeg 是旧版本的, ndk 也是旧的, 程序员爱折腾, 所以想用最新的 ndk 编译最新的 ffmpeg, 当前就是 ndk20&#43;ffmpeg4.2.2 了
-第一步自然是搜索有没有现成的, 运气不错, 找到了大佬的示例
-本篇参考了 的内容, 但因为我是 macOS, 所以进行了一些 …" />
+<meta property="og:description" content="
+
+前言
+
+
+编译脚本
+
+
+android 中引入
+
+
+后记
+
+
+前言
+ijkplayer 的 ffmpeg 是旧版本的, ndk 也是旧的, 程序员爱折腾, 所以想用最新的 ndk 编译最新的 ffmpeg, 当前就是 ndk20&#43;ffmpeg4.2.2 了
+第一步自然是搜索有没有现成的, 运气不错, 找到了大佬的示 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -42,11 +70,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../css/custom.css">
     
   </head>
   
@@ -56,7 +85,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -78,10 +107,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -117,6 +146,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -131,7 +161,7 @@
 </span>
     <span class="post_date">
       2020-01-07 11:50</span>
-    <span class="post_time"> · 8 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/ffmpeg' title="ffmpeg" class="post_tag button button_translucent">ffmpeg
+    <span class="post_time"> · 9 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/ffmpeg' title="ffmpeg" class="post_tag button button_translucent">ffmpeg
         </a><a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
         </a><a href='https://kikt.top/tags/ndk' title="ndk" class="post_tag button button_translucent">ndk
         </a>
@@ -184,21 +214,33 @@
     </div>
     
     <div class="post_body"><ul>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
+<li>
+<a href="#%e5%89%8d%e8%a8%80" >前言</a>
+</li>
+<li>
+<a href="#%e7%bc%96%e8%af%91%e8%84%9a%e6%9c%ac" >编译脚本</a>
+</li>
+<li>
+<a href="#android-%e4%b8%ad%e5%bc%95%e5%85%a5" >android 中引入</a>
+</li>
+<li>
+<a href="#%e5%90%8e%e8%ae%b0" >后记</a>
+</li>
 </ul>
 <h2 id="前言">前言</h2>
 <p>ijkplayer 的 ffmpeg 是旧版本的, ndk 也是旧的, 程序员爱折腾, 所以想用最新的 ndk 编译最新的 ffmpeg, 当前就是 ndk20+ffmpeg4.2.2 了</p>
 <p>第一步自然是搜索有没有现成的, 运气不错, 找到了大佬的示例</p>
-<p>本篇参考了  的内容, 但因为我是 macOS, 所以进行了一些修改
+<p>本篇参考了 
+<a href="https://juejin.im/post/5d831333f265da03c61e8a28" >https://juejin.im/post/5d831333f265da03c61e8a28</a>
+ 的内容, 但因为我是 macOS, 所以进行了一些修改
 包括有的东西设置后发现没生效, 在实际打包的时候会报类似下面的这种错误</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">ld: warning: building for macOS, but linking in object file (libswresample/libswresample.a(resample.o)) built for free standing
 </span></span></code></pre></div><p>所以我根据实际的报错内容进行了修改</p>
 <h2 id="编译脚本">编译脚本</h2>
 <p>这里只需要修改你的 NDK 为你本地的 NDK 目录即可</p>
-<p>最新的代码在这里:  gist.github.com 需要自备梯子</p>
+<p>最新的代码在这里: 
+<a href="https://gist.github.com/CaiJingLong/feefa3b63e5b94f5ad1807825861e0e0" >https://gist.github.com/CaiJingLong/feefa3b63e5b94f5ad1807825861e0e0</a>
+ gist.github.com 需要自备梯子</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="cp">#!/bin/bash
 </span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="nv">NDK</span><span class="o">=</span>/Volumes/Evo512/sdk/android-ndk-r20
@@ -735,7 +777,9 @@
 </span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>接着在项目里调用就可以像是调用 ffmpeg 中的 <code>av_dump_format</code> 方法一样了</p>
-<p>这里还要说明一下, 在 c/cpp 端还有一种是用函数指针的方式来映射方法, 可以</p>
+<p>这里还要说明一下, 在 c/cpp 端还有一种是用函数指针的方式来映射方法, 可以
+<a href="https://github.com/bilibili/ijkplayer/blob/cced91e3ae3730f5c63f3605b00d25eafcf5b97b/ijkmedia/ijkplayer/android/ijkplayer_jni.c#L1136-L1214" >参考 <code>ijkplayer</code> 中的 <code>ijkplayer_jni.c</code></a>
+</p>
 <p>这种方法在方法声明时不需要遵循那个<code>包名_类名_方法名</code>的命名方式, 但是需要定义一些其他的东西, 这个可以百度搜索一下具体的定义规则, 这里就顺便说一下而已</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">package</span> <span class="nn">top.kikt.ffmpeg_sdl_example</span>
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">
@@ -763,7 +807,9 @@
 真不知道播放器的库里 issue 为啥一个个都要求用首帧来做封面, 然后吧解释过自己传一个好看的封面才是正道也不听, 还自认为是刚需</p>
 <h2 id="后记">后记</h2>
 <p>因为偷懒, 提取首帧为 jpeg 图片的 so 库只有 x86 有, 也就是仅支持模拟器端, 其他的 cpu 类型没加 mjpeg 的编码器和封装器</p>
-<p></p>
+<p>
+<a href="https://github.com/CaiJingLong/android_compile_ffmpeg4_example.git" >https://github.com/CaiJingLong/android_compile_ffmpeg4_example.git</a>
+</p>
 <p>现在还没做 OpenSSL 关联, 所以 https tls 之类的都没法用</p>
 <p>以上</p>
 
@@ -771,9 +817,6 @@
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -781,10 +824,7 @@
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -1197,7 +1237,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -1257,7 +1297,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -1357,7 +1397,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1734,9 +1774,9 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

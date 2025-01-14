@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>loadmore on CaiJingLong</title>
+    <title>Loadmore on CaiJingLong</title>
     <link>https://kikt.top/tags/loadmore/</link>
-    <description>Recent content in loadmore on CaiJingLong</description>
+    <description>Recent content in Loadmore on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,20 +17,73 @@
       <description>
         
           
-            自定义 loadmore 写在前面 这类的库在 pub 上有很多
-我为什么要自定义呢
-首先是项目需要，并且这种库普适性高，抽取出来今后复用也方便点
-另外记录一下编码思路,方便后续查看
-使用说明 或 看看构造方法 一共 5 个属性 child 是 ListView
-onLoadMore 是加载更多时的回调,由外部实现
-isFinish 加载完成
-delegate 是一个抽象类 有默认实现, 其中有 3 个方法,一个是根据状态给一个 widget 高度 一个是延迟加载的毫秒时间 一个是构建显示在内部的 Widget,这样就完全实现了外部可根据状态自定义 Widget
-LoadMoreTextBuilder 是一个根据状态构建文字的方案,默认实现了 中文/英文文字,如果只想修改文字,使用默认样式的话,可以直接用这个即可
-思路 首先考虑怎么自定义 一般来讲有 2 种方式，一个是到底部继续上拉加载，另一种是滚动到底部自动加载，我这里采取的是到底部自动加载方案
-不使用上拉加载的原因是：滚动到底继续上拉不符合正常人习惯，如果是惯性滚动到底，谁知道你后面还有没有东西的
-思考如何自定义 首先怎么样可以知道滚动到底了呢，最简单的方式，listview 的最后一行 build 的时候一定滚动到底了
-所以我们可以使用如下的方式定义
-1 2class _ListViewDemoPageState extends State&amp;lt;ListViewDemoPage&amp;gt; { 3 var count = 10; 4 5 @override 6 Widget build(BuildContext context) { 7 return ListView.
+            &lt;h1 id=&#34;自定义-loadmore&#34;&gt;自定义 loadmore&lt;/h1&gt;
+&lt;h2 id=&#34;写在前面&#34;&gt;写在前面&lt;/h2&gt;
+&lt;p&gt;这类的库在 pub 上有很多&lt;/p&gt;
+&lt;p&gt;我为什么要自定义呢&lt;/p&gt;
+&lt;p&gt;首先是项目需要，并且这种库普适性高，抽取出来今后复用也方便点&lt;/p&gt;
+&lt;p&gt;另外记录一下编码思路,方便后续查看&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://pub.dartlang.org/packages/loadmore&#34; &gt;pub 地址&lt;/a&gt;
+ 
+&lt;a href=&#34;https://pub.flutter-io.cn/packages/loadmore&#34; &gt;pub 国内镜像&lt;/a&gt;
+
+
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_listview_loadmore/tree/master/loadmore&#34; &gt;github&lt;/a&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;使用说明&#34;&gt;使用说明&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://pub.dartlang.org/packages/loadmore#-installing-tab-&#34; &gt;导入说明看这里&lt;/a&gt;
+ 或 
+&lt;a href=&#34;https://pub.flutter-io.cn/packages/loadmore#-installing-tab-&#34; &gt;中文镜像&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981941328.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+
+看看构造方法
+一共 5 个属性
+child 是 ListView&lt;/p&gt;
+&lt;p&gt;onLoadMore 是加载更多时的回调,由外部实现&lt;/p&gt;
+&lt;p&gt;isFinish 加载完成&lt;/p&gt;
+&lt;p&gt;delegate 是一个抽象类
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981941848.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+
+有默认实现, 其中有 3 个方法,一个是根据状态给一个 widget 高度
+一个是延迟加载的毫秒时间
+一个是构建显示在内部的 Widget,这样就完全实现了外部可根据状态自定义 Widget&lt;/p&gt;
+&lt;p&gt;LoadMoreTextBuilder 是一个根据状态构建文字的方案,默认实现了 中文/英文文字,如果只想修改文字,使用默认样式的话,可以直接用这个即可&lt;/p&gt;
+&lt;h2 id=&#34;思路&#34;&gt;思路&lt;/h2&gt;
+&lt;p&gt;首先考虑怎么自定义
+一般来讲有 2 种方式，一个是到底部继续上拉加载，另一种是滚动到底部自动加载，我这里采取的是到底部自动加载方案&lt;/p&gt;
+&lt;p&gt;不使用上拉加载的原因是：滚动到底继续上拉不符合正常人习惯，如果是惯性滚动到底，谁知道你后面还有没有东西的&lt;/p&gt;
+&lt;h2 id=&#34;思考如何自定义&#34;&gt;思考如何自定义&lt;/h2&gt;
+&lt;p&gt;首先怎么样可以知道滚动到底了呢，最简单的方式，listview 的最后一行 build 的时候一定滚动到底了&lt;/p&gt;
+&lt;p&gt;所以我们可以使用如下的方式定义&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-dart&#34; data-lang=&#34;dart&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;_ListViewDemoPageState&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;State&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ListViewDemoPage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;err&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;override&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;Widget&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;build&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BuildContext&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ListView&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;builder&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nl&#34;&gt;itemCount:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nl&#34;&gt;itemBuilder:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_buildItem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;Widget&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_buildItem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BuildContext&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;到底了&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;toString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样的话 只要到最后了，你自然知道应该加载了&lt;/p&gt;
           
           
         

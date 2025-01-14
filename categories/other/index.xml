@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>other on CaiJingLong</title>
+    <title>Other on CaiJingLong</title>
     <link>https://kikt.top/categories/other/</link>
-    <description>Recent content in other on CaiJingLong</description>
+    <description>Recent content in Other on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,17 +17,37 @@
       <description>
         
           
-            前言 最近刚刚把图床迁移到 Azure, 因为 github 的图片不太好用,国内经常看不见
-然而吧, 那是正则批量扫描 markdown 文件, 然后下载文件, 直接使用 git 管理的, 几百张的时候倒是还可以接受
-但今后如果单张图片也需要这么做, 就很麻烦了, 以前是用 picGo 上传的图片
-虽然现在 picGO 支持自己写插件, 但是 js 不是我的强项, 所以想自己写一个试试看
-Api 分析 azure 有 Rest api 可以完成上传的步骤, 然而这个 api 需要一个 commitId, 不像 github 的 api 比较智能, 直接上传就行.
-但没关系, 我们可以通过两次接口访问得到它.
-使用 postman 来测试下
-访问 https://dev.azure.com/{{organization}}/{{project}}/_apis/git/repositories/{{repositoryId}}/pushes?api-version=5.0 得到一个结果
-然后访问这个 url 参数的接口可以获取 commitId
-也就是 git 的 commit hash 值
-这里把 oldObjectId 替换成刚刚拿到的 commitId, 其他的根据自己的情况替换, 比如 comment 是注释, path 是你要放到哪个目录和名字, content 是图片的 base64 值
+            &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;最近刚刚把图床迁移到 Azure, 因为 github 的图片不太好用,国内经常看不见&lt;/p&gt;
+&lt;p&gt;然而吧, 那是正则批量扫描 markdown 文件, 然后下载文件, 直接使用 git 管理的, 几百张的时候倒是还可以接受&lt;/p&gt;
+&lt;p&gt;但今后如果单张图片也需要这么做, 就很麻烦了, 以前是用 picGo 上传的图片&lt;/p&gt;
+&lt;p&gt;虽然现在 picGO 支持自己写插件, 但是 js 不是我的强项, 所以想自己写一个试试看&lt;/p&gt;
+&lt;h2 id=&#34;api-分析&#34;&gt;Api 分析&lt;/h2&gt;
+&lt;p&gt;azure 有 Rest api 可以完成上传的步骤, 
+&lt;a href=&#34;https://docs.microsoft.com/en-us/rest/api/azure/devops/git/pushes/create?view=azure-devops-rest-5.0&#34; &gt;文档&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;然而这个 api 需要一个 commitId, 不像 github 的 api 比较智能, 直接上传就行.&lt;/p&gt;
+&lt;p&gt;但没关系, 我们可以通过两次接口访问得到它.&lt;/p&gt;
+&lt;p&gt;使用 postman 来测试下&lt;/p&gt;
+&lt;p&gt;访问 &lt;code&gt;https://dev.azure.com/{{organization}}/{{project}}/_apis/git/repositories/{{repositoryId}}/pushes?api-version=5.0&lt;/code&gt; 得到一个结果&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458172767.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=master&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&amp;amp;download=true&#34; alt=&#34;img&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;然后访问这个 url 参数的接口可以获取 commitId&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458246889.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=master&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&amp;amp;download=true&#34; alt=&#34;img&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;也就是 git 的 commit hash 值&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458511347.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=master&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&amp;amp;download=true&#34; alt=&#34;img&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;这里把 oldObjectId 替换成刚刚拿到的 commitId, 其他的根据自己的情况替换, 比如 comment 是注释, path 是你要放到哪个目录和名字, content 是图片的 base64 值&lt;/p&gt;
           
           
         
@@ -43,18 +63,86 @@ Api 分析 azure 有 Rest api 可以完成上传的步骤, 然而这个 api 需�
       <description>
         
           
-            github 是每个程序员应该都会用到的平台,无奈对于国内貌似没有 CDN,速度极慢..
-我在网上搜了各种修改 host 的方案,无奈并不好用,也许用国外的 VPS 中转可以解决,当然那是要收费的,还需要一些技术门槛
-今天来一个傻瓜式的帮助方案 用 gitee 中转项目
-开始 注册账号 注册账号,已经有的话可以直接登录,更简单的方案,直接用 github 账号登录 新建项目 二选一 新开一个窗口,把你需要的 github 项目地址复制过来,我这里以 flutter/engine 为例 然后回到新建项目的页面
-点这里 然后照图上操作 最后点创建
-接着就等项目好了
-这里需要耐心等待,但无论如何 很大的项目应该比你自己从那下载要快很多,毕竟有时候你从 github 每秒只有几十或者 100 200K 项目好了后 我们看到,项目都好了
-这里复制项目地址
-然后命令行中 我们看到 4M 每秒的速度, 这在大项目中就帮了大忙了
-如果是 200M 的项目,你 200k 一秒 需要下 1000 秒,也就是 20 分钟
-而我这里 clone 只要 50 秒 前面的工作一共操作也就是 2 分钟 等待时间也就是 3~5 分钟
-并且哪怕需要在 github 提 PR 或者 fork github 项目也没关系 修改 remote 的 url 即可,毕竟 git 是去中心化的仓库
+            &lt;p&gt;github 是每个程序员应该都会用到的平台,无奈对于国内貌似没有 CDN,速度极慢..&lt;/p&gt;
+&lt;p&gt;我在网上搜了各种修改 host 的方案,无奈并不好用,也许用国外的 VPS 中转可以解决,当然那是要收费的,还需要一些技术门槛&lt;/p&gt;
+&lt;p&gt;今天来一个傻瓜式的帮助方案 用 gitee 中转项目&lt;/p&gt;
+&lt;h2 id=&#34;开始&#34;&gt;开始&lt;/h2&gt;
+&lt;h3 id=&#34;注册账号&#34;&gt;注册账号&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://gitee.com/&#34; &gt;Gitee&lt;/a&gt;
+注册账号,已经有的话可以直接登录,更简单的方案,直接用 github 账号登录
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981910944.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981911792.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;新建项目&#34;&gt;新建项目&lt;/h3&gt;
+&lt;p&gt;二选一
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981912722.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981913283.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;新开一个窗口,把你需要的 github 项目地址复制过来,我这里以 flutter/engine 为例
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981913895.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;然后回到新建项目的页面&lt;/p&gt;
+&lt;p&gt;点这里
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981914655.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;然后照图上操作
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981915289.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;最后点创建&lt;/p&gt;
+&lt;p&gt;接着就等项目好了&lt;/p&gt;
+&lt;p&gt;这里需要耐心等待,但无论如何 很大的项目应该比你自己从那下载要快很多,毕竟有时候你从 github 每秒只有几十或者 100 200K
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981915901.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;项目好了后&#34;&gt;项目好了后&lt;/h3&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981916487.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;我们看到,项目都好了&lt;/p&gt;
+&lt;p&gt;这里复制项目地址&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981917360.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;然后命令行中
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981917952.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;我们看到 4M 每秒的速度, 这在大项目中就帮了大忙了&lt;/p&gt;
+&lt;p&gt;如果是 200M 的项目,你 200k 一秒 需要下 1000 秒,也就是 20 分钟&lt;/p&gt;
+&lt;p&gt;而我这里 clone 只要 50 秒 前面的工作一共操作也就是 2 分钟 等待时间也就是 3~5 分钟&lt;/p&gt;
           
           
         
@@ -70,20 +158,31 @@ Api 分析 azure 有 Rest api 可以完成上传的步骤, 然而这个 api 需�
       <description>
         
           
-            关于 react native 和 weex 之我见 写在前面 我是一个主 android 开发,原生的 ios 开发也算是初窥门径,主要是有一些东西如果能一次性开发,多次使用就好了,跨平台性嘛
-本文没有代码,只是一些简单的看法
-跨平台的探索 这里就有几个选择了,有纯粹的网页嵌入式开发,虽然是一个解决方案,但是毕竟不原生,而且网页渲染很不靠谱的感觉,否定掉了
-然后想起了react native和weex,都号称是使用 web 语言开发,然后渲染成原生控件,而且还支持热更新!
-好高端大气的样子啊!去尝试下吧
-react native 首先是react native,简称 RN facebook 的开源项目,语法和文档都还算可以接受
-开发环境配置 我是 jetbrain 的忠实粉丝嘛,webstorm 走起来,破解的方案自己 baidu 吧,这里就不宣传了
-导航条的问题 我翻遍了所有的文档,没找到一个考虑的导航控制器,导航条虽然有一个react-navigation
-但是我使用了一下这个,如果是自己写一个自己的项目还好,但是我们毕竟不是设计师,国内的设计们从来都是按照自己的方案设计导航条的啊!真没几个人是用系统自带的方案,这里用 react 的 navigation 很难自定义,我这里没找到可以修改标题颜色的方案
-而且还需要吐槽一点,我认为网页端最强的一点就是百分比适配方案是 css 自带的,非常强大,而这里居然没有了,完全是 px,这样面对不同的平台真的能好好的适配吗
-运行 这里就要说 webstorm 对于 react native 的支持了,帮我们全部配置好了,可以用鼠标选择 ios/android 直接运行就行了,真是 diao 啊
-日志问题/debug 问题 和源生相比,android studio/xcode 都是可以直接在 ide 里直接可以看到日志的,调试相对很方便,这里就不是这样了,真的很麻烦,需要在模拟器里开 debug 模式,然后 chrome 打开网页,开发者模式,看控制台才能看见
-这个时候我才知道,我们原生开发的开发环境真的比网页端的兄弟们好太多了
-动态部署 可以直接在模拟器点 cmd+R 就可以了 好简单啊!
+            &lt;h1 id=&#34;关于-react-native-和-weex-之我见&#34;&gt;关于 react native 和 weex 之我见&lt;/h1&gt;
+&lt;h2 id=&#34;写在前面&#34;&gt;写在前面&lt;/h2&gt;
+&lt;p&gt;我是一个主 android 开发,原生的 ios 开发也算是初窥门径,主要是有一些东西如果能一次性开发,多次使用就好了,跨平台性嘛&lt;br&gt;
+本文没有代码,只是一些简单的看法&lt;/p&gt;
+&lt;h2 id=&#34;跨平台的探索&#34;&gt;跨平台的探索&lt;/h2&gt;
+&lt;p&gt;这里就有几个选择了,有纯粹的网页嵌入式开发,虽然是一个解决方案,但是毕竟不原生,而且网页渲染很不靠谱的感觉,否定掉了&lt;br&gt;
+然后想起了&lt;code&gt;react native&lt;/code&gt;和&lt;code&gt;weex&lt;/code&gt;,都号称是使用 web 语言开发,然后渲染成原生控件,而且还支持热更新!&lt;br&gt;
+好高端大气的样子啊!去尝试下吧&lt;/p&gt;
+&lt;h2 id=&#34;react-native&#34;&gt;react native&lt;/h2&gt;
+&lt;p&gt;首先是&lt;code&gt;react native&lt;/code&gt;,简称 RN
+facebook 的开源项目,语法和文档都还算可以接受&lt;/p&gt;
+&lt;h3 id=&#34;开发环境配置&#34;&gt;开发环境配置&lt;/h3&gt;
+&lt;p&gt;我是 jetbrain 的忠实粉丝嘛,webstorm 走起来,破解的方案自己 baidu 吧,这里就不宣传了&lt;/p&gt;
+&lt;h3 id=&#34;导航条的问题&#34;&gt;导航条的问题&lt;/h3&gt;
+&lt;p&gt;我翻遍了所有的文档,没找到一个考虑的导航控制器,导航条虽然有一个&lt;code&gt;react-navigation&lt;/code&gt;&lt;br&gt;
+但是我使用了一下这个,如果是自己写一个自己的项目还好,但是我们毕竟不是设计师,国内的设计们从来都是按照自己的方案设计导航条的啊!真没几个人是用系统自带的方案,这里用 react 的 navigation 很难自定义,我这里没找到可以修改标题颜色的方案&lt;br&gt;
+而且还需要吐槽一点,我认为网页端最强的一点就是百分比适配方案是 css 自带的,非常强大,而这里居然没有了,完全是 px,这样面对不同的平台真的能好好的适配吗&lt;/p&gt;
+&lt;h3 id=&#34;运行&#34;&gt;运行&lt;/h3&gt;
+&lt;p&gt;这里就要说 webstorm 对于 react native 的支持了,帮我们全部配置好了,可以用鼠标选择 ios/android 直接运行就行了,真是 diao 啊&lt;/p&gt;
+&lt;h3 id=&#34;日志问题debug-问题&#34;&gt;日志问题/debug 问题&lt;/h3&gt;
+&lt;p&gt;和源生相比,android studio/xcode 都是可以直接在 ide 里直接可以看到日志的,调试相对很方便,这里就不是这样了,真的很麻烦,需要在模拟器里开 debug 模式,然后 chrome 打开网页,开发者模式,看控制台才能看见&lt;br&gt;
+这个时候我才知道,我们原生开发的开发环境真的比网页端的兄弟们好太多了&lt;/p&gt;
+&lt;h3 id=&#34;动态部署&#34;&gt;动态部署&lt;/h3&gt;
+&lt;p&gt;可以直接在模拟器点 cmd+R 就可以了 好简单啊!&lt;br&gt;
+直接原地重新运行,我靠,什么时候我们源生也能这样就好了&lt;/p&gt;
           
           
         

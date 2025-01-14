@@ -20,8 +20,14 @@
 <meta property="og:type" content="article">
 <meta name="description" content="我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程
 在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍
-介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
-最低支 …">
+
+官网链接
+
+
+官方使用说明
+
+介绍
+CameraX 是 Jetpack 的一部分, 旨在帮 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="CameraX的使用" />
@@ -29,8 +35,14 @@
 <meta property="og:title" content="CameraX的使用" />
 <meta property="og:description" content="我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程
 在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍
-介绍 CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机
-最低支 …" />
+
+官网链接
+
+
+官方使用说明
+
+介绍
+CameraX 是 Jetpack 的一部分, 旨在帮 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -44,11 +56,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../css/custom.css">
     
   </head>
   
@@ -58,7 +71,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -80,10 +93,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -119,6 +132,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -205,6 +219,10 @@
     <div class="post_body"><p>我在 googleIO 前查看演讲主题,看到了有一篇标题是关于 cameraX ,当时在 android 官网没有搜索到教程</p>
 <p>在 flutter web 基本体验完毕后, 再去搜索果然从官网查看到了 cameraX 的相关介绍</p>
 <p>
+<a href="https://developer.android.com/training/camerax" >官网链接</a>
+
+
+<a href="https://codelabs.developers.google.com/codelabs/camerax-getting-started/#0" >官方使用说明</a>
 </p>
 <h2 id="介绍">介绍</h2>
 <p>CameraX 是 Jetpack 的一部分, 旨在帮助更好更简单的使用照相机</p>
@@ -228,7 +246,9 @@ API 21+的设备</p>
 <p>最低 21, 使用 androidX</p>
 <h3 id="添加依赖">添加依赖</h3>
 <p>在 app 级别的 build.gradle 中添加如下依赖</p>
-<p>这个版本当前还是 alpha 版本,后续可能会升级为正式版, 可以查看</p>
+<p>这个版本当前还是 alpha 版本,后续可能会升级为正式版, 可以查看
+<a href="https://mvnrepository.com/artifact/androidx.camera/camera-core" >mvn 仓库中的版本号</a>
+</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">dependencies</span> <span class="o">{</span>
 </span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="kt">def</span> <span class="n">camerax_version</span> <span class="o">=</span> <span class="s2">&#34;1.0.0-alpha01&#34;</span>
 </span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="n">implementation</span> <span class="s2">&#34;androidx.camera:camera-core:${camerax_version}&#34;</span>
@@ -404,7 +424,9 @@ API 21+的设备</p>
 </span></span><span class="line"><span class="ln">50</span><span class="cl">    <span class="p">}</span>
 </span></span></code></pre></div><p>可能遇到的错误:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">java.lang.NoSuchMethodError: No super method getLifecycle<span class="o">()</span>Landroidx/lifecycle/Lifecycle<span class="p">;</span> in class Landroidx/core/app/ComponentActivity<span class="p">;</span> or its super classes <span class="o">(</span>declaration of <span class="s1">&#39;androidx.core.app.ComponentActivity&#39;</span> appears in ........
-</span></span></code></pre></div><p>在上找到了一个解释</p>
+</span></span></code></pre></div><p>在
+<a href="https://stackoverflow.com/questions/53229259/no-super-method-getlifecycle-after-migrating-to-androidx" >Stack Overflow</a>
+上找到了一个解释</p>
 <p>简单来说, 修改一下依赖</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">//    implementation &#39;androidx.appcompat:appcompat:1.0.2&#39;
 </span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span>    <span class="n">implementation</span> <span class="s1">&#39;androidx.appcompat:appcompat:1.1.0-alpha05&#39;</span>
@@ -589,6 +611,8 @@ API 21+的设备</p>
 <p>ImageProxy 中包含很多的信息</p>
 <p>常用的有:</p>
 <p><code>getFormat</code>: 视频格式 ,具体查看
+<a href="https://developer.android.com/reference/android/media/Image.html#getFormat%28%29" >文档</a>
+
 
 <p class="md__image">
   <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190514162133.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190514162133.png"  crossorigin/>
@@ -599,20 +623,23 @@ API 21+的设备</p>
 <p>getHeight: 高度</p>
 <p>getTimeStamp: 据说是纳秒单位, 和设备的时间基有关, 我是没看懂什么意思 😁</p>
 <p>getPlanes: 视频数据, 类型是<code>PlaneProxy[]</code> kotlin 对应:<code>Array&lt;PlaneProxy&gt;</code>, 这东西的 size 是根据 getFormat 的格式决定的</p>
-<p>关于 YUV_420_888 这部分可以查看 和 </p>
+<p>关于 YUV_420_888 这部分可以查看
+<a href="https://www.polarxiong.com/archives/Android-Image%E7%B1%BB%E6%B5%85%E6%9E%90-%E7%BB%93%E5%90%88YUV_420_888.html" >Android-Image 类浅析-结合 YUV_420_888</a>
+ 和 
+<a href="https://www.polarxiong.com/archives/Android-YUV_420_888%E7%BC%96%E7%A0%81Image%E8%BD%AC%E6%8D%A2%E4%B8%BAI420%E5%92%8CNV21%E6%A0%BC%E5%BC%8Fbyte%E6%95%B0%E7%BB%84.html" >Android: YUV_420_888 编码 Image 转换为 I420 和 NV21 格式 byte 数组</a>
+</p>
 <p>然后通过解析数据封装成需要的格式就可以了</p>
 <h2 id="后记">后记</h2>
 <p>简单来说, CameraX 的 api 比 Camera2 和 Camera 看起来都要好很多</p>
-<p>项目地址: </p>
+<p>项目地址: 
+<a href="https://github.com/CaiJingLong/android-cameraX-example" >https://github.com/CaiJingLong/android-cameraX-example</a>
+</p>
 <p>以上</p>
 
       
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -620,10 +647,7 @@ API 21+的设备</p>
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -1036,7 +1060,7 @@ API 21+的设备</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -1096,7 +1120,7 @@ API 21+的设备</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -1196,7 +1220,7 @@ API 21+的设备</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1573,9 +1597,9 @@ API 21+的设备</p>
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

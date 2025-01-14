@@ -17,11 +17,19 @@
       <description>
         
           
-            前言 今天用 AS 写一个带有百度地图相关的项目时，发现了一个问题
-提示
-1 Error:Execution failed for task &amp;#39;:app:compileDebugNdk&amp;#39;. 2&amp;gt; Error: Your project contains C++ files but it is not using a supported native build system. 3Consider using CMake or ndk-build integration with the stable Android Gradle plugin: 4 https://developer.android.com/studio/projects/add-native-code.html 5or use the experimental plugin: 6 http://tools.android.com/tech-docs/new-build-system/gradle-experimental. 我就找原因，先点开了两个网页，发现一个是用 CMake 构建 ndk 的还一个是用 experimental 插件构件 ndk 项目的
-这两个方式的共通点是都有 c 的源码，自己生成 so 文件，都不是我想要的
-因为以前这么写没有问题，我在网上找相同的问题，大家都是说把 targetVersion 改成 23 以下就解决了，但是这不是我想要的，况且我这么用了也没解决问题，毕竟 targetVersion 迁移到 23+是大势所趋
+            &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;今天用 AS 写一个带有百度地图相关的项目时，发现了一个问题&lt;/p&gt;
+&lt;p&gt;提示&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt; Error:Execution failed &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; task &lt;span class=&#34;s1&#34;&gt;&amp;#39;:app:compileDebugNdk&amp;#39;&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; Error: Your project contains C++ files but it is not using a supported native build system.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Consider using CMake or ndk-build integration with the stable Android Gradle plugin:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt; https://developer.android.com/studio/projects/add-native-code.html
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;or use the experimental plugin:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt; http://tools.android.com/tech-docs/new-build-system/gradle-experimental.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我就找原因，先点开了两个网页，发现一个是用 CMake 构建 ndk 的还一个是用 experimental 插件构件 ndk 项目的&lt;br&gt;
+这两个方式的共通点是都有 c 的源码，自己生成 so 文件，都不是我想要的&lt;br&gt;
+因为以前这么写没有问题，我在网上找相同的问题，大家都是说把 targetVersion 改成 23 以下就解决了，但是这不是我想要的，况且我这么用了也没解决问题，毕竟 targetVersion 迁移到 23+是大势所趋&lt;/p&gt;
+&lt;p&gt;我找了下原因，应该是 so 文件的原因，在 6.0 中添加了一个安全性的规范，大概意思是说，不能引用外部的 so 库，这样会有安全性的问题&lt;/p&gt;
           
           
         

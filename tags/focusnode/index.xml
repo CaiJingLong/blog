@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>focusNode on CaiJingLong</title>
+    <title>FocusNode on CaiJingLong</title>
     <link>https://kikt.top/tags/focusnode/</link>
-    <description>Recent content in focusNode on CaiJingLong</description>
+    <description>Recent content in FocusNode on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,17 +17,54 @@
       <description>
         
           
-            上一章, 简单的使用了一下 FocusNode 和周边的一些东西, 今天来扒一扒 FocusNode 整体的附着(attach)和分离(detach)
-flutter 环境还是针对 1.17.5
-Focus 家族的源码分析 附着 首先第一, 平时是以 FocusNode 为主要对象的, 那么这东西是怎么附着到整体的呢
-构造方法
-debugLabel, 这东西看名字就是 debug 用的, 先不管 onKey, 一看就是接受事件用的RawKeyEvent canRequestFocus, 就是能不能接受焦点 skipTraversal, 是否接受遍历 我们再找找方法
-有几个可能用到的关键字段, 我们一个个看, 但是不一定会用的到, 但是有所了解也是好
-context, 这个是和控件结合 的, 单纯看这里还看不出来
-_manager, 我们知道这个在 flutter 环境中其实是全局单例的, 但是这里为了解耦所以可能是哪里传进来的, 我们理论上可以忽略
-_ancestors, 嗯.. 没有注释, 那就只能看看源码了 所以, 这个东西是把所有的父节点都装到了这个里. 嗯, 个人经验,应用层的话大概率用不上.
-_descendants,这东西也是个三无, 没事 都在源码里了, 这东西是深度为 1 的子 node 的 descendants 和子node, 然后里面递归了... 换句话说, 其实, 这东西是所有的子 node
-_hasKeyboardToken 这东西暂时没看出作用, 先放放
+            &lt;p&gt;上一章, 简单的使用了一下 &lt;code&gt;FocusNode&lt;/code&gt; 和周边的一些东西, 今天来扒一扒 &lt;code&gt;FocusNode&lt;/code&gt; 整体的附着(attach)和分离(detach)&lt;br&gt;
+flutter 环境还是针对 1.17.5&lt;/p&gt;
+&lt;h2 id=&#34;focus-家族的源码分析&#34;&gt;Focus 家族的源码分析&lt;/h2&gt;
+&lt;h3 id=&#34;附着&#34;&gt;附着&lt;/h3&gt;
+&lt;p&gt;首先第一, 平时是以 &lt;code&gt;FocusNode&lt;/code&gt; 为主要对象的, 那么这东西是怎么附着到整体的呢&lt;/p&gt;
+&lt;p&gt;构造方法&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595382471.png&#34; alt=&#34;1595382471&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;debugLabel&lt;/code&gt;, 这东西看名字就是 debug 用的, 先不管&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;onKey&lt;/code&gt;, 一看就是接受事件用的&lt;code&gt;RawKeyEvent&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;canRequestFocus&lt;/code&gt;, 就是能不能接受焦点&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;skipTraversal&lt;/code&gt;, 是否接受遍历&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们再找找方法&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595381640.png&#34; alt=&#34;1595381640&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;有几个可能用到的关键字段, 我们一个个看, 但是不一定会用的到, 但是有所了解也是好&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;context&lt;/code&gt;, 这个是和控件结合 的, 单纯看这里还看不出来&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;_manager&lt;/code&gt;, 我们知道这个在 flutter 环境中其实是全局单例的, 但是这里为了解耦所以可能是哪里传进来的, 我们理论上可以忽略&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;_ancestors&lt;/code&gt;, 嗯.. 没有注释, 那就只能看看源码了
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595381928.png&#34; alt=&#34;1595381928&#34;  crossorigin/&gt;
+&lt;/p&gt;
+
+所以, 这个东西是把所有的父节点都装到了这个里. 嗯, 个人经验,应用层的话大概率用不上.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;_descendants&lt;/code&gt;,这东西也是个三无, 没事
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595382072.png&#34; alt=&#34;1595382072&#34;  crossorigin/&gt;
+&lt;/p&gt;
+
+都在源码里了, 这东西是深度为 1 的子 &lt;code&gt;node&lt;/code&gt; 的 &lt;code&gt;descendants&lt;/code&gt; 和子&lt;code&gt;node&lt;/code&gt;, 然后里面递归了... 换句话说, 其实, 这东西是所有的子 &lt;code&gt;node&lt;/code&gt;&lt;/p&gt;
           
           
         
@@ -43,10 +80,27 @@ _hasKeyboardToken 这东西暂时没看出作用, 先放放
       <description>
         
           
-            很多时候, flutter 中需要处理输入的焦点, 咱们今天就来看看控件怎么用
-本篇可以视为简单使用, 而不会深入源码去探讨怎么附着, 主要是 Focus 系列控件的使用, 和怎么在多输入框之间反复横跳
-环境说明 本篇基本基于 flutter sdk 的 1.17.5 版本来看, 其他版本应该大同小异, 但很多东西可能会随时间变化, 未来是否有效请继续验证 本篇基本是针对移动端来说的 写本文时, flutter web 的焦点比较迷, 似乎和移动版不太一样, 所以暂时略过不表 desktop 版只尝试了 macOS, 其他的桌面引擎请自行校验对错 相关 dart class flutter 中, 和焦点相关联类有如下几个:
-FocusNode: 这个可以说是最常用到的, 核心类之一 FocusManager: 单例类, 整个 flutter 应用的焦点管理核心都是这东西在处理, 包括和原生交互弹出软键盘之类的操作 Focus: 一个 Widget, 用于给控件&amp;quot;添加&amp;quot;焦点能力, 包起来就行, InkWell 之类的控件能获取焦点能力都是靠这东西 FocusScope: 一个 Widget, Focus 的子类, 被这东西包起来的所有的子 widget 的 FocusNode 都会被自动注册到这个里面, 接受统一管理 FocusScopeNode: 这东西本身是 FocusNode 的子类, 但是它主要是给 FocusScope 用的,扩展了 FocusNode 的行为 FocusTraversalPolicy, FocusTraversalGroup: 这两个东西是 focus node 的策略, 用于排序哪个是下一个焦点的问题, 这两个东西本篇应该不讲, 有兴趣的可以去看官方文档, 目前个人认为应该用不上 FocusNode 这东西讲的人很多, 我也就不展开了, 简单的说一下几个方法
+            &lt;p&gt;很多时候, flutter 中需要处理输入的焦点, 咱们今天就来看看控件怎么用&lt;/p&gt;
+&lt;p&gt;本篇可以视为简单使用, 而不会深入源码去探讨怎么附着, 主要是 Focus 系列控件的使用, 和怎么在多输入框之间反复横跳&lt;/p&gt;
+&lt;h2 id=&#34;环境说明&#34;&gt;环境说明&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;本篇基本基于 flutter sdk 的 1.17.5 版本来看, 其他版本应该大同小异, 但很多东西可能会随时间变化, 未来是否有效请继续验证&lt;/li&gt;
+&lt;li&gt;本篇基本是针对移动端来说的&lt;/li&gt;
+&lt;li&gt;写本文时, flutter web 的焦点比较迷, 似乎和移动版不太一样, 所以暂时略过不表&lt;/li&gt;
+&lt;li&gt;desktop 版只尝试了 macOS, 其他的桌面引擎请自行校验对错&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;相关-dart-class&#34;&gt;相关 dart class&lt;/h2&gt;
+&lt;p&gt;flutter 中, 和焦点相关联类有如下几个:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;FocusNode&lt;/code&gt;: 这个可以说是最常用到的, 核心类之一&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;FocusManager&lt;/code&gt;: 单例类, 整个 flutter 应用的焦点管理核心都是这东西在处理, 包括和原生交互弹出软键盘之类的操作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Focus&lt;/code&gt;: 一个 Widget, 用于给控件&amp;quot;添加&amp;quot;焦点能力, 包起来就行, &lt;code&gt;InkWell&lt;/code&gt; 之类的控件能获取焦点能力都是靠这东西&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;FocusScope&lt;/code&gt;: 一个 Widget, Focus 的子类, 被这东西包起来的所有的子 widget 的 &lt;code&gt;FocusNode&lt;/code&gt; 都会被自动注册到这个里面, 接受统一管理&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;FocusScopeNode&lt;/code&gt;: 这东西本身是 FocusNode 的子类, 但是它主要是给 &lt;code&gt;FocusScope&lt;/code&gt; 用的,扩展了 &lt;code&gt;FocusNode&lt;/code&gt; 的行为&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;FocusTraversalPolicy&lt;/code&gt;, &lt;code&gt;FocusTraversalGroup&lt;/code&gt;: 这两个东西是 focus node 的策略, 用于排序哪个是下一个焦点的问题, 这两个东西本篇应该不讲, 有兴趣的可以去看官方文档, 目前个人认为应该用不上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;focusnode&#34;&gt;&lt;code&gt;FocusNode&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;这东西讲的人很多, 我也就不展开了, 简单的说一下几个方法&lt;/p&gt;
           
           
         

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>toast on CaiJingLong</title>
+    <title>Toast on CaiJingLong</title>
     <link>https://kikt.top/tags/toast/</link>
-    <description>Recent content in toast on CaiJingLong</description>
+    <description>Recent content in Toast on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,15 +17,83 @@
       <description>
         
           
-            OKToast 是一款 在 flutter 上 使用的 toast 插件
-使用简单, 可定制性强, 纯 flutter, 调用不用 context
-安装 查看文档: 在 pubspec 引入
-1dependencies: 2 oktoast: ^2.2.0 # 这一步请查询pub的最新版本 获取包: $ flutter packages get
-引入: import &#39;package:oktoast/oktoast.dart&#39;;
-使用 在代码中定义 OKToast 组件 包裹你的 MaterialApp,不是包裹你的 Scaffold
-包裹你的 MaterialApp,不是包裹你的 Scaffold
-包裹你的 MaterialApp,不是包裹你的 Scaffold
-1class MyApp extends StatelessWidget { 2 @override 3 Widget build(BuildContext context) { 4 return OKToast( // 这一步 5 child: new MaterialApp( 6 title: &amp;#39;Flutter Demo&amp;#39;, 7 theme: new ThemeData( 8 primarySwatch: Colors.
+            &lt;p&gt;OKToast 是一款 在 flutter 上 使用的 toast 插件&lt;/p&gt;
+&lt;p&gt;使用简单, 可定制性强, 纯 flutter, 调用不用 context&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%ae%89%e8%a3%85&#34; &gt;安装&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e4%bd%bf%e7%94%a8&#34; &gt;使用&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%9c%a8%e4%bb%a3%e7%a0%81%e4%b8%ad%e5%ae%9a%e4%b9%89-oktoast-%e7%bb%84%e4%bb%b6&#34; &gt;在代码中定义 OKToast 组件&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e8%b0%83%e7%94%a8&#34; &gt;调用&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e6%96%87%e6%9c%ac-toast&#34; &gt;文本 toast&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e8%87%aa%e5%ae%9a%e4%b9%89-widget&#34; &gt;自定义 widget&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e7%ae%80%e5%8d%95%e7%9a%84-toast-%e5%ae%9e%e7%8e%b0&#34; &gt;简单的 toast 实现&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e8%bf%9b%e9%98%b6%e4%bd%bf%e7%94%a8&#34; &gt;进阶使用&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e9%9a%90%e8%97%8f%e5%b7%b2%e5%87%ba%e7%8e%b0%e7%9a%84-toast&#34; &gt;隐藏已出现的 toast&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e9%9a%90%e8%97%8f%e6%89%80%e6%9c%89%e7%9a%84-toast&#34; &gt;隐藏所有的 toast&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e9%9a%90%e8%97%8f%e5%8d%95%e7%8b%ac%e7%9a%84-toast&#34; &gt;隐藏单独的 toast&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e8%87%aa%e5%ae%9a%e4%b9%89%e5%b1%9e%e6%80%a7&#34; &gt;自定义属性&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e6%9c%ac%e6%96%87%e5%ae%8c%e6%95%b4%e7%9a%84-maindart&#34; &gt;本文完整的 main.dart&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%92%8c-fluttertoast-%e7%9a%84%e5%af%b9%e6%af%94&#34; &gt;和 fluttertoast 的对比&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%90%8e%e8%ae%b0&#34; &gt;后记&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
+&lt;p&gt;查看文档: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/oktoast#-installing-tab-&#34; &gt;https://pub.dartlang.org/packages/oktoast#-installing-tab-&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;在 pubspec 引入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;dependencies&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;oktoast&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;^2.2.0&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 这一步请查询pub的最新版本&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;获取包:
+&lt;code&gt;$ flutter packages get&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;引入:
+&lt;code&gt;import &#39;package:oktoast/oktoast.dart&#39;;&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+&lt;h3 id=&#34;在代码中定义-oktoast-组件&#34;&gt;在代码中定义 OKToast 组件&lt;/h3&gt;
+&lt;p&gt;包裹你的 MaterialApp,不是包裹你的 Scaffold&lt;br&gt;
+包裹你的 MaterialApp,不是包裹你的 Scaffold&lt;br&gt;
+包裹你的 MaterialApp,不是包裹你的 Scaffold&lt;/p&gt;
           
           
         
@@ -41,11 +109,66 @@
       <description>
         
           
-            ios-toast-swift swift 3.1 语法
-如果想支持其他的语法请自己修改 这里主要是模仿android端的提示方案 截图 背景灰色是因为我把 Demo 中的 ViewController 的 view 的 backgroundColor 修改为了 gray 不是会覆盖全屏的颜色
-这里有个小 bug 圆角么有包含全,后续改正
-食用方法 clone 项目 将 source 下的方法 copy 到源码内,如果有文件重名请自己改名 toast(&amp;quot;提示语句&amp;quot;) toast(&amp;quot;提示内容&amp;quot;,3) //内容 时长 源码分析 都是伪代码 代码分布 ToastView:自定义view相关的代码,基本没啥东西,就是加载了xib文件 Toast:帮助类,其中定义了如何附着到window中,位置,根据文字计算文字大小,渐隐动画等相关内容 提示 这里对于项目没有太多的侵入性 总体原理大概就是创建一个 view,将 view 附着到前台 window 中 这里有一点,这里的 toast 会覆盖掉软键盘
-如果想要修改 view 的样式,可以自己修改 ToastView.xib/ToastView.swift 内容很简单,就在ToastView中 可以自定义内容,更加丰富多彩,也可以基于扩展 content 是一个UILabel,用于显示内容 想要修改提示位置 Toast.swift 的 57~60行 想要修改大小 Toast.swift的35~50行左右 动画效果 Toast.swift的66~87行 License/开源协议 Copyright 2017 JingLong Cai Licensed under the Apache License, Version 2.
+            &lt;h1 id=&#34;ios-toast-swift&#34;&gt;ios-toast-swift&lt;/h1&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/CaiJingLong/ios-toast&#34; &gt;项目地址&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;swift 3.1 语法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;如果想支持其他的语法请自己修改
+这里主要是模仿android端的提示方案
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;截图&#34;&gt;截图&lt;/h2&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/CaiJingLong/ios-toast/master/Toast/Toast/screenshot.png&#34; width=&#34;360&#34; height=&#34;640&#34; /&gt;
+&lt;p&gt;背景灰色是因为我把 Demo 中的 ViewController 的 view 的 backgroundColor 修改为了 gray 不是会覆盖全屏的颜色&lt;/p&gt;
+&lt;h2 id=&#34;这里有个小-bug&#34;&gt;这里有个小 bug&lt;/h2&gt;
+&lt;p&gt;圆角么有包含全,后续改正&lt;/p&gt;
+&lt;h2 id=&#34;食用方法&#34;&gt;食用方法&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;clone 项目&lt;/li&gt;
+&lt;li&gt;将 source 下的方法 copy 到源码内,如果有文件重名请自己改名&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;toast(&amp;quot;提示语句&amp;quot;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;toast(&amp;quot;提示内容&amp;quot;,3) //内容 时长&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;源码分析&#34;&gt;源码分析&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;都是伪代码
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;代码分布&#34;&gt;代码分布&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;ToastView:自定义view相关的代码,基本没啥东西,就是加载了xib文件
+Toast:帮助类,其中定义了如何附着到window中,位置,根据文字计算文字大小,渐隐动画等相关内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;提示&#34;&gt;提示&lt;/h3&gt;
+&lt;p&gt;这里对于项目没有太多的侵入性
+总体原理大概就是创建一个 view,将 view 附着到前台 window 中
+这里有一点,这里的 toast 会覆盖掉软键盘&lt;/p&gt;
+&lt;h3 id=&#34;如果想要修改-view-的样式可以自己修改-toastviewxibtoastviewswift&#34;&gt;如果想要修改 view 的样式,可以自己修改 ToastView.xib/ToastView.swift&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;内容很简单,就在ToastView中
+可以自定义内容,更加丰富多彩,也可以基于扩展
+content 是一个UILabel,用于显示内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;想要修改提示位置&#34;&gt;想要修改提示位置&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Toast.swift 的 57~60行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;想要修改大小&#34;&gt;想要修改大小&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Toast.swift的35~50行左右
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;动画效果&#34;&gt;动画效果&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Toast.swift的66~87行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;license开源协议&#34;&gt;License/开源协议&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Copyright 2017 JingLong Cai
+
+Licensed under the Apache License, Version 2.0 (the &amp;quot;License&amp;quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+&lt;/code&gt;&lt;/pre&gt;
           
           
         

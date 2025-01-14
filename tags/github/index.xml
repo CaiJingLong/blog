@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>github on CaiJingLong</title>
+    <title>Github on CaiJingLong</title>
     <link>https://kikt.top/tags/github/</link>
-    <description>Recent content in github on CaiJingLong</description>
+    <description>Recent content in Github on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,16 +17,19 @@
       <description>
         
           
-            iOS 开发时, cocoapods(后简称 pod) 是很常用的工具
-我们偶尔也会自己开发 pod 库并上传到 pod 上
-pod 的源码支持多种来源, 本地 path git http 等
-一般来说, 如果是纯开源库, 我们直接把源码上传到 github , 然后使用 git 依赖即可
-但是这有一个问题, github 的速度在中国大陆并不快, 我们有没有办法加速它呢?
-这时候经过搜索, jsdelivr 出现在了搜索引擎里, 号称国内外都可用的 cdn, 我用 wget 测试了一下, 国内外都可以保证 10M+/s 的速度
-jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
-但是, 上面也说了, 支持&amp;quot;任何&amp;quot;在 github 上的仓库, 很好, 我就喜欢这样的东西
-版本号的坑 文档上说支持所有 ref 作为版本号, 然而不是, 我这里测试只支持 tag/release
-包体大小限制 我的目的是为了给 flutter_ijkplayer 的 iOS 仓库找一个下载地址, ijkplayer 的 iOS 部分很大, 我打包完有 150M, 用了 xz 压缩方案让包变成了 35M
+            &lt;p&gt;iOS 开发时, cocoapods(后简称 pod) 是很常用的工具&lt;/p&gt;
+&lt;p&gt;我们偶尔也会自己开发 pod 库并上传到 pod 上&lt;/p&gt;
+&lt;p&gt;pod 的源码支持多种来源, 本地 path git http 等&lt;/p&gt;
+&lt;p&gt;一般来说, 如果是纯开源库, 我们直接把源码上传到 github , 然后使用 git 依赖即可&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;但是&lt;/strong&gt;这有一个问题, github 的速度在中国大陆并不快, 我们有没有办法加速它呢?&lt;/p&gt;
+&lt;p&gt;这时候经过搜索, jsdelivr 出现在了搜索引擎里, 号称国内外都可用的 cdn, 我用 wget 测试了一下, 国内外都可以保证 10M+/s 的速度&lt;/p&gt;
+&lt;h2 id=&#34;jsdelivr-介绍&#34;&gt;jsdelivr 介绍&lt;/h2&gt;
+&lt;p&gt;这东西本身最初目的是为了加速 js/css 的访问&lt;/p&gt;
+&lt;p&gt;但是, 上面也说了, 支持&amp;quot;任何&amp;quot;在 github 上的仓库, 很好, 我就喜欢这样的东西&lt;/p&gt;
+&lt;h3 id=&#34;版本号的坑&#34;&gt;版本号的坑&lt;/h3&gt;
+&lt;p&gt;文档上说支持所有 ref 作为版本号, 然而不是, 我这里测试只支持 tag/release&lt;/p&gt;
+&lt;h3 id=&#34;包体大小限制&#34;&gt;包体大小限制&lt;/h3&gt;
+&lt;p&gt;我的目的是为了给 flutter_ijkplayer 的 iOS 仓库找一个下载地址, ijkplayer 的 iOS 部分很大, 我打包完有 150M, 用了 xz 压缩方案让包变成了 35M&lt;/p&gt;
           
           
         
@@ -42,23 +45,63 @@ jsdelivr 介绍 这东西本身最初目的是为了加速 js/css 的访问
       <description>
         
           
-            分支 与很多项目不同, flutter 使用 master 作为开发分支而不是发布分支
-flutter 有几个主要的 branch:
-master: 主分支,开发分支
-dev: 发布第二快的分支, 每次的版本更新会优先发布到这个频道来, 主要给 flutter 尝鲜开发者使用
-beta: 测试分支, 这个分支更新相对缓慢
-stable: 可以在生产环境使用的, 相对问题最少,发布次数最少
-对比 flutter 更新速度很快,几乎每天都有 commit, 间隔几天就会有一个新版本释出
-flutter 以 v 开头,数字部分使用标准的三段版本号 vx.x.x
-那么如果我目前是 v1.4.10 但是我想看看新版本相对我使用中的版本都更新了什么东西怎么办?
-现在 dev 分支最新版是 v1.4.14,那么我可以通过
-可以通过 类似下面的连接把版本号替换为你需要对比的即可,前小后大,然后在浏览器中打开即可
-这其中有 53 次提交,后面有对应的提交记录日志,这个顺序是由早到晚
-源码的话,则点击 Files Changes,就可以看到修改内容
-点击下路蓝框的位置可以切换视图模式,列表还是详情 然后左边绿色是添加的内容,红色是删除的内容,白色是不变的内容,蓝色是折叠起来的不变内容
-rss 订阅 github 的 release 支持 rss 订阅
-我使用了这个 来订阅 flutter sdk 的更新
-另外本站也支持 rss 订阅 后记 简单的说了下如何查看 flutter 更新,当然这个小技巧也适用于其他的 github 仓库
+            &lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%88%86%e6%94%af&#34; &gt;分支&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%af%b9%e6%af%94&#34; &gt;对比&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#rss-%e8%ae%a2%e9%98%85&#34; &gt;rss 订阅&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e5%90%8e%e8%ae%b0&#34; &gt;后记&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;分支&#34;&gt;分支&lt;/h2&gt;
+&lt;p&gt;与很多项目不同, flutter 使用 master 作为开发分支而不是发布分支&lt;/p&gt;
+&lt;p&gt;flutter 有几个主要的 branch:&lt;/p&gt;
+&lt;p&gt;master: 主分支,开发分支&lt;br&gt;
+dev: 发布第二快的分支, 每次的版本更新会优先发布到这个频道来, 主要给 flutter 尝鲜开发者使用&lt;br&gt;
+beta: 测试分支, 这个分支更新相对缓慢&lt;br&gt;
+stable: 可以在生产环境使用的, 相对问题最少,发布次数最少&lt;/p&gt;
+&lt;h2 id=&#34;对比&#34;&gt;对比&lt;/h2&gt;
+&lt;p&gt;flutter 更新速度很快,几乎每天都有 commit, 间隔几天就会有一个新版本释出&lt;/p&gt;
+&lt;p&gt;flutter 以 v 开头,数字部分使用标准的三段版本号 vx.x.x&lt;/p&gt;
+&lt;p&gt;那么如果我目前是 v1.4.10 但是我想看看新版本相对我使用中的版本都更新了什么东西怎么办?&lt;/p&gt;
+&lt;p&gt;现在 dev 分支最新版是 v1.4.14,那么我可以通过&lt;/p&gt;
+&lt;p&gt;可以通过 类似下面的连接把版本号替换为你需要对比的即可,前小后大,然后在浏览器中打开即可&lt;br&gt;
+
+&lt;a href=&#34;https://github.com/flutter/flutter/compare/v1.4.10...v1.4.14&#34; &gt;https://github.com/flutter/flutter/compare/v1.4.10...v1.4.14&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190410135642.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190410135642.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;这其中有 53 次提交,后面有对应的提交记录日志,这个顺序是由早到晚&lt;/p&gt;
+&lt;p&gt;源码的话,则点击 Files Changes,就可以看到修改内容&lt;/p&gt;
+&lt;p&gt;点击下路蓝框的位置可以切换视图模式,列表还是详情
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190410135837.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190410135837.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190410135907.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190410135907.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;然后左边绿色是添加的内容,红色是删除的内容,白色是不变的内容,蓝色是折叠起来的不变内容&lt;/p&gt;
+&lt;h2 id=&#34;rss-订阅&#34;&gt;rss 订阅&lt;/h2&gt;
+&lt;p&gt;github 的 release 支持 rss 订阅&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/flutter/flutter/releases.atom&#34; &gt;https://github.com/flutter/flutter/releases.atom&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;我使用了这个 
+&lt;a href=&#34;https://chrome.google.com/webstore/detail/rss-feed-reader/pnjaodmkngahhkoihejjehlcdlnohgmp&#34; &gt;Chrome 插件&lt;/a&gt;
+来订阅 flutter sdk 的更新&lt;/p&gt;
           
           
         
@@ -74,25 +117,86 @@ rss 订阅 github 的 release 支持 rss 订阅
       <description>
         
           
-            最近沉迷 flutter,偶尔换换口味,看看 github
-很多知名的开源项目落户于 github,那么为什么呢,人云亦云吗?
-不一定, github 的工作流很强大.能够帮助我们更加清晰工作流程
-首先官方链接在此,英文好的直接去看
-另外还有一个帮助你学习 github 的小机器人
-这个小机器人能帮你系统的了解一些 github 的工作流和 github 的一些基本功能
-比如 github 仓库的元数据修改,关键字修改,github pages 的发布
-工作流包括 issues 中的
-PR 整体过程中 分派工作/审核/修改意见/冲突处理/merge 代码的流程,强烈建议 github 用的不好的人先去梳理一下
-issue 篇 常规的创建之类的就不说了,说一些你日常中看不到的东西,或者说看见了,但是不知道怎么玩出来的
-不会包含所有的东西,但是会有一些很神奇的效果
-通过代码创建一个 issue 比如我在某行代码发现了一个错误, 那么我可以直接在 github 中选中这个代码,然后开启一个 issue
-点击行号
-open new issue
-通过这几个步骤,我们能看到,我们创建了一个指向改行的错误,这样开发者就能很简单的定位到该行,并且可以直观的在 issue 中看到该行代码,方便开发者定位
-创建一个永久可见的代码连接 提交后就可以看到了
-TODO List 进度条 有的时候我们会需要使用 issue 来记录我们的开发过程,或者功能需求来提醒我们什么没做
-使用类似如下的写法来创建即可
-1- [X] 第一项工作 2- [ ] 第二项工作 3- [X] 第三项工作 4- [X] 第四项工作 成功后是这样的
+            &lt;p&gt;最近沉迷 flutter,偶尔换换口味,看看 github&lt;/p&gt;
+&lt;p&gt;很多知名的开源项目落户于 github,那么为什么呢,人云亦云吗?&lt;/p&gt;
+&lt;p&gt;不一定, github 的工作流很强大.能够帮助我们更加清晰工作流程&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://help.github.com/categories/managing-your-work-on-github/&#34; &gt;https://help.github.com/categories/managing-your-work-on-github/&lt;/a&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;首先官方链接在此,英文好的直接去看&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;另外还有一个帮助你学习 github 的小机器人&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://lab.github.com/install&#34; &gt;https://lab.github.com/install&lt;/a&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这个小机器人能帮你系统的了解一些 github 的工作流和 github 的一些基本功能&lt;/p&gt;
+&lt;p&gt;比如 github 仓库的元数据修改,关键字修改,github pages 的发布&lt;/p&gt;
+&lt;p&gt;工作流包括 issues 中的&lt;/p&gt;
+&lt;p&gt;PR 整体过程中 分派工作/审核/修改意见/冲突处理/merge 代码的流程,强烈建议 github 用的不好的人先去梳理一下&lt;/p&gt;
+&lt;h2 id=&#34;issue-篇&#34;&gt;issue 篇&lt;/h2&gt;
+&lt;p&gt;常规的创建之类的就不说了,说一些你日常中看不到的东西,或者说看见了,但是不知道怎么玩出来的&lt;/p&gt;
+&lt;p&gt;不会包含所有的东西,但是会有一些很神奇的效果&lt;/p&gt;
+&lt;h3 id=&#34;通过代码创建一个-issue&#34;&gt;通过代码创建一个 issue&lt;/h3&gt;
+&lt;p&gt;比如我在某行代码发现了一个错误, 那么我可以直接在 github 中选中这个代码,然后开启一个 issue&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;点击行号&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;open new issue&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982022054.jpg&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;图片&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982022695.jpg&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;图片&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982023446.jpg&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;图片&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;通过这几个步骤,我们能看到,我们创建了一个指向改行的错误,这样开发者就能很简单的定位到该行,并且可以直观的在 issue 中看到该行代码,方便开发者定位&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/CaiJingLong/github-workflower-example/issues/1&#34; &gt;示例&lt;/a&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;创建一个永久可见的代码连接&#34;&gt;创建一个永久可见的代码连接&lt;/h3&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982024027.jpg&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;图片&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982024683.jpg&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;图片&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;提交后就可以看到了&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982025140.jpg&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;图片&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/CaiJingLong/github-workflower-example/issues/2&#34; &gt;示例&lt;/a&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;todo-list-进度条&#34;&gt;TODO List 进度条&lt;/h3&gt;
+&lt;p&gt;有的时候我们会需要使用 issue 来记录我们的开发过程,或者功能需求来提醒我们什么没做&lt;/p&gt;
+&lt;p&gt;使用类似如下的写法来创建即可&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;- [X] 第一项工作
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;- [ ] 第二项工作
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;- [X] 第三项工作
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;- [X] 第四项工作
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;成功后是这样的&lt;/p&gt;
           
           
         
@@ -108,17 +212,78 @@ TODO List 进度条 有的时候我们会需要使用 issue 来记录我们的�
       <description>
         
           
-            pub 库
-项目名: 项目地址: 简介: 图片压缩
-项目名: 项目地址: 项目简介: 仿 android toast 纯 flutter 实现
-项目名: 项目地址: 项目简介: 读取系统相册 纯 api 版 支持(ios/android)
-项目名: 项目地址: 项目简介: 相册图片选择器 基于 photo_manager
-项目名: 项目地址: 项目简介: ListView 的加载更多
-项目名: 项目地址: 项目简介: 配合 pageview 的简单圆点指示器
-项目名: 项目地址: 项目简介: 城市选择器
-项目名: 项目地址: 项目简介: 一个长按弹出菜单的小部件
-项目名: 项目地址: 项目简介: 日志插件,用于帮助将 flutter 上的日志记录至开发机
-如果用过的朋友觉得好用,请在遇到别人想用的时候帮忙感谢宣传
+            &lt;p&gt;pub 库&lt;/p&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://github.com/OpenFlutter/flutter_image_compress&#34; &gt;flutter_image_compress&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/flutter_image_compress&#34; &gt;https://pub.dartlang.org/packages/flutter_image_compress&lt;/a&gt;
+&lt;br&gt;
+简介: 图片压缩&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/oktoast&#34; &gt;oktoast&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/OpenFlutter/flutter_oktoast&#34; &gt;https://github.com/OpenFlutter/flutter_oktoast&lt;/a&gt;
+&lt;br&gt;
+项目简介: 仿 android toast 纯 flutter 实现&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/photo_manager&#34; &gt;photo_manager&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_photo_manager&#34; &gt;https://github.com/CaiJingLong/flutter_photo_manager&lt;/a&gt;
+&lt;br&gt;
+项目简介: 读取系统相册 纯 api 版 支持(ios/android)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/photo&#34; &gt;photo&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_photo&#34; &gt;https://github.com/CaiJingLong/flutter_photo&lt;/a&gt;
+&lt;br&gt;
+项目简介: 相册图片选择器 基于 photo_manager&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/loadmore&#34; &gt;loadmore&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/OpenFlutter/flutter_listview_loadmore&#34; &gt;https://github.com/OpenFlutter/flutter_listview_loadmore&lt;/a&gt;
+&lt;br&gt;
+项目简介: ListView 的加载更多&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/page_indicator&#34; &gt;flutter_page_indicator&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_page_indicator&#34; &gt;https://github.com/CaiJingLong/flutter_page_indicator&lt;/a&gt;
+&lt;br&gt;
+项目简介: 配合 pageview 的简单圆点指示器&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/city_picker&#34; &gt;city_picker&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_city_picker&#34; &gt;https://github.com/CaiJingLong/flutter_city_picker&lt;/a&gt;
+
+项目简介: 城市选择器&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/menu&#34; &gt;menu&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_long_tap_menu&#34; &gt;https://github.com/CaiJingLong/flutter_long_tap_menu&lt;/a&gt;
+&lt;br&gt;
+项目简介: 一个长按弹出菜单的小部件&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/log4d&#34; &gt;log4d&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/log4d&#34; &gt;https://github.com/CaiJingLong/log4d&lt;/a&gt;
+&lt;br&gt;
+项目简介: 日志插件,用于帮助将 flutter 上的日志记录至开发机&lt;/p&gt;
           
           
         
@@ -134,18 +299,86 @@ TODO List 进度条 有的时候我们会需要使用 issue 来记录我们的�
       <description>
         
           
-            github 是每个程序员应该都会用到的平台,无奈对于国内貌似没有 CDN,速度极慢..
-我在网上搜了各种修改 host 的方案,无奈并不好用,也许用国外的 VPS 中转可以解决,当然那是要收费的,还需要一些技术门槛
-今天来一个傻瓜式的帮助方案 用 gitee 中转项目
-开始 注册账号 注册账号,已经有的话可以直接登录,更简单的方案,直接用 github 账号登录 新建项目 二选一 新开一个窗口,把你需要的 github 项目地址复制过来,我这里以 flutter/engine 为例 然后回到新建项目的页面
-点这里 然后照图上操作 最后点创建
-接着就等项目好了
-这里需要耐心等待,但无论如何 很大的项目应该比你自己从那下载要快很多,毕竟有时候你从 github 每秒只有几十或者 100 200K 项目好了后 我们看到,项目都好了
-这里复制项目地址
-然后命令行中 我们看到 4M 每秒的速度, 这在大项目中就帮了大忙了
-如果是 200M 的项目,你 200k 一秒 需要下 1000 秒,也就是 20 分钟
-而我这里 clone 只要 50 秒 前面的工作一共操作也就是 2 分钟 等待时间也就是 3~5 分钟
-并且哪怕需要在 github 提 PR 或者 fork github 项目也没关系 修改 remote 的 url 即可,毕竟 git 是去中心化的仓库
+            &lt;p&gt;github 是每个程序员应该都会用到的平台,无奈对于国内貌似没有 CDN,速度极慢..&lt;/p&gt;
+&lt;p&gt;我在网上搜了各种修改 host 的方案,无奈并不好用,也许用国外的 VPS 中转可以解决,当然那是要收费的,还需要一些技术门槛&lt;/p&gt;
+&lt;p&gt;今天来一个傻瓜式的帮助方案 用 gitee 中转项目&lt;/p&gt;
+&lt;h2 id=&#34;开始&#34;&gt;开始&lt;/h2&gt;
+&lt;h3 id=&#34;注册账号&#34;&gt;注册账号&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://gitee.com/&#34; &gt;Gitee&lt;/a&gt;
+注册账号,已经有的话可以直接登录,更简单的方案,直接用 github 账号登录
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981910944.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981911792.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;新建项目&#34;&gt;新建项目&lt;/h3&gt;
+&lt;p&gt;二选一
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981912722.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981913283.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;新开一个窗口,把你需要的 github 项目地址复制过来,我这里以 flutter/engine 为例
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981913895.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;然后回到新建项目的页面&lt;/p&gt;
+&lt;p&gt;点这里
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981914655.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;然后照图上操作
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981915289.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;最后点创建&lt;/p&gt;
+&lt;p&gt;接着就等项目好了&lt;/p&gt;
+&lt;p&gt;这里需要耐心等待,但无论如何 很大的项目应该比你自己从那下载要快很多,毕竟有时候你从 github 每秒只有几十或者 100 200K
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981915901.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;项目好了后&#34;&gt;项目好了后&lt;/h3&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981916487.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;我们看到,项目都好了&lt;/p&gt;
+&lt;p&gt;这里复制项目地址&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981917360.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;然后命令行中
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981917952.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;我们看到 4M 每秒的速度, 这在大项目中就帮了大忙了&lt;/p&gt;
+&lt;p&gt;如果是 200M 的项目,你 200k 一秒 需要下 1000 秒,也就是 20 分钟&lt;/p&gt;
+&lt;p&gt;而我这里 clone 只要 50 秒 前面的工作一共操作也就是 2 分钟 等待时间也就是 3~5 分钟&lt;/p&gt;
           
           
         

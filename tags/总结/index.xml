@@ -17,20 +17,37 @@
       <description>
         
           
-            2019 年结束了, 本年做了什么呢?
-1940 次 github 提交
-公司工作 今年公司的工作并不繁重, 让我有了更多的时间来提升自己的专业技能
-在工作中使用 flutter 作为基础开发 app, 从而实现了更轻松的跨平台
-年中开发了一个新的商城 app, 当然也是 flutter
-年底用了三周时间优化了蓝牙体系
-个人开源工作 年初开源了 flutter_ijkplayer 项目
-年中零零散散开源了一些库
-Q3 重构了 photo_manager 底层
-年底开源了两个蓝牙库(spp/ble), 一个图片处理库
-编程技能 没有太多时间来对于 golang 提升, web 方面基本没学习, java 也没太碰
-但在 dart/flutter 这条路上越走越远了
-业余时间最多的是在音视频处理方面, ffmpeg 和 SDL 目前也算初步入坑了
-2020 年小目标 c/c++ 语言有更深入的学习, 结合 golang/cgo 完成跨语言调用, 以便于未来开发 go-flutter-desktop 的插件 音视频处理方面, 结合 flutter 继续深入 入坑 opencv, 结合 ffmpeg 进一步处理视频 初步完成对于 flutter framework/flutter engine/sky 的了解, 以便于未来对 flutter engine/flutter framework 提有效的建议 进一步完善已开源的项目 好好学英语 挣点小钱 
+            &lt;p&gt;2019 年结束了, 本年做了什么呢?&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20191222114426.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;img&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;1940 次 github 提交&lt;/p&gt;
+&lt;h2 id=&#34;公司工作&#34;&gt;公司工作&lt;/h2&gt;
+&lt;p&gt;今年公司的工作并不繁重, 让我有了更多的时间来提升自己的专业技能&lt;/p&gt;
+&lt;p&gt;在工作中使用 flutter 作为基础开发 app, 从而实现了更轻松的跨平台&lt;/p&gt;
+&lt;p&gt;年中开发了一个新的商城 app, 当然也是 flutter&lt;/p&gt;
+&lt;p&gt;年底用了三周时间优化了蓝牙体系&lt;/p&gt;
+&lt;h2 id=&#34;个人开源工作&#34;&gt;个人开源工作&lt;/h2&gt;
+&lt;p&gt;年初开源了 flutter_ijkplayer 项目&lt;/p&gt;
+&lt;p&gt;年中零零散散开源了一些库&lt;/p&gt;
+&lt;p&gt;Q3 重构了 photo_manager 底层&lt;/p&gt;
+&lt;p&gt;年底开源了两个蓝牙库(spp/ble), 一个图片处理库&lt;/p&gt;
+&lt;h2 id=&#34;编程技能&#34;&gt;编程技能&lt;/h2&gt;
+&lt;p&gt;没有太多时间来对于 golang 提升, web 方面基本没学习, java 也没太碰&lt;/p&gt;
+&lt;p&gt;但在 dart/flutter 这条路上越走越远了&lt;/p&gt;
+&lt;p&gt;业余时间最多的是在音视频处理方面, ffmpeg 和 SDL 目前也算初步入坑了&lt;/p&gt;
+&lt;h2 id=&#34;2020-年小目标&#34;&gt;2020 年小目标&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;c/c++ 语言有更深入的学习, 结合 golang/cgo 完成跨语言调用, 以便于未来开发 go-flutter-desktop 的插件&lt;/li&gt;
+&lt;li&gt;音视频处理方面, 结合 flutter 继续深入&lt;/li&gt;
+&lt;li&gt;入坑 opencv, 结合 ffmpeg 进一步处理视频&lt;/li&gt;
+&lt;li&gt;初步完成对于 flutter framework/flutter engine/sky 的了解, 以便于未来对 flutter engine/flutter framework 提有效的建议&lt;/li&gt;
+&lt;li&gt;进一步完善已开源的项目&lt;/li&gt;
+&lt;li&gt;好好学英语&lt;/li&gt;
+&lt;li&gt;挣点小钱&lt;/li&gt;
+&lt;/ol&gt;
           
           
         

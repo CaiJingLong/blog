@@ -18,19 +18,29 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="前言 如果你接触过npm/yarn 应该知道,有一些包可以全局使用,就是安装后可以直接用,比如vue-cli这样的应用,应该是用node开发的
-在dart中也可以实现类似的功能, 使用就可以了,在连接中有完整的说明 也有这样的应用程序可以直接使用
-我在这里简单的实战一下,实现一个简单的cli应用程序
-这个程序没什么多余 …">
+<meta name="description" content="前言
+如果你接触过npm/yarn 应该知道,有一些包可以全局使用,就是安装后可以直接用,比如vue-cli这样的应用,应该是用node开发的
+在dart中也可以实现类似的功能, 使用
+pub global
+就可以了,在连接中有完整的说明
+也有
+stagehand
+这样的应用程序可以直接使用
+我在这里简单的实战一下,实 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Pub Global 创建命令行应用程序" />
 <meta property="og:url" content="https://kikt.top/posts/flutter/dart/bin/pub-global/" />
 <meta property="og:title" content="Pub Global 创建命令行应用程序" />
-<meta property="og:description" content="前言 如果你接触过npm/yarn 应该知道,有一些包可以全局使用,就是安装后可以直接用,比如vue-cli这样的应用,应该是用node开发的
-在dart中也可以实现类似的功能, 使用就可以了,在连接中有完整的说明 也有这样的应用程序可以直接使用
-我在这里简单的实战一下,实现一个简单的cli应用程序
-这个程序没什么多余 …" />
+<meta property="og:description" content="前言
+如果你接触过npm/yarn 应该知道,有一些包可以全局使用,就是安装后可以直接用,比如vue-cli这样的应用,应该是用node开发的
+在dart中也可以实现类似的功能, 使用
+pub global
+就可以了,在连接中有完整的说明
+也有
+stagehand
+这样的应用程序可以直接使用
+我在这里简单的实战一下,实 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -44,11 +54,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../../css/custom.css">
     
   </head>
   
@@ -58,7 +69,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -80,10 +91,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -119,6 +130,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -198,8 +210,12 @@
     
     <div class="post_body"><h2 id="前言">前言</h2>
 <p>如果你接触过npm/yarn 应该知道,有一些包可以全局使用,就是安装后可以直接用,比如vue-cli这样的应用,应该是用node开发的</p>
-<p>在dart中也可以实现类似的功能, 使用就可以了,在连接中有完整的说明
-也有这样的应用程序可以直接使用</p>
+<p>在dart中也可以实现类似的功能, 使用
+<a href="https://www.dartlang.org/tools/pub/cmd/pub-global" >pub global</a>
+就可以了,在连接中有完整的说明
+也有
+<a href="https://pub.dartlang.org/packages/stagehand" >stagehand</a>
+这样的应用程序可以直接使用</p>
 <p>我在这里简单的实战一下,实现一个简单的cli应用程序</p>
 <p>这个程序没什么多余的功能,就简单的实现输入敲击<code>unix</code>获取时间戳</p>
 <h2 id="建立工程前的准备">建立工程前的准备</h2>
@@ -212,7 +228,9 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">➜  bin pub --version
 </span></span><span class="line"><span class="ln">2</span><span class="cl">Pub 2.1.0
 </span></span></code></pre></div><h3 id="安装dart工程脚手架">安装dart工程脚手架</h3>
-<p></p>
+<p>
+<a href="https://pub.dartlang.org/packages/stagehand#-installing-tab-" >pub连接</a>
+</p>
 <p>$ pub global activate stagehand</p>
 <h3 id="将pub-cachebin目录加入path环境变量">将pub-cache/bin目录加入PATH环境变量</h3>
 <p>这个目录通常是<code>~/.pub-cache/bin</code>目录</p>
@@ -265,19 +283,25 @@
 </span></span><span class="line"><span class="ln">2</span><span class="cl">1551074662254
 </span></span></code></pre></div><p>这样一个简单的应用程序就开发完了</p>
 <h2 id="本地安装">本地安装</h2>
-<p>参考</p>
+<p>参考
+<a href="https://www.dartlang.org/tools/pub/cmd/pub-global#activating-a-package-on-your-local-machine" >官方连接</a>
+</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">pub global activate --source path /tmp/dart/unix
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">➜  unix pub global activate --source path /tmp/dart/unix
 </span></span><span class="line"><span class="ln">2</span><span class="cl">Resolving dependencies...
 </span></span><span class="line"><span class="ln">3</span><span class="cl">Got dependencies!
 </span></span><span class="line"><span class="ln">4</span><span class="cl">Activated unix 0.0.0 at path <span class="s2">&#34;/private/tmp/dart/unix&#34;</span>.
 </span></span></code></pre></div><h2 id="运行脚本">运行脚本</h2>
-<p></p>
+<p>
+<a href="https://www.dartlang.org/tools/pub/cmd/pub-global#running-a-script-using-pub-global-run" >参考官方说明</a>
+</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">➜  .pub-cache pub global run unix
 </span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="m">1551076677872</span>
 </span></span></code></pre></div><p>这样就可以运行名为<code>unix</code>的脚本</p>
 <h2 id="生成应用程序">生成应用程序</h2>
-<p></p>
+<p>
+<a href="https://www.dartlang.org/tools/pub/cmd/pub-global#configuring-package-executables" >参考说明</a>
+</p>
 <p>修改<code>pubspec.yaml</code>
 在结尾处添加如下代码</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="ln">1</span><span class="cl"><span class="nt">executables</span><span class="p">:</span><span class="w">
@@ -319,9 +343,6 @@
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -329,10 +350,7 @@
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -745,7 +763,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -805,7 +823,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -905,7 +923,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1282,9 +1300,9 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

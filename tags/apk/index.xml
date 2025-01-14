@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>apk on CaiJingLong</title>
+    <title>Apk on CaiJingLong</title>
     <link>https://kikt.top/tags/apk/</link>
-    <description>Recent content in apk on CaiJingLong</description>
+    <description>Recent content in Apk on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,14 +17,25 @@
       <description>
         
           
-            java.lang.UnsatisfiedLinkError: dalvik.system.PathClassLoader[DexPathList[[zip file &amp;quot;/system/framework/android.test.runner.jar&amp;quot;, ...... base.apk!/lib/arm64-v8a, /system/lib64, /system/vendor/lib64]]] couldn&#39;t find &amp;quot;libflutter.so&amp;quot;
-这种问题可以看到其中有 arm64 的字样. 也有 libflutter.so
-在以前运行打包命令后 可以正常运行的项目,可能在更新 flutter 1.0.0 后不能正常运行
-1flutter build apk 这种情况通常是因为 so 文件没有打包到 apk 中造成的 拖动 apk 到 android Studio 中可以看到其中包含的库文件
-我前面有一篇的文章可以解释原理
-但是 flutter 升级后 可以查看flutter.gradle文件
-图片中的代码说明了当目标是 arm64 的时候, 会自动将 64 的 so 打包到 flutter 内, 这里的问题就造成了以前你在自己的 gradle 设置的打包选项和这个同时生效,也就是 v7 v8 的 so 都不进 apk 里了..
-一个小说明 在说解决方案前,有一点需要说明的是 armeabi -&amp;gt; v7 -&amp;gt;v8,这个是 arm cpu 架构的进化过程,而后来的 cpu 是兼容前代的 so 库,
+            &lt;p&gt;java.lang.UnsatisfiedLinkError: dalvik.system.PathClassLoader[DexPathList[[zip file &amp;quot;/system/framework/android.test.runner.jar&amp;quot;, ...... base.apk!/lib/arm64-v8a, /system/lib64, /system/vendor/lib64]]] couldn&#39;t find &amp;quot;libflutter.so&amp;quot;&lt;/p&gt;
+&lt;p&gt;这种问题可以看到其中有 arm64 的字样. 也有 libflutter.so&lt;/p&gt;
+&lt;p&gt;在以前运行打包命令后 可以正常运行的项目,可能在更新 flutter 1.0.0 后不能正常运行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;flutter build apk
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这种情况通常是因为 so 文件没有打包到 apk 中造成的
+拖动 apk 到 android Studio 中可以看到其中包含的库文件&lt;/p&gt;
+&lt;p&gt;我前面有一篇
+&lt;a href=&#34;http://www.kikt.top/posts/flutter/so%E5%BA%93%E5%AF%B9%E9%BD%90/&#34; &gt;so 对齐&lt;/a&gt;
+的文章可以解释原理&lt;/p&gt;
+&lt;p&gt;但是 flutter 升级后 可以查看&lt;code&gt;flutter.gradle&lt;/code&gt;文件&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F844036b9ly1fxyaoiamp0j21x80m8wlb.jpg&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;图片&#34;  crossorigin/&gt;
+&lt;/p&gt;
+
+图片中的代码说明了当目标是 arm64 的时候, 会自动将 64 的 so 打包到 flutter 内, 这里的问题就造成了以前你在自己的 gradle 设置的打包选项和这个同时生效,也就是 v7 v8 的 so 都不进 apk 里了..&lt;/p&gt;
+&lt;h2 id=&#34;一个小说明&#34;&gt;一个小说明&lt;/h2&gt;
+&lt;p&gt;在说解决方案前,有一点需要说明的是
+armeabi -&amp;gt; v7 -&amp;gt;v8,这个是 arm cpu 架构的进化过程,而后来的 cpu 是兼容前代的 so 库,&lt;/p&gt;
           
           
         

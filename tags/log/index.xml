@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>log on CaiJingLong</title>
+    <title>Log on CaiJingLong</title>
     <link>https://kikt.top/tags/log/</link>
-    <description>Recent content in log on CaiJingLong</description>
+    <description>Recent content in Log on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,23 +17,40 @@
       <description>
         
           
-            最近闲来无事,撸了一个日志插件,功能很简单
-在开发机上开启一个服务端
-然后客户端(不仅是 flutter,而是只要可以使用dart:io就可以)开启远程连接,然后就可以发送日志到服务端了
-好处 这样的好处是,开发机可以实时接收到日志,并且保存到文件中
-因为我们很多时候会发生日志超出一个长度(好像是 1000 个),然后在 console 中不能完整显示的问题,比如网络网文请求,如果响应的报文不完整就不能复制出完整的 json,有的错误不太好定位
-使用这个插件后,就可以在开发机简单的通过命令保存日志,方便后续定位
-只要你的客户端可以访问到服务端,这就能实现
-开发过程 使用WebSocket连接,这个类在 dart 中依托于dart:io包,所以如果你是dart web,可能就用不了这个了,flutter和dart vm中是没问题的
-这个库支持使用 pub global, 配置 dart 和 pub 到环境变量后可以直接通过log4d在命令行中开启
-安装 1. 安装 参考上的 install 标签
-pub global activate log4d
-这一步完成后可以通过log4d,log4d_client 来使用插件
-2.客户端安装 作为一个库来使用, 首先在 pubspec.yaml 中加入依赖
-1dependencies: 2 log4d: ^1.0.3 # 这一步参考最新版 3.获取库 pub get 或 flutter packages get
-4. 导入 import &#39;package:log4d/log4d.dart&#39;;
-使用 简单的使用方式就是服务端在命令行中开启
-1. 开启服务端 log4d -o build/test.log 这样就成功开启了,并且会在接受到日志后将日志保存到指定的目录下
+            &lt;p&gt;最近闲来无事,撸了一个日志插件,功能很简单&lt;/p&gt;
+&lt;p&gt;在开发机上开启一个服务端&lt;/p&gt;
+&lt;p&gt;然后客户端(不仅是 flutter,而是只要可以使用&lt;code&gt;dart:io&lt;/code&gt;就可以)开启远程连接,然后就可以发送日志到服务端了&lt;/p&gt;
+&lt;h2 id=&#34;好处&#34;&gt;好处&lt;/h2&gt;
+&lt;p&gt;这样的好处是,开发机可以实时接收到日志,并且保存到文件中&lt;/p&gt;
+&lt;p&gt;因为我们很多时候会发生日志超出一个长度(好像是 1000 个),然后在 console 中不能完整显示的问题,比如网络网文请求,如果响应的报文不完整就不能复制出完整的 json,有的错误不太好定位&lt;/p&gt;
+&lt;p&gt;使用这个插件后,就可以在开发机简单的通过命令保存日志,方便后续定位&lt;/p&gt;
+&lt;p&gt;只要你的客户端可以访问到服务端,这就能实现&lt;/p&gt;
+&lt;h2 id=&#34;开发过程&#34;&gt;开发过程&lt;/h2&gt;
+&lt;p&gt;使用&lt;code&gt;WebSocket&lt;/code&gt;连接,这个类在 dart 中依托于&lt;code&gt;dart:io&lt;/code&gt;包,所以如果你是&lt;code&gt;dart web&lt;/code&gt;,可能就用不了这个了,&lt;code&gt;flutter&lt;/code&gt;和&lt;code&gt;dart vm&lt;/code&gt;中是没问题的&lt;/p&gt;
+&lt;p&gt;这个库支持使用 pub global, 配置 dart 和 pub 到环境变量后可以直接通过&lt;code&gt;log4d&lt;/code&gt;在命令行中开启&lt;/p&gt;
+&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
+&lt;h3 id=&#34;1-安装&#34;&gt;1. 安装&lt;/h3&gt;
+&lt;p&gt;参考
+&lt;a href=&#34;https://pub.dartlang.org/packages/log4d#-installing-tab-&#34; &gt;pub&lt;/a&gt;
+上的 install 标签&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pub global activate log4d&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这一步完成后可以通过&lt;code&gt;log4d&lt;/code&gt;,&lt;code&gt;log4d_client&lt;/code&gt; 来使用插件&lt;/p&gt;
+&lt;h3 id=&#34;2客户端安装&#34;&gt;2.客户端安装&lt;/h3&gt;
+&lt;p&gt;作为一个库来使用, 首先在 pubspec.yaml 中加入依赖&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;dependencies&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;log4d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;^1.0.3&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 这一步参考最新版&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3获取库&#34;&gt;3.获取库&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;pub get&lt;/code&gt; 或 &lt;code&gt;flutter packages get&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;4-导入&#34;&gt;4. 导入&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;import &#39;package:log4d/log4d.dart&#39;;&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+&lt;p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;简单的使用方式就是服务端在命令行中开启&lt;/p&gt;
+&lt;h3 id=&#34;1-开启服务端&#34;&gt;1. 开启服务端&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;log4d -o build/test.log&lt;/code&gt;
+这样就成功开启了,并且会在接受到日志后将日志保存到指定的目录下&lt;/p&gt;
           
           
         

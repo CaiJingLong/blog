@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>androidQ on CaiJingLong</title>
+    <title>AndroidQ on CaiJingLong</title>
     <link>https://kikt.top/tags/androidq/</link>
-    <description>Recent content in androidQ on CaiJingLong</description>
+    <description>Recent content in AndroidQ on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,17 +17,107 @@
       <description>
         
           
-            如下几个改动:
-相机 这个修改会影响所有的安装在 androidQ 上的应用, 不论你的 targetVersion 是多少
-从前,即使没有 Camera 的权限, 也可以访问相机设备的元数据, 现在不行了
-wifi 应用不能动 wifi 开关了, 现在只有通过设置来更改
-wifi 配置 现在必须有设备管理器的权限才能修改 wifi 配置
-ACCESS_FINE_LOCATION 带来的影响 如果没有ACCESS_FINE_LOCATION这个权限, 则 wifi,蓝牙会有一堆不能访问的 api
-或者看下面
-Telephony
-getCellLocation() getAllCellInfo() requestNetworkScan() requestCellInfoUpdate() getAvailableNetworks() getServiceStateForSubscriber getServiceState() requestNetworkScan() onResults() onCellLocationChanged() onCellInfoChanged() onServiceStateChanged() Wi-Fi
-startScan() getScanResults() getConnectionInfo() getConfiguredNetworks() Bluetooth
-startDiscovery() startLeScan() LeScanCallback() 后记 以上
+            &lt;p&gt;如下几个改动:&lt;/p&gt;
+&lt;h2 id=&#34;相机&#34;&gt;相机&lt;/h2&gt;
+&lt;p&gt;这个修改会影响所有的安装在 androidQ 上的应用, 不论你的 targetVersion 是多少&lt;/p&gt;
+&lt;p&gt;从前,即使没有 Camera 的权限, 也可以访问相机设备的元数据, 现在不行了&lt;/p&gt;
+&lt;h2 id=&#34;wifi&#34;&gt;wifi&lt;/h2&gt;
+&lt;p&gt;应用不能动 wifi 开关了, 现在只有通过设置来更改&lt;/p&gt;
+&lt;h3 id=&#34;wifi-配置&#34;&gt;wifi 配置&lt;/h3&gt;
+&lt;p&gt;现在必须有设备管理器的权限才能修改 wifi 配置&lt;/p&gt;
+&lt;h2 id=&#34;access_fine_location-带来的影响&#34;&gt;ACCESS_FINE_LOCATION 带来的影响&lt;/h2&gt;
+&lt;p&gt;如果没有&lt;code&gt;ACCESS_FINE_LOCATION&lt;/code&gt;这个权限, 则 wifi,蓝牙会有一堆不能访问的 api&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://developer.android.com/preview/privacy/camera-connectivity#telephony-apis&#34; &gt;原文链接&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;或者看下面&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Telephony&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://developer.android.com/reference/android/telephony/TelephonyManager&#34; &gt;TelephonyManager&lt;/a&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;getCellLocation()&lt;/li&gt;
+&lt;li&gt;getAllCellInfo()&lt;/li&gt;
+&lt;li&gt;requestNetworkScan()&lt;/li&gt;
+&lt;li&gt;requestCellInfoUpdate()&lt;/li&gt;
+&lt;li&gt;getAvailableNetworks()&lt;/li&gt;
+&lt;li&gt;getServiceStateForSubscriber&lt;/li&gt;
+&lt;li&gt;getServiceState()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://developer.android.com/reference/android/telephony/TelephonyScanManager&#34; &gt;TelephonyScanManager&lt;/a&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;requestNetworkScan()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://developer.android.com/reference/android/telephony/TelephonyScanManager.NetworkScanCallback&#34; &gt;TelephonyScanManager.NetworkScanCallback&lt;/a&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;onResults()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://developer.android.com/reference/android/telephony/PhoneStateListener&#34; &gt;PhoneStateListener&lt;/a&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;onCellLocationChanged()&lt;/li&gt;
+&lt;li&gt;onCellInfoChanged()&lt;/li&gt;
+&lt;li&gt;onServiceStateChanged()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wi-Fi&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://developer.android.com/reference/android/net/wifi/WifiManager&#34; &gt;WifiManager&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;startScan()&lt;/li&gt;
+&lt;li&gt;getScanResults()&lt;/li&gt;
+&lt;li&gt;getConnectionInfo()&lt;/li&gt;
+&lt;li&gt;getConfiguredNetworks()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://developer.android.com/reference/android/net/wifi/aware/WifiAwareManager&#34; &gt;WifiAwareManager&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager&#34; &gt;WifiP2pManager&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://developer.android.com/reference/android/net/wifi/rtt/WifiRttManager&#34; &gt;WifiRttManager&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bluetooth&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://developer.android.com/reference/android/bluetooth/BluetoothAdapter&#34; &gt;BluetoothAdapter&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;startDiscovery()&lt;/li&gt;
+&lt;li&gt;startLeScan()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;LeScanCallback()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;后记&#34;&gt;后记&lt;/h2&gt;
+&lt;p&gt;以上&lt;/p&gt;
           
           
         
@@ -43,13 +133,57 @@ startDiscovery() startLeScan() LeScanCallback() 后记 以上
       <description>
         
           
-            第四篇,
-唯一识别码的前世 在开发中, 总有人会提出各种设备&amp;quot;唯一标识符&amp;quot;的概念,以便于定位用户的唯一性, 或对于用户行为进行分析
-很遗憾, 通过多年的探索, 目前没有任何一种特别准确, 一定能保证唯一的方案
-包括但不仅限于以下方案
-设备序列号 IMEI imsi mac 地址(wifi 模块)
-如以下代码:
-1package top.kikit.uniqueidprivacy 2 3import android.Manifest 4import android.annotation.SuppressLint 5import android.content.Context 6import android.os.Bundle 7import android.telephony.TelephonyManager 8import android.util.Log 9import androidx.appcompat.app.AppCompatActivity 10import com.tbruyelle.rxpermissions2.RxPermissions 11 12class MainActivity : AppCompatActivity() { 13 private val TAG = &amp;#34;MainActivity&amp;#34;; 14 15 private val rxPermissions = RxPermissions(this) 16 17 @SuppressLint(&amp;#34;CheckResult&amp;#34;) 18 override fun onCreate(savedInstanceState: Bundle?) { 19 super.onCreate(savedInstanceState) 20 setContentView(R.layout.activity_main) 21 22 23 val mTelephonyMgr = getSystemService(Context.
+            &lt;p&gt;第四篇,&lt;/p&gt;
+&lt;h2 id=&#34;唯一识别码的前世&#34;&gt;唯一识别码的前世&lt;/h2&gt;
+&lt;p&gt;在开发中, 总有人会提出各种设备&amp;quot;唯一标识符&amp;quot;的概念,以便于定位用户的唯一性, 或对于用户行为进行分析&lt;/p&gt;
+&lt;p&gt;很遗憾, 通过多年的探索, 目前没有任何一种特别准确, 一定能保证唯一的方案&lt;/p&gt;
+&lt;p&gt;包括但不仅限于以下方案&lt;/p&gt;
+&lt;p&gt;设备序列号
+IMEI
+imsi
+mac 地址(wifi 模块)&lt;/p&gt;
+&lt;p&gt;如以下代码:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-kotlin&#34; data-lang=&#34;kotlin&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;top.kikit.uniqueidprivacy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;android.Manifest&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;android.annotation.SuppressLint&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;android.content.Context&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;android.os.Bundle&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;android.telephony.TelephonyManager&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;android.util.Log&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;androidx.appcompat.app.AppCompatActivity&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;com.tbruyelle.rxpermissions2.RxPermissions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MainActivity&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AppCompatActivity&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;py&#34;&gt;TAG&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;MainActivity&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;py&#34;&gt;rxPermissions&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RxPermissions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nd&#34;&gt;@SuppressLint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;CheckResult&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;override&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;fun&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;onCreate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Bundle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;?)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;super&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;onCreate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;setContentView&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;layout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;activity_main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;py&#34;&gt;mTelephonyMgr&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getSystemService&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TELEPHONY_SERVICE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TelephonyManager&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;rxPermissions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Manifest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;permission&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;READ_PHONE_STATE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subscribe&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;it&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;py&#34;&gt;subscriberId&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mTelephonyMgr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subscriberId&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// imsi
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;29&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                    &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;py&#34;&gt;imei&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mTelephonyMgr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;imei&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// imei
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;nc&#34;&gt;Log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TAG&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;subscriberId : &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;$subscriberId&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;nc&#34;&gt;Log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TAG&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;imei : &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;$imei&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;33&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;34&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;35&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;36&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;唯一识别码的今生androidq-的更新&#34;&gt;唯一识别码的今生(androidQ 的更新)&lt;/h2&gt;
+&lt;h3 id=&#34;唯一识别符&#34;&gt;唯一识别符&lt;/h3&gt;
+&lt;h4 id=&#34;mac-地址&#34;&gt;mac 地址&lt;/h4&gt;
+&lt;h5 id=&#34;随机-mac-地址&#34;&gt;随机 mac 地址&lt;/h5&gt;
+&lt;p&gt;现在默认传输随机 mac 地址&lt;/p&gt;
           
           
         
@@ -65,16 +199,37 @@ startDiscovery() startLeScan() LeScanCallback() 后记 以上
       <description>
         
           
-            官方链接: 后台开启界面 这个限制主要限制的是: 当你的应用没有 Activity 在前台时, 后台应用无法主动开启界面
-流氓应用是可以这么干的, 只是大部分应用还算有节操, 没有这么做而已
-我自己遇到的除了我写的 Demo 以外,只有微信发生过这样的情况,还有一些其他应用是代码疏漏造成的
-作用范围 只要你的 app 运行在 androidQ 的设备上, 就不行,哪怕你的 targetVersion 是 28 也一样
-微信 微信也仅仅是在你登录以前登录过的电脑端时, 在你点击电脑端的确认后,才会在手机端弹出手动确认的弹框, 这一步原则上来讲也是客户自己的行为, 所以没有太大问题, 当然以后理论上就做不到了
-代码疏漏 一些应用的启动页, 比如设定了一个 Handler 的倒计时, 在 3 秒后关闭启动页,然后开启主页面
-然后,用户在启动页点了 home 键/back 键,过 3 秒后主页面依然出来了
-很遗憾,以后不行了 😁
-迁移需要修改的代码 无
-一个简单的示例代码 1class MainActivity : AppCompatActivity() { 2 3 override fun onCreate(savedInstanceState: Bundle?) { 4 super.onCreate(savedInstanceState) 5 setContentView(R.layout.activity_main) 6 7 Handler().postDelayed({ 8 startActivity(Intent(this, this.
+            &lt;p&gt;官方链接: 
+&lt;a href=&#34;https://developer.android.com/preview/privacy/background-activity-starts&#34; &gt;https://developer.android.com/preview/privacy/background-activity-starts&lt;/a&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;后台开启界面&#34;&gt;后台开启界面&lt;/h2&gt;
+&lt;p&gt;这个限制主要限制的是: 当你的应用没有 Activity 在前台时, 后台应用无法主动开启界面&lt;/p&gt;
+&lt;p&gt;流氓应用是可以这么干的, 只是大部分应用还算有节操, 没有这么做而已&lt;/p&gt;
+&lt;p&gt;我自己遇到的除了我写的 Demo 以外,只有微信发生过这样的情况,还有一些其他应用是代码疏漏造成的&lt;/p&gt;
+&lt;h3 id=&#34;作用范围&#34;&gt;作用范围&lt;/h3&gt;
+&lt;p&gt;只要你的 app 运行在 androidQ 的设备上, 就不行,哪怕你的 targetVersion 是 28 也一样&lt;/p&gt;
+&lt;h3 id=&#34;微信&#34;&gt;微信&lt;/h3&gt;
+&lt;p&gt;微信也仅仅是在你登录以前登录过的电脑端时, 在你点击电脑端的确认后,才会在手机端弹出手动确认的弹框, 这一步原则上来讲也是客户自己的行为, 所以没有太大问题, 当然以后理论上就做不到了&lt;/p&gt;
+&lt;h3 id=&#34;代码疏漏&#34;&gt;代码疏漏&lt;/h3&gt;
+&lt;p&gt;一些应用的启动页, 比如设定了一个 Handler 的倒计时, 在 3 秒后关闭启动页,然后开启主页面&lt;/p&gt;
+&lt;p&gt;然后,用户在启动页点了 home 键/back 键,过 3 秒后主页面依然出来了&lt;/p&gt;
+&lt;p&gt;很遗憾,以后不行了 😁&lt;/p&gt;
+&lt;h2 id=&#34;迁移需要修改的代码&#34;&gt;迁移需要修改的代码&lt;/h2&gt;
+&lt;p&gt;无&lt;/p&gt;
+&lt;h2 id=&#34;一个简单的示例代码&#34;&gt;一个简单的示例代码&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-kotlin&#34; data-lang=&#34;kotlin&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MainActivity&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AppCompatActivity&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;override&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;fun&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;onCreate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Bundle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;?)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;super&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;onCreate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;setContentView&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;layout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;activity_main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Handler&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;postDelayed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;startActivity&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Intent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;javaClass&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;finish&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这就完成了一个&amp;quot;流氓&amp;quot;式启动&lt;/p&gt;
           
           
         
@@ -90,17 +245,59 @@ startDiscovery() startLeScan() LeScanCallback() 后记 以上
       <description>
         
           
-            本篇是系列第二篇, 主要分析下 android Q 下的后台定位权限 , 有能力的朋友可以自己阅读,并不难
-定位权限 在从前的 android 中,定位权限不分前后台,只有两个
-1&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_COARSE_LOCATION&amp;#34;/&amp;gt; 2&amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_FINE_LOCATION&amp;#34;/&amp;gt; 分别代表大致位置和精确位置, 一般来说在使用时定位权限都是一起要或者都不要的, 而且这两个作为同一个组,一般都是一起申请,一次授权
-一般来说大部分人都是使用高德/百度地图作为定位 sdk 使用, 很显然这两个货申请一般也是都一起申请的
-androidQ 的权限 androidQ 中会添加一个新的权限
-1 &amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_BACKGROUND_LOCATION&amp;#34; /&amp;gt; 这个就是对应的后台权限, 和以前的分类方式不同,以前是精确度,这个是前后台
-按照官方说明:
-targetVersion: androidQ 或以上 如果 targetVersion 是 androidQ+, 则这个权限不会自动添加, 使用者需要自己添加,有就是有,没有就没有 如果 targetVersion 是 api 28(android 9.0)以下 如果你有以前版本的定位权限,则系统会在安装时帮你添加后台的权限(升级 androidOS 版本时不明) 在动态权限申请时,如果你申请的权限有以前的定位权限之一, 则会自动帮你在申请的权限里加上这个后台的 请求后台权限 上来是一段废话... 简单解释, 你需要后台权限吗?
-不需要 需要 这个不是我们自己能定的, 以国内来看, 接 sdk (推送,定位,分享...)就要, 不接也要
-如果不需要 请参考
-Service 中声明一个前台定位的 type 类型
+            &lt;p&gt;本篇是系列第二篇, 主要分析下 android Q 下的后台定位权限
+
+&lt;a href=&#34;https://developer.android.com/preview/privacy/device-location&#34; &gt;官方链接&lt;/a&gt;
+ , 有能力的朋友可以自己阅读,并不难&lt;/p&gt;
+&lt;h2 id=&#34;定位权限&#34;&gt;定位权限&lt;/h2&gt;
+&lt;p&gt;在从前的 android 中,定位权限不分前后台,只有两个&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;uses-permission&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;android:name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;android.permission.ACCESS_COARSE_LOCATION&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;uses-permission&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;android:name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;android.permission.ACCESS_FINE_LOCATION&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;分别代表大致位置和精确位置, 一般来说在使用时定位权限都是一起要或者都不要的, 而且这两个作为同一个组,一般都是一起申请,一次授权&lt;/p&gt;
+&lt;p&gt;一般来说大部分人都是使用高德/百度地图作为定位 sdk 使用, 很显然这两个货申请一般也是都一起申请的&lt;/p&gt;
+&lt;h3 id=&#34;androidq-的权限&#34;&gt;androidQ 的权限&lt;/h3&gt;
+&lt;p&gt;androidQ 中会添加一个新的权限&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;uses-permission&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;android:name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;android.permission.ACCESS_BACKGROUND_LOCATION&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个就是对应的后台权限, 和以前的分类方式不同,以前是精确度,这个是前后台&lt;/p&gt;
+&lt;p&gt;按照官方说明:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;targetVersion: androidQ 或以上
+&lt;ol&gt;
+&lt;li&gt;如果 targetVersion 是 androidQ+, 则这个权限不会自动添加, 使用者需要自己添加,有就是有,没有就没有&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;如果 targetVersion 是 api 28(android 9.0)以下
+&lt;ol&gt;
+&lt;li&gt;如果你有以前版本的定位权限,则系统会在安装时帮你添加后台的权限(升级 androidOS 版本时不明)&lt;/li&gt;
+&lt;li&gt;在动态权限申请时,如果你申请的权限有以前的定位权限之一, 则会自动帮你在申请的权限里加上这个后台的&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;请求后台权限&#34;&gt;请求后台权限&lt;/h2&gt;
+&lt;p&gt;上来是一段废话...
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190521093402.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190521093402.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;简单解释, 你需要后台权限吗?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不需要&lt;/li&gt;
+&lt;li&gt;需要&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这个不是我们自己能定的, 以国内来看, 接 sdk (推送,定位,分享...)就要, 不接也要&lt;/p&gt;
+&lt;h3 id=&#34;如果不需要&#34;&gt;如果不需要&lt;/h3&gt;
+&lt;p&gt;请参考
+&lt;a href=&#34;https://github.com/googlesamples/android-play-location/tree/29ce0c8e4fafd62c82680f86a68021c773a1b356/LocationUpdatesForegroundService&#34; &gt;官方示例&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;Service 中声明一个前台定位的 type 类型&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;service&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;na&#34;&gt;android:name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;MyNavigationService&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;na&#34;&gt;android:foregroundServiceType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;location&amp;#34;&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;...&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/service&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;如果需要&#34;&gt;如果需要&lt;/h3&gt;
+&lt;p&gt;需要的情况下, 如果是在 service 里面做请求定位的逻辑, 请保证每一次都要运行时权限检查, 因为用户随时可以关闭应用的后台权限&lt;/p&gt;
           
           
         
@@ -116,23 +313,46 @@ Service 中声明一个前台定位的 type 类型
       <description>
         
           
-            一年一度的 googleIO 开完以后,不出意外的 Android10.0 系统(AndroidQ)出来了
-隐私配置又㕛叒叕更新了..
-连接地址: 这个地址可能在来年就变成 android 11 的了, 所以仅保证在2019 年 05 月 20 日以及之后的一段时间内有效
-主要包含以下五大项目
-对于大部分应用来说,储存方式的更新会有所影响, 其他的可能都是 SDK 要做的事情,和普通开发者关系不大
-在适配新的系统前就和从前一样,暂时不升级 targetVersion,把 targetVersion 设置为 28 以下就不会影响旧程序了,就如同以前运行时权限真的是坑到爆炸,但是暂时不适配也是可以的
-但是未来无论如何都需要适配新系统,所以先来看看
-本篇只说储存的方式和权限问题,其他暂时略过不表
-检查迁移情况 有一个表格提供了如何检查和迁移的方案
-开发环境 说一下开发环境
-MacOS
-Android Studio 3.4.0
-android 9.0 设备一台
-androidQ 虚拟机一台(官方的 Emulator)
-更新 sdk 更新 sdk, 下载 androidQ 相关的 sdk/sdktools/模拟器
-androidQ build.gradle 当前想尝试 androidQ 的话, 编译版本和目标版本号需要按如下方式设置, 今后的话可能是 29/30 之类的数字
-1targetSdkVersion = &amp;#39;Q&amp;#39; 2compileSdkVersion = &amp;#39;android-Q&amp;#39; 外部储存 androidQ 下读写文件 权限和以前一样
+            &lt;p&gt;一年一度的 googleIO 开完以后,不出意外的 Android10.0 系统(AndroidQ)出来了&lt;/p&gt;
+&lt;p&gt;隐私配置又㕛叒叕更新了..&lt;/p&gt;
+&lt;p&gt;连接地址: 
+&lt;a href=&#34;https://developer.android.com/preview/privacy&#34; &gt;https://developer.android.com/preview/privacy&lt;/a&gt;
+
+这个地址可能在来年就变成 android 11 的了, 所以仅保证在&lt;strong&gt;2019 年 05 月 20 日以及之后的一段时间内&lt;/strong&gt;有效&lt;/p&gt;
+&lt;p&gt;主要包含以下五大项目&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190520100845.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190520100845.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;对于大部分应用来说,储存方式的更新会有所影响, 其他的可能都是 SDK 要做的事情,和普通开发者关系不大&lt;/p&gt;
+&lt;p&gt;在适配新的系统前就和从前一样,暂时不升级 targetVersion,把 targetVersion 设置为 28 以下就不会影响旧程序了,就如同以前运行时权限真的是坑到爆炸,但是暂时不适配也是可以的&lt;/p&gt;
+&lt;p&gt;但是未来无论如何都需要适配新系统,所以先来看看&lt;/p&gt;
+&lt;p&gt;本篇只说储存的方式和权限问题,其他暂时略过不表&lt;/p&gt;
+&lt;h2 id=&#34;检查迁移情况&#34;&gt;检查迁移情况&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://developer.android.com/preview/privacy/checklist&#34; &gt;https://developer.android.com/preview/privacy/checklist&lt;/a&gt;
+ 有一个表格提供了如何检查和迁移的方案&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190520101927.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190520101927.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;开发环境&#34;&gt;开发环境&lt;/h2&gt;
+&lt;p&gt;说一下开发环境&lt;/p&gt;
+&lt;p&gt;MacOS&lt;br&gt;
+Android Studio 3.4.0&lt;br&gt;
+android 9.0 设备一台&lt;br&gt;
+androidQ 虚拟机一台(官方的 Emulator)&lt;/p&gt;
+&lt;h3 id=&#34;更新-sdk&#34;&gt;更新 sdk&lt;/h3&gt;
+&lt;p&gt;更新 sdk, 下载 androidQ 相关的 sdk/sdktools/模拟器&lt;/p&gt;
+&lt;h3 id=&#34;androidq-buildgradle&#34;&gt;androidQ build.gradle&lt;/h3&gt;
+&lt;p&gt;当前想尝试 androidQ 的话, 编译版本和目标版本号需要按如下方式设置, 今后的话可能是 29/30 之类的数字&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-groovy&#34; data-lang=&#34;groovy&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;targetSdkVersion&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Q&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;compileSdkVersion&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;android-Q&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;外部储存&#34;&gt;外部储存&lt;/h2&gt;
+&lt;h3 id=&#34;androidq-下读写文件&#34;&gt;androidQ 下读写文件&lt;/h3&gt;
+&lt;p&gt;权限和以前一样&lt;/p&gt;
           
           
         

@@ -39,11 +39,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/custom.css">
     
   </head>
   
@@ -53,7 +54,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -75,10 +76,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -114,6 +115,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -135,7 +137,7 @@
 </span>
     <span class="post_date">
       2019-07-30 21:43</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/live-template' title="live template" class="post_tag button button_translucent">live template
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/live-template' title="live template" class="post_tag button button_translucent">live template
         </a><a href='https://kikt.top/tags/%E6%A8%A1%E6%9D%BF' title="模板" class="post_tag button button_translucent">模板
         </a><a href='https://kikt.top/tags/jetbrains' title="jetbrains" class="post_tag button button_translucent">jetbrains
         </a><a href='https://kikt.top/tags/idea' title="idea" class="post_tag button button_translucent">idea
@@ -183,12 +185,46 @@
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>Jetbrains 全家桶,包括 android studio, 支持一个东西叫 Live Template
-这个东西可以预先储存一个模板, 帮助我们快速开发, 这个功能很多朋友应该都知道,也在用
-本篇使用dart作为主要示例语言, dart 语言语法比较简单, 有 java/js 等常用语言基础的都应该能看懂
-简单使用 虽然想要重点介绍 groovyScript 的脚本使用, 但是也应该简单介绍下 Live Template
-比如我可以存一个 stful, 然后会自动生成一段代码, 当然这个模板是 flutter 开发自带的
-进阶 自己搞一个小模板 这个模板就生成一个我们自己的类库调用, 比如我自己封装了一个 http …</p>
+            <p>Jetbrains 全家桶,包括 android studio, 支持一个东西叫 Live Template</p>
+<p>这个东西可以预先储存一个模板, 帮助我们快速开发, 这个功能很多朋友应该都知道,也在用</p>
+<p>本篇使用<code>dart</code>作为主要示例语言, dart 语言语法比较简单, 有 java/js 等常用语言基础的都应该能看懂</p>
+<ul>
+<li>
+<a href="#%e7%ae%80%e5%8d%95%e4%bd%bf%e7%94%a8" >简单使用</a>
+</li>
+<li>
+<a href="#%e8%bf%9b%e9%98%b6" >进阶</a>
+
+<ul>
+<li>
+<a href="#%e8%87%aa%e5%b7%b1%e6%90%9e%e4%b8%80%e4%b8%aa%e5%b0%8f%e6%a8%a1%e6%9d%bf" >自己搞一个小模板</a>
+</li>
+<li>
+<a href="#%e6%8c%87%e5%ae%9a%e5%8f%98%e9%87%8f" >指定变量</a>
+</li>
+<li>
+<a href="#%e8%a1%a8%e8%be%be%e5%bc%8f%e5%87%bd%e6%95%b0" >表达式(函数)</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#groovy-%e8%84%9a%e6%9c%ac%e7%9a%84%e4%bd%bf%e7%94%a8" >groovy 脚本的使用</a>
+
+<ul>
+<li>
+<a href="#%e5%ae%89%e8%a3%85" >安装</a>
+</li>
+<li>
+<a href="#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95" >基本语法</a>
+</li>
+<li>
+<a href="#%e7%bc%96%e5%86%99%e4%b8%80%e4%b8%aa%e5%9f%ba%e6%9c%ac%e7%9a%84%e8%84%9a%e6%9c%ac" >编写一个基本的脚本</a>
+</li>
+<li>
+<a href="#%e5%9c%a8-live-template-%e4%b8%ad%e4%bd%bf%e7%94%a8-groovy" >在 live template 中使用 groovy</a>
+</li>
+<li>
+<a href="#groovyscript-%e7%9a%84%e7%ae%80%e5%8d%95%e8%ae%b2%e8%a7%a3" >groovyScript …</a></li></ul></li></li></ul></li></ul>
           
           <br>
           <a href="https://kikt.top/posts/jetbrains/template/live-template/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -608,7 +644,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -668,7 +704,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -768,7 +804,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1145,9 +1181,9 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

@@ -17,20 +17,63 @@
       <description>
         
           
-            有时候 flutter 更新 sdk 版本后不知道该不该更新 有时候 pub 库更新后和自己的其他类库发生了冲突
-类似于图上的情况
-遇到这样的问题应该怎么解决呢
-我们一步步解决
-首先,这种依赖一般是 pub 中引用的,先查看下原作者有没有最新版,也许就解决了呢
-无奈我们用到的类库是一个 5 个月没有更新过的类库,看来是指望不上了 没关系,我们进 pub 主页中
-一般都是有 github 的,我们点进 github 中 如果真没有 那就下一个 zip,然后自己创建一个吧
-然后 fork 项目,clone 下来,修改下
-可以参考下这个修改日志, 修改了库的引用地址,因为这两个库是同一个作者,这个依赖了另一个,我这里修改了另一个库,并且也同样 fork+clone 修改后上传到了自己的 github
-这里是另一个库的修改 我在这里修改了作者使用的依赖为更加新的版本
-接着返回自己的 app 项目中
-修改引用为 git 的方式
-接着再使用就没问题了
-git 依赖的引用方式可以参考 ,
+            &lt;p&gt;有时候 flutter 更新 sdk 版本后不知道该不该更新
+有时候 pub 库更新后和自己的其他类库发生了冲突&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981926383.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+
+类似于图上的情况&lt;/p&gt;
+&lt;p&gt;遇到这样的问题应该怎么解决呢&lt;/p&gt;
+&lt;p&gt;我们一步步解决&lt;/p&gt;
+&lt;p&gt;首先,这种依赖一般是 pub 中引用的,先查看下原作者有没有最新版,也许就解决了呢&lt;/p&gt;
+&lt;p&gt;无奈我们用到的类库是一个 5 个月没有更新过的类库,看来是指望不上了
+没关系,我们进 pub 主页中&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981927044.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;pub&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;一般都是有 github 的,我们点进 github 中
+如果真没有 那就下一个 zip,然后自己创建一个吧&lt;/p&gt;
+&lt;p&gt;然后 fork 项目,clone 下来,修改下
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_cached_network_image/commit/fea280d51955b7b81ede7f2f69ef8aaf925cc971&#34; &gt;commit&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981927669.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+
+可以参考下这个修改日志, 修改了库的引用地址,因为这两个库是同一个作者,这个依赖了另一个,我这里修改了另一个库,并且也同样 fork+clone 修改后上传到了自己的 github&lt;/p&gt;
+&lt;p&gt;这里是另一个库的修改
+
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_cache_manager/commit/38b368c80e34707c49b146132670ec7ccb3566b7&#34; &gt;commit&lt;/a&gt;
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981928244.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;我在这里修改了作者使用的依赖为更加新的版本&lt;/p&gt;
+&lt;p&gt;接着返回自己的 app 项目中&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981929004.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+
+修改引用为 git 的方式&lt;/p&gt;
+&lt;p&gt;接着再使用就没问题了&lt;/p&gt;
+&lt;p&gt;git 依赖的引用方式可以参考 
+&lt;a href=&#34;https://flutter.io/using-packages/&#34; &gt;flutter 官网&lt;/a&gt;
+,
+&lt;a href=&#34;https://www.dartlang.org/tools/pub/dependencies#git-packages&#34; &gt;dart 官网&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981929568.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
           
           
         
@@ -46,12 +89,28 @@ git 依赖的引用方式可以参考 ,
       <description>
         
           
-            起因 在引入新的依赖后,有时你会报一些冲突的错误,尤其是 v4 v7 库的使用
-有的时候能&amp;quot;自动&amp;quot;纠正,但是大部分时候不行
-比如 A 库引用了 v7 26.x.x 的库, B 库使用了 v7 27.x.x 作为依赖
-解决方案 gradle 打包的过程中,首先会加载所有 gradle 脚本到库内
-然后才是运行的过程, 所以我们只需要在 app 级的build.gradle中增加如下代码即可
-1rootProject.allprojects { // 闭包循环每个工程 2 3 subprojects { //每个工程子工程 4 project.configurations.all { //查找所有配置 5 resolutionStrategy.eachDependency { details -&amp;gt; //遍历所有依赖 6 if (details.requested.group == &amp;#39;com.android.support&amp;#39; 7 &amp;amp;&amp;amp; details.requested.name.contains(&amp;#39;appcompat-v7&amp;#39;)) { 8 details.useVersion &amp;#34;26.1.0&amp;#34; //将support包 v7替换为26.1.0 ,这里根据你自己的需要来改就可以了 9 } 10 } 11 } 12 } 13 14} 
+            &lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
+&lt;p&gt;在引入新的依赖后,有时你会报一些冲突的错误,尤其是 v4 v7 库的使用&lt;/p&gt;
+&lt;p&gt;有的时候能&amp;quot;自动&amp;quot;纠正,但是大部分时候不行&lt;/p&gt;
+&lt;p&gt;比如 A 库引用了 v7 26.x.x 的库, B 库使用了 v7 27.x.x 作为依赖&lt;/p&gt;
+&lt;h2 id=&#34;解决方案&#34;&gt;解决方案&lt;/h2&gt;
+&lt;p&gt;gradle 打包的过程中,首先会加载所有 gradle 脚本到库内&lt;/p&gt;
+&lt;p&gt;然后才是运行的过程, 所以我们只需要在 app 级的&lt;code&gt;build.gradle&lt;/code&gt;中增加如下代码即可&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-groovy&#34; data-lang=&#34;groovy&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rootProject&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;allprojects&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 闭包循环每个工程
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;subprojects&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//每个工程子工程
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;project&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;configurations&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;all&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//查找所有配置
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;resolutionStrategy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;eachDependency&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;details&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//遍历所有依赖
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;details&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;requested&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;group&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;com.android.support&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                        &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;details&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;requested&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;contains&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;appcompat-v7&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;n&#34;&gt;details&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;useVersion&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;26.1.0&amp;#34;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//将support包 v7替换为26.1.0 ,这里根据你自己的需要来改就可以了
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
           
           
         

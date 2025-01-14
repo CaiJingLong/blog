@@ -18,21 +18,25 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="前言 最近打算使用 ,但是目前没有数据来源,就想着搜搜有没有 json 的数据,结果搜了一下只有各种数据库的
+<meta name="description" content="前言
+最近打算使用 
+flutter 做一个省市的级联列表
+,但是目前没有数据来源,就想着搜搜有没有 json 的数据,结果搜了一下只有各种数据库的
 然后搜了下有个网站说有很完整的数据的还是收费的
 作为一个穷人程序员,如果是公司用,我付费买一个也无所谓,但是本身是想私人使用,甚至开源出去,付费就没必要了
-这时候我想着,既然如此,我就爬一份数据,自己造一个吧
- …">
+这时候我想着, …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="使用python爬取一个省市城市列表" />
 <meta property="og:url" content="https://kikt.top/posts/python/get_city_datas/" />
 <meta property="og:title" content="使用python爬取一个省市城市列表" />
-<meta property="og:description" content="前言 最近打算使用 ,但是目前没有数据来源,就想着搜搜有没有 json 的数据,结果搜了一下只有各种数据库的
+<meta property="og:description" content="前言
+最近打算使用 
+flutter 做一个省市的级联列表
+,但是目前没有数据来源,就想着搜搜有没有 json 的数据,结果搜了一下只有各种数据库的
 然后搜了下有个网站说有很完整的数据的还是收费的
 作为一个穷人程序员,如果是公司用,我付费买一个也无所谓,但是本身是想私人使用,甚至开源出去,付费就没必要了
-这时候我想着,既然如此,我就爬一份数据,自己造一个吧
- …" />
+这时候我想着, …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -46,11 +50,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/custom.css">
     
   </head>
   
@@ -60,7 +65,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -82,10 +87,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -121,6 +126,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -197,7 +203,9 @@
     </div>
     
     <div class="post_body"><h2 id="前言">前言</h2>
-<p>最近打算使用 ,但是目前没有数据来源,就想着搜搜有没有 json 的数据,结果搜了一下只有各种数据库的</p>
+<p>最近打算使用 
+<a href="https://github.com/caijinglong/flutter_city_picker" >flutter 做一个省市的级联列表</a>
+,但是目前没有数据来源,就想着搜搜有没有 json 的数据,结果搜了一下只有各种数据库的</p>
 <p>然后搜了下有个网站说有很完整的数据的还是收费的</p>
 <p>作为一个穷人程序员,如果是公司用,我付费买一个也无所谓,但是本身是想私人使用,甚至开源出去,付费就没必要了</p>
 <p>这时候我想着,既然如此,我就爬一份数据,自己造一个吧</p>
@@ -206,7 +214,9 @@
 <p>使用的语言是 python3</p>
 <p>request_html+基本库</p>
 <h2 id="爬取网页">爬取网页</h2>
-<p></p>
+<p>
+<a href="http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2017/" >国家统计局-2017 年统计用区划代码和城乡划分代码(截止 2017 年 10 月 31 日)</a>
+</p>
 <h2 id="查看网页">查看网页</h2>
 <h3 id="一级页面">一级页面</h3>
 <p>使用 chrome dev 工具查看元素</p>
@@ -448,21 +458,28 @@
 </span></span></code></pre></div><p>分了两个文件,其中一个是获取数据,一个是将数据转为 json 形式保存</p>
 <p>如果后续有必要,也可以弄一个数据库,具体是 sqlite 还是 mysql 都可以自己解析 json 插入,对于一个合格的程序员都是小意思</p>
 <h2 id="代码">代码</h2>
-<p>代码可以从仓库查看</p>
+<p>代码可以从
+<a href="https://github.com/CaiJingLong/python_get_city_datas" >github</a>
+仓库查看</p>
 <h2 id="生成数据">生成数据</h2>
 <p>生成的数据比较大,大概有 22w 字符 200 多 K</p>
-<p>可以从下载</p>
-<p>或直接从 copy</p>
-<p>格式化完的数据有 14000 行左右, 可以查看</p>
-<p></p>
+<p>可以从
+<a href="https://github.com/CaiJingLong/python_get_city_datas/releases" >github release</a>
+下载</p>
+<p>或直接从
+<a href="https://github.com/CaiJingLong/python_get_city_datas/blob/f9465f7b52dcfac346db54c2eda7c759b8183d43/data/city-version-4.json" >city-version-4.json</a>
+ copy</p>
+<p>格式化完的数据有 14000 行左右, 可以查看
+<a href="https://github.com/CaiJingLong/python_get_city_datas/blob/f9465f7b52dcfac346db54c2eda7c759b8183d43/data/city-version-4-pretty.json" >pretty-json</a>
+</p>
+<p>
+<a href="https://github.com/CaiJingLong/python_get_city_datas/blob/f9465f7b52dcfac346db54c2eda7c759b8183d43/data/city_version-4.sqlite" >sqlite 版</a>
+</p>
 
       
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -470,10 +487,7 @@
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -886,7 +900,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -946,7 +960,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -1046,7 +1060,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1423,9 +1437,9 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

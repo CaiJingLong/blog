@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>exists on CaiJingLong</title>
+    <title>Exists on CaiJingLong</title>
     <link>https://kikt.top/tags/exists/</link>
-    <description>Recent content in exists on CaiJingLong</description>
+    <description>Recent content in Exists on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,18 +17,88 @@
       <description>
         
           
-            之前写了一篇关于如何将 flutter 直接打包成 android aar 的文章, 本篇写一写如何将 flutter 打包成 framework 以便于直接让没有 flutter 环境的 iOS 开发者使用, 因为国内很多项目都有这样的要求
-本篇并不会做完全的工程集成化, 只是做一下如何将 flutter 的 framework 打出来, 并且置入到 iOS 原生工程中, 因为各项目一定户会有自己的特殊性, 不可能完全一样
-本篇打包脚本部分参考了 的内容,但是又有一些针对 flutter 版本的变化和 flutter type 不同的情况进行的修改, 不观看连接中的内容并不会影响观看
-开发环境 MacOS
-XCode 10
-git
-flutter 及 flutter 的相关工具链
-cocoapods
-创建几个工程 iOS 原生工程 使用 xcode 创建 这个原生工程就是模拟你的原有工程
-Flutter 工程 这里我只使用 flutter module 的方式, 如果你 flutter 是 app 的方式创建的,则打包脚本的内容需要根据应用结构有所调整
-$ flutter create -t module flutter_module_for_ios
-这次直接在里面添加一个带有原生功能的插件, 和 android 篇相同依然选择 那个插件
+            &lt;p&gt;之前写了一篇关于如何将 flutter 直接打包成 android aar 的文章, 本篇写一写如何将 flutter 打包成 framework 以便于直接让没有 flutter 环境的 iOS 开发者使用, 因为国内很多项目都有这样的要求&lt;/p&gt;
+&lt;p&gt;本篇并不会做完全的工程集成化, 只是做一下如何将 flutter 的 framework 打出来, 并且置入到 iOS 原生工程中, 因为各项目一定户会有自己的特殊性, 不可能完全一样&lt;/p&gt;
+&lt;p&gt;本篇打包脚本部分参考了 
+&lt;a href=&#34;https://www.jianshu.com/p/700bd7d2122b&#34; &gt;https://www.jianshu.com/p/700bd7d2122b&lt;/a&gt;
+ 的内容,但是又有一些针对 flutter 版本的变化和 flutter type 不同的情况进行的修改, 不观看连接中的内容并不会影响观看&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83&#34; &gt;开发环境&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E5%88%9B%E5%BB%BA%E5%87%A0%E4%B8%AA%E5%B7%A5%E7%A8%8B&#34; &gt;创建几个工程&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#iOS-%E5%8E%9F%E7%94%9F%E5%B7%A5%E7%A8%8B&#34; &gt;iOS 原生工程&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#Flutter-%E5%B7%A5%E7%A8%8B&#34; &gt;Flutter 工程&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E5%88%9B%E5%BB%BA%E8%84%9A%E6%9C%AC&#34; &gt;创建脚本&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E8%A7%82%E5%AF%9F%E7%BB%93%E6%9E%84&#34; &gt;观察结构&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E5%85%B3%E8%81%94%E5%BA%93%E6%96%87%E4%BB%B6%E5%92%8C%E5%B7%A5%E7%A8%8B&#34; &gt;关联库文件和工程&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E4%BD%BF%E7%94%A8-cocoapod-%E7%AE%A1%E7%90%86%E5%8E%9F%E7%94%9F%E5%B7%A5%E7%A8%8B&#34; &gt;使用 cocoapod 管理原生工程&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E5%B0%86-framework-%E4%BD%9C%E4%B8%BA%E4%B8%80%E4%B8%AA-pod-%E5%BA%93&#34; &gt;将 framework 作为一个 pod 库&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E5%9C%A8%E5%8E%9F%E7%94%9F%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%BC%95%E7%94%A8%E8%BF%99%E4%B8%AA%E5%BA%93&#34; &gt;在原生项目中引用这个库&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E4%BC%98%E5%8C%96%E8%84%9A%E6%9C%AC&#34; &gt;优化脚本&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E4%BC%98%E5%8C%96-podspec-%E6%96%87%E4%BB%B6&#34; &gt;优化 podspec 文件&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E4%BC%98%E5%8C%96-shell-%E8%84%9A%E6%9C%AC&#34; &gt;优化 shell 脚本&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E9%AA%8C%E8%AF%81%E4%B8%8B%E5%88%AB%E7%9A%84%E6%8F%92%E4%BB%B6&#34; &gt;验证下别的插件&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E6%80%BB%E7%BB%93&#34; &gt;总结&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E6%89%93%E5%8C%85%E7%9A%84%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93&#34; &gt;打包的使用总结&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%E5%90%8E%E8%AE%B0&#34; &gt;后记&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;开发环境&#34;&gt;开发环境&lt;/h2&gt;
+&lt;p&gt;MacOS&lt;br&gt;
+XCode 10&lt;br&gt;
+git&lt;br&gt;
+flutter 及 flutter 的相关工具链&lt;br&gt;
+cocoapods&lt;/p&gt;
           
           
         
@@ -44,15 +114,30 @@ $ flutter create -t module flutter_module_for_ios
       <description>
         
           
-            在 flutter 开发的过程中不可能所有项目都是从零构建
-换句话说不是所有项目都是 flutter 为主工程,然后 android/ios 的工程为副工程
-大概率会遇到需要将 flutter 作为组件加入到原生项目中, 这种例子典型的就是阿里闲鱼,当然闲鱼团队的实力不是普通的小公司可以比的
-所幸的是,flutter 团队提供了一个 用于帮助我们完成这个过程
-创建一个 Android 工程 使用 Android Studio 创建一个新工程来模拟这个过程,会看这里的普遍都应该是 android 程序员出身,Hello World 工程是肯定会的,不会的话还是回炉加强一下吧
-如果你已经有现有工程,肯定是有 VCS 管理的,放心大胆的走出第一步,大不了就删除当前分支嘛,然后你可以跳过这一步,直接看 flutter 的过程
-创建 Flutter 这一步仅作为 官方 Android 部分的参考
-我目前使用的是 1.0.0 的发布版
-1Flutter 1.0.0 • channel dev • https://github.com/flutter/flutter.git 2Framework • revision 5391447fae (11 days ago) • 2018-11-29 19:41:26 -0800 3Engine • revision 7375a0f414 4Tools • Dart 2.1.0 (build 2.1.0-dev.9.4 f9ebf21297) wiki 后续可能会被修改,请查看最新的文档去解决
+            &lt;p&gt;在 flutter 开发的过程中不可能所有项目都是从零构建&lt;/p&gt;
+&lt;p&gt;换句话说不是所有项目都是 flutter 为主工程,然后 android/ios 的工程为副工程&lt;/p&gt;
+&lt;p&gt;大概率会遇到需要将 flutter 作为组件加入到原生项目中, 这种例子典型的就是阿里闲鱼,当然闲鱼团队的实力不是普通的小公司可以比的&lt;/p&gt;
+&lt;p&gt;所幸的是,flutter 团队提供了一个 
+&lt;a href=&#34;https://github.com/flutter/flutter/wiki/Add-Flutter-to-existing-apps&#34; &gt;wiki&lt;/a&gt;
+ 用于帮助我们完成这个过程&lt;/p&gt;
+&lt;h2 id=&#34;创建一个-android-工程&#34;&gt;创建一个 Android 工程&lt;/h2&gt;
+&lt;p&gt;使用 Android Studio 创建一个新工程来模拟这个过程,会看这里的普遍都应该是 android 程序员出身,Hello World 工程是肯定会的,不会的话还是&lt;del&gt;回炉&lt;/del&gt;加强一下吧&lt;/p&gt;
+&lt;p&gt;如果你已经有现有工程,肯定是有 VCS 管理的,放心大胆的走出第一步,大不了就删除当前分支嘛,然后你可以跳过这一步,直接看 flutter 的过程&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981940825.jpg&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;图片&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;创建-flutter&#34;&gt;创建 Flutter&lt;/h2&gt;
+&lt;p&gt;这一步仅作为 官方 
+&lt;a href=&#34;https://github.com/flutter/flutter/wiki/Add-Flutter-to-existing-apps#android&#34; &gt;wiki&lt;/a&gt;
+ Android 部分的参考&lt;/p&gt;
+&lt;p&gt;我目前使用的是 1.0.0 的发布版&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Flutter 1.0.0 • channel dev • https://github.com/flutter/flutter.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Framework • revision 5391447fae &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; days ago&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; • 2018-11-29 19:41:26 -0800
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Engine • revision 7375a0f414
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Tools • Dart 2.1.0 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;build 2.1.0-dev.9.4 f9ebf21297&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;wiki 后续可能会被修改,请查看最新的文档去解决&lt;/p&gt;
           
           
         

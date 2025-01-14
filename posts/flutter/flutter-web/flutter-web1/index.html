@@ -18,19 +18,65 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="最近 2019 的 google io 大会开始了,之前的&quot;蜂鸟&quot;引擎也在 flutter 官网中出现了, 不过这次改了个名字叫 具体的使用步骤参考项目 readme 中的方式来使用
-构建项目 建议: 配置dart,pub,~/.pub-cache/bin到环境变量
-配置 webdev
-1git …">
+<meta name="description" content="最近 2019 的 google io 大会开始了,之前的&quot;蜂鸟&quot;引擎也在 flutter 官网中出现了, 不过这次改了个名字叫 
+flutter-web
+
+具体的使用步骤参考项目 readme 中的方式来使用
+
+
+构建项目
+
+
+运行项目
+
+
+
+简单运行
+
+
+测试交互
+
+
+文本输入
+
+
+图片
+
+
+
+ …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Flutter Web 评测第一篇" />
 <meta property="og:url" content="https://kikt.top/posts/flutter/flutter-web/flutter-web1/" />
 <meta property="og:title" content="Flutter Web 评测第一篇" />
-<meta property="og:description" content="最近 2019 的 google io 大会开始了,之前的&quot;蜂鸟&quot;引擎也在 flutter 官网中出现了, 不过这次改了个名字叫 具体的使用步骤参考项目 readme 中的方式来使用
-构建项目 建议: 配置dart,pub,~/.pub-cache/bin到环境变量
-配置 webdev
-1git …" />
+<meta property="og:description" content="最近 2019 的 google io 大会开始了,之前的&quot;蜂鸟&quot;引擎也在 flutter 官网中出现了, 不过这次改了个名字叫 
+flutter-web
+
+具体的使用步骤参考项目 readme 中的方式来使用
+
+
+构建项目
+
+
+运行项目
+
+
+
+简单运行
+
+
+测试交互
+
+
+文本输入
+
+
+图片
+
+
+
+ …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -44,11 +90,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../css/custom.css">
     
   </head>
   
@@ -58,7 +105,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -80,10 +127,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -119,6 +166,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -133,7 +181,7 @@
 </span>
     <span class="post_date">
       2019-05-08 10:15</span>
-    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+    <span class="post_time"> · 8 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
         </a><a href='https://kikt.top/tags/flutter-web' title="flutter web" class="post_tag button button_translucent">flutter web
         </a>
     </span>
@@ -201,36 +249,74 @@
 </nav>
     </div>
     
-    <div class="post_body"><p>最近 2019 的 google io 大会开始了,之前的&quot;蜂鸟&quot;引擎也在 flutter 官网中出现了, 不过这次改了个名字叫 </p>
+    <div class="post_body"><p>最近 2019 的 google io 大会开始了,之前的&quot;蜂鸟&quot;引擎也在 flutter 官网中出现了, 不过这次改了个名字叫 
+<a href="https://github.com/flutter/flutter_web" >flutter-web</a>
+</p>
 <p>具体的使用步骤参考项目 readme 中的方式来使用</p>
 <ul>
-<li></li>
 <li>
-<ul>
-<li></li>
-<li></li>
-<li></li>
+<a href="#%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE" >构建项目</a>
+</li>
 <li>
+<a href="#%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE" >运行项目</a>
+
 <ul>
-<li></li>
-<li></li>
-<li></li>
+<li>
+<a href="#%E7%AE%80%E5%8D%95%E8%BF%90%E8%A1%8C" >简单运行</a>
+</li>
+<li>
+<a href="#%E6%B5%8B%E8%AF%95%E4%BA%A4%E4%BA%92" >测试交互</a>
+</li>
+<li>
+<a href="#%E6%96%87%E6%9C%AC%E8%BE%93%E5%85%A5" >文本输入</a>
+</li>
+<li>
+<a href="#%E5%9B%BE%E7%89%87" >图片</a>
+
+<ul>
+<li>
+<a href="#%E7%BD%91%E7%BB%9C%E5%9B%BE%E7%89%87" >网络图片</a>
+</li>
+<li>
+<a href="#%E6%9C%AC%E5%9C%B0%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6" >本地资源文件</a>
+</li>
+<li>
+<a href="#%E5%86%85%E5%AD%98%E5%9B%BE%E7%89%87" >内存图片</a>
+</li>
 </ul>
 </li>
-<li></li>
-</ul>
-</li>
-<li></li>
 <li>
-<ul>
-<li></li>
-<li></li>
-<li></li>
+<a href="#%E6%BB%9A%E5%8A%A8%E6%8E%A7%E4%BB%B6" >滚动控件</a>
+</li>
 </ul>
 </li>
-<li></li>
-<li></li>
-<li></li>
+<li>
+<a href="#%E6%97%A5%E5%BF%97" >日志</a>
+</li>
+<li>
+<a href="#%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F" >几个问题需要注意</a>
+
+<ul>
+<li>
+<a href="#%E6%95%B0%E5%AD%97%E7%9A%84%E7%B1%BB%E5%9E%8B" >数字的类型</a>
+</li>
+<li>
+<a href="#dartio-%E7%9A%84%E9%97%AE%E9%A2%98" >dart:io 的问题</a>
+</li>
+<li>
+<a href="#%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8" >插件的使用</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#%E6%89%93%E5%8C%85" >打包</a>
+</li>
+<li>
+<a href="#%E6%9F%A5%E7%9C%8B%E4%B8%80%E4%B8%8B-html-%E7%BB%93%E6%9E%84" >查看一下 html 结构</a>
+</li>
+<li>
+<a href="#%E5%90%8E%E8%AE%B0" >后记</a>
+</li>
 </ul>
 <h2 id="构建项目">构建项目</h2>
 <p>建议: 配置<code>dart</code>,<code>pub</code>,<code>~/.pub-cache/bin</code>到环境变量</p>
@@ -728,7 +814,9 @@ copy paste 都无效,暂时没有和 macOS 系统的剪切板关联,其他系统
 </span></span><span class="line"><span class="ln">6</span><span class="cl">https://github.com/dart-lang/build/blob/master/docs/faq.md#how-can-i-resolve-skipped-compiling-warnings
 </span></span></code></pre></div><h3 id="插件的使用">插件的使用</h3>
 <p>目前没有成熟的插件系统,也没有完成与纯 flutter 插件的对接</p>
-<p>据说可以调用 js 的库来获取一些结果,</p>
+<p>据说可以调用 js 的库来获取一些结果,
+<a href="https://github.com/flutter/flutter_web#limitations" >官方的解释</a>
+</p>
 <h2 id="打包">打包</h2>
 <p>使用 webdev 打包
 <code>$ webdev build</code></p>
@@ -784,7 +872,9 @@ copy paste 都无效,暂时没有和 macOS 系统的剪切板关联,其他系统
 <li>不支持插件</li>
 <li>打包太大了</li>
 </ol>
-<p>仓库在这, 查看 </p>
+<p>仓库在这, 查看 
+<a href="https://gitee.com/kikt/flutter_web_first_use/tree/master/examples/hello_world" >example/helloworld 目录</a>
+</p>
 <p>总结: 可用程度?暂时不可用</p>
 <p>以上</p>
 
@@ -792,9 +882,6 @@ copy paste 都无效,暂时没有和 macOS 系统的剪切板关联,其他系统
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -802,10 +889,7 @@ copy paste 都无效,暂时没有和 macOS 系统的剪切板关联,其他系统
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -1218,7 +1302,7 @@ copy paste 都无效,暂时没有和 macOS 系统的剪切板关联,其他系统
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -1278,7 +1362,7 @@ copy paste 都无效,暂时没有和 macOS 系统的剪切板关联,其他系统
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -1378,7 +1462,7 @@ copy paste 都无效,暂时没有和 macOS 系统的剪切板关联,其他系统
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1755,9 +1839,9 @@ copy paste 都无效,暂时没有和 macOS 系统的剪切板关联,其他系统
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

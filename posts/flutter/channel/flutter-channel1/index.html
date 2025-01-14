@@ -19,22 +19,50 @@
 
 <meta property="og:type" content="article">
 <meta name="description" content="原生通信系列
+
+1. Flutter 调用 Android
+
+
+2. Android 通知 Flutter
+
+
+3. Flutter 调用 iOS
+
+
+4. iOS 通知 Flutter
+
+
+项目地址
+
+
 在 flutter 开发中一定会有需要和原生通信的情况
 第一篇介绍的是 flutter 调用 Android
-这篇是给刚刚入门或者刚刚接触原生调用的朋友们使用的,老鸟们或者英文强的朋友还是直接看官方文档比较好
-创建项目 一般来说建议使用一个 plugin 作为一个单独的项目来将业务逻辑独立出去
-我这里使用 …">
+这篇 …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Flutter 原生通信 (一) - flutter调用Android" />
 <meta property="og:url" content="https://kikt.top/posts/flutter/channel/flutter-channel1/" />
 <meta property="og:title" content="Flutter 原生通信 (一) - flutter调用Android" />
 <meta property="og:description" content="原生通信系列
+
+1. Flutter 调用 Android
+
+
+2. Android 通知 Flutter
+
+
+3. Flutter 调用 iOS
+
+
+4. iOS 通知 Flutter
+
+
+项目地址
+
+
 在 flutter 开发中一定会有需要和原生通信的情况
 第一篇介绍的是 flutter 调用 Android
-这篇是给刚刚入门或者刚刚接触原生调用的朋友们使用的,老鸟们或者英文强的朋友还是直接看官方文档比较好
-创建项目 一般来说建议使用一个 plugin 作为一个单独的项目来将业务逻辑独立出去
-我这里使用 …" />
+这篇 …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -48,11 +76,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../css/custom.css">
     
   </head>
   
@@ -62,7 +91,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -84,10 +113,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -123,6 +152,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -202,11 +232,21 @@
     </div>
     
     <div class="post_body"><p>原生通信系列</p>
-<p><br>
+<p>
+<a href="../../../../posts/flutter/channel/flutter-channel1/" >1. Flutter 调用 Android</a>
 <br>
+
+<a href="../../../../posts/flutter/channel/flutter-channel2/" >2. Android 通知 Flutter</a>
 <br>
+
+<a href="../../../../posts/flutter/channel/flutter-channel3/" >3. Flutter 调用 iOS</a>
+<br>
+
+<a href="../../../../posts/flutter/channel/flutter-channel4/" >4. iOS 通知 Flutter</a>
 </p>
-<p></p>
+<p>
+<a href="https://github.com/CaiJingLong/flutter_plugin_example" >项目地址</a>
+</p>
 <hr>
 <p>在 flutter 开发中一定会有需要和原生通信的情况</p>
 <p>第一篇介绍的是 flutter 调用 Android</p>
@@ -298,7 +338,9 @@
 <p>由 dart 端使用<code>_channel.invokeMethod</code>调用,这个方法的参数是方法名和一个可选参数</p>
 <p>返回值是一个<code>Future&lt;dynamic&gt;</code> 因为 java 端的调用是不可预知的,所以是异步的</p>
 <p>换句话说,无论结果是对是错你在 java 端都需要有返回值,否则 dart 端会挂起</p>
-<p>查看 java 端</p>
+<p>查看 java 端
+<a href="https://docs.flutter.io/javadoc/io/flutter/plugin/common/MethodCall.html" >文档</a>
+</p>
 <p>
 <p class="md__image">
   <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981996815.jpg&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="图片"  crossorigin/>
@@ -308,7 +350,9 @@
 <p>可选参数是 dart 中的一个语法特点,方法的签名中通过[]包裹的为匿名可选参数,通过{}包裹的为命名可选参数</p>
 <p>而 channel 中的这个方法的完整实现如下</p>
 <h3 id="结果返回">结果返回</h3>
-<p>查看</p>
+<p>查看
+<a href="https://docs.flutter.io/javadoc/io/flutter/plugin/common/MethodChannel.Result.html" >文档</a>
+</p>
 <p>
 <p class="md__image">
   <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981997620.jpg&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="图片"  crossorigin/>
@@ -357,7 +401,9 @@
 <h3 id="standardmethodcodec-解析">StandardMethodCodec 解析</h3>
 <p>这个类也是在两端都有的一个类, 通常来说就是作为发送端负责编码, 作为接受端负责解码</p>
 <p>作为一个内置类,其中做了一些&quot;自动&quot;的转码过程,将原生类型映射为 dart 类型 或者反过来映射</p>
-<p>查看</p>
+<p>查看
+<a href="https://docs.flutter.io/flutter/services/StandardMessageCodec-class.html" >文档</a>
+</p>
 <p>
 <p class="md__image">
   <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982000685.jpg&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="图片"  crossorigin/>
@@ -400,15 +446,14 @@
 <p>这样一个简单的自定义就完成了</p>
 <hr>
 <p>你以为就这样结束了?</p>
-<p>请看第二篇 </p>
+<p>请看第二篇 
+<a href="../flutter-channel2" >android 通知 flutter</a>
+</p>
 
       
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -416,10 +461,7 @@
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -832,7 +874,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -892,7 +934,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -992,7 +1034,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1369,9 +1411,9 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

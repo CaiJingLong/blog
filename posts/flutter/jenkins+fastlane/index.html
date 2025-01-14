@@ -21,7 +21,10 @@
 <meta name="description" content="自动化打包上传是一个释放双手的过程, 本文就简单重复一下打包的过程
 本文包括 iOS 和 android 篇.
 如果有需要, macOS 和 web 也可以加进来, 步骤并不复杂, 但本篇暂时不讲
-开发环境 macOS, 如果你不是 macOS, 那你只能打包安卓部分 Xcode, 因为 Xcode …">
+开发环境
+
+macOS, 如果你不是 macOS, 那你只能打包安卓部分
+Xcode, 因为 Xcode …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="flutter Jenkins&#43;fastlane 自动化打测试包, 并上传蒲公英" />
@@ -30,7 +33,10 @@
 <meta property="og:description" content="自动化打包上传是一个释放双手的过程, 本文就简单重复一下打包的过程
 本文包括 iOS 和 android 篇.
 如果有需要, macOS 和 web 也可以加进来, 步骤并不复杂, 但本篇暂时不讲
-开发环境 macOS, 如果你不是 macOS, 那你只能打包安卓部分 Xcode, 因为 Xcode …" />
+开发环境
+
+macOS, 如果你不是 macOS, 那你只能打包安卓部分
+Xcode, 因为 Xcode …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -44,11 +50,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/custom.css">
     
   </head>
   
@@ -58,7 +65,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -80,10 +87,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -119,6 +126,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -269,18 +277,26 @@
 <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597804246.png" alt="image-20200819103046638" style="zoom: 33%;" />
 <p>这里建议安装的插件有如下几个</p>
 <ol>
-<li> , 发布测试包到蒲公英的插件</li>
-<li> 这个插件是能把多个任务结合到一起的插件, 方便插入子任务, 比如我有 build ios 和 build android 两个任务, 这东西可以指定顺序, 让两个任务顺序执行</li>
+<li>
+<a href="https://plugins.jenkins.io/upload-pgyer" >Upload to pgyer</a>
+ , 发布测试包到蒲公英的插件</li>
+<li>
+<a href="https://plugins.jenkins.io/jenkins-multijob-plugin" >Multijob plugin</a>
+ 这个插件是能把多个任务结合到一起的插件, 方便插入子任务, 比如我有 build ios 和 build android 两个任务, 这东西可以指定顺序, 让两个任务顺序执行</li>
 </ol>
 <p>Jenkins 的安装告一段落, 具体的配置到了配置篇再写</p>
 <h3 id="fastlane">FastLane</h3>
-<p></p>
+<p>
+<a href="https://fastlane.tools/" >官网</a>
+</p>
 <p>这东西的安装看你的实际情况, 一般情况下, 使用 brew 安装也是可以的, 然后, 这东西是一个 ruby 写的自动化打包的工具, 也可以用 gem 安装</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ brew install fastlane
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ sudo gem install fastlane
 </span></span></code></pre></div><p>brew 发布的版本不是最新的, 所以, 根据你的情况选择使用哪种方式安装, 提示: sudo 会要求输入密码(系统的登录密码, 输入完回车)</p>
 <h3 id="蒲公英账号">蒲公英账号</h3>
-<p>官网: </p>
+<p>官网: 
+<a href="https://pgyer.com" >https://pgyer.com</a>
+</p>
 <p>具体的申请步骤就不讲了, 然后, 现在发布 apk 需要实名制, 自己传身份吧</p>
 <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597805860.png" alt="image-20200819105740584" style="zoom: 25%;" />
 <p>
@@ -363,7 +379,11 @@
 </span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="k">end</span>
 </span></span></code></pre></div><p>默认的长这样, 是 ruby 语法, 和 cocoapod 的配置文件语法基本相同, do end 可以简单理解为{}, 其中就是具体要执行的代码了</p>
 <p><code>lane :custom_lane do</code> 这行的 custom_lane 就是任务的名字, 里面可以添加 actions, 会按照顺序执行</p>
-<p>我们可以按照提示打开  看看都有啥东西, 比如添加一个 </p>
+<p>我们可以按照提示打开 
+<a href="https://docs.fastlane.tools/actions" >https://docs.fastlane.tools/actions</a>
+ 看看都有啥东西, 比如添加一个 
+<a href="https://docs.fastlane.tools/actions/build_ios_app/" >build_ios_app</a>
+</p>
 <p>然后我把任务名字修改为 ad_hoc</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">default_platform</span><span class="p">(</span><span class="ss">:ios</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">2</span><span class="cl">
@@ -449,7 +469,9 @@
 </span></span></span><span class="line"><span class="ln">71</span><span class="cl"><span class="s1">
 </span></span></span><span class="line"><span class="ln">72</span><span class="cl"><span class="s1">[!] Error building the application - see the log above
 </span></span></span></code></pre></div><p>好吧, 有一堆的日志, 其中会告诉我们哪个任务出错了, 原因是啥</p>
-<p>我这里检查了一下, 这里是签名问题, 查一下 fastlane 里的解决方案, 告诉我们使用来解决</p>
+<p>我这里检查了一下, 这里是签名问题, 查一下 fastlane 里的解决方案, 告诉我们使用
+<a href="https://docs.fastlane.tools/actions/match/" >match</a>
+来解决</p>
 <h5 id="配置-match">配置 match</h5>
 <p>match 其实是将一些签名的配置文件储存在某个位置, 然后达到多设备能同步的目的</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ fastlane match init
@@ -494,10 +516,16 @@
 <li>创建新的 app</li>
 </ol>
 <p>我这里为了演示, 在公司的帐号上创建一个 app(不发布就行了 😁)</p>
-<p></p>
+<p>
+<a href="https://appstoreconnect.apple.com/" >https://appstoreconnect.apple.com/</a>
+</p>
 <ol>
-<li> 创建新的&quot;套装 ID&quot;</li>
-<li> 新建一个 app</li>
+<li>
+<a href="https://developer.apple.com/account/resources/identifiers/bundleId/add/bundle" >https://developer.apple.com/account/resources/identifiers/bundleId/add/bundle</a>
+ 创建新的&quot;套装 ID&quot;</li>
+<li>
+<a href="https://appstoreconnect.apple.com/apps" >https://appstoreconnect.apple.com/apps</a>
+ 新建一个 app</li>
 </ol>
 <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597822996.png" alt="image-20200819154315829" style="zoom:33%;" />
 <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597823056.png" alt="image-20200819154416408" style="zoom:33%;" />
@@ -548,7 +576,9 @@
 <p>答案是肯定的, 但需要经过如下的步骤</p>
 <ol>
 <li>
-<p> 
+<p>
+<a href="https://appleid.apple.com/" >创建 app 专用密码</a>
+ 
 <p class="md__image">
   <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597824255.png" alt="image-20200819160414854"  crossorigin/>
 </p>
@@ -663,7 +693,9 @@
 <p>scandir 是你上传的目录 <code>${WORKSPACE}/build/app/outputs/apk/release</code> 工作空间的根目录, 然后下面是文件名</p>
 <p>然后保存, 立即构建</p>
 <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597829809.png" alt="image-20200819173649791" style="zoom: 33%;" />
-<p>地址: </p>
+<p>地址: 
+<a href="https://www.pgyer.com/DJrV" >https://www.pgyer.com/DJrV</a>
+</p>
 <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597829830.png" alt="image-20200819173710059" style="zoom:33%;" />
 <p>到这一步, 安卓就算是成功了</p>
 <h3 id="ios-自动化">iOS 自动化</h3>
@@ -703,7 +735,9 @@
 </p>
 </p>
 <p>我们看到, 蒲公英上传失败了.</p>
-<p>嗯, 那我们换一个方式, 不通过 jenkins 的插件了, 而是通过 fastlane 的 pgyer action 直接在 fastlane 里完成这一步, </p>
+<p>嗯, 那我们换一个方式, 不通过 jenkins 的插件了, 而是通过 fastlane 的 pgyer action 直接在 fastlane 里完成这一步, 
+<a href="https://github.com/shishirui/fastlane-plugin-pgyer" ><code>pgyer</code></a>
+</p>
 <p>先添加</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">$ fastlane add_plugin pgyer
 </span></span></code></pre></div><p>
@@ -729,7 +763,9 @@
 </span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="n">pgyer</span><span class="p">(</span><span class="ss">api_key</span><span class="p">:</span> <span class="s2">&#34;75123fxxx10&#34;</span><span class="p">,</span> <span class="ss">user_key</span><span class="p">:</span> <span class="s2">&#34;4853910323xxx22105382&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">15</span><span class="cl">  <span class="k">end</span>
 </span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="k">end</span>
-</span></span></code></pre></div><p>把 pgyer 的 action 直接加载 build_ios_app 后, 然后设置到 api_key 和 user_key, 在  查询</p>
+</span></span></code></pre></div><p>把 pgyer 的 action 直接加载 build_ios_app 后, 然后设置到 api_key 和 user_key, 在 
+<a href="https://www.pgyer.com/account/api" >https://www.pgyer.com/account/api</a>
+ 查询</p>
 <p>接着点击立即构建, 就可以触发了</p>
 <p>上传完毕后是这样</p>
 <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1597887976.png" alt="image-20200820094616533" style="zoom:33%;" />
@@ -866,9 +902,6 @@
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -876,10 +909,7 @@
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -1292,7 +1322,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -1352,7 +1382,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -1452,7 +1482,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1829,9 +1859,9 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

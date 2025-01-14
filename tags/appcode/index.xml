@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>appcode on CaiJingLong</title>
+    <title>Appcode on CaiJingLong</title>
     <link>https://kikt.top/tags/appcode/</link>
-    <description>Recent content in appcode on CaiJingLong</description>
+    <description>Recent content in Appcode on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,20 +17,53 @@
       <description>
         
           
-            ios 插件开发可以查看 本篇就不详细介绍了
-众所周知 xcode 这编辑器除了漂亮,其实开发效率来说和 appcode 无法相提并论..
-本篇与插件开发本身无关,目的只是为了加快 appcode 的索引速度,解决方案拉到后面查看
-使用 appcode 开发插件本身很简单,打开插件下的example/ios就可以了,不过这里有一个坑,因为 flutter 使用 link 的方式,可能有数级的../..之类的连接来指向插件文件夹
-这个在 xcode 中可能没问题,但是appcode中有一个索引的概念,这一步会遍历当前关联的所有同级文件,
-而这一步由于相对的关系甚至关联到了~这一级,也就是说会遍历当前用户全部的文件,这一步的速度太慢了,我们必须着手解决
-解决 打开example/ios/Podfile文件
-这个文件是cocoapod的配置文件,使用的是Ruby语言,
-这个文件一般是自动生成的,我们开发过程中正常情况下不需要关注这个文件
-我们需要修改这个文件,查看
-我们不使用 symlinks 的方案,而是采用另一种方案,直接用 path 的方式
-将这个 Podfile 文件改为这样 1 plugin_pods.map { |p| 2 name = p[:name] 3 path = p[:path] 4 specPath = &amp;#34;#{path}/ios/#{name}.podspec&amp;#34; 5 pod p[:name],:path=&amp;gt;specPath 6 } 然后在命令行运行
-1cd example/ios 2pod install 修改完成后是用 app 打开是这样的
-1.12.x 版本 [2020-01-17 更新] 某个版本后, 会提示我们原来的 pod 版本过时了
+            &lt;p&gt;ios 插件开发可以查看
+&lt;a href=&#34;https://www.kikt.top/posts/flutter/channel/flutter-channel3/&#34; &gt;之前的文章&lt;/a&gt;
+ 本篇就不详细介绍了&lt;/p&gt;
+&lt;p&gt;众所周知 xcode 这编辑器除了漂亮,其实开发效率来说和 appcode 无法相提并论..&lt;/p&gt;
+&lt;p&gt;本篇与插件开发本身无关,目的只是为了加快 appcode 的索引速度,解决方案拉到后面查看&lt;/p&gt;
+&lt;p&gt;使用 appcode 开发插件本身很简单,打开插件下的&lt;code&gt;example/ios&lt;/code&gt;就可以了,不过这里有一个坑,因为 flutter 使用 link 的方式,可能有数级的&lt;code&gt;../..&lt;/code&gt;之类的连接来指向插件文件夹&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982004564.jpg&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=main&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=7.0&#34; alt=&#34;图片&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;这个在 xcode 中可能没问题,但是&lt;code&gt;appcode&lt;/code&gt;中有一个索引的概念,这一步会遍历当前关联的所有同级文件,
+&lt;a href=&#34;https://youtrack.jetbrains.com/issue/OC-17593&#34; &gt;参考连接&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;而这一步由于相对的关系甚至关联到了&lt;code&gt;~&lt;/code&gt;这一级,也就是说会遍历当前用户全部的文件,这一步的速度太慢了,我们必须着手解决&lt;/p&gt;
+&lt;h2 id=&#34;解决&#34;&gt;解决&lt;/h2&gt;
+&lt;p&gt;打开&lt;code&gt;example/ios/Podfile&lt;/code&gt;文件&lt;/p&gt;
+&lt;p&gt;这个文件是&lt;code&gt;cocoapod&lt;/code&gt;的配置文件,使用的是&lt;code&gt;Ruby&lt;/code&gt;语言,&lt;/p&gt;
+&lt;p&gt;这个文件一般是自动生成的,我们开发过程中正常情况下不需要关注这个文件&lt;/p&gt;
+&lt;p&gt;我们需要修改这个文件,查看
+&lt;a href=&#34;https://guides.cocoapods.org/syntax/podfile.html#pod&#34; &gt;官方配置说明&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;我们不使用 symlinks 的方案,而是采用另一种方案,直接用 path 的方式&lt;/p&gt;
+&lt;p&gt;将这个 Podfile 文件改为这样
+
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190219162906.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190219162906.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;plugin_pods&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;:name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;:path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;specPath&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;#{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/ios/&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;#{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.podspec&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;pod&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;:name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;:path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;specPath&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后在命令行运行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; example/ios
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;pod install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改完成后是用 app 打开是这样的&lt;/p&gt;
+&lt;p&gt;
+&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190219162727.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190219162727.png&#34;  crossorigin/&gt;
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;112x-版本-2020-01-17-更新&#34;&gt;1.12.x 版本 [2020-01-17 更新]&lt;/h2&gt;
+&lt;p&gt;某个版本后, 会提示我们原来的 pod 版本过时了&lt;/p&gt;
+&lt;p&gt;这时候, 我们需要移除 example/ios 下的 Podfile 和 Podfile.lock 文件&lt;/p&gt;
           
           
         

@@ -18,19 +18,23 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="ios 插件开发可以查看 本篇就不详细介绍了
+<meta name="description" content="ios 插件开发可以查看
+之前的文章
+ 本篇就不详细介绍了
 众所周知 xcode 这编辑器除了漂亮,其实开发效率来说和 appcode 无法相提并论..
 本篇与插件开发本身无关,目的只是为了加快 appcode 的索引速度,解决方案拉到后面查看
-使用 appcode 开发插件本身很简单,打开插件下的example/ios就可以了,不 …">
+使用 appcode 开发插件本身很简单, …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Flutter ios 插件开发 appcode 加快索引速度" />
 <meta property="og:url" content="https://kikt.top/posts/flutter/channel/flutter-ios-spec-edit/" />
 <meta property="og:title" content="Flutter ios 插件开发 appcode 加快索引速度" />
-<meta property="og:description" content="ios 插件开发可以查看 本篇就不详细介绍了
+<meta property="og:description" content="ios 插件开发可以查看
+之前的文章
+ 本篇就不详细介绍了
 众所周知 xcode 这编辑器除了漂亮,其实开发效率来说和 appcode 无法相提并论..
 本篇与插件开发本身无关,目的只是为了加快 appcode 的索引速度,解决方案拉到后面查看
-使用 appcode 开发插件本身很简单,打开插件下的example/ios就可以了,不 …" />
+使用 appcode 开发插件本身很简单, …" />
 <meta property="og:image" content="https://kikt.top/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://kikt.top/icons/apple-touch-icon.png">
@@ -44,11 +48,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../css/custom.css">
     
   </head>
   
@@ -58,7 +63,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -80,10 +85,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -119,6 +124,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -184,7 +190,9 @@
 </nav>
     </div>
     
-    <div class="post_body"><p>ios 插件开发可以查看 本篇就不详细介绍了</p>
+    <div class="post_body"><p>ios 插件开发可以查看
+<a href="https://www.kikt.top/posts/flutter/channel/flutter-channel3/" >之前的文章</a>
+ 本篇就不详细介绍了</p>
 <p>众所周知 xcode 这编辑器除了漂亮,其实开发效率来说和 appcode 无法相提并论..</p>
 <p>本篇与插件开发本身无关,目的只是为了加快 appcode 的索引速度,解决方案拉到后面查看</p>
 <p>使用 appcode 开发插件本身很简单,打开插件下的<code>example/ios</code>就可以了,不过这里有一个坑,因为 flutter 使用 link 的方式,可能有数级的<code>../..</code>之类的连接来指向插件文件夹</p>
@@ -193,13 +201,17 @@
   <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982004564.jpg&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="图片"  crossorigin/>
 </p>
 </p>
-<p>这个在 xcode 中可能没问题,但是<code>appcode</code>中有一个索引的概念,这一步会遍历当前关联的所有同级文件,</p>
+<p>这个在 xcode 中可能没问题,但是<code>appcode</code>中有一个索引的概念,这一步会遍历当前关联的所有同级文件,
+<a href="https://youtrack.jetbrains.com/issue/OC-17593" >参考连接</a>
+</p>
 <p>而这一步由于相对的关系甚至关联到了<code>~</code>这一级,也就是说会遍历当前用户全部的文件,这一步的速度太慢了,我们必须着手解决</p>
 <h2 id="解决">解决</h2>
 <p>打开<code>example/ios/Podfile</code>文件</p>
 <p>这个文件是<code>cocoapod</code>的配置文件,使用的是<code>Ruby</code>语言,</p>
 <p>这个文件一般是自动生成的,我们开发过程中正常情况下不需要关注这个文件</p>
-<p>我们需要修改这个文件,查看</p>
+<p>我们需要修改这个文件,查看
+<a href="https://guides.cocoapods.org/syntax/podfile.html#pod" >官方配置说明</a>
+</p>
 <p>我们不使用 symlinks 的方案,而是采用另一种方案,直接用 path 的方式</p>
 <p>将这个 Podfile 文件改为这样
 
@@ -238,9 +250,6 @@
       </ul>
     </div>
 <div class="post_comments">
-  
-  
-    
  <script src="https://utteranc.es/client.js"
          repo="Caijinglong/kikt-blog-comment"
          issue-term="pathname"
@@ -248,10 +257,7 @@
          crossorigin="anonymous"
          async>
  </script>
- 
-  
-  
-</div>
+ </div>
 
 
 
@@ -664,7 +670,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -724,7 +730,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -824,7 +830,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1201,9 +1207,9 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

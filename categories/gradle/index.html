@@ -39,11 +39,12 @@
     
     
     <link rel="preload" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity = "sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" as="script" integrity=
-    "sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
+    "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
     <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.e2ca722a4b75c6ea8e0f9025f28f8d891eec18dba8a91e7b2e490000cfb82f7cfa78621caab8fefbeb72ae773f8abbaa7fb9a3eebf5b01e98a0e30bd40d1e396.css" integrity="sha512-4spyKkt1xuqOD5Al8o&#43;NiR7sGNuoqR57LkkAAM&#43;4L3z6eGIcqrj&#43;&#43;&#43;tyrnc/iruqf7mj7r9bAemKDjC9QNHjlg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/custom.css">
     
   </head>
   
@@ -53,7 +54,7 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header">
-  <nav class="nav"><a href='https://kikt.top' class="nav_brand nav_item" title="CaiJingLong">
+  <nav class="nav"><a href='https://kikt.top/' class="nav_brand nav_item" title="CaiJingLong">
   <img src="https://kikt.top/logos/logo.png" class="logo" alt="CaiJingLong">
   <div class="nav_close">
     <div><svg class="icon">
@@ -75,10 +76,10 @@
       
 
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="首页">首页 </a>
+    <a href="https://kikt.top/" class="nav_item" title="首页">首页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://kikt.top" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://kikt.top/" class="nav_item" title="连接">连接 <img src='https://kikt.top/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://github.com/Caijinglong" class="nav_child nav_item" title="Github">Github</a>
@@ -114,6 +115,7 @@
     </div>
   </nav>
   
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
 </header>
     <main>
 
@@ -177,12 +179,15 @@
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>Gradle wrapper 这东西不知道什么时候，下载被迁移到了 Github 的 release 里，下载速度骤降，曾几何时 Gradle 团队还高调宣布国内 CDN，现在看来 Gradle 团队也降本增效了。
-解决方案有如下几种，具体使用什么方式，要看你自己的情况。
-直接替换 url 这种情况适用于项目是内部项目或者都是国内人员参与的项目。
-替换方式为直接替换 gradle/wrapper/gradle-wrapper.properties 下的 url 到国内镜像即可， 比如 https://mirrors.cloud.tencent.com/gradle/gradle-8.5-all.zip。
-使用代理 自备
-不能替换的情 …</p>
+            <p>Gradle wrapper 这东西不知道什么时候，下载被迁移到了 Github 的 release 里，下载速度骤降，曾几何时 Gradle 团队还高调宣布国内 CDN，现在看来 Gradle 团队也降本增效了。</p>
+<p>解决方案有如下几种，具体使用什么方式，要看你自己的情况。</p>
+<h2 id="直接替换-url">直接替换 url</h2>
+<p>这种情况适用于项目是内部项目或者都是国内人员参与的项目。</p>
+<p>替换方式为直接替换 <code>gradle/wrapper/gradle-wrapper.properties</code> 下的 url 到国内镜像即可，
+比如 <code>https://mirrors.cloud.tencent.com/gradle/gradle-8.5-all.zip</code>。</p>
+<h2 id="使用代理">使用代理</h2>
+<p>自备</p>
+<h2 id="不能替换的情况">不能替换的情 …</h2>
           
           <br>
           <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -248,9 +253,19 @@
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>首先，是官方文档 Gradle的插件支持任意的JVM语言来编写，当前最常见的是Java或Kotlin
-插件的类型 通常来说，插件的编写有3个位置
-直接在项目里写脚本，比如kts或者groovy的，好处是简单清晰，但这样的插件问题是无法运行在别的项目，并且不太适合复杂逻辑 在目录里写，好处是可以使用多个文件，并且相对工程化一些，缺点同上 单独的工程，对，插件本身也可以是一个gradle项目，通常一个Gradle plugin会包含多个Task。当然，实际引用时只需要一个jar包即可，无论你项目的类型，并且，可以公开发布到mavenCentral或自己的私服，方便引用，一般来说强烈推荐这种方式 项目脚本的方式 创建一个项目 gradle …</p>
+            <p>首先，是官方文档
+Gradle的插件支持任意的JVM语言来编写，当前最常见的是Java或Kotlin</p>
+<h2 id="插件的类型">插件的类型</h2>
+<p>通常来说，插件的编写有3个位置</p>
+<ol>
+<li>直接在项目里写脚本，比如<code>kts</code>或者<code>groovy</code>的，好处是简单清晰，但这样的插件问题是无法运行在别的项目，并且不太适合复杂逻辑</li>
+<li>在
+<a href="https://www.yuque.com/cai-/gradle/pxg0w7" >buildSrc</a>
+目录里写，好处是可以使用多个文件，并且相对工程化一些，缺点同上</li>
+<li>单独的工程，对，插件本身也可以是一个<code>gradle</code>项目，通常一个<code>Gradle plugin</code>会包含多个<code>Task</code>。当然，实际引用时只需要一个<code>jar</code>包即可，无论你项目的类型，并且，可以公开发布到<code>mavenCentral</code>或自己的私服，方便引用，一般来说强烈推荐这种方式</li>
+</ol>
+<h2 id="项目脚本的方式">项目脚本的方式</h2>
+<p>创 …</p>
           
           <br>
           <a href="https://kikt.top/posts/gradle/03/%E7%BC%96%E5%86%99-plugin/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -316,8 +331,24 @@
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>使用方法 这个东西的使用方法很简单，在项目下创建一个buildSrc文件夹，然后刷新gradle项目即可 Gradle会自动将这个文件夹识别为一个Gradle项目，并支持在项目的build.gradle中引用
-我在项目中创建如下的一个文件夹 buildSrc 1plugins { 2 id &#39;java&#39; 3} 1package top.kikt; 2 3import org.gradle.api.Plugin; 4import org.gradle.api.Project; 5 6public class MyPlugin implements Plugin&lt;Project&gt; { 7 8 …</p>
+            <h2 id="使用方法">使用方法</h2>
+<p>这个东西的使用方法很简单，在项目下创建一个buildSrc文件夹，然后刷新gradle项目即可
+Gradle会自动将这个文件夹识别为一个Gradle项目，并支持在项目的build.gradle中引用</p>
+<p>我在项目中创建如下的一个文件夹 <code>buildSrc</code>
+
+<p class="md__image">
+  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981924182.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+</p>
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">plugins</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">id</span> <span class="s1">&#39;java&#39;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">top.kikt</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.gradle.api.Plugin</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.gradle.api.Project</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyPlugin</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Plugin</span><span class="o">&lt;</span><span class="n">Project …</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre></div></p></p>
           
           <br>
           <a href="https://kikt.top/posts/gradle/01/basic/03-buildsrc/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -383,8 +414,14 @@
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>Gradle 推荐使用 Wrapper 的方式来构建工程 Wrapper 根据我的理解，是帮助不同的所有开发同一个项目的人使用相同的 Gradle 版本，从而避免Gradle版本差异带来的问题，而“副作用”就是不同的项目使用相同的 Gradle Wrapper 版本不需要重新下载。
-给项目添加 wrapper 一般来说，如果使用的是 IDE（例如Jetbrains IDEA)或 创建的项目都会包含Wrapper，不需要自行添加。 但如果你的项目是命令创建的，或因为其他原因不包含 wrapper 目录，则需要自行添加 通过如下的代码给项目添加 wrapper，一般来说这取决于你的 gradle 版本，使用 gradle -v …</p>
+            <p>Gradle 推荐使用 Wrapper 的方式来构建工程
+Wrapper 根据我的理解，是帮助不同的所有开发同一个项目的人使用相同的 Gradle 版本，从而避免Gradle版本差异带来的问题，而“副作用”就是不同的项目使用相同的 Gradle Wrapper 版本不需要重新下载。</p>
+<h2 id="给项目添加-wrapper">给项目添加 wrapper</h2>
+<p>一般来说，如果使用的是 IDE（例如Jetbrains IDEA)或 
+<a href="https://start.spring.io/" >Spring boot</a>
+ 创建的项目都会包含Wrapper，不需要自行添加。
+但如果你的项目是命令创建的，或因为其他原因不包含 wrapper 目录，则需要自行添加
+通过如下的代码给项目添加 wrapper，一般来说这取决于你的 gradle 版本， …</p>
           
           <br>
           <a href="https://kikt.top/posts/gradle/01/03-gradle_wrapper/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -450,10 +487,14 @@
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>Gradle 中存在很多约定式的东西，也就是理论上不支持配置，或者哪怕可以配置，也不建议修改的东西
-build.gradle Gradle 构建系统的入口，一般一个gradle项目应该首先看这里，这里会指定项目的几乎所有配置 对于Java项目来说，包含但不仅限于指定项目是java app还是java library，依赖的三方库，源文件包含什么，打包时应该包含的文件，签名方式，上传maven的配置等等
-settings.gradle 如果是子项目，可能不包含这个文件，但主项目一般都应该包含这个文件，一般情况下，这个文件指定了项目名称和整个工程包含的项目
-buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需要用到的源码，计 …</p>
+            <p>Gradle 中存在很多约定式的东西，也就是理论上不支持配置，或者哪怕可以配置，也不建议修改的东西</p>
+<h2 id="buildgradle">build.gradle</h2>
+<p>Gradle 构建系统的入口，一般一个gradle项目应该首先看这里，这里会指定项目的几乎所有配置
+对于Java项目来说，包含但不仅限于指定项目是<code>java app</code>还是<code>java library</code>，依赖的三方库，源文件包含什么，打包时应该包含的文件，签名方式，上传maven的配置等等</p>
+<h2 id="settingsgradle">settings.gradle</h2>
+<p>如果是子项目，可能不包含这个文件，但主项目一般都应该包含这个文件，一般情况下，这个文件指定了项目名称和整个工程包含的项目</p>
+<h2 id="buildsrc">buildSrc</h2>
+<p>这个文件夹很神奇，这里可以定义你在构建系统中需要用到的源码，计 …</p>
           
           <br>
           <a href="https://kikt.top/posts/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -519,9 +560,26 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>在 Gradle 中使用 Plugin 大概有如下两种方式
-使用 Gradle 第一方提供的内置插件，或第三方的插件 自己编写的，放在 buildSrc 的 在本篇中插件和 Plugin 为同义 本篇只写如何使用Plugin，关于编写Plugin单独开一篇来写 内置插件 有2种常见的引入模式
-1plugins { 2 id &#39;java&#39; 3} 4 5apply plugin: &#39;java&#39; 6apply plugin: JavaPlugin // 注意这里没有引号，这个 JavaPlugin 是一个 Groovy 对象 这几种是相同的作用 需要注意的一点是，如果是使用 plugins 闭包来引入插件， …</p>
+            <p>在 Gradle 中使用 Plugin 大概有如下两种方式</p>
+<ol>
+<li>使用 Gradle 第一方提供的内置插件，或第三方的插件</li>
+<li>自己编写的，放在 buildSrc 的</li>
+</ol>
+<p><strong>在本篇中插件和 Plugin 为同义</strong>
+本篇只写如何使用Plugin，关于编写Plugin单独开一篇来写
+
+<a href="https://www.yuque.com/cai-/gradle/dobcqd?view=doc_embed" >编写 Plugin</a>
+</p>
+<h2 id="内置插件">内置插件</h2>
+<p>有2种常见的引入模式</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">plugins</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">id</span> <span class="s1">&#39;java&#39;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;java&#39;</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="n">JavaPlugin</span> <span class="c1">// 注意这里没有引号，这个 JavaPlugin 是一个 Groovy 对象
+</span></span></span></code></pre></div><p>这几种是相同的作用
+需要注意的一点是， …</p>
           
           <br>
           <a href="https://kikt.top/posts/gradle/03-plugin/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -587,7 +645,25 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>创建栈 1tasks.register(&#34;Hello&#34;) { 2 doLast { 3 println(&#34;Run the method do last&#34;) 4 } 5} 使用 gradle -q Hello会得到输出 任务的生命周期 1 2tasks.register(&#34;World&#34;) { 3 println(&#34;Config the world task&#34;) 4 dependsOn(&#34;Hello&#34;) 5 doFirst { 6 println(&#34;World first&#34;) 7 } 8 doLast { 9 …</p>
+            <h2 id="创建栈">创建栈</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">tasks</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&#34;Hello&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">doLast</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">        <span class="n">println</span><span class="p">(</span><span class="s2">&#34;Run the method do last&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>使用 <code>gradle -q Hello</code>会得到输出
+
+<p class="md__image">
+  <img src="./02-01.png" alt="image.png"  crossorigin/>
+</p>
+</p>
+<h2 id="任务的生命周期">任务的生命周期</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="ln"> 1</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="n">tasks</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&#34;World&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">println</span><span class="p">(</span><span class="s2">&#34;Config the world task&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">dependsOn</span><span class="p">(</span><span class="s2">&#34;Hello&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="n">doFirst</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="n">println</span><span class="p">(</span><span class="s2">&#34;World …</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre></div></p></p>
           
           <br>
           <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -653,8 +729,15 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>在我看来，Gradle 中有几项很基础的概念必须提前说明
-概念 Gradle 的约定式概念 </p>
+            <p>在我看来，Gradle 中有几项很基础的概念必须提前说明</p>
+<h2 id="概念">概念</h2>
+<ul>
+<li>
+
+<a href="../../posts/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/" >Gradle 的约定式概念</a>
+
+</li>
+</ul>
           
           <br>
           <a href="https://kikt.top/posts/gradle/01-gradle%E7%9A%84%E5%9F%BA%E7%A1%80/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -720,8 +803,16 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>Gradle 本身包含一个命令行工具，正常情况下，Gradle的使用离不开命令行工具 一个正常的Gradle项目应该包含 gradle/wrapper 文件夹，这里会指明你项目使用的Gradle版本，以保证所有项目参与者在不同的系统都使用相同的Gradle版本
-最典型的使用 Gradle中最基本的概念之一，任务（Task），你需要执行哪个任务，就使用gradle [taskName]即可，典型的比如java项目包含的jar，安卓项目包含的assembleRelease，可以使用gradle tasks来查看当前项目包含的所有任务和对应的功能 参数的设置方式，可以在task前也可以在后，有两种参数，一种是有值的，一种是无值的(可以理解 …</p>
+            <p><code>Gradle</code> 本身包含一个命令行工具，正常情况下，<code>Gradle</code>的使用离不开命令行工具
+一个正常的<code>Gradle</code>项目应该包含 <code>gradle/wrapper</code> 文件夹，这里会指明你项目使用的<code>Gradle</code>版本，以保证所有项目参与者在不同的系统都使用相同的<code>Gradle</code>版本</p>
+<h2 id="最典型的使用">最典型的使用</h2>
+<p>Gradle中最基本的概念之一，任务（Task），你需要执行哪个任务，就使用<code>gradle [taskName]</code>即可，典型的比如<code>java</code>项目包含的<code>jar</code>，安卓项目包含的<code>assembleRelease</code>，可以使用<code>gradle tasks</code>来查看当前项目包含的所有任务和对应的功能
+
+<p class="md__image">
+  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981924680.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+</p>
+</p>
+<p>参数的设置方式，可以在task前也可以在后，有两种参数，一种是有值的，一种是无 …</p></p></p>
           
           <br>
           <a href="https://kikt.top/posts/gradle/01/01-gradle-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -787,9 +878,17 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
       <div class="excerpt_footer">
         <div class="pale">
           
-            <p>官方的文档链接，针对的是 7.5.1 版本 本文章对应的所有代码托管在 中
-关于文档 项目可能会混杂 groovy、kotlin、java 的代码 groovy 是因为这是 gradle 默认使用的语言，.gradle 文件都是使用的 groovy 的语法 kotlin则是因为gradle将kt也作为一级语言来使用，扩展名大部分是kts java则是因为偶尔会有buildSrc文件夹内会使用，包括groovy中也会有java语法，因为几乎是完全兼容
-为什么需要 Gradle Gradle 在我的理解就是把复杂的过程简单化的过程，可以使用 Gradle 来构建自己的项目，如果有一个很复杂的项目或者项目 …</p>
+            <p>官方的文档链接，针对的是 7.5.1 版本
+本文章对应的所有代码托管在 
+<a href="https://home.kikt.top:30202/StudyNodes/GradleExamples" >Git 仓库</a>
+ 中</p>
+<h2 id="关于文档">关于文档</h2>
+<p>项目可能会混杂 <code>groovy</code>、<code>kotlin</code>、<code>java</code> 的代码
+<code>groovy</code> 是因为这是 gradle 默认使用的语言，<code>.gradle</code> 文件都是使用的 <code>groovy</code> 的语法
+<code>kotlin</code>则是因为<code>gradle</code>将<code>kt</code>也作为一级语言来使用，扩展名大部分是<code>kts</code>
+<code>java</code>则是因为偶尔会有<code>buildSrc</code>文件夹内会使用，包括<code>groovy</code>中也会有<code>java</code>语法，因为几乎是完全兼容</p>
+<h2 id="为什么需要-gradle">为什么需要 Gradle</h2>
+<p>Gradle 在我的理解就是把复杂的过程简单化的过程，可以使用 Gradle 来构建自己的项目，如果有一个很复杂的项目或者项目 …</p>
           
           <br>
           <a href="https://kikt.top/posts/gradle/00-gradle-%E5%BC%80%E5%A4%B4/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -798,209 +897,27 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
     </div>
   </li>
 
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://kikt.top/posts/gradle/01/api/groovy-%E8%AF%AD%E6%B3%95/" title="Groovy 语法">Groovy 语法</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <title>calendar</title>
-  <use xlink:href="#calendar"></use>
-</svg>
-</span>
-    <span class="post_date">
-      2023-01-13 13:45</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/gradle' title="gradle" class="post_tag button button_translucent">gradle
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    分享到:
-    <a href="https://twitter.com/intent/tweet?text=Groovy%20%e8%af%ad%e6%b3%95&url=https%3a%2f%2fkikt.top%2fposts%2fgradle%2f01%2fapi%2fgroovy-%25E8%25AF%25AD%25E6%25B3%2595%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>twitter</title>
-  <use xlink:href="#twitter"></use>
-</svg>
-
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fgradle%2f01%2fapi%2fgroovy-%25E8%25AF%25AD%25E6%25B3%2595%2f&t=Groovy%20%e8%af%ad%e6%b3%95" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>facebook</title>
-  <use xlink:href="#facebook"></use>
-</svg>
-
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <title>linkedin</title>
-  <use xlink:href="#linkedin"></use>
-</svg>
-
-    </a>
-    <a href="https://kikt.top/posts/gradle/01/api/groovy-%E8%AF%AD%E6%B3%95/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <title>copy</title>
-  <use xlink:href="#copy"></use>
-</svg>
-
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-      <div class="excerpt_footer">
-        <div class="pale">
-          
-            <p>本文不是从零教 groovy，而是一些基础的 groovy 语法，够用就行 另外，目前Gradle原生支持kts，简单来说就是用kt的语法来配置Gradle，新入门的话足够用 后续的文章会加大kts的使用比例，来替代 groovy
-基础类型 更多的是使用别人提供的插件，我们在使用的时候主要就是配置而已 gradle 脚本中包含了三种使用方式
-闭包 方法 .的调用 其中我们最常见的其实是闭包，其次是方法，最后才是.的调用
-方法 常见的apply其实就是调用 PluginAware.apply方法，from:则属于groovy的语法糖, from是方法的参数，冒号后跟的是参数
-1apply from: …</p>
-          
-          <br>
-          <a href="https://kikt.top/posts/gradle/01/api/groovy-%E8%AF%AD%E6%B3%95/" title="阅读更多" class="excerpt_more button">阅读更多</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://kikt.top/posts/gradle/01/api/gradle-api/" title="Gradle API">Gradle API</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <title>calendar</title>
-  <use xlink:href="#calendar"></use>
-</svg>
-</span>
-    <span class="post_date">
-      2023-01-12 20:45</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/gradle' title="gradle" class="post_tag button button_translucent">gradle
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    分享到:
-    <a href="https://twitter.com/intent/tweet?text=Gradle%20API&url=https%3a%2f%2fkikt.top%2fposts%2fgradle%2f01%2fapi%2fgradle-api%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>twitter</title>
-  <use xlink:href="#twitter"></use>
-</svg>
-
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fgradle%2f01%2fapi%2fgradle-api%2f&t=Gradle%20API" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>facebook</title>
-  <use xlink:href="#facebook"></use>
-</svg>
-
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <title>linkedin</title>
-  <use xlink:href="#linkedin"></use>
-</svg>
-
-    </a>
-    <a href="https://kikt.top/posts/gradle/01/api/gradle-api/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <title>copy</title>
-  <use xlink:href="#copy"></use>
-</svg>
-
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-      <div class="excerpt_footer">
-        <div class="pale">
-          
-            <p>Project </p>
-          
-          <br>
-          <a href="https://kikt.top/posts/gradle/01/api/gradle-api/" title="阅读更多" class="excerpt_more button">阅读更多</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://kikt.top/posts/gradle/menu/" title="目录 for content/post/gradle">目录 for content/post/gradle</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <title>calendar</title>
-  <use xlink:href="#calendar"></use>
-</svg>
-</span>
-    <span class="post_date">
-      2023-01-10 20:45</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/gradle' title="gradle" class="post_tag button button_translucent">gradle
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    分享到:
-    <a href="https://twitter.com/intent/tweet?text=%e7%9b%ae%e5%bd%95%20for%20content%2fpost%2fgradle&url=https%3a%2f%2fkikt.top%2fposts%2fgradle%2fmenu%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>twitter</title>
-  <use xlink:href="#twitter"></use>
-</svg>
-
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fgradle%2fmenu%2f&t=%e7%9b%ae%e5%bd%95%20for%20content%2fpost%2fgradle" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>facebook</title>
-  <use xlink:href="#facebook"></use>
-</svg>
-
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <title>linkedin</title>
-  <use xlink:href="#linkedin"></use>
-</svg>
-
-    </a>
-    <a href="https://kikt.top/posts/gradle/menu/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <title>copy</title>
-  <use xlink:href="#copy"></use>
-</svg>
-
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-      <div class="excerpt_footer">
-        <div class="pale">
-          
-            <p> Gradle 开始 Gradle 命令行工具的使用 Gradle 基础 Gradle 的约定式概念 Gradle Task的创建和使用 Gradle Wrapper Gradle Plugin Gradle buildSrc Gradle API Groovy 语法 Gradle 编写Plugin </p>
-          
-          <br>
-          <a href="https://kikt.top/posts/gradle/menu/" title="阅读更多" class="excerpt_more button">阅读更多</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
       <li>
+    <ul class="pagination pagination-default">
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="../../categories/gradle/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="../../categories/gradle/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="../../categories/gradle/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
       </li>
     </ul>
   </div>
@@ -1411,7 +1328,7 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
             </a>
             
             
-            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart-2.6">DART-2.6<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/dart-2.6/' class=" post_tag button button_translucent" data-position=1 title="dart 2.6">DART 2.6<span class="button_tally">1</span>
             </a>
             
             
@@ -1471,7 +1388,7 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
             </a>
             
             
-            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter-web">FLUTTER-WEB<span class="button_tally">2</span>
+            <a href='https://kikt.top/tags/flutter-web/' class=" post_tag button button_translucent" data-position=2 title="flutter web">FLUTTER WEB<span class="button_tally">2</span>
             </a>
             
             
@@ -1571,7 +1488,7 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
             </a>
             
             
-            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live-template">LIVE-TEMPLATE<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/live-template/' class=" post_tag button button_translucent" data-position=1 title="live template">LIVE TEMPLATE<span class="button_tally">1</span>
             </a>
             
             
@@ -1948,9 +1865,9 @@ buildSrc 这个文件夹很神奇，这里可以定义你在构建系统中需�
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://kikt.top/en/js/bundle.efdd82dd14f307cd0ab0f92fc6f2ea23e484ebd0f92e3cb95836e7d86b20900fc8ea69c2b5556fa4dbc0895bbd2537feafec52d116a5e2d7e309eb11f15a1339.js" integrity="sha512-792C3RTzB80KsPkvxvLqI&#43;SE69D5Ljy5WDbn2GsgkA/I6mnCtVVvpNvAiVu9JTf&#43;r&#43;xS0Ral4tfjCesR8VoTOQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
-  <script src="https://kikt.top/js/search.min.c67b7b163db3fff962dd35c570987eb5530974e14af2e6d10731ba8a3e022d25fa9922431dc21f1e112ac6add88bd1a99d7e4c1873ae2e6f2bf71b9f4a7b9c04.js"></script>
+  <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
 
     
   </body>

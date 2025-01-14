@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>library on CaiJingLong</title>
+    <title>Library on CaiJingLong</title>
     <link>https://kikt.top/tags/library/</link>
-    <description>Recent content in library on CaiJingLong</description>
+    <description>Recent content in Library on CaiJingLong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -17,17 +17,78 @@
       <description>
         
           
-            pub 库
-项目名: 项目地址: 简介: 图片压缩
-项目名: 项目地址: 项目简介: 仿 android toast 纯 flutter 实现
-项目名: 项目地址: 项目简介: 读取系统相册 纯 api 版 支持(ios/android)
-项目名: 项目地址: 项目简介: 相册图片选择器 基于 photo_manager
-项目名: 项目地址: 项目简介: ListView 的加载更多
-项目名: 项目地址: 项目简介: 配合 pageview 的简单圆点指示器
-项目名: 项目地址: 项目简介: 城市选择器
-项目名: 项目地址: 项目简介: 一个长按弹出菜单的小部件
-项目名: 项目地址: 项目简介: 日志插件,用于帮助将 flutter 上的日志记录至开发机
-如果用过的朋友觉得好用,请在遇到别人想用的时候帮忙感谢宣传
+            &lt;p&gt;pub 库&lt;/p&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://github.com/OpenFlutter/flutter_image_compress&#34; &gt;flutter_image_compress&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/flutter_image_compress&#34; &gt;https://pub.dartlang.org/packages/flutter_image_compress&lt;/a&gt;
+&lt;br&gt;
+简介: 图片压缩&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/oktoast&#34; &gt;oktoast&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/OpenFlutter/flutter_oktoast&#34; &gt;https://github.com/OpenFlutter/flutter_oktoast&lt;/a&gt;
+&lt;br&gt;
+项目简介: 仿 android toast 纯 flutter 实现&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/photo_manager&#34; &gt;photo_manager&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_photo_manager&#34; &gt;https://github.com/CaiJingLong/flutter_photo_manager&lt;/a&gt;
+&lt;br&gt;
+项目简介: 读取系统相册 纯 api 版 支持(ios/android)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/photo&#34; &gt;photo&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_photo&#34; &gt;https://github.com/CaiJingLong/flutter_photo&lt;/a&gt;
+&lt;br&gt;
+项目简介: 相册图片选择器 基于 photo_manager&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/loadmore&#34; &gt;loadmore&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/OpenFlutter/flutter_listview_loadmore&#34; &gt;https://github.com/OpenFlutter/flutter_listview_loadmore&lt;/a&gt;
+&lt;br&gt;
+项目简介: ListView 的加载更多&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/page_indicator&#34; &gt;flutter_page_indicator&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_page_indicator&#34; &gt;https://github.com/CaiJingLong/flutter_page_indicator&lt;/a&gt;
+&lt;br&gt;
+项目简介: 配合 pageview 的简单圆点指示器&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/city_picker&#34; &gt;city_picker&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_city_picker&#34; &gt;https://github.com/CaiJingLong/flutter_city_picker&lt;/a&gt;
+
+项目简介: 城市选择器&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/menu&#34; &gt;menu&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/flutter_long_tap_menu&#34; &gt;https://github.com/CaiJingLong/flutter_long_tap_menu&lt;/a&gt;
+&lt;br&gt;
+项目简介: 一个长按弹出菜单的小部件&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;项目名: 
+&lt;a href=&#34;https://pub.dartlang.org/packages/log4d&#34; &gt;log4d&lt;/a&gt;
+&lt;br&gt;
+项目地址: 
+&lt;a href=&#34;https://github.com/CaiJingLong/log4d&#34; &gt;https://github.com/CaiJingLong/log4d&lt;/a&gt;
+&lt;br&gt;
+项目简介: 日志插件,用于帮助将 flutter 上的日志记录至开发机&lt;/p&gt;
           
           
         
