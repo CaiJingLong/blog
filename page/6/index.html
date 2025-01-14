@@ -132,6 +132,113 @@
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
+        <a href="https://kikt.top/posts/flutter/oc/add-swift-plugin/" title="flutter 在OC工程中添加swift库报错的问题">flutter 在OC工程中添加swift库报错的问题</a>
+      </h3>
+      
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      2019-05-31 14:43</span>
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+        </a><a href='https://kikt.top/tags/swift' title="swift" class="post_tag button button_translucent">swift
+        </a><a href='https://kikt.top/tags/oc' title="oc" class="post_tag button button_translucent">oc
+        </a><a href='https://kikt.top/tags/%E6%8F%92%E4%BB%B6' title="插件" class="post_tag button button_translucent">插件
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=flutter%20%e5%9c%a8OC%e5%b7%a5%e7%a8%8b%e4%b8%ad%e6%b7%bb%e5%8a%a0swift%e5%ba%93%e6%8a%a5%e9%94%99%e7%9a%84%e9%97%ae%e9%a2%98&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2foc%2fadd-swift-plugin%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2foc%2fadd-swift-plugin%2f&t=flutter%20%e5%9c%a8OC%e5%b7%a5%e7%a8%8b%e4%b8%ad%e6%b7%bb%e5%8a%a0swift%e5%ba%93%e6%8a%a5%e9%94%99%e7%9a%84%e9%97%ae%e9%a2%98" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://kikt.top/posts/flutter/oc/add-swift-plugin/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    </div>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>下午看见群里有人问 swift 插件导入 oc 项目报错的问题, 我之前解决过, 但是忘了解决过程是怎么样的了, 这里记录下方便以后备查</p>
+<p>没兴趣追踪原因的直接查看
+<a href="#%E6%80%BB%E7%BB%93%E4%B8%8B" >总结下</a>
+</p>
+<ul>
+<li>
+<a href="#%E5%A4%8D%E7%8E%B0%E9%94%99%E8%AF%AF" >复现错误</a>
+</li>
+<li>
+<a href="#%E5%B0%9D%E8%AF%95%E8%A7%A3%E5%86%B3" >尝试解决</a>
+
+<ul>
+<li>
+<a href="#%E6%80%BB%E7%BB%93%E4%B8%8B" >总结下</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#%E5%90%8E%E8%AE%B0" >后记</a>
+</li>
+</ul>
+<h2 id="复现错误">复现错误</h2>
+<ol>
+<li>创建一个主工程(oc)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">flutter create oc_project
+</span></span></code></pre></div><ol start="2">
+<li>创建一个插件工程(swift)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="nb">cd</span> oc_project
+</span></span><span class="line"><span class="ln">2</span><span class="cl">flutter create -i swift -t plugin swift_plugin
+</span></span></code></pre></div><ol start="3">
+<li>关联工程</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="ln">1</span><span class="cl"><span class="w">  </span><span class="nt">swift_plugin</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">./swift_plugin</span><span class="w">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w">    </span><span class="l">```</span><span class="w">
+</span></span></span></code></pre></div><ol start="4">
+<li>运行 iOS …</li></ol></ul></li></ul>
+          
+          <br>
+          <a href="https://kikt.top/posts/flutter/oc/add-swift-plugin/" title="阅读更多" class="excerpt_more button">阅读更多</a>
+        </div>
+      </div>
+    </div>
+  </li>
+
+      <li class="post_item">
+  <div class="excerpt">
+    <div class="excerpt_header">
+      <h3 class="post_link">
         <a href="https://kikt.top/posts/android/android-q/privacy/android-q-privacy-5/" title="Android Q 隐私篇(5) - 相机/网络">Android Q 隐私篇(5) - 相机/网络</a>
       </h3>
       
@@ -954,135 +1061,6 @@ API …</p>
     </div>
   </li>
 
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://kikt.top/posts/flutter/toast/oktoast/" title="flutter toast插件 OKToast的介绍">flutter toast插件 OKToast的介绍</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <title>calendar</title>
-  <use xlink:href="#calendar"></use>
-</svg>
-</span>
-    <span class="post_date">
-      2019-04-18 09:12</span>
-    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
-        </a><a href='https://kikt.top/tags/toast' title="toast" class="post_tag button button_translucent">toast
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    分享到:
-    <a href="https://twitter.com/intent/tweet?text=flutter%20toast%e6%8f%92%e4%bb%b6%20OKToast%e7%9a%84%e4%bb%8b%e7%bb%8d&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2ftoast%2foktoast%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>twitter</title>
-  <use xlink:href="#twitter"></use>
-</svg>
-
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2ftoast%2foktoast%2f&t=flutter%20toast%e6%8f%92%e4%bb%b6%20OKToast%e7%9a%84%e4%bb%8b%e7%bb%8d" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>facebook</title>
-  <use xlink:href="#facebook"></use>
-</svg>
-
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <title>linkedin</title>
-  <use xlink:href="#linkedin"></use>
-</svg>
-
-    </a>
-    <a href="https://kikt.top/posts/flutter/toast/oktoast/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <title>copy</title>
-  <use xlink:href="#copy"></use>
-</svg>
-
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-      <div class="excerpt_footer">
-        <div class="pale">
-          
-            <p>OKToast 是一款 在 flutter 上 使用的 toast 插件</p>
-<p>使用简单, 可定制性强, 纯 flutter, 调用不用 context</p>
-<ul>
-<li>
-<a href="#%e5%ae%89%e8%a3%85" >安装</a>
-</li>
-<li>
-<a href="#%e4%bd%bf%e7%94%a8" >使用</a>
-
-<ul>
-<li>
-<a href="#%e5%9c%a8%e4%bb%a3%e7%a0%81%e4%b8%ad%e5%ae%9a%e4%b9%89-oktoast-%e7%bb%84%e4%bb%b6" >在代码中定义 OKToast 组件</a>
-</li>
-<li>
-<a href="#%e8%b0%83%e7%94%a8" >调用</a>
-
-<ul>
-<li>
-<a href="#%e6%96%87%e6%9c%ac-toast" >文本 toast</a>
-</li>
-<li>
-<a href="#%e8%87%aa%e5%ae%9a%e4%b9%89-widget" >自定义 widget</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<a href="#%e7%ae%80%e5%8d%95%e7%9a%84-toast-%e5%ae%9e%e7%8e%b0" >简单的 toast 实现</a>
-</li>
-<li>
-<a href="#%e8%bf%9b%e9%98%b6%e4%bd%bf%e7%94%a8" >进阶使用</a>
-
-<ul>
-<li>
-<a href="#%e9%9a%90%e8%97%8f%e5%b7%b2%e5%87%ba%e7%8e%b0%e7%9a%84-toast" >隐藏已出现的 toast</a>
-
-<ul>
-<li>
-<a href="#%e9%9a%90%e8%97%8f%e6%89%80%e6%9c%89%e7%9a%84-toast" >隐藏所有的 toast</a>
-</li>
-<li>
-<a href="#%e9%9a%90%e8%97%8f%e5%8d%95%e7%8b%ac%e7%9a%84-toast" >隐藏单独的 toast</a>
-</li>
-<li>
-<a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e5%b1%9e%e6%80%a7" >自定义属性</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<a href="#%e6%9c%ac%e6%96%87%e5%ae%8c%e6%95%b4%e7%9a%84-maindart" >本文完整的 main.dart</a>
-</li>
-<li>
-<a href="#%e5%92%8c-fluttertoast-%e7%9a%84%e5%af%b9%e6%af%94" >和 fluttertoast 的对比</a>
-</li>
-<li>
-<a href="#%e5%90%8e%e8%ae%b0" >后记</a>
-</li>
-</ul>
-<h2 id="安装">安装</h2>
-<p>查看文档: …</p></li></ul></li></ul></li></li></ul></li></ul>
-          
-          <br>
-          <a href="https://kikt.top/posts/flutter/toast/oktoast/" title="阅读更多" class="excerpt_more button">阅读更多</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
       <li>
     <ul class="pagination pagination-default">
       <li class="page-item">
@@ -1144,6 +1122,9 @@ API …</p>
     <h2 class="mt-4">精选文章</h2>
     <ul>
       <li>
+        <a href="https://kikt.top/posts/kmp/install_environment_run_on_macos/" class="nav-link" title="安装 Kotlin Multiplatform 环境并运行在 macOS 上">安装 Kotlin Multiplatform 环境并运行在 macOS 上</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -1152,6 +1133,9 @@ API …</p>
     </ul>
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
+      <li>
+        <a href="https://kikt.top/posts/kmp/install_environment_run_on_macos/" class="nav-link" title="安装 Kotlin Multiplatform 环境并运行在 macOS 上">安装 Kotlin Multiplatform 环境并运行在 macOS 上</a>
+      </li>
       <li>
         <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="Gradle wrapper 使用国内镜像的那点事">Gradle wrapper 使用国内镜像的那点事</a>
       </li>
@@ -1172,9 +1156,6 @@ API …</p>
       </li>
       <li>
         <a href="https://kikt.top/posts/gradle/03-plugin/" class="nav-link" title="Gradle Plugin">Gradle Plugin</a>
-      </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
     </ul>
     <div>
@@ -1308,6 +1289,10 @@ API …</p>
             </a>
             
             
+            <a href='https://kikt.top/categories/kotlin-multiplatform/' class=" post_tag button button_translucent" data-position=1 title="kotlin multiplatform">KOTLIN MULTIPLATFORM<span class="button_tally">1</span>
+            </a>
+            
+            
             <a href='https://kikt.top/categories/kotlin-compose/' class=" post_tag button button_translucent" data-position=5 title="kotlin-compose">KOTLIN-COMPOSE<span class="button_tally">5</span>
             </a>
             
@@ -1396,6 +1381,11 @@ API …</p>
           <span class="button_tally">5</span>
         </a>
         
+        <a href='https://kikt.top/tags/desktop/' class="post_tag button button_translucent" title="desktop">
+          DESKTOP
+          <span class="button_tally">5</span>
+        </a>
+        
         <a href='https://kikt.top/tags/github/' class="post_tag button button_translucent" title="github">
           GITHUB
           <span class="button_tally">5</span>
@@ -1414,11 +1404,6 @@ API …</p>
         <a href='https://kikt.top/tags/%E9%9A%90%E7%A7%81/' class="post_tag button button_translucent" title="隐私">
           隐私
           <span class="button_tally">5</span>
-        </a>
-        
-        <a href='https://kikt.top/tags/channel/' class="post_tag button button_translucent" title="channel">
-          CHANNEL
-          <span class="button_tally">4</span>
         </a>
         
         
@@ -1527,7 +1512,7 @@ API …</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/desktop/' class=" post_tag button button_translucent" data-position=4 title="desktop">DESKTOP<span class="button_tally">4</span>
+            <a href='https://kikt.top/tags/desktop/' class=" post_tag button button_translucent" data-position=5 title="desktop">DESKTOP<span class="button_tally">5</span>
             </a>
             
             
@@ -1675,6 +1660,10 @@ API …</p>
             </a>
             
             
+            <a href='https://kikt.top/tags/kotlin/' class=" post_tag button button_translucent" data-position=1 title="kotlin">KOTLIN<span class="button_tally">1</span>
+            </a>
+            
+            
             <a href='https://kikt.top/tags/kotlin-compose/' class=" post_tag button button_translucent" data-position=5 title="kotlin-compose">KOTLIN-COMPOSE<span class="button_tally">5</span>
             </a>
             
@@ -1699,7 +1688,7 @@ API …</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/macos/' class=" post_tag button button_translucent" data-position=1 title="macos">MACOS<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/macos/' class=" post_tag button button_translucent" data-position=2 title="macos">MACOS<span class="button_tally">2</span>
             </a>
             
             
@@ -1708,6 +1697,10 @@ API …</p>
             
             
             <a href='https://kikt.top/tags/migrate/' class=" post_tag button button_translucent" data-position=1 title="migrate">MIGRATE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/multiplatform/' class=" post_tag button button_translucent" data-position=1 title="multiplatform">MULTIPLATFORM<span class="button_tally">1</span>
             </a>
             
             
@@ -1924,6 +1917,10 @@ API …</p>
             
             
             <a href='https://kikt.top/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/' class=" post_tag button button_translucent" data-position=1 title="状态管理">状态管理<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%8E%AF%E5%A2%83/' class=" post_tag button button_translucent" data-position=1 title="环境">环境<span class="button_tally">1</span>
             </a>
             
             

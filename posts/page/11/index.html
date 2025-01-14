@@ -126,6 +126,101 @@
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
+        <a href="https://kikt.top/posts/flutter/flutter-depo-conflict/" title="Flutter 依赖冲突解决">Flutter 依赖冲突解决</a>
+      </h3>
+      
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      2018-08-23 12:12</span>
+    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+        </a><a href='https://kikt.top/tags/%E5%86%B2%E7%AA%81' title="冲突" class="post_tag button button_translucent">冲突
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=Flutter%20%e4%be%9d%e8%b5%96%e5%86%b2%e7%aa%81%e8%a7%a3%e5%86%b3&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fflutter-depo-conflict%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fflutter-depo-conflict%2f&t=Flutter%20%e4%be%9d%e8%b5%96%e5%86%b2%e7%aa%81%e8%a7%a3%e5%86%b3" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://kikt.top/posts/flutter/flutter-depo-conflict/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    </div>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>有时候 flutter 更新 sdk 版本后不知道该不该更新
+有时候 pub 库更新后和自己的其他类库发生了冲突</p>
+<p>
+<p class="md__image">
+  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981926383.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+</p>
+
+类似于图上的情况</p>
+<p>遇到这样的问题应该怎么解决呢</p>
+<p>我们一步步解决</p>
+<p>首先,这种依赖一般是 pub 中引用的,先查看下原作者有没有最新版,也许就解决了呢</p>
+<p>无奈我们用到的类库是一个 5 个月没有更新过的类库,看来是指望不上了
+没关系,我们进 pub 主页中</p>
+<p>
+<p class="md__image">
+  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981927044.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="pub"  crossorigin/>
+</p>
+</p>
+<p>一般都是有 github 的,我们点进 github 中
+如果真没有 那就下一个 zip,然后自己创建一个吧</p>
+<p>然后 fork 项目,clone 下来,修改下
+<a href="https://github.com/CaiJingLong/flutter_cached_network_image/commit/fea280d51955b7b81ede7f2f69ef8aaf925cc971" >commit</a>
+</p>
+<p>
+<p class="md__image">
+  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981927669.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+</p>
+
+可以参考下这个修改日志, 修改了库的引用地址,因为这两个库是 …</p></p></p></p></p>
+          
+          <br>
+          <a href="https://kikt.top/posts/flutter/flutter-depo-conflict/" title="阅读更多" class="excerpt_more button">阅读更多</a>
+        </div>
+      </div>
+    </div>
+  </li>
+
+      <li class="post_item">
+  <div class="excerpt">
+    <div class="excerpt_header">
+      <h3 class="post_link">
         <a href="https://kikt.top/posts/flutter/dart-flutter-code-style/" title="Dart Flutter中的代码规范">Dart Flutter中的代码规范</a>
       </h3>
       
@@ -877,83 +972,6 @@ google 自己的官方介绍,来源于
     </div>
   </li>
 
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://kikt.top/posts/android/android-repo-confire/" title="android 依赖冲突">android 依赖冲突</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <title>calendar</title>
-  <use xlink:href="#calendar"></use>
-</svg>
-</span>
-    <span class="post_date">
-      2018-03-04 17:14</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/android' title="android" class="post_tag button button_translucent">android
-        </a><a href='https://kikt.top/tags/%E5%86%B2%E7%AA%81' title="冲突" class="post_tag button button_translucent">冲突
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    分享到:
-    <a href="https://twitter.com/intent/tweet?text=android%20%e4%be%9d%e8%b5%96%e5%86%b2%e7%aa%81&url=https%3a%2f%2fkikt.top%2fposts%2fandroid%2fandroid-repo-confire%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>twitter</title>
-  <use xlink:href="#twitter"></use>
-</svg>
-
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fandroid%2fandroid-repo-confire%2f&t=android%20%e4%be%9d%e8%b5%96%e5%86%b2%e7%aa%81" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>facebook</title>
-  <use xlink:href="#facebook"></use>
-</svg>
-
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <title>linkedin</title>
-  <use xlink:href="#linkedin"></use>
-</svg>
-
-    </a>
-    <a href="https://kikt.top/posts/android/android-repo-confire/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <title>copy</title>
-  <use xlink:href="#copy"></use>
-</svg>
-
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-      <div class="excerpt_footer">
-        <div class="pale">
-          
-            <h2 id="起因">起因</h2>
-<p>在引入新的依赖后,有时你会报一些冲突的错误,尤其是 v4 v7 库的使用</p>
-<p>有的时候能&quot;自动&quot;纠正,但是大部分时候不行</p>
-<p>比如 A 库引用了 v7 26.x.x 的库, B 库使用了 v7 27.x.x 作为依赖</p>
-<h2 id="解决方案">解决方案</h2>
-<p>gradle 打包的过程中,首先会加载所有 gradle 脚本到库内</p>
-<p>然后才是运行的过程, 所以我们只需要在 app 级的<code>build.gradle</code>中增加如下代码即可</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">rootProject</span><span class="o">.</span><span class="na">allprojects</span> <span class="o">{</span> <span class="c1">// 闭包循环每个工程
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">subprojects</span> <span class="o">{</span> <span class="c1">//每个工程子工程
-</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"></span>        <span class="n">project</span><span class="o">.</span><span class="na">configurations</span><span class="o">.</span><span class="na">all</span> <span class="o">{</span> <span class="c1">// …</span></span></span></span></span></span></span></span></span></code></pre></div>
-          
-          <br>
-          <a href="https://kikt.top/posts/android/android-repo-confire/" title="阅读更多" class="excerpt_more button">阅读更多</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
       <li>
     <ul class="pagination pagination-default">
       <li class="page-item">
@@ -1015,6 +1033,9 @@ google 自己的官方介绍,来源于
     <h2 class="mt-4">精选文章</h2>
     <ul>
       <li>
+        <a href="https://kikt.top/posts/kmp/install_environment_run_on_macos/" class="nav-link" title="安装 Kotlin Multiplatform 环境并运行在 macOS 上">安装 Kotlin Multiplatform 环境并运行在 macOS 上</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
@@ -1023,6 +1044,9 @@ google 自己的官方介绍,来源于
     </ul>
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
+      <li>
+        <a href="https://kikt.top/posts/kmp/install_environment_run_on_macos/" class="nav-link" title="安装 Kotlin Multiplatform 环境并运行在 macOS 上">安装 Kotlin Multiplatform 环境并运行在 macOS 上</a>
+      </li>
       <li>
         <a href="https://kikt.top/posts/gradle/gradle-wapper-mirrors/" class="nav-link" title="Gradle wrapper 使用国内镜像的那点事">Gradle wrapper 使用国内镜像的那点事</a>
       </li>
@@ -1043,9 +1067,6 @@ google 自己的官方介绍,来源于
       </li>
       <li>
         <a href="https://kikt.top/posts/gradle/03-plugin/" class="nav-link" title="Gradle Plugin">Gradle Plugin</a>
-      </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="nav-link" title="Gradle Task的创建和使用">Gradle Task的创建和使用</a>
       </li>
     </ul>
     <div>
@@ -1179,6 +1200,10 @@ google 自己的官方介绍,来源于
             </a>
             
             
+            <a href='https://kikt.top/categories/kotlin-multiplatform/' class=" post_tag button button_translucent" data-position=1 title="kotlin multiplatform">KOTLIN MULTIPLATFORM<span class="button_tally">1</span>
+            </a>
+            
+            
             <a href='https://kikt.top/categories/kotlin-compose/' class=" post_tag button button_translucent" data-position=5 title="kotlin-compose">KOTLIN-COMPOSE<span class="button_tally">5</span>
             </a>
             
@@ -1267,6 +1292,11 @@ google 自己的官方介绍,来源于
           <span class="button_tally">5</span>
         </a>
         
+        <a href='https://kikt.top/tags/desktop/' class="post_tag button button_translucent" title="desktop">
+          DESKTOP
+          <span class="button_tally">5</span>
+        </a>
+        
         <a href='https://kikt.top/tags/github/' class="post_tag button button_translucent" title="github">
           GITHUB
           <span class="button_tally">5</span>
@@ -1285,11 +1315,6 @@ google 自己的官方介绍,来源于
         <a href='https://kikt.top/tags/%E9%9A%90%E7%A7%81/' class="post_tag button button_translucent" title="隐私">
           隐私
           <span class="button_tally">5</span>
-        </a>
-        
-        <a href='https://kikt.top/tags/channel/' class="post_tag button button_translucent" title="channel">
-          CHANNEL
-          <span class="button_tally">4</span>
         </a>
         
         
@@ -1398,7 +1423,7 @@ google 自己的官方介绍,来源于
             </a>
             
             
-            <a href='https://kikt.top/tags/desktop/' class=" post_tag button button_translucent" data-position=4 title="desktop">DESKTOP<span class="button_tally">4</span>
+            <a href='https://kikt.top/tags/desktop/' class=" post_tag button button_translucent" data-position=5 title="desktop">DESKTOP<span class="button_tally">5</span>
             </a>
             
             
@@ -1546,6 +1571,10 @@ google 自己的官方介绍,来源于
             </a>
             
             
+            <a href='https://kikt.top/tags/kotlin/' class=" post_tag button button_translucent" data-position=1 title="kotlin">KOTLIN<span class="button_tally">1</span>
+            </a>
+            
+            
             <a href='https://kikt.top/tags/kotlin-compose/' class=" post_tag button button_translucent" data-position=5 title="kotlin-compose">KOTLIN-COMPOSE<span class="button_tally">5</span>
             </a>
             
@@ -1570,7 +1599,7 @@ google 自己的官方介绍,来源于
             </a>
             
             
-            <a href='https://kikt.top/tags/macos/' class=" post_tag button button_translucent" data-position=1 title="macos">MACOS<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/macos/' class=" post_tag button button_translucent" data-position=2 title="macos">MACOS<span class="button_tally">2</span>
             </a>
             
             
@@ -1579,6 +1608,10 @@ google 自己的官方介绍,来源于
             
             
             <a href='https://kikt.top/tags/migrate/' class=" post_tag button button_translucent" data-position=1 title="migrate">MIGRATE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/multiplatform/' class=" post_tag button button_translucent" data-position=1 title="multiplatform">MULTIPLATFORM<span class="button_tally">1</span>
             </a>
             
             
@@ -1795,6 +1828,10 @@ google 自己的官方介绍,来源于
             
             
             <a href='https://kikt.top/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/' class=" post_tag button button_translucent" data-position=1 title="状态管理">状态管理<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/%E7%8E%AF%E5%A2%83/' class=" post_tag button button_translucent" data-position=1 title="环境">环境<span class="button_tally">1</span>
             </a>
             
             

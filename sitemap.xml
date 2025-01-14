@@ -5,11 +5,35 @@
     <loc>https://kikt.top/</loc>
     <lastmod>2025-01-14T16:33:43+08:00</lastmod>
   </url><url>
+    <loc>https://kikt.top/categories/</loc>
+    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/tags/desktop/</loc>
+    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/tags/kotlin/</loc>
+    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/categories/kotlin-multiplatform/</loc>
+    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/tags/macos/</loc>
+    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/tags/multiplatform/</loc>
+    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
+  </url><url>
     <loc>https://kikt.top/posts/</loc>
     <lastmod>2025-01-14T16:33:43+08:00</lastmod>
   </url><url>
-    <loc>https://kikt.top/categories/</loc>
-    <lastmod>2023-12-12T14:45:00+08:00</lastmod>
+    <loc>https://kikt.top/tags/</loc>
+    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/posts/kmp/install_environment_run_on_macos/</loc>
+    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/tags/%E7%8E%AF%E5%A2%83/</loc>
+    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/tags/gradle/</loc>
     <lastmod>2023-12-12T14:45:00+08:00</lastmod>
@@ -18,9 +42,6 @@
     <lastmod>2023-12-12T14:45:00+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/posts/gradle/gradle-wapper-mirrors/</loc>
-    <lastmod>2023-12-12T14:45:00+08:00</lastmod>
-  </url><url>
-    <loc>https://kikt.top/tags/</loc>
     <lastmod>2023-12-12T14:45:00+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/categories/c/</loc>
@@ -341,9 +362,6 @@
     <loc>https://kikt.top/tags/app/</loc>
     <lastmod>2019-07-08T14:16:54+08:00</lastmod>
   </url><url>
-    <loc>https://kikt.top/tags/desktop/</loc>
-    <lastmod>2019-07-08T14:16:54+08:00</lastmod>
-  </url><url>
     <loc>https://kikt.top/tags/dmg/</loc>
     <lastmod>2019-07-08T14:16:54+08:00</lastmod>
   </url><url>
@@ -372,9 +390,6 @@
     <lastmod>2019-06-14T09:06:24+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/posts/flutter/desktop/flutter-desktop-2/</loc>
-    <lastmod>2019-06-12T16:47:14+08:00</lastmod>
-  </url><url>
-    <loc>https://kikt.top/tags/macos/</loc>
     <lastmod>2019-06-12T16:47:14+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/posts/flutter/desktop/flutter-desktop-1/</loc>
