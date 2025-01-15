@@ -7,7 +7,80 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Sat, 04 Aug 2018 12:08:18 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Jan 2025 16:33:43 +0800</lastBuildDate><atom:link href="https://kikt.top/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>安装 Kotlin Multiplatform 环境并运行在 macOS 上</title>
+      <link>https://kikt.top/posts/kmp/install_environment_run_on_macos/</link>
+      <pubDate>Tue, 14 Jan 2025 16:33:43 +0800</pubDate>
+      
+      <guid>https://kikt.top/posts/kmp/install_environment_run_on_macos/</guid>
+      <description>
+        
+          
+            &lt;h2 id=&#34;新的系列&#34;&gt;新的系列&lt;/h2&gt;
+&lt;p&gt;Kotlin-Compose 系列，我3年前使用的时候，深感这东西发展还不够，写了一些东西，但没有继续深究
+
+&lt;a href=&#34;../../categories/kotlin-compose/&#34; &gt;旧东西&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;听说，这个东西在最近两年飞速发展下，已经初具人形了？所以我打算再探一下 kmp。&lt;/p&gt;
+&lt;h2 id=&#34;安装-kotlin-multiplatform-环境&#34;&gt;安装 Kotlin Multiplatform 环境&lt;/h2&gt;
+&lt;p&gt;我这里因为只运行到桌面端，所以只安装桌面端环境。
+如果你需要移动端，请参阅
+&lt;a href=&#34;https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-setup.html&#34; &gt;官方文档&lt;/a&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Android Studio&lt;/li&gt;
+&lt;li&gt;Xcode&lt;/li&gt;
+&lt;li&gt;JDK&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://plugins.jetbrains.com/plugin/14049-kotlin-multiplatform-plugin&#34; &gt;Kotlin Multiplatform plugin&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其中需要注意的是，Plugin 不支持 K2 模式，所以你得去设置中关闭 K2 模式。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  
+    &lt;img src=&#34;../../posts/kmp/install_environment_run_on_macos/image.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;有一个问题&lt;/strong&gt;，如果你根据文档安装了 kdoctor，
+因为 plugin 改了名字，所以会一直提示未安装 &lt;code&gt;Kotlin Multiplatform Mobile Plugin: not installed&lt;/code&gt; 插件，别理它！&lt;/p&gt;
+&lt;h2 id=&#34;创建项目&#34;&gt;创建项目&lt;/h2&gt;
+&lt;p&gt;打开 
+&lt;a href=&#34;https://kmp.jetbrains.com/&#34; &gt;KMP Wizard&lt;/a&gt;
+ 来创建一个项目&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  
+    &lt;img src=&#34;../../posts/kmp/install_environment_run_on_macos/image-7.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;可以看到，有两个标签，一个是 New Project，一个是 Template Gallery，顾名思义:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;New Project 是新建项目&lt;/li&gt;
+&lt;li&gt;Template Gallery 是模板库，可以从中选择一个模板，然后创建项目&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我这里只选择了 New + Kotlin Multiplatform 桌面端&lt;/p&gt;
+&lt;p&gt;下载后，解压缩，并用配置好插件的 Android Studio 打开即可&lt;/p&gt;
+&lt;h2 id=&#34;设置一些东西以更好的使用&#34;&gt;设置一些东西以更好的使用&lt;/h2&gt;
+&lt;h3 id=&#34;gradle_wrapper&#34;&gt;gradle_wrapper&lt;/h3&gt;
+&lt;p&gt;国内，强烈建议修改的东西，如果你有全局 tun 模式，那当我没说&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
     <item>
       <title>Mac Flutter 开发环境配置 从0到1 流程</title>
       <link>https://kikt.top/posts/flutter/mac-flutter-env-0-to-1/</link>
