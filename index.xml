@@ -17,7 +17,13 @@
       <description>
         
           
-            &lt;h2 id=&#34;安装-kotlin-multiplatform-环境&#34;&gt;安装 Kotlin Multiplatform 环境&lt;/h2&gt;
+            &lt;h2 id=&#34;新的系列&#34;&gt;新的系列&lt;/h2&gt;
+&lt;p&gt;Kotlin-Compose 系列，我3年前使用的时候，深感这东西发展还不够，写了一些东西，但没有继续深究
+
+&lt;a href=&#34;./categories/kotlin-compose/&#34; &gt;旧东西&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;听说，这个东西在最近两年飞速发展下，已经初具人形了？所以我打算再探一下 kmp。&lt;/p&gt;
+&lt;h2 id=&#34;安装-kotlin-multiplatform-环境&#34;&gt;安装 Kotlin Multiplatform 环境&lt;/h2&gt;
 &lt;p&gt;我这里因为只运行到桌面端，所以只安装桌面端环境。
 如果你需要移动端，请参阅
 &lt;a href=&#34;https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-setup.html&#34; &gt;官方文档&lt;/a&gt;
@@ -44,66 +50,31 @@
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;有一个问题&lt;/strong&gt;，如果你根据文档安装了 kdoctor，
 因为 plugin 改了名字，所以会一直提示未安装 &lt;code&gt;Kotlin Multiplatform Mobile Plugin: not installed&lt;/code&gt; 插件，别理它！&lt;/p&gt;
+&lt;h2 id=&#34;创建项目&#34;&gt;创建项目&lt;/h2&gt;
+&lt;p&gt;打开 
+&lt;a href=&#34;https://kmp.jetbrains.com/&#34; &gt;KMP Wizard&lt;/a&gt;
+ 来创建一个项目&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  
+    &lt;img src=&#34;./posts/kmp/install_environment_run_on_macos/image-7.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;可以看到，有两个标签，一个是 New Project，一个是 Template Gallery，顾名思义:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;New Project 是新建项目&lt;/li&gt;
+&lt;li&gt;Template Gallery 是模板库，可以从中选择一个模板，然后创建项目&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我这里只选择了 New + Kotlin Multiplatform 桌面端&lt;/p&gt;
+&lt;p&gt;下载后，解压缩，并用配置好插件的 Android Studio 打开即可&lt;/p&gt;
 &lt;h2 id=&#34;设置一些东西以更好的使用&#34;&gt;设置一些东西以更好的使用&lt;/h2&gt;
 &lt;h3 id=&#34;gradle_wrapper&#34;&gt;gradle_wrapper&lt;/h3&gt;
 &lt;p&gt;国内，强烈建议修改的东西，如果你有全局 tun 模式，那当我没说&lt;/p&gt;
-&lt;p&gt;gradle wrapper:&lt;br&gt;
-修改 &lt;code&gt;gradle/wrapper/gradle-wrapper.properties&lt;/code&gt; 文件，将 &lt;code&gt;distributionUrl&lt;/code&gt; 修改为国内镜像，如：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-properties&#34; data-lang=&#34;properties&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# distributionUrl=https\://services.gradle.org/distributions/gradle-7.2-all.zip&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;distributionUrl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;https\://mirrors.cloud.tencent.com/gradle/gradle-7.2-all.zip&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以查阅腾讯的 
-&lt;a href=&#34;https://mirrors.cloud.tencent.com/gradle/&#34; &gt;gradle 镜像地址&lt;/a&gt;
- 来找到你对应的版本号&lt;/p&gt;
-&lt;h3 id=&#34;gradle-task-sync&#34;&gt;Gradle task sync&lt;/h3&gt;
-&lt;p&gt;
-
-
-
-
-&lt;p class=&#34;md__image&#34;&gt;
-  
-    &lt;img src=&#34;./posts/kmp/install_environment_run_on_macos/image-1.png&#34; alt=&#34;alt text&#34;  /&gt;
-  
-&lt;/p&gt;
-
-把这个东西打开，然后再sync一下，这样gradle中会多出很多的任务，方便你调试。&lt;/p&gt;
-&lt;p&gt;
-
-
-
-
-&lt;p class=&#34;md__image&#34;&gt;
-  
-    &lt;img src=&#34;./posts/kmp/install_environment_run_on_macos/image-3.png&#34; alt=&#34;alt text&#34;  /&gt;
-  
-&lt;/p&gt;
-
-sync image&lt;/p&gt;
-&lt;h2 id=&#34;运行代码&#34;&gt;运行代码&lt;/h2&gt;
-&lt;p&gt;
-
-
-
-
-&lt;p class=&#34;md__image&#34;&gt;
-  
-    &lt;img src=&#34;./posts/kmp/install_environment_run_on_macos/image-4.png&#34; alt=&#34;alt text&#34;  /&gt;
-  
-&lt;/p&gt;
-&lt;/p&gt;
-&lt;p&gt;
-
-
-
-
-&lt;p class=&#34;md__image&#34;&gt;
-  
-    &lt;img src=&#34;./posts/kmp/install_environment_run_on_macos/image-2.png&#34; alt=&#34;alt text&#34;  /&gt;
-  
-&lt;/p&gt;
-&lt;/p&gt;
-&lt;h3 id=&#34;断点调试的问题&#34;&gt;断点调试的问题&lt;/h3&gt;
-&lt;p&gt;debug 的时候，如果是在 onClick 方法里打断点，则断点会是如下这样：&lt;/p&gt;
           
           
         
@@ -820,10 +791,10 @@ java中的方法调用方法是 &lt;code&gt;println(&amp;quot;xxx&amp;quot;);&lt
     
     <item>
       <title>Kotlin Compose 05 鼠标事件</title>
-      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-05-mouse-event/</link>
+      <link>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-05-mouse-event/</link>
       <pubDate>Mon, 24 Oct 2022 12:00:35 +0800</pubDate>
       
-      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-05-mouse-event/</guid>
+      <guid>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-05-mouse-event/</guid>
       <description>
         
           
@@ -836,10 +807,10 @@ java中的方法调用方法是 &lt;code&gt;println(&amp;quot;xxx&amp;quot;);&lt
     
     <item>
       <title>Kotlin Compose 04 控件 Image</title>
-      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-04-image/</link>
+      <link>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-04-image/</link>
       <pubDate>Thu, 20 Oct 2022 11:18:07 +0800</pubDate>
       
-      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-04-image/</guid>
+      <guid>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-04-image/</guid>
       <description>
         
           
@@ -908,7 +879,7 @@ java中的方法调用方法是 &lt;code&gt;println(&amp;quot;xxx&amp;quot;);&lt
 
 &lt;p class=&#34;md__image&#34;&gt;
   
-    &lt;img src=&#34;./posts/kotlin-compose/kotlin-compose-04-image/1.png&#34; alt=&#34;1.png&#34;  /&gt;
+    &lt;img src=&#34;./posts/kmp/old/kotlin-compose/kotlin-compose-04-image/1.png&#34; alt=&#34;1.png&#34;  /&gt;
   
 &lt;/p&gt;
           
@@ -919,10 +890,10 @@ java中的方法调用方法是 &lt;code&gt;println(&amp;quot;xxx&amp;quot;);&lt
     
     <item>
       <title>Kotlin Compose Kotlin Compose 03 Window</title>
-      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-03-window/</link>
+      <link>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-03-window/</link>
       <pubDate>Tue, 18 Oct 2022 15:11:25 +0800</pubDate>
       
-      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-03-window/</guid>
+      <guid>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-03-window/</guid>
       <description>
         
           
@@ -1083,10 +1054,10 @@ java中的方法调用方法是 &lt;code&gt;println(&amp;quot;xxx&amp;quot;);&lt
     
     <item>
       <title>Kotlin Compose Kotlin Compose 02 Create Project</title>
-      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-02-create-project/</link>
+      <link>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-02-create-project/</link>
       <pubDate>Sun, 16 Oct 2022 08:29:17 +0800</pubDate>
       
-      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-02-create-project/</guid>
+      <guid>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-02-create-project/</guid>
       <description>
         
           
@@ -1106,7 +1077,7 @@ java中的方法调用方法是 &lt;code&gt;println(&amp;quot;xxx&amp;quot;);&lt
 
 &lt;p class=&#34;md__image&#34;&gt;
   
-    &lt;img src=&#34;./posts/kotlin-compose/kotlin-compose-02-create-project/1.png&#34; alt=&#34;image.png&#34;  /&gt;
+    &lt;img src=&#34;./posts/kmp/old/kotlin-compose/kotlin-compose-02-create-project/1.png&#34; alt=&#34;image.png&#34;  /&gt;
   
 &lt;/p&gt;
 
@@ -1120,7 +1091,7 @@ java中的方法调用方法是 &lt;code&gt;println(&amp;quot;xxx&amp;quot;);&lt
 
 &lt;p class=&#34;md__image&#34;&gt;
   
-    &lt;img src=&#34;./posts/kotlin-compose/kotlin-compose-02-create-project/2.png&#34; alt=&#34;image.png&#34;  /&gt;
+    &lt;img src=&#34;./posts/kmp/old/kotlin-compose/kotlin-compose-02-create-project/2.png&#34; alt=&#34;image.png&#34;  /&gt;
   
 &lt;/p&gt;
 
@@ -1178,10 +1149,10 @@ java中的方法调用方法是 &lt;code&gt;println(&amp;quot;xxx&amp;quot;);&lt
     
     <item>
       <title>Kotlin Compose Kotlin Compose 01 Start</title>
-      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-01-start/</link>
+      <link>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-01-start/</link>
       <pubDate>Sat, 15 Oct 2022 10:00:05 +0800</pubDate>
       
-      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-01-start/</guid>
+      <guid>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-01-start/</guid>
       <description>
         
           

@@ -10,10 +10,10 @@
     <lastBuildDate>Mon, 24 Oct 2022 12:00:35 +0800</lastBuildDate><atom:link href="https://kikt.top/categories/kotlin-compose/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kotlin Compose 05 鼠标事件</title>
-      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-05-mouse-event/</link>
+      <link>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-05-mouse-event/</link>
       <pubDate>Mon, 24 Oct 2022 12:00:35 +0800</pubDate>
       
-      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-05-mouse-event/</guid>
+      <guid>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-05-mouse-event/</guid>
       <description>
         
           
@@ -26,10 +26,10 @@
     
     <item>
       <title>Kotlin Compose 04 控件 Image</title>
-      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-04-image/</link>
+      <link>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-04-image/</link>
       <pubDate>Thu, 20 Oct 2022 11:18:07 +0800</pubDate>
       
-      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-04-image/</guid>
+      <guid>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-04-image/</guid>
       <description>
         
           
@@ -98,7 +98,7 @@
 
 &lt;p class=&#34;md__image&#34;&gt;
   
-    &lt;img src=&#34;../../posts/kotlin-compose/kotlin-compose-04-image/1.png&#34; alt=&#34;1.png&#34;  /&gt;
+    &lt;img src=&#34;../../posts/kmp/old/kotlin-compose/kotlin-compose-04-image/1.png&#34; alt=&#34;1.png&#34;  /&gt;
   
 &lt;/p&gt;
           
@@ -109,10 +109,10 @@
     
     <item>
       <title>Kotlin Compose Kotlin Compose 03 Window</title>
-      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-03-window/</link>
+      <link>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-03-window/</link>
       <pubDate>Tue, 18 Oct 2022 15:11:25 +0800</pubDate>
       
-      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-03-window/</guid>
+      <guid>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-03-window/</guid>
       <description>
         
           
@@ -273,10 +273,10 @@
     
     <item>
       <title>Kotlin Compose Kotlin Compose 02 Create Project</title>
-      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-02-create-project/</link>
+      <link>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-02-create-project/</link>
       <pubDate>Sun, 16 Oct 2022 08:29:17 +0800</pubDate>
       
-      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-02-create-project/</guid>
+      <guid>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-02-create-project/</guid>
       <description>
         
           
@@ -296,7 +296,7 @@
 
 &lt;p class=&#34;md__image&#34;&gt;
   
-    &lt;img src=&#34;../../posts/kotlin-compose/kotlin-compose-02-create-project/1.png&#34; alt=&#34;image.png&#34;  /&gt;
+    &lt;img src=&#34;../../posts/kmp/old/kotlin-compose/kotlin-compose-02-create-project/1.png&#34; alt=&#34;image.png&#34;  /&gt;
   
 &lt;/p&gt;
 
@@ -310,7 +310,7 @@
 
 &lt;p class=&#34;md__image&#34;&gt;
   
-    &lt;img src=&#34;../../posts/kotlin-compose/kotlin-compose-02-create-project/2.png&#34; alt=&#34;image.png&#34;  /&gt;
+    &lt;img src=&#34;../../posts/kmp/old/kotlin-compose/kotlin-compose-02-create-project/2.png&#34; alt=&#34;image.png&#34;  /&gt;
   
 &lt;/p&gt;
 
@@ -368,10 +368,10 @@
     
     <item>
       <title>Kotlin Compose Kotlin Compose 01 Start</title>
-      <link>https://kikt.top/posts/kotlin-compose/kotlin-compose-01-start/</link>
+      <link>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-01-start/</link>
       <pubDate>Sat, 15 Oct 2022 10:00:05 +0800</pubDate>
       
-      <guid>https://kikt.top/posts/kotlin-compose/kotlin-compose-01-start/</guid>
+      <guid>https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-01-start/</guid>
       <description>
         
           

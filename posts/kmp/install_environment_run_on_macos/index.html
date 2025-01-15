@@ -176,7 +176,9 @@
       <h2>文章目录</h2>
       <nav id="TableOfContents">
   <ul>
+    <li><a href="#新的系列">新的系列</a></li>
     <li><a href="#安装-kotlin-multiplatform-环境">安装 Kotlin Multiplatform 环境</a></li>
+    <li><a href="#创建项目">创建项目</a></li>
     <li><a href="#设置一些东西以更好的使用">设置一些东西以更好的使用</a>
       <ul>
         <li><a href="#gradle_wrapper">gradle_wrapper</a></li>
@@ -192,7 +194,13 @@
 </nav>
     </div>
     
-    <div class="post_body"><h2 id="安装-kotlin-multiplatform-环境">安装 Kotlin Multiplatform 环境</h2>
+    <div class="post_body"><h2 id="新的系列">新的系列</h2>
+<p>Kotlin-Compose 系列，我3年前使用的时候，深感这东西发展还不够，写了一些东西，但没有继续深究
+
+<a href="../../../categories/kotlin-compose/" >旧东西</a>
+</p>
+<p>听说，这个东西在最近两年飞速发展下，已经初具人形了？所以我打算再探一下 kmp。</p>
+<h2 id="安装-kotlin-multiplatform-环境">安装 Kotlin Multiplatform 环境</h2>
 <p>我这里因为只运行到桌面端，所以只安装桌面端环境。
 如果你需要移动端，请参阅
 <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-setup.html" >官方文档</a>
@@ -219,6 +227,28 @@
 </p>
 <p><strong>有一个问题</strong>，如果你根据文档安装了 kdoctor，
 因为 plugin 改了名字，所以会一直提示未安装 <code>Kotlin Multiplatform Mobile Plugin: not installed</code> 插件，别理它！</p>
+<h2 id="创建项目">创建项目</h2>
+<p>打开 
+<a href="https://kmp.jetbrains.com/" >KMP Wizard</a>
+ 来创建一个项目</p>
+<p>
+
+
+
+
+<p class="md__image">
+  
+    <img src="../../../posts/kmp/install_environment_run_on_macos/image-7.png" alt="alt text"  />
+  
+</p>
+</p>
+<p>可以看到，有两个标签，一个是 New Project，一个是 Template Gallery，顾名思义:</p>
+<ul>
+<li>New Project 是新建项目</li>
+<li>Template Gallery 是模板库，可以从中选择一个模板，然后创建项目</li>
+</ul>
+<p>我这里只选择了 New + Kotlin Multiplatform 桌面端</p>
+<p>下载后，解压缩，并用配置好插件的 Android Studio 打开即可</p>
 <h2 id="设置一些东西以更好的使用">设置一些东西以更好的使用</h2>
 <h3 id="gradle_wrapper">gradle_wrapper</h3>
 <p>国内，强烈建议修改的东西，如果你有全局 tun 模式，那当我没说</p>
@@ -351,7 +381,7 @@ sync image</p>
         <a href="https://kikt.top/posts/c/base/" class="nav-link" title="c/c&#43;&#43; 项目基础">c/c&#43;&#43; 项目基础</a>
       </li>
       <li>
-        <a href="https://kikt.top/posts/kotlin-compose/kotlin-compose-05-mouse-event/" class="nav-link" title="Kotlin Compose 05 鼠标事件">Kotlin Compose 05 鼠标事件</a>
+        <a href="https://kikt.top/posts/kmp/old/kotlin-compose/kotlin-compose-05-mouse-event/" class="nav-link" title="Kotlin Compose 05 鼠标事件">Kotlin Compose 05 鼠标事件</a>
       </li>
     </ul>
     <h2 class="mt-4">最新文章</h2>
@@ -614,8 +644,8 @@ sync image</p>
           <span class="button_tally">5</span>
         </a>
         
-        <a href='https://kikt.top/tags/kotlin-compose/' class="post_tag button button_translucent" title="kotlin-compose">
-          KOTLIN-COMPOSE
+        <a href='https://kikt.top/tags/kotlin-compose-old/' class="post_tag button button_translucent" title="kotlin-compose-old">
+          KOTLIN-COMPOSE-OLD
           <span class="button_tally">5</span>
         </a>
         
@@ -887,7 +917,7 @@ sync image</p>
             </a>
             
             
-            <a href='https://kikt.top/tags/kotlin-compose/' class=" post_tag button button_translucent" data-position=5 title="kotlin-compose">KOTLIN-COMPOSE<span class="button_tally">5</span>
+            <a href='https://kikt.top/tags/kotlin-compose-old/' class=" post_tag button button_translucent" data-position=5 title="kotlin-compose-old">KOTLIN-COMPOSE-OLD<span class="button_tally">5</span>
             </a>
             
             
