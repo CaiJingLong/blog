@@ -31,20 +31,38 @@
 &lt;p&gt;使用 postman 来测试下&lt;/p&gt;
 &lt;p&gt;访问 &lt;code&gt;https://dev.azure.com/{{organization}}/{{project}}/_apis/git/repositories/{{repositoryId}}/pushes?api-version=5.0&lt;/code&gt; 得到一个结果&lt;/p&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458172767.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=master&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&amp;amp;download=true&#34; alt=&#34;img&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458172767.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=master&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&amp;amp;download=true&#34; alt=&#34;img&#34;  crossorigin/&gt;
+  
 &lt;/p&gt;
 &lt;/p&gt;
 &lt;p&gt;然后访问这个 url 参数的接口可以获取 commitId&lt;/p&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458246889.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=master&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&amp;amp;download=true&#34; alt=&#34;img&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458246889.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=master&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&amp;amp;download=true&#34; alt=&#34;img&#34;  crossorigin/&gt;
+  
 &lt;/p&gt;
 &lt;/p&gt;
 &lt;p&gt;也就是 git 的 commit hash 值&lt;/p&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458511347.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=master&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&amp;amp;download=true&#34; alt=&#34;img&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458511347.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;versionDescriptor%5Bversion%5D=master&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&amp;amp;download=true&#34; alt=&#34;img&#34;  crossorigin/&gt;
+  
 &lt;/p&gt;
 &lt;/p&gt;
 &lt;p&gt;这里把 oldObjectId 替换成刚刚拿到的 commitId, 其他的根据自己的情况替换, 比如 comment 是注释, path 是你要放到哪个目录和名字, content 是图片的 base64 值&lt;/p&gt;

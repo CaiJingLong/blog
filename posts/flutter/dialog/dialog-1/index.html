@@ -210,8 +210,14 @@
 </span></span><span class="line"><span class="ln">11</span><span class="cl">  <span class="p">}</span>
 </span></span></code></pre></div><h2 id="showdialog">showDialog</h2>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190327134903.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190327134903.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190327134903.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190327134903.png"  crossorigin/>
+  
 </p>
 
 dialog 的方法签名是这样的</p>
@@ -234,8 +240,14 @@ dialog 的方法签名是这样的</p>
 </span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="p">);</span>
 </span></span></code></pre></div><p>当我调用这个方法时,会得到这样的样式
 
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190327140047.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190327140047.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190327140047.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190327140047.png"  crossorigin/>
+  
 </p>
 </p>
 <p>这个就是最简单的方法,然后点击外部,dialog 会消失</p>
@@ -263,14 +275,26 @@ dialog 的方法签名是这样的</p>
 </span></span></code></pre></div><p>然后分别点击 1 2 和外部让 dialog 消失
 会得到以下的结果</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190327140439.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190327140439.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190327140439.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190327140439.png"  crossorigin/>
+  
 </p>
 </p>
 <p>不过这个只能让 dialog 显示固定的内容,如果你的 dialog 有内容变化,则使用这个方式就不行了,哪怕是调用 setState 也不会发生变化,这个是因为外部 State 的状态变化不会影响到 dialog 的内容,因为 dialog 是附着至 app 根部的,而不是附着于页面</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190327141927.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190327141927.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190327141927.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190327141927.png"  crossorigin/>
+  
 </p>
 </p>
 <h3 id="结合-statefulwidget-使用">结合 StatefulWidget 使用</h3>
@@ -313,8 +337,14 @@ dialog 的方法签名是这样的</p>
 </span></span></code></pre></div><p>并且调用</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">showDialog</span><span class="p">(</span><span class="nl">context:</span> <span class="n">context</span><span class="p">,</span> <span class="nl">builder:</span> <span class="p">(</span><span class="n">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">CounterWidget</span><span class="p">());</span>
 </span></span></code></pre></div><p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2FKapture-2019-03-27-at-14.26.15.gif&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="Kapture 2019-03-27 at 14.26.15.gif"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2FKapture-2019-03-27-at-14.26.15.gif&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="Kapture 2019-03-27 at 14.26.15.gif"  crossorigin/>
+  
 </p>
 </p>
 <p>这里可以看到,一个带状态的控件也是可以被展示在 dialog 中的</p>
@@ -360,8 +390,14 @@ dialog 的方法签名是这样的</p>
 </span></span><span class="line"><span class="ln">28</span><span class="cl">    <span class="n">showDialog</span><span class="p">(</span><span class="nl">context:</span> <span class="n">context</span><span class="p">,</span> <span class="nl">builder:</span> <span class="p">(</span><span class="n">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">sb</span><span class="p">);</span>
 </span></span><span class="line"><span class="ln">29</span><span class="cl">  <span class="p">}</span>
 </span></span></code></pre></div><p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2FKapture-2019-03-27-at-14.49.52.gif&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="Kapture 2019-03-27 at 14.49.52.gif"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2FKapture-2019-03-27-at-14.49.52.gif&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="Kapture 2019-03-27 at 14.49.52.gif"  crossorigin/>
+  
 </p>
 </p>
 <p>这里只是简单的演示一个用法,实际应用中,进度条应该是可以多处复用的,应该使用 StatefulWidget 进行复用,而不是简易的使用 StatefulBuilder 来做这件事情,并且,应该在构建时传入 stream 并且监听 stream 为宜,而不应该使用这种 Timer 的形式</p>
@@ -394,8 +430,14 @@ dialog 的方法签名是这样的</p>
 </span></span><span class="line"><span class="ln">23</span><span class="cl">    <span class="n">showDialog</span><span class="p">(</span><span class="nl">context:</span> <span class="n">context</span><span class="p">,</span> <span class="nl">builder:</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">dialog</span><span class="p">);</span>
 </span></span><span class="line"><span class="ln">24</span><span class="cl">  <span class="p">}</span>
 </span></span></code></pre></div><p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190327145558.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190327145558.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190327145558.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190327145558.png"  crossorigin/>
+  
 </p>
 </p>
 <h3 id="带输入框的-dialog">带输入框的 dialog</h3>
@@ -412,8 +454,14 @@ dialog 的方法签名是这样的</p>
 </span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="n">showDialog</span><span class="p">(</span><span class="nl">context:</span> <span class="n">context</span><span class="p">,</span> <span class="nl">builder:</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">widget</span><span class="p">);</span>
 </span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="p">}</span>
 </span></span></code></pre></div><p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190327150012.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190327150012.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190327150012.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190327150012.png"  crossorigin/>
+  
 </p>
 </p>
 <h3 id="根据软键盘自动变化位置">根据软键盘自动变化位置</h3>
@@ -461,8 +509,14 @@ dialog 的方法签名是这样的</p>
 </span></span></code></pre></div><p>定义一个 dialog 类,然后监听窗口的变化</p>
 <p>然后在变化的时候动态的修改 padding,以达到输入框永远在界面中心的目的</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2FKapture-2019-03-27-at-15.16.40.gif&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="Kapture 2019-03-27 at 15.16.40.gif"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2FKapture-2019-03-27-at-15.16.40.gif&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="Kapture 2019-03-27 at 15.16.40.gif"  crossorigin/>
+  
 </p>
 </p>
 <h2 id="后记">后记</h2>

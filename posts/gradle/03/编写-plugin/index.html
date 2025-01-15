@@ -226,8 +226,14 @@ Gradle的插件支持任意的JVM语言来编写，当前最常见的是Java或K
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">apply</span> <span class="nl">from:</span> <span class="s1">&#39;./s.groovy&#39;</span>
 </span></span></code></pre></div><p>在引入前后分别执行 <code>gradle tasks</code>可以得到不同的日志
 
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981920987.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981920987.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
 </p>
 
 这里，可以看到这行日志，是执行在 configure project阶段
@@ -251,14 +257,26 @@ Gradle的插件支持任意的JVM语言来编写，当前最常见的是Java或K
 </span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="n">ScriptPlugin</span> <span class="c1">// 引入插件
 </span></span></span></code></pre></div><p>在修改后，我们使用<code>groovy tasks --all</code>查看一下任务列表
 
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981921633.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981921633.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
 </p>
 
 可以看到这里，有了新的task，用<code>gradle -q say</code>执行一下
 
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981922323.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981922323.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
 </p>
 </p>
 <h3 id="让插件可以配置">让插件可以配置</h3>
@@ -300,8 +318,14 @@ Gradle的插件支持任意的JVM语言来编写，当前最常见的是Java或K
 </span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;world&#39;</span>
 </span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981922974.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981922974.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
 </p>
 </p>
 

@@ -32,8 +32,14 @@
 &lt;/ul&gt;
 &lt;p&gt;其中需要注意的是，Plugin 不支持 K2 模式，所以你得去设置中关闭 K2 模式。&lt;/p&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;image.png&#34; alt=&#34;alt text&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kmp/install_environment_run_on_macos/image.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
 &lt;/p&gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;有一个问题&lt;/strong&gt;，如果你根据文档安装了 kdoctor，
@@ -50,26 +56,50 @@
  来找到你对应的版本号&lt;/p&gt;
 &lt;h3 id=&#34;gradle-task-sync&#34;&gt;Gradle task sync&lt;/h3&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;image-1.png&#34; alt=&#34;alt text&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kmp/install_environment_run_on_macos/image-1.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
 &lt;/p&gt;
 
 把这个东西打开，然后再sync一下，这样gradle中会多出很多的任务，方便你调试。&lt;/p&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;image-3.png&#34; alt=&#34;alt text&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kmp/install_environment_run_on_macos/image-3.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
 &lt;/p&gt;
 
 sync image&lt;/p&gt;
 &lt;h2 id=&#34;运行代码&#34;&gt;运行代码&lt;/h2&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;image-4.png&#34; alt=&#34;alt text&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kmp/install_environment_run_on_macos/image-4.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
 &lt;/p&gt;
 &lt;/p&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;image-2.png&#34; alt=&#34;alt text&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kmp/install_environment_run_on_macos/image-2.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
 &lt;/p&gt;
 &lt;/p&gt;
 &lt;h3 id=&#34;断点调试的问题&#34;&gt;断点调试的问题&lt;/h3&gt;

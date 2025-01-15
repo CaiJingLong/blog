@@ -205,20 +205,38 @@
 <p>使用 postman 来测试下</p>
 <p>访问 <code>https://dev.azure.com/{{organization}}/{{project}}/_apis/git/repositories/{{repositoryId}}/pushes?api-version=5.0</code> 得到一个结果</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458172767.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=master&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0&amp;download=true" alt="img"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458172767.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=master&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0&amp;download=true" alt="img"  crossorigin/>
+  
 </p>
 </p>
 <p>然后访问这个 url 参数的接口可以获取 commitId</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458246889.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=master&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0&amp;download=true" alt="img"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458246889.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=master&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0&amp;download=true" alt="img"  crossorigin/>
+  
 </p>
 </p>
 <p>也就是 git 的 commit hash 值</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458511347.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=master&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0&amp;download=true" alt="img"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/df66928f-89ec-4688-abf0-d9acdc6cc858/items?path=%2F1580458511347.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=master&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0&amp;download=true" alt="img"  crossorigin/>
+  
 </p>
 </p>
 <p>这里把 oldObjectId 替换成刚刚拿到的 commitId, 其他的根据自己的情况替换, 比如 comment 是注释, path 是你要放到哪个目录和名字, content 是图片的 base64 值</p>

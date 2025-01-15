@@ -189,8 +189,14 @@ Route 就是路由,顾名思义,负责你页面间的跳转
 <p>静态就是不需要传参数的,这样的路由可以直接定义在 MaterialApp/WidgetsApp 里
 这样可以通过<code>Navigator.pushNamed</code>调用</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981991532.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="pic"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981991532.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="pic"  crossorigin/>
+  
 </p>
 </p>
 <p>动态的就是传入一个<code>PageRoute</code>, 通常是一个<code>MaterialPageRoute</code> 或者<code>CupertinoPageRoute</code>,或者你如果有自定义的有可以使用</p>
@@ -242,8 +248,14 @@ Route 就是路由,顾名思义,负责你页面间的跳转
 <p>根据传参不同而有所不同</p>
 <p>有一个<code>_rootRoute</code>变量,这个变量的目的是用于替换根节点,<code>'home'</code>是我定义在<code>MaterialApp</code>里的<code>initialRoute</code>,这样一一对应才能确保替换根节点</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F2019-05-06-at-10.05.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="2019-05-06 at 10.05.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F2019-05-06-at-10.05.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="2019-05-06 at 10.05.png"  crossorigin/>
+  
 </p>
 </p>
 <hr>
@@ -251,16 +263,28 @@ Route 就是路由,顾名思义,负责你页面间的跳转
 <hr>
 <p>这个简便的 Helper 还有另一个好处,就是可以方便后续批量替换 Route 实现,比如有一天你想自定义一个 PageRoute,不使用 MaterialRoute ,那么你只需要替换如下如所示的部分即可</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981992332.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981992332.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
 </p>
 </p>
 <hr>
 <p>当然还可以有别的扩展方法来支持<code>named</code>
 比如查看<code>Navigator</code>的源码发现<code>pushNamed</code>,就是通过<code>widget.onGenerateRoute</code>方法获取到<code>route</code>的,我这里直接在 helper 中写就好了
 
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981992905.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981992905.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
 </p>
 </p>
 <hr>

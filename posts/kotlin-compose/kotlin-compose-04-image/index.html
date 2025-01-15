@@ -245,8 +245,14 @@
 </span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="c1"></span>    <span class="p">)</span>
 </span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>
+
+
+
+
 <p class="md__image">
-  <img src="1.png" alt="1.png"  crossorigin/>
+  
+    <img src="../../../posts/kotlin-compose/kotlin-compose-04-image/1.png" alt="1.png"  />
+  
 </p>
 
 painterResource 支持的格式很多</p>
@@ -443,29 +449,53 @@ painterResource 支持的格式很多</p>
 </span></span><span class="line"><span class="ln">57</span><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="ln">58</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>
+
+
+
+
 <p class="md__image">
-  <img src="2.png" alt="2.png"  crossorigin/>
+  
+    <img src="../../../posts/kotlin-compose/kotlin-compose-04-image/2.png" alt="2.png"  />
+  
 </p>
 </p>
 <h2 id="设置窗口图标">设置窗口图标</h2>
 <p>所谓Icon，指的是这个
 
+
+
+
+
 <p class="md__image">
-  <img src="3.png" alt="3.png"  crossorigin/>
+  
+    <img src="../../../posts/kotlin-compose/kotlin-compose-04-image/3.png" alt="3.png"  />
+  
 </p>
 
 macOS 上如果是debug运行可以通过最小化窗口来查看
 
+
+
+
+
 <p class="md__image">
-  <img src="4.png" alt="4.png"  crossorigin/>
+  
+    <img src="../../../posts/kotlin-compose/kotlin-compose-04-image/4.png" alt="4.png"  />
+  
 </p>
 </p>
 <h3 id="设置">设置</h3>
 <p>窗口图标是通过设置 Window 的 icon 属性来配置的
 Painter 的实现类有这些，理论上可以通过任意一个来实现，支持位图
 
+
+
+
+
 <p class="md__image">
-  <img src="5.png" alt="5.png"  crossorigin/>
+  
+    <img src="../../../posts/kotlin-compose/kotlin-compose-04-image/5.png" alt="5.png"  />
+  
 </p>
 
 最简单的，可以设置纯色</p>
@@ -482,8 +512,14 @@ Painter 的实现类有这些，理论上可以通过任意一个来实现，支
 </span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="菜单栏图标设置">菜单栏图标设置</h2>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="6.png" alt="6.png"  crossorigin/>
+  
+    <img src="../../../posts/kotlin-compose/kotlin-compose-04-image/6.png" alt="6.png"  />
+  
 </p>
 
 菜单栏就是这个东西，WIndows 应该是右下角任务栏的那个图标
@@ -507,8 +543,14 @@ Painter 的实现类有这些，理论上可以通过任意一个来实现，支
 </span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>这里是使用了扩展方法来定义的，因为Tray方法本身是 ApplicatioinScope 的扩展方法，为了在单独文件内定义控件，所以这里使用这种定义方法
 
+
+
+
+
 <p class="md__image">
-  <img src="7.png" alt="7.png"  crossorigin/>
+  
+    <img src="../../../posts/kotlin-compose/kotlin-compose-04-image/7.png" alt="7.png"  />
+  
 </p>
 
 menu 就是定义弹出的选项， 使用 Item 方法来定义每个选项即可</p>

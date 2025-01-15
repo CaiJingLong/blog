@@ -24,8 +24,14 @@ flutter 环境还是针对 1.17.5&lt;/p&gt;
 &lt;p&gt;首先第一, 平时是以 &lt;code&gt;FocusNode&lt;/code&gt; 为主要对象的, 那么这东西是怎么附着到整体的呢&lt;/p&gt;
 &lt;p&gt;构造方法&lt;/p&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595382471.png&#34; alt=&#34;1595382471&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595382471.png&#34; alt=&#34;1595382471&#34;  crossorigin/&gt;
+  
 &lt;/p&gt;
 &lt;/p&gt;
 &lt;ul&gt;
@@ -36,8 +42,14 @@ flutter 环境还是针对 1.17.5&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;我们再找找方法&lt;/p&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595381640.png&#34; alt=&#34;1595381640&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595381640.png&#34; alt=&#34;1595381640&#34;  crossorigin/&gt;
+  
 &lt;/p&gt;
 &lt;/p&gt;
 &lt;p&gt;有几个可能用到的关键字段, 我们一个个看, 但是不一定会用的到, 但是有所了解也是好&lt;/p&gt;
@@ -51,8 +63,14 @@ flutter 环境还是针对 1.17.5&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;_ancestors&lt;/code&gt;, 嗯.. 没有注释, 那就只能看看源码了
 
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595381928.png&#34; alt=&#34;1595381928&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595381928.png&#34; alt=&#34;1595381928&#34;  crossorigin/&gt;
+  
 &lt;/p&gt;
 
 所以, 这个东西是把所有的父节点都装到了这个里. 嗯, 个人经验,应用层的话大概率用不上.&lt;/p&gt;
@@ -60,8 +78,14 @@ flutter 环境还是针对 1.17.5&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;_descendants&lt;/code&gt;,这东西也是个三无, 没事
 
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595382072.png&#34; alt=&#34;1595382072&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595382072.png&#34; alt=&#34;1595382072&#34;  crossorigin/&gt;
+  
 &lt;/p&gt;
 
 都在源码里了, 这东西是深度为 1 的子 &lt;code&gt;node&lt;/code&gt; 的 &lt;code&gt;descendants&lt;/code&gt; 和子&lt;code&gt;node&lt;/code&gt;, 然后里面递归了... 换句话说, 其实, 这东西是所有的子 &lt;code&gt;node&lt;/code&gt;&lt;/p&gt;

@@ -201,8 +201,14 @@ Gradle中最基本的概念之一，任 …" />
 <h2 id="最典型的使用">最典型的使用</h2>
 <p>Gradle中最基本的概念之一，任务（Task），你需要执行哪个任务，就使用<code>gradle [taskName]</code>即可，典型的比如<code>java</code>项目包含的<code>jar</code>，安卓项目包含的<code>assembleRelease</code>，可以使用<code>gradle tasks</code>来查看当前项目包含的所有任务和对应的功能
 
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981924680.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981924680.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
 </p>
 </p>
 <p>参数的设置方式，可以在task前也可以在后，有两种参数，一种是有值的，一种是无值的(可以理解为true/false)
@@ -221,8 +227,14 @@ Gradle中最基本的概念之一，任 …" />
 </ol>
 <h3 id="不执行某特定的-task">不执行某特定的 task</h3>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981925371.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981925371.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
 </p>
 
 按照官网介绍，dist 任务依赖test和compile，同时compile也依赖test，可以使用<code>gradle dist --exclude-task test</code>来跳过test任务，同时也会忽略掉compileTest这种任务</p>

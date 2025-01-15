@@ -198,15 +198,18 @@
 </ul>
 <p>其中需要注意的是，Plugin 不支持 K2 模式，所以你得去设置中关闭 K2 模式。</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="image.png" alt="alt text"  crossorigin/>
+  
+    <img src="../posts/kmp/install_environment_run_on_macos/image.png" alt="alt text"  />
+  
 </p>
 </p>
 <p><strong>有一个问题</strong>，如果你根据文档安装了 kdoctor，
-因为 plugin 改了名字，所以会一直提示未安装 <code>Kotlin Multiplatform Mobile Plugin: not installed</code> 插件，别理它！</p>
-<h2 id="设置一些东西以更好的使用">设置一些东西以更好的使用</h2>
-<h3 id="gradle_wrapper">gradle_wrapper</h3>
-<p>国内， …</p></p></p>
+因为 plugin 改了名字，所以会一直提示未安装 <code>Kotlin Multiplatform Mobile Plugin: not installed</code> 插件，别理它！ …</p></p></p>
           
           <br>
           <a href="https://kikt.top/posts/kmp/install_environment_run_on_macos/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -509,8 +512,14 @@ Gradle的插件支持任意的JVM语言来编写，当前最常见的是Java或K
 Gradle会自动将这个文件夹识别为一个Gradle项目，并支持在项目的build.gradle中引用</p>
 <p>我在项目中创建如下的一个文件夹 <code>buildSrc</code>
 
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981924182.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981924182.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="image.png"  crossorigin/>
+  
 </p>
 </p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">plugins</span> <span class="o">{</span>
@@ -521,7 +530,7 @@ Gradle会自动将这个文件夹识别为一个Gradle项目，并支持在项�
 </span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.gradle.api.Plugin</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.gradle.api.Project</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyPlugin</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Plugin</span><span class="o">&lt;</span><span class="n">Project …</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre></div></p></p>
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyPlugin</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Plugin …</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre></div></p></p>
           
           <br>
           <a href="https://kikt.top/posts/gradle/01/basic/03-buildsrc/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -826,8 +835,14 @@ Wrapper 根据我的理解，是帮助不同的所有开发同一个项目的人
 </span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>使用 <code>gradle -q Hello</code>会得到输出
 
+
+
+
+
 <p class="md__image">
-  <img src="./02-01.png" alt="image.png"  crossorigin/>
+  
+    <img src="../posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/02-01.png" alt="image.png"  />
+  
 </p>
 </p>
 <h2 id="任务的生命周期">任务的生命周期</h2>
@@ -836,7 +851,7 @@ Wrapper 根据我的理解，是帮助不同的所有开发同一个项目的人
 </span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">println</span><span class="p">(</span><span class="s2">&#34;Config the world task&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">dependsOn</span><span class="p">(</span><span class="s2">&#34;Hello&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="n">doFirst</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="n">println</span><span class="p">(</span><span class="s2">&#34;World …</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre></div></p></p>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="n">println</span><span class="p">( …</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre></div></p></p>
           
           <br>
           <a href="https://kikt.top/posts/gradle/02-task%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" title="阅读更多" class="excerpt_more button">阅读更多</a>

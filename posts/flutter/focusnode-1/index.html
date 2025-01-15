@@ -237,8 +237,14 @@
 <p>这东西是一个单例的,通过<code>FocusManager.instance</code>获取</p>
 <p>有一个常用方法了解一下: <code>FocusManager.instance.primaryFocus.unfocus();</code>, 调用一下, 软键盘就下去了</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595307999.jpg" alt="1595307999"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595307999.jpg" alt="1595307999"  crossorigin/>
+  
 </p>
 </p>
 <p>这东西里面基本都是私有方法, 能调用的并不多</p>
@@ -247,13 +253,25 @@
 <p>这东西一般情况下很少能用到, SDK 里有一些地方会用到, <code>Focus</code> 对象本身内部会维护一个 <code>FocusNode</code>, 比如按钮能响应键盘回车之类的焦点就是因为内部有这东西</p>
 <p>这个类在 flutter 项目中使用率不算高, 但都是关键处
 
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595308605.png" alt="1595308605"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595308605.png" alt="1595308605"  crossorigin/>
+  
 </p>
 
 
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595311067.png" alt="1595311067"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595311067.png" alt="1595311067"  crossorigin/>
+  
 </p>
 </p>
 <p><code>_FocusableActionDetectorState</code>: 对应 <code>FocusableActionDetector</code> 的状态, 这个类被用于 <code>CheckBox</code>, <code>Radio</code>, <code>Switch</code></p>
@@ -261,8 +279,14 @@
 <p>这东西很少见有文档讲, 这里我简单的解析一下, 这个也可以说是后面使用的重点, 我在实际开发中遇到有输入框的情况下, 这个控件是我的首选</p>
 <p>简单来说, 就是在这东西子控件内的 <code>FocusNode</code> 都会被统一维护</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595316377.png" alt="1595316377"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595316377.png" alt="1595316377"  crossorigin/>
+  
 </p>
 </p>
 <p>这东西构造方法可以传一些参数, 常用的无非就是 node, canRequestFocus, 之类的.</p>
@@ -274,22 +298,40 @@
 <p>嗯, 前面都是概念性的东西, 很多朋友都不想看, 而且也没啥意思</p>
 <p>比如有一个这样的场景</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595317002.png" alt="1595317002"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595317002.png" alt="1595317002"  crossorigin/>
+  
 </p>
 </p>
 <p>用 app 来说, 就是 4 个输入框, 一个个的点击自然可以, 但是如果要用户体验好是不是应该可以回车一直下一步, 然后最后一条直接提交呢?</p>
 <p>模拟一下这个东西很多人的写法</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595317293.png" alt="1595317293"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595317293.png" alt="1595317293"  crossorigin/>
+  
 </p>
 </p>
 <p>嗯, 点评一下, 嗯 很整齐, 那么... 当你有 10 个的时候怎么办呢? 想想就很美</p>
 <p>我们改写下,也许可以这样?</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595317499.png" alt="1595317499"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595317499.png" alt="1595317499"  crossorigin/>
+  
 </p>
 </p>
 <p>好的, 算你基础扎实, 这样写自然是可以的.</p>
@@ -337,30 +379,60 @@
 </span></span></code></pre></div><p>这次连 <code>FocusNode</code> 都不需要自己写了, 直接用 Scope 里的</p>
 <p>这个 example 的样子:</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595319363.gif" alt="1595319363"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595319363.gif" alt="1595319363"  crossorigin/>
+  
 </p>
 </p>
 <p>这是因为 <code>TextField</code> 是 <code>EditableText</code> 的封装</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595318868.png" alt="1595318868"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595318868.png" alt="1595318868"  crossorigin/>
+  
 </p>
 
 
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595318898.png" alt="1595318898"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595318898.png" alt="1595318898"  crossorigin/>
+  
 </p>
 
 
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595318882.png" alt="1595318882"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595318882.png" alt="1595318882"  crossorigin/>
+  
 </p>
 </p>
 <p>然后是在 EditableText 里, attach 到了 context 上
 
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595319082.png" alt="1595319082"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595319082.png" alt="1595319082"  crossorigin/>
+  
 </p>
 </p>
 <p>看到这里, 是不是发现其实有的东西很简单, 接下来复杂一下</p>
@@ -427,8 +499,14 @@
 </span></span><span class="line"><span class="ln">60</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>这种偶尔旁边多了一个按钮的, 属于比较常见的方式, 然后上面代码突然就不好用了
 
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595323601.gif" alt="1595323601"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595323601.gif" alt="1595323601"  crossorigin/>
+  
 </p>
 </p>
 <p>这时候就需要改代码了</p>
@@ -448,8 +526,14 @@
 </span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="p">),</span>
 </span></span></code></pre></div><p>是的, 就是这样, 给按钮手动传入一个 <code>FocusNode</code>, 然后 skip 就可以了</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595324883.gif" alt="1595324883"  crossorigin/>
+  
+    <img src="https://cdn.jsdelivr.net/gh/kikt-blog/blog-2@t1/uPic/1595324883.gif" alt="1595324883"  crossorigin/>
+  
 </p>
 </p>
 <p>完整代码:</p>

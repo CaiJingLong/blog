@@ -92,8 +92,14 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;1.png&#34; alt=&#34;1.png&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kotlin-compose/kotlin-compose-04-image/1.png&#34; alt=&#34;1.png&#34;  /&gt;
+  
 &lt;/p&gt;
           
           
@@ -284,16 +290,28 @@
 &lt;h2 id=&#34;创建项目&#34;&gt;创建项目&lt;/h2&gt;
 &lt;p&gt;新建项目，选择 &lt;code&gt;Compose Mutilplatform&lt;/code&gt;类型
 
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;1.png&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kotlin-compose/kotlin-compose-02-create-project/1.png&#34; alt=&#34;image.png&#34;  /&gt;
+  
 &lt;/p&gt;
 
 这里左边可以单独选择支持的类型，右边是多类型（桌面端+安卓）
 然后，等待依赖更新完成，我创建的是多类型的项目&lt;/p&gt;
 &lt;h2 id=&#34;看看配置文件&#34;&gt;看看配置文件&lt;/h2&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;2.png&#34; alt=&#34;image.png&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kotlin-compose/kotlin-compose-02-create-project/2.png&#34; alt=&#34;image.png&#34;  /&gt;
+  
 &lt;/p&gt;
 
 项目的配置文件是 kts 文件，这是 Gradle 项目 groovy 以外的另一种一级语言，使用 kotlin 语法，相比 groovy 来说，语法更加的“严谨”&lt;/p&gt;

@@ -32,8 +32,14 @@
 &lt;/ul&gt;
 &lt;p&gt;其中需要注意的是，Plugin 不支持 K2 模式，所以你得去设置中关闭 K2 模式。&lt;/p&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;image.png&#34; alt=&#34;alt text&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kmp/install_environment_run_on_macos/image.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
 &lt;/p&gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;有一个问题&lt;/strong&gt;，如果你根据文档安装了 kdoctor，
@@ -50,26 +56,50 @@
  来找到你对应的版本号&lt;/p&gt;
 &lt;h3 id=&#34;gradle-task-sync&#34;&gt;Gradle task sync&lt;/h3&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;image-1.png&#34; alt=&#34;alt text&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kmp/install_environment_run_on_macos/image-1.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
 &lt;/p&gt;
 
 把这个东西打开，然后再sync一下，这样gradle中会多出很多的任务，方便你调试。&lt;/p&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;image-3.png&#34; alt=&#34;alt text&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kmp/install_environment_run_on_macos/image-3.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
 &lt;/p&gt;
 
 sync image&lt;/p&gt;
 &lt;h2 id=&#34;运行代码&#34;&gt;运行代码&lt;/h2&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;image-4.png&#34; alt=&#34;alt text&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kmp/install_environment_run_on_macos/image-4.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
 &lt;/p&gt;
 &lt;/p&gt;
 &lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;image-2.png&#34; alt=&#34;alt text&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;../../posts/kmp/install_environment_run_on_macos/image-2.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
 &lt;/p&gt;
 &lt;/p&gt;
 &lt;h3 id=&#34;断点调试的问题&#34;&gt;断点调试的问题&lt;/h3&gt;
@@ -397,8 +427,14 @@ sync image&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\n以上&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
 &lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190610151138.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190610151138.png&#34;  crossorigin/&gt;
+  
+    &lt;img src=&#34;https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;amp;path=%2F20190610151138.png&amp;amp;versionDescriptor%5BversionOptions%5D=0&amp;amp;versionDescriptor%5BversionType%5D=0&amp;amp;resolveLfs=true&amp;amp;%24format=octetStream&amp;amp;api-version=5.0&#34; alt=&#34;20190610151138.png&#34;  crossorigin/&gt;
+  
 &lt;/p&gt;
 &lt;/p&gt;
 &lt;p&gt;这里我单独的 clone 了一份 sdk, 跑在了 flutter 的 master 分支上&lt;/p&gt;

@@ -194,14 +194,19 @@
 </span></span></code></pre></div><h2 id="使用了-gradle-wrapper">使用了 gradle wrapper</h2>
 <p>如果 andorid 根目录下有这个文件夹/文件,则需要修改</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190306135103.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190306135103.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190306135103.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190306135103.png"  crossorigin/>
+  
 </p>
 </p>
 <p>根据官网说明,最好修改到 4.10.1 以上</p>
 <p>gradle-wrapper.properties 文件</p>
-<p>修改版本号位置,我使用的是当前的最新版 5.2.1,你可以根据你的情况修改</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="ln">1 …</span></span></code></pre></div></p></p>
+<p>修改版本号位置,我使用的是当前的最新版 5.2.1,你可以根据你的情况修 …</p></p></p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/migrate-android-x/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -432,14 +437,17 @@
 <p>本篇与插件开发本身无关,目的只是为了加快 appcode 的索引速度,解决方案拉到后面查看</p>
 <p>使用 appcode 开发插件本身很简单,打开插件下的<code>example/ios</code>就可以了,不过这里有一个坑,因为 flutter 使用 link 的方式,可能有数级的<code>../..</code>之类的连接来指向插件文件夹</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982004564.jpg&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="图片"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982004564.jpg&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="图片"  crossorigin/>
+  
 </p>
 </p>
-<p>这个在 xcode 中可能没问题,但是<code>appcode</code>中有一个索引的概念,这一步会遍历当前关联的所有同级文件,
-<a href="https://youtrack.jetbrains.com/issue/OC-17593" >参考连接</a>
-</p>
-<p>而这一步由于相对的关系甚至关联到了<code>~</code>这一级,也就是说会遍历 …</p></p></p>
+<p>这个在 xcode 中可能没问题,但是<code>appcode</code>中有一个索引的概念,这一步会遍历当前关联的所有同级文件, …</p></p></p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/channel/flutter-ios-spec-edit/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -521,12 +529,17 @@
 <p>在 dart 中可以使用这个便利的生成一个迭代器</p>
 <p>如下所示</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190203173018.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190203173018.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190203173018.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190203173018.png"  crossorigin/>
+  
 </p>
 </p>
-<p>这两种写法是一样的,但是第一个写法会简洁很多</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">main</span><span class="p">( …</span></span></span></code></pre></div></p></p>
+<p>这两种写法是一样的,但是第一个写法会简洁 …</p></p></p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/dart/generators/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -765,35 +778,53 @@
 在 debug 模式下肯定是不准的,所以随便看看就好了,只是为了满足好奇心,不代表真实项目中的真实表现,也不代表我的观点<br>
 在原生刚刚打开后稳定的情况下查看内存占用</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190122102823.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190122102823.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190122102823.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190122102823.png"  crossorigin/>
+  
 </p>
 </p>
 <p>可以看到 打开 Flutter 后内存会有明显上升</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190122102545.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190122102545.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190122102545.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190122102545.png"  crossorigin/>
+  
 </p>
 </p>
 <p>红点处是我点击了按钮后的情况,会有内存抖动</p>
 <p>关闭 Flutter 界面后会发现内存回落很明显,说明内存相对比较稳定
 
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190122102631.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190122102631.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190122102631.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190122102631.png"  crossorigin/>
+  
 </p>
 </p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190122103023.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190122103023.png"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190122103023.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190122103023.png"  crossorigin/>
+  
 </p>
 </p>
-<p>过了段时间,其实是我在码字+上传图片,没看手机,发现内存更加平稳了,而且降低到了只有 30m</p>
-<p>
-<p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/844861b8-ee45-48a3-b430-b974684baaaa/_apis/git/repositories/bf4da1c1-1cfa-4f54-8a75-745cce2b737c/items?versionDescriptor%5Bversion%5D=master&amp;path=%2F20190122103129.png&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=5.0" alt="20190122103129.png"  crossorigin/>
-</p>
-</p>
-<p>换句话说其实在 android 上内存的表现还算可以,目测 …</p></p></p></p></p></p></p></p></p></p></p>
+<p>过了段时间,其实是我在码字+上传图片,没看手机,发现内存更加平稳了,而 …</p></p></p></p></p></p></p></p></p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/android/profile-1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
@@ -941,8 +972,14 @@
 </span></span><span class="line"><span class="ln">3</span><span class="cl">Tried calling: pasteButtonLabel
 </span></span></code></pre></div><p>在最近 app store 提交审核时被拒了,然后得到了一个这样的截图</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981940118.jpg&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="图片"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981940118.jpg&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="图片"  crossorigin/>
+  
 </p>
 </p>
 <p>在 flutter 中可能会会出现各种问题,因为之前遇到过这个问题,但是那是我另一个应用,这个忘了设置了</p>

@@ -188,14 +188,17 @@
 <p>本篇与插件开发本身无关,目的只是为了加快 appcode 的索引速度,解决方案拉到后面查看</p>
 <p>使用 appcode 开发插件本身很简单,打开插件下的<code>example/ios</code>就可以了,不过这里有一个坑,因为 flutter 使用 link 的方式,可能有数级的<code>../..</code>之类的连接来指向插件文件夹</p>
 <p>
+
+
+
+
 <p class="md__image">
-  <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982004564.jpg&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="图片"  crossorigin/>
+  
+    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679982004564.jpg&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="图片"  crossorigin/>
+  
 </p>
 </p>
-<p>这个在 xcode 中可能没问题,但是<code>appcode</code>中有一个索引的概念,这一步会遍历当前关联的所有同级文件,
-<a href="https://youtrack.jetbrains.com/issue/OC-17593" >参考连接</a>
-</p>
-<p>而这一步由于相对的关系甚至关联到了<code>~</code>这一级,也就是说会遍历 …</p></p></p>
+<p>这个在 xcode 中可能没问题,但是<code>appcode</code>中有一个索引的概念,这一步会遍历当前关联的所有同级文件, …</p></p></p>
           
           <br>
           <a href="https://kikt.top/posts/flutter/channel/flutter-ios-spec-edit/" title="阅读更多" class="excerpt_more button">阅读更多</a>
