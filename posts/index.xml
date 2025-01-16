@@ -9,7 +9,7 @@
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Thu, 16 Jan 2025 09:34:41 +0800</lastBuildDate><atom:link href="https://kikt.top/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>使用 Amper 打包 KMP 应用</title>
+      <title>使用 Amper 管理 KMP 应用</title>
       <link>https://kikt.top/posts/kmp/pack_kmp_application/</link>
       <pubDate>Thu, 16 Jan 2025 09:34:41 +0800</pubDate>
       
@@ -20,7 +20,9 @@
             &lt;p&gt;我假设你已经阅读了 
 &lt;a href=&#34;../install_environment_run_on_macos/&#34; &gt;环境配置与运行&lt;/a&gt;
  并完成了相关环境变量的配置。本文将深入探讨如何打包 KMP 应用。&lt;/p&gt;
-&lt;p&gt;根据官方文档介绍，JetBrains 推出了一个全新的构建工具，可以统一处理构建、打包和发布的全流程：&lt;/p&gt;
+&lt;p&gt;根据官方文档介绍，JetBrains 推出了一个全新的构建工具 
+&lt;a href=&#34;https://github.com/JetBrains/amper&#34; &gt;Amper&lt;/a&gt;
+，可以统一处理构建、打包和发布的全流程：&lt;/p&gt;
 &lt;p&gt;
 
 
@@ -32,9 +34,7 @@
   
 &lt;/p&gt;
 &lt;/p&gt;
-&lt;p&gt;这就是 
-&lt;a href=&#34;https://github.com/JetBrains/amper&#34; &gt;Amper&lt;/a&gt;
-，一个以 Gradle 为后端、以 YAML 配置文件为前端的强大工具。它能大大简化应用的打包流程，提高开发效率。&lt;/p&gt;
+&lt;p&gt;它是一个以 Gradle 为后端，以 YAML 配置文件为前端的强大工具。它能大大简化应用的配置流程，提高开发效率。&lt;/p&gt;
 &lt;p&gt;可以查看 Amper 的文档：
 
  来了解更多细节。&lt;/p&gt;
