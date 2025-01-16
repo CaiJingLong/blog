@@ -7,7 +7,106 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Tue, 14 Jan 2025 16:33:43 +0800</lastBuildDate><atom:link href="https://kikt.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Jan 2025 09:34:41 +0800</lastBuildDate><atom:link href="https://kikt.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Amper 打包 KMP 应用</title>
+      <link>https://kikt.top/posts/kmp/pack_kmp_application/</link>
+      <pubDate>Thu, 16 Jan 2025 09:34:41 +0800</pubDate>
+      
+      <guid>https://kikt.top/posts/kmp/pack_kmp_application/</guid>
+      <description>
+        
+          
+            &lt;p&gt;我假设你已经阅读了 
+&lt;a href=&#34;../install_environment_run_on_macos/&#34; &gt;环境配置与运行&lt;/a&gt;
+ 并完成了相关环境变量的配置。本文将深入探讨如何打包 KMP 应用。&lt;/p&gt;
+&lt;p&gt;根据官方文档介绍，JetBrains 推出了一个全新的构建工具，可以统一处理构建、打包和发布的全流程：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  
+    &lt;img src=&#34;./posts/kmp/pack_kmp_application/image.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;这就是 
+&lt;a href=&#34;https://github.com/JetBrains/amper&#34; &gt;Amper&lt;/a&gt;
+，一个以 Gradle 为后端、以 YAML 配置文件为前端的强大工具。它能大大简化应用的打包流程，提高开发效率。&lt;/p&gt;
+&lt;p&gt;可以查看 Amper 的文档：
+
+ 来了解更多细节。&lt;/p&gt;
+&lt;h2 id=&#34;新建项目&#34;&gt;新建项目&lt;/h2&gt;
+&lt;p&gt;由于 Amper 目前仍处于活跃开发阶段，文档和功能都在不断更新。对于新项目来说，使用最新的工具链会更加便捷。&lt;/p&gt;
+&lt;p&gt;因此，我建议使用 
+&lt;a href=&#34;https://kmp.jetbrains.com/&#34; &gt;KMP Wizard&lt;/a&gt;
+ 来创建新项目：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在模板库（Template Gallery）中选择 &amp;quot;Shared UI Mutilplatform App&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;
+
+
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  
+    &lt;img src=&#34;./posts/kmp/pack_kmp_application/image-2.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
+&lt;/p&gt;
+
+
+
+
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  
+    &lt;img src=&#34;./posts/kmp/pack_kmp_application/image-3.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;下载并解压项目文件后，使用 Android Studio 打开它。首先需要同步 Gradle 项目：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  
+    &lt;img src=&#34;./posts/kmp/pack_kmp_application/image-4.png&#34; alt=&#34;Sync project&#34;  /&gt;
+  
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;项目结构解析&#34;&gt;项目结构解析&lt;/h3&gt;
+&lt;p&gt;这是一个标准的 Gradle 项目结构，主要包含以下核心文件夹：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  
+    &lt;img src=&#34;./posts/kmp/pack_kmp_application/image-6.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
+&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;目前项目包含了 Android 和 iOS 两个平台的支持，我们接下来将添加桌面端支持。&lt;/p&gt;
+&lt;p&gt;让我们先了解一下几个关键文件夹的作用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;module.yaml&lt;/code&gt;：子项目的模块配置文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src&lt;/code&gt; 目录：存放源代码，其中每个子模块都包含 Kotlin 文件。值得注意的是，Kotlin 代码可以与平台原生代码（如 Swift）实现互操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;扩展项目添加桌面端支持&#34;&gt;扩展项目：添加桌面端支持&lt;/h2&gt;
+&lt;p&gt;让我们先明确一点：Amper 的设计目标是简化配置流程，统一桌面端和移动端的配置项，从而降低项目管理的复杂度。它的强大之处在于不仅支持 KMP 项目，还完整支持纯 JVM 应用开发。&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
     <item>
       <title>安装 Kotlin Multiplatform 环境并运行在 macOS 上</title>
       <link>https://kikt.top/posts/kmp/install_environment_run_on_macos/</link>

@@ -132,6 +132,84 @@
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
+        <a href="https://kikt.top/posts/flutter/ffi/2-first-party/" title="在 flutter 上使用 c 代码 - (二) 无源码的项目">在 flutter 上使用 c 代码 - (二) 无源码的项目</a>
+      </h3>
+      
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      2019-11-04 17:15</span>
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+        </a><a href='https://kikt.top/tags/dart' title="dart" class="post_tag button button_translucent">dart
+        </a><a href='https://kikt.top/tags/c' title="c" class="post_tag button button_translucent">c
+        </a><a href='https://kikt.top/tags/ffi' title="ffi" class="post_tag button button_translucent">ffi
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=%e5%9c%a8%20flutter%20%e4%b8%8a%e4%bd%bf%e7%94%a8%20c%20%e4%bb%a3%e7%a0%81%20-%20%28%e4%ba%8c%29%20%e6%97%a0%e6%ba%90%e7%a0%81%e7%9a%84%e9%a1%b9%e7%9b%ae&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fffi%2f2-first-party%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fffi%2f2-first-party%2f&t=%e5%9c%a8%20flutter%20%e4%b8%8a%e4%bd%bf%e7%94%a8%20c%20%e4%bb%a3%e7%a0%81%20-%20%28%e4%ba%8c%29%20%e6%97%a0%e6%ba%90%e7%a0%81%e7%9a%84%e9%a1%b9%e7%9b%ae" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://kikt.top/posts/flutter/ffi/2-first-party/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    </div>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>写在前面, 对于无源码的项目, 理论上必须有头文件,不然你不知道里面都定义了什么鬼东西.</p>
+<p>本篇虽然是写无源码的项目, 但实际上还是会有源码部分, 只是通过 cmake,clang,xcodebuild,ndk 等工具编译成 so/framework 以供 android/ios 引入</p>
+<h2 id="生成动态库">生成动态库</h2>
+<p>整体的目录结构是这样的, 如果你只是要引入库, 可以跳过这步, 这步的主要做源码生成库的步骤</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln"> 1</span><span class="cl">$ tree -L <span class="m">3</span> cpp-source
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">tree -L <span class="m">3</span> cpp-source
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">cpp-source
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">├── android
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">│   ├── CMakeLists.txt
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">│   ├── …</span></span></span></span></span></span></span></span></span></span></span></span></code></pre></div>
+          
+          <br>
+          <a href="https://kikt.top/posts/flutter/ffi/2-first-party/" title="阅读更多" class="excerpt_more button">阅读更多</a>
+        </div>
+      </div>
+    </div>
+  </li>
+
+      <li class="post_item">
+  <div class="excerpt">
+    <div class="excerpt_header">
+      <h3 class="post_link">
         <a href="https://kikt.top/posts/flutter/ffi/1-first-party/" title="在 flutter 上使用 c 代码 - (一) 有源码的项目">在 flutter 上使用 c 代码 - (一) 有源码的项目</a>
       </h3>
       
@@ -942,83 +1020,6 @@
     </div>
   </li>
 
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://kikt.top/posts/flutter/desktop/flutter-desktop-1/" title="Flutter Desktop Mac版(一) 初探">Flutter Desktop Mac版(一) 初探</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <title>calendar</title>
-  <use xlink:href="#calendar"></use>
-</svg>
-</span>
-    <span class="post_date">
-      2019-06-10 14:40</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
-        </a><a href='https://kikt.top/tags/desktop' title="desktop" class="post_tag button button_translucent">desktop
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    分享到:
-    <a href="https://twitter.com/intent/tweet?text=Flutter%20Desktop%20Mac%e7%89%88%28%e4%b8%80%29%20%e5%88%9d%e6%8e%a2&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fdesktop%2fflutter-desktop-1%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>twitter</title>
-  <use xlink:href="#twitter"></use>
-</svg>
-
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fdesktop%2fflutter-desktop-1%2f&t=Flutter%20Desktop%20Mac%e7%89%88%28%e4%b8%80%29%20%e5%88%9d%e6%8e%a2" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>facebook</title>
-  <use xlink:href="#facebook"></use>
-</svg>
-
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <title>linkedin</title>
-  <use xlink:href="#linkedin"></use>
-</svg>
-
-    </a>
-    <a href="https://kikt.top/posts/flutter/desktop/flutter-desktop-1/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <title>copy</title>
-  <use xlink:href="#copy"></use>
-</svg>
-
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-      <div class="excerpt_footer">
-        <div class="pale">
-          
-            <p>随着时间的逐渐推移, Flutter 开始了扩张之路</p>
-<p>flutter 已经不满足于移动端了,桌面端也有着自己的野心</p>
-<p>但无论如何,目前 flutter desktop 还仅仅处于 demo 玩一玩的阶段, 如果谁敢生产项目来一套, 我佩服你是个勇士</p>
-<hr>
-<h2 id="官方说明">官方说明</h2>
-<p>
-<a href="https://github.com/flutter/flutter/wiki/Desktop-shells" >https://github.com/flutter/flutter/wiki/Desktop-shells</a>
-</p>
-<p>目前完成度最高的是 macOS 的版本,可用度很高, 而且由于同样使用 cocoapod,所以相对来说官方制作 engine 难度应该是最低的</p>
-<h2 id="创建项目">创建项目</h2>
-<p>现在建议使用官方本身提供的脚手架, …</p>
-          
-          <br>
-          <a href="https://kikt.top/posts/flutter/desktop/flutter-desktop-1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
       <li>
     <ul class="pagination pagination-default">
       <li class="page-item">
@@ -1080,6 +1081,9 @@
     <h2 class="mt-4">精选文章</h2>
     <ul>
       <li>
+        <a href="https://kikt.top/posts/kmp/pack_kmp_application/" class="nav-link" title="使用 Amper 打包 KMP 应用">使用 Amper 打包 KMP 应用</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/kmp/install_environment_run_on_macos/" class="nav-link" title="安装 Kotlin Multiplatform 环境并运行在 macOS 上">安装 Kotlin Multiplatform 环境并运行在 macOS 上</a>
       </li>
       <li>
@@ -1091,6 +1095,9 @@
     </ul>
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
+      <li>
+        <a href="https://kikt.top/posts/kmp/pack_kmp_application/" class="nav-link" title="使用 Amper 打包 KMP 应用">使用 Amper 打包 KMP 应用</a>
+      </li>
       <li>
         <a href="https://kikt.top/posts/kmp/install_environment_run_on_macos/" class="nav-link" title="安装 Kotlin Multiplatform 环境并运行在 macOS 上">安装 Kotlin Multiplatform 环境并运行在 macOS 上</a>
       </li>
@@ -1111,9 +1118,6 @@
       </li>
       <li>
         <a href="https://kikt.top/posts/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/" class="nav-link" title="Gradle 的约定式概念">Gradle 的约定式概念</a>
-      </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/03-plugin/" class="nav-link" title="Gradle Plugin">Gradle Plugin</a>
       </li>
     </ul>
     <div>
@@ -1244,6 +1248,10 @@
             
             
             <a href='https://kikt.top/categories/jetbrains/' class=" post_tag button button_translucent" data-position=1 title="jetbrains">JETBRAINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/kmp/' class=" post_tag button button_translucent" data-position=1 title="kmp">KMP<span class="button_tally">1</span>
             </a>
             
             
@@ -1387,6 +1395,10 @@
             
             
             <a href='https://kikt.top/tags/aidl/' class=" post_tag button button_translucent" data-position=1 title="aidl">AIDL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/amper/' class=" post_tag button button_translucent" data-position=1 title="amper">AMPER<span class="button_tally">1</span>
             </a>
             
             
@@ -1618,6 +1630,10 @@
             </a>
             
             
+            <a href='https://kikt.top/tags/kmp/' class=" post_tag button button_translucent" data-position=1 title="kmp">KMP<span class="button_tally">1</span>
+            </a>
+            
+            
             <a href='https://kikt.top/tags/kotlin/' class=" post_tag button button_translucent" data-position=1 title="kotlin">KOTLIN<span class="button_tally">1</span>
             </a>
             
@@ -1830,7 +1846,7 @@
             </a>
             
             
-            <a href='https://kikt.top/tags/%E6%89%93%E5%8C%85/' class=" post_tag button button_translucent" data-position=1 title="打包">打包<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/%E6%89%93%E5%8C%85/' class=" post_tag button button_translucent" data-position=2 title="打包">打包<span class="button_tally">2</span>
             </a>
             
             

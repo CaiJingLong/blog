@@ -126,6 +126,144 @@
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
+        <a href="https://kikt.top/posts/flutter/flutter-web/flutter-web1/" title="Flutter Web 评测第一篇">Flutter Web 评测第一篇</a>
+      </h3>
+      
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      2019-05-08 10:15</span>
+    <span class="post_time"> · 8 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+        </a><a href='https://kikt.top/tags/flutter-web' title="flutter web" class="post_tag button button_translucent">flutter web
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=Flutter%20Web%20%e8%af%84%e6%b5%8b%e7%ac%ac%e4%b8%80%e7%af%87&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fflutter-web%2fflutter-web1%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fflutter-web%2fflutter-web1%2f&t=Flutter%20Web%20%e8%af%84%e6%b5%8b%e7%ac%ac%e4%b8%80%e7%af%87" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://kikt.top/posts/flutter/flutter-web/flutter-web1/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    </div>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>最近 2019 的 google io 大会开始了,之前的&quot;蜂鸟&quot;引擎也在 flutter 官网中出现了, 不过这次改了个名字叫 
+<a href="https://github.com/flutter/flutter_web" >flutter-web</a>
+</p>
+<p>具体的使用步骤参考项目 readme 中的方式来使用</p>
+<ul>
+<li>
+<a href="#%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE" >构建项目</a>
+</li>
+<li>
+<a href="#%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE" >运行项目</a>
+
+<ul>
+<li>
+<a href="#%E7%AE%80%E5%8D%95%E8%BF%90%E8%A1%8C" >简单运行</a>
+</li>
+<li>
+<a href="#%E6%B5%8B%E8%AF%95%E4%BA%A4%E4%BA%92" >测试交互</a>
+</li>
+<li>
+<a href="#%E6%96%87%E6%9C%AC%E8%BE%93%E5%85%A5" >文本输入</a>
+</li>
+<li>
+<a href="#%E5%9B%BE%E7%89%87" >图片</a>
+
+<ul>
+<li>
+<a href="#%E7%BD%91%E7%BB%9C%E5%9B%BE%E7%89%87" >网络图片</a>
+</li>
+<li>
+<a href="#%E6%9C%AC%E5%9C%B0%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6" >本地资源文件</a>
+</li>
+<li>
+<a href="#%E5%86%85%E5%AD%98%E5%9B%BE%E7%89%87" >内存图片</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#%E6%BB%9A%E5%8A%A8%E6%8E%A7%E4%BB%B6" >滚动控件</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#%E6%97%A5%E5%BF%97" >日志</a>
+</li>
+<li>
+<a href="#%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F" >几个问题需要注意</a>
+
+<ul>
+<li>
+<a href="#%E6%95%B0%E5%AD%97%E7%9A%84%E7%B1%BB%E5%9E%8B" >数字的类型</a>
+</li>
+<li>
+<a href="#dartio-%E7%9A%84%E9%97%AE%E9%A2%98" >dart:io 的问题</a>
+</li>
+<li>
+<a href="#%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8" >插件的使用</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#%E6%89%93%E5%8C%85" >打包</a>
+</li>
+<li>
+<a href="#%E6%9F%A5%E7%9C%8B%E4%B8%80%E4%B8%8B-html-%E7%BB%93%E6%9E%84" >查看一下 html 结构</a>
+</li>
+<li>
+<a href="#%E5%90%8E%E8%AE%B0" >后记</a>
+</li>
+</ul>
+<h2 id="构建项目">构建项目</h2>
+<p>建议: 配置<code>dart</code>,<code>pub</code>,<code>~/.pub-cache/bin</code>到环境变量</p>
+<p>配置 webdev …</p></ul></li></li></li></ul></li></ul></li></ul>
+          
+          <br>
+          <a href="https://kikt.top/posts/flutter/flutter-web/flutter-web1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
+        </div>
+      </div>
+    </div>
+  </li>
+
+      <li class="post_item">
+  <div class="excerpt">
+    <div class="excerpt_header">
+      <h3 class="post_link">
         <a href="https://kikt.top/posts/flutter/toast/oktoast/" title="flutter toast插件 OKToast的介绍">flutter toast插件 OKToast的介绍</a>
       </h3>
       
@@ -919,86 +1057,6 @@ stable: 可以在生产环境使用的, 相对问题最少,发布次数最少</p
     </div>
   </li>
 
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://kikt.top/posts/flutter/state/provide-1/" title="flutter 新状态管理方案 Provide 使用">flutter 新状态管理方案 Provide 使用</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <title>calendar</title>
-  <use xlink:href="#calendar"></use>
-</svg>
-</span>
-    <span class="post_date">
-      2019-02-21 10:43</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86' title="状态管理" class="post_tag button button_translucent">状态管理
-        </a><a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    分享到:
-    <a href="https://twitter.com/intent/tweet?text=flutter%20%e6%96%b0%e7%8a%b6%e6%80%81%e7%ae%a1%e7%90%86%e6%96%b9%e6%a1%88%20Provide%20%e4%bd%bf%e7%94%a8&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fstate%2fprovide-1%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>twitter</title>
-  <use xlink:href="#twitter"></use>
-</svg>
-
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fstate%2fprovide-1%2f&t=flutter%20%e6%96%b0%e7%8a%b6%e6%80%81%e7%ae%a1%e7%90%86%e6%96%b9%e6%a1%88%20Provide%20%e4%bd%bf%e7%94%a8" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>facebook</title>
-  <use xlink:href="#facebook"></use>
-</svg>
-
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <title>linkedin</title>
-  <use xlink:href="#linkedin"></use>
-</svg>
-
-    </a>
-    <a href="https://kikt.top/posts/flutter/state/provide-1/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <title>copy</title>
-  <use xlink:href="#copy"></use>
-</svg>
-
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-      <div class="excerpt_footer">
-        <div class="pale">
-          
-            <p>开这篇文章是因为看到这个库被托管在google的仓库下,而且说明是被设计出来替代<code>ScopedModel</code>的,而且更加灵活</p>
-<p>支持Builder模式和StreamBuilder模式,全局,局部都可以</p>
-<p>内部应该是结合<code>InheritedWidget</code> <code>Notification</code>体系实现的</p>
-<p>传统的bloc需要在每一个<code>Repository</code>中创建<code>StreamController</code>和<code>Stream</code>,甚至有的文章中,一个监听的修改需要修改5处,维护起来比较麻烦</p>
-<p>相比较而言<code>Provide</code>维护起来会稍微省事一些</p>
-<p>
-<a href="https://github.com/CaiJingLong/flutter_provide_example" >入门级仓库地址</a>
-</p>
-<h2 id="添加依赖">添加依赖</h2>
-<p>查看
-<a href="https://pub.dartlang.org/packages/provide#-installing-tab-" >pub-install</a>
-</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="ln">1</span><span class="cl"><span class="nt">dependencies</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w">  </span><span class="nt">provide</span><span class="p">:</span><span class="w"> </span><span class="l">^1.0.1</span><span class="w"> </span><span class="c"># …</span></span></span></span></span></code></pre></div>
-          
-          <br>
-          <a href="https://kikt.top/posts/flutter/state/provide-1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
       <li>
     <ul class="pagination pagination-default">
       <li class="page-item">
@@ -1060,6 +1118,9 @@ stable: 可以在生产环境使用的, 相对问题最少,发布次数最少</p
     <h2 class="mt-4">精选文章</h2>
     <ul>
       <li>
+        <a href="https://kikt.top/posts/kmp/pack_kmp_application/" class="nav-link" title="使用 Amper 打包 KMP 应用">使用 Amper 打包 KMP 应用</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/kmp/install_environment_run_on_macos/" class="nav-link" title="安装 Kotlin Multiplatform 环境并运行在 macOS 上">安装 Kotlin Multiplatform 环境并运行在 macOS 上</a>
       </li>
       <li>
@@ -1071,6 +1132,9 @@ stable: 可以在生产环境使用的, 相对问题最少,发布次数最少</p
     </ul>
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
+      <li>
+        <a href="https://kikt.top/posts/kmp/pack_kmp_application/" class="nav-link" title="使用 Amper 打包 KMP 应用">使用 Amper 打包 KMP 应用</a>
+      </li>
       <li>
         <a href="https://kikt.top/posts/kmp/install_environment_run_on_macos/" class="nav-link" title="安装 Kotlin Multiplatform 环境并运行在 macOS 上">安装 Kotlin Multiplatform 环境并运行在 macOS 上</a>
       </li>
@@ -1091,9 +1155,6 @@ stable: 可以在生产环境使用的, 相对问题最少,发布次数最少</p
       </li>
       <li>
         <a href="https://kikt.top/posts/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/" class="nav-link" title="Gradle 的约定式概念">Gradle 的约定式概念</a>
-      </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/03-plugin/" class="nav-link" title="Gradle Plugin">Gradle Plugin</a>
       </li>
     </ul>
     <div>
@@ -1224,6 +1285,10 @@ stable: 可以在生产环境使用的, 相对问题最少,发布次数最少</p
             
             
             <a href='https://kikt.top/categories/jetbrains/' class=" post_tag button button_translucent" data-position=1 title="jetbrains">JETBRAINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/kmp/' class=" post_tag button button_translucent" data-position=1 title="kmp">KMP<span class="button_tally">1</span>
             </a>
             
             
@@ -1367,6 +1432,10 @@ stable: 可以在生产环境使用的, 相对问题最少,发布次数最少</p
             
             
             <a href='https://kikt.top/tags/aidl/' class=" post_tag button button_translucent" data-position=1 title="aidl">AIDL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/amper/' class=" post_tag button button_translucent" data-position=1 title="amper">AMPER<span class="button_tally">1</span>
             </a>
             
             
@@ -1598,6 +1667,10 @@ stable: 可以在生产环境使用的, 相对问题最少,发布次数最少</p
             </a>
             
             
+            <a href='https://kikt.top/tags/kmp/' class=" post_tag button button_translucent" data-position=1 title="kmp">KMP<span class="button_tally">1</span>
+            </a>
+            
+            
             <a href='https://kikt.top/tags/kotlin/' class=" post_tag button button_translucent" data-position=1 title="kotlin">KOTLIN<span class="button_tally">1</span>
             </a>
             
@@ -1810,7 +1883,7 @@ stable: 可以在生产环境使用的, 相对问题最少,发布次数最少</p
             </a>
             
             
-            <a href='https://kikt.top/tags/%E6%89%93%E5%8C%85/' class=" post_tag button button_translucent" data-position=1 title="打包">打包<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/%E6%89%93%E5%8C%85/' class=" post_tag button button_translucent" data-position=2 title="打包">打包<span class="button_tally">2</span>
             </a>
             
             

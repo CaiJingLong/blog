@@ -132,6 +132,86 @@
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
+        <a href="https://kikt.top/posts/flutter/state/provide-1/" title="flutter 新状态管理方案 Provide 使用">flutter 新状态管理方案 Provide 使用</a>
+      </h3>
+      
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      2019-02-21 10:43</span>
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86' title="状态管理" class="post_tag button button_translucent">状态管理
+        </a><a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=flutter%20%e6%96%b0%e7%8a%b6%e6%80%81%e7%ae%a1%e7%90%86%e6%96%b9%e6%a1%88%20Provide%20%e4%bd%bf%e7%94%a8&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fstate%2fprovide-1%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fstate%2fprovide-1%2f&t=flutter%20%e6%96%b0%e7%8a%b6%e6%80%81%e7%ae%a1%e7%90%86%e6%96%b9%e6%a1%88%20Provide%20%e4%bd%bf%e7%94%a8" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://kikt.top/posts/flutter/state/provide-1/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    </div>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>开这篇文章是因为看到这个库被托管在google的仓库下,而且说明是被设计出来替代<code>ScopedModel</code>的,而且更加灵活</p>
+<p>支持Builder模式和StreamBuilder模式,全局,局部都可以</p>
+<p>内部应该是结合<code>InheritedWidget</code> <code>Notification</code>体系实现的</p>
+<p>传统的bloc需要在每一个<code>Repository</code>中创建<code>StreamController</code>和<code>Stream</code>,甚至有的文章中,一个监听的修改需要修改5处,维护起来比较麻烦</p>
+<p>相比较而言<code>Provide</code>维护起来会稍微省事一些</p>
+<p>
+<a href="https://github.com/CaiJingLong/flutter_provide_example" >入门级仓库地址</a>
+</p>
+<h2 id="添加依赖">添加依赖</h2>
+<p>查看
+<a href="https://pub.dartlang.org/packages/provide#-installing-tab-" >pub-install</a>
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="ln">1</span><span class="cl"><span class="nt">dependencies</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w">  </span><span class="nt">provide</span><span class="p">:</span><span class="w"> </span><span class="l">^1.0.1</span><span class="w"> </span><span class="c"># …</span></span></span></span></span></code></pre></div>
+          
+          <br>
+          <a href="https://kikt.top/posts/flutter/state/provide-1/" title="阅读更多" class="excerpt_more button">阅读更多</a>
+        </div>
+      </div>
+    </div>
+  </li>
+
+      <li class="post_item">
+  <div class="excerpt">
+    <div class="excerpt_header">
+      <h3 class="post_link">
         <a href="https://kikt.top/posts/flutter/channel/flutter-ios-spec-edit/" title="Flutter ios 插件开发 appcode 加快索引速度">Flutter ios 插件开发 appcode 加快索引速度</a>
       </h3>
       
@@ -946,92 +1026,6 @@ so文件
     </div>
   </li>
 
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://kikt.top/posts/flutter/framework/cupertino-paste-tooltip/" title="flutter cupertino 复制粘贴弹窗报错的问题">flutter cupertino 复制粘贴弹窗报错的问题</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <title>calendar</title>
-  <use xlink:href="#calendar"></use>
-</svg>
-</span>
-    <span class="post_date">
-      2019-01-08 17:34</span>
-    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://kikt.top/tags/cupertino' title="cupertino" class="post_tag button button_translucent">cupertino
-        </a><a href='https://kikt.top/tags/flutter' title="flutter" class="post_tag button button_translucent">flutter
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    分享到:
-    <a href="https://twitter.com/intent/tweet?text=flutter%20cupertino%20%e5%a4%8d%e5%88%b6%e7%b2%98%e8%b4%b4%e5%bc%b9%e7%aa%97%e6%8a%a5%e9%94%99%e7%9a%84%e9%97%ae%e9%a2%98&url=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fframework%2fcupertino-paste-tooltip%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>twitter</title>
-  <use xlink:href="#twitter"></use>
-</svg>
-
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkikt.top%2fposts%2fflutter%2fframework%2fcupertino-paste-tooltip%2f&t=flutter%20cupertino%20%e5%a4%8d%e5%88%b6%e7%b2%98%e8%b4%b4%e5%bc%b9%e7%aa%97%e6%8a%a5%e9%94%99%e7%9a%84%e9%97%ae%e9%a2%98" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <title>facebook</title>
-  <use xlink:href="#facebook"></use>
-</svg>
-
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <title>linkedin</title>
-  <use xlink:href="#linkedin"></use>
-</svg>
-
-    </a>
-    <a href="https://kikt.top/posts/flutter/framework/cupertino-paste-tooltip/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <title>copy</title>
-  <use xlink:href="#copy"></use>
-</svg>
-
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-      <div class="excerpt_footer">
-        <div class="pale">
-          
-            <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">NosuchMethodError: The getter &#39;pasterButtonLabel&#39; was called on null.
-</span></span><span class="line"><span class="ln">2</span><span class="cl">Receiver: null
-</span></span><span class="line"><span class="ln">3</span><span class="cl">Tried calling: pasteButtonLabel
-</span></span></code></pre></div><p>在最近 app store 提交审核时被拒了,然后得到了一个这样的截图</p>
-<p>
-
-
-
-
-<p class="md__image">
-  
-    <img src="https://dev.azure.com/cjlspy/images/_apis/git/repositories/MirrorImages/items?path=%2F1679981940118.jpg&amp;versionDescriptor%5BversionOptions%5D=0&amp;versionDescriptor%5BversionType%5D=0&amp;versionDescriptor%5Bversion%5D=main&amp;resolveLfs=true&amp;%24format=octetStream&amp;api-version=7.0" alt="图片"  crossorigin/>
-  
-</p>
-</p>
-<p>在 flutter 中可能会会出现各种问题,因为之前遇到过这个问题,但是那是我另一个应用,这个忘了设置了</p>
-<p>我快速搞了一下,重新提交了审核</p>
-<h2 id="解决方式">解决方式</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="ln">  1</span><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:flutter/cupertino.dart&#39;</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">  2</span><span class="cl"><span class="k">import …</span></span></span></span></span></code></pre></div></p></p>
-          
-          <br>
-          <a href="https://kikt.top/posts/flutter/framework/cupertino-paste-tooltip/" title="阅读更多" class="excerpt_more button">阅读更多</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
       <li>
     <ul class="pagination pagination-default">
       <li class="page-item">
@@ -1093,6 +1087,9 @@ so文件
     <h2 class="mt-4">精选文章</h2>
     <ul>
       <li>
+        <a href="https://kikt.top/posts/kmp/pack_kmp_application/" class="nav-link" title="使用 Amper 打包 KMP 应用">使用 Amper 打包 KMP 应用</a>
+      </li>
+      <li>
         <a href="https://kikt.top/posts/kmp/install_environment_run_on_macos/" class="nav-link" title="安装 Kotlin Multiplatform 环境并运行在 macOS 上">安装 Kotlin Multiplatform 环境并运行在 macOS 上</a>
       </li>
       <li>
@@ -1104,6 +1101,9 @@ so文件
     </ul>
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
+      <li>
+        <a href="https://kikt.top/posts/kmp/pack_kmp_application/" class="nav-link" title="使用 Amper 打包 KMP 应用">使用 Amper 打包 KMP 应用</a>
+      </li>
       <li>
         <a href="https://kikt.top/posts/kmp/install_environment_run_on_macos/" class="nav-link" title="安装 Kotlin Multiplatform 环境并运行在 macOS 上">安装 Kotlin Multiplatform 环境并运行在 macOS 上</a>
       </li>
@@ -1124,9 +1124,6 @@ so文件
       </li>
       <li>
         <a href="https://kikt.top/posts/gradle/01/02-gradle%E7%9A%84%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%A6%82%E5%BF%B5/" class="nav-link" title="Gradle 的约定式概念">Gradle 的约定式概念</a>
-      </li>
-      <li>
-        <a href="https://kikt.top/posts/gradle/03-plugin/" class="nav-link" title="Gradle Plugin">Gradle Plugin</a>
       </li>
     </ul>
     <div>
@@ -1257,6 +1254,10 @@ so文件
             
             
             <a href='https://kikt.top/categories/jetbrains/' class=" post_tag button button_translucent" data-position=1 title="jetbrains">JETBRAINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/categories/kmp/' class=" post_tag button button_translucent" data-position=1 title="kmp">KMP<span class="button_tally">1</span>
             </a>
             
             
@@ -1400,6 +1401,10 @@ so文件
             
             
             <a href='https://kikt.top/tags/aidl/' class=" post_tag button button_translucent" data-position=1 title="aidl">AIDL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://kikt.top/tags/amper/' class=" post_tag button button_translucent" data-position=1 title="amper">AMPER<span class="button_tally">1</span>
             </a>
             
             
@@ -1631,6 +1636,10 @@ so文件
             </a>
             
             
+            <a href='https://kikt.top/tags/kmp/' class=" post_tag button button_translucent" data-position=1 title="kmp">KMP<span class="button_tally">1</span>
+            </a>
+            
+            
             <a href='https://kikt.top/tags/kotlin/' class=" post_tag button button_translucent" data-position=1 title="kotlin">KOTLIN<span class="button_tally">1</span>
             </a>
             
@@ -1843,7 +1852,7 @@ so文件
             </a>
             
             
-            <a href='https://kikt.top/tags/%E6%89%93%E5%8C%85/' class=" post_tag button button_translucent" data-position=1 title="打包">打包<span class="button_tally">1</span>
+            <a href='https://kikt.top/tags/%E6%89%93%E5%8C%85/' class=" post_tag button button_translucent" data-position=2 title="打包">打包<span class="button_tally">2</span>
             </a>
             
             

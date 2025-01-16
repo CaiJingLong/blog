@@ -3,10 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kikt.top/</loc>
-    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
+    <lastmod>2025-01-16T09:34:41+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/tags/amper/</loc>
+    <lastmod>2025-01-16T09:34:41+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/categories/</loc>
-    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
+    <lastmod>2025-01-16T09:34:41+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/tags/kmp/</loc>
+    <lastmod>2025-01-16T09:34:41+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/categories/kmp/</loc>
+    <lastmod>2025-01-16T09:34:41+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/posts/</loc>
+    <lastmod>2025-01-16T09:34:41+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/tags/</loc>
+    <lastmod>2025-01-16T09:34:41+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/posts/kmp/pack_kmp_application/</loc>
+    <lastmod>2025-01-16T09:34:41+08:00</lastmod>
+  </url><url>
+    <loc>https://kikt.top/tags/%E6%89%93%E5%8C%85/</loc>
+    <lastmod>2025-01-16T09:34:41+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/tags/desktop/</loc>
     <lastmod>2025-01-14T16:33:43+08:00</lastmod>
@@ -21,12 +42,6 @@
     <lastmod>2025-01-14T16:33:43+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/tags/multiplatform/</loc>
-    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
-  </url><url>
-    <loc>https://kikt.top/posts/</loc>
-    <lastmod>2025-01-14T16:33:43+08:00</lastmod>
-  </url><url>
-    <loc>https://kikt.top/tags/</loc>
     <lastmod>2025-01-14T16:33:43+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/posts/kmp/install_environment_run_on_macos/</loc>
@@ -618,9 +633,6 @@
     <lastmod>2018-12-07T17:04:04+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/posts/flutter/flutter-arm64-crash/</loc>
-    <lastmod>2018-12-07T17:04:04+08:00</lastmod>
-  </url><url>
-    <loc>https://kikt.top/tags/%E6%89%93%E5%8C%85/</loc>
     <lastmod>2018-12-07T17:04:04+08:00</lastmod>
   </url><url>
     <loc>https://kikt.top/tags/channel/</loc>
