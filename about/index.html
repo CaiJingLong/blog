@@ -37,12 +37,12 @@
 
     
     
-    <link rel="preload" href="https://kikt.top/css/styles.d41cbb967255d80b6dd6cc16d0d2e655dc9ec8b6fa6f2b795c7661a7aea575757807d2b2d8b61c7b750605311ac0a0724f121ba6b8fe5512f549afe3d6de2c96.css" integrity = "sha512-1By7lnJV2Att1swW0NLmVdyeyLb6byt5XHZhp66ldXV4B9Ky2LYce3UGBTEawKByTxIbprj&#43;VRL1Sa/j1t4slg==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://kikt.top/css/styles.043f5f2d00db365f62f3f7f88408ea7465310d6cee1d01bc3eba1a5e755025483d1acd775e6dd5361343bc2dcd3b497a3d6d2a1260a7c27f64a892f520a9a500.css" integrity = "sha512-BD9fLQDbNl9i8/f4hAjqdGUxDWzuHQG8ProaXnVQJUg9Gs13Xm3VNhNDvC3NO0l6PW0qEmCnwn9kqJL1IKmlAA==" as="style" crossorigin="anonymous">
     <link rel="preload" href="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" as="script" integrity=
     "sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous">
 
     
-    <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.d41cbb967255d80b6dd6cc16d0d2e655dc9ec8b6fa6f2b795c7661a7aea575757807d2b2d8b61c7b750605311ac0a0724f121ba6b8fe5512f549afe3d6de2c96.css" integrity="sha512-1By7lnJV2Att1swW0NLmVdyeyLb6byt5XHZhp66ldXV4B9Ky2LYce3UGBTEawKByTxIbprj&#43;VRL1Sa/j1t4slg==" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://kikt.top/css/styles.043f5f2d00db365f62f3f7f88408ea7465310d6cee1d01bc3eba1a5e755025483d1acd775e6dd5361343bc2dcd3b497a3d6d2a1260a7c27f64a892f520a9a500.css" integrity="sha512-BD9fLQDbNl9i8/f4hAjqdGUxDWzuHQG8ProaXnVQJUg9Gs13Xm3VNhNDvC3NO0l6PW0qEmCnwn9kqJL1IKmlAA==" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/custom.css">
     
   </head>
@@ -214,14 +214,80 @@
       </ul>
     </div>
 <div class="post_comments">
- <script src="https://utteranc.es/client.js"
-         repo="Caijinglong/kikt-blog-comment"
-         issue-term="pathname"
-         theme="github-light"
-         crossorigin="anonymous"
-         async>
- </script>
- </div>
+<div class="utterances-container"></div>
+<script>
+  
+  const getCurrentTheme = (showLog) => {
+    const htmlElement = document.documentElement;
+    const hasDataMode = htmlElement.hasAttribute('data-mode');
+    const dataMode = htmlElement.getAttribute('data-mode');
+    const res = (!hasDataMode || dataMode === 'lit') ? 'github-light' : 'github-dark';
+    if (showLog) console.log('当前主题:', res);
+    return res;
+  };
+
+  
+  const updateUtterancesTheme = () => {
+    const theme = getCurrentTheme();
+    const utterances = document.querySelector('.utterances-frame');
+    if (utterances) {
+      utterances.contentWindow.postMessage({
+        type: 'set-theme',
+        theme: theme
+      }, 'https://utteranc.es');
+    }
+  };
+
+  
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'data-mode') {
+        updateUtterancesTheme();
+      }
+    });
+  });
+
+  
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-mode']
+  });
+
+
+  
+  const loadUtterances = () => {
+    const utterancesContainer = document.querySelector('.utterances-container');
+    if (!utterancesContainer) return;
+
+    
+    utterancesContainer.innerHTML = '';
+
+    
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', 'Caijinglong\/kikt-blog-comment');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', getCurrentTheme(true));
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('async', 'true');
+
+    
+    utterancesContainer.appendChild(script);
+
+    
+    script.onload = () => {
+      updateUtterancesTheme();
+    };
+  };
+
+
+  
+  document.addEventListener('DOMContentLoaded', async () => {
+    
+    loadUtterances();
+  });
+</script>
+</div>
 
 
 
@@ -1199,8 +1265,12 @@
 </a>
 
   </div>
+  <div class="footer_line">
+    <span>Powered by <a href="https://gohugo.io/" title="Hugo">Hugo</a></span>,
+    <span>theme by <a href="https://github.com/chipzoller/hugo-clarity" title="Clarity">Clarity</a></span>,
+    <span>deploy in <a href="https://github.com/CaiJingLong/blog">github pages</a></span>
+  </div>
 </footer>
-
     <script type="text/javascript" src="https://kikt.top/en/js/bundle.7af2e2295d9441075427401bf960a4d0d73076c5cc0caa11a6e4c43490b878773acf95986e7cd6be08058c2ed2e5c78cc5fa6f18f3f93825b0619e3cf437a0e5.js" integrity="sha512-evLiKV2UQQdUJ0Ab&#43;WCk0NcwdsXMDKoRpuTENJC4eHc6z5WYbnzWvggFjC7S5ceMxfpvGPP5OCWwYZ489Deg5Q==" crossorigin="anonymous"></script>
 
   <script src="https://kikt.top/js/search.min.c5119777a32ca9722ac74767beb140cdf58a1f120b3f52af459b7e8425f3587d16df10f6a873f4774182988832d18932771a22f8201384a0d3d03526c07691ce.js"></script>
