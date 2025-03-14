@@ -7,7 +7,48 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Thu, 16 Jan 2025 09:34:41 +0800</lastBuildDate><atom:link href="https://kikt.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Mar 2025 13:29:44 +0800</lastBuildDate><atom:link href="https://kikt.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>XCode16 构建 Flutter iOS时出错的结果</title>
+      <link>https://kikt.top/posts/flutter/xcode_16_for_flutter_build_error/</link>
+      <pubDate>Fri, 14 Mar 2025 13:29:44 +0800</pubDate>
+      
+      <guid>https://kikt.top/posts/flutter/xcode_16_for_flutter_build_error/</guid>
+      <description>
+        
+          
+            &lt;h2 id=&#34;unable-to-find-a-target-named-runnertests-in-project-runnerxcodeproj&#34;&gt;Unable to find a target named &lt;code&gt;RunnerTests&lt;/code&gt; in project &lt;code&gt;Runner.xcodeproj&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://stackoverflow.com/questions/76247185/unable-to-find-a-target-named-runnertests-in-project-runner-xcodeproj&#34; &gt;https://stackoverflow.com/questions/76247185/unable-to-find-a-target-named-runnertests-in-project-runner-xcodeproj&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;删掉 Podfile 中和 RunnerTests 相关的配置&lt;/p&gt;
+&lt;h2 id=&#34;unable-to-rename-temporary&#34;&gt;unable to rename temporary&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Error (Xcode): unable to rename temporary
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#39;/Users/cai/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/9LDJVJOXFOAC/MobileCoreServices-DDUM1B0YO78K-cda47703.pcm.tmp&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;to output file
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#39;/Users/cai/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/9LDJVJOXFOAC/MobileCoreServices-DDUM1B0YO78K.pcm&amp;#39;: &amp;#39;No such
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;file or directory&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+&lt;a href=&#34;https://stackoverflow.com/questions/79118572/xcode-16-and-ios-18-project-not-compiling&#34; &gt;https://stackoverflow.com/questions/79118572/xcode-16-and-ios-18-project-not-compiling&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;配置 Xcode 的 DerivedData 路径，修改为相对路径，即相对 &lt;code&gt;&amp;lt;flutter_project_path&amp;gt;/ios&lt;/code&gt; 的路径&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+&lt;p class=&#34;md__image&#34;&gt;
+  
+    &lt;img src=&#34;../posts/flutter/xcode_16_for_flutter_build_error/image.png&#34; alt=&#34;alt text&#34;  /&gt;
+  
+&lt;/p&gt;
+&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
     <item>
       <title>使用 Amper 管理 KMP 应用</title>
       <link>https://kikt.top/posts/kmp/pack_kmp_application/</link>
